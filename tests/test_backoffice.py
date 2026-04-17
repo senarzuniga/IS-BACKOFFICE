@@ -9,7 +9,7 @@ class BackOfficeSystemTests(unittest.TestCase):
         records = [
             osys.ingestion.ingest_record(
                 "outlook_email",
-                "client=ACME;contact=ana@acme.com;offer=Digital Roadmap;price=25000;date=2026-01-10;opportunity=Plant modernisation;value=80000",
+                "client=ACME;contact=ana@acme.com;offer=Digital Roadmap;price=25000;date=2026-01-10;opportunity=Plant modernization;value=80000",
                 "mail-001",
                 classification="offer",
             ),
@@ -33,7 +33,7 @@ class BackOfficeSystemTests(unittest.TestCase):
         self.assertGreaterEqual(result["knowledge_graph_nodes"], 3)
         self.assertGreaterEqual(result["knowledge_graph_edges"], 2)
         self.assertTrue(result["outputs"]["traceability"])
-        self.assertIn("Plant modernisation", result["learning_feedback"])
+        self.assertIn("Plant modernization", result["learning_feedback"])
         self.assertIn("forecasting", result["analytics"])
 
     def test_offer_validation_anomaly_detection(self):
