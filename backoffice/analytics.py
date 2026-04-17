@@ -1,14 +1,15 @@
 from __future__ import annotations
 
 from dataclasses import asdict
+from typing import Any, Callable
 from .models import EntityBundle
 
 
 class AIAnalyticsEngine:
     def __init__(self) -> None:
-        self.extra_agents: dict[str, callable] = {}
+        self.extra_agents: dict[str, Callable[[EntityBundle, dict[str, Any]], Any]] = {}
 
-    def register_agent(self, name: str, fn: callable) -> None:
+    def register_agent(self, name: str, fn: Callable[[EntityBundle, dict[str, Any]], Any]) -> None:
         self.extra_agents[name] = fn
 
     def analyze(self, bundle: EntityBundle) -> dict:
@@ -64,9 +65,9 @@ class AIAnalyticsEngine:
             if sale.value < 1000:
                 labels[sale.product] = "commodity"
             elif sale.value < 5000:
-                labels[sale.product] = "growth"
-            elif sale.value < 20000:
-                labels[sale.product] = "innovation"
-            else:
                 labels[sale.product] = "decline"
+            elif sale.value < 20000:
+                labels[sale.product] = "growth"
+            else:
+                labels[sale.product] = "innovation"
         return labels
