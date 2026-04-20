@@ -1,74 +1,107 @@
 # IS-BACKOFFICE
 
-Modular AI-powered Back Office System for strategic consulting operations.
+AI-powered Commercial Intelligence Back Office System for Strategic Consulting Firms.
+
+## Overview
+
+IS-BACKOFFICE is a modular, closed-loop intelligence platform that automatically:
+
+- **Ingests** enterprise data (emails, PDFs, Word docs, Excel, TXT, folders)
+- **Cleans** raw inputs (normalization, deduplication, validation)
+- **Extracts** business entities (clients, contacts, offers, sales, opportunities)
+- **Stores** everything in a knowledge graph with full traceability
+- **Analyzes** pipeline, forecasts revenue, scores accounts, validates offers
+- **Reports** executive summaries, client diagnostics, and sales performance
 
 ## Architecture
 
-The implementation provides 6 core modules:
+```
+IS-BACKOFFICE/
+├── main.py                  # FastAPI application entry point
+├── requirements.txt
+├── backoffice/
+│   ├── models/              # Canonical data models (Pydantic)
+│   ├── ingestion/           # Module 1: Data Ingestion Layer
+│   ├── cleaning/            # Module 2: Data Processing & Cleaning
+│   ├── extraction/          # Module 3: Entity Extraction Engine
+│   ├── graph/               # Module 4: Knowledge Graph & Memory
+│   ├── analytics/           # Module 5: AI Analytics Engine
+│   └── reporting/           # Module 6: Output & Reporting
+├── api/
+│   └── routes/              # FastAPI route handlers
+└── tests/
+    └── test_backoffice.py   # Full test suite
+```
 
-1. **Data Ingestion Layer** (`backoffice/ingestion.py`)
-   - Supports: Outlook-style email payloads, PDF/Word/Excel/TXT metadata ingestion, folder scanning, and optional CRM source type.
-2. **Data Processing & Cleaning Layer** (`backoffice/processing.py`)
-   - Normalizes content, removes duplicates, validates numeric fields, and detects missing data.
-3. **Entity Extraction & Structuring Engine** (`backoffice/extraction.py`)
-   - Extracts normalized customers, opportunities, offers, and sales entities.
-4. **Knowledge Graph & Memory System** (`backoffice/knowledge_graph.py`)
-   - Builds relationships (client↔offers/sales/opportunities), stores timeline, and supports semantic search + learning feedback.
-5. **AI Analytics Engine** (`backoffice/analytics.py`)
-   - Generates pipeline/deal/forecast insights, portfolio classification, key account intelligence, and offer validation anomalies.
-6. **Output & Reporting Engine** (`backoffice/reporting.py`)
-   - Produces executive report structures, diagnostics, strategic opportunities, presentation slides, and traceability to source records.
+## Quick Start
 
-## Closed-loop behavior
+```bash
+pip install -r requirements.txt
+uvicorn main:app --reload
+```
 
-`CommercialIntelligenceOS` (`backoffice/orchestration.py`) orchestrates:
+Open [http://localhost:8000/docs](http://localhost:8000/docs) for the interactive API.
 
-- continuous capture input (records or folder scan)
-- automatic cleaning + validation
-- entity structuring
-- knowledge graph update
-- analytics generation
-- reporting output
-- learning signals fed back into memory
-
-## Run tests
+## Running Tests
 
 ```bash
 python -m unittest discover -s tests -q
 ```
 
-## Run with Streamlit
+## Modules
 
-1. Install dependencies:
+### 1. Data Ingestion Layer
+Connectors for: Email (`.eml`/dict), PDF, Word (`.docx`), Excel (`.xlsx`), TXT, and folder scanning.
+Each record includes: `source_type`, `timestamp`, `checksum`, `document_class`.
 
-   ```bash
-   python -m pip install -r requirements.txt
-   ```
+### 2. Data Processing & Cleaning
+- Text normalization, currency/unit harmonization
+- Duplicate detection (SHA-256 checksum)
+- Number validation and missing-data detection
 
-2. Start the app:
+### 3. Entity Extraction Engine
+Rule-based extraction with confidence scoring:
+- Clients, Contacts, Offers, Opportunities, Sales
+- Low-confidence items → **Review Queue** for human approval
 
-   ```bash
-   python -m streamlit run streamlit_app.py
-   ```
+### 4. Knowledge Graph & Memory
+In-memory graph store with:
+- Full entity CRUD (Client, Contact, Offer, Sale, Opportunity, Product, Document)
+- Relationship mapping (CLIENT_HAS_OFFER, OFFER_LEADS_TO_SALE, etc.)
+- Client timeline view
+- TF-IDF semantic search
 
-3. Open the URL shown in the terminal (default: `http://localhost:8501`).
+### 5. AI Analytics Engine
+- **Pipeline Scoring**: Opportunity scoring by stage × value
+- **Forecasting**: Linear trend revenue forecast + conversion probability
+- **Account Health**: Multi-factor scoring (revenue, win rate, activity)
+- **Offer Validation**: Anomaly detection vs. historical pricing
+- **Portfolio Analysis**: Product lifecycle classification
 
-## Run with Visual Studio Code
+### 6. Output & Reporting
+- Executive summary dashboard
+- Client diagnostic reports
+- Sales performance reports
+- JSON and HTML output formats
 
-1. Open the repository folder in Visual Studio Code.
-2. Install the recommended extensions when prompted (`ms-python.python`, `ms-python.debugpy`).
-3. (Optional but recommended) create and activate a virtual environment:
+## API Endpoints
 
-   ```bash
-   python -m venv .venv
-   source .venv/bin/activate
-   ```
-
-4. Select your interpreter from **Python: Select Interpreter**.
-5. Run tests from:
-   - **Testing** panel (unittest discovery is preconfigured), or
-   - **Terminal > Run Task > Run unit tests**, or
-   - **Run and Debug > Run unit tests (unittest)**.
-6. Run Streamlit from:
-   - **Terminal > Run Task > Run Streamlit app**, or
-   - **Run and Debug > Run Streamlit app**.
+| Method | Path | Description |
+|--------|------|-------------|
+| POST | `/ingest/file` | Upload file (PDF/DOCX/XLSX/TXT) |
+| POST | `/ingest/email` | Ingest email (JSON) |
+| GET | `/graph/stats` | Knowledge graph stats |
+| GET | `/graph/search?q=...` | Semantic search |
+| GET | `/graph/clients` | List all clients |
+| POST | `/graph/clients` | Create client |
+| GET | `/analytics/pipeline` | Pipeline summary |
+| GET | `/analytics/forecast` | Revenue forecast |
+| GET | `/analytics/accounts/health` | All account health scores |
+| GET | `/analytics/offers/validation` | Offer anomaly validation |
+| GET | `/analytics/portfolio` | Product lifecycle analysis |
+| GET | `/reports/executive` | Executive summary (JSON) |
+| GET | `/reports/executive/html` | Executive summary (HTML) |
+| GET | `/reports/sales-performance` | Sales report |
+| GET | `/review/pending` | Pending human review items |
+| POST | `/review/{id}/approve` | Approve a review item |
+| POST | `/review/{id}/reject` | Reject a review item |

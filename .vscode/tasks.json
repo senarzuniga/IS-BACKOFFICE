@@ -1,19 +1,23 @@
 {
-  "version": "2.0.0",
-  "tasks": [
-    {
-      "label": "Run Streamlit app",
-      "type": "shell",
-      "command": "python -m streamlit run streamlit_app.py",
-      "group": "build",
-      "problemMatcher": []
-    },
-    {
-      "label": "Run unit tests",
-      "type": "shell",
-      "command": "python -m unittest discover -s tests -q",
-      "group": "test",
-      "problemMatcher": []
-    }
-  ]
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Run Tests",
+            "type": "shell",
+            "command": "python -m unittest discover -s tests -q",
+            "group": {
+                "kind": "test",
+                "isDefault": true
+            },
+            "presentation": {
+                "reveal": "always"
+            }
+        },
+        {
+            "label": "Start Server",
+            "type": "shell",
+            "command": "uvicorn main:app --reload",
+            "group": "build"
+        }
+    ]
 }
