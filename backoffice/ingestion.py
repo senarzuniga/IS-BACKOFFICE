@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from pathlib import Path
+import logging
 from .models import RawRecord
 from .exceptions import UnsupportedSourceTypeError
 
@@ -42,5 +43,13 @@ class DataIngestionLayer:
             }.get(ext)
             if source_type is None:
                 continue
-            records.append(self.ingest_record(source_type, path.read_text(encoding="utf-8", errors="ignore"), str(path)))
+            try:
+                content = path.read_text(encoding="utf-8", errors="ignore")
+                records.append(self.ingest_record(source_type, content, str(path)))
+            except FileNotFoundError:
+                logging.error(f"File not found: {path}")
+            except PermissionError:
+                logging.error(f"Permission denied: {path}")
+            except UnicodeDecodeError:
+                logging.error(f"Unicode decode error in file: {path}")
         return records
