@@ -37,6 +37,22 @@ The implementation provides 6 core modules:
 python -m unittest discover -s tests -q
 ```
 
+## Run with Streamlit
+
+1. Install dependencies:
+
+   ```bash
+   python -m pip install -r requirements.txt
+   ```
+
+2. Start the app:
+
+   ```bash
+   python -m streamlit run streamlit_app.py
+   ```
+
+3. Open the URL shown in the terminal (default: `http://localhost:8501`).
+
 ## Run with Visual Studio Code
 
 1. Open the repository folder in Visual Studio Code.
@@ -53,3 +69,6 @@ python -m unittest discover -s tests -q
    - **Testing** panel (unittest discovery is preconfigured), or
    - **Terminal > Run Task > Run unit tests**, or
    - **Run and Debug > Run unit tests (unittest)**.
+6. Run Streamlit from:
+   - **Terminal > Run Task > Run Streamlit app**, or
+   - **Run and Debug > Run Streamlit app**.
