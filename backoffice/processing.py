@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from .models import ProcessingResult, RawRecord
+from .exceptions import InvalidValueError
 
 
 class DataProcessingCleaningLayer:
@@ -36,6 +37,7 @@ class DataProcessingCleaningLayer:
                     float(frag)
                 except ValueError:
                     validation_errors.append(f"invalid_value:{record.source_id}:{frag}")
+                    raise InvalidValueError(record.source_id, frag)
 
             record.content = normalized
             cleaned.append(record)

@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from pathlib import Path
 from .models import RawRecord
+from .exceptions import UnsupportedSourceTypeError
 
 
 class DataIngestionLayer:
@@ -17,7 +18,7 @@ class DataIngestionLayer:
 
     def ingest_record(self, source_type: str, content: str, source_id: str, **metadata: str) -> RawRecord:
         if source_type not in self.SUPPORTED:
-            raise ValueError(f"Unsupported source type: {source_type}")
+            raise UnsupportedSourceTypeError(source_type)
         return RawRecord(
             source_type=source_type,
             content=content.strip(),
