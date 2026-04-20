@@ -36,3 +36,20 @@ The implementation provides 6 core modules:
 ```bash
 python -m unittest discover -s tests -q
 ```
+
+## Run with Visual Studio Code
+
+1. Open the repository folder in Visual Studio Code.
+2. Install the recommended extensions when prompted (`ms-python.python`, `ms-python.debugpy`).
+3. (Optional but recommended) create and activate a virtual environment:
+
+   ```bash
+   python -m venv .venv
+   source .venv/bin/activate
+   ```
+
+4. Select your interpreter from **Python: Select Interpreter**.
+5. Run tests from:
+   - **Testing** panel (unittest discovery is preconfigured), or
+   - **Terminal > Run Task > Run unit tests**, or
+   - **Run and Debug > Run unit tests (unittest)**.
