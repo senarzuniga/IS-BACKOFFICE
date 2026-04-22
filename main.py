@@ -1,5 +1,6 @@
 """FastAPI application entry point."""
-from fastapi import FastAPI
+from fastapi import FastAPI, Depends
+from fastapi.security import OAuth2PasswordBearer
 from api.routes.ingestion import router as ingestion_router
 from api.routes.graph import router as graph_router
 from api.routes.analytics import router as analytics_router
@@ -12,11 +13,13 @@ app = FastAPI(
     description="Modular AI-powered back-office system for strategic consulting firms.",
 )
 
-app.include_router(ingestion_router)
-app.include_router(graph_router)
-app.include_router(analytics_router)
-app.include_router(reporting_router)
-app.include_router(review_router)
+oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/token")
+
+app.include_router(ingestion_router, dependencies=[Depends(oauth2_scheme)])
+app.include_router(graph_router, dependencies=[Depends(oauth2_scheme)])
+app.include_router(analytics_router, dependencies=[Depends(oauth2_scheme)])
+app.include_router(reporting_router, dependencies=[Depends(oauth2_scheme)])
+app.include_router(review_router, dependencies=[Depends(oauth2_scheme)])
 
 
 @app.get("/")
