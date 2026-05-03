@@ -1,4 +1,4 @@
-﻿import unittest
+import unittest
 
 from fastapi.testclient import TestClient
 
@@ -43,4 +43,3 @@ class TestOrchestrationAPI(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
-
