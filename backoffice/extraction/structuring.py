@@ -1,12 +1,58 @@
 from __future__ import annotations
 
 import re
+import uuid
+from dataclasses import dataclass, field
 
-from .models import Customer, EntityBundle, Offer, Opportunity, RawRecord, Sale, make_id
+
+def make_id(prefix: str) -> str:
+    return f"{prefix}_{uuid.uuid4().hex[:12]}"
+
+
+@dataclass
+class Customer:
+    id: str
+    name: str
+    contacts: list[str] = field(default_factory=list)
+
+
+@dataclass
+class Opportunity:
+    id: str
+    client: str
+    description: str
+    amount: float
+    close_date: str | None
+
+
+@dataclass
+class Offer:
+    id: str
+    client: str
+    description: str
+    price: float
+    date: str | None
+
+
+@dataclass
+class Sale:
+    id: str
+    client: str
+    product: str
+    value: float
+    date: str | None
+
+
+@dataclass
+class EntityBundle:
+    customers: list[Customer]
+    opportunities: list[Opportunity]
+    offers: list[Offer]
+    sales: list[Sale]
 
 
 class EntityExtractionStructuringEngine:
-    def extract(self, records: list[RawRecord]) -> EntityBundle:
+    def extract(self, records: list) -> EntityBundle:
         customers: dict[str, Customer] = {}
         opportunities: list[Opportunity] = []
         offers: list[Offer] = []
@@ -60,7 +106,6 @@ class EntityExtractionStructuringEngine:
         if not text:
             return parsed
 
-        # Accept key=value pairs delimited by either ';' or whitespace.
         matches = list(re.finditer(r"([a-zA-Z_][a-zA-Z0-9_]*)\s*=", text))
         if not matches:
             return parsed

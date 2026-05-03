@@ -362,5 +362,42 @@ class TestReporting(unittest.TestCase):
         self.assertIn("Executive Summary", html)
 
 
+# ── Orchestration & Reliability ──────────────────────────────────────────────
+
+class TestOrchestrationReliability(unittest.TestCase):
+
+    def test_run_cycle_proactive_and_autolearning(self):
+        from backoffice import CommercialIntelligenceOS
+
+        osys = CommercialIntelligenceOS()
+        record = osys.ingestion.ingest_record(
+            source_type="txt",
+            content="client=ACME contact=ana@acme.com offer=Roadmap price=25000 opportunity=Expansion value=80000 date=2026-01-10",
+            source_id="test-001",
+            classification="offer",
+        )
+        result = osys.run_cycle([record], proactive_mode=True, autolearning_mode=True)
+
+        self.assertEqual(result["status"], "ok")
+        self.assertIn("reliability", result)
+        self.assertIn("proactive_signals", result)
+        self.assertIn("modes", result)
+        self.assertTrue(result["modes"]["autolearning_mode"])
+        self.assertGreaterEqual(result["reliability"]["processed_records"], 1)
+
+    def test_run_cycle_degraded_when_not_strict(self):
+        from backoffice import CommercialIntelligenceOS
+
+        osys = CommercialIntelligenceOS()
+        record = osys.ingestion.ingest_record(
+            source_type="txt",
+            content="client=ACME value=notanumber",
+            source_id="test-002",
+        )
+        result = osys.run_cycle([record], strict_mode=False)
+        self.assertEqual(result["status"], "degraded")
+        self.assertIn("error", result)
+
+
 if __name__ == "__main__":
     unittest.main()
