@@ -4,7 +4,7 @@
         {
             "label": "Run Tests",
             "type": "shell",
-            "command": "python -m unittest discover -s tests -q",
+            "command": "coverage run -m unittest discover -s tests -q",
             "group": {
                 "kind": "test",
                 "isDefault": true
@@ -18,6 +18,15 @@
             "type": "shell",
             "command": "uvicorn main:app --reload",
             "group": "build"
+        },
+        {
+            "label": "Generate Coverage Report",
+            "type": "shell",
+            "command": "coverage report",
+            "group": "test",
+            "presentation": {
+                "reveal": "always"
+            }
         }
     ]
 }
