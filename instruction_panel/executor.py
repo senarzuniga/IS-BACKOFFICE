@@ -204,20 +204,37 @@ class InstructionExecutor:
             fmt = _to_output_format(requested)
 
             analysis = context.get("folder_analysis")
+            discovered = context.get("discovered_files", [])
+
             if analysis is None:
                 docs: list[DocumentInfo] = context.get("parsed_documents", [])
                 stats = context.get("folder_stats")
+
+                # Fast path: when files were discovered but not yet parsed (explore_folder
+                # intent), build the file listing directly instead of creating an empty
+                # FolderAnalysis whose document list would also be empty.
+                if fmt == OutputFormat.LIST and discovered and not docs:
+                    grouped: dict[str, list[str]] = {}
+                    for item in discovered:
+                        grouped.setdefault(item.get("doc_type", "unknown"), []).append(item.get("name", ""))
+                    lines = ["# Folder File List", f"Total files: {len(discovered)}", ""]
+                    for doc_type, names in sorted(grouped.items()):
+                        lines.append(f"## {doc_type.upper()} ({len(names)})")
+                        lines.extend(f"- {name}" for name in names[:200])
+                        lines.append("")
+                    context["generated_output"] = "\n".join(lines)
+                    return f"Generated {fmt.value} ({len(discovered)} files listed)"
+
                 if stats is not None:
                     analysis = self.analyzer.analyze_folder(docs, folder_path=folder_path or "", stats=stats)
                     context["folder_analysis"] = analysis
 
             if analysis is None:
-                discovered = context.get("discovered_files", [])
                 if fmt == OutputFormat.LIST and discovered:
-                    grouped: dict[str, list[str]] = {}
+                    grouped = {}
                     for item in discovered:
                         grouped.setdefault(item.get("doc_type", "unknown"), []).append(item.get("name", ""))
-                    lines = ["# Folder File List", f"Total supported files: {len(discovered)}", ""]
+                    lines = ["# Folder File List", f"Total files: {len(discovered)}", ""]
                     for doc_type, names in sorted(grouped.items()):
                         lines.append(f"## {doc_type.upper()} ({len(names)})")
                         lines.extend(f"- {name}" for name in names[:200])

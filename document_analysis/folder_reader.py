@@ -181,8 +181,12 @@ class FolderReader:
         return FolderStats(
             folder_path=str(folder),
             total_files=len(all_files),
-            supported_files=len(all_files),
-            unsupported_files=0,
+            supported_files=sum(
+                1 for f in all_files if f["doc_type"] != DocumentType.UNKNOWN.value
+            ),
+            unsupported_files=sum(
+                1 for f in all_files if f["doc_type"] == DocumentType.UNKNOWN.value
+            ),
             total_size_bytes=total_size,
             files_by_type=files_by_type,
         )
