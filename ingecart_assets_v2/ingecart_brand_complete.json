@@ -1,0 +1,255 @@
+{
+  "company_name": "Ingecart",
+  "tagline": "Engineering & Auditing | Tailored Automation & Intralogistics",
+  "colors": {
+    "rgb(0, 0, 0)": [
+      0,
+      0,
+      0
+    ],
+    "rgb(var(--wix-forms-formInputOptionColor, 0,0,0)": [
+      0,
+      0,
+      0
+    ]
+  },
+  "primary_color": [
+    0,
+    0,
+    0
+  ],
+  "secondary_color": [
+    0,
+    0,
+    0
+  ],
+  "texts": {
+    "vision": "",
+    "services": "SERVICIOS",
+    "why": "¿POR QUÉ INGECART?",
+    "stats": {
+      "proyectos": "1.268",
+      "experiencia": "28",
+      "acuerdos": "26",
+      "instalaciones": "194"
+    }
+  },
+  "partners": [
+    {
+      "name": "LOGO INGECART",
+      "logo": "https://static.wixstatic.com/media/aa5b12_97ae543c1c394adfa1985a127f72f9a0~mv2.png/v1/crop/x_208,y_164,w_1700,h_462/fill/w_49,h_13,al_c,q_85,usm_0.66_1.00_0.01,blur_2,enc_avif,quality_auto/logo%20ingecart%20blanco.png"
+    },
+    {
+      "name": "LOGO INGECART",
+      "logo": "https://static.wixstatic.com/media/aa5b12_97ae543c1c394adfa1985a127f72f9a0~mv2.png/v1/crop/x_208,y_164,w_1700,h_462/fill/w_49,h_13,al_c,q_85,usm_0.66_1.00_0.01,blur_2,enc_avif,quality_auto/logo%20ingecart%20blanco.png"
+    },
+    {
+      "name": "LOGO INGECART",
+      "logo": "https://static.wixstatic.com/media/aa5b12_97ae543c1c394adfa1985a127f72f9a0~mv2.png/v1/crop/x_208,y_164,w_1700,h_462/fill/w_49,h_13,al_c,q_85,usm_0.66_1.00_0.01,blur_2,enc_avif,quality_auto/logo%20ingecart%20blanco.png"
+    },
+    {
+      "name": "logo de mtorres",
+      "logo": "https://static.wixstatic.com/media/aa5b12_4ca7d5b4f7674acd9515ac5f60e69861~mv2.png/v1/fill/w_49,h_18,al_c,q_85,usm_0.66_1.00_0.01,blur_2,enc_avif,quality_auto/logo_mtorres__color__50_cms_ancho_a_100ppp%20(2)_edited_edited_edited_edited.png"
+    },
+    {
+      "name": "Logo de Ingecart",
+      "logo": "https://static.wixstatic.com/media/aa5b12_73efb6e6c1494336a8f08832899b1301~mv2.png/v1/fill/w_49,h_18,al_c,q_85,usm_0.66_1.00_0.01,blur_2,enc_avif,quality_auto/Copia%20de%20sello%202%20(1)_edited.png"
+    },
+    {
+      "name": "kisspng-kuka-systems-robotics-logo-technology-of-the-automotive-in-5b77f260a5f2f2_edited_e",
+      "logo": "https://static.wixstatic.com/media/aa5b12_58b8179513014eca88ce46206a276173~mv2.png/v1/fill/w_79,h_17,al_c,q_85,usm_0.66_1.00_0.01,blur_2,enc_avif,quality_auto/kisspng-kuka-systems-robotics-logo-technology-of-the-automotive-in-5b77f260a5f2f2_edited_e.png"
+    },
+    {
+      "name": "YOCO INDUSTRIES & INGECART OFCICIAL PARTNER",
+      "logo": "https://static.wixstatic.com/media/aa5b12_5d4eefa32b7f4e239ae4919be96b4892~mv2.png/v1/fill/w_65,h_43,al_c,q_85,usm_0.66_1.00_0.01,blur_2,enc_avif,quality_auto/YOCO%20INGECART.png"
+    }
+  ],
+  "logos": [
+    "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\ingecart_assets_v2\\logo%20ingecart%20blanco.png",
+    "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\ingecart_assets_v2\\logo%20ingecart%20blanco.png",
+    "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\ingecart_assets_v2\\logo%20ingecart%20blanco.png",
+    "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\ingecart_assets_v2\\logo_mtorres__color__50_cms_ancho_a_100ppp%20(2)_edited_edited_edited_edited.png",
+    "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\ingecart_assets_v2\\Salesforce_com_logo_svg%20(1).png",
+    "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\ingecart_assets_v2\\teams-icon-2048x2048-mnzvj70a_edited_edited.png",
+    "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\ingecart_assets_v2\\Copia%20de%20Copia%20de%20Blue%20and%20Orange%20Circle%20Global%20Networking%20Tech%20Logo%20(2)_edited.png",
+    "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\ingecart_assets_v2\\kisspng-kuka-systems-robotics-logo-technology-of-the-automotive-in-5b77f260a5f2f2_edited_e.png"
+  ],
+  "all_images": [
+    {
+      "name": "Copia%20de%20ingeeniering.png",
+      "path": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\ingecart_assets_v2\\Copia%20de%20ingeeniering.png",
+      "alt": "Copia de ingeeniering.png"
+    },
+    {
+      "name": "5.png",
+      "path": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\ingecart_assets_v2\\5.png",
+      "alt": "5.png"
+    },
+    {
+      "name": "aa5b12_0fe424559fce4c628f0ef67b3602dff4~mv2.png",
+      "path": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\ingecart_assets_v2\\aa5b12_0fe424559fce4c628f0ef67b3602dff4~mv2.png",
+      "alt": "INGECART PROYECT.png"
+    },
+    {
+      "name": "Copia%20de%20ingeeniering.png",
+      "path": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\ingecart_assets_v2\\Copia%20de%20ingeeniering.png",
+      "alt": "INGECART"
+    },
+    {
+      "name": "super%20corr%202024.png",
+      "path": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\ingecart_assets_v2\\super%20corr%202024.png",
+      "alt": "Ingecart en supercorr 2024"
+    },
+    {
+      "name": "logo%20ingecart%20blanco.png",
+      "path": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\ingecart_assets_v2\\logo%20ingecart%20blanco.png",
+      "alt": "LOGO INGECART"
+    },
+    {
+      "name": "logo%20ingecart%20blanco.png",
+      "path": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\ingecart_assets_v2\\logo%20ingecart%20blanco.png",
+      "alt": "LOGO INGECART"
+    },
+    {
+      "name": "logo%20ingecart%20blanco.png",
+      "path": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\ingecart_assets_v2\\logo%20ingecart%20blanco.png",
+      "alt": "LOGO INGECART"
+    },
+    {
+      "name": "Copia%20de%20Copia%20de%20sello%202%20(1)_edited.png",
+      "path": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\ingecart_assets_v2\\Copia%20de%20Copia%20de%20sello%202%20(1)_edited.png",
+      "alt": "imagen ingecart"
+    },
+    {
+      "name": "logo_mtorres__color__50_cms_ancho_a_100ppp%20(2)_edited_edited_edited_edited.png",
+      "path": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\ingecart_assets_v2\\logo_mtorres__color__50_cms_ancho_a_100ppp%20(2)_edited_edited_edited_edited.png",
+      "alt": "logo de mtorres"
+    },
+    {
+      "name": "Salesforce_com_logo_svg%20(1).png",
+      "path": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\ingecart_assets_v2\\Salesforce_com_logo_svg%20(1).png",
+      "alt": "salesf force"
+    },
+    {
+      "name": "Copia%20de%20ingeeniering.png",
+      "path": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\ingecart_assets_v2\\Copia%20de%20ingeeniering.png",
+      "alt": "ingecart"
+    },
+    {
+      "name": "teams-icon-2048x2048-mnzvj70a_edited_edited.png",
+      "path": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\ingecart_assets_v2\\teams-icon-2048x2048-mnzvj70a_edited_edited.png",
+      "alt": "Agenda una reunion"
+    },
+    {
+      "name": "noticias-del-mundo%20(1).png",
+      "path": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\ingecart_assets_v2\\noticias-del-mundo%20(1).png",
+      "alt": "Mira nuestro blog de noticias"
+    },
+    {
+      "name": "Copia%20de%20Copia%20de%20Blue%20and%20Orange%20Circle%20Global%20Networking%20Tech%20Logo%20(2)_edited.png",
+      "path": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\ingecart_assets_v2\\Copia%20de%20Copia%20de%20Blue%20and%20Orange%20Circle%20Global%20Networking%20Tech%20Logo%20(2)_edited.png",
+      "alt": "TORRES FACTORY"
+    },
+    {
+      "name": "aa5b12_16039d84c04d4b03bd0c2f23eb01ed2a~mv2.png",
+      "path": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\ingecart_assets_v2\\aa5b12_16039d84c04d4b03bd0c2f23eb01ed2a~mv2.png",
+      "alt": ""
+    },
+    {
+      "name": "aa5b12_ad6e1808bace4321be101398d38b8abf~mv2.jpg",
+      "path": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\ingecart_assets_v2\\aa5b12_ad6e1808bace4321be101398d38b8abf~mv2.jpg",
+      "alt": ""
+    },
+    {
+      "name": "aa5b12_1ea68ff704784c26898fad4abc5f563c~mv2.png",
+      "path": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\ingecart_assets_v2\\aa5b12_1ea68ff704784c26898fad4abc5f563c~mv2.png",
+      "alt": ""
+    },
+    {
+      "name": "aa5b12_02e6c7e9143c4123b30945878703654a~mv2.jpg",
+      "path": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\ingecart_assets_v2\\aa5b12_02e6c7e9143c4123b30945878703654a~mv2.jpg",
+      "alt": ""
+    },
+    {
+      "name": "aa5b12_d56d115a1faa45fa86c65d3cfde13753~mv2.png",
+      "path": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\ingecart_assets_v2\\aa5b12_d56d115a1faa45fa86c65d3cfde13753~mv2.png",
+      "alt": ""
+    },
+    {
+      "name": "aa5b12_fc589954a65849fb9c1f041a3801c921~mv2.jpg",
+      "path": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\ingecart_assets_v2\\aa5b12_fc589954a65849fb9c1f041a3801c921~mv2.jpg",
+      "alt": ""
+    },
+    {
+      "name": "Copia%20de%20sello%202%20(1)_edited.png",
+      "path": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\ingecart_assets_v2\\Copia%20de%20sello%202%20(1)_edited.png",
+      "alt": "Logo de Ingecart"
+    },
+    {
+      "name": "Bobinas.jpg",
+      "path": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\ingecart_assets_v2\\Bobinas.jpg",
+      "alt": "Ingecart Soluciones Integrales en Corrugado"
+    },
+    {
+      "name": "Bobinas.jpg",
+      "path": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\ingecart_assets_v2\\Bobinas.jpg",
+      "alt": "Ingecart Soluciones Integrales en Corrugado"
+    },
+    {
+      "name": "kisspng-kuka-systems-robotics-logo-technology-of-the-automotive-in-5b77f260a5f2f2_edited_e.png",
+      "path": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\ingecart_assets_v2\\kisspng-kuka-systems-robotics-logo-technology-of-the-automotive-in-5b77f260a5f2f2_edited_e.png",
+      "alt": "kisspng-kuka-systems-robotics-logo-technology-of-the-automotive-in-5b77f260a5f2f2_edited_e"
+    },
+    {
+      "name": "Robot%20FFG-2.jpg",
+      "path": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\ingecart_assets_v2\\Robot%20FFG-2.jpg",
+      "alt": "Paletizador robótico FGG Ingecart"
+    },
+    {
+      "name": "77d74fb8faf71c6c68663f600463e46b_edited.png",
+      "path": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\ingecart_assets_v2\\77d74fb8faf71c6c68663f600463e46b_edited.png",
+      "alt": "Paletizador robótico Ingecart"
+    },
+    {
+      "name": "INGECART%20PROYECT.png",
+      "path": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\ingecart_assets_v2\\INGECART%20PROYECT.png",
+      "alt": "Ingecart Soluciones Integrales en Corrugado"
+    },
+    {
+      "name": "Transfer%203.jpg",
+      "path": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\ingecart_assets_v2\\Transfer%203.jpg",
+      "alt": "Ingecart Soluciones Integrales en Corrugado"
+    },
+    {
+      "name": "Transfer%209_edited.png",
+      "path": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\ingecart_assets_v2\\Transfer%209_edited.png",
+      "alt": "Ingecart BOBINAS Instalación"
+    },
+    {
+      "name": "INGECART%20PROYECT.png",
+      "path": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\ingecart_assets_v2\\INGECART%20PROYECT.png",
+      "alt": "Ingecart Soluciones Integrales en Corrugado"
+    },
+    {
+      "name": "YOCO%20INGECART.png",
+      "path": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\ingecart_assets_v2\\YOCO%20INGECART.png",
+      "alt": "YOCO INDUSTRIES & INGECART OFCICIAL PARTNER"
+    },
+    {
+      "name": "c837a6_cec501896c5b45589d6eda4ebb8cad5cf000.jpg",
+      "path": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\ingecart_assets_v2\\c837a6_cec501896c5b45589d6eda4ebb8cad5cf000.jpg",
+      "alt": ""
+    },
+    {
+      "name": "MARCAS.jpg",
+      "path": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\ingecart_assets_v2\\MARCAS.jpg",
+      "alt": "marcas"
+    },
+    {
+      "name": "5.png",
+      "path": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\ingecart_assets_v2\\5.png",
+      "alt": "5.png"
+    }
+  ],
+  "source_url": "https://www.ingecart.eu"
+}

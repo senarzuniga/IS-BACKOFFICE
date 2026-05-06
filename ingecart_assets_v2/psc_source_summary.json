@@ -1,0 +1,1297 @@
+{
+  "main_xlsx": {
+    "path": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\OFERTAS\\HOJA GENERAL PROYECTOPacific Southwest container Rapid Bond & ingecart.xlsx",
+    "sheets": {
+      "Resumen de exportación": [
+        [
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "",
+          "Este documento se ha exportado desde Numbers. Cada tabla se ha convertido en una hoja de cálculo de Excel. Los demás objetos de las hojas de Numbers se han colocado en distintas hojas de cálculo. Recuerda que el cálculo de fórmulas puede ser diferente en Excel.",
+          "",
+          ""
+        ],
+        [
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "",
+          "Nombre de hoja de Numbers",
+          "Nombre de tabla de Numbers",
+          "Nombre de hoja de cálculo de Excel"
+        ],
+        [
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "",
+          "CORRUGATED LINE SHEET",
+          "",
+          ""
+        ],
+        [
+          "",
+          "",
+          "Tabla 1",
+          "CORRUGATED LINE SHEET"
+        ],
+        [
+          "",
+          "SERVICES SHEET",
+          "",
+          ""
+        ],
+        [
+          "",
+          "",
+          "Tabla 1",
+          "SERVICES SHEET"
+        ]
+      ],
+      "CORRUGATED LINE SHEET": [
+        [
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "",
+          "BHS wave line OFFER in Turkey.",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "",
+          "03 /17/2026",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "",
+          "COMPLETE CORRUGATOR BHS 2500 mm MODEL JETS 300- 2500II to 300mpm",
+          "",
+          "",
+          "",
+          ""
+        ]
+      ],
+      "SERVICES SHEET": [
+        [
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "",
+          "",
+          "Cantidad",
+          "Purchase price USD ",
+          "Sale price USD",
+          "Benefit"
+        ],
+        [
+          "",
+          "Machine disassembly",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "",
+          "Complete dismantling of the machine, preparation for container loading, and full marking/documentation of mechanical and electrical installations, including travel expenses, flights, hotels, and per diem:",
+          "1",
+          "135000",
+          "185000",
+          "50000"
+        ],
+        [
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "",
+          "Service cranes disassembly .",
+          "1",
+          "40000",
+          "52000",
+          "12000"
+        ]
+      ],
+      "PERIPHERALS": [
+        [
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "",
+          "",
+          "",
+          "",
+          "",
+          "USD Purchase ",
+          "ADICIONAL ",
+          "VENTA"
+        ],
+        [
+          "",
+          "",
+          "",
+          "",
+          "",
+          "USD $ TOT",
+          "",
+          "LINE TEXT"
+        ],
+        [
+          "",
+          "Kitchen adhesive Flexamix",
+          "1.0",
+          "",
+          "",
+          "275000",
+          "55000",
+          "330000"
+        ],
+        [
+          "",
+          "Assembly and supply of glue tubes.",
+          "1.0",
+          "",
+          "",
+          "70000",
+          "21000",
+          "91000"
+        ]
+      ],
+      "CONVEYOR ": [
+        [
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "",
+          "",
+          "",
+          "",
+          "",
+          "USD Purchase ",
+          "ADICIONAL ",
+          "VENTA"
+        ],
+        [
+          "",
+          "",
+          "",
+          "",
+          "",
+          "USD $ TOT",
+          "",
+          "LINE TEXT"
+        ],
+        [
+          "",
+          "Double conveyor line output stacker with Strappers.",
+          "1.0",
+          "",
+          "",
+          "900000",
+          "270000",
+          "1170000"
+        ],
+        [
+          "",
+          "AMR reception conveyor output and placement in wip Conversion + waste movement.",
+          "1.0",
+          "",
+          "",
+          "550000",
+          "165000",
+          "715000"
+        ]
+      ],
+      "INGETRANS (AUTOMATIC LOADING AN": [
+        [
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "",
+          "",
+          "",
+          "",
+          "",
+          "USD Purchase ",
+          "ADICIONAL ",
+          "VENTA"
+        ],
+        [
+          "",
+          "",
+          "",
+          "",
+          "",
+          "USD $ TOT",
+          "",
+          "LINE TEXT"
+        ],
+        [
+          "",
+          "NEW CORRUGAR LINE RAILS 12 METERS.",
+          "",
+          "10.0",
+          "",
+          "185000",
+          "55500",
+          "240500"
+        ],
+        [
+          "",
+          "HOME AREA WITH AUTOMATIC LOADING AND UNLOADING RAMP.",
+          "",
+          "1.0",
+          "",
+          "780000",
+          "234000",
+          "1014000"
+        ]
+      ]
+    }
+  },
+  "flow_xlsx": {
+    "path": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\OFERTAS\\Flujo Pacific Southwest.xlsx",
+    "sheets": {
+      "COTES ING": [
+        [
+          "Mes",
+          "Cobro",
+          "Pago",
+          "Flujo Neto del mes",
+          "Flujo Acumulado",
+          "Pagos Mike ",
+          "concepto",
+          ""
+        ],
+        [
+          "2026-05-01 00:00:00",
+          "200000",
+          "",
+          "200000",
+          "200000",
+          "",
+          "",
+          ""
+        ],
+        [
+          "2026-05-01 00:00:00",
+          "200000",
+          "6250",
+          "193750",
+          "393750",
+          "",
+          "Ingenieria",
+          ""
+        ],
+        [
+          "2026-06-01 00:00:00",
+          "200000",
+          "6250",
+          "193750",
+          "587500",
+          "",
+          "Ingenieria",
+          ""
+        ],
+        [
+          "2026-07-01 00:00:00",
+          "200000",
+          "828000",
+          "-628000",
+          "-40500",
+          "",
+          "maquina 100%/ desmontaje",
+          ""
+        ],
+        [
+          "2026-08-01 00:00:00",
+          "200000",
+          "85000",
+          "115000",
+          "74500",
+          "",
+          "Transporte",
+          ""
+        ],
+        [
+          "2026-09-01 00:00:00",
+          "200000",
+          "210000",
+          "-10000",
+          "64500",
+          "",
+          "Upgrade Elec 100%-Mec100% Externo- COTIZADO POR BHS + ALQUILER de NAVE",
+          ""
+        ],
+        [
+          "2026-10-01 00:00:00",
+          "200000",
+          "21250",
+          "178750",
+          "173250",
+          "70000",
+          "Ingenieria/Contingencia",
+          ""
+        ],
+        [
+          "2026-11-01 00:00:00",
+          "200000",
+          "21250",
+          "178750",
+          "184500",
+          "167500",
+          "Ingenieria/Contingencia",
+          ""
+        ],
+        [
+          "2026-12-01 00:00:00",
+          "200000",
+          "40000",
+          "160000",
+          "288210",
+          "56290",
+          "Embalaje/Contingencia",
+          ""
+        ],
+        [
+          "2027-01-01 00:00:00",
+          "200000",
+          "380000",
+          "-180000",
+          "108210",
+          "",
+          "Transporte",
+          ""
+        ],
+        [
+          "2027-02-01 00:00:00",
+          "200000",
+          "",
+          "200000",
+          "308210",
+          "",
+          "",
+          ""
+        ]
+      ],
+      "flujo Mike": [
+        [
+          "Mes",
+          "fecha cobro",
+          "Cobro",
+          "Pago",
+          "Flujo Neto del mes",
+          "Flujo Acumulado",
+          "Beneficio Mike",
+          "Concepto pago"
+        ],
+        [
+          "2026-05-01 00:00:00",
+          "2026-05-05 00:00:00",
+          "200000",
+          "",
+          "200000",
+          "200000",
+          "",
+          ""
+        ],
+        [
+          "2026-05-01 00:00:00",
+          "2026-05-15 00:00:00",
+          "200000",
+          "5000",
+          "195000",
+          "395000",
+          "",
+          "Ingenieria"
+        ],
+        [
+          "2026-06-01 00:00:00",
+          "2026-06-01 00:00:00",
+          "200000",
+          "5000",
+          "195000",
+          "590000",
+          "",
+          "Ingenieria"
+        ],
+        [
+          "2026-07-01 00:00:00",
+          "2026-07-02 00:00:00",
+          "200000",
+          "920000",
+          "-720000",
+          "-130000",
+          "",
+          "Ingenieria/ maquina/ desmontaje"
+        ],
+        [
+          "2026-08-01 00:00:00",
+          "2026-08-02 00:00:00",
+          "200000",
+          "90000",
+          "110000",
+          "-20000",
+          "",
+          "Ingenieria/ transporte"
+        ],
+        [
+          "2026-09-01 00:00:00",
+          "2026-09-02 00:00:00",
+          "200000",
+          "235000",
+          "-35000",
+          "-55000",
+          "",
+          "Ingenieria/ Upgrade Elec-Mec"
+        ],
+        [
+          "2026-10-01 00:00:00",
+          "2026-10-03 00:00:00",
+          "200000",
+          "5000",
+          "195000",
+          "140000",
+          "70000",
+          "Ingenieria"
+        ],
+        [
+          "2026-11-01 00:00:00",
+          "2026-11-03 00:00:00",
+          "200000",
+          "5000",
+          "195000",
+          "335000",
+          "167500",
+          "Ingenieria"
+        ],
+        [
+          "2026-12-01 00:00:00",
+          "2026-12-04 00:00:00",
+          "200000",
+          "65000",
+          "135000",
+          "470000",
+          "56290",
+          "Ingenieria/ Embalaje"
+        ],
+        [
+          "2027-01-01 00:00:00",
+          "2027-01-04 00:00:00",
+          "200000",
+          "390000",
+          "-190000",
+          "280000",
+          "",
+          "Ingenieria/ transporte"
+        ],
+        [
+          "2027-02-01 00:00:00",
+          "2027-02-04 00:00:00",
+          "200000",
+          "5000",
+          "195000",
+          "475000",
+          "",
+          "Ingenieria"
+        ]
+      ],
+      "Sheet4": [
+        [
+          "Mes",
+          "Cobro",
+          "Pago",
+          "Flujo Neto del mes",
+          "Flujo Acumulado",
+          "Pagos Mike ",
+          "concepto",
+          ""
+        ],
+        [
+          "2026-05-01 00:00:00",
+          "200000",
+          "",
+          "200000",
+          "200000",
+          "",
+          "",
+          ""
+        ],
+        [
+          "2026-05-01 00:00:00",
+          "200000",
+          "6250",
+          "193750",
+          "393750",
+          "",
+          "Ingenieria",
+          ""
+        ],
+        [
+          "2026-06-01 00:00:00",
+          "200000",
+          "6250",
+          "193750",
+          "587500",
+          "",
+          "Ingenieria",
+          ""
+        ],
+        [
+          "2026-07-01 00:00:00",
+          "200000",
+          "458000",
+          "-258000",
+          "329500",
+          "",
+          "maquina 100%/ desmontaje",
+          ""
+        ],
+        [
+          "2026-08-01 00:00:00",
+          "200000",
+          "455000",
+          "-255000",
+          "74500",
+          "",
+          "Transporte",
+          ""
+        ],
+        [
+          "2026-09-01 00:00:00",
+          "200000",
+          "210000",
+          "-10000",
+          "64500",
+          "",
+          "Upgrade Elec 100%-Mec100% Externo- COTIZADO POR BHS + ALQUILER de NAVE",
+          ""
+        ],
+        [
+          "2026-10-01 00:00:00",
+          "200000",
+          "21250",
+          "178750",
+          "173250",
+          "70000",
+          "Ingenieria/Contingencia",
+          ""
+        ],
+        [
+          "2026-11-01 00:00:00",
+          "200000",
+          "21250",
+          "178750",
+          "184500",
+          "167500",
+          "Ingenieria/Contingencia",
+          ""
+        ],
+        [
+          "2026-12-01 00:00:00",
+          "200000",
+          "40000",
+          "160000",
+          "288210",
+          "56290",
+          "Embalaje/Contingencia",
+          ""
+        ],
+        [
+          "2027-01-01 00:00:00",
+          "200000",
+          "380000",
+          "-180000",
+          "108210",
+          "",
+          "Transporte",
+          ""
+        ],
+        [
+          "2027-02-01 00:00:00",
+          "200000",
+          "",
+          "200000",
+          "308210",
+          "",
+          "",
+          ""
+        ]
+      ],
+      "general": [
+        [
+          "Mes",
+          "Cobro",
+          "Pago",
+          "Flujo Neto del mes",
+          "Flujo Acumulado"
+        ],
+        [
+          "0",
+          "200000",
+          "0",
+          "200000",
+          "200000"
+        ],
+        [
+          "1",
+          "200000",
+          "0",
+          "200000",
+          "400000"
+        ],
+        [
+          "2",
+          "200000",
+          "0",
+          "200000",
+          "600000"
+        ],
+        [
+          "3",
+          "200000",
+          "963000",
+          "–763.000",
+          "–163.000"
+        ],
+        [
+          "4",
+          "200000",
+          "0",
+          "200000",
+          "37000"
+        ],
+        [
+          "5",
+          "200000",
+          "25000",
+          "175000",
+          "212000"
+        ],
+        [
+          "6",
+          "200000",
+          "380000",
+          "–180.000",
+          "32000"
+        ],
+        [
+          "7",
+          "200000",
+          "0",
+          "200000",
+          "232000"
+        ],
+        [
+          "8",
+          "200000",
+          "230000",
+          "–30.000",
+          "202000"
+        ],
+        [
+          "",
+          "200000",
+          "",
+          "200000",
+          "402000"
+        ],
+        [
+          "",
+          "200000",
+          "",
+          "200000",
+          "602000"
+        ]
+      ]
+    }
+  },
+  "cashflow_xlsx": {
+    "path": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\OFERTAS\\Flujo caja Mike Pacific Southwest.xlsx",
+    "sheets": {
+      "Sheet1": [
+        [
+          "fecha cobro",
+          "Cobro",
+          "Pago",
+          "Flujo Neto del mes",
+          "Flujo Acumulado",
+          "Beneficio Mike",
+          "Concepto pago"
+        ],
+        [
+          "2026-05-05 00:00:00",
+          "200000",
+          "",
+          "200000",
+          "200000",
+          "",
+          ""
+        ],
+        [
+          "2026-05-15 00:00:00",
+          "200000",
+          "5000",
+          "195000",
+          "395000",
+          "",
+          "Ingenieria"
+        ],
+        [
+          "2026-06-01 00:00:00",
+          "200000",
+          "5000",
+          "195000",
+          "590000",
+          "",
+          "Ingenieria"
+        ],
+        [
+          "2026-07-02 00:00:00",
+          "200000",
+          "920000",
+          "-720000",
+          "-130000",
+          "",
+          "Ingenieria/ maquina/ desmontaje"
+        ],
+        [
+          "2026-08-02 00:00:00",
+          "200000",
+          "90000",
+          "110000",
+          "-20000",
+          "",
+          "Ingenieria/ transporte"
+        ],
+        [
+          "2026-09-02 00:00:00",
+          "200000",
+          "235000",
+          "-35000",
+          "-55000",
+          "",
+          "Ingenieria/ Upgrade Elec-Mec"
+        ],
+        [
+          "2026-10-03 00:00:00",
+          "200000",
+          "5000",
+          "195000",
+          "140000",
+          "70000",
+          "Ingenieria"
+        ],
+        [
+          "2026-11-03 00:00:00",
+          "200000",
+          "5000",
+          "195000",
+          "335000",
+          "167500",
+          "Ingenieria"
+        ],
+        [
+          "2026-12-04 00:00:00",
+          "200000",
+          "65000",
+          "135000",
+          "470000",
+          "56290",
+          "Ingenieria/ Embalaje"
+        ],
+        [
+          "2027-01-04 00:00:00",
+          "200000",
+          "390000",
+          "-190000",
+          "280000",
+          "",
+          "Ingenieria/ transporte"
+        ],
+        [
+          "2027-02-04 00:00:00",
+          "200000",
+          "5000",
+          "195000",
+          "475000",
+          "",
+          "Ingenieria"
+        ]
+      ]
+    }
+  },
+  "offer_docx": {
+    "path": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\OFERTAS\\IIM Rollstand Commercial Offer OFF-2026-100.docx",
+    "paragraphs": [
+      "Customer: MTorres                                                 Date: April 29, 2026.",
+      "IIM Rollstand Commercial Offer       #OFF-2026-100",
+      "IIM Rollstand Commercial Offer       #OFF-2026-100",
+      "IIM Rollstand: Product description/Specification.",
+      "A reliable rollstand which give you excellent returns of investment",
+      "Specification ：",
+      "2500mm width, shaftless hydraulic \tRoll stand",
+      "Reel Max width at the center line. 1.830 mm",
+      "Reel Min width at the center line: 915mm",
+      "Reel Max diameter :1525mm",
+      "Reel Min diameter: 400mm",
+      "Rell  weight :2000Kg",
+      "Machine speed: 305 m/min",
+      "Web max tension 700N total band width",
+      "PLC: Allen Bradlley without program",
+      "Hydraulic pack by Atos M-18",
+      "4 M-18 detectors with 6 meters of cable to connect to the splicer to be placed at each chuck to calculate the roll diameter: 1 pulse per turn on 2 of these sensors and 4 pulses per turn on the other2 sensors. Roll stand with center roll at 1525 mm to floor 160mm diameter of roller",
+      "Chucks: RE 3\" & 6 \"double/step cone",
+      "Brakes: RE CX250.6 or RE Extreme Brakes (6 pads)",
+      "Installation : Not Inclusive",
+      "Remarks and specific features:",
+      "RE Chucks; 3inch & 6inch core chuck",
+      "RE Brakes",
+      "Atos hydraulic station",
+      "M-18 detectors with cable length request to the control cabinet",
+      "Roll stand with center roller at 1350mm to floor,160mm diameter of roller",
+      "Maximum distance between arms with loaded roll (1500mm diameter) will be 2400mm",
+      "Maximum distance between chucks(X) and roll max reel width 1650mm with double chuck 6+3 inch will be less 150mm (75mm or gap between 6inch chuck and roll when have min reel width 915mm)",
+      "Electrical drawing supplied by MTorres",
+      "The offer includes:",
+      "IIM Rollstand as defined in the preliminary drawing",
+      "Preliminary drawings:",
+      "Total price Ex works………………………………………………………… 71.685,00€",
+      "FREIGHT COST",
+      "DDP INCOTERMS TRANSPORT MTorres\t\t7.560€",
+      "Note: The freight cost may vary due to external factors beyond Ingecart’s control",
+      "Payment terms:",
+      "- 20.000€  with the purchase order. Net  0 days bank transfer.",
+      "- 65% of the Contract Price with the notification of readiness to ship.",
+      "- 10% of the Contract Price upon acceptance at customer’s site, but not later than four (2) months from delivery.",
+      "Delivery  time:120 Days, once the first payment milestone has been issued as it is defined in the payment terms.",
+      "Warranty: 1 Year .                                                                                                                                                  \nIncoterm: DDP",
+      "Payment method: Bank transfer",
+      "Object & Scope:",
+      "Specified in the offer.",
+      "Price:\nTotal price as it is in the Offer, plus freight cost for DDP.",
+      "Payment Terms:",
+      "€20,000 with the purchase order.",
+      "[xx]% when you notify readiness to ship.",
+      "10% upon acceptance at Ingecart’s site, but no later than 2 months from delivery.",
+      "Delivery:\nAs agreed in days. Incoterm is DDP",
+      "Warranty:\n1 year. Repair or replacement. No consequential damages.",
+      "Payment Method:\nBank transfer.",
+      "Remote Connection: NA\nThe machine has remote access software. Ingecart can deactivate it. You are not liable for connection interruptions, delays, or any data loss or production stoppage caused by remote access.",
+      "Buyer Obligations:\nThe buyer provides all tools, labor, power, and facilities for unloading, installation, and commissioning at its own cost.",
+      "Inspection & Claims:\nThe Customer  must check the goods within 15 days of receipt. After 15 days with no written claim, the goods are accepted. No returns without your prior agreement.",
+      "Force Majeure:\nCustomer is  not liable for delays caused by strikes, natural disasters, epidemics, supply chain disruptions, or raw material shortages.",
+      "Liability Cap:\nCustomers total liability is limited to 5% of the order price. Customer is never liable for lost profits or indirect damages.",
+      "Retention of Title:\nIngecart keep ownership of the goods until Customers pays in full.",
+      "Governing Law:\nSpanish law."
+    ]
+  },
+  "bhs_pdf": {
+    "path": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\COMMERCIAL\\PROYECTOS\\PACIFICSOUTH\\Carta confirmacion de BHS soporte tecnico linea BHS.pdf",
+    "text": "\n\n"
+  },
+  "bhs_data_pdf": {
+    "path": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\COMMERCIAL\\PROYECTOS\\PACIFICSOUTH\\Datos de producción lineal BHS.pdf",
+    "text": ""
+  },
+  "secondhand_pdf": {
+    "path": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\COMMERCIAL\\PROYECTOS\\PACIFICSOUTH\\Second Hand Corrugator_Eskisehir copia.pdf",
+    "text": " \n \nSECOND HAND CORRUGATOR \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n1 \n\nSecond Hand Corrugator \nGENERAL INFORMATION \n2 / 18 \n \n \nAvailable: \non request \nPrice: \non request \nYOC: \n1997 - 2017 \n \nWorking width: \n2.500 mm \nDrive side: \nright hand in paper going direction \nWet-End: \nduplex \nDry End: \nduplex \n \nCorrugating Rolls: \nMF1: B and E flutes \nMF2: C and B flutes \n \nLocation: \nTurkey \n \nCorrugator name: \nTAMARA \n \n\nSecond Hand Corrugator \nMACHINE OVERVIEW \n3 / 18 \n \n \n \n \n \n \nMACHINE \nSUPPLIER \nNAME \nFACTORY NO \nYOC \nReel Stand Liner (5) \nBHS \nASR-M \nA0031107 \n1997 \nSplicer Liner(5) \nBHS \nARW-M 300 \nA0032979 \n1997 \nSingle Facer (2) \nBHS \nMF-B II \nA0033236 \n1997 \nSplicer Fluting (4) \nBHS \nARW-M 400 \nA0032982 \n1997 \nReel Stand Fluting (4) \nBHS \nASR-M \nA0031108 \n1997 \nReel Stand Liner (3) \nBHS \nASR-M \nA0031109 \n1997 \nSplicer Liner (3) \nBHS \nARW-M 300 \nA0032980 \n1997 / 2007 \nSingle Facer (1) \nBHS \nMF-B II \nA0033235 \n1997 / 2012 \nSplicer Fluting (2) \nBHS \nARW-M 400 \nA0032983 \n1997 / 2007 \nReel Stand Fluting (2) \nBHS \nASR-M \nA0031110 \n1997 \nReel Stand Liner (1) \nBHS \nASR-M \nA0031111 \n1997 / 2009 \nSplicer Liner (1) \nBHS \nARW-M 400 \nA0032981 \n1997 / 2009 \nTriplex Preheater \nBHS \nPH-M 1100/3 \nA3601343 \n2012 \nGlue Unit \nBHS \nLWR/2 \nA0037020 \n1997 \nBridge \nBHS \nB/2 \nA0045932 \n1997 \nDouble Facer \nBHS \nDWR18-M \nA0038788 \n1997 / 2012 / 2015 \nRotary Shear \nBHS \nKQ-M \nA0039733 \n1997 \nWeb Diverter \nBHS \nPE 25 \nA0026998 \n1997 \nSlitter Scorer \nBHS \nSR-A M-RRM \nA0025172 \n1997 \nCutoff \nBHS \nNQ-M/2 \nA0042139 \n1997 / 2010 / 2012 \nStacker \nBHS \nAAR-HM \nA0021212 \n1997 / 2017 \n \n\nSecond Hand Corrugator \nREEL STAND & SPLICER Pos. 5 \n4 / 18 \n \n \n \n \n \n \nREEL STAND ASR-M Pos. 5 (A0031107) \n \n- YOC 1997 \n- equipped with RE-brakes \n- hydraulic lifting system \n- lifting rolls up to 3.700 \n \n \nSPLICER ARW-M 300 Pos. 5 (A0032979) \n \n- YOC 1997 \n- S5 control \n- web tension control \n- Upgrade 2018: \n- integrated rest roll computer \n- Fintrol \n\nSecond Hand Corrugator \nREEL STAND & SPLICER Pos. 4 \n5 / 18 \n \n \n \n \n \n \nREEL STAND ASR-M Pos. 4 (A0031108) \n \n- YOC 1997 \n- equipped with RE-brakes \n- hydraulic lifting system \n- lifting rolls up to 3.700 \n \n \nSPLICER ARW-M 400 Pos. 4 (A0032982) \n \n- YOC 1997 \n- S5 control \n- web tension control \n- Upgrade 2018: \n- integrated rest roll computer \n- Fintrol \n\nSecond Hand Corrugator \nREEL STAND & SPLICER Pos. 3 \n6 / 18 \n \n \n \n \n \n \nREEL STAND ASR-M Pos. 3 (A0031109) \n \n- YOC 1997 \n- equipped with RE-brakes \n- hydraulic lifting system \n- lifting rolls up to 3.700 \n \n \nSPLICER ARW-M 300 Pos. 3 (A0032980) \n \n- YOC 1997 / 2007 \n- S7 control retrofitted in 2007 \n- web tension control \n- Upgrade 2018: \n- integrated rest roll computer \n- Fintrol \n \n\nSecond Hand Corrugator \nREEL STAND & SPLICER Pos. 2 \n7 / 18 \n \n \n \n \n \n \nREEL STAND ASR-M Pos. 2 (A0031110) \n \n- YOC 1997 \n- equipped with RE-brakes \n- hydraulic lifting system \n- lifting rolls up to 3.700 \n \n \nSPLICER ARW-M 400 Pos. 2 (A0032983) \n \n- YOC 1997 / 2007 \n- S7 control retrofitted in 2007 \n- web tension control \n- Upgrade 2018: \n- integrated rest roll computer \n- Fintrol \n \n\nSecond Hand Corrugator \nREEL STAND & SPLICER Pos. 1 \n8 / 18 \n \n \n \n \n \n \nREEL STAND ASR-M Pos. 1 (A0031111) \n \n- YOC 1997 / 2009 \n- S7 control retrofitted in 2009 \n- equipped with RE-brakes \n- hydraulic lifting system \n- lifting rolls up to 3.700 \n \n \nSPLICER ARW-M 400 Pos. 1 (A0032981) \n \n- YOC 1997 / 2009 \n- S7 control retrofitted in 2009 \n- web tension control \n- Upgrade 2018: \n- integrated rest roll computer \n- Fintrol \n \n"
+  },
+  "video": {
+    "path": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\COMMERCIAL\\PROYECTOS\\PACIFICSOUTH\\VIDEO-2026-03-25-13-03-09.mp4",
+    "frame_exported": null,
+    "error": "ModuleNotFoundError(\"No module named 'cv2'\")"
+  }
+}

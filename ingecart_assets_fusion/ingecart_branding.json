@@ -1,0 +1,82 @@
+{
+  "colors": {
+    "#000000": [
+      0,
+      0,
+      0
+    ],
+    "#FFFFFF": [
+      255,
+      255,
+      255
+    ],
+    "#fff": [
+      255,
+      255,
+      255
+    ],
+    "#6E6E6E": [
+      110,
+      110,
+      110
+    ],
+    "#000": [
+      0,
+      0,
+      0
+    ],
+    "#116dff": [
+      17,
+      109,
+      255
+    ],
+    "#2b5672": [
+      43,
+      86,
+      114
+    ],
+    "#C2C2C2": [
+      194,
+      194,
+      194
+    ],
+    "#8F8F8F": [
+      143,
+      143,
+      143
+    ]
+  },
+  "primary_color": [
+    0,
+    0,
+    0
+  ],
+  "secondary_color": [
+    255,
+    255,
+    255
+  ],
+  "texts": {
+    "vision": " VISIÓN",
+    "services": " SERVICIOS",
+    "why": " ¿POR QUÉ INGECART?",
+    "stats": {
+      "proyectos": "1.268",
+      "experiencia": "28",
+      "acuerdos": "26",
+      "instalaciones": "194"
+    }
+  },
+  "logos": [
+    "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\ingecart_assets_fusion\\logo%20ingecart%20blanco.png",
+    "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\ingecart_assets_fusion\\logo%20ingecart%20blanco.png",
+    "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\ingecart_assets_fusion\\logo%20ingecart%20blanco.png",
+    "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\ingecart_assets_fusion\\logo_mtorres__color__50_cms_ancho_a_100ppp%20(2)_edited_edited_edited_edited.png",
+    "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\ingecart_assets_fusion\\Salesforce_com_logo_svg%20(1).png",
+    "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\ingecart_assets_fusion\\Copia%20de%20Copia%20de%20Blue%20and%20Orange%20Circle%20Global%20Networking%20Tech%20Logo%20(2)_edited.png",
+    "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\ingecart_assets_fusion\\kisspng-kuka-systems-robotics-logo-technology-of-the-automotive-in-5b77f260a5f2f2_edited_e.png"
+  ],
+  "tagline": "Solving Real Bottlenecks in Corrugated Plants",
+  "subtagline": "Industrial Intelligence Applied to Performance",
+  "footer": "SOLUTIONS DESIGNED FOR CORRUGATED PLANTS"
+}
