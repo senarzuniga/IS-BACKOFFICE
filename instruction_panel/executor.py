@@ -128,6 +128,14 @@ class InstructionExecutor:
             output = self.generator.generate(context["folder_analysis"], fmt)
             context["generated_output"] = output.content
 
+        # Clean up any temporary directories created during execution (e.g. URL fetch)
+        import shutil
+        for tmp_dir in context.pop("_temp_dirs", []):
+            try:
+                shutil.rmtree(tmp_dir, ignore_errors=True)
+            except Exception:  # noqa: BLE001
+                pass
+
         return {
             "parsed_instruction": parsed_instruction,
             "steps": steps,
@@ -166,6 +174,7 @@ class InstructionExecutor:
         if action == "fetch_url":
             import tempfile
             import requests
+            import ipaddress
 
             url = source_url or params.get("url", "")
             if not url:
@@ -173,15 +182,30 @@ class InstructionExecutor:
             if not url.lower().startswith(("http://", "https://")):
                 raise ValueError(f"Only http:// and https:// URLs are allowed. Got: {url!r}")
 
+            # Resolve hostname and block private/loopback ranges (SSRF protection)
+            import socket
+            from urllib.parse import urlparse
+            parsed_url = urlparse(url)
+            hostname = parsed_url.hostname or ""
+            try:
+                ip_str = socket.gethostbyname(hostname)
+                ip = ipaddress.ip_address(ip_str)
+                if ip.is_private or ip.is_loopback or ip.is_link_local or ip.is_reserved:
+                    raise ValueError(f"Requests to private/internal addresses are not allowed: {ip_str}")
+            except (socket.gaierror, ValueError) as exc:
+                if "not allowed" in str(exc):
+                    raise
+                # DNS resolution failure is acceptable (will fail at requests.get)
+
             resp = requests.get(url, timeout=30)
             resp.raise_for_status()
 
-            tmp = tempfile.NamedTemporaryFile(suffix=".html", delete=False)
-            tmp.write(resp.content)
-            tmp.flush()
-            tmp.close()
+            tmp_dir = tempfile.mkdtemp()
+            tmp_path = os.path.join(tmp_dir, "page.html")
+            with open(tmp_path, "wb") as fh:
+                fh.write(resp.content)
 
-            doc = self.parser.parse(tmp.name)
+            doc = self.parser.parse(tmp_path)
             # Override the file_name so it shows the URL origin in reports
             doc.file_name = url.split("//", 1)[-1][:80]
             doc = self.extractor.enrich(doc)
@@ -199,7 +223,9 @@ class InstructionExecutor:
             context["parsed_documents"] = [doc]
             context["folder_stats"] = stats
             context["folder_path"] = url
-            context["discovered_files"] = [{"name": doc.file_name, "path": tmp.name, "doc_type": "html"}]
+            context["discovered_files"] = [{"name": doc.file_name, "path": tmp_path, "doc_type": "html"}]
+            # Store tmp_dir for cleanup after execution
+            context.setdefault("_temp_dirs", []).append(tmp_dir)
             return f"Fetched {len(resp.content):,} bytes from {url}"
 
         if action == "read_folder":

@@ -648,13 +648,27 @@ def _fetch_and_analyse_url(url: str) -> None:
         if not url.lower().startswith(("http://", "https://")):
             raise ValueError("Only http:// and https:// URLs are allowed.")
 
+        # SSRF protection: block private/loopback addresses
+        import socket, ipaddress
+        from urllib.parse import urlparse as _urlparse
+        _hostname = _urlparse(url).hostname or ""
+        try:
+            _ip_str = socket.gethostbyname(_hostname)
+            _ip = ipaddress.ip_address(_ip_str)
+            if _ip.is_private or _ip.is_loopback or _ip.is_link_local or _ip.is_reserved:
+                raise ValueError(f"Requests to private/internal addresses are not allowed: {_ip_str}")
+        except (socket.gaierror, ValueError) as _exc:
+            if "not allowed" in str(_exc):
+                raise
+
         _log(f"Fetching URL: {url}")
         resp = requests.get(url, timeout=30)
         resp.raise_for_status()
 
-        with tempfile.NamedTemporaryFile(suffix=".html", delete=False) as tmp:
-            tmp.write(resp.content)
-            tmp_path = tmp.name
+        tmp_dir = tempfile.mkdtemp()
+        tmp_path = os.path.join(tmp_dir, "page.html")
+        with open(tmp_path, "wb") as fh:
+            fh.write(resp.content)
 
         _log(f"Fetched {len(resp.content):,} bytes")
 
@@ -690,6 +704,8 @@ def _fetch_and_analyse_url(url: str) -> None:
         st.session_state["da_folder_stats"] = stats
         st.session_state["da_discovered_files"] = [{"name": doc.file_name, "path": tmp_path, "doc_type": "html", "size_bytes": len(resp.content), "modified_at": str(doc.modified_at or ""), "oversized": False}]
         st.session_state["da_selected_files"] = [tmp_path]
+        # Store tmp_dir so it can be cleaned up when the session ends
+        st.session_state.setdefault("da_temp_dirs", []).append(tmp_dir)
 
     except Exception as exc:
         import traceback
