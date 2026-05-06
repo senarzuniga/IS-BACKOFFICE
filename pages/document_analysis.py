@@ -1,4 +1,4 @@
-﻿"""Document Analysis â€” full Streamlit page.
+"""Document Analysis â€” full Streamlit page.
 
 Entry point: pages/document_analysis.py (Streamlit multipage)
 """
@@ -34,6 +34,8 @@ if str(_ROOT) not in sys.path:
 
 _STATE_DEFAULTS: dict[str, Any] = {
     "da_folder_path": "",
+    "da_url_input": "",
+    "da_source_mode": "folder",
     "da_recursive": True,
     "da_max_file_mb": 50.0,
     "da_use_cache": True,
@@ -79,20 +81,42 @@ def _render_sidebar() -> None:
         st.title("ðŸ“‚ Document Analysis")
         st.markdown("---")
 
-        # --- Folder selector ---
-        st.subheader("1. Select Folder")
-        folder_input = st.text_input(
-            "Folder path",
-            value=st.session_state["da_folder_path"],
-            placeholder="C:/Users/you/Documents/project",
-            help="Enter the full path to the folder you want to analyse.",
-            key="da_folder_input",
-        )
-        if folder_input != st.session_state["da_folder_path"]:
-            st.session_state["da_folder_path"] = folder_input
-            st.session_state["da_discovered_files"] = []
-            st.session_state["da_folder_stats"] = None
-            st.session_state["da_analysis"] = None
+        # --- Source selector: Folder or URL ---
+        st.subheader("1. Source")
+        source_tab_folder, source_tab_url = st.tabs(["📁 Folder", "🌐 URL"])
+
+        with source_tab_folder:
+            folder_input = st.text_input(
+                "Folder path",
+                value=st.session_state["da_folder_path"],
+                placeholder="C:/Users/you/Documents or /home/user/docs",
+                help="Enter the full path to the folder you want to analyse.",
+                key="da_folder_input",
+            )
+            if folder_input != st.session_state["da_folder_path"]:
+                st.session_state["da_folder_path"] = folder_input
+                st.session_state["da_source_mode"] = "folder"
+                st.session_state["da_discovered_files"] = []
+                st.session_state["da_folder_stats"] = None
+                st.session_state["da_analysis"] = None
+
+        with source_tab_url:
+            url_input = st.text_input(
+                "Web page URL",
+                value=st.session_state["da_url_input"],
+                placeholder="https://example.com/article",
+                help="Enter an http:// or https:// URL to fetch and analyse.",
+                key="da_url_input_field",
+            )
+            if url_input != st.session_state["da_url_input"]:
+                st.session_state["da_url_input"] = url_input
+                st.session_state["da_source_mode"] = "url"
+                st.session_state["da_discovered_files"] = []
+                st.session_state["da_folder_stats"] = None
+                st.session_state["da_analysis"] = None
+            if url_input.strip():
+                if st.button("🌐 Fetch & Analyse URL", type="primary", width="stretch", key="da_url_fetch_btn"):
+                    _fetch_and_analyse_url(url_input.strip())
 
         # --- Options ---
         st.subheader("2. Options")
@@ -110,10 +134,14 @@ def _render_sidebar() -> None:
             value=st.session_state["da_use_ai"],
         )
 
-        # --- Discover ---
-        st.subheader("3. Discover Files")
-        if st.button("ðŸ” Discover Files", width="stretch", type="secondary"):
-            _discover_files()
+        # --- Discover (folder mode only) ---
+        if st.session_state.get("da_source_mode", "folder") == "folder":
+            st.subheader("3. Discover Files")
+            if st.button("🔍 Discover Files", width="stretch", type="secondary"):
+                _discover_files()
+        else:
+            st.subheader("3. Discover Files")
+            st.caption("URL mode — use the Fetch & Analyse URL button above.")
 
         stats = st.session_state.get("da_folder_stats")
         if stats:
@@ -136,6 +164,7 @@ def _render_sidebar() -> None:
         format_options = {
             "Summary": "summary",
             "Executive Summary": "executive_summary",
+            "Client Brief": "client_brief",
             "Full Report": "report",
             "Presentation Outline": "presentation",
             "Document List": "list",
@@ -595,6 +624,81 @@ def _render_raw_tab() -> None:
             **doc.metadata,
         }
         st.json(meta)
+
+
+# ---------------------------------------------------------------------------
+# URL analysis
+# ---------------------------------------------------------------------------
+
+def _fetch_and_analyse_url(url: str) -> None:
+    """Fetch a web page URL, parse it, and store the analysis in session state."""
+    st.session_state["da_error"] = None
+    st.session_state["da_source_mode"] = "url"
+    st.session_state["da_processing"] = True
+
+    try:
+        import requests
+        import tempfile
+
+        from document_analysis.document_parser import DocumentParser
+        from document_analysis.content_extractor import ContentExtractor
+        from document_analysis.context_analyzer import ContextAnalyzer
+        from document_analysis.models import FolderStats, DocumentType
+
+        if not url.lower().startswith(("http://", "https://")):
+            raise ValueError("Only http:// and https:// URLs are allowed.")
+
+        _log(f"Fetching URL: {url}")
+        resp = requests.get(url, timeout=30)
+        resp.raise_for_status()
+
+        with tempfile.NamedTemporaryFile(suffix=".html", delete=False) as tmp:
+            tmp.write(resp.content)
+            tmp_path = tmp.name
+
+        _log(f"Fetched {len(resp.content):,} bytes")
+
+        parser = DocumentParser()
+        extractor = ContentExtractor(use_spacy=False)
+        analyzer = ContextAnalyzer()
+
+        doc = parser.parse(tmp_path)
+        doc.file_name = url.split("//", 1)[-1][:80]
+        doc = extractor.enrich(doc)
+
+        _log(f"Parsed {doc.word_count:,} words, {len(doc.entities)} entities")
+
+        stats = FolderStats(
+            folder_path=url,
+            total_files=1,
+            supported_files=1,
+            unsupported_files=0,
+            total_size_bytes=len(resp.content),
+            files_by_type={DocumentType.HTML.value: 1},
+        )
+        analysis = analyzer.analyze_folder([doc], folder_path=url, stats=stats)
+        _log(f"Analysis complete: {len(analysis.cross_themes)} themes, {len(analysis.relationships)} relationships")
+
+        if st.session_state.get("da_use_ai"):
+            from document_analysis.ai_enhancer import AIEnhancer
+            ai = AIEnhancer()
+            if ai.is_available:
+                analysis.narrative = ai.generate_insights(analysis)
+                _log("AI insights generated")
+
+        st.session_state["da_analysis"] = analysis
+        st.session_state["da_folder_stats"] = stats
+        st.session_state["da_discovered_files"] = [{"name": doc.file_name, "path": tmp_path, "doc_type": "html", "size_bytes": len(resp.content), "modified_at": str(doc.modified_at or ""), "oversized": False}]
+        st.session_state["da_selected_files"] = [tmp_path]
+
+    except Exception as exc:
+        import traceback
+        st.session_state["da_error"] = str(exc)
+        _log(f"URL fetch error: {traceback.format_exc()}")
+    finally:
+        st.session_state["da_processing"] = False
+
+    st.rerun()
 
 
 # ---------------------------------------------------------------------------

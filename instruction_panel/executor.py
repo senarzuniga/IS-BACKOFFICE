@@ -67,6 +67,7 @@ class InstructionExecutor:
 
         context: dict[str, Any] = {
             "folder_path": parsed_instruction.get("folder_path"),
+            "source_url": parsed_instruction.get("url"),
             "discovered_files": [],
             "parsed_documents": [],
             "extracted_entities": [],
@@ -140,6 +141,7 @@ class InstructionExecutor:
 
     def _describe_action(self, action: str, params: dict[str, Any]) -> str:
         descriptions = {
+            "fetch_url": "Fetching URL content",
             "read_folder": "Reading folder contents",
             "parse_documents": "Parsing document contents",
             "extract_entities": "Extracting entities and metadata",
@@ -159,6 +161,46 @@ class InstructionExecutor:
         context: dict[str, Any],
     ) -> str:
         folder_path = context.get("folder_path")
+        source_url = context.get("source_url")
+
+        if action == "fetch_url":
+            import tempfile
+            import requests
+
+            url = source_url or params.get("url", "")
+            if not url:
+                raise ValueError("No URL provided. Include a URL (http:// or https://) in your instruction.")
+            if not url.lower().startswith(("http://", "https://")):
+                raise ValueError(f"Only http:// and https:// URLs are allowed. Got: {url!r}")
+
+            resp = requests.get(url, timeout=30)
+            resp.raise_for_status()
+
+            tmp = tempfile.NamedTemporaryFile(suffix=".html", delete=False)
+            tmp.write(resp.content)
+            tmp.flush()
+            tmp.close()
+
+            doc = self.parser.parse(tmp.name)
+            # Override the file_name so it shows the URL origin in reports
+            doc.file_name = url.split("//", 1)[-1][:80]
+            doc = self.extractor.enrich(doc)
+
+            from document_analysis.models import FolderStats, DocumentType
+
+            stats = FolderStats(
+                folder_path=url,
+                total_files=1,
+                supported_files=1,
+                unsupported_files=0,
+                total_size_bytes=len(resp.content),
+                files_by_type={DocumentType.HTML.value: 1},
+            )
+            context["parsed_documents"] = [doc]
+            context["folder_stats"] = stats
+            context["folder_path"] = url
+            context["discovered_files"] = [{"name": doc.file_name, "path": tmp.name, "doc_type": "html"}]
+            return f"Fetched {len(resp.content):,} bytes from {url}"
 
         if action == "read_folder":
             if not folder_path:
@@ -214,7 +256,12 @@ class InstructionExecutor:
 
         if action == "generate_output":
             requested = params.get("type") or parsed_instruction.get("output_type", "summary")
-            fmt = _to_output_format(requested)
+            # Map client_brief to the new OutputFormat
+            if requested == "client_brief":
+                from document_analysis.models import OutputFormat as OF
+                fmt = OF.CLIENT_BRIEF
+            else:
+                fmt = _to_output_format(requested)
 
             analysis = context.get("folder_analysis")
             discovered = context.get("discovered_files", [])
@@ -283,18 +330,23 @@ class InstructionExecutor:
     def _generate_suggestions(self, context: dict[str, Any], parsed_instruction: dict[str, Any]) -> list[str]:
         suggestions: list[str] = []
 
+        source_url = context.get("source_url")
         folder = context.get("folder_path") or "this folder"
         docs: list[DocumentInfo] = context.get("parsed_documents", [])
         analysis = context.get("folder_analysis")
 
-        if docs:
+        if source_url:
+            suggestions.append(f"Create an executive summary from {source_url}")
+            suggestions.append(f"Generate a client brief from {source_url}")
+            suggestions.append(f"Make a presentation outline from {source_url}")
+        elif docs:
             suggestions.append(f"Create an executive summary for {folder}")
+            suggestions.append(f"Generate a client brief for {folder}")
             suggestions.append(f"Generate a comparison table for {folder}")
 
         if analysis is not None and getattr(analysis, "timeline", None):
             suggestions.append("Build a timeline from extracted dates")
 
-        suggestions.append("Extract all names and dates")
         suggestions.append("Analyze a different folder")
 
         return suggestions[:5]

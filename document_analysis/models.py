@@ -34,6 +34,7 @@ class OutputFormat(str, Enum):
     NEW_BRIEF = "new_brief"
     COMPARISON = "comparison"
     TIMELINE = "timeline"
+    CLIENT_BRIEF = "client_brief"
 
 
 class EntityType(str, Enum):
