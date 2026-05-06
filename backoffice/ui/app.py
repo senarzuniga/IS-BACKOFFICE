@@ -123,6 +123,20 @@ def _run_url_analysis(url: str, output_type: str = "summary") -> dict[str, Any]:
     if not url.lower().startswith(("http://", "https://")):
         raise ValueError(f"Only http:// and https:// URLs are allowed. Got: {url!r}")
 
+    # Block private/loopback addresses (SSRF protection)
+    import socket
+    import ipaddress
+    from urllib.parse import urlparse as _urlparse
+    _hostname = _urlparse(url).hostname or ""
+    try:
+        _ip_str = socket.gethostbyname(_hostname)
+        _ip = ipaddress.ip_address(_ip_str)
+        if _ip.is_private or _ip.is_loopback or _ip.is_link_local or _ip.is_reserved:
+            raise ValueError(f"Requests to private/internal addresses are not allowed: {_ip_str}")
+    except (socket.gaierror, ValueError) as _exc:
+        if "not allowed" in str(_exc):
+            raise
+
     with st.status("Fetching and analysing URL...", expanded=True) as status:
         st.write(f"Fetching: {url}…")
         resp = requests.get(url, timeout=30)
