@@ -34,6 +34,19 @@ def _to_output_format(output_type: str | None) -> OutputFormat:
     return mapping.get((output_type or "summary").lower(), OutputFormat.SUMMARY)
 
 
+def _build_file_listing(discovered: list[dict[str, Any]]) -> str:
+    """Build a markdown file listing from discovered file entries."""
+    grouped: dict[str, list[str]] = {}
+    for item in discovered:
+        grouped.setdefault(item.get("doc_type", "unknown"), []).append(item.get("name", ""))
+    lines = ["# Folder File List", f"Total files: {len(discovered)}", ""]
+    for doc_type, names in sorted(grouped.items()):
+        lines.append(f"## {doc_type.upper()} ({len(names)})")
+        lines.extend(f"- {name}" for name in names[:200])
+        lines.append("")
+    return "\n".join(lines)
+
+
 class InstructionExecutor:
     """Execute parsed instructions step by step."""
 
@@ -214,15 +227,7 @@ class InstructionExecutor:
                 # intent), build the file listing directly instead of creating an empty
                 # FolderAnalysis whose document list would also be empty.
                 if fmt == OutputFormat.LIST and discovered and not docs:
-                    grouped: dict[str, list[str]] = {}
-                    for item in discovered:
-                        grouped.setdefault(item.get("doc_type", "unknown"), []).append(item.get("name", ""))
-                    lines = ["# Folder File List", f"Total files: {len(discovered)}", ""]
-                    for doc_type, names in sorted(grouped.items()):
-                        lines.append(f"## {doc_type.upper()} ({len(names)})")
-                        lines.extend(f"- {name}" for name in names[:200])
-                        lines.append("")
-                    context["generated_output"] = "\n".join(lines)
+                    context["generated_output"] = _build_file_listing(discovered)
                     return f"Generated {fmt.value} ({len(discovered)} files listed)"
 
                 if stats is not None:
@@ -231,15 +236,7 @@ class InstructionExecutor:
 
             if analysis is None:
                 if fmt == OutputFormat.LIST and discovered:
-                    grouped = {}
-                    for item in discovered:
-                        grouped.setdefault(item.get("doc_type", "unknown"), []).append(item.get("name", ""))
-                    lines = ["# Folder File List", f"Total files: {len(discovered)}", ""]
-                    for doc_type, names in sorted(grouped.items()):
-                        lines.append(f"## {doc_type.upper()} ({len(names)})")
-                        lines.extend(f"- {name}" for name in names[:200])
-                        lines.append("")
-                    context["generated_output"] = "\n".join(lines)
+                    context["generated_output"] = _build_file_listing(discovered)
                     return f"Generated {fmt.value} ({len(discovered)} files listed)"
                 raise ValueError("No folder analysis available. Run analyze_content first.")
 
