@@ -1,21 +1,14 @@
 from __future__ import annotations
 
 import os
-import sys
 import tempfile
 import traceback
 from datetime import datetime
-from pathlib import Path
 from typing import Any
 
 import streamlit as st
 
 st.set_page_config(layout="wide", page_title="Virtual Back Office", page_icon="🏢")
-
-# Ensure project root is importable (when launched from backoffice/ui/)
-_ROOT = Path(__file__).resolve().parent.parent.parent
-if str(_ROOT) not in sys.path:
-    sys.path.insert(0, str(_ROOT))
 
 from backoffice.ui.components.results import render_main_content
 from backoffice.ui.components.sidebar import render_sidebar
@@ -126,17 +119,21 @@ def _run_url_analysis(url: str, output_type: str = "summary") -> dict[str, Any]:
     from document_analysis.folder_reader import FolderReader
     from document_analysis.models import OutputFormat, FolderStats, DocumentType
 
+    # Validate URL scheme to prevent SSRF
+    if not url.lower().startswith(("http://", "https://")):
+        raise ValueError(f"Only http:// and https:// URLs are allowed. Got: {url!r}")
+
     with st.status("Fetching and analysing URL...", expanded=True) as status:
         st.write(f"Fetching: {url}…")
         resp = requests.get(url, timeout=30)
         resp.raise_for_status()
 
         with tempfile.TemporaryDirectory() as tmpdir:
-            # Save as HTML
+            # Save as HTML, respecting the response encoding
             fname = "page.html"
             fpath = os.path.join(tmpdir, fname)
-            with open(fpath, "w", encoding="utf-8", errors="replace") as f:
-                f.write(resp.text)
+            with open(fpath, "wb") as f:
+                f.write(resp.content)
 
             st.write("Parsing content…")
             parser = DocumentParser()

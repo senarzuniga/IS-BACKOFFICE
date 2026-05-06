@@ -48,7 +48,8 @@ def _render_document_analysis_result(result: dict[str, Any]) -> None:
         if fmt == "database_entry":
             try:
                 st.json(json.loads(output_content))
-            except Exception:
+            except json.JSONDecodeError:
+                st.warning("Output content is not valid JSON. Displaying as raw text.")
                 st.code(output_content, language="json")
         else:
             st.markdown(output_content)
