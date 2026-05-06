@@ -22,7 +22,8 @@ class InstructionParser:
         self.llm_provider = llm_provider or os.getenv("LLM_PROVIDER", "openai")
 
     def parse(self, instruction_text: str, conversation_context: list[dict[str, Any]] | None = None) -> dict[str, Any]:
-        folder_path = self._extract_folder_path(instruction_text)
+        url = self._extract_url(instruction_text)
+        folder_path = None if url else self._extract_folder_path(instruction_text)
         file_types = self._extract_file_types(instruction_text)
         output_type = self._extract_output_type(instruction_text)
         intent = self._detect_intent(instruction_text)
@@ -33,7 +34,14 @@ class InstructionParser:
         resolved_output = output_type or llm_analysis.get("output_type") or OutputType.SUMMARY.value
         if resolved_intent == InstructionIntent.EXPLORE_FOLDER.value and not output_type and not llm_analysis.get("output_type"):
             resolved_output = OutputType.LIST.value
-        actions = llm_analysis.get("actions") or self._default_action_plan(resolved_intent)
+
+        # When a URL is provided, override the action plan to fetch the URL first
+        if url:
+            if not resolved_intent or resolved_intent == InstructionIntent.CUSTOM.value:
+                resolved_intent = InstructionIntent.ANALYZE_DOCUMENTS.value
+            actions = self._url_action_plan(resolved_output)
+        else:
+            actions = llm_analysis.get("actions") or self._default_action_plan(resolved_intent)
 
         # Ensure any generate_output action uses the resolved output type.
         for action in actions:
@@ -42,7 +50,8 @@ class InstructionParser:
                 params["type"] = resolved_output
 
         result = {
-            "folder_path": folder_path or llm_analysis.get("folder_path"),
+            "folder_path": folder_path or (None if url else llm_analysis.get("folder_path")),
+            "url": url,
             "intent": resolved_intent,
             "actions": actions,
             "output_type": resolved_output,
@@ -54,6 +63,20 @@ class InstructionParser:
             "confidence": float(llm_analysis.get("confidence", 0.7)),
         }
         return result
+
+    def _extract_url(self, text: str) -> str | None:
+        """Extract the first http/https URL from the instruction text."""
+        match = re.search(r"https?://[^\s\"',;<>\]]+", text, re.IGNORECASE)
+        if match:
+            url = match.group()
+            # Strip common trailing punctuation that is not part of the URL,
+            # but preserve ) that closes a ( opened inside the URL itself.
+            url = url.rstrip(".,;")
+            # Remove a trailing ) only when there is no matching ( in the URL
+            while url.endswith(")") and url.count("(") < url.count(")"):
+                url = url[:-1]
+            return url
+        return None
 
     def _extract_folder_path(self, text: str) -> str | None:
         quoted = re.findall(r"[\"']([A-Za-z]:\\[^\"']+|/[^\"']+)[\"']", text)
@@ -71,17 +94,28 @@ class InstructionParser:
                 if p:
                     return p
 
+        # Unquoted Unix/Linux absolute paths (e.g. /home/user/docs or /tmp/project)
+        unix_paths = re.findall(r"(?<!\w)((?:/[a-zA-Z0-9._\-]+){2,}/?)", text)
+        unix_paths.sort(key=len, reverse=True)
+        for candidate in unix_paths:
+            for normalized in self._candidate_path_variants_unix(candidate.rstrip("/")):
+                p = self._resolve_path(normalized)
+                if p:
+                    return p
+
         named_patterns = [
             r"(?:the\s+)?folder\s+(?:called|named|at|path)?\s*[\"']?([^\"',.;]+)[\"']?",
-            r"check\s+[\"']?([A-Za-z]:[^\"',.;]+)[\"']?",
-            r"inside\s+[\"']?([A-Za-z]:[^\"',.;]+)[\"']?",
-            r"read\s+[\"']?([A-Za-z]:[^\"',.;]+)[\"']?",
-            r"analy(?:s|z)e\s+[\"']?([A-Za-z]:[^\"',.;]+)[\"']?",
+            r"check\s+[\"']?([A-Za-z]:[^\"',.;]+|/[a-zA-Z0-9._/\-]+)[\"']?",
+            r"inside\s+[\"']?([A-Za-z]:[^\"',.;]+|/[a-zA-Z0-9._/\-]+)[\"']?",
+            r"read\s+[\"']?([A-Za-z]:[^\"',.;]+|/[a-zA-Z0-9._/\-]+)[\"']?",
+            r"analy(?:s|z)e\s+[\"']?([A-Za-z]:[^\"',.;]+|/[a-zA-Z0-9._/\-]+)[\"']?",
+            r"in\s+[\"']?([A-Za-z]:[^\"',.;\n\r]+|/[a-zA-Z0-9._/\-]+)[\"']?",
         ]
         for pattern in named_patterns:
             match = re.search(pattern, text, re.IGNORECASE)
             if match:
-                for normalized in self._candidate_path_variants(match.group(1).strip().rstrip("\\")):
+                candidate = match.group(1).strip().rstrip("\\/")
+                for normalized in self._candidate_path_variants(candidate):
                     p = self._resolve_path(normalized)
                     if p:
                         return p
@@ -122,6 +156,7 @@ class InstructionParser:
 
     def _extract_output_type(self, text: str) -> str | None:
         output_patterns = {
+            "client_brief": ["client brief", "client document", "for the client", "client report", "client presentation", "client-ready", "client facing", "for my client"],
             OutputType.EXECUTIVE_SUMMARY.value: ["executive summary", "exec summary", "one-pager", "one pager"],
             OutputType.PRESENTATION.value: ["presentation", "presentation outline", "slide deck", "slides", "ppt"],
             OutputType.REPORT.value: ["report", "detailed report", "full report", "write up"],
@@ -171,8 +206,10 @@ class InstructionParser:
 
         system_prompt = (
             "You are an instruction parser for a document analysis system. "
-            "Return only valid JSON with fields: folder_path, intent, actions, "
-            "output_type, file_types, filters, special_requirements, confidence."
+            "Return only valid JSON with fields: folder_path, url, intent, actions, "
+            "output_type, file_types, filters, special_requirements, confidence. "
+            "Valid output_type values include: summary, executive_summary, report, "
+            "presentation, list, timeline, comparison, database, json, csv, client_brief."
         )
 
         context_str = ""
@@ -213,6 +250,15 @@ class InstructionParser:
             max_tokens=1000,
         )
         return response.choices[0].message.content or "{}"
+
+    def _url_action_plan(self, output_type: str) -> list[dict[str, Any]]:
+        """Return the action plan used when a URL is provided as the source."""
+        return [
+            {"action": "fetch_url", "parameters": {}, "priority": 1},
+            {"action": "extract_entities", "parameters": {}, "priority": 2},
+            {"action": "analyze_content", "parameters": {}, "priority": 3},
+            {"action": "generate_output", "parameters": {"type": output_type}, "priority": 4},
+        ]
 
     def _default_action_plan(self, intent: str) -> list[dict[str, Any]]:
         plans = {
@@ -288,6 +334,32 @@ class InstructionParser:
 
         # Last resort: original candidate.
         variants.append(candidate)
+
+        deduped = []
+        seen = set()
+        for item in variants:
+            key = item.lower()
+            if key not in seen and item:
+                seen.add(key)
+                deduped.append(item)
+        return deduped
+
+    def _candidate_path_variants_unix(self, candidate: str) -> list[str]:
+        """Build progressively shorter path variants for Unix-style absolute paths."""
+        candidate = candidate.strip().strip('"').strip("'").rstrip("/")
+        variants: list[str] = [candidate]  # Always try the full path first
+
+        split_markers = [",", " and ", " then ", " to ", " where ", " that ", " for "]
+        lowered = candidate.lower()
+        for marker in split_markers:
+            idx = lowered.find(marker)
+            if idx > 2:
+                variants.append(candidate[:idx].rstrip(" .;,/"))
+
+        parts = candidate.split("/")
+        while len(parts) > 2:
+            parts = parts[:-1]
+            variants.append("/".join(parts))
 
         deduped = []
         seen = set()

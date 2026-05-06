@@ -1,6 +1,7 @@
-﻿from __future__ import annotations
+from __future__ import annotations
 
 import json
+from datetime import datetime
 from typing import Any
 
 import pandas as pd
@@ -10,24 +11,87 @@ import streamlit.components.v1 as components
 from .dashboard import render_default_dashboard
 
 
-def _build_sample_result(section: str, action: str, payload: dict[str, Any]) -> dict[str, Any]:
-    return {
-        "section": section,
-        "action": action,
-        "payload": payload,
-        "status": "complete",
-        "summary": f"Executed placeholder for {section} / {action}",
-    }
+# ---------------------------------------------------------------------------
+# Real document analysis result renderer
+# ---------------------------------------------------------------------------
 
+def _render_document_analysis_result(result: dict[str, Any]) -> None:
+    """Render output from a real folder/URL analysis run."""
+    source = result.get("folder_path") or result.get("url") or "—"
+    st.subheader("📂 Document Analysis Results")
+
+    cols = st.columns(4)
+    cols[0].metric("Files processed", result.get("doc_count", result.get("file_count", 0)))
+    cols[1].metric("Words analysed", f"{result.get('word_count', 0):,}")
+    cols[2].metric("Cross-references", result.get("relationships", 0))
+    cols[3].metric("Timeline events", result.get("timeline_events", 0))
+
+    st.caption(f"Source: {source}")
+
+    narrative = result.get("narrative", "")
+    if narrative:
+        st.markdown("**Overview**")
+        st.write(narrative)
+
+    themes = result.get("themes", [])
+    if themes:
+        st.markdown("**Key Themes**")
+        theme_cols = st.columns(min(5, len(themes)))
+        for i, theme in enumerate(themes[:10]):
+            theme_cols[i % len(theme_cols)].markdown(f"`{theme}`")
+
+    output_content = result.get("output_content", "")
+    if output_content:
+        st.markdown("---")
+        st.markdown("**Generated Output**")
+        fmt = result.get("output_format", "")
+        if fmt == "database_entry":
+            try:
+                st.json(json.loads(output_content))
+            except json.JSONDecodeError:
+                st.warning("Output content is not valid JSON. Displaying as raw text.")
+                st.code(output_content, language="json")
+        else:
+            st.markdown(output_content)
+        st.download_button(
+            "⬇️ Download as Markdown",
+            data=output_content.encode("utf-8"),
+            file_name=f"analysis_{datetime.now().strftime('%Y%m%d_%H%M')}.md",
+            mime="text/markdown",
+        )
+
+    errors = result.get("errors", [])
+    if errors:
+        with st.expander(f"⚠️ {len(errors)} parsing error(s)", expanded=False):
+            for err in errors:
+                st.warning(err)
+
+    msg = result.get("message", "")
+    if msg and not output_content:
+        st.info(msg)
+
+
+# ---------------------------------------------------------------------------
+# Section-specific renderers
+# ---------------------------------------------------------------------------
 
 def _render_ingestion_results(result: dict[str, Any]) -> None:
+    if result.get("type") == "document_analysis":
+        _render_document_analysis_result(result)
+        return
+
     st.subheader("Ingestion Results")
+
+    msg = result.get("message", "")
+    if msg:
+        st.info(msg)
+        return
 
     file_list = pd.DataFrame(
         [
-            {"file": "q1_pipeline.csv", "status": "âœ… processed"},
-            {"file": "prospects.xlsx", "status": "â³ queued"},
-            {"file": "legacy_dump.json", "status": "âŒ failed"},
+            {"file": "q1_pipeline.csv", "status": "✅ processed"},
+            {"file": "prospects.xlsx", "status": "⏳ queued"},
+            {"file": "legacy_dump.json", "status": "❌ failed"},
         ]
     )
     st.dataframe(file_list, width="stretch")
@@ -50,6 +114,11 @@ def _render_ingestion_results(result: dict[str, Any]) -> None:
 
 def _render_cleaning_results(result: dict[str, Any]) -> None:
     st.subheader("Cleaning Results")
+
+    msg = result.get("message", "")
+    if msg:
+        st.info(msg)
+        return
 
     before = pd.DataFrame(
         [{"phone": "(555) 123-4567", "date": "01/12/2026", "amount": "25.000,00"}]
@@ -85,7 +154,16 @@ def _render_cleaning_results(result: dict[str, Any]) -> None:
 
 
 def _render_extraction_results(result: dict[str, Any]) -> None:
+    if result.get("type") == "document_analysis":
+        _render_document_analysis_result(result)
+        return
+
     st.subheader("Extraction Results")
+
+    msg = result.get("message", "")
+    if msg:
+        st.info(msg)
+        return
 
     entities = pd.DataFrame(
         [
@@ -121,38 +199,29 @@ def _render_extraction_results(result: dict[str, Any]) -> None:
 def _render_graph_results(result: dict[str, Any]) -> None:
     st.subheader("Graph Results")
 
+    msg = result.get("message", "")
+    if msg:
+        st.info(msg)
+        return
+
     html = """
     <html>
       <body style='font-family: sans-serif;'>
         <h4>Interactive network preview</h4>
-        <p>Placeholder graph rendered with HTML component.</p>
-        <ul>
-          <li>ACME -> Digital Roadmap</li>
-          <li>Digital Roadmap -> Opportunity_1</li>
-        </ul>
+        <p>Graph module requires ingested data. Use Ingestion first.</p>
       </body>
     </html>
     """
     components.html(html, height=220)
 
-    with st.expander("Node details"):
-        st.json({"id": "client_001", "label": "ACME", "degree": 4, "community": "enterprise"})
-
-    path = pd.DataFrame(
-        [
-            {"step": 1, "node": "client_001", "relation": "HAS_OFFER"},
-            {"step": 2, "node": "offer_210", "relation": "LEADS_TO_OPPORTUNITY"},
-            {"step": 3, "node": "opp_455", "relation": "HAS_SALE"},
-        ]
-    )
-    st.dataframe(path, width="stretch")
-
-    graph_payload = {"nodes": ["client_001", "offer_210", "opp_455"], "edges": [["client_001", "offer_210"], ["offer_210", "opp_455"]]}
-    st.download_button("Export graph (JSON)", data=json.dumps(graph_payload, indent=2), file_name="graph.json", mime="application/json")
-
 
 def _render_analytics_results(result: dict[str, Any]) -> None:
     st.subheader("Analytics Results")
+
+    msg = result.get("message", "")
+    if msg:
+        st.info(msg)
+        return
 
     chart_df = pd.DataFrame(
         {
@@ -186,6 +255,11 @@ def _render_analytics_results(result: dict[str, Any]) -> None:
 def _render_reporting_results(result: dict[str, Any]) -> None:
     st.subheader("Reporting Results")
 
+    msg = result.get("message", "")
+    if msg:
+        st.info(msg)
+        return
+
     preview_html = """
     <div style='padding: 10px; border: 1px solid #e5e5e5; border-radius: 8px;'>
       <h4>Executive Summary Preview</h4>
@@ -214,23 +288,23 @@ def render_main_content() -> None:
         return
 
     section = current_section
-    result = _build_sample_result(section, current_action, st.session_state.get("last_payload", {}))
+    # Use the real result stored in session state instead of hardcoded mock data
+    result = last_result
 
     st.markdown(f"### Active module: {section}")
-    st.caption(result.get("summary", ""))
+    st.caption(result.get("message", result.get("summary", "")))
 
-    if section == "ðŸ“¥ INGESTION":
+    if section == "📥 INGESTION":
         _render_ingestion_results(result)
-    elif section == "ðŸ§¹ CLEANING":
+    elif section == "🧹 CLEANING":
         _render_cleaning_results(result)
-    elif section == "ðŸ” EXTRACTION":
+    elif section == "🔍 EXTRACTION":
         _render_extraction_results(result)
-    elif section == "ðŸ•¸ï¸ GRAPH":
+    elif section == "🕸️ GRAPH":
         _render_graph_results(result)
-    elif section == "ðŸ“Š ANALYTICS":
+    elif section == "📊 ANALYTICS":
         _render_analytics_results(result)
-    elif section == "ðŸ“‘ REPORTING":
+    elif section == "📑 REPORTING":
         _render_reporting_results(result)
     else:
         render_default_dashboard()
-

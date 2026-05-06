@@ -22,6 +22,7 @@ class OutputGenerator:
             OutputFormat.NEW_BRIEF: self._new_brief,
             OutputFormat.COMPARISON: self._comparison,
             OutputFormat.TIMELINE: self._timeline,
+            OutputFormat.CLIENT_BRIEF: self._client_brief,
         }
         handler = _DISPATCH.get(output_format, self._summary)
         content, structured = handler(analysis)
@@ -130,24 +131,196 @@ class OutputGenerator:
         return content, {"relationships": len(a.relationships), "timeline_events": len(a.timeline)}
 
     def _presentation(self, a: FolderAnalysis) -> tuple[str, dict]:
-        slides: list[dict] = []
-        slides.append({"slide": 1, "title": "Document Analysis", "bullets": [a.folder_path, a.analyzed_at.strftime("%Y-%m-%d")]})
-        slides.append({"slide": 2, "title": "Key Figures", "bullets": [
-            f"{a.stats.supported_files} documents analysed",
-            f"{sum(d.word_count for d in a.documents if not d.error):,} words",
-            f"{len(a.relationships)} cross-references",
-        ]})
-        slides.append({"slide": 3, "title": "Main Themes", "bullets": [t.title() for t in a.cross_themes[:6]]})
-        slides.append({"slide": 4, "title": "Key Findings", "bullets": [a.narrative[:300]]})
-        slides.append({"slide": 5, "title": "Gaps & Next Steps", "bullets": a.gaps or ["No critical gaps identified."]})
+        total_words = sum(d.word_count for d in a.documents if not d.error)
+        doc_types = a.stats.files_by_type
+        type_str = ", ".join(f"{v} {k.upper()}" for k, v in doc_types.items())
 
-        lines = []
+        slides: list[dict] = []
+
+        # Slide 1 – Title
+        slides.append({
+            "slide": 1,
+            "title": "Document Analysis",
+            "bullets": [
+                f"Source: {a.folder_path}",
+                f"Date: {a.analyzed_at.strftime('%B %d, %Y')}",
+                f"{a.stats.supported_files} documents analysed",
+            ],
+        })
+
+        # Slide 2 – Key Figures
+        slides.append({
+            "slide": 2,
+            "title": "Key Figures",
+            "bullets": [
+                f"📄 {a.stats.supported_files} documents ({type_str})",
+                f"📝 {total_words:,} total words reviewed",
+                f"🔗 {len(a.relationships)} cross-document relationships",
+                f"📅 {len(a.timeline)} temporal references extracted",
+                f"🏷️ {sum(len(d.entities) for d in a.documents)} entities identified",
+            ],
+        })
+
+        # Slide 3 – Main Themes
+        theme_bullets = [f"• {t.title()}" for t in a.cross_themes[:8]]
+        if not theme_bullets:
+            theme_bullets = ["• No recurring themes identified across documents."]
+        slides.append({
+            "slide": 3,
+            "title": "Main Themes",
+            "bullets": theme_bullets,
+        })
+
+        # Slide 4 – Key Findings (one sentence per document)
+        finding_bullets = []
+        for doc in a.documents[:6]:
+            if doc.summary and not doc.error:
+                finding_bullets.append(f"**{doc.file_name}**: {doc.summary[:120]}…")
+        if not finding_bullets:
+            finding_bullets = [a.narrative[:400]]
+        slides.append({
+            "slide": 4,
+            "title": "Key Findings",
+            "bullets": finding_bullets,
+        })
+
+        # Slide 5 – Key Entities
+        entities_all = [e for d in a.documents for e in d.entities]
+        entity_lines: list[str] = []
+        seen: set[str] = set()
+        for e in entities_all:
+            key = e.text.lower()
+            if key not in seen and len(entity_lines) < 8:
+                seen.add(key)
+                entity_lines.append(f"• **{e.text}** ({e.entity_type.value})")
+        slides.append({
+            "slide": 5,
+            "title": "Key Entities",
+            "bullets": entity_lines or ["• No entities extracted."],
+        })
+
+        # Slide 6 – Gaps & Next Steps
+        next_steps = a.gaps or ["Continue monitoring for new information."]
+        slides.append({
+            "slide": 6,
+            "title": "Gaps & Next Steps",
+            "bullets": [f"▶ {g}" for g in next_steps[:6]],
+        })
+
+        lines: list[str] = ["# Presentation Outline\n"]
         for s in slides:
-            lines.append(f"### Slide {s['slide']}: {s['title']}")
+            lines.append(f"---\n\n### Slide {s['slide']}: {s['title']}\n")
             for b in s["bullets"]:
                 lines.append(f"- {b}")
             lines.append("")
+
         return "\n".join(lines), {"slides": slides}
+
+    def _client_brief(self, a: FolderAnalysis) -> tuple[str, dict]:
+        """Generate a polished, client-ready document brief."""
+        total_words = sum(d.word_count for d in a.documents if not d.error)
+        doc_types = a.stats.files_by_type
+        type_str = ", ".join(f"{v} {k.upper()}" for k, v in doc_types.items())
+        date_str = datetime.now().strftime("%B %d, %Y")
+
+        lines = [
+            "# CLIENT BRIEF",
+            f"**Prepared:** {date_str}",
+            f"**Source:** {a.folder_path}",
+            f"**Classification:** Confidential",
+            "",
+            "---",
+            "",
+            "## 1. SITUATION OVERVIEW",
+            a.narrative,
+            "",
+            f"> *Analysis covers {a.stats.supported_files} document(s) ({type_str}) "
+            f"totalling approximately {total_words:,} words.*",
+            "",
+            "## 2. KEY TOPICS & THEMES",
+        ]
+
+        if a.cross_themes:
+            for i, theme in enumerate(a.cross_themes[:8], 1):
+                lines.append(f"{i}. **{theme.title()}**")
+        else:
+            lines.append("No recurring themes identified. Documents cover diverse topics.")
+
+        lines += ["", "## 3. KEY ENTITIES & ACTORS"]
+        entities_all = [e for d in a.documents for e in d.entities]
+        entity_by_type: dict[str, list[str]] = {}
+        seen: set[str] = set()
+        for e in entities_all:
+            key = e.text.lower()
+            if key not in seen:
+                seen.add(key)
+                entity_by_type.setdefault(e.entity_type.value, []).append(e.text)
+
+        for etype, texts in entity_by_type.items():
+            lines.append(f"**{etype.title()}:** {', '.join(texts[:6])}")
+
+        if not entity_by_type:
+            lines.append("No specific entities extracted.")
+
+        lines += ["", "## 4. DOCUMENT SUMMARIES"]
+        for doc in a.documents[:8]:
+            if doc.error:
+                lines.append(f"- ⚠️ **{doc.file_name}** — parsing error: {doc.error}")
+            else:
+                summary = doc.summary or "(no summary available)"
+                lines.append(f"- 📄 **{doc.file_name}** ({doc.doc_type.value.upper()}, {doc.word_count:,} words)")
+                lines.append(f"  {summary[:200]}")
+        if len(a.documents) > 8:
+            lines.append(f"  _…and {len(a.documents) - 8} more document(s)._")
+
+        lines += ["", "## 5. CROSS-DOCUMENT RELATIONSHIPS"]
+        if a.relationships:
+            for rel in a.relationships[:8]:
+                lines.append(
+                    f"- **{rel.entity_a}** appears in {len(rel.source_documents)} document(s): "
+                    f"{', '.join(rel.source_documents[:3])}"
+                )
+        else:
+            lines.append("No significant cross-document relationships identified.")
+
+        lines += ["", "## 6. TIMELINE OF KEY EVENTS"]
+        if a.timeline:
+            for ev in a.timeline[:10]:
+                lines.append(f"- **{ev.date}** — {ev.description[:120]} _(from {ev.source_document})_")
+        else:
+            lines.append("No temporal events extracted.")
+
+        lines += ["", "## 7. IDENTIFIED GAPS"]
+        if a.gaps:
+            for g in a.gaps:
+                lines.append(f"- ⚠️ {g}")
+        else:
+            lines.append("- No critical information gaps identified.")
+
+        lines += ["", "## 8. RECOMMENDATIONS & NEXT STEPS"]
+        if a.gaps:
+            for g in a.gaps:
+                lines.append(f"- Address: {g}")
+        if a.contradictions:
+            for c in a.contradictions:
+                lines.append(f"- Verify: {c}")
+        if not a.gaps and not a.contradictions:
+            lines.append("- Document collection appears complete. Consider creating a knowledge graph for deeper analysis.")
+            lines.append("- Review individual summaries with subject-matter experts.")
+
+        lines += [
+            "",
+            "---",
+            f"*Brief generated automatically on {date_str}. Review before client distribution.*",
+        ]
+
+        content = "\n".join(lines)
+        return content, {
+            "themes": a.cross_themes,
+            "entity_types": list(entity_by_type.keys()),
+            "doc_count": len(a.documents),
+            "word_count": total_words,
+        }
 
     def _list(self, a: FolderAnalysis) -> tuple[str, dict]:
         lines = ["# Document List\n"]
