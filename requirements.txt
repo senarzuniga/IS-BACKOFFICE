@@ -25,6 +25,32 @@ xlrd>=2.0.1
 olefile>=0.47
 odfpy>=1.4.1
 textract>=1.6.5
+# Enhanced backoffice integrations
+python-dotenv>=1.0.1
+# Supabase v2 currently pulls pyiceberg builds that fail on Win+Py3.14 without MSVC toolchain.
+supabase>=1.2.0,<2.0.0
+google-auth>=2.30.0
+google-auth-oauthlib>=1.2.0
+google-auth-httplib2>=0.2.0
+google-api-python-client>=2.130.0
+exchangelib>=5.3.0
+icalendar>=6.1.0
+babel>=2.16.0
+textblob>=0.18.0.post0
+schedule>=1.2.2
+aiosmtplib>=3.0.1
+jinja2>=3.1.4
+PyPDF2>=3.0.1
+reportlab>=4.2.0
+celery>=5.4.0
+redis>=5.0.4
+# Intelligence Ingestion Pipeline
+pyyaml>=6.0.1
+# Optional: playwright (install chromium separately with `playwright install chromium`)
+# playwright>=1.44.0
+# Optional on Win+Py3.14 due native build/toolchain constraints:
+# python-telegram-bot>=21.3
+# xhtml2pdf>=0.2.15
 # spaCy is optional (improves entity extraction)
 # Install manually: pip install spacy && python -m spacy download en_core_web_sm
 # spacy>=3.7.0

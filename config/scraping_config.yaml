@@ -1,0 +1,26 @@
+scraping:
+  # Global timeouts in seconds
+  static_timeout: 30
+  dynamic_timeout: 45
+  antibot_timeout: 60
+
+  # Delays between consecutive jobs (seconds)
+  inter_job_delay: 1.0
+
+  # Anti-bot random delay range (seconds)
+  antibot_delay_min: 0.7
+  antibot_delay_max: 2.5
+
+  # Max HTML stored per page (bytes)
+  max_html_bytes: 2000000
+
+  # Text window sent to LLM extractor (chars)
+  extraction_text_limit: 9000
+
+  # OpenAI model for extraction
+  openai_model: "gpt-4o-mini"
+  openai_temperature: 0.1
+
+pipeline:
+  # Cycle interval when running continuously (seconds)
+  cycle_interval_seconds: 300

@@ -1,0 +1,101 @@
+sources:
+  # ─────────────────────────────────────────────
+  # TIER 1 – Direct competitors (highest priority)
+  # ─────────────────────────────────────────────
+  - id: ingecart_website
+    name: INGECART
+    url: https://www.ingecart.eu
+    tier: tier1
+    scraping_frequency_hours: 1
+    priority: high
+    scraper_type: static
+    data_type: product
+    is_active: true
+    event_triggers: [website_change]
+
+  - id: fosber_home
+    name: Fosber
+    url: https://www.fosber.com
+    tier: tier1
+    scraping_frequency_hours: 24
+    priority: high
+    scraper_type: static
+    data_type: product
+    is_active: true
+    event_triggers: [website_change, competitor_launch]
+
+  - id: fosber_products
+    name: Fosber Products
+    url: https://www.fosber.com/products
+    tier: tier1
+    scraping_frequency_hours: 6
+    priority: high
+    scraper_type: dynamic
+    data_type: product
+    selectors:
+      wait_for: body
+    is_active: true
+
+  - id: bhs_corrugated
+    name: BHS Corrugated
+    url: https://www.bhs-world.com
+    tier: tier1
+    scraping_frequency_hours: 24
+    priority: high
+    scraper_type: dynamic
+    data_type: product
+    selectors:
+      wait_for: body
+    is_active: true
+    event_triggers: [website_change]
+
+  - id: marquip_press
+    name: MarquipWardUnited
+    url: https://www.marquipwardunited.com
+    tier: tier1
+    scraping_frequency_hours: 48
+    priority: normal
+    scraper_type: static
+    data_type: product
+    is_active: true
+
+  # ─────────────────────────────────────────────
+  # TIER 2 – Distributors and marketplaces
+  # ─────────────────────────────────────────────
+  - id: direct_industry
+    name: Direct Industry Corrugated
+    url: https://www.directindustry.com/industrial-manufacturer/corrugated-machine-148960.html
+    tier: tier2
+    scraping_frequency_hours: 168
+    priority: normal
+    scraper_type: dynamic
+    data_type: product
+    selectors:
+      wait_for: body
+    is_active: true
+    event_triggers: [new_product]
+
+  # ─────────────────────────────────────────────
+  # TIER 3 – News and industry trends
+  # ─────────────────────────────────────────────
+  - id: reuters_manufacturing
+    name: Reuters Manufacturing
+    url: https://www.reuters.com/business/manufacturing
+    tier: tier3
+    scraping_frequency_hours: 24
+    priority: low
+    scraper_type: static
+    data_type: news
+    is_active: true
+    event_triggers: [industry_news]
+
+  - id: bloomberg_industrial
+    name: Bloomberg Industrial
+    url: https://www.bloomberg.com/technology/industries
+    tier: tier3
+    scraping_frequency_hours: 24
+    priority: low
+    scraper_type: antibot
+    data_type: news
+    is_active: true
+    event_triggers: [industry_news]
