@@ -34,6 +34,19 @@ def _to_output_format(output_type: str | None) -> OutputFormat:
     return mapping.get((output_type or "summary").lower(), OutputFormat.SUMMARY)
 
 
+def _build_file_listing(discovered: list[dict[str, Any]]) -> str:
+    """Build a markdown file listing from discovered file entries."""
+    grouped: dict[str, list[str]] = {}
+    for item in discovered:
+        grouped.setdefault(item.get("doc_type", "unknown"), []).append(item.get("name", ""))
+    lines = ["# Folder File List", f"Total files: {len(discovered)}", ""]
+    for doc_type, names in sorted(grouped.items()):
+        lines.append(f"## {doc_type.upper()} ({len(names)})")
+        lines.extend(f"- {name}" for name in names[:200])
+        lines.append("")
+    return "\n".join(lines)
+
+
 class InstructionExecutor:
     """Execute parsed instructions step by step."""
 
@@ -54,6 +67,7 @@ class InstructionExecutor:
 
         context: dict[str, Any] = {
             "folder_path": parsed_instruction.get("folder_path"),
+            "source_url": parsed_instruction.get("url"),
             "discovered_files": [],
             "parsed_documents": [],
             "extracted_entities": [],
@@ -114,6 +128,14 @@ class InstructionExecutor:
             output = self.generator.generate(context["folder_analysis"], fmt)
             context["generated_output"] = output.content
 
+        # Clean up any temporary directories created during execution (e.g. URL fetch)
+        import shutil
+        for tmp_dir in context.pop("_temp_dirs", []):
+            try:
+                shutil.rmtree(tmp_dir, ignore_errors=True)
+            except Exception:  # noqa: BLE001
+                pass
+
         return {
             "parsed_instruction": parsed_instruction,
             "steps": steps,
@@ -127,6 +149,7 @@ class InstructionExecutor:
 
     def _describe_action(self, action: str, params: dict[str, Any]) -> str:
         descriptions = {
+            "fetch_url": "Fetching URL content",
             "read_folder": "Reading folder contents",
             "parse_documents": "Parsing document contents",
             "extract_entities": "Extracting entities and metadata",
@@ -146,6 +169,64 @@ class InstructionExecutor:
         context: dict[str, Any],
     ) -> str:
         folder_path = context.get("folder_path")
+        source_url = context.get("source_url")
+
+        if action == "fetch_url":
+            import tempfile
+            import requests
+            import ipaddress
+
+            url = source_url or params.get("url", "")
+            if not url:
+                raise ValueError("No URL provided. Include a URL (http:// or https://) in your instruction.")
+            if not url.lower().startswith(("http://", "https://")):
+                raise ValueError(f"Only http:// and https:// URLs are allowed. Got: {url!r}")
+
+            # Resolve hostname and block private/loopback ranges (SSRF protection)
+            import socket
+            from urllib.parse import urlparse
+            parsed_url = urlparse(url)
+            hostname = parsed_url.hostname or ""
+            try:
+                ip_str = socket.gethostbyname(hostname)
+                ip = ipaddress.ip_address(ip_str)
+                if ip.is_private or ip.is_loopback or ip.is_link_local or ip.is_reserved:
+                    raise ValueError(f"Requests to private/internal addresses are not allowed: {ip_str}")
+            except (socket.gaierror, ValueError) as exc:
+                if "not allowed" in str(exc):
+                    raise
+                # DNS resolution failure is acceptable (will fail at requests.get)
+
+            resp = requests.get(url, timeout=30)
+            resp.raise_for_status()
+
+            tmp_dir = tempfile.mkdtemp()
+            tmp_path = os.path.join(tmp_dir, "page.html")
+            with open(tmp_path, "wb") as fh:
+                fh.write(resp.content)
+
+            doc = self.parser.parse(tmp_path)
+            # Override the file_name so it shows the URL origin in reports
+            doc.file_name = url.split("//", 1)[-1][:80]
+            doc = self.extractor.enrich(doc)
+
+            from document_analysis.models import FolderStats, DocumentType
+
+            stats = FolderStats(
+                folder_path=url,
+                total_files=1,
+                supported_files=1,
+                unsupported_files=0,
+                total_size_bytes=len(resp.content),
+                files_by_type={DocumentType.HTML.value: 1},
+            )
+            context["parsed_documents"] = [doc]
+            context["folder_stats"] = stats
+            context["folder_path"] = url
+            context["discovered_files"] = [{"name": doc.file_name, "path": tmp_path, "doc_type": "html"}]
+            # Store tmp_dir for cleanup after execution
+            context.setdefault("_temp_dirs", []).append(tmp_dir)
+            return f"Fetched {len(resp.content):,} bytes from {url}"
 
         if action == "read_folder":
             if not folder_path:
@@ -201,28 +282,34 @@ class InstructionExecutor:
 
         if action == "generate_output":
             requested = params.get("type") or parsed_instruction.get("output_type", "summary")
-            fmt = _to_output_format(requested)
+            # Map client_brief to the new OutputFormat
+            if requested == "client_brief":
+                from document_analysis.models import OutputFormat as OF
+                fmt = OF.CLIENT_BRIEF
+            else:
+                fmt = _to_output_format(requested)
 
             analysis = context.get("folder_analysis")
+            discovered = context.get("discovered_files", [])
+
             if analysis is None:
                 docs: list[DocumentInfo] = context.get("parsed_documents", [])
                 stats = context.get("folder_stats")
+
+                # Fast path: when files were discovered but not yet parsed (explore_folder
+                # intent), build the file listing directly instead of creating an empty
+                # FolderAnalysis whose document list would also be empty.
+                if fmt == OutputFormat.LIST and discovered and not docs:
+                    context["generated_output"] = _build_file_listing(discovered)
+                    return f"Generated {fmt.value} ({len(discovered)} files listed)"
+
                 if stats is not None:
                     analysis = self.analyzer.analyze_folder(docs, folder_path=folder_path or "", stats=stats)
                     context["folder_analysis"] = analysis
 
             if analysis is None:
-                discovered = context.get("discovered_files", [])
                 if fmt == OutputFormat.LIST and discovered:
-                    grouped: dict[str, list[str]] = {}
-                    for item in discovered:
-                        grouped.setdefault(item.get("doc_type", "unknown"), []).append(item.get("name", ""))
-                    lines = ["# Folder File List", f"Total supported files: {len(discovered)}", ""]
-                    for doc_type, names in sorted(grouped.items()):
-                        lines.append(f"## {doc_type.upper()} ({len(names)})")
-                        lines.extend(f"- {name}" for name in names[:200])
-                        lines.append("")
-                    context["generated_output"] = "\n".join(lines)
+                    context["generated_output"] = _build_file_listing(discovered)
                     return f"Generated {fmt.value} ({len(discovered)} files listed)"
                 raise ValueError("No folder analysis available. Run analyze_content first.")
 
@@ -269,18 +356,23 @@ class InstructionExecutor:
     def _generate_suggestions(self, context: dict[str, Any], parsed_instruction: dict[str, Any]) -> list[str]:
         suggestions: list[str] = []
 
+        source_url = context.get("source_url")
         folder = context.get("folder_path") or "this folder"
         docs: list[DocumentInfo] = context.get("parsed_documents", [])
         analysis = context.get("folder_analysis")
 
-        if docs:
+        if source_url:
+            suggestions.append(f"Create an executive summary from {source_url}")
+            suggestions.append(f"Generate a client brief from {source_url}")
+            suggestions.append(f"Make a presentation outline from {source_url}")
+        elif docs:
             suggestions.append(f"Create an executive summary for {folder}")
+            suggestions.append(f"Generate a client brief for {folder}")
             suggestions.append(f"Generate a comparison table for {folder}")
 
         if analysis is not None and getattr(analysis, "timeline", None):
             suggestions.append("Build a timeline from extracted dates")
 
-        suggestions.append("Extract all names and dates")
         suggestions.append("Analyze a different folder")
 
         return suggestions[:5]
