@@ -290,6 +290,7 @@ def _run_processing() -> None:
         st.session_state["da_error"] = str(exc)
         st.session_state["da_processing"] = False
         _log(f"Processing error: {traceback.format_exc()}")
+        st.rerun()
         return
 
     st.session_state["da_processing"] = False
@@ -299,6 +300,7 @@ def _run_processing() -> None:
 def _generate_output() -> None:
     analysis = st.session_state.get("da_analysis")
     if analysis is None:
+        st.session_state["da_error"] = "No analysis available. Please run 'Process All Files' first."
         return
 
     try:

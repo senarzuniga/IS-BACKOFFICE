@@ -71,17 +71,28 @@ class InstructionParser:
                 if p:
                     return p
 
+        # Unquoted Unix/Linux absolute paths (e.g. /home/user/docs or /tmp/project)
+        unix_paths = re.findall(r"(?<!\w)((?:/[a-zA-Z0-9._\-]+){2,}/?)", text)
+        unix_paths.sort(key=len, reverse=True)
+        for candidate in unix_paths:
+            for normalized in self._candidate_path_variants_unix(candidate.rstrip("/")):
+                p = self._resolve_path(normalized)
+                if p:
+                    return p
+
         named_patterns = [
             r"(?:the\s+)?folder\s+(?:called|named|at|path)?\s*[\"']?([^\"',.;]+)[\"']?",
-            r"check\s+[\"']?([A-Za-z]:[^\"',.;]+)[\"']?",
-            r"inside\s+[\"']?([A-Za-z]:[^\"',.;]+)[\"']?",
-            r"read\s+[\"']?([A-Za-z]:[^\"',.;]+)[\"']?",
-            r"analy(?:s|z)e\s+[\"']?([A-Za-z]:[^\"',.;]+)[\"']?",
+            r"check\s+[\"']?([A-Za-z]:[^\"',.;]+|/[a-zA-Z0-9._/\-]+)[\"']?",
+            r"inside\s+[\"']?([A-Za-z]:[^\"',.;]+|/[a-zA-Z0-9._/\-]+)[\"']?",
+            r"read\s+[\"']?([A-Za-z]:[^\"',.;]+|/[a-zA-Z0-9._/\-]+)[\"']?",
+            r"analy(?:s|z)e\s+[\"']?([A-Za-z]:[^\"',.;]+|/[a-zA-Z0-9._/\-]+)[\"']?",
+            r"in\s+[\"']?([A-Za-z]:[^\"',.;\n\r]+|/[a-zA-Z0-9._/\-]+)[\"']?",
         ]
         for pattern in named_patterns:
             match = re.search(pattern, text, re.IGNORECASE)
             if match:
-                for normalized in self._candidate_path_variants(match.group(1).strip().rstrip("\\")):
+                candidate = match.group(1).strip().rstrip("\\/")
+                for normalized in self._candidate_path_variants(candidate):
                     p = self._resolve_path(normalized)
                     if p:
                         return p
@@ -288,6 +299,32 @@ class InstructionParser:
 
         # Last resort: original candidate.
         variants.append(candidate)
+
+        deduped = []
+        seen = set()
+        for item in variants:
+            key = item.lower()
+            if key not in seen and item:
+                seen.add(key)
+                deduped.append(item)
+        return deduped
+
+    def _candidate_path_variants_unix(self, candidate: str) -> list[str]:
+        """Build progressively shorter path variants for Unix-style absolute paths."""
+        candidate = candidate.strip().strip('"').strip("'").rstrip("/")
+        variants: list[str] = [candidate]  # Always try the full path first
+
+        split_markers = [",", " and ", " then ", " to ", " where ", " that ", " for "]
+        lowered = candidate.lower()
+        for marker in split_markers:
+            idx = lowered.find(marker)
+            if idx > 2:
+                variants.append(candidate[:idx].rstrip(" .;,/"))
+
+        parts = candidate.split("/")
+        while len(parts) > 2:
+            parts = parts[:-1]
+            variants.append("/".join(parts))
 
         deduped = []
         seen = set()
