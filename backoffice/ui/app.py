@@ -8,20 +8,19 @@ from typing import Any
 
 import streamlit as st
 
-st.set_page_config(layout="wide", page_title="Virtual Back Office", page_icon="🏢")
-
 from backoffice.ui.components.results import render_main_content
 from backoffice.ui.components.sidebar import render_sidebar
 
 
 def _initialize_state() -> None:
     defaults: dict[str, Any] = {
+        "active_page": "Dashboard",
         "current_section": "",
         "current_action": "",
         "last_result": None,
         "last_payload": {},
         "processing_queue": [],
-        "settings": {"theme": "light", "timezone": "UTC", "notifications": True},
+        "settings": {"theme": "dark", "timezone": "UTC", "notifications": True},
         "last_activity": datetime.now().isoformat(timespec="seconds"),
         "memory_usage": 87,
         "status_logs": ["UI initialized"],
@@ -404,17 +403,11 @@ def _render_status_bar() -> None:
 def main() -> None:
     _initialize_state()
 
-    st.markdown("# Virtual Back Office Human Interface")
-    st.write("Hello World")
-
     sidebar_state = render_sidebar()
 
     quick_action = sidebar_state.get("quick_action")
     if quick_action:
         _handle_quick_action(quick_action)
-
-    if sidebar_state.get("run_action"):
-        _run_selected_action(sidebar_state)
 
     _render_error_state()
 
