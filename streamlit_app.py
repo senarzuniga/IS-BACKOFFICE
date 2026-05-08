@@ -1,5 +1,12 @@
-from backoffice.ui.app import main
+import streamlit as st
 
+st.set_page_config(
+    page_title="IS-BACKOFFICE – AI Back Office Intelligence",
+    page_icon="🏢",
+    layout="wide",
+    initial_sidebar_state="expanded",
+)
 
-if __name__ == "__main__":
-    main()
+from backoffice.ui.app import main  # noqa: E402
+
+main()
