@@ -1,0 +1,48 @@
+{
+  "collected_at": "2026-05-06",
+  "target": "https://www.linkedin.com/company/ingecart/posts/?feedView=all",
+  "mode": "anonymous_public_fetch",
+  "status": "limited_by_signin_wall",
+  "attempts": [
+    {
+      "url": "https://www.linkedin.com/company/ingecart/posts/?feedView=all",
+      "result": "signin_page",
+      "extractable_posts": false
+    },
+    {
+      "url": "https://www.linkedin.com/company/ingecart/posts/",
+      "result": "no_meaningful_content",
+      "extractable_posts": false
+    },
+    {
+      "url": "https://www.linkedin.com/company/ingecart/posts/?feedView=all&viewAsMember=true",
+      "result": "no_meaningful_content",
+      "extractable_posts": false
+    },
+    {
+      "url": "https://www.linkedin.com/company/ingecart/",
+      "result": "signin_page_with_limited_public_elements",
+      "extractable_posts": false
+    }
+  ],
+  "public_artifacts": {
+    "company_page": "https://www.linkedin.com/company/ingecart/",
+    "logo_url": "https://media.licdn.com/dms/image/v2/D4D0BAQEQPcyOF3WIAA/company-logo_200_200/company-logo_200_200/0/1733900598808/ingecart_logo?e=2147483647&v=beta&t=aHdppOvhHLlAGowivSVnDxueFXgz1C1RjLpJTz-Iw6o"
+  },
+  "missing_fields_due_to_access": [
+    "post_text",
+    "post_dates",
+    "hashtags",
+    "engagement_counts",
+    "media_urls",
+    "external_links"
+  ],
+  "recommended_authenticated_workflow": [
+    "login_to_linkedin",
+    "open_company_posts_feed",
+    "scroll_to_load_history",
+    "export_or_capture_loaded_html",
+    "parse_post_cards_to_structured_json",
+    "generate_markdown_analytics_summary"
+  ]
+}

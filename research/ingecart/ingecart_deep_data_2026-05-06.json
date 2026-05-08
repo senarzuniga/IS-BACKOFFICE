@@ -1,0 +1,96 @@
+{
+  "collected_at": "2026-05-06",
+  "source_domain": "https://www.ingecart.eu/",
+  "source_pages": [
+    "https://www.ingecart.eu/",
+    "https://www.ingecart.eu/ingetrans280",
+    "https://www.ingecart.eu/sistemaretal1400",
+    "https://www.ingecart.eu/auditoriatecnica",
+    "https://www.ingecart.eu/proyectosrecientes",
+    "https://www.ingecart.eu/contacto",
+    "https://www.ingecart.eu/noticias-1"
+  ],
+  "company_profile": {
+    "positioning": "Engineering and automation partner for paper and corrugated plants",
+    "themes": [
+      "performance improvement",
+      "sustainability",
+      "profitability",
+      "turnkey execution",
+      "industrial modernization"
+    ]
+  },
+  "service_pillars": [
+    "Industrial machinery",
+    "Installation",
+    "Robotics",
+    "Project management",
+    "360-degree solution",
+    "Technical auditing"
+  ],
+  "solutions": {
+    "ingetrans_2800": {
+      "summary": "Automates paper reel feeding, movement, delivery, and return.",
+      "value_points": [
+        "reduced forklift traffic",
+        "improved safety",
+        "higher process efficiency",
+        "adaptable layout design"
+      ]
+    },
+    "sr1400_retal": {
+      "summary": "Integrated scrap collection and transport system.",
+      "value_points": [
+        "plant-specific design",
+        "waste handling optimization",
+        "cost reduction",
+        "up to 93 percent lower energy claim"
+      ]
+    },
+    "technical_audit": {
+      "summary": "Independent advisory support for existing and new projects.",
+      "value_points": [
+        "objective equipment and process evaluation",
+        "capex and roi support",
+        "risk management",
+        "implementation and training support"
+      ]
+    }
+  },
+  "kpi_sets": [
+    {
+      "label": "set_a_main_site",
+      "projects": 1268,
+      "years_experience": 28,
+      "international_agreements": 26,
+      "installations": 194
+    },
+    {
+      "label": "set_b_subpages",
+      "projects": 1245,
+      "years_experience": 27,
+      "international_agreements": 25,
+      "installations": 190
+    }
+  ],
+  "recommended_headline_kpis": {
+    "projects": 1268,
+    "years_experience": 28,
+    "international_agreements": 26,
+    "installations": 194,
+    "note": "Use with source capture date in customer decks"
+  },
+  "contact": {
+    "email": "hablemos@ingecart.eu",
+    "phone": "+34 938 183 316",
+    "address": "Pol. Ind. Laverno Nave 9-10, Subirats, CP 08739, Barcelona, Espana"
+  },
+  "social_links": [
+    "https://www.linkedin.com/company/ingecart/people/?facetGeoRegion=105646813",
+    "https://www.instagram.com/grupo_ingecart?igsh=YW1wM3dxOHR0dTA0&utm_source=qr",
+    "https://www.facebook.com/profile.php?id=61558519556243",
+    "https://twitter.com/Grupo_ingecart",
+    "https://www.youtube.com/@GrupoIngecart"
+  ],
+  "assets_script": "research/ingecart/ingecart_assets_pack.py"
+}

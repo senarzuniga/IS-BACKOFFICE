@@ -1,0 +1,146 @@
+[
+  {
+    "label": "Ingecart brand emblem",
+    "type": "logo",
+    "source_page": "https://www.ingecart.eu/",
+    "url": "https://static.wixstatic.com/media/aa5b12_0fe424559fce4c628f0ef67b3602dff4~mv2.png/v1/fill/w_928,h_930,fp_0.50_0.00,q_90,enc_avif,quality_auto/aa5b12_0fe424559fce4c628f0ef67b3602dff4~mv2.png",
+    "local_file": "5fb63bc5e6_aa5b12_0fe424559fce4c628f0ef67b3602dff4~mv2.png",
+    "download_status": "downloaded"
+  },
+  {
+    "label": "Ingecart header artwork",
+    "type": "brand_image",
+    "source_page": "https://www.ingecart.eu/",
+    "url": "https://static.wixstatic.com/media/aa5b12_fe618ec3d7734688820073636552bfe9~mv2.png/v1/fill/w_1015,h_255,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/Copia%20de%20ingeeniering.png",
+    "local_file": "7976de9842_Copia%20de%20ingeeniering.png",
+    "download_status": "downloaded"
+  },
+  {
+    "label": "Partner marks strip",
+    "type": "partners",
+    "source_page": "https://www.ingecart.eu/",
+    "url": "https://static.wixstatic.com/media/aa5b12_83aeccab15df434ca81ff7286b3f6864~mv2.jpg/v1/crop/x_1694,y_23,w_392,h_157/fill/w_30,h_12,al_c,q_80,usm_0.66_1.00_0.01,blur_2,enc_avif,quality_auto/MARCAS.jpg",
+    "local_file": "852461209b_MARCAS.jpg",
+    "download_status": "downloaded"
+  },
+  {
+    "label": "Bobinas installation image",
+    "type": "operations",
+    "source_page": "https://www.ingecart.eu/",
+    "url": "https://static.wixstatic.com/media/aa5b12_2de7495b91294521a3c35de92ec12fef~mv2.jpg/v1/fill/w_147,h_92,al_c,q_80,usm_0.66_1.00_0.01,blur_2,enc_avif,quality_auto/Bobinas.jpg",
+    "local_file": "569fe6f23f_Bobinas.jpg",
+    "download_status": "downloaded"
+  },
+  {
+    "label": "Robot FFG palletizer",
+    "type": "robotics",
+    "source_page": "https://www.ingecart.eu/",
+    "url": "https://static.wixstatic.com/media/aa5b12_71c0b32757be45c0a68313485a342813~mv2.jpg/v1/fill/w_147,h_139,al_c,q_80,usm_0.66_1.00_0.01,blur_2,enc_avif,quality_auto/Robot%20FFG-2.jpg",
+    "local_file": "5bcfcd70c0_Robot%20FFG-2.jpg",
+    "download_status": "downloaded"
+  },
+  {
+    "label": "Ingetrans reel loading",
+    "type": "solution_ingetrans",
+    "source_page": "https://www.ingecart.eu/ingetrans280",
+    "url": "https://static.wixstatic.com/media/aa5b12_10de93d57241406ea1bebe774f363b21~mv2.jpg/v1/fill/w_147,h_102,al_c,q_80,usm_0.66_1.00_0.01,blur_2,enc_avif,quality_auto/Bobinas-2_edited.jpg",
+    "local_file": "05152fa21e_Bobinas-2_edited.jpg",
+    "download_status": "downloaded"
+  },
+  {
+    "label": "Ingetrans transfer graphic",
+    "type": "solution_ingetrans",
+    "source_page": "https://www.ingecart.eu/ingetrans280",
+    "url": "https://static.wixstatic.com/media/aa5b12_214e312715f847f4847a962be13e1f21~mv2.png/v1/fill/w_49,h_30,al_c,q_85,usm_0.66_1.00_0.01,blur_2,enc_avif,quality_auto/Transfer%209_edited.png",
+    "local_file": "68aeda11b0_Transfer%209_edited.png",
+    "download_status": "downloaded"
+  },
+  {
+    "label": "SR1400 retal hero",
+    "type": "solution_sr1400",
+    "source_page": "https://www.ingecart.eu/sistemaretal1400",
+    "url": "https://static.wixstatic.com/media/aa5b12_9ba199809a9749afb5f418edaa8268b0~mv2.jpg/v1/fill/w_147,h_70,al_c,q_80,usm_0.66_1.00_0.01,blur_2,enc_avif,quality_auto/Retal.jpg",
+    "local_file": "275a34d4d8_Retal.jpg",
+    "download_status": "downloaded"
+  },
+  {
+    "label": "SR1400 schematic",
+    "type": "solution_sr1400",
+    "source_page": "https://www.ingecart.eu/sistemaretal1400",
+    "url": "https://static.wixstatic.com/media/aa5b12_71b48940ed4a4cd383fc7c9051bafc90~mv2.png/v1/fill/w_114,h_223,al_c,q_85,usm_0.66_1.00_0.01,blur_2,enc_avif,quality_auto/Retal-2_edited.png",
+    "local_file": "959fad2c4e_Retal-2_edited.png",
+    "download_status": "downloaded"
+  },
+  {
+    "label": "Technical audit image",
+    "type": "consulting",
+    "source_page": "https://www.ingecart.eu/auditoriatecnica",
+    "url": "https://static.wixstatic.com/media/aa5b12_32214f88679c47a9960ed99fa7412bf2~mv2.jpg/v1/fill/w_147,h_98,al_c,q_80,usm_0.66_1.00_0.01,blur_2,enc_avif,quality_auto/aa5b12_32214f88679c47a9960ed99fa7412bf2~mv2.jpg",
+    "local_file": "e608230a9e_aa5b12_32214f88679c47a9960ed99fa7412bf2~mv2.jpg",
+    "download_status": "downloaded"
+  },
+  {
+    "label": "TRIWALL project image",
+    "type": "projects",
+    "source_page": "https://www.ingecart.eu/proyectosrecientes",
+    "url": "https://static.wixstatic.com/media/aa5b12_6b4c8d8442dd42b9ac79f8eef8bab9b2~mv2.png/v1/fill/w_49,h_30,al_c,q_85,usm_0.66_1.00_0.01,blur_2,enc_avif,quality_auto/TRIWALL_edited.png",
+    "local_file": "05bd5b510c_TRIWALL_edited.png",
+    "download_status": "downloaded"
+  },
+  {
+    "label": "USA Jumbo project",
+    "type": "projects",
+    "source_page": "https://www.ingecart.eu/proyectosrecientes",
+    "url": "https://static.wixstatic.com/media/aa5b12_093ba955af424435b5d0dabc4787474b~mv2.jpg/v1/fill/w_147,h_104,al_c,q_80,usm_0.66_1.00_0.01,blur_2,enc_avif,quality_auto/USA%20JUMBO.jpg",
+    "local_file": "3ac97f6a3f_USA%20JUMBO.jpg",
+    "download_status": "downloaded"
+  },
+  {
+    "label": "Europe corrugator project",
+    "type": "projects",
+    "source_page": "https://www.ingecart.eu/proyectosrecientes",
+    "url": "https://static.wixstatic.com/media/aa5b12_7b728dc16eb2496e8923e8d369da582c~mv2.jpg/v1/fill/w_147,h_104,al_c,q_80,usm_0.66_1.00_0.01,blur_2,enc_avif,quality_auto/EUROPA%20ONDULADORA.jpg",
+    "local_file": "72e7f37da4_EUROPA%20ONDULADORA.jpg",
+    "download_status": "downloaded"
+  },
+  {
+    "label": "Palletizer project",
+    "type": "projects",
+    "source_page": "https://www.ingecart.eu/proyectosrecientes",
+    "url": "https://static.wixstatic.com/media/aa5b12_bba7905111314673888bf5b2c49c8557~mv2.jpg/v1/fill/w_141,h_86,al_c,q_80,usm_0.66_1.00_0.01,blur_2,enc_avif,quality_auto/PALETIZADOR.jpg",
+    "local_file": "418e01280e_PALETIZADOR.jpg",
+    "download_status": "downloaded"
+  },
+  {
+    "label": "EMBA relocation",
+    "type": "projects",
+    "source_page": "https://www.ingecart.eu/proyectosrecientes",
+    "url": "https://static.wixstatic.com/media/aa5b12_a7ea7f32b6384d348f3724033d65d41d~mv2.jpg/v1/fill/w_147,h_104,al_c,q_80,usm_0.66_1.00_0.01,blur_2,enc_avif,quality_auto/EMBA.jpg",
+    "local_file": "18132f1311_EMBA.jpg",
+    "download_status": "downloaded"
+  },
+  {
+    "label": "News hero MTorres alliance",
+    "type": "news",
+    "source_page": "https://www.ingecart.eu/noticias-1",
+    "url": "https://static.wixstatic.com/media/aa5b12_64a6ac0aec5e41368c404792a6d48737~mv2.jpg/v1/fill/w_932,h_528,fp_0.50_0.50,q_90,enc_avif,quality_auto/aa5b12_64a6ac0aec5e41368c404792a6d48737~mv2.jpg",
+    "local_file": "f2dfb46227_aa5b12_64a6ac0aec5e41368c404792a6d48737~mv2.jpg",
+    "download_status": "downloaded"
+  },
+  {
+    "label": "SuperCorr 2024 image",
+    "type": "news",
+    "source_page": "https://www.ingecart.eu/noticias-1",
+    "url": "https://static.wixstatic.com/media/aa5b12_74e88aeebac54f4e868768154ab771a4~mv2.png/v1/fill/w_932,h_528,fp_0.50_0.50,q_95,enc_avif,quality_auto/aa5b12_74e88aeebac54f4e868768154ab771a4~mv2.png",
+    "local_file": "78a249a966_aa5b12_74e88aeebac54f4e868768154ab771a4~mv2.png",
+    "download_status": "downloaded"
+  },
+  {
+    "label": "McKinley SR1400 post image",
+    "type": "news",
+    "source_page": "https://www.ingecart.eu/noticias-1",
+    "url": "https://static.wixstatic.com/media/aa5b12_8001a7b1cbf445d7ae3fa55b8efd3c64~mv2.webp/v1/fill/w_420,h_238,al_c,lg_1,q_90,enc_avif,quality_auto/aa5b12_8001a7b1cbf445d7ae3fa55b8efd3c64~mv2.webp",
+    "local_file": "1497ce826f_aa5b12_8001a7b1cbf445d7ae3fa55b8efd3c64~mv2.webp",
+    "download_status": "downloaded"
+  }
+]
