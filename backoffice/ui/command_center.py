@@ -471,7 +471,7 @@ class CommandCenter:
                 ("📊 Weekly Performance",      "Generate weekly performance report"),
             ]
             for label, cmd in quick:
-                if st.button(label, use_container_width=True):
+                if st.button(label, width='stretch'):
                     st.session_state.quick_command = cmd
 
             st.markdown("---")
@@ -492,7 +492,7 @@ class CommandCenter:
         ]
         for i, (lbl, cmd) in enumerate(examples):
             with cols[i]:
-                if st.button(lbl, use_container_width=True, key=f"ex_{i}"):
+                if st.button(lbl, width='stretch', key=f"ex_{i}"):
                     st.session_state.quick_command = cmd
 
         # Consume quick command
@@ -508,7 +508,7 @@ class CommandCenter:
 
         col1, col2 = st.columns([4, 1])
         with col2:
-            execute = st.button("🚀 Execute", type="primary", use_container_width=True)
+            execute = st.button("🚀 Execute", type="primary", width='stretch')
 
         if execute and command.strip():
             self._run_command(command.strip(), backoffice_agent)
@@ -581,7 +581,7 @@ class CommandCenter:
 
         elif intent in ("show_tasks", "show_invoices") and isinstance(data, list) and data:
             df = pd.DataFrame(data)
-            st.dataframe(df, use_container_width=True, hide_index=True)
+            st.dataframe(df, width='stretch', hide_index=True)
 
         elif intent == "show_calendar" and isinstance(data, list):
             if data:
@@ -603,7 +603,7 @@ class CommandCenter:
             st.json(data)
 
         elif isinstance(data, list) and data:
-            st.dataframe(pd.DataFrame(data), use_container_width=True, hide_index=True)
+            st.dataframe(pd.DataFrame(data), width='stretch', hide_index=True)
 
         else:
             if data:
@@ -677,7 +677,7 @@ class CommandCenter:
             )
             fig.update_layout(template="plotly_dark", paper_bgcolor="rgba(0,0,0,0)",
                               plot_bgcolor="rgba(0,0,0,0)", legend_title_text="")
-            st.plotly_chart(fig, use_container_width=True)
+            st.plotly_chart(fig, width='stretch')
 
         with col_r:
             rev_df = pd.DataFrame({
@@ -690,7 +690,7 @@ class CommandCenter:
                 color_discrete_sequence=["#10b981", "#3b82f6", "#ef4444"],
             )
             fig.update_layout(template="plotly_dark", paper_bgcolor="rgba(0,0,0,0)")
-            st.plotly_chart(fig, use_container_width=True)
+            st.plotly_chart(fig, width='stretch')
 
         # Monthly revenue bar
         months = ["Jan", "Feb", "Mar", "Apr", "May"]
@@ -703,7 +703,7 @@ class CommandCenter:
         )
         fig2.update_layout(template="plotly_dark", paper_bgcolor="rgba(0,0,0,0)",
                            plot_bgcolor="rgba(0,0,0,0)", showlegend=False, coloraxis_showscale=False)
-        st.plotly_chart(fig2, use_container_width=True)
+        st.plotly_chart(fig2, width='stretch')
 
         # Live data section
         st.markdown("---")
@@ -714,14 +714,14 @@ class CommandCenter:
                 if st.button("🔄 Load Live Tasks"):
                     tasks = backoffice_agent.get_my_tasks("isenar.cta@gmail.com")
                     if tasks:
-                        st.dataframe(pd.DataFrame(tasks), use_container_width=True, hide_index=True)
+                        st.dataframe(pd.DataFrame(tasks), width='stretch', hide_index=True)
                     else:
                         st.info("No tasks found.")
             with col_b:
                 if st.button("🔄 Load Live Invoices"):
                     invoices = backoffice_agent.db.get_invoices(status="sent")
                     if invoices:
-                        st.dataframe(pd.DataFrame(invoices), use_container_width=True, hide_index=True)
+                        st.dataframe(pd.DataFrame(invoices), width='stretch', hide_index=True)
                     else:
                         st.info("No pending invoices.")
         else:
@@ -798,7 +798,7 @@ class CommandCenter:
                     }
                     for s in sources
                 ]
-                st.dataframe(pd.DataFrame(rows), use_container_width=True, hide_index=True)
+                st.dataframe(pd.DataFrame(rows), width='stretch', hide_index=True)
             else:
                 st.info("No sources loaded. Check `config/sources.yaml` and install `pyyaml`.")
 
@@ -806,7 +806,7 @@ class CommandCenter:
             st.markdown("##### ⚡ Actions")
 
             # Run cycle
-            if pipeline and st.button("▶ Run Ingestion Cycle", use_container_width=True, type="primary"):
+            if pipeline and st.button("▶ Run Ingestion Cycle", width='stretch', type="primary"):
                 with st.spinner("Running planning + scraping + intelligence cycle…"):
                     try:
                         loop = asyncio.new_event_loop()
@@ -817,7 +817,7 @@ class CommandCenter:
                         st.error(f"Cycle error: {exc}")
 
             # Reset stats
-            if pipeline and st.button("🔄 Reset Stats", use_container_width=True):
+            if pipeline and st.button("🔄 Reset Stats", width='stretch'):
                 pipeline.reset_stats()
                 st.success("Stats reset.")
 
@@ -838,7 +838,7 @@ class CommandCenter:
                 scraper_type = st.selectbox("Scraper", ["static", "dynamic", "antibot"])
             with sc3:
                 data_type = st.selectbox("Data Type", ["product", "news", "price", "specs"])
-            submitted = st.form_submit_button("🔍 Scrape & Extract", use_container_width=True)
+            submitted = st.form_submit_button("🔍 Scrape & Extract", width='stretch')
 
         if submitted and target_url:
             with st.spinner(f"Scraping {target_url}…"):

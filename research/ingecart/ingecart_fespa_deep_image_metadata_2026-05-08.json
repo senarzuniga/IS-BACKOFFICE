@@ -1,0 +1,35 @@
+{
+  "generated_at": "2026-05-08T15:20:25.496796",
+  "targets": {
+    "ingecart": {
+      "url": "https://www.ingecart.eu/",
+      "pages_scraped": [
+        "https://www.ingecart.eu/"
+      ],
+      "images_found": 0,
+      "images_downloaded": 0,
+      "stats": {
+        "total_found": 0,
+        "downloaded": 0,
+        "failed": 0,
+        "filtered_out": 0
+      },
+      "downloaded_images": []
+    },
+    "fespa": {
+      "url": "https://europe.fespa.com/es/exhibit",
+      "pages_scraped": [
+        "https://europe.fespa.com/es/exhibit"
+      ],
+      "images_found": 0,
+      "images_downloaded": 0,
+      "stats": {
+        "total_found": 0,
+        "downloaded": 0,
+        "failed": 0,
+        "filtered_out": 0
+      },
+      "downloaded_images": []
+    }
+  }
+}

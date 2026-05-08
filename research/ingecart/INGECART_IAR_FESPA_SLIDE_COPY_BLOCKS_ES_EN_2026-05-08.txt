@@ -1,0 +1,27 @@
+[BLOQUE 1 - TITULO]
+ES: INGECART + IAR | IA aplicada para rendimiento industrial medible
+EN: INGECART + IAR | Applied AI for measurable industrial performance
+
+[BLOQUE 2 - DOLOR]
+ES: Paradas, merma y energía impactan margen y competitividad.
+EN: Downtime, scrap, and energy impact margins and competitiveness.
+
+[BLOQUE 3 - PROPUESTA]
+ES: Ingeniería de proceso + agentes IA + herramientas digitales en una sola solución.
+EN: Process engineering + AI agents + digital tools in one integrated solution.
+
+[BLOQUE 4 - ARQUITECTURA]
+ES: ERP/MES/SCADA/IoT -> Integración -> Agentes IA -> Copiloto + Dashboard.
+EN: ERP/MES/SCADA/IoT -> Integration -> AI agents -> Copilot + Dashboard.
+
+[BLOQUE 5 - KPI]
+ES: -10% a -20% paradas | -8% a -15% merma | -5% a -12% energía.
+EN: -10% to -20% downtime | -8% to -15% scrap | -5% to -12% energy.
+
+[BLOQUE 6 - CTA]
+ES: Diagnóstico 2 semanas + Piloto 6-8 semanas.
+EN: 2-week assessment + 6-8 week pilot.
+
+[CIERRE]
+ES: Menos incertidumbre. Más decisiones inteligentes. Más rendimiento.
+EN: Less uncertainty. Smarter decisions. Higher performance.

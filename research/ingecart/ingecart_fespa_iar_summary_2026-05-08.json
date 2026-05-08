@@ -1,0 +1,89 @@
+{
+  "generated_at": "2026-05-08T15:18:40.118236",
+  "stats": {
+    "ingecart_pages": 30,
+    "fespa_pages": 25,
+    "iar_pages": 1
+  },
+  "ingecart_signals": {
+    "automation_and_robotics_pages": [
+      "https://www.ingecart.eu",
+      "https://www.ingecart.eu/auditoriatecnica",
+      "https://www.ingecart.eu/blog",
+      "https://www.ingecart.eu/ingetrans280",
+      "https://www.ingecart.eu/ingetransroller",
+      "https://www.ingecart.eu/mtorres",
+      "https://www.ingecart.eu/noticias-1",
+      "https://www.ingecart.eu/proyectosrecientes",
+      "https://www.ingecart.eu/sistemaretal1400",
+      "https://www.ingecart.eu/yoco-ingecart-no",
+      "https://www.ingecart.eu/post/el-papel-transparente",
+      "https://www.ingecart.eu/post/finaliza-con-éxito-la-instalación-del-sistema-retal-1400-en-mckinley-packaging-texas-usa",
+      "https://www.ingecart.eu/post/ingecart-mtorres",
+      "https://www.ingecart.eu/post/ingecart-y-mtorres-en-supercorr-2024",
+      "https://www.ingecart.eu/noticias",
+      "https://www.ingecart.eu/members-area/consigna/profile",
+      "https://www.ingecart.eu/noticias/tags/drupa-2024",
+      "https://www.ingecart.eu/noticias/tags/ingecart"
+    ],
+    "innovation_pages": [
+      "https://www.ingecart.eu",
+      "https://www.ingecart.eu/auditoriatecnica",
+      "https://www.ingecart.eu/blog",
+      "https://www.ingecart.eu/book-online",
+      "https://www.ingecart.eu/booking-calendar/reunión-de-ingeniería",
+      "https://www.ingecart.eu/contacto",
+      "https://www.ingecart.eu/ingetrans280",
+      "https://www.ingecart.eu/ingetransroller",
+      "https://www.ingecart.eu/mtorres",
+      "https://www.ingecart.eu/noticias-1",
+      "https://www.ingecart.eu/proyectosrecientes",
+      "https://www.ingecart.eu/sistemaretal1400",
+      "https://www.ingecart.eu/yoco-ingecart-no",
+      "https://www.ingecart.eu/post/finaliza-con-éxito-la-instalación-del-sistema-retal-1400-en-mckinley-packaging-texas-usa",
+      "https://www.ingecart.eu/post/ingecart-mtorres",
+      "https://www.ingecart.eu/post/ingecart-y-mtorres-en-supercorr-2024",
+      "https://www.ingecart.eu/booking-calendar/corrugadora-bhs",
+      "https://www.ingecart.eu/booking-calendar/instalación-completa-vsop-520",
+      "https://www.ingecart.eu/noticias",
+      "https://www.ingecart.eu/service-page/reunión-de-ingeniería"
+    ]
+  },
+  "fespa_signals": {
+    "exhibit_related_pages": [
+      "https://europe.fespa.com/es/exhibit",
+      "https://europe.fespa.com/es/corrugated",
+      "https://europe.fespa.com/es/corrugated/corrugated",
+      "https://europe.fespa.com/es/corrugated/corrugated-news",
+      "https://europe.fespa.com/es/corrugated/exhibit-corrugated",
+      "https://europe.fespa.com/es/european-sign-expo",
+      "https://europe.fespa.com/es/european-sign-expo/exhibit",
+      "https://europe.fespa.com/es/european-sign-expo/visit-europeansignexpo",
+      "https://europe.fespa.com/es/event-hub",
+      "https://europe.fespa.com/es/exhibit/book-stand-2026",
+      "https://europe.fespa.com/es/exhibit/global-sales-teams",
+      "https://europe.fespa.com/es/exhibit/sales-brochure",
+      "https://europe.fespa.com/es/exhibit/sponsors-partners",
+      "https://europe.fespa.com/es/exhibit/sponsorship",
+      "https://europe.fespa.com/es/fespa-foundation",
+      "https://europe.fespa.com/es/fespa-foundation/fespa-foundation-sponsors",
+      "https://europe.fespa.com/es/fespa-news",
+      "https://europe.fespa.com/es/fespa-news/media-partners",
+      "https://europe.fespa.com/es/global-print-expo",
+      "https://europe.fespa.com/es/global-print-expo/exhibit-fespaglobalprintexpo"
+    ],
+    "industry_trend_pages": [
+      "https://europe.fespa.com/es/corrugated/corrugated",
+      "https://europe.fespa.com/es/corrugated/corrugated-news",
+      "https://europe.fespa.com/es/european-sign-expo",
+      "https://europe.fespa.com/es/exhibit/sponsors-partners",
+      "https://europe.fespa.com/es/global-print-expo"
+    ]
+  },
+  "iar_signals": {
+    "latest_information_pages": [
+      "https://www.iar-soft.com/ia"
+    ],
+    "ai_value_pages": []
+  }
+}

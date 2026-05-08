@@ -10,6 +10,7 @@ PyMuPDF>=1.24.0
 python-dateutil>=2.9.0
 requests>=2.31.0
 streamlit>=1.36.0
+plotly>=5.18.0
 # Document Analysis dependencies
 pdfplumber>=0.10.0
 python-pptx>=0.6.23
@@ -47,7 +48,7 @@ redis>=5.0.4
 # Intelligence Ingestion Pipeline
 pyyaml>=6.0.1
 # Optional: playwright (install chromium separately with `playwright install chromium`)
-# playwright>=1.44.0
+playwright>=1.44.0
 # Optional on Win+Py3.14 due native build/toolchain constraints:
 # python-telegram-bot>=21.3
 # xhtml2pdf>=0.2.15
