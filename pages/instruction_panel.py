@@ -1,4 +1,4 @@
-﻿"""Instruction Panel â€” Natural Language Command Center."""
+"""Instruction Panel â€” Natural Language Command Center."""
 
 from __future__ import annotations
 
@@ -51,8 +51,13 @@ def _examples() -> list[tuple[str, str]]:
     return [
         ("Explore folder", "Check C:\\Users\\Inaki Senar\\Documents and tell me what's inside"),
         ("Summarize docs", "Read all PDFs in C:\\Users\\Inaki Senar\\Documents and create a summary"),
-        ("Extract and timeline", "Extract all names and dates from C:\\Users\\Inaki Senar\\Documents and make a timeline"),
         ("Executive analysis", "Analyze all documents in C:\\Users\\Inaki Senar\\Documents and create an executive summary"),
+        ("Client brief from folder", "Analyze all documents in C:\\Users\\Inaki Senar\\Documents and create a client brief"),
+        ("Presentation from folder", "Read all files in C:\\Users\\Inaki Senar\\Documents and generate a presentation outline"),
+        ("Analyze a web page", "Analyze https://en.wikipedia.org/wiki/Artificial_intelligence and create a summary"),
+        ("URL executive summary", "Fetch https://en.wikipedia.org/wiki/Artificial_intelligence and generate an executive summary"),
+        ("URL client brief", "Analyze https://en.wikipedia.org/wiki/Artificial_intelligence and create a client brief for my presentation"),
+        ("Extract and timeline", "Extract all names and dates from C:\\Users\\Inaki Senar\\Documents and make a timeline"),
         ("Compare specs", "Read the product specs folder, extract technical specifications, and generate a comparison table"),
     ]
 
@@ -78,13 +83,20 @@ def _execute_instruction(instruction: str) -> None:
             conversation_context=st.session_state["ip_instruction_history"][-5:],
         )
 
-        if not parsed.get("folder_path"):
-            status.update(label="Folder path required", state="error")
-            st.error("I could not find a valid folder path. Please include a folder path in your instruction.")
+        if not parsed.get("folder_path") and not parsed.get("url"):
+            status.update(label="Source required", state="error")
+            st.error(
+                "I could not find a valid folder path or URL in your instruction. "
+                "Please include a folder path (e.g. C:\\Users\\you\\Documents) "
+                "or a full URL (https://...) in your instruction."
+            )
             st.session_state["ip_is_processing"] = False
             return
 
-        st.write(f"Folder: {parsed['folder_path']}")
+        if parsed.get("url"):
+            st.write(f"URL: {parsed['url']}")
+        elif parsed.get("folder_path"):
+            st.write(f"Folder: {parsed['folder_path']}")
         st.write(f"Intent: {parsed.get('intent', 'custom')}")
         st.write(f"Output: {parsed.get('output_type', 'summary')}")
 
@@ -293,12 +305,17 @@ def main() -> None:
         st.markdown(
             "\n".join(
                 [
-                    "- Read local folders",
+                    "- Analyze local folders or web URLs",
                     "- Parse PDF, DOCX, XLSX, CSV, TXT, JSON, XML, HTML, PPTX",
                     "- Extract entities, topics, and summaries",
                     "- Analyze cross-document relationships",
-                    "- Generate summary, report, timeline, comparison, presentation outline",
+                    "- Generate: summary, executive summary, **client brief**, report, presentation, timeline, comparison",
                     "- Optional AI enhancement with OPENAI_API_KEY",
+                    "",
+                    "**URL examples:**",
+                    "- Analyze https://... and create a summary",
+                    "- Fetch https://... and generate an executive summary",
+                    "- Analyze https://... and create a client brief",
                 ]
             )
         )
