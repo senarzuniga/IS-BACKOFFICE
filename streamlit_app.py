@@ -9,4 +9,5 @@ st.set_page_config(
 
 from backoffice.ui.app import main  # noqa: E402
 
-main()
+if __name__ == "__main__":
+    main()

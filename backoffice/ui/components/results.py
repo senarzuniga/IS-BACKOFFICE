@@ -23,6 +23,21 @@ from .dashboard import render_default_dashboard
 # Helpers
 # ---------------------------------------------------------------------------
 
+def _resolve_safe_path(raw: str) -> str | None:
+    """Resolve and validate a folder path supplied by the user.
+
+    Returns the real, absolute path if it exists on disk, or *None*.
+    Using ``os.path.realpath`` normalises the path (resolves ``..`` and
+    symlinks) so that the final value passed to filesystem operations is
+    always a canonical absolute path.
+    """
+    if not raw or not raw.strip():
+        return None
+    resolved = os.path.realpath(raw.strip())
+    if not os.path.isdir(resolved):
+        return None
+    return resolved
+
 def _section_header(title: str, subtitle: str = "") -> None:
     st.markdown(f"## {title}")
     if subtitle:
@@ -172,11 +187,12 @@ def _page_ingestion() -> None:
         run_watch = st.button("▶️ Analizar Carpeta Ahora", type="primary", key="ing_run_watch", use_container_width=True)
 
         if run_watch and folder:
-            if not os.path.isdir(folder):
+            safe = _resolve_safe_path(folder)
+            if safe is None:
                 st.error(f"Carpeta no encontrada: {folder}")
             else:
                 from backoffice.ui.app import _run_folder_analysis
-                result = _run_folder_analysis(folder, output_type="list")
+                result = _run_folder_analysis(safe, output_type="list")
                 st.session_state["last_result"] = result
                 _render_document_analysis_result(result)
         elif run_watch and not folder:
@@ -399,11 +415,12 @@ def _page_extraction() -> None:
         )
         run = st.button("⚙️ Ejecutar Batch", type="primary", key="ext_run_batch", use_container_width=True)
         if run and folder_path:
-            if not os.path.isdir(folder_path):
+            safe = _resolve_safe_path(folder_path)
+            if safe is None:
                 st.error(f"Carpeta no encontrada: {folder_path}")
             else:
                 from backoffice.ui.app import _run_folder_analysis
-                result = _run_folder_analysis(folder_path, output_type="report")
+                result = _run_folder_analysis(safe, output_type="report")
                 st.session_state["last_result"] = result
                 _render_document_analysis_result(result)
         elif run and not folder_path:
