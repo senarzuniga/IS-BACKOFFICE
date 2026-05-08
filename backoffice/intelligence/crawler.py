@@ -55,7 +55,8 @@ class IntelligenceCrawler:
             "User-Agent": self.USER_AGENT,
             "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
             "Accept-Language": "es-ES,es;q=0.9,en;q=0.8",
-            "Accept-Encoding": "gzip, deflate, br",
+            # Keep to encodings requests decodes reliably without extra codecs.
+            "Accept-Encoding": "gzip, deflate",
         })
         return s
 
