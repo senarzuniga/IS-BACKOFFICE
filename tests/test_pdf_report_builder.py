@@ -1,6 +1,7 @@
 import base64
 import unittest
 from datetime import datetime
+from pathlib import Path
 
 try:
     import fitz  # PyMuPDF
@@ -61,3 +62,21 @@ class TestPDFReportBuilder(unittest.TestCase):
         self.assertGreaterEqual(doc.page_count, 1)
         self.assertEqual(doc.metadata.get("author"), "IS-BACKOFFICE")
         doc.close()
+
+    def test_default_corporate_logo_exists_and_is_usable(self):
+        from document_analysis.pdf_report_builder import PDFReportBuilder
+
+        repo_root = Path(__file__).resolve().parent.parent
+        logo_path = repo_root / "assets" / "branding" / "is_backoffice_logo.png"
+        self.assertTrue(logo_path.exists())
+        logo_bytes = logo_path.read_bytes()
+        self.assertGreater(len(logo_bytes), 0)
+
+        pdf_bytes = PDFReportBuilder().build_pdf(
+            "Contenido",
+            title="Informe con logo por defecto",
+            created_at=datetime(2026, 5, 9, 8, 30, 0),
+            header_image_bytes=logo_bytes,
+            source_type="TXT",
+        )
+        self.assertTrue(pdf_bytes.startswith(b"%PDF"))
