@@ -45,6 +45,7 @@ _STATE_DEFAULTS: dict[str, Any] = {
     "da_analysis": None,
     "da_output": None,
     "da_output_format": "summary",
+    "da_pdf_title": "",
     "da_processing": False,
     "da_progress_log": [],
     "da_selected_files": [],
@@ -192,6 +193,21 @@ def _render_sidebar() -> None:
         st.subheader("6. Export")
         output = st.session_state.get("da_output")
         if output:
+            if not st.session_state.get("da_pdf_title"):
+                st.session_state["da_pdf_title"] = output.title
+
+            st.session_state["da_pdf_title"] = st.text_input(
+                "PDF title",
+                value=st.session_state.get("da_pdf_title", output.title),
+                key="da_pdf_title_input",
+                help="Título centrado en el informe PDF.",
+            )
+            header_image = st.file_uploader(
+                "Header image (PNG/JPG)",
+                type=["png", "jpg", "jpeg"],
+                help="Imagen de cabecera (arriba a la izquierda).",
+                key="da_pdf_header_image",
+            )
             st.download_button(
                 "â¬‡ï¸ Download as Markdown",
                 data=output.content.encode("utf-8"),
@@ -199,6 +215,26 @@ def _render_sidebar() -> None:
                 mime="text/markdown",
                 width="stretch",
             )
+            try:
+                from document_analysis.pdf_report_builder import PDFReportBuilder
+
+                pdf_bytes = PDFReportBuilder().build_pdf(
+                    output.content,
+                    title=st.session_state.get("da_pdf_title", output.title) or output.title,
+                    created_at=output.generated_at,
+                    header_image_bytes=header_image.getvalue() if header_image else None,
+                    source_type="CODE" if output.output_format.value == "database_entry" else "TXT",
+                )
+                st.download_button(
+                    "â¬‡ï¸ Download as PDF",
+                    data=pdf_bytes,
+                    file_name=f"analysis_{datetime.now().strftime('%Y%m%d_%H%M')}.pdf",
+                    mime="application/pdf",
+                    width="stretch",
+                )
+            except Exception as exc:  # noqa: BLE001
+                _log(f"PDF export error: {exc}")
+                st.warning("PDF export is currently unavailable. Please try again.")
             if output.structured_data:
                 st.download_button(
                     "â¬‡ï¸ Download Structured JSON",
@@ -770,4 +806,3 @@ def main() -> None:
 
 
 main()
-
