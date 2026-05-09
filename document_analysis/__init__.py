@@ -6,6 +6,7 @@ from document_analysis.content_extractor import ContentExtractor
 from document_analysis.context_analyzer import ContextAnalyzer
 from document_analysis.output_generator import OutputGenerator
 from document_analysis.ai_enhancer import AIEnhancer
+from document_analysis.pdf_report_builder import PDFReportBuilder
 
 __all__ = [
     "FolderReader",
@@ -14,4 +15,5 @@ __all__ = [
     "ContextAnalyzer",
     "OutputGenerator",
     "AIEnhancer",
+    "PDFReportBuilder",
 ]
