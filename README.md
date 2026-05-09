@@ -142,9 +142,42 @@ python -m unittest discover -s tests -q
     npm install
     ```
   - Start the frontend development server:
-    ```bash
-    npm start
-    ```
+     ```bash
+     npm start
+     ```
+
+### GitHub Desktop Sync Block (mantener versión local útil)
+
+Usa este bloque antes/después de **Fetch origin / Pull origin** en GitHub Desktop para quedarte con cambios que aportan a la app y descartar ruido local.  
+Los secretos permanecen en local y no deben crear discrepancias.
+
+```bash
+# 1) Asegurar exclusión local de secretos (no subir, no comparar)
+for pattern in ".env" ".env.*" "!.env.example" ".streamlit/secrets.toml"; do
+  grep -qxF "$pattern" .git/info/exclude || echo "$pattern" >> .git/info/exclude
+done
+
+# 2) Actualizar versión local desde remoto
+git fetch origin
+git pull --rebase --autostash
+
+# 3) Revisar discrepancias locales y mantener solo lo funcional
+git diff --name-only -z | while IFS= read -r -d '' file; do
+  case "$file" in
+    api/*|backoffice/*|document_analysis/*|instruction_panel/*|pages/*|tests/*|main.py|streamlit_app.py|requirements.txt|docker-compose.yml|README.md)
+      echo "KEEP (aporta): $file"
+      ;;
+    .env|.env.*|.streamlit/secrets.toml)
+      echo "LOCAL SECRET (se mantiene local, sin discrepancia): $file"
+      git restore --staged "$file" 2>/dev/null || true
+      ;;
+    *)
+      echo "DROP (no aporta): $file"
+      git restore --staged --worktree "$file"
+      ;;
+  esac
+done
+```
 
 ---
 
