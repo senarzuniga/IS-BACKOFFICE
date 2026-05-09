@@ -45,6 +45,75 @@ def _section_header(title: str, subtitle: str = "") -> None:
     st.markdown("---")
 
 
+def _render_signal_cards(signals: list[dict[str, str]], columns: int = 3) -> None:
+    cols = st.columns(columns)
+    for idx, signal in enumerate(signals):
+        with cols[idx % columns]:
+            st.markdown(f"**{signal['title']}**")
+            if signal.get("severity"):
+                st.caption(signal["severity"])
+            st.write(signal["summary"])
+            if signal.get("action"):
+                st.write(f"→ {signal['action']}")
+
+
+def _build_structured_response(result: dict[str, Any]) -> dict[str, Any]:
+    themes = result.get("themes", [])
+    errors = result.get("errors", [])
+    source = result.get("folder_path") or result.get("url") or "uploaded files"
+    doc_count = result.get("doc_count", result.get("file_count", 0))
+    relationships = result.get("relationships", 0)
+    timeline_events = result.get("timeline_events", 0)
+    narrative = result.get("narrative") or (
+        f"Se analizaron {doc_count} documento(s) y se consolidó un resumen trazable del workspace."
+    )
+
+    key_findings = [
+        f"{doc_count} documento(s) procesados en el workspace actual.",
+        f"{relationships} relaciones cruzadas detectadas para soporte analítico.",
+        f"{timeline_events} evento(s) temporales listos para revisión operativa.",
+    ]
+    if themes:
+        key_findings.append(f"Temas dominantes: {', '.join(themes[:3])}.")
+    if errors:
+        key_findings.append(f"Se detectaron {len(errors)} incidencia(s) de parsing para revisión.")
+
+    recommendations = [
+        "Convertir este análisis en brief ejecutivo compartible.",
+        "Revisar entidades con mayor densidad de relaciones.",
+        "Activar seguimiento sobre documentos o cuentas con mayor riesgo.",
+    ]
+    if errors:
+        recommendations.insert(0, "Revisar los documentos con errores antes de automatizar decisiones.")
+
+    return {
+        "executive_summary": narrative,
+        "key_findings": key_findings,
+        "recommendations": recommendations,
+        "sources": [
+            f"Origen principal: {source}",
+            f"Formato generado: {result.get('output_format', 'summary')}",
+            f"Confidence proxy: {min(0.99, 0.75 + (0.03 * min(len(themes), 5))):.2f}",
+        ],
+    }
+
+
+def _render_structured_response(result: dict[str, Any]) -> None:
+    structured = _build_structured_response(result)
+    st.markdown("### Structured Intelligence Output")
+    with st.expander("[1] Executive Summary", expanded=True):
+        st.write(structured["executive_summary"])
+    with st.expander("[2] Key Findings", expanded=True):
+        for finding in structured["key_findings"]:
+            st.write(f"• {finding}")
+    with st.expander("[3] Recommendations", expanded=False):
+        for recommendation in structured["recommendations"]:
+            st.write(f"→ {recommendation}")
+    with st.expander("[4] Sources", expanded=False):
+        for source in structured["sources"]:
+            st.write(f"- {source}")
+
+
 def _render_document_analysis_result(result: dict[str, Any]) -> None:
     source = result.get("folder_path") or result.get("url") or "—"
     st.subheader("📂 Document Analysis Results")
@@ -64,28 +133,36 @@ def _render_document_analysis_result(result: dict[str, Any]) -> None:
     themes = result.get("themes", [])
     if themes:
         st.markdown("**Key Themes**")
-        theme_cols = st.columns(min(5, len(themes)))
-        for i, theme in enumerate(themes[:10]):
-            theme_cols[i % len(theme_cols)].markdown(f"`{theme}`")
+        theme_cards = [
+            {
+                "title": theme,
+                "severity": "Insight block",
+                "summary": f"Tema detectado automáticamente en el análisis contextual #{i + 1}.",
+                "action": "Track source evidence",
+            }
+            for i, theme in enumerate(themes[:6])
+        ]
+        _render_signal_cards(theme_cards, columns=min(3, len(theme_cards)))
+
+    _render_structured_response(result)
 
     output_content = result.get("output_content", "")
     if output_content:
-        st.markdown("---")
-        st.markdown("**Generated Output**")
-        fmt = result.get("output_format", "")
-        if fmt == "database_entry":
-            try:
-                st.json(json.loads(output_content))
-            except json.JSONDecodeError:
-                st.code(output_content, language="json")
-        else:
-            st.markdown(output_content)
-        st.download_button(
-            "⬇️ Download as Markdown",
-            data=output_content.encode("utf-8"),
-            file_name=f"analysis_{datetime.now().strftime('%Y%m%d_%H%M')}.md",
-            mime="text/markdown",
-        )
+        with st.expander("[5] Deep Dive", expanded=False):
+            fmt = result.get("output_format", "")
+            if fmt == "database_entry":
+                try:
+                    st.json(json.loads(output_content))
+                except json.JSONDecodeError:
+                    st.code(output_content, language="json")
+            else:
+                st.markdown(output_content)
+            st.download_button(
+                "⬇️ Download as Markdown",
+                data=output_content.encode("utf-8"),
+                file_name=f"analysis_{datetime.now().strftime('%Y%m%d_%H%M')}.md",
+                mime="text/markdown",
+            )
 
     errors = result.get("errors", [])
     if errors:
@@ -104,6 +181,229 @@ def _render_document_analysis_result(result: dict[str, Any]) -> None:
 
 def _page_dashboard() -> None:
     render_default_dashboard()
+
+
+# ---------------------------------------------------------------------------
+# Workspace pages
+# ---------------------------------------------------------------------------
+
+def _page_clients_accounts() -> None:
+    _section_header("👥 Clients & Accounts", "Unified client workspace with activity, risks, documents, and next actions")
+
+    col1, col2, col3, col4 = st.columns(4)
+    col1.metric("Priority accounts", "18", delta="+2")
+    col2.metric("Accounts at risk", "3", delta="+1")
+    col3.metric("Unread client emails", "11", delta="-4")
+    col4.metric("AI next actions", "9", delta="+3")
+
+    st.markdown("### Client 360")
+    _render_signal_cards(
+        [
+            {
+                "title": "Atlas Manufacturing",
+                "severity": "High risk",
+                "summary": "Actividad -27%, 34 días sin respuesta y 2 propuestas rechazadas.",
+                "action": "Contactar director de cuenta",
+            },
+            {
+                "title": "Nova Retail",
+                "severity": "Opportunity",
+                "summary": "Mayor interacción comercial y forecast ascendente en mayo.",
+                "action": "Preparar propuesta ejecutiva",
+            },
+            {
+                "title": "Boreal Energy",
+                "severity": "Watchlist",
+                "summary": "Emails pendientes y documentación incompleta para cierre.",
+                "action": "Solicitar documentación faltante",
+            },
+        ]
+    )
+
+    tabs = st.tabs(["Resumen", "Timeline", "Riesgos", "Documentos", "Next Actions"])
+    with tabs[0]:
+        st.write("Vista centrada en perfil, forecast, actividad y salud comercial de la cuenta.")
+    with tabs[1]:
+        timeline = pd.DataFrame(
+            [
+                {"Fecha": "2026-05-08", "Evento": "Email de pricing recibido", "Origen": "Email"},
+                {"Fecha": "2026-05-05", "Evento": "Reunión de seguimiento", "Origen": "CRM note"},
+                {"Fecha": "2026-05-01", "Evento": "Oferta actualizada", "Origen": "PDF"},
+            ]
+        )
+        st.dataframe(timeline, use_container_width=True, hide_index=True)
+    with tabs[2]:
+        st.info("Cada riesgo explica el porqué: inactividad, pricing y señales documentales.")
+    with tabs[3]:
+        st.caption("Fuentes trazables: emails, PDFs, notas CRM y resúmenes ejecutivos.")
+    with tabs[4]:
+        st.write("→ Reactivar cuentas en silencio")
+        st.write("→ Programar revisión comercial semanal")
+        st.write("→ Generar brief ejecutivo compartible")
+
+
+def _page_deals_pipeline() -> None:
+    _section_header("💼 Deals & Pipeline", "Pipeline monitoring, pricing anomalies, and close-plan recommendations")
+
+    col1, col2, col3, col4 = st.columns(4)
+    col1.metric("Open pipeline", "€4.8M", delta="+6%")
+    col2.metric("Likely to close", "€1.9M", delta="+12%")
+    col3.metric("Stalled deals", "5", delta="+2")
+    col4.metric("Pricing anomalies", "2", delta="+1")
+
+    st.markdown("### Executive Snapshot")
+    _render_signal_cards(
+        [
+            {
+                "title": "Delta Renewal",
+                "severity": "Pricing anomaly",
+                "summary": "Descuento 18% sobre benchmark y margen fuera de política.",
+                "action": "Validar pricing",
+            },
+            {
+                "title": "Nova Expansion",
+                "severity": "Closing signal",
+                "summary": "Nueva actividad con stakeholders y mejor probabilidad de cierre.",
+                "action": "Actualizar close plan",
+            },
+            {
+                "title": "Helix Platform",
+                "severity": "Frozen deal",
+                "summary": "21 días sin cambio en la etapa y sin emails respondidos.",
+                "action": "Escalar con liderazgo",
+            },
+        ]
+    )
+
+    pipeline = pd.DataFrame(
+        [
+            {"Deal": "Nova Expansion", "Stage": "Proposal", "Probability": "78%", "Next step": "Executive review"},
+            {"Deal": "Delta Renewal", "Stage": "Negotiation", "Probability": "62%", "Next step": "Pricing approval"},
+            {"Deal": "Helix Platform", "Stage": "Qualification", "Probability": "34%", "Next step": "Re-engagement"},
+        ]
+    )
+    st.dataframe(pipeline, use_container_width=True, hide_index=True)
+
+
+def _page_research_documents() -> None:
+    _section_header("📄 Research & Documents", "Research-first workspace with grounded outputs and source traceability")
+
+    col1, col2, col3 = st.columns(3)
+    col1.metric("Tracked sources", "126", delta="+9")
+    col2.metric("Executive briefs", "6", delta="+2")
+    col3.metric("Open research tasks", "4", delta="-1")
+
+    st.markdown("### Structured Outputs")
+    _render_signal_cards(
+        [
+            {
+                "title": "Executive Summary",
+                "severity": "Level 1",
+                "summary": "Resumen corto para decisión rápida.",
+                "action": "Open brief",
+            },
+            {
+                "title": "Key Findings",
+                "severity": "Level 2",
+                "summary": "Insights priorizados con trazabilidad y severidad.",
+                "action": "Inspect findings",
+            },
+            {
+                "title": "Deep Dive",
+                "severity": "Level 3",
+                "summary": "Explicación completa con fuentes y contexto persistente.",
+                "action": "Review evidence",
+            },
+        ]
+    )
+
+    shortcut1, shortcut2 = st.columns(2)
+    with shortcut1:
+        if st.button("Open Document Analysis", use_container_width=True, key="research_open_doc_analysis"):
+            st.switch_page("pages/document_analysis.py")
+    with shortcut2:
+        if st.button("Open Instruction Panel", use_container_width=True, key="research_open_instruction_panel"):
+            st.switch_page("pages/instruction_panel.py")
+
+    st.markdown("### Source Traceability Layer")
+    st.write("- Email X · `renewal-thread-atlas.eml`")
+    st.write("- PDF Y · `pricing-delta-q2.pdf`")
+    st.write("- CRM note Z · `nova-opportunity-2026-05-08`")
+
+
+def _page_alerts_risks() -> None:
+    _section_header("🚨 Alerts & Risks", "Explainable alerts for activity drops, stalled opportunities, and pricing anomalies")
+
+    _render_signal_cards(
+        [
+            {
+                "title": "Risk Score = 82",
+                "severity": "Cliente Atlas",
+                "summary": "34 días sin actividad, 2 ofertas rechazadas y caída de revenue del 18%.",
+                "action": "Open account workspace",
+            },
+            {
+                "title": "Risk Score = 74",
+                "severity": "Pipeline EMEA",
+                "summary": "Baja conversión semanal y exceso de oportunidades congeladas.",
+                "action": "Inspect pipeline",
+            },
+            {
+                "title": "Risk Score = 69",
+                "severity": "Oferta Delta",
+                "summary": "Pricing fuera de rango y margen por debajo del objetivo.",
+                "action": "Review commercial approval",
+            },
+        ]
+    )
+
+    with st.expander("Why the system thinks this", expanded=True):
+        st.write("• Inactividad prolongada detectada en comunicaciones recientes.")
+        st.write("• Cambios anómalos en pricing respecto al benchmark del portfolio.")
+        st.write("• Señales documentales y de pipeline combinadas en el score.")
+
+
+def _page_reports_executive() -> None:
+    _section_header("📈 Reports & Executive", "Executive reporting, decision narratives, and structured recommendations")
+
+    st.markdown("### Executive Blocks")
+    with st.expander("[1] Executive Summary", expanded=True):
+        st.write("El negocio mantiene crecimiento previsto, pero requiere foco inmediato en cuentas y deals con señales de riesgo.")
+    with st.expander("[2] Risks", expanded=True):
+        st.write("• 3 cuentas estratégicas con actividad decreciente.")
+        st.write("• 2 oportunidades congeladas sin plan de cierre.")
+    with st.expander("[3] Opportunities", expanded=False):
+        st.write("• Nova Expansion y Atlas Upsell muestran mayor probabilidad de cierre.")
+    with st.expander("[4] Recommendations", expanded=False):
+        st.write("→ Revisar pricing crítico.")
+        st.write("→ Lanzar workflow de follow-up automático.")
+    with st.expander("[5] Sources", expanded=False):
+        st.write("- Emails de clientes")
+        st.write("- PDFs de ofertas")
+        st.write("- Notas CRM")
+    preview = pd.DataFrame(
+        [
+            {"Report": "Executive Snapshot", "Status": "Ready", "Audience": "Leadership"},
+            {"Report": "Risk Brief", "Status": "Scheduled", "Audience": "Sales Ops"},
+            {"Report": "Pipeline Review", "Status": "Ready", "Audience": "Revenue team"},
+        ]
+    )
+    st.dataframe(preview, use_container_width=True, hide_index=True)
+
+
+def _page_settings_integrations() -> None:
+    _section_header("⚙️ Settings & Integrations", "Capability registry, integrations, and operational configuration")
+
+    capabilities = pd.DataFrame(
+        [
+            {"Capability": "Offer validation", "Visible in UI": "Deals & Pipeline", "Trigger": "Deal review"},
+            {"Capability": "Forecasting", "Visible in UI": "Intelligence Center", "Trigger": "Executive snapshot"},
+            {"Capability": "Semantic search", "Visible in UI": "Research & Documents", "Trigger": "AI command"},
+            {"Capability": "Review queue", "Visible in UI": "Alerts & Risks", "Trigger": "Risk workflow"},
+        ]
+    )
+    st.dataframe(capabilities, use_container_width=True, hide_index=True)
+    st.info("La plataforma expone capacidades técnicas como espacios operativos visibles.")
 
 
 # ---------------------------------------------------------------------------
@@ -823,6 +1123,29 @@ Ingesta documentos y datos para obtener contenido personalizado.
 def _page_agents() -> None:
     _section_header("🤖 AGENTS", "Orchestrate AI agents, monitor status, and configure parameters")
 
+    _render_signal_cards(
+        [
+            {
+                "title": "Research Agent",
+                "severity": "Running",
+                "summary": "Última acción: sintetizó 12 fuentes y generó un brief ejecutivo.",
+                "action": "Open research workspace",
+            },
+            {
+                "title": "Pricing Agent",
+                "severity": "Attention",
+                "summary": "Última acción: detectó una anomalía de pricing en Delta Renewal.",
+                "action": "Inspect deal",
+            },
+            {
+                "title": "Forecast Agent",
+                "severity": "Healthy",
+                "summary": "Última acción: actualizó el forecast comercial y el snapshot ejecutivo.",
+                "action": "Review forecast",
+            },
+        ]
+    )
+
     tab_run, tab_status, tab_config = st.tabs(["▶️ Ejecutar", "🟢 Estado", "⚙️ Configurar"])
 
     with tab_run:
@@ -849,12 +1172,12 @@ def _page_agents() -> None:
     with tab_status:
         st.subheader("Estado de los agentes")
         status_data = pd.DataFrame([
-            {"Agente": "IngestionAgent", "Estado": "✅ OK", "Última ejecución": "hace 2 min", "Documentos": 120, "Errores": 0},
-            {"Agente": "CleaningAgent", "Estado": "✅ OK", "Última ejecución": "hace 5 min", "Registros": 450, "Errores": 0},
-            {"Agente": "ExtractionAgent", "Estado": "✅ OK", "Última ejecución": "hace 8 min", "Entidades": 1450, "Errores": 2},
-            {"Agente": "GraphAgent", "Estado": "✅ OK", "Última ejecución": "hace 10 min", "Nodos": 890, "Errores": 0},
-            {"Agente": "AnalyticsAgent", "Estado": "✅ OK", "Última ejecución": "hace 12 min", "Insights": 15, "Errores": 0},
-            {"Agente": "ReportingAgent", "Estado": "⚠️ Pendiente", "Última ejecución": "nunca", "Informes": 0, "Errores": 0},
+            {"Agente": "Research Agent", "Estado": "✅ OK", "Última acción": "Executive brief", "Coste": "$0.43", "Logs": "12 fuentes"},
+            {"Agente": "Market Agent", "Estado": "✅ OK", "Última acción": "Signal refresh", "Coste": "$0.31", "Logs": "4 señales"},
+            {"Agente": "Pricing Agent", "Estado": "⚠️ Atención", "Última acción": "Pricing anomaly", "Coste": "$0.22", "Logs": "1 anomalía"},
+            {"Agente": "Sales Agent", "Estado": "✅ OK", "Última acción": "Follow-up queue", "Coste": "$0.18", "Logs": "9 acciones"},
+            {"Agente": "Forecast Agent", "Estado": "✅ OK", "Última acción": "Revenue update", "Coste": "$0.27", "Logs": "Forecast 5.2M"},
+            {"Agente": "Executive Agent", "Estado": "🟢 Listo", "Última acción": "Board summary", "Coste": "$0.16", "Logs": "3 recomendaciones"},
         ])
         st.dataframe(status_data, use_container_width=True)
 
@@ -923,10 +1246,26 @@ _AGENTS_PAGES = {"Run All Agents", "Agent Status", "Configure Agents"}
 
 
 def render_main_content() -> None:
-    active_page = st.session_state.get("active_page", "Dashboard")
+    active_page = st.session_state.get("active_page", "Intelligence Center")
 
-    if active_page == "Dashboard":
+    if active_page in {"Dashboard", "Intelligence Center"}:
         _page_dashboard()
+    elif active_page == "Clients & Accounts":
+        _page_clients_accounts()
+    elif active_page == "Deals & Pipeline":
+        _page_deals_pipeline()
+    elif active_page == "Research & Documents":
+        _page_research_documents()
+    elif active_page == "AI Agents":
+        _page_agents()
+    elif active_page == "Alerts & Risks":
+        _page_alerts_risks()
+    elif active_page == "Knowledge Graph":
+        _page_graph()
+    elif active_page == "Reports & Executive":
+        _page_reports_executive()
+    elif active_page == "Settings & Integrations":
+        _page_settings_integrations()
     elif active_page in _INGESTION_PAGES:
         _page_ingestion()
     elif active_page in _CLEANING_PAGES:
