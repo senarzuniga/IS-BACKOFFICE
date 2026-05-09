@@ -27,6 +27,7 @@ st.set_page_config(
 _ROOT = Path(__file__).resolve().parent.parent
 if str(_ROOT) not in sys.path:
     sys.path.insert(0, str(_ROOT))
+_DEFAULT_PDF_HEADER_IMAGE = _ROOT / "assets" / "branding" / "is_backoffice_logo.png"
 
 # ---------------------------------------------------------------------------
 # Session-state helpers
@@ -45,7 +46,6 @@ _STATE_DEFAULTS: dict[str, Any] = {
     "da_analysis": None,
     "da_output": None,
     "da_output_format": "summary",
-    "da_pdf_title": "",
     "da_processing": False,
     "da_progress_log": [],
     "da_selected_files": [],
@@ -62,6 +62,15 @@ def _init_state() -> None:
 def _log(msg: str) -> None:
     ts = datetime.now().strftime("%H:%M:%S")
     st.session_state["da_progress_log"].append(f"[{ts}] {msg}")
+
+
+def _default_pdf_header_image_bytes() -> bytes | None:
+    try:
+        if _DEFAULT_PDF_HEADER_IMAGE.exists():
+            return _DEFAULT_PDF_HEADER_IMAGE.read_bytes()
+    except Exception as exc:  # noqa: BLE001
+        _log(f"Default logo read error: {exc}")
+    return None
 
 
 # ---------------------------------------------------------------------------
@@ -193,19 +202,19 @@ def _render_sidebar() -> None:
         st.subheader("6. Export")
         output = st.session_state.get("da_output")
         if output:
-            if not st.session_state.get("da_pdf_title"):
-                st.session_state["da_pdf_title"] = output.title
+            if "da_pdf_title_input" not in st.session_state:
+                st.session_state["da_pdf_title_input"] = output.title
 
-            st.session_state["da_pdf_title"] = st.text_input(
+            st.text_input(
                 "PDF title",
-                value=st.session_state.get("da_pdf_title", output.title),
+                value=st.session_state.get("da_pdf_title_input", output.title),
                 key="da_pdf_title_input",
                 help="Título centrado en el informe PDF.",
             )
             header_image = st.file_uploader(
                 "Header image (PNG/JPG)",
                 type=["png", "jpg", "jpeg"],
-                help="Imagen de cabecera (arriba a la izquierda).",
+                help="Imagen de cabecera (arriba a la izquierda). Si no cargas una, se usa la corporativa por defecto.",
                 key="da_pdf_header_image",
             )
             st.download_button(
@@ -220,9 +229,11 @@ def _render_sidebar() -> None:
 
                 pdf_bytes = PDFReportBuilder().build_pdf(
                     output.content,
-                    title=st.session_state.get("da_pdf_title", output.title) or output.title,
+                    title=st.session_state.get("da_pdf_title_input", output.title) or output.title,
                     created_at=output.generated_at,
-                    header_image_bytes=header_image.getvalue() if header_image else None,
+                    header_image_bytes=(
+                        header_image.getvalue() if header_image else _default_pdf_header_image_bytes()
+                    ),
                     source_type="CODE" if output.output_format.value == "database_entry" else "TXT",
                 )
                 st.download_button(
