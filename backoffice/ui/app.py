@@ -14,7 +14,7 @@ from backoffice.ui.components.sidebar import render_sidebar
 
 def _initialize_state() -> None:
     defaults: dict[str, Any] = {
-        "active_page": "Dashboard",
+        "active_page": "Intelligence Center",
         "current_section": "",
         "current_action": "",
         "last_result": None,
@@ -322,36 +322,23 @@ def _handle_quick_action(label: str) -> None:
         st.switch_page("pages/instruction_panel.py")
         return
 
-    _QUICK_ACTION_MAP: dict[str, tuple[str, str]] = {
-        "Process All New Files": ("📥 INGESTION", "Bulk import"),
-        "Today's Dashboard": ("", ""),
-        "Ask AI Assistant": ("📊 ANALYTICS", "Natural language query"),
-        "Create Summary": ("📑 REPORTING", "Generate report"),
-        "Settings": ("📑 REPORTING", "View report history"),
+    _QUICK_ACTION_PAGE_MAP: dict[str, str] = {
+        "Show Risky Accounts": "Alerts & Risks",
+        "Review Pipeline": "Deals & Pipeline",
+        "Open Agent Center": "AI Agents",
     }
 
-    if label not in _QUICK_ACTION_MAP:
-        return
-
-    section, action = _QUICK_ACTION_MAP[label]
-    st.session_state["current_section"] = section
-    st.session_state["current_action"] = action
-
-    # Set a completed result immediately so render_main_content shows the correct
-    # panel on the next render cycle (without requiring a separate "Run" click).
-    if section and action:
+    target_page = _QUICK_ACTION_PAGE_MAP.get(label)
+    if target_page:
+        st.session_state["active_page"] = target_page
         st.session_state["last_result"] = {
-            "section": section,
-            "action": action,
             "status": "complete",
-            "payload": {},
             "completed_at": datetime.now().isoformat(timespec="seconds"),
-            "message": f"Quick action triggered: {label}. Adjust options and click "
-                       "Run Selected Action to re-execute with custom settings.",
+            "message": f"AI command routed to {target_page}.",
         }
-    else:
-        # Dashboard — reset result to show the default view
-        st.session_state["last_result"] = None
+        _append_log(f"Quick action: {label}")
+        st.rerun()
+        return
 
     _append_log(f"Quick action: {label}")
     st.rerun()
