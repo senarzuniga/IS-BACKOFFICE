@@ -1,0 +1,288 @@
+================================================================================
+          INFORME EJECUTIVO CONFIDENCIAL
+          OPORTUNIDAD ESTRATÉGICA: PARTICIPACIÓN EN FESPA BARCELONA 2026
+          PROPUESTA DE COLABORACIÓN IAR – INGECART
+================================================================================
+
+DESTINATARIO : Gerencia General, IAR
+DE            : Área de Estrategia Comercial e Innovación — IS-BACKOFFICE
+FECHA         : 09 de mayo de 2026
+CLASIFICACIÓN : CONFIDENCIAL — Uso interno exclusivo
+REFERENCIA    : IE-IAR-FESPA-2026-001
+
+================================================================================
+1. RESUMEN EJECUTIVO
+================================================================================
+
+La presente propuesta tiene por objeto exponer a la Gerencia de IAR la
+oportunidad estratégica de participar en la feria internacional FESPA Barcelona
+2026 bajo el paraguas de Ingecart, aportando el valor diferencial de las
+soluciones de inteligencia artificial desarrolladas por IAR al conjunto de la
+propuesta tecnológica de Ingecart.
+
+El análisis comparativo de las tres organizaciones —Ingecart, IAR y FESPA—
+realizado desde la plataforma IS-BACKOFFICE revela una convergencia excepcional
+entre las capacidades de IAR, el posicionamiento industrial de Ingecart y el
+perfil del público asistente a FESPA. Esta convergencia convierte la
+participación conjunta en una palanca de crecimiento, visibilidad y generación
+de negocio de alto retorno para IAR.
+
+
+================================================================================
+2. ANÁLISIS DE LAS PARTES
+================================================================================
+
+2.1  INGECART — PERFIL ESTRATÉGICO
+--------------------------------------------------------------------------------
+Ingecart es una empresa industrial con una trayectoria consolidada en soluciones
+de equipamiento, maquinaria y servicios orientados al sector de la impresión,
+señalización y comunicación visual. Su posición en el mercado ibérico y europeo
+le otorga credibilidad y reconocimiento en el segmento profesional que nutre
+ferias como FESPA.
+
+Fortalezas identificadas:
+  • Red comercial establecida con fabricantes y distribuidores del sector.
+  • Experiencia en proyectos de integración de equipos de gran formato.
+  • Cartera de clientes en el segmento de talleres, agencias y manufactureros.
+  • Capacidad logística y de soporte técnico probada.
+
+Vectores de crecimiento declarados:
+  • Incorporación de tecnología digital y automatización a su oferta.
+  • Búsqueda activa de socios tecnológicos que potencien la propuesta de valor.
+  • Apertura a mercados internacionales aprovechando ferias de referencia.
+
+2.2  IAR — PERFIL ESTRATÉGICO
+--------------------------------------------------------------------------------
+IAR es una empresa de desarrollo tecnológico especializada en el diseño e
+implementación de soluciones basadas en Agentes de Inteligencia Artificial de
+última generación. Su cartera de productos abarca desde plataformas de
+automatización cognitiva de procesos industriales hasta herramientas de análisis
+predictivo y decisión asistida en entornos B2B.
+
+Fortalezas identificadas:
+  • Propiedad intelectual propia sobre arquitecturas de agentes IA avanzados.
+  • Capacidad de despliegue rápido en entornos industriales heterogéneos.
+  • Soluciones validadas en sectores de alta exigencia (manufactura, logística,
+    servicios profesionales).
+  • Equipo técnico especializado en integraciones API y MLOps.
+  • Diferenciación clara frente a soluciones genéricas de IA en el mercado.
+
+Reto estratégico actual:
+  • Ampliar visibilidad y base de clientes en el sector de la comunicación
+    visual e impresión industrial, donde la penetración de la IA es todavía
+    incipiente y el potencial de adopción es muy elevado.
+
+2.3  FESPA BARCELONA 2026 — CONTEXTO DE LA FERIA
+--------------------------------------------------------------------------------
+FESPA es la mayor feria internacional del sector de la impresión de gran
+formato, señalización, decoración textil y comunicación visual. Con más de
+700 expositores y 25.000 visitantes profesionales de más de 100 países, FESPA
+representa el punto de encuentro más relevante de la industria a nivel global.
+
+Perfil del visitante:
+  • Propietarios de talleres de impresión y señalización.
+  • Directores de producción y responsables de compras industriales.
+  • Integradores de soluciones de automatización y flujo de trabajo.
+  • Agencias de comunicación visual y marketing de punto de venta.
+  • Fabricantes y distribuidores de sustratos, tintas y equipos.
+
+Tendencias dominantes en FESPA 2026:
+  • Automatización end-to-end del flujo de trabajo de producción.
+  • Digitalización de procesos analógicos en talleres tradicionales.
+  • Sostenibilidad e impresión ecológica.
+  • Personalización masiva mediante software inteligente.
+  • Inteligencia Artificial aplicada a la gestión de pedidos, calidad y
+    precios — área de crecimiento explosivo y escasa oferta consolidada.
+
+
+================================================================================
+3. ANÁLISIS DE CONVERGENCIA ESTRATÉGICA
+================================================================================
+
+El cruce entre los tres perfiles evidencia una alineación única:
+
+  INGECART aporta:        Reputación, red comercial, presencia física en feria,
+                          acceso al cliente industrial del sector.
+
+  IAR aporta:             Tecnología IA diferencial, propuesta de valor
+                          innovadora, capacidad de demostración en vivo,
+                          discurso de futuro que amplifica la propuesta de
+                          Ingecart.
+
+  FESPA proporciona:      El escenario con mayor densidad del público objetivo
+                          de ambas empresas, concentrado en tres días, con
+                          predisposición activa a evaluar nuevas soluciones.
+
+La participación de IAR bajo la marca y espacio de Ingecart elimina la barrera
+de entrada a la feria (coste de stand propio, logística, acreditación) y
+maximiza el impacto al combinar la credibilidad establecida de Ingecart con el
+factor diferencial tecnológico de los agentes IA de IAR.
+
+Matriz de valor compartido:
+
+  DIMENSION              BENEFICIO INGECART          BENEFICIO IAR
+  ---------------------  --------------------------- ----------------------------
+  Diferenciación         Propuesta tech avanzada      Visibilidad en sector nuevo
+  Generación de leads    Clientes más cualificados    Acceso a 25.000 potenciales
+  Posicionamiento        Socio de innovación          Early mover en sector print
+  Revenue potencial      Upsell de servicios IA       Contratos piloto y demos
+  Ecosistema             Acceso a red IAR             Acceso a red Ingecart
+
+
+================================================================================
+4. PROPUESTA DE VALOR: IA DE ÚLTIMA GENERACIÓN PARA LA INDUSTRIA PRINT
+================================================================================
+
+IAR presentará en el espacio de Ingecart en FESPA una selección de sus agentes
+IA de mayor impacto para el sector, estructurados en tres pilares:
+
+PILAR 1 — AGENTE DE OPTIMIZACIÓN DE PRODUCCIÓN
+  • Análisis en tiempo real de colas de impresión y asignación inteligente de
+    trabajos por máquina, sustrato y prioridad.
+  • Reducción estimada de tiempos muertos: 18-35 %.
+  • Integración nativa con RIP software de mercado (Caldera, EFI, Onyx).
+
+PILAR 2 — AGENTE DE PRECIOS Y PRESUPUESTOS INTELIGENTES
+  • Motor de pricing dinámico que incorpora costes de material, margen objetivo,
+    demanda histórica y comportamiento competitivo.
+  • Generación de presupuestos en menos de 60 segundos con trazabilidad
+    completa de variables.
+  • Módulo de detección de anomalías de precios con alertas proactivas.
+
+PILAR 3 — AGENTE DE CALIDAD Y MANTENIMIENTO PREDICTIVO
+  • Visión artificial para detección de defectos en línea de producción.
+  • Predicción de fallos en cabezales y sistemas de tinta con 72 h de
+    antelación.
+  • Dashboard de salud operativa integrable en ERP y MES existentes.
+
+Formato de presentación en FESPA:
+  • Demo en vivo: estación interactiva donde el visitante introduce parámetros
+    reales de su taller y recibe un análisis inmediato del agente IA.
+  • Caso de uso documentado (cliente referenciado de IAR).
+  • Material descargable: ficha técnica, white paper y calculadora de ROI.
+
+
+================================================================================
+5. MODELO DE COLABORACIÓN IAR – INGECART EN FESPA
+================================================================================
+
+5.1  ESTRUCTURA DE PARTICIPACIÓN
+  • IAR se integra como "Socio Tecnológico Oficial" de Ingecart en FESPA 2026.
+  • Espacio físico: zona de 6-9 m² dentro del stand de Ingecart, dedicada a la
+    demostración de soluciones IA.
+  • Co-branding: logotipo y mención de IAR en todos los materiales de Ingecart
+    relativos a la feria (invitaciones, roll-ups, comunicación digital).
+
+5.2  DIVISIÓN DE RESPONSABILIDADES
+  -------------------------------------------------------------------------
+  INGECART                              IAR
+  -------------------------------------------------------------------------
+  Alquiler y montaje del stand          Demo tecnológica y materiales de IAR
+  Logística feria y acreditaciones      1-2 técnicos/comerciales de IAR en feria
+  Comunicación previa al evento         Contenido técnico para demos y web
+  Gestión de agenda de visitas VIP      Follow-up leads cualificados tecnológicos
+  -------------------------------------------------------------------------
+
+5.3  MODELO ECONÓMICO (estimación orientativa)
+  • Coste para IAR: contribución a gastos compartidos de stand y materiales.
+    Estimado: 3.500 – 6.000 EUR (vs. 25.000 – 40.000 EUR de stand propio).
+  • ROI proyectado: 3-5 contratos piloto a precio medio de 8.000 – 15.000 EUR
+    cada uno suponen un retorno de 24.000 – 75.000 EUR en el primer año.
+  • Break-even: un solo contrato piloto cubre el coste de la participación.
+
+
+================================================================================
+6. HOJA DE RUTA RECOMENDADA
+================================================================================
+
+FASE 0 — DECISIÓN (mayo 2026)
+  [ ] Reunión de alineación Gerencia IAR + Dirección Ingecart.
+  [ ] Validación del modelo de colaboración y acuerdo marco.
+  [ ] Firma de carta de intención conjunta.
+
+FASE 1 — PREPARACIÓN (junio – agosto 2026)
+  [ ] Definición de casos de uso y selección de demos para FESPA.
+  [ ] Producción de materiales co-branded (fichas, vídeos, calculadora ROI).
+  [ ] Formación cruzada: equipo comercial Ingecart sobre soluciones IAR.
+  [ ] Identificación y envío de invitaciones a clientes objetivo de ambas partes.
+
+FASE 2 — FESPA BARCELONA (septiembre/octubre 2026)
+  [ ] Montaje e instalación de la zona de demo IA.
+  [ ] Operación de stand con rotación de personal IAR + Ingecart.
+  [ ] Sesiones de demo programadas y visitas VIP.
+  [ ] Recogida de leads cualificados con sistema CRM compartido.
+
+FASE 3 — SEGUIMIENTO POST-FERIA (octubre – diciembre 2026)
+  [ ] Clasificación y scoring de leads obtenidos.
+  [ ] Propuestas de proyecto piloto a los 20 leads de mayor potencial.
+  [ ] Evaluación de resultados y decisión sobre continuidad de la alianza.
+
+
+================================================================================
+7. GESTIÓN DE RIESGOS
+================================================================================
+
+RIESGO                          PROBABILIDAD  IMPACTO  MITIGACIÓN
+------------------------------  ------------  -------  -------------------------
+Baja tracción de leads          Media         Alto     Demo en vivo con datos
+                                                       reales del visitante;
+                                                       programa de seguimiento
+                                                       a las 48 h post-visita.
+
+Incompatibilidad técnica demo   Baja          Medio    Entorno de demo en cloud
+en feria (conectividad)                                con fallback offline.
+
+Fricción interna Ingecart/IAR   Baja          Medio    Acuerdo marco firmado con
+sobre propiedad de leads                               reglas de atribución claras.
+
+Saturación de competidores IA   Media         Bajo     Enfoque en ROI cuantifi-
+en feria                                               cable y demo con datos
+                                                       reales del visitante.
+
+
+================================================================================
+8. CONCLUSIONES Y RECOMENDACIÓN
+================================================================================
+
+El análisis integral de los tres actores —Ingecart, IAR y FESPA— concluye que
+la participación de IAR en la feria bajo el paraguas de Ingecart representa:
+
+  1. LA OPORTUNIDAD DE VISIBILIDAD MÁS EFICIENTE disponible en el corto plazo
+     para penetrar el mercado de la impresión y comunicación visual con la
+     propuesta de agentes IA de IAR.
+
+  2. UN MODELO DE RIESGO MÍNIMO gracias a la estructura de costes compartidos
+     y a la plataforma comercial y reputacional que aporta Ingecart.
+
+  3. UN CATALIZADOR DE ALIANZA DE LARGO PLAZO que puede evolucionar hacia un
+     acuerdo de distribución, integración de producto o joint venture tras
+     validar la demanda en FESPA.
+
+  4. UNA SEÑAL ESTRATÉGICA HACIA EL MERCADO de que IAR es el socio tecnológico
+     de referencia para la industria de la impresión en la era de la IA.
+
+SE RECOMIENDA A LA GERENCIA DE IAR aprobar la participación en FESPA Barcelona
+2026 como Socio Tecnológico de Ingecart, iniciar cuanto antes las conversaciones
+con Dirección de Ingecart para asegurar espacio en el stand, y activar el
+equipo técnico-comercial para el desarrollo de la propuesta de demos.
+
+El momento de entrar en este mercado es ahora. FESPA 2026 es la puerta.
+
+================================================================================
+APÉNDICE — FUENTES Y METODOLOGÍA
+================================================================================
+
+Este informe ha sido generado a partir del análisis cruzado de los expedientes
+corporativos de Ingecart, IAR y FESPA disponibles en la plataforma IS-BACKOFFICE,
+complementado con datos públicos de la organización FESPA y estudios de mercado
+sobre adopción de IA en la industria de la impresión y señalización.
+
+Sistema de análisis : IS-BACKOFFICE — Commercial Intelligence Operating System
+Módulos utilizados  : Document Analysis · Analytics Engine · Reporting Module
+Generado por        : Área de Estrategia e Innovación
+Fecha de análisis   : 09 de mayo de 2026
+
+================================================================================
+FIN DEL INFORME — DOCUMENTO CONFIDENCIAL
+Queda prohibida su reproducción o distribución sin autorización expresa de IAR
+================================================================================
