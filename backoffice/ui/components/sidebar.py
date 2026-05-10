@@ -1,174 +1,108 @@
-﻿from __future__ import annotations
+from __future__ import annotations
 
-import os
+from datetime import datetime
 from typing import Any
 
 import streamlit as st
 
+# ---------------------------------------------------------------------------
+# Navigation structure: (section_label, [(page_name, icon), ...])
+# ---------------------------------------------------------------------------
+_NAV_STRUCTURE: list[tuple[str, list[tuple[str, str]]]] = [
+    ("📥 INGESTION", [
+        ("File Upload",       "📂"),
+        ("URL Ingest",        "🌐"),
+        ("Watch Folder",      "👁️"),
+        ("Bulk Import",       "📦"),
+        ("Scraper",           "🕷️"),
+    ]),
+    ("🧹 CLEANING", [
+        ("Deduplication",     "🔁"),
+        ("Standardization",   "📐"),
+        ("Quality Audit",     "✅"),
+        ("Outlier Detection", "⚠️"),
+        ("Fuzzy Merge",       "🔗"),
+    ]),
+    ("🔍 EXTRACTION", [
+        ("Text NER",          "📝"),
+        ("PDF Extraction",    "📄"),
+        ("Batch Processing",  "⚙️"),
+        ("Few-Shot Examples", "🎯"),
+        ("Table Detection",   "📊"),
+    ]),
+    ("🕸️ GRAPH", [
+        ("Search Graph",         "🔍"),
+        ("Entity Explorer",      "🧩"),
+        ("Path Finder",          "🛣️"),
+        ("Community Detection",  "👥"),
+        ("Subgraph Visualizer",  "🌐"),
+    ]),
+    ("📊 ANALYTICS", [
+        ("Dataset Insights", "💡"),
+        ("NL Query",         "💬"),
+        ("Forecasting",      "📈"),
+        ("What-If Analysis", "🧪"),
+        ("Dashboard Builder","🖥️"),
+    ]),
+    ("📑 REPORTING", [
+        ("Generate Report",  "📋"),
+        ("Schedule Report",  "⏰"),
+        ("Export",           "💾"),
+        ("Email Template",   "📧"),
+        ("Report History",   "🗂️"),
+    ]),
+    ("🤖 AGENTS", [
+        ("Run All Agents",   "▶️"),
+        ("Agent Status",     "🟢"),
+        ("Configure Agents", "⚙️"),
+    ]),
+]
 
-WORKFLOWS: dict[str, dict[str, Any]] = {
-    "Workspace Reader": {
-        "summary": "Read local folders, inspect supported files, and verify what the parser can process.",
-        "actions": ["Scan folder", "Analyze folder"],
-    },
-    "Document Factory": {
-        "summary": "Create summaries, briefs, timelines, and reports directly from folder content.",
-        "actions": ["Create document"],
-    },
-    "Web Intelligence": {
-        "summary": "Scrape web pages and convert them into structured competitive intelligence.",
-        "actions": ["Scrape URL"],
-    },
+MODULE_KEYS = ["ingestion", "cleaning", "extraction", "graph", "analytics", "reporting"]
+
+_SECTION_TO_MODULE: dict[str, str] = {
+    "📥 INGESTION": "ingestion",
+    "🧹 CLEANING": "cleaning",
+    "🔍 EXTRACTION": "extraction",
+    "🕸️ GRAPH": "graph",
+    "📊 ANALYTICS": "analytics",
+    "📑 REPORTING": "reporting",
+    "🤖 AGENTS": "agents",
 }
 
-OUTPUT_FORMAT_OPTIONS = {
-    "Summary": "summary",
-    "Executive Summary": "executive_summary",
-    "Full Report": "report",
-    "Presentation Outline": "presentation",
-    "Document List": "list",
-    "Database Entry (JSON)": "database_entry",
-    "Knowledge Graph Export": "knowledge_graph",
-    "Intelligence Brief": "new_brief",
-    "Comparison Table": "comparison",
-    "Timeline": "timeline",
-}
+
+def _dot(is_healthy: bool) -> str:
+    return "🟢" if is_healthy else "🔴"
 
 
-def _status_label(is_ready: bool) -> str:
-    return "Ready" if is_ready else "Needs setup"
+def _render_system_status(health: dict[str, bool]) -> None:
+    st.sidebar.markdown("---")
+    st.sidebar.subheader("⚙️ System Status")
+    for module in MODULE_KEYS:
+        label = module.title()
+        state = _dot(bool(health.get(module, False)))
+        st.sidebar.markdown(f"{state} **{label}**")
 
+    memory_pct = int(st.session_state.get("memory_usage", 87))
+    st.sidebar.caption("Memory usage")
+    st.sidebar.progress(memory_pct / 100.0)
+    st.sidebar.caption(f"{memory_pct}% memory")
 
-def _render_capability_status() -> None:
-    st.sidebar.subheader("Capability Status")
-
-    ai_ready = bool(os.environ.get("OPENAI_API_KEY"))
-    scraping_ready = True
-    try:
-        from backoffice.ingestion.intelligence.agents.scraper_agent import ScraperAgent  # noqa: F401
-    except Exception:
-        scraping_ready = False
-
-    capability_rows = [
-        ("Folder intelligence", True, "Local discovery, parsing, and analysis are available."),
-        ("AI rewriting", ai_ready, "OpenAI-powered output enhancement for generated documents."),
-        ("Web intelligence", scraping_ready, "Static, dynamic, and antibot scraping pipelines."),
-    ]
-
-    for label, ready, description in capability_rows:
-        state = "OK" if ready else "WARN"
-        st.sidebar.markdown(f"**{label}**")
-        st.sidebar.caption(f"{state} - {_status_label(ready)}")
-        st.sidebar.caption(description)
-
-
-def _render_folder_inputs(prefix: str) -> dict[str, Any]:
-    return {
-        "folder_path": st.sidebar.text_input(
-            "Folder path",
-            key=f"{prefix}_folder_path",
-            placeholder="C:/Users/you/Documents/project",
-        ),
-        "recursive": st.sidebar.toggle("Include sub-folders", value=True, key=f"{prefix}_recursive"),
-        "max_file_size_mb": st.sidebar.slider(
-            "Max file size (MB)",
-            min_value=1,
-            max_value=200,
-            value=50,
-            key=f"{prefix}_max_file_size_mb",
-        ),
-    }
-
-
-def _render_action_inputs(workflow: str, action: str) -> dict[str, Any]:
-    payload: dict[str, Any] = {}
-
-    if workflow == "Workspace Reader":
-        payload.update(_render_folder_inputs("workspace_reader"))
-        payload["include_entity_preview"] = st.sidebar.toggle(
-            "Preview extracted entities",
-            value=action == "Analyze folder",
-            key="workspace_reader_include_entity_preview",
-        )
-
-    elif workflow == "Document Factory":
-        payload.update(_render_folder_inputs("document_factory"))
-        selected_label = st.sidebar.selectbox(
-            "Document type",
-            options=list(OUTPUT_FORMAT_OPTIONS.keys()),
-            index=1,
-            key="document_factory_output_format_label",
-        )
-        payload["output_format"] = OUTPUT_FORMAT_OPTIONS[selected_label]
-        payload["use_ai"] = st.sidebar.toggle(
-            "Enhance with AI",
-            value=True,
-            key="document_factory_use_ai",
-        )
-        payload["save_output"] = st.sidebar.toggle(
-            "Save generated file",
-            value=True,
-            key="document_factory_save_output",
-        )
-        payload["output_directory"] = st.sidebar.text_input(
-            "Save directory",
-            key="document_factory_output_directory",
-            placeholder="Leave empty to save into the source folder",
-        )
-        payload["output_name"] = st.sidebar.text_input(
-            "Output file name",
-            value="generated_brief",
-            key="document_factory_output_name",
-            placeholder="generated_brief",
-        )
-
-    elif workflow == "Web Intelligence":
-        payload["url"] = st.sidebar.text_input(
-            "Target URL",
-            key="web_intelligence_url",
-            placeholder="https://example.com/news/product-launch",
-        )
-        payload["scraper_type"] = st.sidebar.selectbox(
-            "Scraper mode",
-            ["static", "dynamic", "antibot"],
-            key="web_intelligence_scraper_type",
-        )
-        payload["data_type"] = st.sidebar.selectbox(
-            "Expected data",
-            ["product", "news", "price", "specs"],
-            key="web_intelligence_data_type",
-        )
-        payload["save_output"] = st.sidebar.toggle(
-            "Save intelligence brief",
-            value=True,
-            key="web_intelligence_save_output",
-        )
-        payload["output_directory"] = st.sidebar.text_input(
-            "Save directory",
-            key="web_intelligence_output_directory",
-            placeholder="Leave empty to save in the workspace root",
-        )
-        payload["output_name"] = st.sidebar.text_input(
-            "Brief file name",
-            value="web_intelligence_brief",
-            key="web_intelligence_output_name",
-            placeholder="web_intelligence_brief",
-        )
-
-    return payload
+    last_activity = st.session_state.get("last_activity", datetime.now().isoformat(timespec="seconds"))
+    st.sidebar.caption(f"Last activity: {last_activity}")
 
 
 def _render_quick_actions() -> str | None:
     st.sidebar.markdown("---")
-    st.sidebar.subheader("Quick Actions")
-
-    if st.sidebar.button("Open Document Analysis Page", width="stretch"):
+    st.sidebar.subheader("⚡ Quick Actions")
+    if st.sidebar.button("📄 Document Analysis", key="qa_doc_analysis", use_container_width=True):
         return "Document Analysis"
-    if st.sidebar.button("Open Instruction Panel", width="stretch"):
+    if st.sidebar.button("💬 Instruction Panel", key="qa_instruction", use_container_width=True):
         return "Instruction Panel"
-    if st.sidebar.button("Reset to Dashboard", width="stretch"):
-        return "Dashboard"
-
+    if st.sidebar.button("⚡ Process All Files", key="qa_process_all", use_container_width=True):
+        return "Process All New Files"
+    if st.sidebar.button("🤖 Ask AI Assistant", key="qa_ai_assistant", use_container_width=True):
+        return "Ask AI Assistant"
     return None
 
 
@@ -176,40 +110,59 @@ def render_sidebar() -> dict[str, Any]:
     st.markdown(
         """
         <style>
-            section[data-testid=\"stSidebar\"] {
-                width: 340px !important;
+            section[data-testid="stSidebar"] { width: 280px !important; }
+            .nav-section-header {
+                font-size: 0.72rem;
+                font-weight: 700;
+                letter-spacing: 0.08em;
+                text-transform: uppercase;
+                padding: 8px 0 2px 0;
+                opacity: 0.7;
             }
         </style>
         """,
         unsafe_allow_html=True,
     )
 
-    st.sidebar.title("IS-BACKOFFICE")
-    st.sidebar.caption("One sidebar, three workflows, each mapped to a real engine.")
+    module_health = st.session_state.get(
+        "module_health",
+        {m: True for m in MODULE_KEYS},
+    )
 
-    _render_capability_status()
+    st.sidebar.markdown("## 🏢 IS-BACKOFFICE")
+    st.sidebar.caption("AI Back Office Intelligence")
     st.sidebar.markdown("---")
 
-    workflow = st.sidebar.radio(
-        "Primary workflow",
-        list(WORKFLOWS.keys()),
-        index=0,
-        key="sidebar_workflow",
-    )
-    st.sidebar.caption(WORKFLOWS[workflow]["summary"])
+    active_page = st.session_state.get("active_page", "Dashboard")
 
-    actions = WORKFLOWS[workflow]["actions"]
-    action = st.sidebar.selectbox("Action", actions, index=0, key="sidebar_action")
-    payload = _render_action_inputs(workflow, action)
+    # Dashboard home button
+    if st.sidebar.button("🏠 Dashboard", key="nav_Dashboard", use_container_width=True):
+        st.session_state["active_page"] = "Dashboard"
+        st.rerun()
 
-    run_action = st.sidebar.button("Run workflow", type="primary", width="stretch")
+    # Render navigation sections
+    for section_label, items in _NAV_STRUCTURE:
+        st.sidebar.markdown(
+            f'<div class="nav-section-header">{section_label}</div>',
+            unsafe_allow_html=True,
+        )
+        for page_name, icon in items:
+            btn_label = f"{icon} {page_name}"
+            is_active = active_page == page_name
+            btn_key = f"nav_{page_name.replace(' ', '_')}"
+            if st.sidebar.button(btn_label, key=btn_key, use_container_width=True):
+                st.session_state["active_page"] = page_name
+                # Also map active_page to legacy current_section for backward compat
+                module = _SECTION_TO_MODULE.get(section_label, "")
+                st.session_state["_active_section"] = section_label
+                st.rerun()
+
+    _render_system_status(module_health)
     quick_action = _render_quick_actions()
 
     return {
-        "workflow": workflow,
-        "action": action,
-        "payload": payload,
-        "run_action": run_action,
+        "active_page": st.session_state.get("active_page", "Dashboard"),
         "quick_action": quick_action,
+        "run_action": False,
+        "payload": {},
     }
-
