@@ -3,9 +3,12 @@
 from __future__ import annotations
 
 import os
+import logging
 from typing import Any
 
 from document_analysis.models import AnalysisOutput, FolderAnalysis
+
+logger = logging.getLogger(__name__)
 
 
 class AIEnhancer:
@@ -81,7 +84,10 @@ class AIEnhancer:
             import openai  # noqa: F401
 
             return True
-        except ImportError:
+        except Exception as exc:  # noqa: BLE001
+            # Some dependency stacks (e.g. httpcore on unsupported Python versions)
+            # can fail during import with non-ImportError exceptions.
+            logger.warning("OpenAI integration disabled: %s", exc)
             return False
 
     def _call_openai(self, system: str, user: str) -> str:
