@@ -1,0 +1,136 @@
+[
+  {
+    "product_id": "ING-PROD-001",
+    "name": "Wide-Format Inkjet Printer — UV",
+    "category": "large_format_printing",
+    "subcategory": "uv_printer",
+    "description": "UV-curable wide-format inkjet printer for rigid and flexible substrates",
+    "market_segment": ["workshops", "agencies", "manufacturers"],
+    "currency": "EUR",
+    "technology_integration_candidate": true,
+    "ai_agent_fit": "production_optimisation"
+  },
+  {
+    "product_id": "ING-PROD-002",
+    "name": "Wide-Format Inkjet Printer — Latex",
+    "category": "large_format_printing",
+    "subcategory": "latex_printer",
+    "description": "HP Latex or equivalent wide-format printer for eco-friendly indoor/outdoor",
+    "market_segment": ["workshops", "agencies"],
+    "currency": "EUR",
+    "technology_integration_candidate": true,
+    "ai_agent_fit": "production_optimisation"
+  },
+  {
+    "product_id": "ING-PROD-003",
+    "name": "Wide-Format Inkjet Printer — Eco-Solvent",
+    "category": "large_format_printing",
+    "subcategory": "eco_solvent_printer",
+    "description": "Eco-solvent wide-format printer for outdoor signage and vehicle wrapping",
+    "market_segment": ["workshops", "signage"],
+    "currency": "EUR",
+    "technology_integration_candidate": true,
+    "ai_agent_fit": "production_optimisation"
+  },
+  {
+    "product_id": "ING-PROD-004",
+    "name": "Roll-to-Roll Printing System",
+    "category": "large_format_printing",
+    "subcategory": "roll_to_roll",
+    "description": "High-volume flexible substrate printing for banners and textiles",
+    "market_segment": ["manufacturers"],
+    "currency": "EUR",
+    "technology_integration_candidate": true,
+    "ai_agent_fit": "production_optimisation"
+  },
+  {
+    "product_id": "ING-PROD-005",
+    "name": "Flatbed Printer",
+    "category": "large_format_printing",
+    "subcategory": "flatbed",
+    "description": "Direct printing on rigid substrates: foam board, acrylic, wood, aluminium",
+    "market_segment": ["signage", "decoration"],
+    "currency": "EUR",
+    "technology_integration_candidate": true,
+    "ai_agent_fit": "production_optimisation"
+  },
+  {
+    "product_id": "ING-PROD-006",
+    "name": "Digital Cutting Plotter",
+    "category": "cutting_finishing",
+    "subcategory": "cutting_plotter",
+    "description": "Contour and kiss-cut digital finishing for print shops",
+    "market_segment": ["workshops", "agencies", "manufacturers"],
+    "currency": "EUR",
+    "technology_integration_candidate": false,
+    "ai_agent_fit": null
+  },
+  {
+    "product_id": "ING-PROD-007",
+    "name": "Hot/Cold Laminator",
+    "category": "cutting_finishing",
+    "subcategory": "laminator",
+    "description": "Protective lamination systems for wide-format prints",
+    "market_segment": ["workshops", "agencies"],
+    "currency": "EUR",
+    "technology_integration_candidate": false,
+    "ai_agent_fit": null
+  },
+  {
+    "product_id": "ING-PROD-008",
+    "name": "CNC Routing & Milling Machine",
+    "category": "cutting_finishing",
+    "subcategory": "cnc_router",
+    "description": "CNC-driven rigid material shaping for signage and POS displays",
+    "market_segment": ["signage_manufacturers"],
+    "currency": "EUR",
+    "technology_integration_candidate": true,
+    "ai_agent_fit": "predictive_maintenance"
+  },
+  {
+    "product_id": "ING-PROD-009",
+    "name": "Caldera RIP Software",
+    "category": "workflow_software",
+    "subcategory": "rip_software",
+    "description": "Professional RIP and production workflow management software",
+    "vendor": "Caldera",
+    "market_segment": ["workshops", "agencies", "manufacturers"],
+    "currency": "EUR",
+    "technology_integration_candidate": true,
+    "ai_agent_fit": "production_optimisation"
+  },
+  {
+    "product_id": "ING-PROD-010",
+    "name": "EFI Fiery RIP",
+    "category": "workflow_software",
+    "subcategory": "rip_software",
+    "description": "Color management and job ticketing solution",
+    "vendor": "EFI",
+    "market_segment": ["workshops", "manufacturers"],
+    "currency": "EUR",
+    "technology_integration_candidate": true,
+    "ai_agent_fit": "production_optimisation"
+  },
+  {
+    "product_id": "ING-PROD-011",
+    "name": "Consumables — Inks",
+    "category": "consumables",
+    "subcategory": "inks",
+    "description": "UV, latex, eco-solvent, and dye-sublimation inks compatible with distributed hardware",
+    "market_segment": ["all"],
+    "currency": "EUR",
+    "technology_integration_candidate": false,
+    "ai_agent_fit": null
+  },
+  {
+    "product_id": "ING-PROD-012",
+    "name": "Consumables — Substrates & Media",
+    "category": "consumables",
+    "subcategory": "substrates",
+    "description": "PVC vinyl, canvas, fabric, foam board, acrylic, and specialty media",
+    "market_segment": ["all"],
+    "currency": "EUR",
+    "technology_integration_candidate": false,
+    "ai_agent_fit": null
+  }
+]
