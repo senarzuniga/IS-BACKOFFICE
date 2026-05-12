@@ -1,0 +1,54 @@
+{
+  "company": "Ingecart",
+  "profile_version": "1.0",
+  "last_updated": "2026-05-09",
+  "legal_name": "Ingecart S.L.",
+  "industry": "Industrial Equipment — Printing & Signage",
+  "sector": "Communication Visual / Grand Format Printing",
+  "subsector": "Large-Format Printing & Signage Equipment",
+  "geography": {
+    "primary": "Spain",
+    "secondary": ["Portugal"],
+    "reach": "European"
+  },
+  "currency": "EUR",
+  "languages": ["es", "en"],
+  "strengths": [
+    "Established commercial network with manufacturers and distributors",
+    "Experience in large-format equipment integration projects",
+    "Customer portfolio: workshops, agencies, manufacturers",
+    "Proven logistics and technical-support capacity"
+  ],
+  "growth_vectors": [
+    "Digital technology and automation incorporation",
+    "Active tech-partner search to enhance value proposition",
+    "International market expansion via trade fairs"
+  ],
+  "technology_appetite": {
+    "areas_of_interest": [
+      "Production optimisation AI agents",
+      "Intelligent pricing and quoting",
+      "Predictive maintenance for print hardware"
+    ],
+    "readiness_level": "high"
+  },
+  "strategic_relationships": [
+    {
+      "entity": "IAR",
+      "type": "strategic_tech_partner_proposed",
+      "context": "AI agent co-exhibition at FESPA 2026"
+    },
+    {
+      "entity": "FESPA",
+      "type": "industry_fair",
+      "context": "Stand participation September/October 2026"
+    }
+  ],
+  "data_sources": [
+    {
+      "reference": "IE-IAR-FESPA-2026-001",
+      "date": "2026-05-09",
+      "type": "executive_report"
+    }
+  ]
+}

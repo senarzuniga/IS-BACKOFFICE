@@ -1,0 +1,43 @@
+[
+  {
+    "event_id": "EVT-FESPA-2026",
+    "name": "FESPA Barcelona 2026",
+    "type": "international_trade_fair",
+    "sector": "Printing, Signage & Visual Communication",
+    "location": {
+      "city": "Barcelona",
+      "country": "Spain"
+    },
+    "year": 2026,
+    "date_notes": "September / October 2026 (exact dates TBC)",
+    "scale": {
+      "exhibitors_estimate": 700,
+      "visitors_estimate": 25000,
+      "countries_represented": 100
+    },
+    "ingecart_role": "exhibitor",
+    "iar_role": "technology_partner_co_exhibitor_proposed",
+    "strategic_report": "IE-IAR-FESPA-2026-001",
+    "audience_segments": [
+      "print_shop_owners",
+      "production_managers",
+      "industrial_buyers",
+      "workflow_integrators",
+      "visual_communication_agencies",
+      "equipment_manufacturers",
+      "substrate_ink_distributors"
+    ],
+    "dominant_trends": [
+      "end_to_end_workflow_automation",
+      "digitalisation_analogue_processes",
+      "sustainability_eco_printing",
+      "mass_personalisation",
+      "ai_order_management_quality_pricing"
+    ],
+    "iar_demo_pillars": [
+      "production_optimisation_agent",
+      "intelligent_pricing_quoting_agent",
+      "quality_predictive_maintenance_agent"
+    ]
+  }
+]
