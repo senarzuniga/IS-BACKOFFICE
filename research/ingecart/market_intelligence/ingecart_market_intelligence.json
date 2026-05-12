@@ -1,0 +1,111 @@
+{
+  "market_intelligence_version": "1.0",
+  "last_updated": "2026-05-09",
+  "sector": "Printing, Signage & Visual Communication",
+  "period": "2024-2026",
+  "key_metrics": {
+    "fespa_2026_exhibitors": 700,
+    "fespa_2026_visitors": 25000,
+    "fespa_2026_countries": 100,
+    "ai_production_downtime_reduction_pct_low": 18,
+    "ai_production_downtime_reduction_pct_high": 35,
+    "ai_market_readiness": "incipient_high_growth"
+  },
+  "dominant_trends": [
+    {
+      "rank": 1,
+      "trend": "End-to-end production workflow automation",
+      "growth_rate": "high",
+      "relevance_to_iar": "core"
+    },
+    {
+      "rank": 2,
+      "trend": "Digitalisation of analogue processes",
+      "growth_rate": "high",
+      "relevance_to_iar": "core"
+    },
+    {
+      "rank": 3,
+      "trend": "Sustainability and eco-printing",
+      "growth_rate": "medium",
+      "relevance_to_iar": "peripheral"
+    },
+    {
+      "rank": 4,
+      "trend": "Mass personalisation via intelligent software",
+      "growth_rate": "high",
+      "relevance_to_iar": "high"
+    },
+    {
+      "rank": 5,
+      "trend": "AI in order management, quality control, and pricing",
+      "growth_rate": "explosive",
+      "relevance_to_iar": "primary"
+    }
+  ],
+  "competitive_landscape": [
+    {
+      "type": "generic_ai_platform",
+      "players": ["Microsoft Azure AI", "Google Vertex"],
+      "threat_level": "low",
+      "reason": "Not industry-specific"
+    },
+    {
+      "type": "print_specific_saas",
+      "players": ["Aleyant", "Enfocus", "Durst Workflow"],
+      "threat_level": "medium",
+      "reason": "Workflow automation only, no full AI agents"
+    },
+    {
+      "type": "erp_mis_vendors",
+      "players": ["Optimus", "PrintVis", "Tharstern"],
+      "threat_level": "medium",
+      "reason": "Job management only, no AI prediction"
+    },
+    {
+      "type": "ai_startups_print",
+      "players": [],
+      "threat_level": "low",
+      "reason": "Nascent, no proven ROI"
+    }
+  ],
+  "target_segments": [
+    {
+      "segment": "print_shop_owners_large",
+      "ai_readiness": "medium",
+      "priority": "high"
+    },
+    {
+      "segment": "production_managers_industrial_buyers",
+      "ai_readiness": "high",
+      "priority": "high"
+    },
+    {
+      "segment": "workflow_automation_integrators",
+      "ai_readiness": "very_high",
+      "priority": "medium"
+    },
+    {
+      "segment": "visual_communication_agencies",
+      "ai_readiness": "low_medium",
+      "priority": "medium"
+    }
+  ],
+  "fespa_collaboration_financials": {
+    "iar_investment_eur_low": 3500,
+    "iar_investment_eur_high": 6000,
+    "comparison_standalone_stand_eur_low": 25000,
+    "comparison_standalone_stand_eur_high": 40000,
+    "pilot_contract_avg_value_eur_low": 8000,
+    "pilot_contract_avg_value_eur_high": 15000,
+    "scenarios": {
+      "conservative": {"pilot_contracts": 3, "revenue_eur_low": 24000, "revenue_eur_high": 45000},
+      "base": {"pilot_contracts": 5, "revenue_eur_low": 40000, "revenue_eur_high": 75000},
+      "optimistic": {"pilot_contracts": 8, "revenue_eur_low": 64000, "revenue_eur_high": 120000}
+    }
+  },
+  "data_sources": [
+    {"reference": "IE-IAR-FESPA-2026-001", "date": "2026-05-09", "type": "executive_report"},
+    {"reference": "FESPA Organisation", "type": "public_data"}
+  ]
+}
