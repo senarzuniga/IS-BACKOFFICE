@@ -47,7 +47,9 @@ class SupabaseClient:
         try:
             self._client.table("ingecart_company").select("id").limit(1).execute()
             return True
-        except Exception:
+        except Exception as exc:  # pragma: no cover
+            import logging
+            logging.getLogger(__name__).debug("Supabase connectivity check failed: %s", exc)
             return False
 
 
