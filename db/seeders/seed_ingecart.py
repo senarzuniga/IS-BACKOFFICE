@@ -90,7 +90,7 @@ def seed_company(client, dry_run: bool = False) -> None:
         "legal_name": data.get("legal_name", "Ingecart S.L."),
         "trade_name": data.get("company", "Ingecart"),
         "industry": data.get("industry"),
-        "sector": data.get("industry"),
+        "sector": data.get("sector"),
         "country_primary": data.get("geography", {}).get("primary", "Spain"),
         "geography": data.get("geography"),
         "currency": data.get("currency", "EUR"),

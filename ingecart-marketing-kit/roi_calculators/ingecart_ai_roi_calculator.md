@@ -15,6 +15,7 @@ The model gives you a first-pass ROI estimate for adopting IAR's AI agents.
 | Average machine productive hours/day | 8 h | [INPUT] |
 | Revenue per productive machine-hour (EUR) | 120 EUR | [INPUT] |
 | Current downtime rate (% of production time) | 15% | [INPUT] |
+| **AI downtime reduction factor** | **25%** | [INPUT] |
 | Avg. quoting time per job (minutes) | 45 min | [INPUT] |
 | Number of quotes issued per month | 80 | [INPUT] |
 | Avg. commercial team cost per hour (EUR) | 35 EUR | [INPUT] |
@@ -28,9 +29,9 @@ The model gives you a first-pass ROI estimate for adopting IAR's AI agents.
 ### Agent 1 — Production Optimisation
 
 ```
-Downtime reduction: 25% of current downtime rate
+Downtime reduction: applies AI downtime reduction factor (default 25%)
 Annual revenue recovered = Machines × Hours/day × 220 days
-                         × Current downtime rate × 25% reduction
+                         × Current downtime rate × AI reduction factor
                          × Revenue per hour
 
 Example (defaults):
