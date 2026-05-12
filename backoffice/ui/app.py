@@ -1,16 +1,12 @@
 from __future__ import annotations
 
-import asyncio
-import json
-import re
+import os
+import tempfile
 import traceback
 from datetime import datetime
-from pathlib import Path
 from typing import Any
 
 import streamlit as st
-
-st.set_page_config(layout="wide", page_title="IS-BACKOFFICE", page_icon="IA")
 
 from backoffice.ui.components.results import render_main_content
 from backoffice.ui.components.sidebar import render_sidebar
@@ -18,7 +14,7 @@ from backoffice.ui.components.sidebar import render_sidebar
 
 def _initialize_state() -> None:
     defaults: dict[str, Any] = {
-        "active_page": "Dashboard",
+        "active_page": "Intelligence Center",
         "current_section": "",
         "current_action": "",
         "last_result": None,
@@ -26,8 +22,17 @@ def _initialize_state() -> None:
         "processing_queue": [],
         "settings": {"theme": "dark", "timezone": "UTC", "notifications": True},
         "last_activity": datetime.now().isoformat(timespec="seconds"),
+        "memory_usage": 87,
         "status_logs": ["UI initialized"],
         "last_error": None,
+        "module_health": {
+            "ingestion": True,
+            "cleaning": True,
+            "extraction": True,
+            "graph": True,
+            "analytics": True,
+            "reporting": True,
+        },
     }
     for key, value in defaults.items():
         if key not in st.session_state:
@@ -40,285 +45,253 @@ def _append_log(message: str) -> None:
     st.session_state["last_activity"] = datetime.now().isoformat(timespec="seconds")
 
 
-def _slugify_file_name(name: str, fallback: str) -> str:
-    normalized = re.sub(r"[^A-Za-z0-9._-]+", "_", name.strip()).strip("._")
-    return normalized or fallback
+# ---------------------------------------------------------------------------
+# Real operation handlers
+# ---------------------------------------------------------------------------
 
-
-def _save_text_file(target_dir: str | Path, file_name: str, content: str, suffix: str) -> str:
-    output_dir = Path(target_dir).expanduser()
-    output_dir.mkdir(parents=True, exist_ok=True)
-    target = output_dir / f"{file_name}{suffix}"
-    target.write_text(content, encoding="utf-8")
-    return str(target)
-
-
-def _run_folder_scan(payload: dict[str, Any]) -> dict[str, Any]:
+def _run_folder_analysis(folder_path: str, output_type: str = "summary") -> dict[str, Any]:
+    """Analyse a local folder using the document_analysis pipeline."""
     from document_analysis.folder_reader import FolderReader
-
-    folder_path = (payload.get("folder_path") or "").strip()
-    if not folder_path:
-        raise ValueError("Folder path is required.")
-
-    reader = FolderReader(
-        recursive=bool(payload.get("recursive", True)),
-        max_file_size_mb=float(payload.get("max_file_size_mb", 50)),
-    )
-    files = reader.discover_files(folder_path, recursive=bool(payload.get("recursive", True)))
-    stats = reader.get_folder_stats(folder_path)
-
-    return {
-        "kind": "folder_scan",
-        "workflow": "Workspace Reader",
-        "action": "Scan folder",
-        "status": "complete",
-        "summary": f"Found {len(files)} files in {folder_path}.",
-        "folder_path": folder_path,
-        "files": files,
-        "folder_stats": stats.model_dump(),
-    }
-
-
-def _build_folder_analysis(payload: dict[str, Any]) -> tuple[list[dict[str, Any]], dict[str, Any], dict[str, Any]]:
+    from document_analysis.document_parser import DocumentParser
     from document_analysis.content_extractor import ContentExtractor
     from document_analysis.context_analyzer import ContextAnalyzer
-    from document_analysis.document_parser import DocumentParser
-    from document_analysis.folder_reader import FolderReader
-
-    folder_path = (payload.get("folder_path") or "").strip()
-    if not folder_path:
-        raise ValueError("Folder path is required.")
-
-    recursive = bool(payload.get("recursive", True))
-    max_file_size_mb = float(payload.get("max_file_size_mb", 50))
-    reader = FolderReader(recursive=recursive, max_file_size_mb=max_file_size_mb)
-    files = reader.discover_files(folder_path, recursive=recursive)
-    stats = reader.get_folder_stats(folder_path)
-
-    parser = DocumentParser()
-    extractor = ContentExtractor(use_spacy=False)
-    analyzer = ContextAnalyzer()
-
-    documents = []
-    for file_info in files:
-        document = parser.parse(file_info["path"])
-        documents.append(extractor.enrich(document))
-
-    analysis = analyzer.analyze_folder(documents, folder_path=folder_path, stats=stats)
-    return files, stats.model_dump(), analysis.model_dump()
-
-
-def _run_folder_analysis(payload: dict[str, Any]) -> dict[str, Any]:
-    files, stats, analysis = _build_folder_analysis(payload)
-    return {
-        "kind": "folder_analysis",
-        "workflow": "Workspace Reader",
-        "action": "Analyze folder",
-        "status": "complete",
-        "summary": analysis.get("narrative") or "Folder analysis complete.",
-        "folder_path": payload.get("folder_path", ""),
-        "files": files,
-        "folder_stats": stats,
-        "analysis": analysis,
-        "include_entity_preview": bool(payload.get("include_entity_preview", True)),
-    }
-
-
-def _run_document_factory(payload: dict[str, Any]) -> dict[str, Any]:
-    from document_analysis.ai_enhancer import AIEnhancer
-    from document_analysis.models import FolderAnalysis, OutputFormat
     from document_analysis.output_generator import OutputGenerator
+    from document_analysis.models import OutputFormat
 
-    files, stats, analysis_data = _build_folder_analysis(payload)
-    analysis = FolderAnalysis.model_validate(analysis_data)
-    output_format = OutputFormat(payload.get("output_format", "summary"))
-    output = OutputGenerator().generate(analysis, output_format)
+    with st.status("Analysing folder...", expanded=True) as status:
+        st.write(f"Reading files from {folder_path}…")
+        reader = FolderReader(recursive=True)
+        files = reader.discover_files(folder_path)
+        stats = reader.get_folder_stats(folder_path)
+        st.write(f"Found {len(files)} file(s).")
 
-    ai_requested = bool(payload.get("use_ai", False))
-    ai_available = False
-    ai_insights = ""
-    if ai_requested:
-        enhancer = AIEnhancer()
-        ai_available = enhancer.is_available
-        if enhancer.is_available:
-            output = enhancer.enhance_output(output)
-        ai_insights = enhancer.generate_insights(analysis)
-        if ai_insights and output.output_format.value != "database_entry":
-            output.content = f"{output.content}\n\n## Strategic Insights\n{ai_insights}"
-            output.word_count = len(output.content.split())
+        parser = DocumentParser()
+        extractor = ContentExtractor(use_spacy=False)
+        docs = []
+        for i, file_info in enumerate(files):
+            st.write(f"Parsing ({i + 1}/{len(files)}): {file_info['name']}…")
+            doc = parser.parse(file_info["path"])
+            doc = extractor.enrich(doc)
+            docs.append(doc)
 
-    saved_to = None
-    if payload.get("save_output"):
-        base_name = _slugify_file_name(payload.get("output_name", "generated_output"), "generated_output")
-        output_dir = payload.get("output_directory") or payload.get("folder_path") or "."
-        suffix = ".json" if output.output_format.value == "database_entry" else ".md"
-        content_to_save = output.content
-        if suffix == ".json":
-            parsed_json = json.loads(output.content)
-            content_to_save = json.dumps(parsed_json, indent=2, ensure_ascii=False)
-        saved_to = _save_text_file(output_dir, base_name, content_to_save, suffix)
+        st.write("Running cross-document analysis…")
+        analyzer = ContextAnalyzer()
+        analysis = analyzer.analyze_folder(docs, folder_path=folder_path, stats=stats)
 
-    return {
-        "kind": "document_output",
-        "workflow": "Document Factory",
-        "action": "Create document",
-        "status": "complete",
-        "summary": f"Created {output.output_format.value.replace('_', ' ')} from {len(files)} file(s).",
-        "folder_path": payload.get("folder_path", ""),
-        "files": files,
-        "folder_stats": stats,
-        "analysis": analysis.model_dump(),
-        "output": output.model_dump(),
-        "ai_requested": ai_requested,
-        "ai_available": ai_available,
-        "ai_insights": ai_insights,
-        "saved_to": saved_to,
-    }
-
-
-def _run_web_intelligence(payload: dict[str, Any]) -> dict[str, Any]:
-    from backoffice.ingestion.intelligence.agents.extractor_agent import ExtractorAgent
-    from backoffice.ingestion.intelligence.agents.intelligence_agent import IntelligenceAgent
-    from backoffice.ingestion.intelligence.agents.normalizer_agent import NormalizerAgent
-    from backoffice.ingestion.intelligence.agents.scraper_agent import ScraperAgent
-
-    url = (payload.get("url") or "").strip()
-    if not url:
-        raise ValueError("Target URL is required.")
-
-    async def _scrape_once() -> tuple[Any, Any, list[Any]]:
-        scraper = ScraperAgent()
-        extractor = ExtractorAgent(None)
-        normalizer = NormalizerAgent()
-        intelligence = IntelligenceAgent(None)
-
-        scrape_result = await scraper.scrape(
-            url=url,
-            source_id="sidebar_manual",
-            source_name="Sidebar Manual Trigger",
-            scraper_type=payload.get("scraper_type", "static"),
-        )
-        if not scrape_result.success or not scrape_result.html_content:
-            raise ValueError(scrape_result.error_message or "Scraping failed.")
-
-        extracted = await extractor.extract(
-            html=scrape_result.html_content,
-            source_id="sidebar_manual",
-            source_name="Sidebar Manual Trigger",
-            url=url,
-            data_type=payload.get("data_type", "product"),
-        )
-        normalized = await normalizer.normalize(extracted)
-        outputs = await intelligence.analyze_record(
-            source_id=normalized.source_id,
-            source_name=normalized.source_name,
-            source_url=normalized.url,
-            payload=normalized.normalized_content,
-        )
-        return scrape_result, normalized, outputs
-
-    loop = asyncio.new_event_loop()
-    try:
-        scrape_result, normalized, outputs = loop.run_until_complete(_scrape_once())
-    finally:
-        loop.close()
-
-    intelligence_rows = [
-        {
-            "type": item.output_type,
-            "title": item.title,
-            "description": item.description,
-            "impact": item.impact,
-            "suggested_action": item.suggested_action,
+        st.write("Generating output…")
+        generator = OutputGenerator()
+        _fmt_map = {
+            "summary": OutputFormat.SUMMARY,
+            "executive_summary": OutputFormat.EXECUTIVE_SUMMARY,
+            "report": OutputFormat.REPORT,
+            "list": OutputFormat.LIST,
+            "timeline": OutputFormat.TIMELINE,
+            "comparison": OutputFormat.COMPARISON,
         }
-        for item in outputs
-    ]
-
-    saved_to = None
-    if payload.get("save_output"):
-        brief_lines = [
-            "# Web Intelligence Brief",
-            f"Source URL: {url}",
-            f"Scraper mode: {payload.get('scraper_type', 'static')}",
-            f"Expected data: {payload.get('data_type', 'product')}",
-            "",
-            "## Structured Extraction",
-            json.dumps(normalized.normalized_content, indent=2, ensure_ascii=False, default=str),
-            "",
-            "## Intelligence Signals",
-        ]
-        if intelligence_rows:
-            for item in intelligence_rows:
-                brief_lines.append(f"- {item['title']}: {item['description']} ({item['impact']})")
-                brief_lines.append(f"  Action: {item['suggested_action']}")
-        else:
-            brief_lines.append("- No intelligence signals generated.")
-
-        base_name = _slugify_file_name(payload.get("output_name", "web_intelligence_brief"), "web_intelligence_brief")
-        output_dir = payload.get("output_directory") or "."
-        saved_to = _save_text_file(output_dir, base_name, "\n".join(brief_lines), ".md")
+        fmt = _fmt_map.get(output_type, OutputFormat.SUMMARY)
+        output = generator.generate(analysis, fmt)
+        status.update(label="Analysis complete!", state="complete")
 
     return {
-        "kind": "web_intelligence",
-        "workflow": "Web Intelligence",
-        "action": "Scrape URL",
-        "status": "complete",
-        "summary": f"Scraped {url} and generated {len(intelligence_rows)} intelligence output(s).",
-        "url": url,
-        "scraper": {
-            "scraper_type": scrape_result.scraper_type,
-            "response_time_ms": scrape_result.response_time_ms,
-            "status_code": scrape_result.status_code,
-        },
-        "extracted": normalized.normalized_content,
-        "confidence_score": normalized.confidence_score,
-        "intelligence": intelligence_rows,
-        "saved_to": saved_to,
+        "type": "document_analysis",
+        "folder_path": folder_path,
+        "file_count": len(files),
+        "doc_count": len(docs),
+        "output_content": output.content,
+        "output_format": output.output_format.value,
+        "word_count": output.word_count,
+        "themes": analysis.cross_themes,
+        "relationships": len(analysis.relationships),
+        "timeline_events": len(analysis.timeline),
+        "errors": analysis.processing_errors,
+        "narrative": analysis.narrative,
     }
 
 
-def _run_selected_action(sidebar_state: dict[str, Any]) -> None:
-    workflow = sidebar_state.get("workflow", "")
-    action = sidebar_state.get("action", "")
-    payload = sidebar_state.get("payload", {})
+def _run_url_analysis(url: str, output_type: str = "summary") -> dict[str, Any]:
+    """Fetch a URL, save content to a temp file, and analyse it."""
+    import requests
+    from document_analysis.document_parser import DocumentParser
+    from document_analysis.content_extractor import ContentExtractor
+    from document_analysis.context_analyzer import ContextAnalyzer
+    from document_analysis.output_generator import OutputGenerator
+    from document_analysis.folder_reader import FolderReader
+    from document_analysis.models import OutputFormat, FolderStats, DocumentType
 
-    if not workflow or not action:
-        return
+    # Validate URL scheme to prevent SSRF
+    if not url.lower().startswith(("http://", "https://")):
+        raise ValueError(f"Only http:// and https:// URLs are allowed. Got: {url!r}")
 
+    # Block private/loopback addresses (SSRF protection)
+    import socket
+    import ipaddress
+    from urllib.parse import urlparse as _urlparse
+    _hostname = _urlparse(url).hostname or ""
     try:
-        if workflow == "Workspace Reader" and action == "Scan folder":
-            result = _run_folder_scan(payload)
-        elif workflow == "Workspace Reader" and action == "Analyze folder":
-            result = _run_folder_analysis(payload)
-        elif workflow == "Document Factory" and action == "Create document":
-            result = _run_document_factory(payload)
-        elif workflow == "Web Intelligence" and action == "Scrape URL":
-            result = _run_web_intelligence(payload)
-        else:
-            raise ValueError(f"Unsupported workflow: {workflow} / {action}")
+        _ip_str = socket.gethostbyname(_hostname)
+        _ip = ipaddress.ip_address(_ip_str)
+        if _ip.is_private or _ip.is_loopback or _ip.is_link_local or _ip.is_reserved:
+            raise ValueError(f"Requests to private/internal addresses are not allowed: {_ip_str}")
+    except (socket.gaierror, ValueError) as _exc:
+        if "not allowed" in str(_exc):
+            raise
 
-        st.session_state["current_workflow"] = workflow
-        st.session_state["current_action"] = action
-        st.session_state["last_payload"] = payload
-        st.session_state["last_result"] = result
-        st.session_state["processing_queue"].append(
-            {
-                "workflow": workflow,
-                "action": action,
-                "status": result.get("status", "complete"),
-                "time": datetime.now().isoformat(timespec="seconds"),
+    with st.status("Fetching and analysing URL...", expanded=True) as status:
+        st.write(f"Fetching: {url}…")
+        resp = requests.get(url, timeout=30)
+        resp.raise_for_status()
+
+        with tempfile.TemporaryDirectory() as tmpdir:
+            # Save as HTML, respecting the response encoding
+            fname = "page.html"
+            fpath = os.path.join(tmpdir, fname)
+            with open(fpath, "wb") as f:
+                f.write(resp.content)
+
+            st.write("Parsing content…")
+            parser = DocumentParser()
+            extractor = ContentExtractor(use_spacy=False)
+            doc = parser.parse(fpath)
+            doc = extractor.enrich(doc)
+
+            st.write("Analysing…")
+            stats = FolderStats(
+                folder_path=url,
+                total_files=1,
+                supported_files=1,
+                unsupported_files=0,
+                total_size_bytes=len(resp.content),
+                files_by_type={DocumentType.HTML.value: 1},
+            )
+            analyzer = ContextAnalyzer()
+            analysis = analyzer.analyze_folder([doc], folder_path=url, stats=stats)
+
+            st.write("Generating output…")
+            generator = OutputGenerator()
+            _fmt_map = {
+                "summary": OutputFormat.SUMMARY,
+                "executive_summary": OutputFormat.EXECUTIVE_SUMMARY,
+                "report": OutputFormat.REPORT,
             }
-        )
-        st.session_state["last_error"] = None
-        _append_log(f"Completed workflow: {workflow} / {action}")
-        st.rerun()
-    except Exception as exc:  # noqa: BLE001
-        st.session_state["last_error"] = {
-            "type": type(exc).__name__,
-            "message": str(exc),
-            "trace": traceback.format_exc(),
+            fmt = _fmt_map.get(output_type, OutputFormat.SUMMARY)
+            output = generator.generate(analysis, fmt)
+            status.update(label="URL analysis complete!", state="complete")
+
+    return {
+        "type": "url_analysis",
+        "url": url,
+        "output_content": output.content,
+        "output_format": output.output_format.value,
+        "word_count": output.word_count,
+        "themes": analysis.cross_themes,
+        "narrative": analysis.narrative,
+    }
+
+
+def _run_real_operation(section: str, action: str, payload: dict[str, Any]) -> dict[str, Any]:
+    """Route section/action to the appropriate real implementation."""
+
+    # --- Folder-based ingestion and extraction ---
+    folder_path = (payload.get("folder_path") or "").strip()
+
+    if section in ("📥 INGESTION", "🔍 EXTRACTION") and folder_path:
+        if not os.path.isdir(folder_path):
+            raise ValueError(f"Folder not found: {folder_path}")
+        output_type = "list" if action in ("Watch folder", "Ingest local files") else "report"
+        result = _run_folder_analysis(folder_path, output_type=output_type)
+        result["section"] = section
+        result["action"] = action
+        result["status"] = "complete"
+        result["completed_at"] = datetime.now().isoformat(timespec="seconds")
+        return result
+
+    # --- URL ingestion ---
+    url = (payload.get("url") or "").strip()
+    if section == "📥 INGESTION" and action == "Ingest from URL" and url:
+        result = _run_url_analysis(url, output_type="summary")
+        result["section"] = section
+        result["action"] = action
+        result["status"] = "complete"
+        result["completed_at"] = datetime.now().isoformat(timespec="seconds")
+        return result
+
+    # --- Uploaded file ingestion ---
+    uploaded = payload.get("files")
+    if section == "📥 INGESTION" and uploaded:
+        files = uploaded if isinstance(uploaded, list) else [uploaded]
+        with st.status("Processing uploaded files...", expanded=True) as status:
+            from document_analysis.document_parser import DocumentParser
+            from document_analysis.content_extractor import ContentExtractor
+            from document_analysis.context_analyzer import ContextAnalyzer
+            from document_analysis.output_generator import OutputGenerator
+            from document_analysis.folder_reader import FolderReader
+            from document_analysis.models import OutputFormat, FolderStats
+
+            parser = DocumentParser()
+            extractor = ContentExtractor(use_spacy=False)
+            docs = []
+            with tempfile.TemporaryDirectory() as tmpdir:
+                for uploaded_file in files:
+                    if uploaded_file is None:
+                        continue
+                    fpath = os.path.join(tmpdir, uploaded_file.name)
+                    with open(fpath, "wb") as f:
+                        f.write(uploaded_file.getbuffer())
+                    st.write(f"Parsing {uploaded_file.name}…")
+                    doc = parser.parse(fpath)
+                    doc = extractor.enrich(doc)
+                    docs.append(doc)
+
+                if not docs:
+                    raise ValueError("No valid files uploaded.")
+
+                reader = FolderReader()
+                stats = reader.get_folder_stats(tmpdir)
+                analyzer = ContextAnalyzer()
+                analysis = analyzer.analyze_folder(docs, folder_path="uploaded files", stats=stats)
+                generator = OutputGenerator()
+                output = generator.generate(analysis, OutputFormat.SUMMARY)
+                status.update(label="Done!", state="complete")
+
+        return {
+            "type": "document_analysis",
+            "folder_path": "uploaded files",
+            "file_count": len(docs),
+            "doc_count": len(docs),
+            "output_content": output.content,
+            "output_format": output.output_format.value,
+            "word_count": output.word_count,
+            "themes": analysis.cross_themes,
+            "relationships": len(analysis.relationships),
+            "timeline_events": len(analysis.timeline),
+            "errors": analysis.processing_errors,
+            "narrative": analysis.narrative,
+            "section": section,
+            "action": action,
+            "status": "complete",
+            "completed_at": datetime.now().isoformat(timespec="seconds"),
         }
-        _append_log(f"Workflow failed: {workflow} / {action} -> {type(exc).__name__}")
+
+    # --- Fallback: show an informational message for actions that need data setup ---
+    with st.status("Processing...", expanded=True) as status:
+        st.info(
+            f"**{action}** — this action requires data already ingested into the system. "
+            "Use **Ingest local files**, **Watch folder**, or **Ingest from URL** first to load data, "
+            "then return to this module."
+        )
+        status.update(label="Ready", state="complete")
+
+    return {
+        "section": section,
+        "action": action,
+        "status": "complete",
+        "payload": payload,
+        "completed_at": datetime.now().isoformat(timespec="seconds"),
+        "message": (
+            f"Action '{action}' in module '{section}' requires previously ingested data. "
+            "Ingest documents first using the INGESTION module."
+        ),
+    }
 
 
 def _render_error_state() -> None:
@@ -330,6 +303,16 @@ def _render_error_state() -> None:
     with st.expander("Stack trace", expanded=False):
         st.code(error["trace"], language="text")
 
+    c1, c2 = st.columns(2)
+    with c1:
+        if st.button("Retry", key="retry_error"):
+            st.session_state["last_error"] = None
+            st.rerun()
+    with c2:
+        if st.button("Report bug", key="report_error"):
+            _append_log("Bug report requested from UI")
+            st.info("Bug report logged to status panel.")
+
 
 def _handle_quick_action(label: str) -> None:
     if label == "Document Analysis":
@@ -338,29 +321,74 @@ def _handle_quick_action(label: str) -> None:
     if label == "Instruction Panel":
         st.switch_page("pages/instruction_panel.py")
         return
-    if label == "Dashboard":
-        st.session_state["current_workflow"] = ""
-        st.session_state["current_action"] = ""
-        st.session_state["last_result"] = None
+
+    _QUICK_ACTION_PAGE_MAP: dict[str, str] = {
+        "Show Risky Accounts": "Alerts & Risks",
+        "Review Pipeline": "Deals & Pipeline",
+        "Open Agent Center": "AI Agents",
+    }
+
+    target_page = _QUICK_ACTION_PAGE_MAP.get(label)
+    if target_page:
+        st.session_state["active_page"] = target_page
+        st.session_state["last_result"] = {
+            "status": "complete",
+            "completed_at": datetime.now().isoformat(timespec="seconds"),
+            "message": f"AI command routed to {target_page}.",
+        }
+        _append_log(f"Quick action: {label}")
         st.rerun()
+        return
+
+    _append_log(f"Quick action: {label}")
+    st.rerun()
+
+
+def _run_selected_action(sidebar_state: dict[str, Any]) -> None:
+    section = sidebar_state.get("section", "")
+    action = sidebar_state.get("action", "")
+    payload = sidebar_state.get("payload", {})
+
+    if not section or not action:
+        return
+
+    try:
+        result = _run_real_operation(section, action, payload)
+        st.session_state["current_section"] = section
+        st.session_state["current_action"] = action
+        st.session_state["last_payload"] = payload
+        st.session_state["last_result"] = result
+        st.session_state["processing_queue"].append(
+            {
+                "section": section,
+                "action": action,
+                "status": result.get("status", "complete"),
+                "time": result.get("completed_at", datetime.now().isoformat(timespec="seconds")),
+            }
+        )
+        st.session_state["last_error"] = None
+        _append_log(f"Completed operation: {section} / {action}")
+        st.rerun()
+    except Exception as exc:  # noqa: BLE001
+        st.session_state["last_error"] = {
+            "type": type(exc).__name__,
+            "message": str(exc),
+            "trace": traceback.format_exc(),
+        }
+        _append_log(f"Operation failed: {section} / {action} -> {type(exc).__name__}")
 
 
 def _render_status_bar() -> None:
     st.markdown("---")
-    with st.expander("Run Log", expanded=True):
+    with st.expander("Status Bar", expanded=True):
         queue = st.session_state.get("processing_queue", [])
-        st.caption(f"Executed workflows: {len(queue)}")
+        st.caption(f"Pending tasks: {len([item for item in queue if item.get('status') != 'complete'])}")
         for line in st.session_state.get("status_logs", [])[-12:]:
             st.write(line)
 
 
 def main() -> None:
     _initialize_state()
-
-    st.markdown("# IS-BACKOFFICE")
-    st.caption(
-        "Focused on the three workflows the current application can execute end-to-end: local folder intelligence, document generation, and web intelligence scraping."
-    )
 
     sidebar_state = render_sidebar()
 
@@ -369,6 +397,7 @@ def main() -> None:
         _handle_quick_action(quick_action)
 
     _render_error_state()
+
     render_main_content()
     _render_status_bar()
 
