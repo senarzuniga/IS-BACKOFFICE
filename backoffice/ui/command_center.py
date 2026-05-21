@@ -18,6 +18,8 @@ import plotly.express as px
 import plotly.graph_objects as go
 import streamlit as st
 
+from backoffice.ui.components.artwork import render_ingecart_artwork_block
+
 # ─────────────────────────────────────────────────────────────────────────────
 # Lazy-import backoffice components so missing env vars don't crash at startup
 # ─────────────────────────────────────────────────────────────────────────────
@@ -725,7 +727,7 @@ class CommandCenter:
                     else:
                         st.info("No pending invoices.")
         else:
-            st.info("Connect Supabase to see live data (set SUPABASE_URL and SUPABASE_KEY in .env)")
+            st.info("Connect Supabase to see live data (set SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY in .env)")
 
     # ── Agents tab ────────────────────────────────────────────────────────────
     def _agents_tab(self):
@@ -941,11 +943,18 @@ INTERNET
         if backoffice_agent is None:
             st.warning(
                 "⚠️ **Demo Mode** — BackofficeAgent unavailable. "
-                "Set `SUPABASE_URL`, `SUPABASE_KEY`, and `OPENAI_API_KEY` in a `.env` file for full functionality.",
+                "Set `SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY`, and `OPENAI_API_KEY` in a `.env` file for full functionality.",
                 icon="⚠️",
             )
 
-        tab1, tab2, tab3, tab4 = st.tabs(["💬 Command Interface", "📊 Analytics", "🤖 Agents", "🔍 Intelligence Ingestion"])
+        tab1, tab2, tab3, tab4, tab5, tab6 = st.tabs([
+            "💬 Command Interface",
+            "📊 Analytics",
+            "🤖 Agents",
+            "🔍 Intelligence Ingestion",
+            "🎨 INGECART ARTWORK",
+            "🏭 Plant Simulator 2D",
+        ])
 
         with tab1:
             self._command_tab(backoffice_agent)
@@ -955,6 +964,23 @@ INTERNET
             self._agents_tab()
         with tab4:
             self._intelligence_tab()
+        with tab5:
+            st.markdown("#### 🎨 INGECART ARTWORK")
+            st.caption("Genera creatividades desde una ruta dinámica de imagen y guarda los outputs en la carpeta de marketing.")
+            render_ingecart_artwork_block()
+        with tab6:
+            st.markdown("#### 🏭 Corrugated Plant Simulator")
+            st.caption("Acceso directo al simulador 2D para configuración, visualización y análisis de planta.")
+            st.info(
+                "Usa este panel para abrir el simulador completo y trabajar en modo cliente con configuración guiada, "
+                "canvas 2D en tiempo real y analytics de OEE/cuello de botella.",
+                icon="ℹ️",
+            )
+            st.page_link(
+                "pages/plant_simulator.py",
+                label="Abrir Simulador 2D",
+                icon="🏭",
+            )
 
 
 # ─────────────────────────────────────────────────────────────────────────────

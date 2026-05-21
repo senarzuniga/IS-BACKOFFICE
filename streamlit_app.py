@@ -57,6 +57,7 @@ def _create_enhanced_app():
             "🏠 Command Center",
             "🕵️ Inteligencia Web",
             "🖼️ Scraping",
+            "🏭 Plant Simulator",
             "📋 Tareas",
             "🧾 Facturas",
             "📊 Analytics",
@@ -68,6 +69,7 @@ def _create_enhanced_app():
         "🏠 Command Center": "command_center",
         "🕵️ Inteligencia Web": "intelligence",
         "🖼️ Scraping": "scraping",
+        "🏭 Plant Simulator": "plant_simulator",
         "📋 Tareas": "tasks",
         "🧾 Facturas": "invoices",
         "📊 Analytics": "analytics",
@@ -88,6 +90,9 @@ def _create_enhanced_app():
     elif st.session_state.current_page == "scraping":
         from backoffice.ui.scraping_panel import render_scraping_panel
         render_scraping_panel()
+
+    elif st.session_state.current_page == "plant_simulator":
+        st.switch_page("pages/plant_simulator.py")
 
     elif st.session_state.current_page == "tasks":
         st.title("📋 Gestión de Tareas")

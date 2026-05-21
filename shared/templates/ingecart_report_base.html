@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<!--
+  ╔══════════════════════════════════════════════════════════════╗
+  ║   INGECART  —  BASE REPORT TEMPLATE  (ES / EN)              ║
+  ║   Maintained in: shared/templates/ingecart_report_base.html ║
+  ║                                                              ║
+  ║  HOW TO USE                                                  ║
+  ║  ──────────────────────────────────────────────────────────  ║
+  ║  1. Copy this file to informes/ with a descriptive name.    ║
+  ║  2. Replace every {{PLACEHOLDER}} with actual content.       ║
+  ║  3. Add / remove <div class="page"> blocks as needed.        ║
+  ║  4. Footer brand label is always "Ing_RESEARCH".             ║
+  ║  5. Logo path: use the absolute path below; the onerror      ║
+  ║     fallback renders an orange "I" SVG if file is missing.  ║
+  ║                                                              ║
+  ║  PLACEHOLDERS                                                ║
+  ║  {{LANG}}          → es  |  en                              ║
+  ║  {{REPORT_TITLE}}  → Report title shown in <title>          ║
+  ║  {{DOC_SUBTITLE}}  → Sub-title line below the chapter mark  ║
+  ║  {{REPORT_DATE}}   → e.g. 2026-05-21                        ║
+  ║  {{PAGE_n_CONTENT}}→ Inner HTML of each page                ║
+  ║  {{TOTAL_PAGES}}   → Total number of pages                  ║
+  ╚══════════════════════════════════════════════════════════════╝
+-->
+<html lang="{{LANG}}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>INGECART — {{REPORT_TITLE}}</title>
+    <style>
+        /* ══════════════════════ RESET ══════════════════════ */
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        /* ══════════════════════ ROOT TOKENS ══════════════════════ */
+        :root {
+            --bg-base:        #05070B;   /* industrial black           */
+            --bg-card:        #1A1D24;   /* elevated surface           */
+            --text-primary:   #F4F5F7;   /* technical white            */
+            --text-muted:     #7E848E;   /* secondary / footer text    */
+            --accent:         #FF6A00;   /* INGECART orange            */
+            --border-subtle:  rgba(126,132,142,0.35);
+            --border-accent:  rgba(255,106,0,0.35);
+            --font-body:      'Inter', 'Roboto', 'IBM Plex Sans', sans-serif;
+            --font-display:   'Montserrat', 'Oswald', 'Bebas Neue', sans-serif;
+        }
+
+        /* ══════════════════════ LAYOUT ══════════════════════ */
+        body {
+            background-color: var(--bg-base);
+            font-family: var(--font-body);
+            color: var(--text-primary);
+            line-height: 1.55;
+            display: flex;
+            justify-content: center;
+            padding: 2rem 1rem;
+        }
+
+        .report-container {
+            max-width: 1300px;
+            width: 100%;
+            background-color: var(--bg-base);
+            box-shadow: 0 25px 45px rgba(0,0,0,0.6);
+        }
+
+        /* Each page block */
+        .page {
+            background-color: var(--bg-base);
+            margin-bottom: 2rem;
+            page-break-after: always;
+            break-inside: avoid;
+        }
+
+        /* ══════════════════════ HEADER ══════════════════════ */
+        .report-header {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            padding: 1.5rem 2rem 0.6rem 2rem;
+            border-bottom: 1px solid var(--border-accent);
+            margin-bottom: 1.8rem;
+        }
+
+        .logo-area img {
+            max-height: 60px;
+            width: auto;
+            opacity: 0.70;          /* 70 % transparency as spec */
+        }
+
+        /* ══════════════════════ FOOTER ══════════════════════ */
+        .report-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.2rem 2rem 1rem 2rem;
+            margin-top: 2.5rem;
+            border-top: 1px solid var(--border-subtle);
+            font-size: 0.78rem;
+            font-family: var(--font-body);
+            color: var(--text-muted);
+            letter-spacing: 0.3px;
+        }
+
+        .footer-left  { font-weight: 500; text-transform: uppercase; font-size: 0.73rem; }
+        .footer-right { font-weight: 500; }
+
+        /* ══════════════════════ TYPOGRAPHY ══════════════════════ */
+
+        /* Chapter title — large, underlined with accent */
+        .chapter {
+            display: inline-block;
+            margin: 2rem 0 1.2rem 0;
+            padding-bottom: 0.45rem;
+            border-bottom: 3px solid var(--accent);
+            font-family: var(--font-display);
+            font-weight: 800;
+            font-size: 1.9rem;
+            letter-spacing: -0.5px;
+            color: var(--text-primary);
+        }
+
+        h2 {
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 1.55rem;
+            margin: 1.8rem 0 0.9rem 0;
+            color: var(--text-primary);
+            border-left: 4px solid var(--accent);
+            padding-left: 1rem;
+        }
+
+        h3 {
+            font-family: var(--font-display);
+            font-weight: 600;
+            font-size: 1.25rem;
+            margin: 1.3rem 0 0.6rem 0;
+            color: var(--accent);
+        }
+
+        p {
+            margin-bottom: 1rem;
+            font-size: 1rem;
+            color: var(--text-primary);
+        }
+
+        a { color: var(--accent); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+
+        /* ══════════════════════ LISTS ══════════════════════ */
+        ul {
+            list-style: none;
+            margin: 0.8rem 0 1.4rem 0;
+            padding-left: 0.5rem;
+        }
+
+        li {
+            margin-bottom: 0.65rem;
+            padding-left: 1.8rem;
+            position: relative;
+            font-size: 1rem;
+            line-height: 1.45;
+        }
+
+        li::before {
+            content: "▹";
+            color: var(--accent);
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+            font-size: 1.15rem;
+            line-height: 1.45;
+        }
+
+        ol { margin: 0.8rem 0 1.4rem 1.5rem; }
+        ol li { padding-left: 0.5rem; }
+        ol li::before { content: none; }
+
+        /* ══════════════════════ UTILITY ══════════════════════ */
+        .highlight-orange { color: var(--accent); font-weight: 600; }
+
+        .content-pad { padding: 0 2rem; }
+
+        /* ══════════════════════ COMPONENTS ══════════════════════ */
+
+        /* Card with left accent border */
+        .industrial-card {
+            background-color: var(--bg-card);
+            padding: 1.4rem 1.6rem;
+            border-radius: 10px;
+            margin: 1.5rem 0;
+            border-left: 3px solid var(--accent);
+        }
+
+        /* Centered brand message strip */
+        .brand-message {
+            font-family: var(--font-display);
+            font-weight: 600;
+            font-size: 1.2rem;
+            text-align: center;
+            color: var(--accent);
+            border-top: 1px solid var(--border-accent);
+            border-bottom: 1px solid var(--border-accent);
+            padding: 1.1rem 2rem;
+            margin: 2rem 0;
+            line-height: 1.5;
+        }
+
+        /* Score pill badge */
+        .score-pill {
+            display: inline-block;
+            background-color: var(--accent);
+            color: var(--bg-base);
+            font-weight: 800;
+            font-size: 0.85rem;
+            padding: 0.2rem 0.7rem;
+            border-radius: 20px;
+            letter-spacing: 0.4px;
+        }
+
+        /* Priority badge */
+        .priority-badge {
+            display: inline-block;
+            background-color: var(--bg-card);
+            border: 1px solid var(--accent);
+            color: var(--accent);
+            font-weight: 700;
+            font-size: 0.8rem;
+            padding: 0.15rem 0.55rem;
+            border-radius: 4px;
+        }
+
+        /* ══════════════════════ TABLE ══════════════════════ */
+        .table-wrap {
+            overflow-x: auto;
+            margin: 1.4rem 0;
+        }
+
+        table {
+            width: 100%;
+            min-width: 600px;
+            border-collapse: collapse;
+            background-color: var(--bg-card);
+            color: var(--text-primary);
+            font-size: 0.84rem;
+        }
+
+        thead tr { background-color: var(--accent); }
+
+        th {
+            color: var(--bg-base);
+            padding: 9px 12px;
+            font-weight: 700;
+            text-align: left;
+            white-space: nowrap;
+        }
+
+        td {
+            border: 1px solid var(--border-subtle);
+            padding: 7px 11px;
+            vertical-align: top;
+        }
+
+        tbody tr:nth-child(even) td { background-color: rgba(255,255,255,0.02); }
+
+        /* Confirmed / approximate date chips */
+        .confirmed   { color: #4FC17B; font-size: 0.78rem; font-weight: 600; }
+        .approximate { color: #F0C040; font-size: 0.78rem; font-weight: 600; }
+
+        /* ══════════════════════ RESPONSIVE ══════════════════════ */
+        @media (max-width: 800px) {
+            .chapter { font-size: 1.45rem; }
+            h2 { font-size: 1.25rem; }
+            .report-header, .report-footer, .content-pad { padding-left: 1rem; padding-right: 1rem; }
+            table { font-size: 0.72rem; }
+            td, th { padding: 5px 7px; }
+        }
+
+        /* ══════════════════════ PRINT ══════════════════════ */
+        @media print {
+            body { background: var(--bg-base); padding: 0; }
+            .report-container { max-width: 100%; box-shadow: none; }
+            .page { page-break-after: always; }
+            .table-wrap { overflow: visible; }
+        }
+    </style>
+</head>
+<body>
+<div class="report-container">
+
+    <!--
+    ╔══════════════════════════════════╗
+    ║  PAGE BLOCK — duplicate as needed ║
+    ╚══════════════════════════════════╝
+    Each page follows this skeleton:
+
+    <div class="page">
+        <div class="report-header">
+            <div class="logo-area">
+                <img src="C:\Users\Inaki Senar\Documents\INGECART\MARKETING\LOGOS\ICON ORANGE.png"
+                     alt="INGECART"
+                     onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 100 100\'%3E%3Crect width=\'100\' height=\'100\' fill=\'%23FF6A00\' opacity=\'0.7\'/%3E%3Ctext x=\'50\' y=\'67\' font-size=\'40\' text-anchor=\'middle\' fill=\'%2305070B\' font-weight=\'bold\'%3EI%3C/text%3E%3C/svg%3E';">
+            </div>
+        </div>
+
+        <div class="content-pad">
+            {{PAGE_n_CONTENT}}
+        </div>
+
+        <div class="report-footer">
+            <div class="footer-left">Ing_RESEARCH</div>
+            <div class="footer-right">{{PAGE_LABEL}} n / {{TOTAL_PAGES}}</div>
+        </div>
+    </div>
+
+    PAGE_LABEL values:
+      Spanish → "Página"
+      English → "Page"
+    -->
+
+</div>
+</body>
+</html>

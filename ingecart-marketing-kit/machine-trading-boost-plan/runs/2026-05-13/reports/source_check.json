@@ -1,0 +1,230 @@
+{
+  "checked_at": "2026-05-13T14:19:54.369442",
+  "source_count": 12,
+  "sources": [
+    {
+      "id": "exapro_machinery",
+      "name": "Exapro Used Machinery",
+      "url": "https://www.exapro.com",
+      "tier": "tier2",
+      "scraping_frequency_hours": 24,
+      "priority": "high",
+      "scraper_type": "dynamic",
+      "selectors": {
+        "wait_for": "body"
+      },
+      "last_scraped": null,
+      "is_active": true,
+      "event_triggers": [
+        "new_product",
+        "price_change"
+      ],
+      "data_type": "product",
+      "metadata": {}
+    },
+    {
+      "id": "kitmondo_machinery",
+      "name": "Kitmondo Machinery Exchange",
+      "url": "https://www.kitmondo.com",
+      "tier": "tier2",
+      "scraping_frequency_hours": 24,
+      "priority": "high",
+      "scraper_type": "dynamic",
+      "selectors": {
+        "wait_for": "body"
+      },
+      "last_scraped": null,
+      "is_active": true,
+      "event_triggers": [
+        "new_product"
+      ],
+      "data_type": "product",
+      "metadata": {}
+    },
+    {
+      "id": "machineseeker",
+      "name": "Machineseeker",
+      "url": "https://www.machineseeker.com",
+      "tier": "tier2",
+      "scraping_frequency_hours": 48,
+      "priority": "normal",
+      "scraper_type": "dynamic",
+      "selectors": {
+        "wait_for": "body"
+      },
+      "last_scraped": null,
+      "is_active": true,
+      "event_triggers": [
+        "new_product"
+      ],
+      "data_type": "product",
+      "metadata": {}
+    },
+    {
+      "id": "machinio",
+      "name": "Machinio",
+      "url": "https://www.machinio.com",
+      "tier": "tier2",
+      "scraping_frequency_hours": 48,
+      "priority": "normal",
+      "scraper_type": "static",
+      "selectors": {},
+      "last_scraped": null,
+      "is_active": true,
+      "event_triggers": [],
+      "data_type": "product",
+      "metadata": {}
+    },
+    {
+      "id": "fefco_news",
+      "name": "FEFCO News and Events",
+      "url": "https://www.fefco.org/latest-updates",
+      "tier": "tier2",
+      "scraping_frequency_hours": 168,
+      "priority": "normal",
+      "scraper_type": "static",
+      "selectors": {},
+      "last_scraped": null,
+      "is_active": true,
+      "event_triggers": [
+        "industry_news",
+        "event_announcement"
+      ],
+      "data_type": "news",
+      "metadata": {}
+    },
+    {
+      "id": "ccca_news",
+      "name": "CCCA Canada Corrugated",
+      "url": "https://cccabox.org/news-resources/",
+      "tier": "tier2",
+      "scraping_frequency_hours": 168,
+      "priority": "normal",
+      "scraper_type": "static",
+      "selectors": {},
+      "last_scraped": null,
+      "is_active": true,
+      "event_triggers": [
+        "industry_news",
+        "event_announcement"
+      ],
+      "data_type": "news",
+      "metadata": {}
+    },
+    {
+      "id": "drupa_exhibitors",
+      "name": "drupa Trade Fair",
+      "url": "https://www.drupa.com",
+      "tier": "tier2",
+      "scraping_frequency_hours": 168,
+      "priority": "high",
+      "scraper_type": "dynamic",
+      "selectors": {
+        "wait_for": "body"
+      },
+      "last_scraped": null,
+      "is_active": true,
+      "event_triggers": [
+        "event_start",
+        "exhibitor_list_update"
+      ],
+      "data_type": "event",
+      "metadata": {}
+    },
+    {
+      "id": "supercorrexpo",
+      "name": "SuperCorrExpo North America",
+      "url": "https://www.supercorrexpo.org",
+      "tier": "tier2",
+      "scraping_frequency_hours": 168,
+      "priority": "high",
+      "scraper_type": "dynamic",
+      "selectors": {
+        "wait_for": "body"
+      },
+      "last_scraped": null,
+      "is_active": true,
+      "event_triggers": [
+        "event_start",
+        "exhibitor_list_update"
+      ],
+      "data_type": "event",
+      "metadata": {}
+    },
+    {
+      "id": "sino_corrugated_wepack",
+      "name": "SinoCorrugated / WEPACK Shanghai",
+      "url": "https://www.sino-corrugated.com",
+      "tier": "tier2",
+      "scraping_frequency_hours": 168,
+      "priority": "high",
+      "scraper_type": "dynamic",
+      "selectors": {
+        "wait_for": "body"
+      },
+      "last_scraped": null,
+      "is_active": true,
+      "event_triggers": [
+        "event_start",
+        "exhibitor_list_update"
+      ],
+      "data_type": "event",
+      "metadata": {}
+    },
+    {
+      "id": "paperage_news",
+      "name": "PaperAge Industry News",
+      "url": "https://www.paperage.com",
+      "tier": "tier3",
+      "scraping_frequency_hours": 24,
+      "priority": "normal",
+      "scraper_type": "static",
+      "selectors": {},
+      "last_scraped": null,
+      "is_active": true,
+      "event_triggers": [
+        "industry_news",
+        "expansion_signal",
+        "closure_signal"
+      ],
+      "data_type": "news",
+      "metadata": {}
+    },
+    {
+      "id": "tappi_resources",
+      "name": "TAPPI Corrugated Resources",
+      "url": "https://www.tappi.org",
+      "tier": "tier3",
+      "scraping_frequency_hours": 168,
+      "priority": "low",
+      "scraper_type": "static",
+      "selectors": {},
+      "last_scraped": null,
+      "is_active": true,
+      "event_triggers": [
+        "industry_news"
+      ],
+      "data_type": "news",
+      "metadata": {}
+    },
+    {
+      "id": "packaging_expansion_monitor",
+      "name": "Packaging Industry Expansion Monitor",
+      "url": "https://www.directindustry.com",
+      "tier": "tier3",
+      "scraping_frequency_hours": 96,
+      "priority": "normal",
+      "scraper_type": "dynamic",
+      "selectors": {
+        "wait_for": "body"
+      },
+      "last_scraped": null,
+      "is_active": true,
+      "event_triggers": [
+        "industry_news"
+      ],
+      "data_type": "opportunity",
+      "metadata": {}
+    }
+  ]
+}

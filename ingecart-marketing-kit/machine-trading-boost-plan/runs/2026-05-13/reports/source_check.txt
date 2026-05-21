@@ -1,0 +1,14 @@
+Checked at: 2026-05-13T14:19:54.374066
+Machine-trading sources found: 12
+- exapro_machinery | Exapro Used Machinery | tier2 | ACTIVE
+- kitmondo_machinery | Kitmondo Machinery Exchange | tier2 | ACTIVE
+- machineseeker | Machineseeker | tier2 | ACTIVE
+- machinio | Machinio | tier2 | ACTIVE
+- fefco_news | FEFCO News and Events | tier2 | ACTIVE
+- ccca_news | CCCA Canada Corrugated | tier2 | ACTIVE
+- drupa_exhibitors | drupa Trade Fair | tier2 | ACTIVE
+- supercorrexpo | SuperCorrExpo North America | tier2 | ACTIVE
+- sino_corrugated_wepack | SinoCorrugated / WEPACK Shanghai | tier2 | ACTIVE
+- paperage_news | PaperAge Industry News | tier3 | ACTIVE
+- tappi_resources | TAPPI Corrugated Resources | tier3 | ACTIVE
+- packaging_expansion_monitor | Packaging Industry Expansion Monitor | tier3 | ACTIVE

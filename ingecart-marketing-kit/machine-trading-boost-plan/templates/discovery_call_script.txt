@@ -1,0 +1,32 @@
+DISCOVERY CALL SCRIPT (20 MIN)
+
+0) OPENING (1 min)
+"Thanks for your time. The goal is to understand your current operation and check whether a used-machine + relocation model can fit your timeline and ROI goals."
+
+1) CURRENT CONTEXT (4 min)
+- What line/process are you currently running?
+- What are your main bottlenecks today (capacity, quality, labor, downtime)?
+
+2) URGENCY + TIMELINE (4 min)
+- Why is this project relevant now?
+- What commissioning date are you targeting?
+
+3) TECHNICAL FIT (5 min)
+- Required speed/format/material specs?
+- Site constraints (space, utilities, shutdown window)?
+
+4) ECONOMIC FIT (3 min)
+- Budget window and approval process?
+- Preferred commercial model (capex, staged payments, leasing)?
+
+5) DECISION PATH (2 min)
+- Who validates technically?
+- Who signs commercially?
+
+6) CLOSE + NEXT STEP (1 min)
+"Based on this, next step is [technical dossier review / virtual walkthrough / site survey] on [date]."
+
+MANDATORY CALL OUTPUT
+- Need summary (1 paragraph)
+- Qualification score (BANT+T)
+- Clear next action with owner and date

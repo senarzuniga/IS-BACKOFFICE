@@ -6,6 +6,8 @@ from typing import Any
 import pandas as pd
 import streamlit as st
 
+from .artwork import render_ingecart_artwork_block
+
 _COMMAND_SUGGESTIONS = [
     "Show risky accounts",
     "Analyze Q2 revenue drop",
@@ -196,3 +198,6 @@ def render_default_dashboard() -> None:
             ]
         )
         st.dataframe(agents, use_container_width=True, hide_index=True)
+
+    st.markdown("---")
+    render_ingecart_artwork_block()

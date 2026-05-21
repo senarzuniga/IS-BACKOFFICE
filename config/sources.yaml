@@ -98,4 +98,173 @@ sources:
     scraper_type: antibot
     data_type: news
     is_active: true
+
+  # ─────────────────────────────────────────────
+  # TIER 2 – Used machinery marketplaces (NEW: Machine Trading)
+  # ─────────────────────────────────────────────
+  - id: exapro_machinery
+    name: Exapro Used Machinery
+    url: https://www.exapro.com
+    tier: tier2
+    scraping_frequency_hours: 24
+    priority: high
+    scraper_type: dynamic
+    data_type: product
+    selectors:
+      wait_for: body
+    is_active: true
+    event_triggers: [new_product, price_change]
+    tags: [used_machinery, buyer_signals, fruit_packing, corrugated]
+
+  - id: kitmondo_machinery
+    name: Kitmondo Machinery Exchange
+    url: https://www.kitmondo.com
+    tier: tier2
+    scraping_frequency_hours: 24
+    priority: high
+    scraper_type: dynamic
+    data_type: product
+    selectors:
+      wait_for: body
+    is_active: true
+    event_triggers: [new_product]
+    tags: [used_machinery, buyer_signals, flexo, corrugated]
+
+  - id: machineseeker
+    name: Machineseeker
+    url: https://www.machineseeker.com
+    tier: tier2
+    scraping_frequency_hours: 48
+    priority: normal
+    scraper_type: dynamic
+    data_type: product
+    selectors:
+      wait_for: body
+    is_active: true
+    event_triggers: [new_product]
+    tags: [used_machinery, buyer_signals]
+
+  - id: machinio
+    name: Machinio
+    url: https://www.machinio.com
+    tier: tier2
+    scraping_frequency_hours: 48
+    priority: normal
+    scraper_type: static
+    data_type: product
+    is_active: true
+    tags: [used_machinery, buyer_signals]
+
+  # ─────────────────────────────────────────────
+  # TIER 2 – Industry Associations & Events (NEW: Machine Trading Intel)
+  # ─────────────────────────────────────────────
+  - id: fefco_news
+    name: FEFCO News and Events
+    url: https://www.fefco.org/latest-updates
+    tier: tier2
+    scraping_frequency_hours: 168
+    priority: normal
+    scraper_type: static
+    data_type: news
+    is_active: true
+    event_triggers: [industry_news, event_announcement]
+    tags: [association, europe_corrugated, expansion_signals]
+
+  - id: ccca_news
+    name: CCCA Canada Corrugated
+    url: https://cccabox.org/news-resources/
+    tier: tier2
+    scraping_frequency_hours: 168
+    priority: normal
+    scraper_type: static
+    data_type: news
+    is_active: true
+    event_triggers: [industry_news, event_announcement]
+    tags: [association, canada, expansion_signals]
+
+  - id: drupa_exhibitors
+    name: drupa Trade Fair
+    url: https://www.drupa.com
+    tier: tier2
+    scraping_frequency_hours: 168
+    priority: high
+    scraper_type: dynamic
+    data_type: event
+    selectors:
+      wait_for: body
+    is_active: true
+    event_triggers: [event_start, exhibitor_list_update]
+    tags: [trade_fair, global, exhibitor_mapping, decision_makers]
+
+  - id: supercorrexpo
+    name: SuperCorrExpo North America
+    url: https://www.supercorrexpo.org
+    tier: tier2
+    scraping_frequency_hours: 168
+    priority: high
+    scraper_type: dynamic
+    data_type: event
+    selectors:
+      wait_for: body
+    is_active: true
+    event_triggers: [event_start, exhibitor_list_update]
+    tags: [trade_fair, north_america, exhibitor_mapping]
+
+  - id: sino_corrugated_wepack
+    name: SinoCorrugated / WEPACK Shanghai
+    url: https://www.sino-corrugated.com
+    tier: tier2
+    scraping_frequency_hours: 168
+    priority: high
+    scraper_type: dynamic
+    data_type: event
+    selectors:
+      wait_for: body
+    is_active: true
+    event_triggers: [event_start, exhibitor_list_update]
+    tags: [trade_fair, asia_global, exhibitor_mapping, buyer_concentration]
+
+  # ─────────────────────────────────────────────
+  # TIER 3 – Industry News & Expansion Signals (NEW: Machine Trading Intel)
+  # ─────────────────────────────────────────────
+  - id: paperage_news
+    name: PaperAge Industry News
+    url: https://www.paperage.com
+    tier: tier3
+    scraping_frequency_hours: 24
+    priority: normal
+    scraper_type: static
+    data_type: news
+    is_active: true
+    event_triggers: [industry_news, expansion_signal, closure_signal]
+    tags: [news, packaging_industry, expansion_signals, closure_signals, capex_decisions]
+
+  - id: tappi_resources
+    name: TAPPI Corrugated Resources
+    url: https://www.tappi.org
+    tier: tier3
+    scraping_frequency_hours: 168
+    priority: low
+    scraper_type: static
+    data_type: news
+    is_active: true
+    event_triggers: [industry_news]
+    tags: [association, north_america, technical_resources]
+
+  # ─────────────────────────────────────────────
+  # TIER 3 – Supply Chain & Logistics (NEW: Execution Intel)
+  # ─────────────────────────────────────────────
+  - id: packaging_expansion_monitor
+    name: Packaging Industry Expansion Monitor
+    url: https://www.directindustry.com
+    tier: tier3
+    scraping_frequency_hours: 96
+    priority: normal
+    scraper_type: dynamic
+    data_type: opportunity
+    selectors:
+      wait_for: body
+    is_active: true
+    event_triggers: [new_product, equipment_listing]
+    tags: [buyer_signals, fruit_packing, flexo_folder_gluer, expansion_projects]
     event_triggers: [industry_news]

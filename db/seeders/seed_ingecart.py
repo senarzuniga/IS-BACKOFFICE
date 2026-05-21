@@ -7,6 +7,7 @@ Usage:
     python db/seeders/seed_ingecart.py --source products
     python db/seeders/seed_ingecart.py --source events
     python db/seeders/seed_ingecart.py --source documents
+    python db/seeders/seed_ingecart.py --source fespa_exhibitors
     python db/seeders/seed_ingecart.py --source market_intelligence
 
 Environment variables required:
@@ -19,6 +20,7 @@ import argparse
 import hashlib
 import json
 import os
+import re
 import sys
 from datetime import date
 from pathlib import Path
@@ -35,6 +37,9 @@ from db.client import get_supabase_client  # noqa: E402
 _RESEARCH_DIR = _REPO_ROOT / "research" / "ingecart"
 _INFORMES_DIR = _REPO_ROOT / "informes"
 _MARKETING_KIT_DIR = _REPO_ROOT / "ingecart-marketing-kit"
+_FESPA_EXHIBITORS_JSON = (
+    _RESEARCH_DIR / "web_scraping" / "FESPA_2026_Barcelona_Exhibitors_Complete.json"
+)
 
 
 # ---------------------------------------------------------------------------
@@ -73,6 +78,139 @@ def _upsert(client, table: str, rows: list[dict], conflict_col: str | None = Non
     client.table(table).upsert(rows, **kwargs).execute()
     print(f"  ✓ Upserted {len(rows)} row(s) into '{table}'")
     return len(rows)
+
+
+def _clamp_score(score: int) -> int:
+    return max(0, min(100, score))
+
+
+def _normalize_token(value: str) -> str:
+    return re.sub(r"[^a-z0-9]+", "_", value.lower()).strip("_")
+
+
+def _interest_level(score: int) -> str:
+    if score >= 80:
+        return "high"
+    if score >= 60:
+        return "medium"
+    return "low"
+
+
+def _infer_ingecart_fit(name: str, group_key: str, category: str, products: list[str]) -> tuple[str, int]:
+    direct_competitors = {
+        "fosber",
+        "bobst",
+        "comexi",
+        "heidelberg",
+        "krones",
+        "azionaria",
+    }
+    supplier_terms = {"inks", "coatings", "supplies", "plates"}
+    software_terms = {"software", "workflow", "mis/erp", "management"}
+    automation_terms = {"automation", "robotics"}
+
+    normalized_name = _normalize_token(name)
+    category_l = category.lower()
+    products_l = " ".join(products).lower()
+
+    if normalized_name in direct_competitors:
+        return "direct_competitor", 90
+
+    if any(term in products_l for term in supplier_terms):
+        return "supplier", 62
+
+    if group_key == "software_services" or any(term in category_l or term in products_l for term in software_terms):
+        return "technology_partner", 74
+
+    if group_key == "automation" or any(term in category_l or term in products_l for term in automation_terms):
+        return "automation_partner", 72
+
+    if group_key == "corrugated_packaging":
+        return "competitor_or_benchmark", 82
+
+    if group_key == "print_graphics":
+        return "adjacent_player", 63
+
+    return "market_player", 58
+
+
+def _infer_other_business_fit(group_key: str, category: str, products: list[str]) -> tuple[list[str], int]:
+    category_l = category.lower()
+    products_l = " ".join(products).lower()
+
+    profiles = [
+        "industrial_distributor",
+        "system_integrator",
+        "international_sales_partner",
+    ]
+    score = 65
+
+    if group_key == "software_services" or "software" in category_l or "workflow" in products_l:
+        profiles.extend(["software_reseller", "digital_transformation_consultancy"])
+        score += 18
+
+    if group_key == "automation" or "automation" in category_l or "robotics" in products_l:
+        profiles.extend(["automation_integrator", "robotics_solution_provider"])
+        score += 15
+
+    if "corrugated" in category_l or "packaging" in category_l:
+        profiles.extend(["packaging_converter", "box_manufacturer"])
+        score += 12
+
+    if "printing" in category_l or "print" in category_l:
+        profiles.extend(["commercial_printer", "print_service_provider"])
+        score += 10
+
+    deduped_profiles = sorted(set(profiles))
+    return deduped_profiles, _clamp_score(score)
+
+
+def _build_exhibitor_analysis(exhibitor: dict, group_key: str, compiled_date: str | None) -> dict:
+    name = exhibitor.get("name", "Unknown")
+    category = exhibitor.get("category", "Unknown")
+    products = exhibitor.get("products", []) or []
+    country = exhibitor.get("country", "Unknown")
+
+    ingecart_fit, ingecart_score = _infer_ingecart_fit(name, group_key, category, products)
+    other_profiles, other_score = _infer_other_business_fit(group_key, category, products)
+
+    if country.lower() == "spain":
+        ingecart_score = _clamp_score(ingecart_score + 6)
+
+    summary = (
+        f"{name} operates in '{category}' with focus on {', '.join(products) or 'n/a'}. "
+        f"Ingecart fit: {ingecart_fit} ({ingecart_score}/100). "
+        f"Cross-business fit: {_interest_level(other_score)} ({other_score}/100)."
+    )
+
+    return {
+        "company_name": name,
+        "activity": category,
+        "location": {
+            "country": country,
+            "city": None,
+        },
+        "website": exhibitor.get("website"),
+        "products": products,
+        "fespa": {
+            "event": "FESPA Global Print Expo 2026",
+            "category_group": group_key,
+            "booth_focus": exhibitor.get("booth_focus"),
+            "history": exhibitor.get("fespa_history"),
+            "rank_in_group": exhibitor.get("rank"),
+        },
+        "qualification": {
+            "ingecart_fit_type": ingecart_fit,
+            "ingecart_interest_score": ingecart_score,
+            "ingecart_interest_level": _interest_level(ingecart_score),
+            "other_business_interest_score": other_score,
+            "other_business_interest_level": _interest_level(other_score),
+            "recommended_business_profiles": other_profiles,
+        },
+        "analysis_summary": summary,
+        "data_quality": "high",
+        "last_reviewed_at": compiled_date,
+    }
 
 
 # ---------------------------------------------------------------------------
@@ -319,6 +457,61 @@ def seed_research_entries(client, dry_run: bool = False) -> None:
 
 
 # ---------------------------------------------------------------------------
+# Seed: FESPA 2026 Exhibitor company intelligence
+# ---------------------------------------------------------------------------
+
+def seed_fespa_exhibitors(client, dry_run: bool = False) -> None:
+    print("\n[FESPA 2026 Exhibitor Intelligence]")
+    if not _FESPA_EXHIBITORS_JSON.exists():
+        print("  [WARN] FESPA exhibitors JSON not found, skipping.")
+        return
+
+    data: dict = _load_json(_FESPA_EXHIBITORS_JSON)
+    category_map: dict = data.get("exhibitors_by_category", {})
+    compiled_date: str | None = data.get("research_metadata", {}).get("date_compiled")
+
+    source_label = "FESPA 2026 Exhibitor Intelligence Dataset"
+    rows: list[dict] = []
+
+    for group_key, exhibitors in category_map.items():
+        for exhibitor in exhibitors:
+            analysis = _build_exhibitor_analysis(exhibitor, group_key, compiled_date)
+            company_name = analysis["company_name"]
+            tags = [
+                "ingecart",
+                "fespa_2026",
+                "exhibitor_intelligence",
+                _normalize_token(group_key),
+                _normalize_token(analysis["location"]["country"]),
+                _normalize_token(company_name),
+            ]
+
+            rows.append({
+                "entry_type": "competitive_intel",
+                "title": f"FESPA 2026 Exhibitor - {company_name}",
+                "source": source_label,
+                "source_date": "2026-05-13",
+                "content": analysis["analysis_summary"],
+                "structured_data": analysis,
+                "tags": tags,
+                "relevance_score": round(analysis["qualification"]["ingecart_interest_score"] / 100, 2),
+                "verified": True,
+            })
+
+    if dry_run:
+        _upsert(client, "ingecart_research_entries", rows, dry_run=True)
+        return
+
+    try:
+        client.table("ingecart_research_entries").delete().eq("source", source_label).execute()
+        print("  [OK] Cleared previous FESPA exhibitor intelligence rows.")
+    except Exception as exc:
+        print(f"  [WARN] Could not clear previous FESPA exhibitor rows: {exc}")
+
+    _upsert(client, "ingecart_research_entries", rows, dry_run=False)
+
+
+# ---------------------------------------------------------------------------
 # Seed: Market Intelligence snapshot
 # ---------------------------------------------------------------------------
 
@@ -356,6 +549,7 @@ SEED_FUNCTIONS = {
     "events": seed_events,
     "documents": seed_documents,
     "research_entries": seed_research_entries,
+    "fespa_exhibitors": seed_fespa_exhibitors,
     "market_intelligence": seed_market_intelligence,
 }
 

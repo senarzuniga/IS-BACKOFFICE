@@ -65,65 +65,68 @@ class IngestionPipeline:
     async def process_job(self, job) -> None:
         logger.info("Processing job: %s – %s", job.source_name, job.url)
 
-        # Layer 2 – Scrape
-        result = await self.scraper.scrape(
-            url=job.url,
-            source_id=job.source_id,
-            source_name=job.source_name,
-            scraper_type=job.scraper_type,
-            wait_for_selector=job.selectors.get("wait_for") if job.selectors else None,
-        )
+        try:
+            # Layer 2 – Scrape
+            result = await self.scraper.scrape(
+                url=job.url,
+                source_id=job.source_id,
+                source_name=job.source_name,
+                scraper_type=job.scraper_type,
+                wait_for_selector=job.selectors.get("wait_for") if job.selectors else None,
+            )
 
-        if not result.success or not result.html_content:
-            await self.raw_storage.save_error(
+            if not result.success or not result.html_content:
+                await self.raw_storage.save_error(
+                    job.source_id,
+                    job.source_name,
+                    job.url,
+                    result.error_message or "unknown error",
+                )
+                self.stats["failed_scrapes"] += 1
+                logger.warning("Scrape failed for %s: %s", job.source_name, result.error_message)
+                return
+
+            # Layer 3a – Extract
+            extracted = await self.extractor.extract(
+                html=result.html_content,
+                source_id=job.source_id,
+                source_name=job.source_name,
+                url=job.url,
+                data_type=job.data_type,
+            )
+
+            # Persist raw HTML
+            await self.raw_storage.save_html(
                 job.source_id,
                 job.source_name,
                 job.url,
-                result.error_message or "unknown error",
+                result.html_content,
+                extracted.content_hash,
             )
-            self.stats["failed_scrapes"] += 1
-            logger.warning("Scrape failed for %s: %s", job.source_name, result.error_message)
-            return
 
-        # Layer 3a – Extract
-        extracted = await self.extractor.extract(
-            html=result.html_content,
-            source_id=job.source_id,
-            source_name=job.source_name,
-            url=job.url,
-            data_type=job.data_type,
-        )
+            # Layer 3b – Normalise
+            normalized = await self.normalizer.normalize(extracted)
+            await self.structured_db.save_normalized_data(normalized)
 
-        # Persist raw HTML
-        await self.raw_storage.save_html(
-            job.source_id,
-            job.source_name,
-            job.url,
-            result.html_content,
-            extracted.content_hash,
-        )
+            # Layer 4 – Intelligence
+            intel_outputs = await self.intelligence.analyze_record(
+                source_id=normalized.source_id,
+                source_name=normalized.source_name,
+                source_url=normalized.url,
+                payload=normalized.normalized_content,
+            )
+            await self.structured_db.save_intelligence_outputs(intel_outputs)
 
-        # Layer 3b – Normalise
-        normalized = await self.normalizer.normalize(extracted)
-        await self.structured_db.save_normalized_data(normalized)
+            # Layer 4 – Sales enablement (writes to shared `actions` table)
+            created = await self.sales.create_actions(intel_outputs)
 
-        # Layer 4 – Intelligence
-        intel_outputs = await self.intelligence.analyze_record(
-            source_id=normalized.source_id,
-            source_name=normalized.source_name,
-            source_url=normalized.url,
-            payload=normalized.normalized_content,
-        )
-        await self.structured_db.save_intelligence_outputs(intel_outputs)
-
-        # Layer 4 – Sales enablement (writes to shared `actions` table)
-        created = await self.sales.create_actions(intel_outputs)
-
-        self.stats["jobs_processed"] += 1
-        self.stats["successful_scrapes"] += 1
-        self.stats["extractions_done"] += 1
-        self.stats["actions_created"] += created
-        logger.info("Job completed: %s (%d intel outputs, %d actions)", job.source_name, len(intel_outputs), created)
+            self.stats["jobs_processed"] += 1
+            self.stats["successful_scrapes"] += 1
+            self.stats["extractions_done"] += 1
+            self.stats["actions_created"] += created
+            logger.info("Job completed: %s (%d intel outputs, %d actions)", job.source_name, len(intel_outputs), created)
+        except Exception as exc:  # noqa: BLE001
+            logger.exception("Job processing error for %s: %s", job.source_name, exc)
 
     # ------------------------------------------------------------------
     # Cycle runner

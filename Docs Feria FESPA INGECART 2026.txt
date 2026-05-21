@@ -1,0 +1,23 @@
+
+Perfecto, voy a generar ahora la línea de imprenta premium: PDF técnico con sangrado y marcas de corte para tríptico A4 (anverso/reverso) y un rollup profesional de stand, todo exportado en tu carpeta final de marketing.
+
+Ya están generados los artes premium; ahora verifico tamaños, actualizo el índice y reempaqueto ZIP final para entrega cerrada a imprenta/marketing.
+
+Listo, ya quedó completada la versión imprenta premium con sangrado y variantes pedidas, en tu carpeta final de marketing.
+
+Nuevas piezas generadas:
+
+08_Triptico_A4_Imprenta_Premium_FESPA_2026.pdf
+09_Rollup_85x200_Imprenta_Premium_FESPA_2026.pdf
+10_Especificaciones_Imprenta_Premium_FESPA_2026.txt
+También quedó actualizado y empaquetado todo:
+
+Carpeta final: CONTENIDOS INGECART FESPA 2026
+ZIP final actualizado: CONTENIDOS_INGECART_FESPA_2026_FINAL.zip
+Índice de entregables: 00_INDICE_ENTREGABLES_FESPA_2026.txt
+Automatización que dejé para regenerar arte premium cuando quieras:
+
+generate_fespa_2026_print_premium.py
+Nota profesional importante para imprenta:
+
+Los PDFs ya incluyen estructura de sangrado/márgenes y guías visuales, pero el perfil de color final CMYK (FOGRA/ISO Coated) debe aplicarlo preprensa según la imprenta concreta. Te dejé esta recomendación ya documentada en el archivo de especificaciones.

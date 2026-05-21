@@ -9,6 +9,7 @@ from __future__ import annotations
 import asyncio
 import heapq
 import logging
+from itertools import count
 from datetime import datetime
 from pathlib import Path
 from typing import Any
@@ -41,7 +42,8 @@ class PlannerAgent:
         self.supabase = supabase_client
         self.registry = SourceRegistry(Path(config_path))
         self.sources: list[SourceConfig] = self._safe_load()
-        self._priority_heap: list[tuple[int, float, ScrapingJob]] = []
+        self._priority_heap: list[tuple[int, float, int, ScrapingJob]] = []
+        self._sequence = count()
         self._lock = asyncio.Lock()
 
     def _safe_load(self) -> list[SourceConfig]:
@@ -111,7 +113,8 @@ class PlannerAgent:
     async def _enqueue(self, job: ScrapingJob) -> None:
         async with self._lock:
             weight = PRIORITY_WEIGHT[job.priority]
-            heapq.heappush(self._priority_heap, (weight, job.scheduled_at.timestamp(), job))
+            sequence = next(self._sequence)
+            heapq.heappush(self._priority_heap, (weight, job.scheduled_at.timestamp(), sequence, job))
 
     @property
     def queue_size(self) -> int:
@@ -121,7 +124,7 @@ class PlannerAgent:
         async with self._lock:
             if not self._priority_heap:
                 return None
-            _, _, job = heapq.heappop(self._priority_heap)
+            _, _, _, job = heapq.heappop(self._priority_heap)
             return job
 
     # ------------------------------------------------------------------

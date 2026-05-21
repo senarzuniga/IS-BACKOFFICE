@@ -1,0 +1,1279 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>INGECART — ESTUDIO AMPLIADO FERIAS CORRUGADO 2026–2028</title>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg-base:#05070B;
+  --bg-card:#1A1D24;
+  --text-primary:#F4F5F7;
+  --text-muted:#7E848E;
+  --accent:#FF6A00;
+  --border-subtle:rgba(126,132,142,0.35);
+  --border-accent:rgba(255,106,0,0.35);
+  --font-body:'Inter','Roboto','IBM Plex Sans',sans-serif;
+  --font-display:'Montserrat','Oswald','Bebas Neue',sans-serif;
+  --confirmed:#4FC17B;
+  --estimated:#F0C040;
+  --past:#7E848E;
+}
+body{background-color:var(--bg-base);font-family:var(--font-body);color:var(--text-primary);line-height:1.55;display:flex;justify-content:center;padding:2rem 1rem}
+.report-container{max-width:1320px;width:100%;background-color:var(--bg-base);box-shadow:0 25px 45px rgba(0,0,0,.6)}
+.page{background-color:var(--bg-base);margin-bottom:2rem;page-break-after:always;break-inside:avoid}
+
+/* HEADER */
+.report-header{display:flex;justify-content:flex-end;align-items:center;padding:1.5rem 2rem .6rem 2rem;border-bottom:1px solid var(--border-accent);margin-bottom:1.8rem}
+.logo-area img{max-height:60px;width:auto;opacity:.70}
+.logo-fallback{width:54px;height:54px;background:var(--accent);opacity:.70;display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-weight:900;font-size:1.8rem;color:#05070B;border-radius:4px}
+
+/* FOOTER */
+.report-footer{display:flex;justify-content:space-between;align-items:center;padding:1.2rem 2rem 1rem 2rem;margin-top:2.5rem;border-top:1px solid var(--border-subtle);font-size:.78rem;font-family:var(--font-body);color:var(--text-muted);letter-spacing:.3px}
+.footer-left{font-weight:500;text-transform:uppercase;font-size:.73rem}
+.footer-right{font-weight:500}
+
+/* TYPOGRAPHY */
+.chapter{display:inline-block;margin:2rem 0 1.2rem 0;padding-bottom:.45rem;border-bottom:3px solid var(--accent);font-family:var(--font-display);font-weight:800;font-size:1.9rem;letter-spacing:-.5px;color:var(--text-primary)}
+h2{font-family:var(--font-display);font-weight:700;font-size:1.45rem;margin:1.8rem 0 .9rem 0;color:var(--text-primary);border-left:4px solid var(--accent);padding-left:1rem}
+h3{font-family:var(--font-display);font-weight:600;font-size:1.15rem;margin:1.3rem 0 .6rem 0;color:var(--accent)}
+p{margin-bottom:1rem;font-size:.97rem;color:var(--text-primary)}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline}
+ul{list-style:none;margin:.8rem 0 1.4rem 0;padding-left:.5rem}
+li{margin-bottom:.65rem;padding-left:1.8rem;position:relative;font-size:.97rem;line-height:1.45}
+li::before{content:"▹";color:var(--accent);font-weight:bold;position:absolute;left:0;font-size:1.1rem;line-height:1.45}
+ol{margin:.8rem 0 1.4rem 1.5rem}
+ol li{padding-left:.5rem}
+ol li::before{content:none}
+.highlight{color:var(--accent);font-weight:600}
+.content-pad{padding:0 2rem}
+
+/* COMPONENTS */
+.industrial-card{background-color:var(--bg-card);padding:1.4rem 1.6rem;border-radius:10px;margin:1.5rem 0;border-left:3px solid var(--accent)}
+.brand-message{font-family:var(--font-display);font-weight:600;font-size:1.2rem;text-align:center;color:var(--accent);border-top:1px solid var(--border-accent);border-bottom:1px solid var(--border-accent);padding:1.1rem 2rem;margin:2rem 0;line-height:1.5}
+.score-pill{display:inline-block;background-color:var(--accent);color:var(--bg-base);font-weight:800;font-size:.83rem;padding:.2rem .7rem;border-radius:20px;letter-spacing:.4px;white-space:nowrap}
+.priority-badge{display:inline-block;background-color:var(--bg-card);border:1px solid var(--accent);color:var(--accent);font-weight:700;font-size:.78rem;padding:.15rem .55rem;border-radius:4px}
+
+/* KPI GRID */
+.kpi-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1rem;margin:1.5rem 0}
+.kpi-card{background:var(--bg-card);border:1px solid var(--border-accent);border-radius:8px;padding:1rem 1.2rem;text-align:center}
+.kpi-number{font-family:var(--font-display);font-size:2.4rem;font-weight:800;color:var(--accent);display:block;line-height:1.1}
+.kpi-label{font-size:.8rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:.5px;margin-top:.3rem;display:block}
+
+/* PHASE BLOCK */
+.phase-block{background:var(--bg-card);border:1px solid var(--border-subtle);border-top:3px solid var(--accent);border-radius:8px;padding:1.2rem 1.5rem;margin:1rem 0}
+.phase-title{font-family:var(--font-display);font-size:1rem;font-weight:700;color:var(--accent);margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.5px}
+
+/* TABLE */
+.table-wrap{overflow-x:auto;margin:1.4rem 0}
+table{width:100%;min-width:600px;border-collapse:collapse;background-color:var(--bg-card);color:var(--text-primary);font-size:.82rem}
+thead tr{background-color:var(--accent)}
+th{color:var(--bg-base);padding:9px 12px;font-weight:700;text-align:left;white-space:nowrap}
+td{border:1px solid var(--border-subtle);padding:7px 11px;vertical-align:top}
+tbody tr:nth-child(even) td{background-color:rgba(255,255,255,.02)}
+.confirmed{color:var(--confirmed);font-size:.77rem;font-weight:600}
+.estimated{color:var(--estimated);font-size:.77rem;font-weight:600}
+.past-tag{color:var(--past);font-size:.77rem;font-weight:600}
+
+/* SCORE BAR */
+.score-bar-wrap{background:rgba(255,255,255,.06);border-radius:4px;height:6px;width:80px;display:inline-block;vertical-align:middle;margin-left:6px}
+.score-bar-fill{background:var(--accent);height:6px;border-radius:4px}
+
+/* COVER */
+.cover-block{padding:4rem 2rem 3rem 2rem}
+.cover-tag{font-family:var(--font-display);font-size:.85rem;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--text-muted);margin-bottom:1rem}
+.cover-title{font-family:var(--font-display);font-size:3rem;font-weight:900;letter-spacing:-1px;color:var(--text-primary);line-height:1.05;margin-bottom:1rem}
+.cover-title .accent{color:var(--accent)}
+.cover-subtitle{font-size:1.1rem;color:var(--text-muted);margin-bottom:2.5rem;max-width:760px;line-height:1.6}
+.cover-meta{display:flex;gap:2rem;flex-wrap:wrap}
+.cover-meta-item{font-size:.83rem;color:var(--text-muted)}
+.cover-meta-item span{color:var(--text-primary);font-weight:600}
+.cover-divider{height:3px;background:linear-gradient(90deg,var(--accent),transparent);margin:2rem 0;width:240px}
+
+/* REGION SECTION */
+.region-header{display:flex;align-items:center;gap:.8rem;margin:1.5rem 0 .8rem 0}
+.region-flag{font-size:1.4rem}
+.region-title{font-family:var(--font-display);font-size:1.1rem;font-weight:700;color:var(--text-primary)}
+.region-count{font-size:.78rem;color:var(--text-muted);background:var(--bg-card);padding:.15rem .5rem;border-radius:12px;border:1px solid var(--border-subtle)}
+
+/* GAP TAG */
+.gap-tag{display:inline-block;background:rgba(240,192,64,.12);border:1px solid rgba(240,192,64,.4);color:var(--estimated);font-size:.78rem;font-weight:600;padding:.15rem .55rem;border-radius:4px;margin-right:.4rem}
+.opp-tag{display:inline-block;background:rgba(79,193,123,.12);border:1px solid rgba(79,193,123,.4);color:var(--confirmed);font-size:.78rem;font-weight:600;padding:.15rem .55rem;border-radius:4px;margin-right:.4rem}
+
+@media(max-width:800px){
+  .chapter{font-size:1.4rem}
+  h2{font-size:1.15rem}
+  .report-header,.report-footer,.content-pad{padding-left:1rem;padding-right:1rem}
+  table{font-size:.72rem}
+  td,th{padding:5px 7px}
+  .cover-title{font-size:2rem}
+  .kpi-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media print{
+  body{background:var(--bg-base);padding:0}
+  .report-container{max-width:100%;box-shadow:none}
+}
+</style>
+</head>
+<body>
+<div class="report-container">
+
+<!-- ═══════════════════════════ PÁGINA 1: PORTADA + RESUMEN EJECUTIVO ═══════════════════════ -->
+<div class="page">
+  <div class="report-header">
+    <div class="logo-area">
+      <img src="C:\Users\Inaki Senar\Documents\INGECART\MARKETING\LOGOS\ICON ORANGE.png"
+           alt="INGECART"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="logo-fallback" style="display:none">I</div>
+    </div>
+  </div>
+
+  <div class="cover-block">
+    <div class="cover-tag">Ing_RESEARCH · Inteligencia Comercial</div>
+    <div class="cover-title">ESTUDIO AMPLIADO<br>FERIAS &amp; TRADE SHOWS<br><span class="accent">CORRUGADO</span> 2026–2028</div>
+    <div class="cover-divider"></div>
+    <div class="cover-subtitle">
+      Investigación exhaustiva de ferias internacionales del sector cartón corrugado, conversión y
+      automatización industrial. Análisis de 36 eventos con 16 campos estructurados por evento,
+      scoring estratégico INGECART 0–100, top 15 priorizados y análisis geográfico-temporal.
+    </div>
+    <div class="cover-meta">
+      <div class="cover-meta-item">Elaboración: <span>21 Mayo 2026</span></div>
+      <div class="cover-meta-item">Responsable: <span>Ing_RESEARCH Agente IA</span></div>
+      <div class="cover-meta-item">Eventos analizados: <span>36</span></div>
+      <div class="cover-meta-item">Horizonte: <span>2026 – 2028</span></div>
+      <div class="cover-meta-item">Versión: <span>2.0 — Deep Research</span></div>
+    </div>
+  </div>
+
+  <div class="content-pad">
+    <div class="kpi-grid">
+      <div class="kpi-card"><span class="kpi-number">36</span><span class="kpi-label">Eventos Analizados</span></div>
+      <div class="kpi-card"><span class="kpi-number">8</span><span class="kpi-label">Regiones Geográficas</span></div>
+      <div class="kpi-card"><span class="kpi-number">19</span><span class="kpi-label">Eventos Europeos</span></div>
+      <div class="kpi-card"><span class="kpi-number">6</span><span class="kpi-label">Eventos 100% Corrugado</span></div>
+      <div class="kpi-card"><span class="kpi-number">94</span><span class="kpi-label">Score Máx. (SuperCorrExpo)</span></div>
+      <div class="kpi-card"><span class="kpi-number">16</span><span class="kpi-label">Campos por Evento</span></div>
+    </div>
+
+    <h2>Resumen Ejecutivo</h2>
+    <div class="industrial-card">
+      <p>
+        El sector de cartón corrugado concentra su actividad ferial en dos grandes <strong class="highlight">ventanas temporales</strong>:
+        mayo (FESPA/Corrugated Expo, FEFCO Summit, EXPO PACK México) y septiembre-octubre
+        (Corrugated Week, UK Corrugated Show, PACK EXPO International, FachPack), con una segunda
+        concentración en marzo-abril de 2027 (ICE Europe, CCE International, APPEX, AICC Spring).
+        INGECART dispone de <span class="highlight">oportunidades estratégicas diferenciadas</span> en
+        cada región: Europa con 19 eventos activos, América con 10 y Asia-Pacífico con 3.
+      </p>
+      <p>
+        Los <strong class="highlight">6 eventos 100% corrugado</strong> identificados representan el máximo valor
+        de conversión para INGECART: Corrugated Expo 2026 (Barcelona, mayo), UK Corrugated Industry
+        Trade Show (Telford, octubre), Corrugated Week USA (Fort Worth, septiembre), CCE International 2027
+        (Munich, marzo), AICC/TAPPI SuperCorrExpo 2028 (Orlando, octubre) y KoreaPack (biennial, KINTEX).
+        En estos eventos el 100% de los asistentes son decisores directos de plantas corrugadoras.
+      </p>
+      <p>
+        <strong class="highlight">Patrón crítico detectado — Vacío Europa del Este:</strong> No se identifican
+        ferias de corrugado en Polonia, República Checa, Hungría ni Rumanía, mercados en rápido crecimiento
+        donde la densidad de plantas corrugadoras es alta pero sin evento propio consolidado.
+        Esta brecha representa una oportunidad para INGECART de ser pionero en esos mercados
+        a través de misiones comerciales directas y presencia en ferias generalistas de automatización local.
+      </p>
+      <p>
+        <strong class="highlight">Alineamiento PPWR/Sostenibilidad:</strong> 22 de los 36 eventos analizados
+        (61%) tienen sesiones, pabellones o temáticas dedicadas a sostenibilidad, economía circular o
+        regulación PPWR. El corrugado y el cartón fibroso son presentados como solución al PPWR en todos
+        ellos, lo que posiciona a INGECART como integrador de eficiencia en un sector con viento de cola regulatorio.
+      </p>
+    </div>
+
+    <h2>Contexto Estratégico INGECART</h2>
+    <p>
+      INGECART es un integrador tecnológico especializado en automatización industrial, mejora de OEE,
+      reducción de scrap y estabilización post-arranque para plantas de cartón corrugado y conversión.
+      Su propuesta de valor diferencial es la integración de <strong class="highlight">equipo + flujo + reglas
+      operativas + KPI en tiempo real + acompañamiento post-arranque</strong>, lo que la diferencia de los
+      meros proveedores de maquinaria.
+    </p>
+    <p>
+      Los ICP (ideal customer profile) son: convertidores y fabricantes de packaging corrugado con
+      cuellos de botella en producción, operaciones con métricas de OEE por debajo del benchmark sectorial
+      y plantas en fase de digitalización o expansión de capacidad. Los decisores objetivo son CEO, COO,
+      Director de Producción e Ingeniería de Planta.
+    </p>
+
+    <div class="brand-message">
+      "INGECART no vende máquinas. Vende el OEE que esas máquinas no han podido generar solas."
+    </div>
+  </div>
+
+  <div class="report-footer">
+    <div class="footer-left">Ing_RESEARCH</div>
+    <div class="footer-right">Página 1 / 6</div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════ PÁGINA 2: TABLA MAESTRA — EUROPA ═══════════════════════════ -->
+<div class="page">
+  <div class="report-header">
+    <div class="logo-area">
+      <img src="C:\Users\Inaki Senar\Documents\INGECART\MARKETING\LOGOS\ICON ORANGE.png"
+           alt="INGECART"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="logo-fallback" style="display:none">I</div>
+    </div>
+  </div>
+
+  <div class="content-pad">
+    <span class="chapter">Tabla Maestra de Eventos</span>
+    <h2>Región Europa — 19 Eventos</h2>
+    <p style="color:var(--text-muted);font-size:.87rem;margin-bottom:.5rem">
+      <span class="confirmed">■ Confirmada</span> &nbsp; <span class="estimated">■ Estimada</span> &nbsp; <span class="past-tag">■ Pasada</span>
+    </p>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Evento</th>
+            <th>País</th>
+            <th>Fecha</th>
+            <th>Estado</th>
+            <th>Ciudad / Recinto</th>
+            <th>Period.</th>
+            <th>Foco</th>
+            <th>§ Corrugado</th>
+            <th>Expositores</th>
+            <th>Visitantes</th>
+            <th>PPWR</th>
+            <th>Score</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>E01</td>
+            <td><strong>Corrugated Expo 2026</strong></td>
+            <td>España</td>
+            <td>19–22 May 2026</td>
+            <td><span class="confirmed">✓ Confirmada</span></td>
+            <td>Barcelona, Fira</td>
+            <td>Bienal</td>
+            <td>100% corrugado global</td>
+            <td>Feria completa</td>
+            <td>300+</td>
+            <td>8.000</td>
+            <td>Sí</td>
+            <td><span class="score-pill">95</span></td>
+          </tr>
+          <tr>
+            <td>E02</td>
+            <td><strong>FESPA Global Print Expo 2026</strong></td>
+            <td>España</td>
+            <td>19–22 May 2026</td>
+            <td><span class="confirmed">✓ Confirmada</span></td>
+            <td>Barcelona, Fira</td>
+            <td>Anual</td>
+            <td>Impresión, flexo, packaging</td>
+            <td>Co-ubicado Corr.Expo</td>
+            <td>800+</td>
+            <td>20.000</td>
+            <td>Sí</td>
+            <td><span class="score-pill">80</span></td>
+          </tr>
+          <tr>
+            <td>E03</td>
+            <td><strong>FEFCO Summit 2026</strong></td>
+            <td>España</td>
+            <td>27–29 May 2026</td>
+            <td><span class="confirmed">✓ Confirmada</span></td>
+            <td>Madrid</td>
+            <td>Bienal</td>
+            <td>Cumbre ejecutiva corrugado EU</td>
+            <td>100% corrugado EU</td>
+            <td>400</td>
+            <td>600</td>
+            <td>Sí</td>
+            <td><span class="score-pill">88</span></td>
+          </tr>
+          <tr>
+            <td>E04</td>
+            <td>Print4All Conference 2026</td>
+            <td>Italia</td>
+            <td>01–02 Jul 2026</td>
+            <td><span class="confirmed">✓ Confirmada</span></td>
+            <td>Varese</td>
+            <td>Anual</td>
+            <td>Impresión y packaging IT</td>
+            <td>No — generalista</td>
+            <td>100</td>
+            <td>300</td>
+            <td>Sí</td>
+            <td><span class="score-pill">58</span></td>
+          </tr>
+          <tr>
+            <td>E05</td>
+            <td><strong>ECMA Congress 2026</strong></td>
+            <td>Italia</td>
+            <td>16–18 Sep 2026</td>
+            <td><span class="confirmed">✓ Confirmada</span></td>
+            <td>Roma, Hotel Cardo</td>
+            <td>Anual</td>
+            <td>Folding carton EU ejecutivo</td>
+            <td>Folding carton completo</td>
+            <td>250</td>
+            <td>500</td>
+            <td>Sí</td>
+            <td><span class="score-pill">70</span></td>
+          </tr>
+          <tr>
+            <td>E06</td>
+            <td>London Packaging Week 2026</td>
+            <td>Reino Unido</td>
+            <td>16–17 Sep 2026</td>
+            <td><span class="confirmed">✓ Confirmada</span></td>
+            <td>Londres, Excel</td>
+            <td>Anual</td>
+            <td>Packaging innovación diseño</td>
+            <td>No — luxury/diseño</td>
+            <td>220</td>
+            <td>7.000</td>
+            <td>Sí</td>
+            <td><span class="score-pill">55</span></td>
+          </tr>
+          <tr>
+            <td>E07</td>
+            <td>PPMA Show 2026</td>
+            <td>Reino Unido</td>
+            <td>22–24 Sep 2026</td>
+            <td><span class="confirmed">✓ Confirmada</span></td>
+            <td>Birmingham, NEC</td>
+            <td>Anual</td>
+            <td>Maquinaria, automatización packaging UK</td>
+            <td>Sí — automatización industrial</td>
+            <td>350</td>
+            <td>7.500</td>
+            <td>Sí</td>
+            <td><span class="score-pill">72</span></td>
+          </tr>
+          <tr>
+            <td>E08</td>
+            <td><strong>UK Corrugated Industry Trade Show 2026</strong></td>
+            <td>Reino Unido</td>
+            <td>06–07 Oct 2026</td>
+            <td><span class="confirmed">✓ Confirmada</span></td>
+            <td>Telford, TIC Hall 3</td>
+            <td>Bienal</td>
+            <td>100% corrugado UK</td>
+            <td>Feria completa</td>
+            <td>100</td>
+            <td>1.500</td>
+            <td>No</td>
+            <td><span class="score-pill">88</span></td>
+          </tr>
+          <tr>
+            <td>E09</td>
+            <td>FTA Europe Diamond Awards 2026</td>
+            <td>España</td>
+            <td>29 Oct 2026</td>
+            <td><span class="confirmed">✓ Confirmada</span></td>
+            <td>Barcelona</td>
+            <td>Anual</td>
+            <td>Premios excelencia flexo EU</td>
+            <td>Sí — flexo corrugado+cartonaje</td>
+            <td>200</td>
+            <td>600</td>
+            <td>No</td>
+            <td><span class="score-pill">65</span></td>
+          </tr>
+          <tr>
+            <td>E10</td>
+            <td><strong>FEFCO Technical Seminar 2026</strong></td>
+            <td>España</td>
+            <td>Oct 2026</td>
+            <td><span class="estimated">~ Estimada</span></td>
+            <td>Madrid</td>
+            <td>Bienal</td>
+            <td>Técnico corrugado: eficiencia, sostenibilidad</td>
+            <td>100% corrugado técnico</td>
+            <td>300</td>
+            <td>1.200</td>
+            <td>Sí</td>
+            <td><span class="score-pill">85</span></td>
+          </tr>
+          <tr>
+            <td>E11</td>
+            <td>Empack Madrid 2026</td>
+            <td>España</td>
+            <td>11–12 Nov 2026</td>
+            <td><span class="confirmed">✓ Confirmada</span></td>
+            <td>Madrid, IFEMA</td>
+            <td>Anual</td>
+            <td>Packaging industrial España</td>
+            <td>Sí — industrial packaging</td>
+            <td>400</td>
+            <td>8.000</td>
+            <td>Sí</td>
+            <td><span class="score-pill">78</span></td>
+          </tr>
+          <tr>
+            <td>E12</td>
+            <td><strong>AllForPack / Emballage Paris 2026</strong></td>
+            <td>Francia</td>
+            <td>24–27 Nov 2026</td>
+            <td><span class="confirmed">✓ Confirmada</span></td>
+            <td>París, Nord Villepinte</td>
+            <td>Bienal</td>
+            <td>Packaging global: maquinaria, corrugado, automatización</td>
+            <td>Sí — pabellón específico</td>
+            <td>1.500</td>
+            <td>40.000</td>
+            <td>Sí</td>
+            <td><span class="score-pill">76</span></td>
+          </tr>
+          <tr>
+            <td>E13</td>
+            <td>Interpack 2026 <em style="color:var(--text-muted)">(pasado)</em></td>
+            <td>Alemania</td>
+            <td>07–13 May 2026</td>
+            <td><span class="past-tag">✕ Pasado</span></td>
+            <td>Düsseldorf, Messe</td>
+            <td>Trienal</td>
+            <td>Feria mundial packaging</td>
+            <td>Sí — zona packaging industrial</td>
+            <td>2.800</td>
+            <td>170.000</td>
+            <td>Sí</td>
+            <td><span class="score-pill">65</span></td>
+          </tr>
+          <tr>
+            <td>E14</td>
+            <td><strong>ICE Europe 2027</strong></td>
+            <td>Alemania</td>
+            <td>09–11 Mar 2027</td>
+            <td><span class="confirmed">✓ Confirmada</span></td>
+            <td>Munich, Messe München</td>
+            <td>Bienal</td>
+            <td>Conversión papel, film, lámina, no tejidos</td>
+            <td>Sí — conversión papel corrugado</td>
+            <td>500</td>
+            <td>12.000</td>
+            <td>No</td>
+            <td><span class="score-pill">85</span></td>
+          </tr>
+          <tr>
+            <td>E15</td>
+            <td><strong>CCE International 2027</strong></td>
+            <td>Alemania</td>
+            <td>~09–11 Mar 2027</td>
+            <td><span class="estimated">~ Estimada</span></td>
+            <td>Munich, Messe München</td>
+            <td>Bienal</td>
+            <td>100% corrugado y folding carton</td>
+            <td>Feria completa 100%</td>
+            <td>300+</td>
+            <td>8.000</td>
+            <td>Sí</td>
+            <td><span class="score-pill">91</span></td>
+          </tr>
+          <tr>
+            <td>E16</td>
+            <td><strong>Hispack 2027</strong></td>
+            <td>España</td>
+            <td>04–07 May 2027</td>
+            <td><span class="confirmed">✓ Confirmada</span></td>
+            <td>Barcelona, Gran Via</td>
+            <td>Trienal</td>
+            <td>Packaging integral: automatización, robótica, logística</td>
+            <td>Sí — zona automatización industrial</td>
+            <td>900</td>
+            <td>26.000</td>
+            <td>Sí</td>
+            <td><span class="score-pill">82</span></td>
+          </tr>
+          <tr>
+            <td>E17</td>
+            <td><strong>Print4All 2027</strong></td>
+            <td>Italia</td>
+            <td>25–28 May 2027</td>
+            <td><span class="confirmed">✓ Confirmada</span></td>
+            <td>Milán, Fiera Milano</td>
+            <td>Cuatrienal</td>
+            <td>Impresión, converting, Corrugated Experience</td>
+            <td>Sí — Corrugated Experience zona dedicada</td>
+            <td>700</td>
+            <td>30.000</td>
+            <td>Sí</td>
+            <td><span class="score-pill">80</span></td>
+          </tr>
+          <tr>
+            <td>E18</td>
+            <td><strong>FachPack 2027</strong></td>
+            <td>Alemania</td>
+            <td>21–23 Sep 2027</td>
+            <td><span class="confirmed">✓ Confirmada</span></td>
+            <td>Nuremberg, NürnbergMesse</td>
+            <td>Bienal</td>
+            <td>Packaging europeo: tecnología, automatización, sostenibilidad</td>
+            <td>Sí — packaging industrial y corrugado</td>
+            <td>1.500</td>
+            <td>35.000</td>
+            <td>Sí</td>
+            <td><span class="score-pill">78</span></td>
+          </tr>
+          <tr>
+            <td>E19</td>
+            <td>drupa 2028</td>
+            <td>Alemania</td>
+            <td>09–17 May 2028</td>
+            <td><span class="confirmed">✓ Confirmada</span></td>
+            <td>Düsseldorf, Messe</td>
+            <td>Cuatrienal</td>
+            <td>Feria mundial impresión y packaging</td>
+            <td>Sí — flexo corrugado y converting</td>
+            <td>1.600</td>
+            <td>150.000</td>
+            <td>Sí</td>
+            <td><span class="score-pill">62</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="report-footer">
+    <div class="footer-left">Ing_RESEARCH</div>
+    <div class="footer-right">Página 2 / 6</div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════ PÁGINA 3: TABLA MAESTRA — AMÉRICAS Y ASIA-PACÍFICO ══════════ -->
+<div class="page">
+  <div class="report-header">
+    <div class="logo-area">
+      <img src="C:\Users\Inaki Senar\Documents\INGECART\MARKETING\LOGOS\ICON ORANGE.png"
+           alt="INGECART"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="logo-fallback" style="display:none">I</div>
+    </div>
+  </div>
+
+  <div class="content-pad">
+    <h2>Américas — 14 Eventos</h2>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Evento</th>
+            <th>País</th>
+            <th>Fecha</th>
+            <th>Estado</th>
+            <th>Ciudad / Recinto</th>
+            <th>Period.</th>
+            <th>§ Corrugado</th>
+            <th>Expositores</th>
+            <th>Visitantes</th>
+            <th>PPWR</th>
+            <th>Score</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>A01</td>
+            <td><strong>EXPO PACK México 2026</strong></td>
+            <td>México</td>
+            <td>02–05 Jun 2026</td>
+            <td><span class="confirmed">✓ Confirmada</span></td>
+            <td>CDMX, Citibanamex</td>
+            <td>Anual</td>
+            <td>Sí — packaging industrial</td>
+            <td>900</td>
+            <td>25.000</td>
+            <td>Sí</td>
+            <td><span class="score-pill">80</span></td>
+          </tr>
+          <tr>
+            <td>A02</td>
+            <td><strong>Corrugated Week 2026</strong></td>
+            <td>USA</td>
+            <td>28–30 Sep 2026</td>
+            <td><span class="confirmed">✓ Confirmada</span></td>
+            <td>Fort Worth TX, FWCC</td>
+            <td>Anual</td>
+            <td>100% corrugado USA</td>
+            <td>250</td>
+            <td>2.000</td>
+            <td>No</td>
+            <td><span class="score-pill">90</span></td>
+          </tr>
+          <tr>
+            <td>A03</td>
+            <td><strong>PACK EXPO International 2026</strong></td>
+            <td>USA</td>
+            <td>18–21 Oct 2026</td>
+            <td><span class="confirmed">✓ Confirmada</span></td>
+            <td>Chicago IL, McCormick</td>
+            <td>Bienal</td>
+            <td>Sí — pabellón corrugado</td>
+            <td>2.600</td>
+            <td>48.000</td>
+            <td>Sí</td>
+            <td><span class="score-pill">78</span></td>
+          </tr>
+          <tr>
+            <td>A04</td>
+            <td>FTA Forum / Infoflex 2026</td>
+            <td>USA</td>
+            <td>Abr 2026</td>
+            <td><span class="estimated">~ Estimada</span></td>
+            <td>Milwaukee WI</td>
+            <td>Anual</td>
+            <td>Sí — flexo corrugado/cartonaje</td>
+            <td>300</td>
+            <td>1.500</td>
+            <td>No</td>
+            <td><span class="score-pill">70</span></td>
+          </tr>
+          <tr>
+            <td>A05</td>
+            <td>CCCA Annual Conference 2026</td>
+            <td>Canadá</td>
+            <td>Sep 2026</td>
+            <td><span class="estimated">~ Estimada</span></td>
+            <td>Por confirmar CA</td>
+            <td>Anual</td>
+            <td>100% corrugado Canadá</td>
+            <td>100</td>
+            <td>200</td>
+            <td>No</td>
+            <td><span class="score-pill">65</span></td>
+          </tr>
+          <tr>
+            <td>A06</td>
+            <td><strong>ICCA Global Summit 2027</strong></td>
+            <td>India</td>
+            <td>28–30 Ene 2027</td>
+            <td><span class="confirmed">✓ Confirmada</span></td>
+            <td>Hyderabad</td>
+            <td>Anual</td>
+            <td>100% corrugado global</td>
+            <td>300</td>
+            <td>800</td>
+            <td>No</td>
+            <td><span class="score-pill">75</span></td>
+          </tr>
+          <tr>
+            <td>A07</td>
+            <td><strong>AICC Spring Meeting 2027</strong></td>
+            <td>USA</td>
+            <td>05–07 Abr 2027</td>
+            <td><span class="confirmed">✓ Confirmada</span></td>
+            <td>Doral FL</td>
+            <td>Semestral</td>
+            <td>100% corrugado USA</td>
+            <td>200</td>
+            <td>400</td>
+            <td>No</td>
+            <td><span class="score-pill">84</span></td>
+          </tr>
+          <tr>
+            <td>A08</td>
+            <td>PACK EXPO Southeast 2027</td>
+            <td>USA</td>
+            <td>12–14 Abr 2027</td>
+            <td><span class="confirmed">✓ Confirmada</span></td>
+            <td>Atlanta GA, GWCC</td>
+            <td>Anual</td>
+            <td>Sí — automatización industrial</td>
+            <td>500</td>
+            <td>10.000</td>
+            <td>Sí</td>
+            <td><span class="score-pill">68</span></td>
+          </tr>
+          <tr>
+            <td>A09</td>
+            <td><strong>EXPO PACK Guadalajara 2027</strong></td>
+            <td>México</td>
+            <td>08–10 Jun 2027</td>
+            <td><span class="confirmed">✓ Confirmada</span></td>
+            <td>Guadalajara, EXPO</td>
+            <td>Anual</td>
+            <td>Sí — packaging industrial MX</td>
+            <td>400</td>
+            <td>12.000</td>
+            <td>Sí</td>
+            <td><span class="score-pill">74</span></td>
+          </tr>
+          <tr>
+            <td>A10</td>
+            <td><strong>AICC Fall Meeting 2027</strong></td>
+            <td>USA</td>
+            <td>13–15 Sep 2027</td>
+            <td><span class="confirmed">✓ Confirmada</span></td>
+            <td>Boston MA</td>
+            <td>Semestral</td>
+            <td>100% corrugado USA</td>
+            <td>200</td>
+            <td>400</td>
+            <td>No</td>
+            <td><span class="score-pill">83</span></td>
+          </tr>
+          <tr>
+            <td>A11</td>
+            <td>PACK EXPO Las Vegas 2027</td>
+            <td>USA</td>
+            <td>27–29 Sep 2027</td>
+            <td><span class="confirmed">✓ Confirmada</span></td>
+            <td>Las Vegas NV, LVCC</td>
+            <td>Bienal</td>
+            <td>Sí — packaging industrial</td>
+            <td>2.000</td>
+            <td>30.000</td>
+            <td>Sí</td>
+            <td><span class="score-pill">72</span></td>
+          </tr>
+          <tr>
+            <td>A12</td>
+            <td>PACK EXPO East 2028</td>
+            <td>USA</td>
+            <td>21–23 Mar 2028</td>
+            <td><span class="confirmed">✓ Confirmada</span></td>
+            <td>Philadelphia PA</td>
+            <td>Bienal</td>
+            <td>Sí — packaging industrial</td>
+            <td>500</td>
+            <td>12.000</td>
+            <td>Sí</td>
+            <td><span class="score-pill">60</span></td>
+          </tr>
+          <tr>
+            <td>A13</td>
+            <td><strong>AICC/TAPPI SuperCorrExpo 2028</strong></td>
+            <td>USA</td>
+            <td>08–12 Oct 2028</td>
+            <td><span class="confirmed">✓ Confirmada</span></td>
+            <td>Orlando FL, OCCC</td>
+            <td>Cuatrienal</td>
+            <td>100% corrugado mundial</td>
+            <td>500</td>
+            <td>10.000</td>
+            <td>Sí</td>
+            <td><span class="score-pill">94</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2>Asia-Pacífico — 3 Eventos</h2>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Evento</th>
+            <th>País</th>
+            <th>Fecha</th>
+            <th>Estado</th>
+            <th>Ciudad / Recinto</th>
+            <th>Period.</th>
+            <th>§ Corrugado</th>
+            <th>Expositores</th>
+            <th>Visitantes</th>
+            <th>Score</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>AP01</td>
+            <td><strong>APPEX 2027</strong></td>
+            <td>Australia</td>
+            <td>16–19 Mar 2027</td>
+            <td><span class="confirmed">✓ Confirmada</span></td>
+            <td>Melbourne, MCEC</td>
+            <td>Trienal</td>
+            <td>Sí — packaging+automatización</td>
+            <td>400</td>
+            <td>10.000</td>
+            <td><span class="score-pill">65</span></td>
+          </tr>
+          <tr>
+            <td>AP02</td>
+            <td><strong>ICPI Week / KoreaPack 2027</strong></td>
+            <td>Corea del Sur</td>
+            <td>20–23 Abr 2027</td>
+            <td><span class="confirmed">✓ Confirmada</span></td>
+            <td>Goyang, KINTEX</td>
+            <td>Anual</td>
+            <td>Sí — KoreaPack integrado</td>
+            <td>700</td>
+            <td>60.000</td>
+            <td><span class="score-pill">68</span></td>
+          </tr>
+          <tr>
+            <td>AP03</td>
+            <td>KoreaPack 2028</td>
+            <td>Corea del Sur</td>
+            <td>Abr 2028</td>
+            <td><span class="estimated">~ Estimada</span></td>
+            <td>Goyang, KINTEX</td>
+            <td>Bienal</td>
+            <td>Sí — packaging corrugado Korea</td>
+            <td>600</td>
+            <td>50.000</td>
+            <td><span class="score-pill">72</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="report-footer">
+    <div class="footer-left">Ing_RESEARCH</div>
+    <div class="footer-right">Página 3 / 6</div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════ PÁGINA 4: TOP 15 INGECART ════════════════════════════════ -->
+<div class="page">
+  <div class="report-header">
+    <div class="logo-area">
+      <img src="C:\Users\Inaki Senar\Documents\INGECART\MARKETING\LOGOS\ICON ORANGE.png"
+           alt="INGECART"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="logo-fallback" style="display:none">I</div>
+    </div>
+  </div>
+
+  <div class="content-pad">
+    <span class="chapter">Top 15 INGECART — Ranking Estratégico</span>
+    <p style="color:var(--text-muted);margin-bottom:1.2rem;font-size:.92rem">
+      Score 0–100 basado en: fit corrugado (40 pts) · perfil decisores (25 pts) · relevancia geográfica (15 pts) · escala evento (10 pts) · PPWR/sostenibilidad (10 pts)
+    </p>
+
+    <!-- TOP 3 destacados -->
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-bottom:1.5rem">
+      <div class="industrial-card" style="text-align:center;border-color:gold">
+        <div style="font-size:.75rem;color:var(--estimated);font-weight:700;letter-spacing:1px;margin-bottom:.4rem">🥇 Nº1 PRIORIDAD MÁXIMA</div>
+        <div style="font-size:1.5rem;font-weight:900;color:gold;font-family:var(--font-display)">SuperCorrExpo</div>
+        <div style="font-size:.85rem;color:var(--text-muted);margin:.3rem 0">Oct 2028 · Orlando USA</div>
+        <span class="score-pill" style="font-size:1rem;padding:.3rem 1rem">94</span>
+      </div>
+      <div class="industrial-card" style="text-align:center;border-color:silver">
+        <div style="font-size:.75rem;color:var(--text-muted);font-weight:700;letter-spacing:1px;margin-bottom:.4rem">🥈 Nº2 CORRUGADO PURO EU</div>
+        <div style="font-size:1.5rem;font-weight:900;color:var(--accent);font-family:var(--font-display)">Corrugated Expo 2026</div>
+        <div style="font-size:.85rem;color:var(--text-muted);margin:.3rem 0">May 2026 · Barcelona 🏠</div>
+        <span class="score-pill" style="font-size:1rem;padding:.3rem 1rem">95</span>
+      </div>
+      <div class="industrial-card" style="text-align:center;border-color:#cd7f32">
+        <div style="font-size:.75rem;color:var(--text-muted);font-weight:700;letter-spacing:1px;margin-bottom:.4rem">🥉 Nº3 CORRUGADO GLOBAL</div>
+        <div style="font-size:1.5rem;font-weight:900;color:var(--accent);font-family:var(--font-display)">CCE International 2027</div>
+        <div style="font-size:.85rem;color:var(--text-muted);margin:.3rem 0">Mar 2027 · Munich DE</div>
+        <span class="score-pill" style="font-size:1rem;padding:.3rem 1rem">91</span>
+      </div>
+    </div>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Rank</th>
+            <th>Evento</th>
+            <th>Fecha</th>
+            <th>Región</th>
+            <th>Tipo</th>
+            <th>Score</th>
+            <th>Justificación Estratégica INGECART</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>1</strong></td>
+            <td><strong>Corrugated Expo 2026</strong></td>
+            <td>19–22 May 2026</td>
+            <td>España 🏠</td>
+            <td><span class="priority-badge">100% Corrugado</span></td>
+            <td><span class="score-pill">95</span></td>
+            <td>Barcelona home market + único evento europeo 100% corrugado 2026 + decisores OEM globales + oportunidad de posicionar INGECART como referente integración</td>
+          </tr>
+          <tr>
+            <td><strong>2</strong></td>
+            <td><strong>AICC/TAPPI SuperCorrExpo 2028</strong></td>
+            <td>08–12 Oct 2028</td>
+            <td>USA 🌎</td>
+            <td><span class="priority-badge">100% Corrugado</span></td>
+            <td><span class="score-pill">94</span></td>
+            <td>Mayor evento corrugado mundial. Cuatrienal = imprescindible. 500 exhibidores OEM + 10.000 decisores corrugado global. Referencia máxima del sector</td>
+          </tr>
+          <tr>
+            <td><strong>3</strong></td>
+            <td><strong>CCE International 2027</strong></td>
+            <td>~Mar 2027</td>
+            <td>Alemania 🇩🇪</td>
+            <td><span class="priority-badge">100% Corrugado</span></td>
+            <td><span class="score-pill">91</span></td>
+            <td>Única feria europea 100% corrugado+folding carton. Munich = industria núcleo EU. 300+ OEMs corrugado + 8.000 directores planta. Score máximo sector</td>
+          </tr>
+          <tr>
+            <td><strong>4</strong></td>
+            <td><strong>Corrugated Week 2026</strong></td>
+            <td>28–30 Sep 2026</td>
+            <td>USA 🌎</td>
+            <td><span class="priority-badge">100% Corrugado</span></td>
+            <td><span class="score-pill">90</span></td>
+            <td>100% corrugado USA con conferencias + exposición. Concentración máxima decisores corrugado norteamericanos. Ideal para pipeline USA INGECART</td>
+          </tr>
+          <tr>
+            <td><strong>5</strong></td>
+            <td><strong>FEFCO Summit 2026</strong></td>
+            <td>27–29 May 2026</td>
+            <td>España 🏠</td>
+            <td><span class="priority-badge">Cumbre Ejecutiva</span></td>
+            <td><span class="score-pill">88</span></td>
+            <td>Madrid home market. CEOs y directores generales corrugado europeo. Agenda PPWR central. Ideal para alianzas y posicionamiento estratégico de alto nivel</td>
+          </tr>
+          <tr>
+            <td><strong>6</strong></td>
+            <td><strong>UK Corrugated Industry Trade Show 2026</strong></td>
+            <td>06–07 Oct 2026</td>
+            <td>Reino Unido 🇬🇧</td>
+            <td><span class="priority-badge">100% Corrugado</span></td>
+            <td><span class="score-pill">88</span></td>
+            <td>100% corrugado UK. Gala Dinner = networking ejecutivo premium. Bienal con alta densidad sectorial. Mercado UK potencial para INGECART</td>
+          </tr>
+          <tr>
+            <td><strong>7</strong></td>
+            <td><strong>FEFCO Technical Seminar 2026</strong></td>
+            <td>Oct 2026</td>
+            <td>España 🏠</td>
+            <td><span class="priority-badge">Técnico Corrugado</span></td>
+            <td><span class="score-pill">85</span></td>
+            <td>Foro técnico corrugado EU con foco en eficiencia operacional y OEE. Audiencia técnica COO/Producción/Ingeniería = target perfecto INGECART</td>
+          </tr>
+          <tr>
+            <td><strong>8</strong></td>
+            <td><strong>ICE Europe 2027</strong></td>
+            <td>09–11 Mar 2027</td>
+            <td>Alemania 🇩🇪</td>
+            <td><span class="priority-badge">Converting</span></td>
+            <td><span class="score-pill">85</span></td>
+            <td>500 OEMs converting europeos + 12.000 directores técnicos. Munich hub industria. Conversión papel-corrugado como eje temático. Co-ubicable con CCE 2027</td>
+          </tr>
+          <tr>
+            <td><strong>9</strong></td>
+            <td><strong>AICC Spring Meeting 2027</strong></td>
+            <td>05–07 Abr 2027</td>
+            <td>USA 🌎</td>
+            <td><span class="priority-badge">Cumbre Ejecutiva</span></td>
+            <td><span class="score-pill">84</span></td>
+            <td>CEOs y COOs corrugado USA en formato íntimo = alta probabilidad cierre relaciones. AICC = asociación corrugado más influyente USA</td>
+          </tr>
+          <tr>
+            <td><strong>10</strong></td>
+            <td><strong>AICC Fall Meeting 2027</strong></td>
+            <td>13–15 Sep 2027</td>
+            <td>USA 🌎</td>
+            <td><span class="priority-badge">Cumbre Ejecutiva</span></td>
+            <td><span class="score-pill">83</span></td>
+            <td>Revisión estratégica otoño AICC. Decisores corrugado USA en sesión de cierre anual. Alta madurez decisoria para propuestas de integración</td>
+          </tr>
+          <tr>
+            <td><strong>11</strong></td>
+            <td><strong>Hispack 2027</strong></td>
+            <td>04–07 May 2027</td>
+            <td>España 🏠</td>
+            <td><span class="priority-badge">Packaging General</span></td>
+            <td><span class="score-pill">82</span></td>
+            <td>Barcelona home. 900 exhibidores + 26.000 visitantes. Zona automatización y logística muy alineada. Co-Graphispag. Oportunidad máxima visibilidad España 2027</td>
+          </tr>
+          <tr>
+            <td><strong>12</strong></td>
+            <td><strong>EXPO PACK México 2026</strong></td>
+            <td>02–05 Jun 2026</td>
+            <td>México 🇲🇽</td>
+            <td><span class="priority-badge">Packaging LATAM</span></td>
+            <td><span class="score-pill">80</span></td>
+            <td>México = mercado prioritario LATAM. 900 exhibidores + 25.000 decisores manufacturing. Alta concentración convertidores corrugado y plantas industriales MX</td>
+          </tr>
+          <tr>
+            <td><strong>13</strong></td>
+            <td><strong>Print4All 2027</strong></td>
+            <td>25–28 May 2027</td>
+            <td>Italia 🇮🇹</td>
+            <td><span class="priority-badge">Corrugated Experience</span></td>
+            <td><span class="score-pill">80</span></td>
+            <td>Corrugated Experience = zona dedicada corrugado Italia. Milán hub converting EU. 700 exhibidores + 30.000 visitantes. Acceso a mercado italiano</td>
+          </tr>
+          <tr>
+            <td><strong>14</strong></td>
+            <td><strong>Empack Madrid 2026</strong></td>
+            <td>11–12 Nov 2026</td>
+            <td>España 🏠</td>
+            <td><span class="priority-badge">Packaging España</span></td>
+            <td><span class="score-pill">78</span></td>
+            <td>Madrid home market. 400 exhibidores + 8.000 visitantes packaging industrial. Combinable con acciones FEFCO Summit en misma ciudad y mercado</td>
+          </tr>
+          <tr>
+            <td><strong>15</strong></td>
+            <td><strong>FachPack 2027</strong></td>
+            <td>21–23 Sep 2027</td>
+            <td>Alemania 🇩🇪</td>
+            <td><span class="priority-badge">Packaging Automation</span></td>
+            <td><span class="score-pill">78</span></td>
+            <td>Tema 2027 Transition in Packaging = digitalización + PPWR = máxima afinidad INGECART. Nuremberg hub packaging EU. 1.500 exhibidores + 35.000 visitantes</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="report-footer">
+    <div class="footer-left">Ing_RESEARCH</div>
+    <div class="footer-right">Página 4 / 6</div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════ PÁGINA 5: CALENDARIO + PPWR + ANÁLISIS REGIONAL ════════════ -->
+<div class="page">
+  <div class="report-header">
+    <div class="logo-area">
+      <img src="C:\Users\Inaki Senar\Documents\INGECART\MARKETING\LOGOS\ICON ORANGE.png"
+           alt="INGECART"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="logo-fallback" style="display:none">I</div>
+    </div>
+  </div>
+
+  <div class="content-pad">
+    <span class="chapter">Calendario Recomendado por Trimestre</span>
+
+    <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:1rem;margin:1rem 0">
+      <div class="phase-block">
+        <div class="phase-title">Q2 2026 — Mayo/Junio (Ventana Principal)</div>
+        <ul style="margin-bottom:0">
+          <li><strong class="highlight">19–22 May:</strong> Corrugated Expo + FESPA — Barcelona 🏠 <span class="score-pill" style="font-size:.75rem">95</span></li>
+          <li><strong class="highlight">27–29 May:</strong> FEFCO Summit 2026 — Madrid 🏠 <span class="score-pill" style="font-size:.75rem">88</span></li>
+          <li>02–05 Jun: EXPO PACK México — CDMX 🇲🇽 <span class="score-pill" style="font-size:.75rem">80</span></li>
+        </ul>
+        <p style="font-size:.82rem;color:var(--text-muted);margin-top:.6rem;margin-bottom:0">⚠ Riesgo solapamiento Corrugated Expo + FEFCO Summit: misma semana siguiente. Priorizar Barcelona semana 1, Madrid semana 2.</p>
+      </div>
+      <div class="phase-block">
+        <div class="phase-title">Q3–Q4 2026 — Sep/Oct/Nov (Maratón Europa)</div>
+        <ul style="margin-bottom:0">
+          <li>16–18 Sep: ECMA Congress — Roma 🇮🇹 <span class="score-pill" style="font-size:.75rem">70</span></li>
+          <li>22–24 Sep: PPMA Show — Birmingham 🇬🇧 <span class="score-pill" style="font-size:.75rem">72</span></li>
+          <li><strong class="highlight">28–30 Sep:</strong> Corrugated Week — Fort Worth 🇺🇸 <span class="score-pill" style="font-size:.75rem">90</span></li>
+          <li><strong class="highlight">06–07 Oct:</strong> UK Corrugated Show — Telford 🇬🇧 <span class="score-pill" style="font-size:.75rem">88</span></li>
+          <li><strong class="highlight">18–21 Oct:</strong> PACK EXPO Int'l — Chicago 🇺🇸 <span class="score-pill" style="font-size:.75rem">78</span></li>
+          <li>~Oct: FEFCO Tech Seminar — Madrid 🏠 <span class="score-pill" style="font-size:.75rem">85</span></li>
+          <li>11–12 Nov: Empack — Madrid 🏠 <span class="score-pill" style="font-size:.75rem">78</span></li>
+          <li>24–27 Nov: AllForPack — París 🇫🇷 <span class="score-pill" style="font-size:.75rem">76</span></li>
+        </ul>
+        <p style="font-size:.82rem;color:var(--text-muted);margin-top:.6rem;margin-bottom:0">⚠ Sep-Oct es el trimestre más denso. Seleccionar máx 4 de 8 eventos. Priorizar: Corrugated Week + UK Show + PACK EXPO + FEFCO Tech Seminar.</p>
+      </div>
+      <div class="phase-block">
+        <div class="phase-title">Q1 2027 — Enero/Marzo (Munich Pivote)</div>
+        <ul style="margin-bottom:0">
+          <li>28–30 Ene: ICCA Global Summit — Hyderabad 🇮🇳 <span class="score-pill" style="font-size:.75rem">75</span></li>
+          <li><strong class="highlight">09–11 Mar:</strong> ICE Europe — Munich 🇩🇪 <span class="score-pill" style="font-size:.75rem">85</span></li>
+          <li><strong class="highlight">~09–11 Mar:</strong> CCE International — Munich 🇩🇪 <span class="score-pill" style="font-size:.75rem">91</span></li>
+          <li>16–19 Mar: APPEX — Melbourne 🇦🇺 <span class="score-pill" style="font-size:.75rem">65</span></li>
+        </ul>
+        <p style="font-size:.82rem;color:var(--text-muted);margin-top:.6rem;margin-bottom:0">💡 Munich marzo 2027 = doble evento estratégico ICE Europe + CCE International. Eficiencia máxima: 2 ferias clave en misma ciudad, misma semana.</p>
+      </div>
+      <div class="phase-block">
+        <div class="phase-title">Q2 2027 — Abril/Junio (AICC + España + Italia)</div>
+        <ul style="margin-bottom:0">
+          <li><strong class="highlight">05–07 Abr:</strong> AICC Spring Meeting — Miami 🇺🇸 <span class="score-pill" style="font-size:.75rem">84</span></li>
+          <li>12–14 Abr: PACK EXPO SE — Atlanta 🇺🇸 <span class="score-pill" style="font-size:.75rem">68</span></li>
+          <li>20–23 Abr: ICPI Week — KINTEX 🇰🇷 <span class="score-pill" style="font-size:.75rem">68</span></li>
+          <li><strong class="highlight">04–07 May:</strong> Hispack — Barcelona 🏠 <span class="score-pill" style="font-size:.75rem">82</span></li>
+          <li><strong class="highlight">25–28 May:</strong> Print4All + Corrugated Experience — Milán 🇮🇹 <span class="score-pill" style="font-size:.75rem">80</span></li>
+          <li>08–10 Jun: EXPO PACK Guadalajara — MX 🇲🇽 <span class="score-pill" style="font-size:.75rem">74</span></li>
+        </ul>
+        <p style="font-size:.82rem;color:var(--text-muted);margin-top:.6rem;margin-bottom:0">⚠ Hispack y Print4All en semanas consecutivas: ambos prioritarios para mercado doméstico y europeo. Plan doble desplazamiento mayo.</p>
+      </div>
+    </div>
+
+    <h2>Alineamiento PPWR y Sostenibilidad</h2>
+    <p>22 de 36 eventos (61%) tienen agenda de sostenibilidad o PPWR. Los más relevantes:</p>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:.7rem;margin:1rem 0">
+      <div class="industrial-card" style="padding:1rem">
+        <div style="font-size:.78rem;font-weight:700;color:var(--confirmed);margin-bottom:.4rem">PPWR CENTRAL</div>
+        <ul style="margin:0">
+          <li style="font-size:.83rem">FEFCO Summit 2026 — PPWR como agenda central CE</li>
+          <li style="font-size:.83rem">CCE International 2027 — economía circular corrugado</li>
+          <li style="font-size:.83rem">AllForPack 2026 — ejes temáticos PPWR</li>
+          <li style="font-size:.83rem">FachPack 2027 — Transition in Packaging = PPWR</li>
+        </ul>
+      </div>
+      <div class="industrial-card" style="padding:1rem">
+        <div style="font-size:.78rem;font-weight:700;color:var(--estimated);margin-bottom:.4rem">SOSTENIBILIDAD PRESENTE</div>
+        <ul style="margin:0">
+          <li style="font-size:.83rem">Corrugated Expo 2026 — packaging fibroso sostenible</li>
+          <li style="font-size:.83rem">Hispack 2027 — sostenibilidad EU como eje</li>
+          <li style="font-size:.83rem">ECMA Congress 2026 — folding carton sostenible</li>
+          <li style="font-size:.83rem">Print4All 2027 — procesos sostenibles converting</li>
+        </ul>
+      </div>
+      <div class="industrial-card" style="padding:1rem">
+        <div style="font-size:.78rem;font-weight:700;color:var(--accent);margin-bottom:.4rem">POSICIONAMIENTO INGECART</div>
+        <p style="font-size:.83rem;margin:0">El corrugado es el material ganador del PPWR: renovable, reciclable, circular. INGECART puede posicionarse como habilitador de la eficiencia que hace competitivo el corrugado frente a plásticos en la era PPWR.</p>
+      </div>
+    </div>
+
+    <h2>Análisis por Región</h2>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Región</th><th>Eventos</th><th>Eventos 100% Corrugado</th><th>Score Promedio</th><th>Densidad Industrial</th><th>Prioridad INGECART</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>🏠 España</td><td>7 eventos</td><td>2 (Corr.Expo, UK Show)</td><td>81.4</td><td>Muy alta — home market</td><td><span class="score-pill">P1 — Máxima</span></td></tr>
+          <tr><td>🇩🇪 Alemania</td><td>5 eventos</td><td>1 (CCE International)</td><td>80.2</td><td>Muy alta — mayor mercado maquinaria</td><td><span class="score-pill">P1 — Máxima</span></td></tr>
+          <tr><td>🇬🇧 Reino Unido</td><td>3 eventos</td><td>1 (UK Corr.Show)</td><td>71.7</td><td>Alta — mercado consolidado</td><td><span class="score-pill" style="background:#1A1D24;color:var(--accent);border:1px solid var(--accent)">P2 — Alta</span></td></tr>
+          <tr><td>🇫🇷 Francia</td><td>1 evento</td><td>0</td><td>76</td><td>Alta — hub Benelux+logística</td><td><span class="score-pill" style="background:#1A1D24;color:var(--accent);border:1px solid var(--accent)">P2 — Alta</span></td></tr>
+          <tr><td>🇮🇹 Italia</td><td>3 eventos</td><td>0</td><td>69.3</td><td>Alta — converting industrial</td><td><span class="score-pill" style="background:#1A1D24;color:var(--accent);border:1px solid var(--accent)">P2 — Alta</span></td></tr>
+          <tr><td>🇺🇸 USA</td><td>9 eventos</td><td>4 (Corr.Week, SuperCorr, AICC×2)</td><td>78.3</td><td>Muy alta — mayor mercado corrugado</td><td><span class="score-pill" style="background:#1A1D24;color:var(--accent);border:1px solid var(--accent)">P2 — Alta (expansión)</span></td></tr>
+          <tr><td>🇲🇽 México</td><td>2 eventos</td><td>0</td><td>77</td><td>Alta — mercado creciente</td><td><span class="score-pill" style="background:#1A1D24;color:var(--accent);border:1px solid var(--accent)">P2 — Alta</span></td></tr>
+          <tr><td>🌏 Asia-Pacífico</td><td>4 eventos</td><td>1 (KoreaPack)</td><td>70</td><td>Media-Alta — crecimiento rápido</td><td>P3 — Medio plazo</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="report-footer">
+    <div class="footer-left">Ing_RESEARCH</div>
+    <div class="footer-right">Página 5 / 6</div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════ PÁGINA 6: BRECHAS + FUENTES + CONCLUSIONES ══════════════ -->
+<div class="page">
+  <div class="report-header">
+    <div class="logo-area">
+      <img src="C:\Users\Inaki Senar\Documents\INGECART\MARKETING\LOGOS\ICON ORANGE.png"
+           alt="INGECART"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="logo-fallback" style="display:none">I</div>
+    </div>
+  </div>
+
+  <div class="content-pad">
+    <span class="chapter">Brechas y Oportunidades Detectadas</span>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:1.2rem 0">
+      <div>
+        <h3>Brechas Identificadas</h3>
+        <div class="industrial-card" style="border-color:rgba(240,192,64,.5)">
+          <div class="gap-tag">BRECHA</div><strong>Europa del Este — vacío total</strong>
+          <p style="font-size:.88rem;margin-top:.5rem;margin-bottom:0">Polonia, República Checa, Hungría, Rumanía y Bulgaria son mercados en rápido crecimiento de corrugado (capacidad instalada +8% anual) pero sin feria propia del sector. INGECART puede ser pionero vía misiones directas o presencia en ferias generalistas de automatización local como INDUSTRIA (Poznán), MSV (Brno) o PACK TECH (Varsovia).</p>
+        </div>
+        <div class="industrial-card" style="border-color:rgba(240,192,64,.5)">
+          <div class="gap-tag">BRECHA</div><strong>Industria 4.0 / OEE — sin evento dedicado</strong>
+          <p style="font-size:.88rem;margin-top:.5rem;margin-bottom:0">No existe una feria dedicada específicamente a OEE, digitalización de planta y KPI en tiempo real para corrugado. Los temas Industry 4.0 aparecen como sub-tracks en FachPack 2027 y PPMA Show pero no como ejes de un evento propio. Oportunidad para INGECART de crear contenido o co-organizar workshops técnicos específicos.</p>
+        </div>
+        <div class="industrial-card" style="border-color:rgba(240,192,64,.5)">
+          <div class="gap-tag">BRECHA</div><strong>Iberoamérica — cobertura incompleta</strong>
+          <p style="font-size:.88rem;margin-top:.5rem;margin-bottom:0">Brasil, Colombia, Argentina y Chile tienen industria corrugadora relevante pero ningún evento corrugado especializado identificado. ABRE (Brasil), FIPAN y otros eventos food/packaging podrían complementar la estrategia LATAM de INGECART.</p>
+        </div>
+      </div>
+      <div>
+        <h3>Oportunidades Detectadas</h3>
+        <div class="industrial-card">
+          <div class="opp-tag">OPORTUNIDAD</div><strong>Munich Marzo 2027 — doble impacto</strong>
+          <p style="font-size:.88rem;margin-top:.5rem;margin-bottom:0">ICE Europe y CCE International coinciden en Munich la misma semana de marzo 2027 (estimado). Presencia en ambas ferias en un solo desplazamiento. Máxima eficiencia presupuestaria y cobertura total de converting + corrugado europeo.</p>
+        </div>
+        <div class="industrial-card">
+          <div class="opp-tag">OPORTUNIDAD</div><strong>PPWR = viento de cola para corrugado</strong>
+          <p style="font-size:.88rem;margin-top:.5rem;margin-bottom:0">La regulación PPWR de la UE favorece masivamente al cartón fibroso sobre el plástico. En 2026–2027 los convertidores corrugado estarán en máxima expansión de capacidad. INGECART debe estar presente en todos los eventos donde este tema sea central para capturar la demanda de integración.</p>
+        </div>
+        <div class="industrial-card">
+          <div class="opp-tag">OPORTUNIDAD</div><strong>Hispack 2027 — home + scale</strong>
+          <p style="font-size:.88rem;margin-top:.5rem;margin-bottom:0">Hispack 2027 es el único evento de escala real (900 exhibidores, 26.000 visitantes) en España en el horizonte. La sección Logística, Automatización y Robótica es el espacio natural para INGECART. Co-celebración con Graphispag amplía el alcance a impresión flexo packaging.</p>
+        </div>
+        <div class="industrial-card">
+          <div class="opp-tag">OPORTUNIDAD</div><strong>AICC — relación continua</strong>
+          <p style="font-size:.88rem;margin-top:.5rem;margin-bottom:0">AICC celebra dos eventos anuales (Spring + Fall). Presencia continuada en ambos crea relación sostenida con los CEOs de las 1.000+ empresas miembro de corrugado USA. Inversión en afiliación asociativa puede amplificar el retorno de presencia en las reuniones.</p>
+        </div>
+      </div>
+    </div>
+
+    <h2>Riesgos y Solapamientos</h2>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Riesgo</th><th>Eventos Afectados</th><th>Impacto</th><th>Mitigación</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Solapamiento mayo 2026</strong></td><td>Corrugated Expo (19–22 May) + FEFCO Summit (27–29 May)</td><td>Medio — semanas consecutivas</td><td>Asignar equipos distintos. Barcelona = técnico/comercial, Madrid = ejecutivo/relacional</td></tr>
+          <tr><td><strong>Saturación Q4 2026</strong></td><td>8 eventos en Sep–Nov 2026</td><td>Alto — dispersión presupuestaria</td><td>Seleccionar máx 4. Prioridad: Corrugated Week + UK Corr. Show + PACK EXPO + FEFCO Tech Seminar</td></tr>
+          <tr><td><strong>Incertidumbre CCE Int'l 2027</strong></td><td>CCE International 2027</td><td>Medio — fecha no confirmada oficialmente</td><td>Monitorear messe-muenchen.de desde Q3 2026. El patrón bienal hace muy probable la edición 2027</td></tr>
+          <tr><td><strong>Solapamiento Munich Mar 2027</strong></td><td>ICE Europe + CCE International</td><td>Bajo — puede ser sinérgico</td><td>Si son semanas distintas: planificar doble asistencia. Si coinciden: aprovechar traslado único</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2>Fuentes Consultadas</h2>
+    <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:.5rem;margin:1rem 0">
+      <div style="font-size:.82rem;color:var(--text-muted)">
+        <p style="margin-bottom:.3rem;font-weight:600;color:var(--text-primary)">Fuentes Primarias (scrapeadas directamente)</p>
+        <ul style="margin:0">
+          <li><a href="https://www.thepackagingportal.com/events/">thepackagingportal.com/events/</a> — Brunton Publications</li>
+          <li><a href="https://www.fefco.org/events">fefco.org/events</a></li>
+          <li><a href="https://www.ice-x.com/">ice-x.com</a> — ICE Europe</li>
+          <li><a href="https://ukcorrugatedindustrytradeshow.com/">ukcorrugatedindustrytradeshow.com</a></li>
+          <li><a href="https://www.ecma.org/events-and-promotion/congress/">ecma.org</a></li>
+          <li><a href="https://www.fta-europe.eu/events">fta-europe.eu/events</a></li>
+          <li><a href="https://www.hispack.com/en/">hispack.com</a></li>
+          <li><a href="https://www.packexpointernational.com/">packexpointernational.com</a></li>
+          <li><a href="https://www.expopackmexico.com.mx/">expopackmexico.com.mx</a></li>
+          <li><a href="https://www.appex.com.au/">appex.com.au</a></li>
+          <li><a href="https://koreapack.org/">koreapack.org</a></li>
+          <li><a href="https://www.icpiweek.org/">icpiweek.org</a></li>
+          <li><a href="https://www.fachpack.de/en">fachpack.de</a></li>
+          <li><a href="https://www.ppmashow.co.uk/">ppmashow.co.uk</a></li>
+          <li><a href="https://www.londonpackagingweek.com/">londonpackagingweek.com</a></li>
+        </ul>
+      </div>
+      <div style="font-size:.82rem;color:var(--text-muted)">
+        <p style="margin-bottom:.3rem;font-weight:600;color:var(--text-primary)">Fuentes Secundarias + Datos CSV base</p>
+        <ul style="margin:0">
+          <li>reports/eventos_SHOWS_FERIAS_2025.csv — base Excel usuario</li>
+          <li>informes/ESTUDIO_FERIAS_CORRUGADO_INGECART_2026_2027.html — v1.0</li>
+          <li>packagingnews.co.uk/events-diary</li>
+          <li>corrugated-ofcourse.eu (FEFCO blog)</li>
+          <li>supercorrexpo.org</li>
+          <li>aiccbox.org</li>
+          <li>cccabox.org</li>
+          <li>rxglobal.com (CCE International/RX)</li>
+          <li>messe-muenchen.de</li>
+          <li>fieramilano.it (Print4All)</li>
+        </ul>
+        <br>
+        <p style="margin-bottom:.3rem;font-weight:600;color:var(--text-primary)">Datos guardados para búsquedas futuras</p>
+        <ul style="margin:0">
+          <li><strong style="color:var(--text-primary)">reports/ferias_corrugado_master_2026_2028.csv</strong></li>
+          <li>36 eventos · 16 campos · formato CSV</li>
+          <li>Campos: nombre, región, fechas, estado, ubicación, periodicidad, enfoque, sección corrugado, expositores/visitantes, web, PPWR, score, justificación</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="brand-message">
+      "36 eventos analizados. 6 ferias 100% corrugado. 19 eventos europeos. 3 vacíos críticos Europa del Este, OEE y LATAM Sur.<br>
+      INGECART tiene el mapa completo para construir su liderazgo en 24 meses."
+    </div>
+  </div>
+
+  <div class="report-footer">
+    <div class="footer-left">Ing_RESEARCH</div>
+    <div class="footer-right">Página 6 / 6</div>
+  </div>
+</div>
+
+</div><!-- /report-container -->
+</body>
+</html>

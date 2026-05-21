@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>INGECART - Estudio de Ferias | Sector Corrugado</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #05070B;
+            font-family: 'Inter', 'Roboto', 'IBM Plex Sans', sans-serif;
+            color: #F4F5F7;
+            line-height: 1.5;
+            display: flex;
+            justify-content: center;
+            padding: 2rem 1rem;
+        }
+
+        .report-container {
+            max-width: 1300px;
+            width: 100%;
+            background-color: #05070B;
+            box-shadow: 0 25px 45px rgba(0,0,0,0.6);
+            position: relative;
+        }
+
+        .page {
+            background-color: #05070B;
+            margin-bottom: 2rem;
+            position: relative;
+            page-break-after: always;
+            break-inside: avoid;
+        }
+
+        .report-header {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            padding: 1.5rem 2rem 0.5rem 2rem;
+            border-bottom: 1px solid rgba(255,106,0,0.3);
+            margin-bottom: 1.8rem;
+        }
+        .logo-area {
+            flex-shrink: 0;
+        }
+        .logo-area img {
+            max-height: 60px;
+            width: auto;
+            opacity: 0.7;
+        }
+
+        .report-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.2rem 2rem 1rem 2rem;
+            margin-top: 2.5rem;
+            border-top: 1px solid rgba(126,132,142,0.3);
+            font-size: 0.8rem;
+            font-family: 'Inter', monospace;
+            color: #7E848E;
+            letter-spacing: 0.3px;
+        }
+        .footer-left {
+            font-weight: 500;
+            text-transform: uppercase;
+            font-size: 0.75rem;
+        }
+        .footer-right {
+            font-weight: 500;
+        }
+
+        .chapter {
+            margin: 2rem 0 1.2rem 0;
+            padding-bottom: 0.5rem;
+            border-bottom: 3px solid #FF6A00;
+            display: inline-block;
+            font-family: 'Montserrat', 'Bebas Neue', 'Oswald', sans-serif;
+            font-weight: 800;
+            font-size: 1.9rem;
+            letter-spacing: -0.5px;
+            color: #F4F5F7;
+        }
+
+        h2 {
+            font-family: 'Montserrat', 'Oswald', sans-serif;
+            font-weight: 700;
+            font-size: 1.6rem;
+            margin: 1.8rem 0 1rem 0;
+            color: #F4F5F7;
+            border-left: 4px solid #FF6A00;
+            padding-left: 1rem;
+        }
+
+        h3 {
+            font-family: 'Montserrat', 'Inter', sans-serif;
+            font-weight: 600;
+            font-size: 1.3rem;
+            margin: 1.3rem 0 0.7rem 0;
+            color: #FF6A00;
+        }
+
+        p {
+            margin-bottom: 1rem;
+            font-size: 1rem;
+            color: #F4F5F7;
+        }
+
+        ul {
+            list-style: none;
+            margin: 1rem 0 1.5rem 0;
+            padding-left: 0.5rem;
+        }
+        li {
+            margin-bottom: 0.65rem;
+            padding-left: 1.8rem;
+            position: relative;
+            font-size: 1rem;
+            line-height: 1.45;
+        }
+        li::before {
+            content: "▹";
+            color: #FF6A00;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+            top: 0;
+            font-size: 1.2rem;
+        }
+
+        .highlight-orange {
+            color: #FF6A00;
+            font-weight: 600;
+        }
+
+        .industrial-card {
+            background-color: #1A1D24;
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin: 1.5rem 0;
+            border-left: 3px solid #FF6A00;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            background-color: #1A1D24;
+            color: #F4F5F7;
+            font-size: 0.85rem;
+            overflow-x: auto;
+            display: block;
+        }
+        th {
+            background-color: #FF6A00;
+            color: #05070B;
+            padding: 10px 12px;
+            font-weight: 700;
+            text-align: left;
+        }
+        td {
+            border: 1px solid #7E848E;
+            padding: 8px 12px;
+            vertical-align: top;
+        }
+
+        .brand-message {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            font-size: 1.25rem;
+            text-align: center;
+            color: #FF6A00;
+            letter-spacing: -0.2px;
+            border-top: 1px solid rgba(255,106,0,0.4);
+            border-bottom: 1px solid rgba(255,106,0,0.4);
+            padding: 1.2rem;
+            margin: 2rem 0;
+        }
+
+        @media (max-width: 800px) {
+            .chapter { font-size: 1.5rem; }
+            h2 { font-size: 1.3rem; }
+            table { font-size: 0.7rem; }
+        }
+
+        @media print {
+            body { background: white; padding: 0; margin: 0; }
+            .report-container { max-width: 100%; background: #05070B; box-shadow: none; }
+            .page { page-break-after: always; }
+        }
+    </style>
+</head>
+<body>
+<div class="report-container">
+    <div class="page">
+        <div class="report-header">
+            <div class="logo-area">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23FF6A00' opacity='0.7'/%3E%3Ctext x='50' y='67' font-size='40' text-anchor='middle' fill='%2305070B' font-weight='bold'%3EI%3C/text%3E%3C/svg%3E" style="max-height: 55px;">
+            </div>
+        </div>
+        <div style="padding: 0 2rem;">
+            <div class="chapter">ESTUDIO DE FERIAS Y TRADE SHOWS</div>
+            <p style="margin-top: 0.2rem; font-weight: 500;">Sector carton corrugado y conversion | Enfoque INGECART (12 meses)</p>
+            <p><span class="highlight-orange">Fecha de elaboracion:</span> 2026-05-21</p>
+            
+            <h2>1) Objetivo y alcance</h2>
+            <p>Este estudio consolida y amplifica el listado base del archivo eventos_SHOWS_FERIAS_2025.xlsx con investigacion sectorial adicional para los mercados solicitados: <span class="highlight-orange">Europa, Espana, USA, Mexico, Canada, Australia, South Korea</span>.</p>
+            
+            <h2>2) Contexto estrategico (INGECART)</h2>
+            <ul>
+                <li>INGECART vende integracion de proceso, no solo maquinaria.</li>
+                <li>Mensaje central: mejorar OEE, reducir scrap, paradas y coste unitario.</li>
+                <li>ICP principal: convertidores, fabricantes de packaging corrugado, operaciones con cuellos de botella.</li>
+                <li>Propuesta diferencial: integracion equipo + flujo + reglas operativas + KPI + estabilizacion post-arranque.</li>
+            </ul>
+            
+            <h2>3) Fuentes expertas utilizadas</h2>
+            <ul>
+                <li>The Packaging Portal (Brunton Publications)</li>
+                <li>Board Converting News, FEFCO Europa, AICC (USA), TAPPI Corrugated Week</li>
+                <li>CCCA Canada, Corrugated of Course</li>
+            </ul>
+        </div>
+        <div class="report-footer">
+            <div class="footer-left">Ing_RESEARCH</div>
+            <div class="footer-right">Pagina 1</div>
+        </div>
+    </div>
+
+    <div class="page">
+        <div class="report-header">
+            <div class="logo-area">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23FF6A00' opacity='0.7'/%3E%3Ctext x='50' y='67' font-size='40' text-anchor='middle' fill='%2305070B' font-weight='bold'%3EI%3C/text%3E%3C/svg%3E" style="max-height: 55px;">
+            </div>
+        </div>
+        <div style="padding: 0 2rem;">
+            <div class="chapter">LISTADO EXHAUSTIVO POR REGION</div>
+            <table>
+                <thead>
+                    <tr><th>Evento</th><th>Region</th><th>Fecha</th><th>Ubicacion</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Corrugated Expo (FESPA)</td><td>Espana</td><td>19-22 May 2026</td><td>Barcelona</td></tr>
+                    <tr><td>FEFCO Summit 2026</td><td>Espana</td><td>27-29 May 2026</td><td>Madrid</td></tr>
+                    <tr><td>Empack Madrid</td><td>Espana</td><td>11-12 Nov 2026</td><td>Madrid</td></tr>
+                    <tr><td>Hispack</td><td>Espana</td><td>4-7 May 2027</td><td>Barcelona</td></tr>
+                    <tr><td>Corrugated Week 2026</td><td>USA</td><td>28-30 Sep 2026</td><td>Fort Worth, TX</td></tr>
+                    <tr><td>PACK EXPO International</td><td>USA</td><td>18-21 Oct 2026</td><td>Chicago, IL</td></tr>
+                    <tr><td>EXPO PACK Mexico</td><td>Mexico</td><td>2-5 Jun 2026</td><td>Mexico City</td></tr>
+                    <tr><td>APPEX</td><td>Australia</td><td>16-19 Mar 2027</td><td>Melbourne</td></tr>
+                    <tr><td>KOREA PACK</td><td>South Korea</td><td>Apr 2028</td><td>KINTEX</td></tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="report-footer">
+            <div class="footer-left">Ing_RESEARCH</div>
+            <div class="footer-right">Pagina 2</div>
+        </div>
+    </div>
+
+    <div class="page">
+        <div class="report-header">
+            <div class="logo-area">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23FF6A00' opacity='0.7'/%3E%3Ctext x='50' y='67' font-size='40' text-anchor='middle' fill='%2305070B' font-weight='bold'%3EI%3C/text%3E%3C/svg%3E" style="max-height: 55px;">
+            </div>
+        </div>
+        <div style="padding: 0 2rem;">
+            <div class="chapter">PRIORIZACION PARA INGECART</div>
+            <table>
+                <thead><tr><th>Prioridad</th><th>Evento</th><th>Score</th><th>Motivo</th></tr></thead>
+                <tbody>
+                    <tr><td>1</td><td>Corrugated Expo Barcelona</td><td>92</td><td>Match directo corrugado + proximidad</td></tr>
+                    <tr><td>2</td><td>FEFCO Summit Madrid</td><td>89</td><td>Acceso a C-level corrugado europeo</td></tr>
+                    <tr><td>3</td><td>Corrugated Week 2026</td><td>88</td><td>Decision makers planta corrugada USA</td></tr>
+                    <tr><td>4</td><td>Empack Madrid 2026</td><td>84</td><td>Pipeline Iberia</td></tr>
+                    <tr><td>5</td><td>Hispack 2027</td><td>86</td><td>Ecosistema industrial fuerte</td></tr>
+                </tbody>
+            </table>
+            <div class="brand-message">
+                "No vendemos velocidad nominal; garantizamos rendimiento estable"
+            </div>
+        </div>
+        <div class="report-footer">
+            <div class="footer-left">Ing_RESEARCH</div>
+            <div class="footer-right">Pagina 3</div>
+        </div>
+    </div>
+
+    <div class="page">
+        <div class="report-header">
+            <div class="logo-area">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23FF6A00' opacity='0.7'/%3E%3Ctext x='50' y='67' font-size='40' text-anchor='middle' fill='%2305070B' font-weight='bold'%3EI%3C/text%3E%3C/svg%3E" style="max-height: 55px;">
+            </div>
+        </div>
+        <div style="padding: 0 2rem;">
+            <div class="chapter">PLAN DE ACCION 12 MESES</div>
+            <h2>Fase 1 (0-90 dias): captura de demanda</h2>
+            <ul>
+                <li>Activar mensajes: "Plan 90 dias post-arranque con KPI contractuales"</li>
+                <li>Auditoria de flujo y ROI (paquetizada) como oferta de entrada</li>
+                <li>Objetivo: 25-40 reuniones cualificadas pre-feria</li>
+            </ul>
+            <h2>Fase 2 (3-9 meses): conversion comercial</h2>
+            <ul>
+                <li>Pipeline: MQL feria → SQL tecnico → propuesta → cierre</li>
+                <li>Ratio SQL/propuesta ≥ 55%</li>
+            </ul>
+            <h2>Fase 3 (9-12 meses): escalado</h2>
+            <ul>
+                <li>Publicar 3-5 casos de impacto (OEE, scrap, paradas)</li>
+                <li>Co-marketing en asociaciones sectoriales</li>
+            </ul>
+        </div>
+        <div class="report-footer">
+            <div class="footer-left">Ing_RESEARCH</div>
+            <div class="footer-right">Pagina 4</div>
+        </div>
+    </div>
+
+    <div class="page">
+        <div class="report-header">
+            <div class="logo-area">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23FF6A00' opacity='0.7'/%3E%3Ctext x='50' y='67' font-size='40' text-anchor='middle' fill='%2305070B' font-weight='bold'%3EI%3C/text%3E%3C/svg%3E" style="max-height: 55px;">
+            </div>
+        </div>
+        <div style="padding: 0 2rem;">
+            <div class="chapter">RECOMENDACION EJECUTIVA FINAL</div>
+            <p>Enfoque en 5 eventos core:</p>
+            <ul>
+                <li>Corrugated Expo Barcelona</li>
+                <li>FEFCO Summit Madrid</li>
+                <li>Corrugated Week Fort Worth</li>
+                <li>Empack Madrid</li>
+                <li>Hispack Barcelona</li>
+            </ul>
+            <div class="brand-message">
+                "Automation Designed Around Reality. Performance-Driven Engineering."
+            </div>
+            <p>La clave no es asistir a mas eventos, sino convertir cada oportunidad con ROI demostrable usando el playbook de integracion.</p>
+            <p><strong>Elaborado por:</strong> Direccion de Estrategia Comercial - INGECART</p>
+        </div>
+        <div class="report-footer">
+            <div class="footer-left">Ing_RESEARCH</div>
+            <div class="footer-right">Pagina 5</div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

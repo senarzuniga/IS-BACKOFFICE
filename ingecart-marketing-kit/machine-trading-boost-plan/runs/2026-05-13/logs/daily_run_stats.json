@@ -1,0 +1,12 @@
+{
+  "run_at": "2026-05-13T14:24:22.317500",
+  "status": "completed",
+  "error": null,
+  "stats": {
+    "jobs_processed": 14,
+    "successful_scrapes": 14,
+    "failed_scrapes": 6,
+    "extractions_done": 14,
+    "actions_created": 0
+  }
+}

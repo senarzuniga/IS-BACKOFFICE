@@ -1,0 +1,15 @@
+entity_name,entity_type,region,core_focus,relevance_for_you,priority,action
+Oversys,dealer,Spain/EU,used packaging machinery,high supplier value for fruit lines,HIGH,open supplier account
+Alpine Machinery,dealer,US/global,corrugated and converting equipment,high supplier and buyer visibility,HIGH,schedule discovery call
+Papertek,dealer,Germany/EU/global,paper and packaging machinery,high source for packaging assets,HIGH,request monthly stock feed
+Exapro,marketplace,global,multi-industry used equipment,pricing benchmark and demand monitoring,HIGH,automate keyword alerts
+Kitmondo,marketplace,global,packaging and printing machinery,high listing velocity and buyer signals,HIGH,build saved searches
+Machineseeker,marketplace,EU,industrial listings,secondary benchmark and incremental leads,MEDIUM,run 48h scrape
+Machinio,aggregator,global,listing aggregation,discovery layer for brokers,MEDIUM,enrich broker directory
+Surplex,auction platform,EU,industrial auctions,distress and liquidation opportunities,MEDIUM,track closing prices
+Troostwijk Auctions,auction platform,EU,asset auctions,market-clearing price intelligence,MEDIUM,monitor auction results
+SIGMA Equipment,dealer/marketplace,US/global,processing and packaging,strong channel for food packaging buyers,MEDIUM,propose partnership
+EquipNet,dealer/marketplace,global,asset lifecycle and remarketing,good process benchmark,MEDIUM,analyze consignment model
+Aaron Equipment,dealer,US/global,processing/packaging equipment,potential channel partner,MEDIUM,start outreach sequence
+FEFCO,association,EU,corrugated industry network,account discovery support,MEDIUM,map member prospects
+CCCA,association,Canada/NA,corrugated sector network,NA account discovery,LOW,segment member list

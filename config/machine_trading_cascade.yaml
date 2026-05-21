@@ -1,0 +1,142 @@
+# Machine Trading Intelligence Cascade Configuration
+# Links scraping sources to actionable trigger patterns and extraction logic
+
+cascade_rules:
+  # ─────────────────────────────────────────────
+  # EXPANSION SIGNALS (high priority for fruit packing + FFG)
+  # ─────────────────────────────────────────────
+  expansion_signals:
+    sources: 
+      - paperage_news
+      - fefco_news
+      - ccca_news
+    triggers:
+      - pattern: "new corrugated plant|new converting line|capacity increase|expansion"
+      - pattern: "investment|greenfield|facility|packaging facility"
+    extraction_fields:
+      - company_name
+      - location_country
+      - location_city
+      - investment_value
+      - timeline_estimate
+      - plant_type
+      - estimated_equipment_type
+    action: "create_account_and_qualify"
+    urgency: high
+    lead_score_boost: +25
+
+  # ─────────────────────────────────────────────
+  # DISTRESS/ASSET AVAILABILITY (potential seller or buyer signals)
+  # ─────────────────────────────────────────────
+  distress_signals:
+    sources:
+      - paperage_news
+      - exapro_machinery
+      - kitmondo_machinery
+    triggers:
+      - pattern: "plant closure|shutdown|divestment|line sale"
+      - pattern: "asset sale|liquidation|plant exit"
+    extraction_fields:
+      - company_name
+      - location
+      - equipment_description
+      - condition_status
+      - availability_date
+    action: "assess_buyer_and_seller_opportunity"
+    urgency: high
+    lead_score_boost: +20
+
+  # ─────────────────────────────────────────────
+  # DIRECT BUYING INTENT (machinery searches)
+  # ─────────────────────────────────────────────
+  buying_intent:
+    sources:
+      - exapro_machinery
+      - kitmondo_machinery
+      - machineseeker
+      - machinio
+    triggers:
+      - pattern: "fruit packing|fruit line|palletizer"
+      - pattern: "flexo folder gluer|folder gluer|corrugated line"
+      - pattern: "seeking|looking for|requirement|specification"
+    extraction_fields:
+      - searcher_company
+      - equipment_specification
+      - location_preference
+      - urgency_indicators
+      - budget_mention
+    action: "create_sales_opportunity"
+    urgency: critical
+    lead_score_boost: +40
+    notification: immediate
+
+  # ─────────────────────────────────────────────
+  # TRADE FAIR EXHIBITOR MAPPING (concentration of decision makers)
+  # ─────────────────────────────────────────────
+  trade_fair_exhibitors:
+    sources:
+      - drupa_exhibitors
+      - supercorrexpo
+      - sino_corrugated_wepack
+    triggers:
+      - pattern: "exhibitor|booth|registered|participating"
+      - pattern: "machinery|technology|equipment|solutions"
+    extraction_fields:
+      - company_name
+      - booth_number
+      - product_category
+      - company_location
+      - contact_name
+      - contact_email
+      - contact_title
+    action: "build_target_account_and_create_event_outreach"
+    urgency: high
+    lead_score_boost: +30
+    timing_window: "60_days_before_event"
+
+  # ─────────────────────────────────────────────
+  # USED EQUIPMENT LISTINGS (active seller/broker ecosystem)
+  # ─────────────────────────────────────────────
+  used_equipment_listings:
+    sources:
+      - exapro_machinery
+      - kitmondo_machinery
+      - machineseeker
+      - machinio
+    triggers:
+      - pattern: "corrugated|packaging|converting|printing"
+      - pattern: "used|refurbished|available|sale"
+    extraction_fields:
+      - equipment_type
+      - machine_model
+      - year_manufactured
+      - condition
+      - price_estimate
+      - seller_name
+      - seller_contact
+      - seller_location
+    action: "assess_competitive_landscape_and_benchmark"
+    urgency: normal
+    enrichment: "technical_validation_and_relocation_feasibility"
+
+data_transformation:
+  company_normalization:
+    - standardize_country_codes
+    - geocode_location_to_region
+    - classify_company_type
+  
+  opportunity_scoring:
+    - calculate_bant_fit
+    - determine_lead_temperature
+    - estimate_urgency_window
+  
+  action_recommendations:
+    - route_to_sales_process (if urgent + high fit)
+    - route_to_nurture_track (if medium fit, low urgency)
+    - flag_for_partner_activation (if logistics/customs complex)
+
+weekly_kpi_tracking:
+  signals_captured: count_by_source
+  signal_to_account_conversion: signals_with_valid_contact
+  account_to_opportunity_conversion: accounts_scored_above_threshold
+  trade_fair_pipeline_acceleration: exhibitor_to_meeting_success_rate

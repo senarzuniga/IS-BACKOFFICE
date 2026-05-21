@@ -28,7 +28,7 @@ class SupabaseBackofficeClient:
 
     def __init__(self) -> None:
         self.supabase_url = os.getenv("SUPABASE_URL", "https://wbndbwtcwkianwhrdlei.supabase.co")
-        self.supabase_key = os.getenv("SUPABASE_KEY")
+        self.supabase_key = os.getenv("SUPABASE_SERVICE_ROLE_KEY") or os.getenv("SUPABASE_ANON_KEY")
         self.client: Optional[Client] = None
         if create_client and self.supabase_key:
             try:

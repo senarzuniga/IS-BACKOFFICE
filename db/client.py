@@ -15,9 +15,18 @@ from functools import lru_cache
 from typing import Optional
 
 try:
+    from dotenv import load_dotenv
+except ImportError:  # pragma: no cover
+    def load_dotenv() -> bool:  # type: ignore[override]
+        return False
+
+
+load_dotenv()
+
+try:
     from supabase import create_client, Client as _SupabaseSDKClient
     _SUPABASE_AVAILABLE = True
-except ImportError:
+except Exception:
     _SUPABASE_AVAILABLE = False
     _SupabaseSDKClient = object  # type: ignore
 

@@ -1,0 +1,37 @@
+TARJETAS RAPIDAS DE STAND - OBJECIONES Y FRASES PUENTE
+
+1) OBJECION: "Es muy caro"
+PUENTE: "Totalmente razonable. Antes de precio, miremos coste de no actuar: parada, merma y mano de obra improductiva."
+CIERRE: "Le preparo ROI preliminar con sus datos base?"
+
+2) OBJECION: "No quiero parar produccion"
+PUENTE: "La clave es implantar por fases y en ventanas de parada programada."
+CIERRE: "Le enseño un plan tipo de despliegue con riesgo controlado?"
+
+3) OBJECION: "Ya tenemos proveedor"
+PUENTE: "Perfecto. Nosotros no buscamos reemplazar por reemplazar; buscamos mejorar KPI donde hoy hay friccion."
+CIERRE: "Comparamos alternativas sobre el mismo baseline?"
+
+4) OBJECION: "No estamos listos para IA"
+PUENTE: "No hace falta un cambio total. Empezamos con un caso operativo concreto y medimos impacto rapido."
+CIERRE: "Que le doleria mas resolver primero: paradas o MTTR?"
+
+5) OBJECION: "Mi layout es muy complejo"
+PUENTE: "Precisamente ahi es donde aportamos mas: customizacion sobre su realidad, no sobre catalogo estandar."
+CIERRE: "Le dibujamos un pre-layout en 15 minutos?"
+
+6) OBJECION: "No tengo CAPEX ahora"
+PUENTE: "Entendido. Podemos priorizar fases de mayor impacto para reducir riesgo financiero inicial."
+CIERRE: "Le propongo roadmap por etapas con hitos de retorno?"
+
+
+PREGUNTAS DE CUALIFICACION EXPRESS
+- Donde pierde mas dinero hoy: parada, merma o logistica?
+- Que proceso genera mas retrabajo?
+- Que KPI le exige direccion mejorar este trimestre?
+- Que cambio seria inviable si implica parar la planta?
+- Quien ademas de usted valida tecnica y economicamente?
+
+
+ELEVATOR PITCH MEMORIZABLE (30 SEGUNDOS)
+"Ingecart ayuda a plantas de corrugado a eliminar cuellos de botella con automatizacion, intralogistica e inteligencia operativa. Integramos soluciones a medida para reducir paradas, riesgo y coste por tonelada, con implantacion por fases y foco en KPI reales."

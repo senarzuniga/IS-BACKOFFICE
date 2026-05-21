@@ -46,7 +46,7 @@ class ProductExtractor:
                 },
                 "width": {
                     "value": float(width_match.group(1)) if width_match else None,
-                    "unit": width_match.group(2) if width_match else None,
+                    "unit": "mm" if width_match else None,
                 },
             },
             "key_features": [],

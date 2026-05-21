@@ -1,0 +1,908 @@
+<!DOCTYPE html>
+<!-- Template: shared/templates/ingecart_report_base.html — vES-1.0 -->
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>INGECART — Estudio de Ferias Sector Corrugado 2026-2027</title>
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --bg-base:       #05070B;
+            --bg-card:       #1A1D24;
+            --text-primary:  #F4F5F7;
+            --text-muted:    #7E848E;
+            --accent:        #FF6A00;
+            --border-subtle: rgba(126,132,142,0.35);
+            --border-accent: rgba(255,106,0,0.35);
+            --font-body:     'Inter', 'Roboto', 'IBM Plex Sans', sans-serif;
+            --font-display:  'Montserrat', 'Oswald', 'Bebas Neue', sans-serif;
+        }
+        body {
+            background-color: var(--bg-base);
+            font-family: var(--font-body);
+            color: var(--text-primary);
+            line-height: 1.55;
+            display: flex;
+            justify-content: center;
+            padding: 2rem 1rem;
+        }
+        .report-container {
+            max-width: 1300px;
+            width: 100%;
+            background-color: var(--bg-base);
+            box-shadow: 0 25px 45px rgba(0,0,0,0.6);
+        }
+        .page {
+            background-color: var(--bg-base);
+            margin-bottom: 2.5rem;
+            page-break-after: always;
+        }
+        /* ── HEADER ── */
+        .report-header {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            padding: 1.5rem 2rem 0.6rem 2rem;
+            border-bottom: 1px solid var(--border-accent);
+            margin-bottom: 1.8rem;
+        }
+        .logo-area img { max-height: 60px; width: auto; opacity: 0.70; }
+        /* ── FOOTER ── */
+        .report-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem 0.8rem 2rem;
+            margin-top: 2.5rem;
+            border-top: 1px solid var(--border-subtle);
+            font-size: 0.78rem;
+            color: var(--text-muted);
+        }
+        .footer-left  { font-weight: 500; text-transform: uppercase; font-size: 0.73rem; letter-spacing: 0.4px; }
+        .footer-right { font-weight: 500; }
+        /* ── TYPOGRAPHY ── */
+        .chapter {
+            display: inline-block;
+            margin: 1.4rem 0 1.1rem 0;
+            padding-bottom: 0.45rem;
+            border-bottom: 3px solid var(--accent);
+            font-family: var(--font-display);
+            font-weight: 800;
+            font-size: 1.9rem;
+            letter-spacing: -0.5px;
+            color: var(--text-primary);
+        }
+        h2 {
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 1.45rem;
+            margin: 1.8rem 0 0.9rem 0;
+            color: var(--text-primary);
+            border-left: 4px solid var(--accent);
+            padding-left: 1rem;
+        }
+        h3 {
+            font-family: var(--font-display);
+            font-weight: 600;
+            font-size: 1.15rem;
+            margin: 1.2rem 0 0.5rem 0;
+            color: var(--accent);
+        }
+        p { margin-bottom: 0.9rem; font-size: 0.97rem; color: var(--text-primary); }
+        a { color: var(--accent); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        ul { list-style: none; margin: 0.6rem 0 1.2rem 0; padding-left: 0.5rem; }
+        li { margin-bottom: 0.6rem; padding-left: 1.8rem; position: relative; font-size: 0.96rem; line-height: 1.45; }
+        li::before { content: "▹"; color: var(--accent); font-weight: bold; position: absolute; left: 0; font-size: 1.1rem; line-height: 1.45; }
+        ol { margin: 0.7rem 0 1.2rem 1.5rem; }
+        ol li { padding-left: 0.4rem; }
+        ol li::before { content: none; }
+        .content-pad { padding: 0 2rem; }
+        /* ── COMPONENTS ── */
+        .industrial-card {
+            background-color: var(--bg-card);
+            padding: 1.3rem 1.5rem;
+            border-radius: 10px;
+            margin: 1.4rem 0;
+            border-left: 3px solid var(--accent);
+        }
+        .brand-message {
+            font-family: var(--font-display);
+            font-weight: 600;
+            font-size: 1.15rem;
+            text-align: center;
+            color: var(--accent);
+            border-top: 1px solid var(--border-accent);
+            border-bottom: 1px solid var(--border-accent);
+            padding: 1rem 2rem;
+            margin: 2rem 0;
+            line-height: 1.5;
+        }
+        .score-pill {
+            display: inline-block;
+            background-color: var(--accent);
+            color: var(--bg-base);
+            font-weight: 800;
+            font-size: 0.85rem;
+            padding: 0.2rem 0.65rem;
+            border-radius: 18px;
+        }
+        .priority-badge {
+            display: inline-block;
+            background-color: var(--bg-card);
+            border: 1px solid var(--accent);
+            color: var(--accent);
+            font-weight: 700;
+            font-size: 0.78rem;
+            padding: 0.12rem 0.5rem;
+            border-radius: 4px;
+        }
+        .kpi-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 1rem;
+            margin: 1.2rem 0;
+        }
+        .kpi-item {
+            background-color: var(--bg-card);
+            border-radius: 8px;
+            padding: 1rem 1.1rem;
+            border-left: 3px solid var(--accent);
+            font-size: 0.9rem;
+        }
+        /* ── TABLE ── */
+        .table-wrap { overflow-x: auto; margin: 1.2rem 0; }
+        table { width: 100%; min-width: 580px; border-collapse: collapse; background-color: var(--bg-card); font-size: 0.81rem; }
+        thead tr { background-color: var(--accent); }
+        th { color: var(--bg-base); padding: 9px 11px; font-weight: 700; text-align: left; white-space: nowrap; }
+        td { border: 1px solid var(--border-subtle); padding: 6px 10px; vertical-align: top; line-height: 1.4; }
+        tbody tr:nth-child(even) td { background-color: rgba(255,255,255,0.02); }
+        .confirmed   { color: #4FC17B; font-size: 0.76rem; font-weight: 600; }
+        .approximate { color: #F0C040; font-size: 0.76rem; font-weight: 600; }
+        /* ── META BOX ── */
+        .meta-box {
+            display: flex;
+            gap: 1.8rem;
+            flex-wrap: wrap;
+            padding: 1.1rem 0 1.4rem 0;
+            border-bottom: 1px solid var(--border-subtle);
+            margin-bottom: 1.4rem;
+        }
+        .meta-item { font-size: 0.82rem; color: var(--text-muted); }
+        .meta-item strong { color: var(--text-primary); }
+        /* ── COVER ── */
+        .cover-block {
+            text-align: left;
+            padding: 3rem 2rem 2rem 2rem;
+        }
+        .cover-tag {
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 0.8rem;
+        }
+        .cover-title {
+            font-family: var(--font-display);
+            font-weight: 900;
+            font-size: 2.8rem;
+            line-height: 1.1;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+        .cover-subtitle {
+            font-family: var(--font-display);
+            font-size: 1.3rem;
+            font-weight: 500;
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+        }
+        .cover-meta {
+            display: flex;
+            gap: 2.5rem;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border-subtle);
+        }
+        .cover-meta-item { font-size: 0.87rem; color: var(--text-muted); }
+        .cover-meta-item strong { color: var(--text-primary); font-size: 0.95rem; display: block; }
+        /* ── PHASE BLOCK ── */
+        .phase-block {
+            background-color: var(--bg-card);
+            border-radius: 10px;
+            padding: 1.2rem 1.5rem;
+            margin: 1.2rem 0;
+            border-left: 3px solid var(--accent);
+        }
+        .phase-title {
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 1rem;
+            color: var(--accent);
+            margin-bottom: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        /* ── RISK TABLE ── */
+        .risk-low    { color: #4FC17B; }
+        .risk-medium { color: #F0C040; }
+        .risk-high   { color: #FF6A00; }
+        /* ── RESPONSIVE ── */
+        @media (max-width: 800px) {
+            .cover-title { font-size: 2rem; }
+            .chapter { font-size: 1.45rem; }
+            h2 { font-size: 1.2rem; }
+            .content-pad, .report-header, .report-footer { padding-left: 1rem; padding-right: 1rem; }
+            table { font-size: 0.71rem; }
+            td, th { padding: 5px 6px; }
+            .kpi-grid { grid-template-columns: 1fr 1fr; }
+        }
+        @media print {
+            body { background: var(--bg-base); padding: 0; }
+            .report-container { max-width: 100%; box-shadow: none; }
+            .page { page-break-after: always; }
+        }
+    </style>
+</head>
+<body>
+<div class="report-container">
+
+<!-- ╔══════════════════════════════════════════╗ -->
+<!-- ║  PÁGINA 1 — PORTADA + CONTEXTO           ║ -->
+<!-- ╚══════════════════════════════════════════╝ -->
+<div class="page">
+    <div class="report-header">
+        <div class="logo-area">
+            <img src="C:\Users\Inaki Senar\Documents\INGECART\MARKETING\LOGOS\ICON ORANGE.png"
+                 alt="INGECART"
+                 onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22%3E%3Crect width=%22100%22 height=%22100%22 fill=%22%23FF6A00%22 opacity=%220.7%22/%3E%3Ctext x=%2250%22 y=%2267%22 font-size=%2248%22 text-anchor=%22middle%22 fill=%22%2305070B%22 font-weight=%22bold%22%3EI%3C/text%3E%3C/svg%3E';">
+        </div>
+    </div>
+
+    <div class="cover-block">
+        <p class="cover-tag">Ing_Research · Inteligencia Comercial</p>
+        <h1 class="cover-title">Estudio de Ferias y Trade Shows<br>Sector Corrugado y Conversión</h1>
+        <p class="cover-subtitle">Análisis estratégico 12 meses · Enfoque Ingecart</p>
+
+        <div class="industrial-card">
+            <p style="font-size:0.95rem;">Este estudio consolida y amplifica el listado base del archivo
+            <strong>eventos_SHOWS_FERIAS_2025.xlsx</strong> con investigación sectorial adicional para los mercados
+            de <strong>Europa, España, USA, México, Canadá, Australia y Corea del Sur</strong>.
+            El objetivo es identificar, priorizar y articular un plan de acción orientado a resultados
+            para convertir la presencia en ferias en pipeline de alta calidad para Ingecart en los próximos 12 meses.</p>
+        </div>
+
+        <div class="cover-meta">
+            <div class="cover-meta-item"><strong>Fecha de elaboración</strong>21 de mayo de 2026</div>
+            <div class="cover-meta-item"><strong>Elaborado por</strong>Dirección de Estrategia Comercial — INGECART</div>
+            <div class="cover-meta-item"><strong>Eventos analizados</strong>29 eventos</div>
+            <div class="cover-meta-item"><strong>Mercados cubiertos</strong>7 regiones</div>
+        </div>
+    </div>
+
+    <div class="content-pad">
+        <h2>Contexto estratégico de priorización</h2>
+        <p>El perfil comercial de Ingecart define con precisión el tipo de evento donde se maximiza el retorno:</p>
+        <ul>
+            <li>Ingecart vende <strong>integración de proceso</strong>, no sólo maquinaria</li>
+            <li>Mensaje central: mejorar <strong>OEE</strong>, reducir scrap, paradas y coste unitario</li>
+            <li>ICP principal: convertidores, fabricantes de packaging corrugado, operaciones con cuellos de botella</li>
+            <li>Propuesta diferencial: integración equipo + flujo + reglas operativas + KPI + estabilización post-arranque</li>
+        </ul>
+        <div class="industrial-card">
+            <h3 style="margin-top:0;">Implicación directa para la selección de ferias</h3>
+            <ul>
+                <li>Prioridad alta a eventos con <strong>decision makers de planta</strong> (CEO/COO/Producción), no sólo marketing de packaging</li>
+                <li>Prioridad alta a eventos con corrugado, converting, automation, end-of-line y digitalización de planta</li>
+                <li>Baja prioridad a eventos generalistas sin densidad de perfil ICP</li>
+            </ul>
+        </div>
+
+        <h2>Fuentes de investigación utilizadas</h2>
+        <div class="meta-box">
+            <div class="meta-item"><strong>The Packaging Portal</strong><br>Brunton Publications (UK)</div>
+            <div class="meta-item"><strong>Board Converting News</strong><br>N.V. Business Publications</div>
+            <div class="meta-item"><strong>FEFCO</strong><br>European Federation</div>
+            <div class="meta-item"><strong>AICC</strong><br>USA &amp; Canada</div>
+            <div class="meta-item"><strong>TAPPI</strong><br>Corrugated Week</div>
+            <div class="meta-item"><strong>CCCA</strong><br>Canada Box Industry</div>
+            <div class="meta-item"><strong>SuperCorrExpo</strong><br>North America</div>
+            <div class="meta-item"><strong>APPEX</strong><br>Australia</div>
+            <div class="meta-item"><strong>ICPI / KoreaPack</strong><br>South Korea</div>
+        </div>
+    </div>
+
+    <div class="report-footer">
+        <div class="footer-left">Ing_RESEARCH</div>
+        <div class="footer-right">Página 1 / 5</div>
+    </div>
+</div>
+
+
+<!-- ╔══════════════════════════════════════════╗ -->
+<!-- ║  PÁGINA 2 — LISTADO MAESTRO DE EVENTOS   ║ -->
+<!-- ╚══════════════════════════════════════════╝ -->
+<div class="page">
+    <div class="report-header">
+        <div class="logo-area">
+            <img src="C:\Users\Inaki Senar\Documents\INGECART\MARKETING\LOGOS\ICON ORANGE.png"
+                 alt="INGECART"
+                 onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22%3E%3Crect width=%22100%22 height=%22100%22 fill=%22%23FF6A00%22 opacity=%220.7%22/%3E%3Ctext x=%2250%22 y=%2267%22 font-size=%2248%22 text-anchor=%22middle%22 fill=%22%2305070B%22 font-weight=%22bold%22%3EI%3C/text%3E%3C/svg%3E';">
+        </div>
+    </div>
+
+    <div class="content-pad">
+        <span class="chapter">Listado Maestro de Eventos</span>
+        <p style="color:var(--text-muted);font-size:0.83rem;margin-bottom:1rem;">
+            <span class="confirmed">■ Confirmada</span> &nbsp;·&nbsp;
+            <span class="approximate">■ Aproximada</span> &nbsp;·&nbsp;
+            29 eventos · 7 regiones · horizonte 2026–2028
+        </p>
+
+        <div class="table-wrap">
+        <table>
+            <thead>
+                <tr>
+                    <th>Evento</th>
+                    <th>Región</th>
+                    <th>Fecha</th>
+                    <th>Estado</th>
+                    <th>Ubicación</th>
+                    <th>Foco / Contexto</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- ═══ ESPAÑA / EUROPA ═══ -->
+                <tr>
+                    <td><a href="https://www.thepackagingportal.com/events/corrugated-expo/" target="_blank">Corrugated Expo (co-located FESPA)</a></td>
+                    <td>España / Europa</td>
+                    <td>19–22 May 2026</td>
+                    <td><span class="confirmed">Confirmada</span></td>
+                    <td>Barcelona</td>
+                    <td>Corrugado, packaging POS, conversión, impresión</td>
+                </tr>
+                <tr>
+                    <td><a href="https://www.thepackagingportal.com/events/fespa-global-print-expo/" target="_blank">FESPA Global Print Expo</a></td>
+                    <td>España / Europa</td>
+                    <td>19–22 May 2026</td>
+                    <td><span class="confirmed">Confirmada</span></td>
+                    <td>Barcelona</td>
+                    <td>Impresión y packaging, cruce con conversión</td>
+                </tr>
+                <tr>
+                    <td><a href="https://www.fefco.org/fefco-summit-2026" target="_blank">FEFCO Summit 2026</a></td>
+                    <td>España / Europa</td>
+                    <td>27–29 May 2026</td>
+                    <td><span class="confirmed">Confirmada</span></td>
+                    <td>Madrid</td>
+                    <td>Cumbre directiva del corrugado europeo</td>
+                </tr>
+                <tr>
+                    <td><a href="https://www.empackmadrid.com/" target="_blank">Empack Madrid</a></td>
+                    <td>España</td>
+                    <td>11–12 Nov 2026</td>
+                    <td><span class="confirmed">Confirmada</span></td>
+                    <td>IFEMA Madrid</td>
+                    <td>Packaging, automatización, networking industrial</td>
+                </tr>
+                <tr>
+                    <td><a href="https://www.hispack.com/" target="_blank">Hispack</a></td>
+                    <td>España</td>
+                    <td>4–7 May 2027</td>
+                    <td><span class="confirmed">Confirmada</span></td>
+                    <td>Barcelona, Gran Vía</td>
+                    <td>Packaging machinery, process, logistics, robotics</td>
+                </tr>
+                <tr>
+                    <td>SPAPER</td>
+                    <td>España</td>
+                    <td>Mar 2025 (base)</td>
+                    <td><span class="approximate">Aproximada</span></td>
+                    <td>Zaragoza</td>
+                    <td>Papel y cartón, maquinaria, reciclaje</td>
+                </tr>
+                <tr>
+                    <td>CCE International</td>
+                    <td>Europa</td>
+                    <td>Mar 2025 (base)</td>
+                    <td><span class="approximate">Aproximada</span></td>
+                    <td>Múnich</td>
+                    <td>Corrugado + folding carton converting</td>
+                </tr>
+                <tr>
+                    <td>ICE Europe</td>
+                    <td>Europa</td>
+                    <td>Mar 2025 (base)</td>
+                    <td><span class="approximate">Aproximada</span></td>
+                    <td>Múnich</td>
+                    <td>Conversión de materiales (papel, film, foil)</td>
+                </tr>
+                <tr>
+                    <td><a href="https://www.interpack.com" target="_blank">Interpack</a></td>
+                    <td>Europa</td>
+                    <td>2026</td>
+                    <td><span class="confirmed">Confirmada</span></td>
+                    <td>Düsseldorf</td>
+                    <td>Packaging &amp; processing end-to-end</td>
+                </tr>
+                <tr>
+                    <td><a href="https://www.all-for-pack.com/" target="_blank">ALLFORPACK Emballage Paris</a></td>
+                    <td>Europa</td>
+                    <td>24–26 Nov 2026</td>
+                    <td><span class="confirmed">Confirmada</span></td>
+                    <td>París Nord Villepinte</td>
+                    <td>Packaging, regulación, descarbonización, maquinaria</td>
+                </tr>
+                <tr>
+                    <td>FachPack</td>
+                    <td>Europa</td>
+                    <td>Sep 2025 (base)</td>
+                    <td><span class="approximate">Aproximada</span></td>
+                    <td>Núremberg</td>
+                    <td>Packaging industrial y consumo</td>
+                </tr>
+                <tr>
+                    <td><a href="https://www.drupa.com/" target="_blank">drupa 2028</a></td>
+                    <td>Europa</td>
+                    <td>9–17 May 2028</td>
+                    <td><span class="confirmed">Confirmada</span></td>
+                    <td>Düsseldorf</td>
+                    <td>Impresión + packaging production + paper converting</td>
+                </tr>
+                <tr>
+                    <td><a href="https://www.thepackagingportal.com/events/print4all-2/" target="_blank">Print4All</a></td>
+                    <td>Europa</td>
+                    <td>25–28 May 2027</td>
+                    <td><span class="confirmed">Confirmada</span></td>
+                    <td>Milán</td>
+                    <td>Print + converting + packaging</td>
+                </tr>
+                <!-- ═══ USA ═══ -->
+                <tr>
+                    <td><a href="https://events.tappi.org/event/corrweek/home" target="_blank">Corrugated Week 2026</a></td>
+                    <td>USA</td>
+                    <td>28–30 Sep 2026</td>
+                    <td><span class="confirmed">Confirmada</span></td>
+                    <td>Fort Worth, TX</td>
+                    <td>Evento corrugado principal de ciclo</td>
+                </tr>
+                <tr>
+                    <td><a href="https://www.supercorrexpo.org/" target="_blank">SuperCorrExpo</a></td>
+                    <td>USA</td>
+                    <td>8–12 Oct 2028</td>
+                    <td><span class="confirmed">Confirmada</span></td>
+                    <td>Orlando, FL</td>
+                    <td>Mayor convergencia corrugada de Norteamérica</td>
+                </tr>
+                <tr>
+                    <td><a href="https://www.packexpointernational.com/" target="_blank">PACK EXPO International</a></td>
+                    <td>USA</td>
+                    <td>18–21 Oct 2026</td>
+                    <td><span class="confirmed">Confirmada</span></td>
+                    <td>Chicago, IL</td>
+                    <td>Packaging y processing multisector (∼2,600 exp. / 48,000 vis.)</td>
+                </tr>
+                <tr>
+                    <td><a href="https://www.packexpolasvegas.com/" target="_blank">PACK EXPO Las Vegas</a></td>
+                    <td>USA</td>
+                    <td>27–29 Sep 2027</td>
+                    <td><span class="confirmed">Confirmada</span></td>
+                    <td>Las Vegas, NV</td>
+                    <td>Packaging y processing, foco en compradores</td>
+                </tr>
+                <tr>
+                    <td><a href="https://www.thepackagingportal.com/events/aicc-2027-spring-meeting/" target="_blank">AICC Spring Meeting</a></td>
+                    <td>USA</td>
+                    <td>5–7 Abr 2027</td>
+                    <td><span class="confirmed">Confirmada</span></td>
+                    <td>Doral, FL</td>
+                    <td>Networking directivo de independientes corrugado</td>
+                </tr>
+                <tr>
+                    <td><a href="https://www.thepackagingportal.com/events/aicc-2027-fall-meeting/" target="_blank">AICC Fall Meeting</a></td>
+                    <td>USA</td>
+                    <td>13–15 Sep 2027</td>
+                    <td><span class="confirmed">Confirmada</span></td>
+                    <td>Boston, MA</td>
+                    <td>Comunidad AICC e inteligencia de mercado</td>
+                </tr>
+                <tr>
+                    <td><a href="https://boardconvertingnews.com/fta-forum-reports-record-turnout/" target="_blank">FTA Forum / Infoflex</a></td>
+                    <td>USA</td>
+                    <td>Abr 2026</td>
+                    <td><span class="confirmed">Confirmada</span></td>
+                    <td>Milwaukee (2026)</td>
+                    <td>Flexo para packaging, tecnologías de impresión</td>
+                </tr>
+                <!-- ═══ MÉXICO ═══ -->
+                <tr>
+                    <td><a href="https://www.expopackmexico.com.mx/" target="_blank">EXPO PACK México</a></td>
+                    <td>México</td>
+                    <td>2–5 Jun 2026</td>
+                    <td><span class="confirmed">Confirmada</span></td>
+                    <td>Ciudad de México</td>
+                    <td>Premier Latam de packaging &amp; processing</td>
+                </tr>
+                <tr>
+                    <td><a href="https://www.expopackguadalajara.com.mx/" target="_blank">EXPO PACK Guadalajara</a></td>
+                    <td>México</td>
+                    <td>8–10 Jun 2027</td>
+                    <td><span class="confirmed">Confirmada</span></td>
+                    <td>Guadalajara</td>
+                    <td>Bienal, foco en compradores Latam</td>
+                </tr>
+                <tr>
+                    <td><a href="https://aiccmexico.org/" target="_blank">AICC México</a></td>
+                    <td>México</td>
+                    <td>Calendario variable</td>
+                    <td><span class="approximate">Aproximada</span></td>
+                    <td>Varias sedes</td>
+                    <td>Comunidad independiente packaging corrugado</td>
+                </tr>
+                <!-- ═══ CANADÁ ═══ -->
+                <tr>
+                    <td><a href="https://cccabox.org/events" target="_blank">CCCA Golf Tournament</a></td>
+                    <td>Canadá</td>
+                    <td>10 Jun 2026</td>
+                    <td><span class="confirmed">Confirmada</span></td>
+                    <td>Canadá (CCCA)</td>
+                    <td>Networking sector corrugado canadiense</td>
+                </tr>
+                <tr>
+                    <td><a href="https://cccabox.org/events" target="_blank">CCCA Board Meeting Q3</a></td>
+                    <td>Canadá</td>
+                    <td>14 Ago 2026</td>
+                    <td><span class="confirmed">Confirmada</span></td>
+                    <td>Canadá</td>
+                    <td>Gobierno sectorial y agenda industria</td>
+                </tr>
+                <tr>
+                    <td><a href="https://cccabox.org/events" target="_blank">CCCA Board Meeting Q4</a></td>
+                    <td>Canadá</td>
+                    <td>10 Nov 2026</td>
+                    <td><span class="confirmed">Confirmada</span></td>
+                    <td>Canadá</td>
+                    <td>Seguimiento mercado / regulación / industria</td>
+                </tr>
+                <tr>
+                    <td><a href="https://www.aiccbox.ca/" target="_blank">AICC Canadá</a></td>
+                    <td>Canadá</td>
+                    <td>Recurrente</td>
+                    <td><span class="approximate">Aproximada</span></td>
+                    <td>Canadá</td>
+                    <td>Corrugated, folding carton, rigid box</td>
+                </tr>
+                <!-- ═══ AUSTRALIA ═══ -->
+                <tr>
+                    <td><a href="https://www.appex.com.au/" target="_blank">APPEX</a></td>
+                    <td>Australia</td>
+                    <td>16–19 Mar 2027</td>
+                    <td><span class="confirmed">Confirmada</span></td>
+                    <td>Melbourne</td>
+                    <td>Principal feria de processing &amp; packaging de Australia (400+ exp. / 10,000+ vis.)</td>
+                </tr>
+                <!-- ═══ COREA DEL SUR ═══ -->
+                <tr>
+                    <td><a href="https://www.icpiweek.org/kor/icpiweek.asp" target="_blank">ICPI WEEK</a></td>
+                    <td>Corea del Sur</td>
+                    <td>20–23 Abr 2027</td>
+                    <td><span class="confirmed">Confirmada</span></td>
+                    <td>KINTEX</td>
+                    <td>Semana industrial (packaging, pharma, logistics)</td>
+                </tr>
+                <tr>
+                    <td><a href="https://koreapack.org/" target="_blank">KOREA PACK</a></td>
+                    <td>Corea del Sur</td>
+                    <td>Abr 2028</td>
+                    <td><span class="confirmed">Confirmada</span></td>
+                    <td>KINTEX</td>
+                    <td>Feria bienal de packaging y processing (∼60k compradores)</td>
+                </tr>
+            </tbody>
+        </table>
+        </div>
+    </div>
+
+    <div class="report-footer">
+        <div class="footer-left">Ing_RESEARCH</div>
+        <div class="footer-right">Página 2 / 5</div>
+    </div>
+</div>
+
+
+<!-- ╔══════════════════════════════════════════╗ -->
+<!-- ║  PÁGINA 3 — SCORING + RECOMENDACIÓN      ║ -->
+<!-- ╚══════════════════════════════════════════╝ -->
+<div class="page">
+    <div class="report-header">
+        <div class="logo-area">
+            <img src="C:\Users\Inaki Senar\Documents\INGECART\MARKETING\LOGOS\ICON ORANGE.png"
+                 alt="INGECART"
+                 onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22%3E%3Crect width=%22100%22 height=%22100%22 fill=%22%23FF6A00%22 opacity=%220.7%22/%3E%3Ctext x=%2250%22 y=%2267%22 font-size=%2248%22 text-anchor=%22middle%22 fill=%22%2305070B%22 font-weight=%22bold%22%3EI%3C/text%3E%3C/svg%3E';">
+        </div>
+    </div>
+
+    <div class="content-pad">
+        <span class="chapter">Priorización Estratégica</span>
+        <p>Criterios ponderados: <strong>fit propuesta Ingecart</strong> (integración + KPI + OEE) · densidad de decisor industrial · accesibilidad comercial y coste de participación · potencial de pipeline ≤ 12 meses. Escala: 100.</p>
+
+        <div class="table-wrap" style="margin-top:1.2rem;">
+        <table>
+            <thead>
+                <tr>
+                    <th>Prioridad</th>
+                    <th>Evento</th>
+                    <th>Ventana</th>
+                    <th>Score</th>
+                    <th>Motivo de encaje para Ingecart</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><span class="priority-badge">P1</span></td>
+                    <td><strong>Corrugated Expo Barcelona</strong></td>
+                    <td>Inmediata</td>
+                    <td><span class="score-pill">92</span></td>
+                    <td>Match directo corrugado + proximidad geográfica + oportunidad de demos de integración y KPI</td>
+                </tr>
+                <tr>
+                    <td><span class="priority-badge">P2</span></td>
+                    <td><strong>FEFCO Summit Madrid</strong></td>
+                    <td>Inmediata</td>
+                    <td><span class="score-pill">89</span></td>
+                    <td>Acceso a C-level corrugado europeo; ideal para posicionar mensaje de ROI y estabilización</td>
+                </tr>
+                <tr>
+                    <td><span class="priority-badge">P3</span></td>
+                    <td><strong>Hispack 2027 Barcelona</strong></td>
+                    <td>Q2 2027</td>
+                    <td><span class="score-pill">86</span></td>
+                    <td>Ecosistema industrial fuerte, muy favorable para casos de uso de flujo + OEE</td>
+                </tr>
+                <tr>
+                    <td><span class="priority-badge">P4</span></td>
+                    <td><strong>Corrugated Week 2026</strong></td>
+                    <td>Q3 2026</td>
+                    <td><span class="score-pill">88</span></td>
+                    <td>Concentración de decision makers de planta corrugada USA; alto valor para alianzas y export</td>
+                </tr>
+                <tr>
+                    <td><span class="priority-badge">P5</span></td>
+                    <td><strong>Empack Madrid 2026</strong></td>
+                    <td>Q4 2026</td>
+                    <td><span class="score-pill">84</span></td>
+                    <td>Excelente para pipeline Iberia y captación de medianos convertidores con dolor operativo</td>
+                </tr>
+                <tr>
+                    <td><span class="priority-badge">P6</span></td>
+                    <td><strong>ALLFORPACK París 2026</strong></td>
+                    <td>Q4 2026</td>
+                    <td><span class="score-pill">81</span></td>
+                    <td>Visibilidad europea multisector y señal de posicionamiento internacional</td>
+                </tr>
+                <tr>
+                    <td><span class="priority-badge">P7</span></td>
+                    <td><strong>APPEX 2027 Melbourne</strong></td>
+                    <td>Q1 2027</td>
+                    <td><span class="score-pill">78</span></td>
+                    <td>Entrada en Australia con buyers de automation/processing, útil para partners locales</td>
+                </tr>
+                <tr>
+                    <td><span class="priority-badge">P8</span></td>
+                    <td><strong>EXPO PACK México 2026</strong></td>
+                    <td>Q2 2026</td>
+                    <td><span class="score-pill">77</span></td>
+                    <td>Plataforma LATAM grande; buena para crecimiento hispanohablante y red comercial</td>
+                </tr>
+            </tbody>
+        </table>
+        </div>
+
+        <div class="brand-message">
+            "No vendemos velocidad nominal — garantizamos rendimiento estable.<br>
+            Plan 90 días post-arranque con KPI contractuales."
+        </div>
+
+        <h2>Recomendación ejecutiva final</h2>
+        <p>Para maximizar resultados en los próximos 12 meses, Ingecart debe ejecutar una estrategia de <strong>foco en 5 eventos core</strong>:</p>
+        <ol>
+            <li><strong>Corrugated Expo Barcelona</strong> — match directo, inmediato</li>
+            <li><strong>FEFCO Summit Madrid</strong> — C-level europeo, posicionamiento de ROI</li>
+            <li><strong>Corrugated Week Fort Worth</strong> — mercado USA, alianzas export</li>
+            <li><strong>Empack Madrid</strong> — pipeline Iberia, medianos convertidores</li>
+            <li><strong>Hispack Barcelona</strong> — flujo + OEE, mayor ecosistema industrial</li>
+        </ol>
+        <p>Usar <strong>ALLFORPACK + APPEX + EXPO PACK México</strong> como palancas de expansión internacional y alianzas. La clave no es asistir a más eventos, sino convertir cada evento en oportunidades con ROI demostrable usando el playbook de integración y estabilización.</p>
+    </div>
+
+    <div class="report-footer">
+        <div class="footer-left">Ing_RESEARCH</div>
+        <div class="footer-right">Página 3 / 5</div>
+    </div>
+</div>
+
+
+<!-- ╔══════════════════════════════════════════╗ -->
+<!-- ║  PÁGINA 4 — PLAN DE ACCIÓN + KPIs        ║ -->
+<!-- ╚══════════════════════════════════════════╝ -->
+<div class="page">
+    <div class="report-header">
+        <div class="logo-area">
+            <img src="C:\Users\Inaki Senar\Documents\INGECART\MARKETING\LOGOS\ICON ORANGE.png"
+                 alt="INGECART"
+                 onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22%3E%3Crect width=%22100%22 height=%22100%22 fill=%22%23FF6A00%22 opacity=%220.7%22/%3E%3Ctext x=%2250%22 y=%2267%22 font-size=%2248%22 text-anchor=%22middle%22 fill=%22%2305070B%22 font-weight=%22bold%22%3EI%3C/text%3E%3C/svg%3E';">
+        </div>
+    </div>
+
+    <div class="content-pad">
+        <span class="chapter">Plan de Acción 12 Meses</span>
+
+        <div class="phase-block">
+            <div class="phase-title">Fase 1 · 0–90 días · Captura de demanda de alto fit</div>
+            <p style="margin-bottom:0.6rem;">Activar 3 mensajes verticales diferenciados:</p>
+            <ul>
+                <li>"No vendemos velocidad nominal; garantizamos rendimiento estable"</li>
+                <li>"Plan 90 días post-arranque con KPI contractuales"</li>
+                <li>"Diagnóstico de flujo en 48h con mapa de pérdidas"</li>
+            </ul>
+            <p style="margin-bottom:0.6rem;">Crear oferta de entrada para feria:</p>
+            <ul>
+                <li>Auditoría de flujo y ROI (paquetizada)</li>
+                <li>Workshop técnico de cuello de botella</li>
+                <li>Demo de tablero OEE/scrap/paradas</li>
+            </ul>
+            <p style="color:var(--accent);font-weight:600;">Objetivo: 25–40 reuniones cualificadas pre-feria por evento top</p>
+        </div>
+
+        <div class="phase-block">
+            <div class="phase-title">Fase 2 · 3–9 meses · Conversión comercial y pruebas en planta</div>
+            <p style="margin-bottom:0.6rem;">Estandarizar pipeline por etapa:</p>
+            <ul>
+                <li>MQL feria → SQL técnico → propuesta con escenario base/objetivo/conservador → cierre</li>
+            </ul>
+            <p style="margin-bottom:0.6rem;">Activar "paquete de pruebas" en todas las propuestas:</p>
+            <ul>
+                <li>Baseline KPI</li>
+                <li>Mapa de flujo actual/futuro</li>
+                <li>Matriz de riesgos</li>
+                <li>Roadmap 90 días</li>
+            </ul>
+            <p style="color:var(--accent);font-weight:600;">Objetivo: ratio SQL/propuesta ≥ 55 %</p>
+        </div>
+
+        <div class="phase-block">
+            <div class="phase-title">Fase 3 · 9–12 meses · Escalado y reputación de categoría</div>
+            <ul>
+                <li>Publicar 3–5 casos de impacto (anonimizados si procede): mejora OEE, reducción scrap, caída de paradas, mejora coste unitario</li>
+                <li>Co-marketing en asociaciones y medios especialistas (Brunton / BCN / ecosistema FEFCO)</li>
+            </ul>
+            <p style="color:var(--accent);font-weight:600;">Objetivo: construir autoridad en "integración orientada a KPI"</p>
+        </div>
+
+        <h2>KPIs sugeridos para medir impacto de ferias</h2>
+        <div class="kpi-grid">
+            <div class="kpi-item">Reuniones pre-agendadas por evento</div>
+            <div class="kpi-item">% reuniones con decisor técnico-económico presente</div>
+            <div class="kpi-item">SQL generados por feria</div>
+            <div class="kpi-item">Valor de pipeline por feria (€)</div>
+            <div class="kpi-item">Tiempo de ciclo SQL → propuesta → cierre</div>
+            <div class="kpi-item">Ticket medio por tipo de cliente</div>
+            <div class="kpi-item">% proyectos con fase de estabilización contratada</div>
+        </div>
+
+        <h2>Riesgos y mitigaciones</h2>
+        <div class="table-wrap">
+        <table>
+            <thead>
+                <tr>
+                    <th>Riesgo</th>
+                    <th>Nivel</th>
+                    <th>Mitigación</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Demasiados eventos generalistas con bajo fit corrugado</td>
+                    <td><span class="risk-medium">Medio</span></td>
+                    <td>Priorizar corrugado/directivo; limitar presencia masiva en generalistas</td>
+                </tr>
+                <tr>
+                    <td>Leads sin dolor operativo real</td>
+                    <td><span class="risk-high">Alto</span></td>
+                    <td>Discovery obligatorio con preguntas de throughput, scrap, MTTR, coste de parada</td>
+                </tr>
+                <tr>
+                    <td>Dilución de marca por mensaje técnico difuso</td>
+                    <td><span class="risk-medium">Medio</span></td>
+                    <td>Repetir framework único: problema–causa–solución–evidencia–compromiso</td>
+                </tr>
+            </tbody>
+        </table>
+        </div>
+    </div>
+
+    <div class="report-footer">
+        <div class="footer-left">Ing_RESEARCH</div>
+        <div class="footer-right">Página 4 / 5</div>
+    </div>
+</div>
+
+
+<!-- ╔══════════════════════════════════════════╗ -->
+<!-- ║  PÁGINA 5 — ANEXO + CIERRE               ║ -->
+<!-- ╚══════════════════════════════════════════╝ -->
+<div class="page">
+    <div class="report-header">
+        <div class="logo-area">
+            <img src="C:\Users\Inaki Senar\Documents\INGECART\MARKETING\LOGOS\ICON ORANGE.png"
+                 alt="INGECART"
+                 onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22%3E%3Crect width=%22100%22 height=%22100%22 fill=%22%23FF6A00%22 opacity=%220.7%22/%3E%3Ctext x=%2250%22 y=%2267%22 font-size=%2248%22 text-anchor=%22middle%22 fill=%22%2305070B%22 font-weight=%22bold%22%3EI%3C/text%3E%3C/svg%3E';">
+        </div>
+    </div>
+
+    <div class="content-pad">
+        <span class="chapter">Anexo y Fuentes</span>
+
+        <h2>Base de datos utilizada</h2>
+        <div class="industrial-card">
+            <p>El estudio parte del listado exportado del archivo Excel del usuario y amplía con investigación sectorial:</p>
+            <ul>
+                <li><strong>reports/eventos_SHOWS_FERIAS_2025.csv</strong> — base original (44 filas)</li>
+                <li><strong>reports/corrugated_events_seed_2025_2028.md</strong> — semilla filtrada (13 eventos relevantes para corrugado)</li>
+                <li>Investigación directa en 20+ portales oficiales de eventos sectoriales</li>
+            </ul>
+        </div>
+
+        <h2>Fuentes y recursos sectoriales</h2>
+        <div class="table-wrap">
+        <table>
+            <thead><tr><th>Fuente</th><th>Descripción</th><th>URL</th></tr></thead>
+            <tbody>
+                <tr><td>The Packaging Portal (Brunton)</td><td>Calendario y noticias de ferias packaging</td><td><a href="https://www.thepackagingportal.com/events/" target="_blank">thepackagingportal.com</a></td></tr>
+                <tr><td>Board Converting News</td><td>Noticias especializadas corrugado USA</td><td><a href="https://boardconvertingnews.com/about-us/" target="_blank">boardconvertingnews.com</a></td></tr>
+                <tr><td>FEFCO</td><td>Federación Europea del Corrugado</td><td><a href="https://www.fefco.org/events" target="_blank">fefco.org</a></td></tr>
+                <tr><td>Corrugated of Course</td><td>Ecosistema educativo FEFCO</td><td><a href="https://www.corrugated-ofcourse.eu/" target="_blank">corrugated-ofcourse.eu</a></td></tr>
+                <tr><td>AICC USA</td><td>Asociación independientes corrugado</td><td><a href="https://www.aiccbox.org/" target="_blank">aiccbox.org</a></td></tr>
+                <tr><td>AICC Canadá</td><td>Rama canadiense AICC</td><td><a href="https://www.aiccbox.ca/" target="_blank">aiccbox.ca</a></td></tr>
+                <tr><td>TAPPI Corrugated Week</td><td>Principal evento ciclo corrugado USA</td><td><a href="https://events.tappi.org/event/corrweek/home" target="_blank">events.tappi.org</a></td></tr>
+                <tr><td>SuperCorrExpo</td><td>Convergencia corrugada N. América</td><td><a href="https://www.supercorrexpo.org/" target="_blank">supercorrexpo.org</a></td></tr>
+                <tr><td>CCCA Canada</td><td>Canadian Corrugated &amp; Containerboard Association</td><td><a href="https://cccabox.org/events" target="_blank">cccabox.org</a></td></tr>
+                <tr><td>APPEX Australia</td><td>Principal feria processing &amp; packaging AU</td><td><a href="https://www.appex.com.au/" target="_blank">appex.com.au</a></td></tr>
+                <tr><td>ICPI WEEK / KoreaPack</td><td>Semana industrial y feria packaging Corea</td><td><a href="https://www.icpiweek.org/" target="_blank">icpiweek.org</a></td></tr>
+            </tbody>
+        </table>
+        </div>
+
+        <h2>Nota sobre nomenclatura editorial</h2>
+        <div class="industrial-card">
+            <p>La editorial especializada referenciada es <strong>Brunton Publications</strong> (frecuentemente
+            confundida en conversaciones de mercado como "Burton" o "Bruton"). Su portal principal es
+            <a href="https://www.thepackagingportal.com/" target="_blank">thepackagingportal.com</a>
+            y su publicación clave para conversión es <em>Board Converting News</em>.</p>
+        </div>
+
+        <div class="brand-message">
+            "Cada feria bien ejecutada es un multiplicador de pipeline.<br>
+            La integración orientada a KPI es la categoría que Ingecart define."
+        </div>
+
+        <div class="industrial-card" style="margin-top:2rem;">
+            <p style="text-align:center;font-size:0.85rem;color:var(--text-muted);margin-bottom:0;">
+                Elaborado por: <strong style="color:var(--text-primary);">Dirección de Estrategia Comercial — INGECART</strong><br>
+                Mayo 2026 &nbsp;·&nbsp; Confidencial — Uso interno Ingecart
+            </p>
+        </div>
+    </div>
+
+    <div class="report-footer">
+        <div class="footer-left">Ing_RESEARCH</div>
+        <div class="footer-right">Página 5 / 5</div>
+    </div>
+</div>
+
+</div><!-- /report-container -->
+</body>
+</html>

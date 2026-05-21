@@ -14,6 +14,11 @@ cp .env.example .env
 # Edit .env and fill in SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY
 ```
 
+Policy:
+- For backend operations in Supabase use `SUPABASE_SERVICE_ROLE_KEY`.
+- Use `SUPABASE_ANON_KEY` only in frontend/browser or backend flows that must respect RLS.
+- Do not use generic variables like `SUPABASE_KEY`.
+
 ### 2. Run the migration
 
 Open your **Supabase project → SQL Editor** and run the contents of:
@@ -39,6 +44,7 @@ python db/seeders/seed_ingecart.py --source company
 python db/seeders/seed_ingecart.py --source products
 python db/seeders/seed_ingecart.py --source events
 python db/seeders/seed_ingecart.py --source documents
+python db/seeders/seed_ingecart.py --source fespa_exhibitors
 python db/seeders/seed_ingecart.py --source market_intelligence
 
 # Preview without writing (dry run)
