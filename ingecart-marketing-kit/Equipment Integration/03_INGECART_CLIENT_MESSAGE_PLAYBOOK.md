@@ -1,4 +1,4 @@
-# Playbook Comercial y Tecnico
+ Playbook Comercial y Tecnico
 ## Como trasladar al cliente el valor de Ingecart como integrador de equipos DGM
 
 Fecha: 2026-05-18

@@ -1,0 +1,105 @@
+{
+  "units": [
+    {
+      "unit": "1",
+      "title": "Welcome!",
+      "grammar": [
+        "Verb to be (affirmative, negative, interrogative)",
+        "Subject pronouns",
+        "Articles a/an",
+        "There is/are"
+      ],
+      "vocabulary": [
+        "Greetings",
+        "Countries and nationalities",
+        "Numbers",
+        "Colours",
+        "Classroom objects"
+      ],
+      "topics": [
+        "Personal information",
+        "Introductions"
+      ]
+    },
+    {
+      "unit": "2",
+      "title": "My World",
+      "grammar": [
+        "Present Simple (affirmative)",
+        "Possessive adjectives",
+        "Have got",
+        "Plurals"
+      ],
+      "vocabulary": [
+        "Family",
+        "Parts of the house",
+        "Personal objects",
+        "Descriptive adjectives"
+      ],
+      "topics": [
+        "Describing people and places",
+        "Talking about possessions"
+      ]
+    },
+    {
+      "unit": "3",
+      "title": "Day by Day",
+      "grammar": [
+        "Present Simple (negative and interrogative)",
+        "Adverbs of frequency",
+        "Prepositions of time"
+      ],
+      "vocabulary": [
+        "Daily routines",
+        "Days of the week",
+        "Time",
+        "Everyday activities"
+      ],
+      "topics": [
+        "Routines",
+        "Schedules",
+        "Habits"
+      ]
+    },
+    {
+      "unit": "4",
+      "title": "Out and About",
+      "grammar": [
+        "Can/can’t (ability and permission)",
+        "Imperatives",
+        "There is/are (review)",
+        "Some/any"
+      ],
+      "vocabulary": [
+        "Places in town",
+        "Means of transport",
+        "Directions",
+        "Leisure activities"
+      ],
+      "topics": [
+        "Giving and asking for directions",
+        "Talking about places and activities"
+      ]
+    },
+    {
+      "unit": "5A",
+      "title": "Food, Glorious Food",
+      "grammar": [
+        "Countable and uncountable nouns",
+        "Some/any (review)",
+        "Like/love/hate + ing",
+        "Would like"
+      ],
+      "vocabulary": [
+        "Food and drink",
+        "Meals",
+        "Likes and preferences"
+      ],
+      "topics": [
+        "Talking about food",
+        "Expressing preferences",
+        "Ordering in restaurants"
+      ]
+    }
+  ]
+}

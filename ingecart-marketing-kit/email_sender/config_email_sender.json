@@ -1,0 +1,8 @@
+{
+  "imap_host": "imap.ionos.es",
+  "imap_port": 993,
+  "smtp_host": "smtp.ionos.es",
+  "smtp_port": 465,
+  "email": "cgo@ingecart.es",
+  "password": "Ingecart2026-CGO2678190*"
+}
