@@ -14,7 +14,7 @@ import email
 from email import policy
 
 # Contraseña fija (NO mostrar en panel)
-PASSWORD_IONOS = "cgo@ingecart.es"  # Sustituye por la contraseña real
+PASSWORD_IONOS = "Ingecartmail20261#"  # Sustituye por la contraseña real
 
 # Función para extraer asunto y cuerpo de un .eml
 
