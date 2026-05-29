@@ -12,6 +12,7 @@ import pandas as pd
 from email.mime.text import MIMEText
 import email
 from email import policy
+import win32com.client
 
 # Contraseña fija (NO mostrar en panel)
 PASSWORD_IONOS = "Ingecartmail20261#"  # Sustituye por la contraseña real
@@ -37,30 +38,27 @@ def extraer_eml(eml_bytes):
         st.error(f"Error leyendo el archivo .eml: {e}")
         return None, None
 
-# Función para enviar correo
+# Función para enviar correo usando Outlook
 
-def enviar_correo_ionos(destinatario, asunto, mensaje):
+def enviar_correo_outlook(destinatario, asunto, mensaje):
     try:
-        servidor = smtplib.SMTP("smtp.ionos.es", 587)
-        servidor.starttls()
-        servidor.login("cgo@ingecart.es", PASSWORD_IONOS)
-        msg = MIMEText(mensaje, 'plain', 'utf-8')
-        msg['From'] = "cgo@ingecart.es"
-        msg['To'] = destinatario
-        msg['Subject'] = asunto
-        servidor.send_message(msg)
-        servidor.quit()
+        outlook = win32com.client.Dispatch('Outlook.Application')
+        mail = outlook.CreateItem(0)
+        mail.To = destinatario
+        mail.Subject = asunto
+        mail.Body = mensaje
+        mail.Send()
         return True, "✅ Correo enviado"
     except Exception as e:
         return False, f"❌ Error: {str(e)}"
 
 # Interfaz Streamlit
 
-st.title("📧 Campaña de Emails IONOS SE - INGECART")
+st.title("📧 Campaña de Emails IONOS SE - INGECART (Outlook)")
 st.write("""
 1. Sube un archivo Excel con las columnas **Nombre** y **Email**.
 2. Sube un archivo .eml como plantilla del mensaje (usa # donde irá el nombre).
-3. Pulsa 'Enviar campaña' para enviar un email personalizado a cada destinatario.
+3. Pulsa 'Enviar campaña' para enviar un email personalizado a cada destinatario usando Outlook.
 """)
 
 excel_file = st.file_uploader("Excel de destinatarios (Nombre, Email)", type=["xlsx", "xls", "csv"])
@@ -94,7 +92,7 @@ if st.button("Enviar campaña"):
                 errores.append(f"Fila {idx+2}: datos incompletos")
                 continue
             mensaje_personalizado = cuerpo.replace("#", nombre)
-            ok, msg = enviar_correo_ionos(email_dest, asunto, mensaje_personalizado)
+            ok, msg = enviar_correo_outlook(email_dest, asunto, mensaje_personalizado)
             if ok:
                 enviados += 1
             else:
