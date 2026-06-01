@@ -51,6 +51,7 @@ def _create_enhanced_app():
     st.sidebar.markdown("# 🎯 IS-BACKOFFICE")
     st.sidebar.markdown("---")
 
+
     page = st.sidebar.radio(
         "Navegación",
         [
@@ -59,11 +60,12 @@ def _create_enhanced_app():
             "🖼️ Scraping",
             "🏭 Plant Simulator",
             "📋 Tareas",
-            "🧾 Facturas",
+            "🧾 Facturación ERP",
             "📊 Analytics",
         ],
         key="nav_radio",
     )
+
 
     page_map = {
         "🏠 Command Center": "command_center",
@@ -71,7 +73,7 @@ def _create_enhanced_app():
         "🖼️ Scraping": "scraping",
         "🏭 Plant Simulator": "plant_simulator",
         "📋 Tareas": "tasks",
-        "🧾 Facturas": "invoices",
+        "🧾 Facturación ERP": "erp_facturacion",
         "📊 Analytics": "analytics",
     }
 
@@ -99,10 +101,9 @@ def _create_enhanced_app():
         st.markdown("*Funcionalidad de tareas en desarrollo*")
         st.info("Los datos de tareas se cargarán desde la base de datos")
 
-    elif st.session_state.current_page == "invoices":
-        st.title("🧾 Facturas")
-        st.markdown("*Funcionalidad de facturación en desarrollo*")
-        st.info("Los datos de facturas se cargarán desde la base de datos")
+
+    elif st.session_state.current_page == "erp_facturacion":
+        st.switch_page("pages/facturacion.py")
 
     elif st.session_state.current_page == "analytics":
         st.title("📊 Análisis y Reportes")
