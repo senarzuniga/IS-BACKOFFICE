@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from datetime import datetime
 import base64
+import mimetypes
 from pathlib import Path
 from typing import Iterable
 
@@ -81,8 +82,16 @@ def _contain_fit(image: Image.Image, max_w: int, max_h: int) -> Image.Image:
     return image.resize((new_w, new_h), Image.Resampling.LANCZOS)
 
 
+def _image_to_data_uri(source_image: Path) -> str:
+    mime_type, _ = mimetypes.guess_type(source_image.name)
+    if not mime_type:
+        mime_type = "image/png"
+    encoded = base64.b64encode(source_image.read_bytes()).decode("ascii")
+    return f"data:{mime_type};base64,{encoded}"
+
+
 def _build_html_template(source_image: Path) -> str:
-    source_uri = source_image.resolve().as_uri()
+    source_uri = _image_to_data_uri(source_image)
     return f"""<!DOCTYPE html>
 <html lang=\"en\">
 <head>
@@ -99,8 +108,29 @@ body{{background:#dcdcdc;font-family:'Inter',sans-serif;display:flex;justify-con
 .photo-side::before{{content:'';position:absolute;left:-1px;top:0;width:45%;height:100%;background:linear-gradient(to right,rgba(255,255,255,1) 0%,rgba(255,255,255,0.97) 15%,rgba(255,255,255,0.85) 35%,rgba(255,255,255,0.45) 65%,rgba(255,255,255,0) 100%);z-index:2;}}
 .photo-side::after{{content:'';position:absolute;inset:0;background:radial-gradient(circle at 20% 50%, rgba(255,255,255,0.25), transparent 40%);z-index:1;}}
 .content{{position:relative;z-index:5;width:48%;height:100%;padding:52px 56px;display:flex;flex-direction:column;}}
+.kicker{{display:inline-block;background:#f26522;color:#ffffff;font-weight:700;font-size:16px;letter-spacing:.6px;padding:10px 16px;border-radius:999px;margin-bottom:26px;}}
+.title{{font-size:56px;line-height:1.02;font-weight:800;color:#121212;max-width:720px;letter-spacing:-1.2px;}}
+.title .accent{{color:#f26522;}}
+.subtitle{{margin-top:22px;font-size:21px;line-height:1.35;color:#2d2d2d;font-weight:500;max-width:660px;}}
+.meta{{margin-top:auto;font-size:14px;letter-spacing:.8px;color:#5f6670;text-transform:uppercase;font-weight:600;}}
 .photo-side .photo-wrap{{position:absolute;right:0;top:0;bottom:0;left:0;display:flex;justify-content:flex-end;align-items:center;padding-right:44px;z-index:3;}}
-.photo-side .photo-wrap img{{width:auto;height:auto;max-width:100%;max-height:86%;object-fit:contain;object-position:right center;filter:brightness(1.03) contrast(1.03) saturate(0.95);}}
+.photo-side .photo-wrap{{position:absolute;right:0;top:0;bottom:0;left:0;display:flex;justify-content:flex-end;align-items:center;padding-right:44px;z-index:3;}}
+.photo-side .photo-wrap .photo-img{{position:absolute;right:44px;top:50%;transform:translateY(-50%);width:auto;height:auto;max-width:104%;max-height:94%;object-fit:contain;object-position:right center;}}
+.photo-side .photo-wrap .photo-soft{{filter:brightness(1.02) contrast(1.02) saturate(0.94) blur(1.6px);opacity:0.62;}}
+.photo-side .photo-wrap .photo-sharp{{filter:brightness(1.05) contrast(1.06) saturate(0.98);
+    -webkit-mask-image:linear-gradient(to right,
+        rgba(0,0,0,0.00) 0%,
+        rgba(0,0,0,0.08) 34%,
+        rgba(0,0,0,0.42) 50%,
+        rgba(0,0,0,0.78) 64%,
+        rgba(0,0,0,1.00) 78%);
+    mask-image:linear-gradient(to right,
+        rgba(0,0,0,0.00) 0%,
+        rgba(0,0,0,0.08) 34%,
+        rgba(0,0,0,0.42) 50%,
+        rgba(0,0,0,0.78) 64%,
+        rgba(0,0,0,1.00) 78%);
+}}
 .left-fade{{position:absolute;left:0;top:0;width:100%;height:100%;background:linear-gradient(to right, rgba(255,255,255,1) 0%, rgba(255,255,255,0.99) 38%, rgba(255,255,255,0.92) 50%, rgba(255,255,255,0.60) 68%, rgba(255,255,255,0.00) 100%);z-index:2;}}
 .soft-texture{{position:absolute;inset:0;background:radial-gradient(circle at 18% 28%, rgba(255,255,255,0.38), transparent 36%), radial-gradient(circle at 12% 72%, rgba(242,101,34,0.045), transparent 26%);z-index:1;}}
 .content-fade{{position:absolute;inset:0;background:linear-gradient(to right, rgba(255,255,255,1) 0%, rgba(255,255,255,0.90) 70%, rgba(255,255,255,0) 100%);z-index:1;}}
@@ -110,10 +140,19 @@ body{{background:#dcdcdc;font-family:'Inter',sans-serif;display:flex;justify-con
 <body>
 <div class=\"catalog\">
   <div class=\"top-glow\"></div>
+        <div class="content">
+            <div class="kicker">INGECART AUTOMATION</div>
+            <div class="title">Sistema de <span class="accent">carga automatica</span> para camiones</div>
+            <div class="subtitle">Solucion industrial para flujo continuo, seguridad operativa y mayor productividad en expedicion.</div>
+            <div class="meta">Industrial machinery · installation · robotics · turnkey solutions</div>
+        </div>
     <div class=\"photo-side\">
                 <div class=\"left-fade\"></div>
                 <div class=\"soft-texture\"></div>
-                <div class=\"photo-wrap\"><img src=\"{source_uri}\" alt=\"Industrial Photo\"></div>
+                                <div class="photo-wrap">
+                                    <img class="photo-img photo-soft" src="{source_uri}" alt="Industrial Photo">
+                                    <img class="photo-img photo-sharp" src="{source_uri}" alt="Industrial Photo">
+                                </div>
     </div>
     <div class=\"content-fade\"></div>
 </div>
@@ -146,7 +185,7 @@ def _render_with_pillow(source_image: Path, output_png: Path) -> None:
     photo_w = int(canvas_w * 0.58)
     photo_x = canvas_w - photo_w
 
-    base = Image.new("RGB", (canvas_w, canvas_h), (255, 255, 255))
+    base = Image.new("RGBA", (canvas_w, canvas_h), (255, 255, 255, 255))
     src = Image.open(source_image).convert("RGB")
     # Keep the source image fully visible; do not crop it.
     max_photo_w = int(photo_w * 0.92)
@@ -154,7 +193,25 @@ def _render_with_pillow(source_image: Path, output_png: Path) -> None:
     photo = _contain_fit(src, max_photo_w, max_photo_h)
     photo_x_offset = photo_x + max(0, (photo_w - photo.width) // 2)
     photo_y_offset = max(0, (canvas_h - photo.height) // 2)
-    base.paste(photo, (photo_x_offset, photo_y_offset))
+
+    # Progressive transparency from left to right so image gains definition after center.
+    photo_rgba = photo.convert("RGBA")
+    alpha_mask = Image.new("L", (photo.width, photo.height), 0)
+    mask_px = alpha_mask.load()
+    start = int(photo.width * 0.34)
+    end = int(photo.width * 0.78)
+    span = max(1, end - start)
+    for x in range(photo.width):
+        if x <= start:
+            a = 0
+        elif x >= end:
+            a = 255
+        else:
+            a = int(255 * ((x - start) / span))
+        for y in range(photo.height):
+            mask_px[x, y] = a
+    photo_rgba.putalpha(alpha_mask)
+    base.alpha_composite(photo_rgba, (photo_x_offset, photo_y_offset))
 
     # White fade from the left edge of the photo section.
     fade_w = int(photo_w * 0.45)
@@ -185,7 +242,7 @@ def _render_with_pillow(source_image: Path, output_png: Path) -> None:
         glow_draw.ellipse((260 - r, 260 - r, 260 + r, 260 + r), fill=(255, 255, 255, alpha))
     base.paste(glow, (-120, -120), glow)
 
-    base.save(output_png, format="PNG")
+    base.convert("RGB").save(output_png, format="PNG")
 
 
 def _generate_artwork(source_image: Path, output_basename: str) -> tuple[Path, Path, str]:

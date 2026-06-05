@@ -58,6 +58,7 @@ def _create_enhanced_app():
             "🏠 Command Center",
             "🕵️ Inteligencia Web",
             "🖼️ Scraping",
+            "🎨 INGECART ARTWORK",
             "🏭 Plant Simulator",
             "📋 Tareas",
             "🧾 Facturación ERP",
@@ -71,6 +72,7 @@ def _create_enhanced_app():
         "🏠 Command Center": "command_center",
         "🕵️ Inteligencia Web": "intelligence",
         "🖼️ Scraping": "scraping",
+        "🎨 INGECART ARTWORK": "ingecart_artwork",
         "🏭 Plant Simulator": "plant_simulator",
         "📋 Tareas": "tasks",
         "🧾 Facturación ERP": "erp_facturacion",
@@ -92,6 +94,9 @@ def _create_enhanced_app():
     elif st.session_state.current_page == "scraping":
         from backoffice.ui.scraping_panel import render_scraping_panel
         render_scraping_panel()
+
+    elif st.session_state.current_page == "ingecart_artwork":
+        st.switch_page("pages/ingecart_artwork.py")
 
     elif st.session_state.current_page == "plant_simulator":
         st.switch_page("pages/plant_simulator.py")
