@@ -1,0 +1,37 @@
+╔══════════════════════════════════════════════════════════════════════════╗
+║   IS-BACKOFFICE · Document Analysis Multi-Agent System                  ║
+║   12 capas · Memoria · Grafo · Multi-LLM · UI Streamlit                ║
+╚══════════════════════════════════════════════════════════════════════════╝
+📦 [1/10] Backup de seguridad...
+   ✅ Backup: /c/Users/Inaki Senar/Documents/GitHub/IS-BACKOFFICE/backups/doc_analysis_20260606_091647
+📁 [2/10] Creando estructura de directorios...
+   ✅ utils/ data/corporate_memory/ data/knowledge_graph/ tests/
+🧠 [3/10] Generando utils/doc_memory.py...
+   ✅ utils/doc_memory.py
+🤖 [4/10] Generando utils/doc_agents.py...
+   ✅ utils/doc_agents.py
+🧠 [5/10] Generando utils/doc_intelligence.py...
+   ✅ utils/doc_intelligence.py
+🎯 [6/10] Generando utils/doc_orchestrator.py...
+   ✅ utils/doc_orchestrator.py
+🎨 [7/10] Generando pages/document_analysis.py...
+   ✅ pages/document_analysis.py
+🧪 [8/10] Generando tests/test_doc_analysis.py...
+   ✅ tests/test_doc_analysis.py
+🔍 [9/10] Validando sintaxis Python de cada capa...
+   ✅ utils/doc_memory.py
+   ✅ utils/doc_agents.py
+   ✅ utils/doc_intelligence.py
+   ✅ utils/doc_orchestrator.py
+   ✅ pages/document_analysis.py
+   ✅ tests/test_doc_analysis.py
+🚀 [10/10] Smoke tests, commit y push...
+Traceback (most recent call last):
+  File "<string>", line 5, in <module>
+    print('  \u2705 Orchestrator inicializado')
+    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Inaki Senar\AppData\Local\Programs\Python\Python314\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode character '\u2705' in position 2: character maps to <undefined>
+❌ Fallo en línea 826 (exit 1). Log: /c/Users/Inaki Senar/Documents/GitHub/IS-BACKOFFICE/logs/doc_analysis_install/install_20260606_091647.log
