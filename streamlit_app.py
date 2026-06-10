@@ -58,6 +58,7 @@ def _create_enhanced_app():
             "🏠 Command Center",
             "🕵️ Inteligencia Web",
             "🖼️ Scraping",
+            "📹 Medios",
             "🎨 INGECART ARTWORK",
             "🏭 Plant Simulator",
             "📋 Tareas",
@@ -72,6 +73,7 @@ def _create_enhanced_app():
         "🏠 Command Center": "command_center",
         "🕵️ Inteligencia Web": "intelligence",
         "🖼️ Scraping": "scraping",
+        "📹 Medios": "media_upload",
         "🎨 INGECART ARTWORK": "ingecart_artwork",
         "🏭 Plant Simulator": "plant_simulator",
         "📋 Tareas": "tasks",
@@ -94,6 +96,10 @@ def _create_enhanced_app():
     elif st.session_state.current_page == "scraping":
         from backoffice.ui.scraping_panel import render_scraping_panel
         render_scraping_panel()
+
+    elif st.session_state.current_page == "media_upload":
+        from backoffice.ui.media_upload_panel import render_media_upload_panel
+        render_media_upload_panel()
 
     elif st.session_state.current_page == "ingecart_artwork":
         st.switch_page("pages/ingecart_artwork.py")
