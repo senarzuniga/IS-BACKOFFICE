@@ -1,6 +1,4 @@
-__pycache__/
-*.py[cod]
 .env
-.env.*
-!.env.example
-.streamlit/secrets.toml
+.env.backup
+.env.local
+secrets.json
