@@ -904,4 +904,3 @@ echo ""
 # Abrir carpeta automáticamente (opcional)
 if command -v explorer &> /dev/null; then
     explorer "$OUTPUT_DIR" 2>/dev/null
-fi
