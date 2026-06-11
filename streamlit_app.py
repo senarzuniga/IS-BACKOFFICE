@@ -61,6 +61,8 @@ def _create_enhanced_app():
             "📹 Medios",
             "🎨 INGECART ARTWORK",
             "🏭 Plant Simulator",
+            "🏭 Smart Plant Dashboard",
+            "⚙️ Configurar Smart Plant",
             "📋 Tareas",
             "🧾 Facturación ERP",
             "📊 Analytics",
@@ -76,6 +78,8 @@ def _create_enhanced_app():
         "📹 Medios": "media_upload",
         "🎨 INGECART ARTWORK": "ingecart_artwork",
         "🏭 Plant Simulator": "plant_simulator",
+        "🏭 Smart Plant Dashboard": "smart_plant_dashboard",
+        "⚙️ Configurar Smart Plant": "smart_plant_config",
         "📋 Tareas": "tasks",
         "🧾 Facturación ERP": "erp_facturacion",
         "📊 Analytics": "analytics",
@@ -106,6 +110,21 @@ def _create_enhanced_app():
 
     elif st.session_state.current_page == "plant_simulator":
         st.switch_page("pages/plant_simulator.py")
+    elif st.session_state.current_page == "smart_plant_dashboard":
+        # Llama al panel principal del Smart Plant Dashboard
+        try:
+            from pages.smart_plant_dashboard import main as smart_plant_main
+            smart_plant_main()
+        except Exception:
+            st.error("No se puede cargar `pages/smart_plant_dashboard.py`. Comprueba que el archivo existe.")
+
+    elif st.session_state.current_page == "smart_plant_config":
+        # Llama al panel de configuración del Smart Plant Dashboard
+        try:
+            from pages.smart_plant_config import main as smart_plant_config_main
+            smart_plant_config_main()
+        except Exception:
+            st.error("No se puede cargar `pages/smart_plant_config.py`. Comprueba que el archivo existe.")
 
     elif st.session_state.current_page == "tasks":
         st.title("📋 Gestión de Tareas")

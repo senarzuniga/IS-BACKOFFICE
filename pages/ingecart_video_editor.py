@@ -12,7 +12,6 @@ Los videos editados se guardan en:
 """
 
 import os
-import io
 import tempfile
 import traceback
 from pathlib import Path
@@ -24,8 +23,7 @@ from PIL import Image
 # MoviePy 2.x
 from moviepy import (
     VideoFileClip,
-    ImageClip,
-    CompositeVideoClip,
+    VideoClip,
     concatenate_videoclips,
 )
 
@@ -62,11 +60,12 @@ st.set_page_config(
 # ============================================================
 # FUNCIONES AUXILIARES
 # ============================================================
-def normalize_image_to_canvas(image_path: str, target_size: tuple) -> Image.Image:
+def normalize_image_to_canvas(image_path: str, target_size: tuple) -> np.ndarray:
     """
     Carga una imagen, la redimensiona manteniendo proporción
     para que quepa en el lienzo (target_size) y la centra sobre
-    un fondo negro (RGB) del tamaño exacto del lienzo.
+    un fondo NEGRO RGB del tamaño exacto del lienzo.
+    Devuelve un array numpy RGB uint8 de shape (h, w, 3).
     """
     target_w, target_h = target_size
     img = Image.open(image_path).convert("RGBA")
@@ -86,7 +85,7 @@ def normalize_image_to_canvas(image_path: str, target_size: tuple) -> Image.Imag
     else:
         canvas.paste(img_resized, (offset_x, offset_y))
 
-    return canvas
+    return np.array(canvas, dtype=np.uint8)
 
 
 def make_fading_image_clip(
@@ -94,64 +93,59 @@ def make_fading_image_clip(
     target_size: tuple,
     duration: float,
     fps: int = 30,
-) -> VideoFileClip | CompositeVideoClip:
+) -> VideoClip:
     """
-    Crea un clip de video a partir de una imagen estática, con la
-    opacidad animando desde 0.1 (10% visible, 90% transparente) hasta
-    1.0 (100% visible) a lo largo de `duration` segundos.
-    El clip se devuelve a 30 fps y con tamaño `target_size`.
+    Crea un clip de video a partir de una imagen estática con la
+    opacidad animando desde INITIAL_OPACITY hasta FINAL_OPACITY
+    a lo largo de `duration` segundos.
+
+    La opacidad se SIMULA multiplicando los píxeles RGB por el alpha
+    (sobre un fondo negro), por lo que el clip resultante es RGB puro
+    y se puede concatenar con videos RGB sin problemas.
+
+    Devuelve un VideoClip RGB de tamaño (v_w, v_h).
     """
-    # Normalizamos la imagen al lienzo del video destino
-    pil_img = normalize_image_to_canvas(image_path, target_size)
-    img_array = np.array(pil_img)  # RGB
+    # 1) Cargamos la imagen y la normalizamos al tamaño del video destino
+    rgb_array = normalize_image_to_canvas(image_path, target_size)
+    h, w = rgb_array.shape[:2]
+    total_frames = max(1, int(duration * fps))
 
-    h, w = img_array.shape[:2]
-    total_frames = int(duration * fps)
-
-    # Para cada frame calculamos un alpha entre INITIAL_OPACITY y FINAL_OPACITY
+    # 2) Calculamos los alfas para cada frame
     alphas = np.linspace(INITIAL_OPACITY, FINAL_OPACITY, total_frames)
+    alpha_f32 = alphas.astype(np.float32)
 
-    def make_frame(t):
-        # t va de 0 a duration-1/fps
-        idx = min(int(t * fps), total_frames - 1)
-        alpha = alphas[idx]
-        # Devolvemos la imagen con canal alfa variable (RGBA)
-        rgba = np.zeros((h, w, 4), dtype=np.uint8)
-        rgba[..., 0:3] = img_array
-        rgba[..., 3] = (alpha * 255).astype(np.uint8)
-        return rgba
+    # 3) frame_function: para cada t devolvemos un frame RGB
+    #    con los píxeles multiplicados por el alpha (sobre fondo negro)
+    def frame_function(t):
+        try:
+            t_values = np.atleast_1d(np.asarray(t, dtype=float))
+            indices = np.clip(
+                (t_values * fps).astype(int),
+                0,
+                total_frames - 1,
+            )
+            current_alphas = alpha_f32[indices]  # shape (N,)
 
-    clip = ImageClip(make_frame, duration=duration, is_mask=False)
+            # Construir batch (N, h, w, 3) RGB
+            n = len(t_values)
+            # Empezamos con un fondo negro
+            out = np.zeros((n, h, w, 3), dtype=np.float32)
+            # Sumamos la imagen multiplicada por el alpha
+            img_batch = rgb_array.astype(np.float32)[None, ...]  # (1, h, w, 3)
+            out += img_batch * current_alphas[:, None, None, None]
+            out = np.clip(out, 0, 255).astype(np.uint8)
+
+            if np.isscalar(t):
+                return out[0]
+            return out
+        except Exception:
+            # Fallback seguro
+            idx = int(min(max(t * fps, 0), total_frames - 1))
+            return (rgb_array.astype(np.float32) * alpha_f32[idx]).clip(0, 255).astype(np.uint8)
+
+    clip = VideoClip(frame_function=frame_function, duration=duration)
     clip = clip.with_fps(fps)
     return clip
-
-
-def make_fading_image_clip_simple(
-    image_path: str,
-    target_size: tuple,
-    duration: float,
-    fps: int = 30,
-):
-    """
-    Versión alternativa usando ImageClip + .with_effects CrossFadeIn
-    partiendo de opacidad 0.1. Se usa como fallback si la versión
-    manual diese problemas con codecs.
-    """
-    from moviepy import vfx
-    pil_img = normalize_image_to_canvas(image_path, target_size)
-    img_array = np.array(pil_img)
-    h, w = img_array.shape[:2]
-
-    # RGBA con alpha inicial bajo
-    rgba = np.zeros((h, w, 4), dtype=np.uint8)
-    rgba[..., 0:3] = img_array
-    rgba[..., 3] = int(INITIAL_OPACITY * 255)
-
-    # Construimos un ImageClip RGBA y le aplicamos un CrossFadeIn
-    # sobre la duración indicada para llegar a opacidad plena.
-    base = ImageClip(rgba, duration=duration).with_fps(fps)
-    base = base.with_effects([vfx.CrossFadeIn(duration)])
-    return base
 
 
 def save_uploaded_file(uploaded_file, target_dir: Path) -> Path:
@@ -172,26 +166,29 @@ def process_video(
     output_path: str,
     opening_image_path: str = str(OPENING_IMAGE_PATH),
     closing_image_path: str = str(CLOSING_IMAGE_PATH),
-    codec: str = "libx264",
-    preset: str = "medium",
     fps: int = 30,
 ) -> str:
     """
     Procesa el video aplicando las 3 imágenes con fade-in de
-    transparencia.
+    opacidad simulada (multiplicativa sobre fondo negro).
     """
     # Abrimos el video original
     with VideoFileClip(video_path) as video:
         v_w, v_h = video.size
-        video_duration = video.duration
         video_fps = video.fps or fps
+
+        # Aseguramos que el video tenga fps par (libx264 lo requiere)
+        if abs(video_fps - round(video_fps)) > 0.01:
+            video_fps = round(video_fps)
+        if video_fps < 1:
+            video_fps = fps
 
         # 1) Imagen de inicio
         opening_clip = make_fading_image_clip(
             opening_image_path,
             (v_w, v_h),
             OPENING_FADE_DURATION,
-            fps=video_fps,
+            fps=int(video_fps),
         )
 
         # 2) Imagen intermedia seleccionable
@@ -199,7 +196,7 @@ def process_video(
             middle_image_path,
             (v_w, v_h),
             MIDDLE_FADE_DURATION,
-            fps=video_fps,
+            fps=int(video_fps),
         )
 
         # 3) Imagen de cierre
@@ -207,30 +204,40 @@ def process_video(
             closing_image_path,
             (v_w, v_h),
             CLOSING_FADE_DURATION,
-            fps=video_fps,
+            fps=int(video_fps),
         )
 
-        # El video central se queda como está
-        # Concatenamos los 4 clips en orden
+        # 4) Aseguramos que el video central tenga el mismo fps
+        #    y que su audio se preserve al concatenar
+        video_for_concat = video.with_fps(int(video_fps))
+
+        # 5) Concatenamos los 4 clips en orden
+        #    Como ahora todos son RGB y del mismo tamaño/fps,
+        #    method="chain" funciona perfectamente y es más eficiente.
         final = concatenate_videoclips(
-            [opening_clip, middle_clip, video, closing_clip],
-            method="compose",
+            [opening_clip, middle_clip, video_for_concat, closing_clip],
+            method="chain",
         )
 
-        # Escribimos el archivo
+        # 6) Escribimos el archivo
         final.write_videofile(
             output_path,
-            codec=codec,
-            preset=preset,
-            fps=video_fps,
+            codec="libx264",
+            preset="medium",
+            fps=int(video_fps),
             audio=True,
-            logger=None,  # silencia el log verbose de moviepy
+            logger=None,
         )
 
         final.close()
         opening_clip.close()
         middle_clip.close()
         closing_clip.close()
+        if video_for_concat is not video:
+            try:
+                video_for_concat.close()
+            except Exception:
+                pass
 
     return output_path
 
@@ -242,7 +249,7 @@ st.title("🎬 Ingecart Video Editor")
 st.markdown(
     "Sube un video, elige una imagen intermedia, y generamos un video "
     "con **imagen de inicio + imagen intermedia + video + imagen de cierre**, "
-    "todas con un fundido de transparencia del 90% al 0%."
+    "todas con un fundido de opacidad del 10% al 100% sobre fondo negro."
 )
 
 # Sidebar con info
@@ -259,8 +266,8 @@ with st.sidebar:
         **Fade inicio:** {OPENING_FADE_DURATION} s  
         **Fade imagen intermedia:** {MIDDLE_FADE_DURATION} s  
         **Fade cierre:** {CLOSING_FADE_DURATION} s  
-        **Transparencia inicial:** 90% (10% visible)  
-        **Transparencia final:** 0% (100% visible)
+        **Opacidad inicial:** 10% (90% transparencia)  
+        **Opacidad final:** 100% (0% transparencia)
         """
     )
 
@@ -268,11 +275,11 @@ with st.sidebar:
     st.divider()
     st.subheader("📁 Estado de las imágenes fijas")
     if OPENING_IMAGE_PATH.exists():
-        st.success(f"✅ Imagen de inicio OK")
+        st.success("✅ Imagen de inicio OK")
     else:
         st.error(f"❌ Falta imagen de inicio:\n{OPENING_IMAGE_PATH}")
     if CLOSING_IMAGE_PATH.exists():
-        st.success(f"✅ Imagen de cierre OK")
+        st.success("✅ Imagen de cierre OK")
     else:
         st.error(f"❌ Falta imagen de cierre:\n{CLOSING_IMAGE_PATH}")
 
@@ -286,7 +293,6 @@ video_file = st.file_uploader(
 )
 
 if video_file is not None:
-    # Lo guardamos temporalmente para poder mostrar info
     st.session_state["video_name"] = video_file.name
     st.info(f"📹 Video seleccionado: **{video_file.name}**")
 
@@ -307,14 +313,12 @@ if middle_option == "Subir una imagen":
         key="middle_uploader",
     )
     if middle_file is not None:
-        # Guardamos en la carpeta ARTWORK para mantener consistencia
         middle_image_path = save_uploaded_file(
             middle_file,
             BASE_DIR / "ARTWORK",
         )
         st.success(f"✅ Imagen guardada en: `{middle_image_path}`")
 else:
-    # Listar imágenes de la carpeta ARTWORK
     artwork_dir = BASE_DIR / "ARTWORK"
     if artwork_dir.exists():
         image_exts = {".png", ".jpg", ".jpeg", ".webp", ".bmp", ".tiff"}
@@ -364,7 +368,6 @@ if st.button("🎬 Generar video editado", disabled=not can_process, type="prima
     status = st.status("Procesando video…", expanded=True)
 
     try:
-        # 1) Guardamos el video subido a un archivo temporal
         status.update(label="Guardando video temporal…")
         with tempfile.NamedTemporaryFile(
             delete=False, suffix=Path(video_file.name).suffix
@@ -372,14 +375,11 @@ if st.button("🎬 Generar video editado", disabled=not can_process, type="prima
             tmp_vid.write(video_file.getbuffer())
             tmp_video_path = tmp_vid.name
 
-        # 2) Preparamos la ruta de salida
         if not output_filename.lower().endswith(".mp4"):
             output_filename = output_filename + ".mp4"
         output_path = OUTPUT_DIR / output_filename
 
         status.update(label="Renderizando video (puede tardar)…")
-
-        # 3) Procesamos
         final_path = process_video(
             video_path=tmp_video_path,
             middle_image_path=str(middle_image_path),
@@ -391,7 +391,6 @@ if st.button("🎬 Generar video editado", disabled=not can_process, type="prima
         st.success(f"🎉 Video guardado en: `{final_path}`")
         st.video(final_path)
 
-        # Botón de descarga
         with open(final_path, "rb") as f:
             st.download_button(
                 label="⬇️ Descargar video",
@@ -400,7 +399,6 @@ if st.button("🎬 Generar video editado", disabled=not can_process, type="prima
                 mime="video/mp4",
             )
 
-        # Limpieza del temporal
         try:
             os.unlink(tmp_video_path)
         except OSError:
@@ -413,7 +411,6 @@ if st.button("🎬 Generar video editado", disabled=not can_process, type="prima
             st.code(traceback.format_exc())
 
 
-# Footer
 st.divider()
 st.caption(
     "Ingecart Video Editor · Panel interno · "
