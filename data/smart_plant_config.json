@@ -1,26 +1,113 @@
 {
-  "overview_text": "INGECART Smart Corrugated Plant es una plataforma digital de automatización industrial que integra las soluciones de INGECART para optimizar la producción.",
-  "general_video_path": "assets/videos/general/overview.mp4",
-  "plant_image_path": "assets/images/smart_plant_overview.png",
+  "overview_text": "INGECART helps corrugator plants eliminate bottlenecks through automation, intralogistics, and operational intelligence. We integrate customized solutions to reduce downtime, risk, and cost per ton, with phased implementation and a focus on real KPIs.",
+  "general_video_path": "assets\\videos\\general\\overview.mp4",
+  "plant_image_path": "assets\\images\\smart_plant_overview.png",
   "hotspots": [
-    {"id": "sr1400", "name": "SR-1400", "x": 15, "y": 30, "description": "Sistema de extracción de residuos", "video": "", "roi": "16 meses", "savings": "125.000€/año"},
-    {"id": "ingetrans", "name": "Ingetrans", "x": 35, "y": 25, "description": "Sistema de transporte interno", "video": "", "roi": "12 meses", "savings": "80.000€/año"},
-    {"id": "amr", "name": "AMR", "x": 55, "y": 35, "description": "Robots móviles autónomos", "video": "", "roi": "18 meses", "savings": "200.000€/año"},
-    {"id": "easypack", "name": "EasyPack", "x": 70, "y": 45, "description": "Sistema de embalaje automático", "video": "", "roi": "14 meses", "savings": "95.000€/año"},
-    {"id": "palletizing", "name": "Palletizing", "x": 80, "y": 60, "description": "Paletizado robótico", "video": "", "roi": "20 meses", "savings": "150.000€/año"},
-    {"id": "truck_loading", "name": "Truck Loading", "x": 65, "y": 80, "description": "Carga automática de camiones", "video": "", "roi": "16 meses", "savings": "110.000€/año"}
+    {
+      "id": "sr1400",
+      "name": "SR-1400",
+      "x": 15,
+      "y": 30,
+      "description": "Sistema de extracción de residuos",
+      "video": "",
+      "roi": "16 meses",
+      "savings": "125.000€/año"
+    },
+    {
+      "id": "ingetrans",
+      "name": "Ingetrans",
+      "x": 35,
+      "y": 25,
+      "description": "Sistema de transporte interno",
+      "video": "",
+      "roi": "12 meses",
+      "savings": "80.000€/año"
+    },
+    {
+      "id": "amr",
+      "name": "AMR",
+      "x": 55,
+      "y": 35,
+      "description": "Robots móviles autónomos",
+      "video": "",
+      "roi": "18 meses",
+      "savings": "200.000€/año"
+    },
+    {
+      "id": "easypack",
+      "name": "EasyPack",
+      "x": 70,
+      "y": 45,
+      "description": "Sistema de embalaje automático",
+      "video": "",
+      "roi": "14 meses",
+      "savings": "95.000€/año"
+    },
+    {
+      "id": "palletizing",
+      "name": "Palletizing",
+      "x": 80,
+      "y": 60,
+      "description": "Paletizado robótico",
+      "video": "",
+      "roi": "20 meses",
+      "savings": "150.000€/año"
+    },
+    {
+      "id": "truck_loading",
+      "name": "Truck Loading",
+      "x": 65,
+      "y": 80,
+      "description": "Carga automática de camiones",
+      "video": "",
+      "roi": "16 meses",
+      "savings": "110.000€/año"
+    }
   ],
-  "kpis": {"productivity": 92, "automation": 87, "labor": 42, "waste": 6},
+  "kpis": {
+    "productivity": 92,
+    "automation": 87,
+    "labor": 42,
+    "waste": 6
+  },
   "subpages": [
-    {"name": "Industry 4.0", "icon": "🤖", "url": "/industry40"},
-    {"name": "Sustainability", "icon": "🌱", "url": "/sustainability"}
+    {
+      "name": "Industry 4.0",
+      "icon": "🤖",
+      "url": "/industry40"
+    },
+    {
+      "name": "Sustainability",
+      "icon": "🌱",
+      "url": "/sustainability"
+    }
   ],
   "solutions_mapping": {
-    "Labor shortage": ["amr", "palletizing", "truck_loading", "easypack"],
-    "Productivity": ["sr1400", "ingetrans", "amr"],
-    "Waste": ["sr1400", "easypack"],
-    "Logistics": ["ingetrans", "amr", "truck_loading"],
-    "Sustainability": ["sr1400", "easypack", "palletizing"],
+    "Labor shortage": [
+      "amr",
+      "palletizing",
+      "truck_loading",
+      "easypack"
+    ],
+    "Productivity": [
+      "sr1400",
+      "ingetrans",
+      "amr"
+    ],
+    "Waste": [
+      "sr1400",
+      "easypack"
+    ],
+    "Logistics": [
+      "ingetrans",
+      "amr",
+      "truck_loading"
+    ],
+    "Sustainability": [
+      "sr1400",
+      "easypack",
+      "palletizing"
+    ],
     "Energy": []
   }
 }

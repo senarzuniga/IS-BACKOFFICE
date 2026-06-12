@@ -36,6 +36,44 @@ def load_config():
         for k, v in default.items():
             if k not in c:
                 c[k] = v
+
+        # Basic validation & normalization
+        hotspots = c.get("hotspots", []) or []
+        normalized = []
+        seen_ids = set()
+        for i, h in enumerate(hotspots):
+            if not isinstance(h, dict):
+                continue
+            hid = h.get("id") or f"hotspot_{i+1}"
+            # ensure unique id
+            if hid in seen_ids:
+                hid = f"{hid}_{i+1}"
+            seen_ids.add(hid)
+            name = h.get("name") or hid
+            try:
+                x = int(float(h.get("x", 50)))
+            except Exception:
+                x = 50
+            try:
+                y = int(float(h.get("y", 50)))
+            except Exception:
+                y = 50
+            x = max(0, min(100, x))
+            y = max(0, min(100, y))
+
+            normalized.append(
+                {
+                    "id": hid,
+                    "name": name,
+                    "x": x,
+                    "y": y,
+                    "description": h.get("description", ""),
+                    "video": h.get("video", ""),
+                    "roi": h.get("roi", ""),
+                    "savings": h.get("savings", ""),
+                }
+            )
+        c["hotspots"] = normalized
         return c
     else:
         CONFIG_PATH.parent.mkdir(parents=True, exist_ok=True)
@@ -82,33 +120,55 @@ def render_filters(config: dict) -> None:
 
 
 def render_plant(config: dict, highlight_ids=None) -> None:
+    # Render hotspots inside a components.html so JS can call Streamlit.setComponentValue
     plant_img_b64 = image_to_base64(config.get("plant_image_path", ""))
     img_src = f"data:image/png;base64,{plant_img_b64}" if plant_img_b64 else ""
 
     html = f"""
     <div style="position:relative;width:100%;border-radius:8px;overflow:hidden;background:#0a0e1a;padding:6px;">
-      <img src="{img_src}" style="width:100%; display:block; border-radius:6px;" />
-      <div id="hotspots" style="position:absolute;left:0;top:0;width:100%;height:100%;">
+      <img src=\"{img_src}\" style=\"width:100%; display:block; border-radius:6px;\" />
+      <div id=\"hotspots\" style=\"position:absolute;left:0;top:0;width:100%;height:100%;\">\n
     """
 
     for h in config.get("hotspots", []):
-        is_high = (highlight_ids is None) or (h.get("id") in highlight_ids)
+        is_high = (highlight_ids is None) or (h.get("id") in (highlight_ids or []))
         opacity = "1" if is_high else "0.25"
         left = f"{h.get('x', 50)}%"
         top = f"{h.get('y', 50)}%"
-        html += (
-            """
-        <div title="{name}" onclick="window.parent.location.href=window.parent.location.pathname + '?hotspot={id}'"
-             style="position:absolute;left:{left};top:{top};transform:translate(-50%,-50%);width:36px;height:36px;
-                    background:rgba(232,76,34,{opacity});border-radius:50%;cursor:pointer;box-shadow:0 6px 18px rgba(0,0,0,0.4);
-                    display:flex;align-items:center;justify-content:center;color:white;font-weight:bold;">
-          <span style="font-size:12px;">●</span>
-        </div>
-        """.format(name=h.get("name", ""), id=h.get("id", ""), left=left, top=top, opacity=opacity)
-        )
+        name = h.get("name", "")
+        hid = h.get("id")
+        # onclick calls Streamlit.setComponentValue to send the hotspot id back to Python
+        html += f"""
+        <div class=\"hotspot-hexagon\" title=\"{name}\" onclick=\"(function(){{try{{Streamlit.setComponentValue('{hid}');}}catch(e){{window.parent.postMessage({{'hotspot':'{hid}'}}, '*');}}}})()\"
+             style=\"position:absolute;left:{left};top:{top};transform:translate(-50%,-50%);width:36px;height:36px;\
+                background:rgba(232,76,34,{opacity});border-radius:50%;cursor:pointer;box-shadow:0 6px 18px rgba(0,0,0,0.4);\
+                display:flex;align-items:center;justify-content:center;color:white;font-weight:bold;\">
+          <span style=\"font-size:12px;\">●</span>
+        </div>\n
+        """
 
     html += "</div></div>"
-    st.components.v1.html(html, height=560, scrolling=False)
+
+    # Append small script to expose Streamlit safe-call fallback
+    html += """
+    <script>
+    // If Streamlit is not available, clicking will postMessage to the parent (we listen for it there).
+    </script>
+    """
+
+    import streamlit.components.v1 as components
+
+    try:
+        clicked = components.html(html, height=560, scrolling=False)
+    except Exception:
+        # As a last resort, render without comms (iframe-like) so UI is visible
+        try:
+            st.iframe(html, height=560)
+        except Exception:
+            st.write("[Error rendering plant view]")
+        clicked = None
+
+    return clicked
 
 
 def render_right_panel(config: dict, selected_hotspot_id: str | None = None) -> None:
@@ -157,6 +217,42 @@ def render_chat_area() -> None:
         st.write(msg)
 
 
+def get_query_params_compat() -> dict:
+    """Return query params supporting multiple Streamlit versions.
+
+    Some Streamlit versions expose `st.get_query_params`, others used
+    `st.experimental_get_query_params`. Use whichever is available.
+    If neither exists, return an empty dict to avoid AttributeError.
+    """
+    for name in ("get_query_params", "experimental_get_query_params"):
+        fn = getattr(st, name, None)
+        if callable(fn):
+            try:
+                return fn()
+            except Exception:
+                # If the call unexpectedly fails, try the next option
+                continue
+    return {}
+
+
+def set_query_params_compat(params: dict) -> None:
+    """Set query params using latest/experimental Streamlit API if available."""
+    # Try experimental_set_query_params first
+    fn = getattr(st, "experimental_set_query_params", None)
+    if callable(fn):
+        try:
+            fn(**params)
+            return
+        except Exception:
+            pass
+    fn2 = getattr(st, "set_query_params", None)
+    if callable(fn2):
+        try:
+            fn2(**params)
+        except Exception:
+            pass
+
+
 def main():
     if "active_filter" not in st.session_state:
         st.session_state.active_filter = "All"
@@ -177,6 +273,7 @@ def main():
     highlight_ids = None if active_filter == "All" else mapping.get(active_filter, [])
 
     c1, c2 = st.columns([2, 1])
+    clicked = None
     with c1:
         if use_3d:
             try:
@@ -185,12 +282,32 @@ def main():
                 render_3d_plant(config.get("hotspots", []), highlight_ids=highlight_ids, height=600)
             except Exception:
                 st.error("No se pudo cargar el componente 3D. Se mostrará la vista 2D.")
-                render_plant(config)
+                clicked = render_plant(config, highlight_ids=highlight_ids)
         else:
-            render_plant(config)
+            clicked = render_plant(config, highlight_ids=highlight_ids)
+
+    # If the components.html returned a clicked hotspot id, apply it to session state and query params
+    if clicked:
+        try:
+            # clicked may be a dict or string depending on Streamlit version
+            if isinstance(clicked, dict) and "hotspot" in clicked:
+                hid = clicked.get("hotspot")
+            else:
+                hid = str(clicked)
+            st.session_state["selected_hotspot"] = hid
+            set_query_params_compat({"hotspot": hid})
+            # Force a rerun so the right panel updates immediately
+            try:
+                st.experimental_rerun()
+            except Exception:
+                pass
+        except Exception:
+            pass
+
     with c2:
-        params = st.experimental_get_query_params()
-        hotspot_id = params.get("hotspot", [None])[0]
+        # Prefer session_state selection; fallback to URL params
+        params = get_query_params_compat()
+        hotspot_id = st.session_state.get("selected_hotspot") or params.get("hotspot", [None])[0]
         render_right_panel(config, selected_hotspot_id=hotspot_id)
         render_chat_area()
 

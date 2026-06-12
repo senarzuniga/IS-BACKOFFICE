@@ -64,7 +64,13 @@ def render_3d_plant(hotspots, highlight_ids=None, height: int = 600, auto_rotate
         + "</script></body></html>"
     )
 
-    st.components.v1.html(html, height=height, scrolling=False)
+    # Embed via st.iframe when available to avoid deprecation warnings
+    try:
+        st.iframe(html, height=height)
+    except Exception:
+        import streamlit.components.v1 as components
+
+        components.html(html, height=height, scrolling=False)
 
 
 if __name__ == '__main__':

@@ -18,9 +18,43 @@ CONFIG_PATH = Path("data/smart_plant_config.json")
 def load_config():
     if CONFIG_PATH.exists():
         try:
-            return json.loads(CONFIG_PATH.read_text(encoding="utf-8"))
+            c = json.loads(CONFIG_PATH.read_text(encoding="utf-8"))
         except Exception:
             return {}
+
+        # Normalize hotspots: ensure ids and clamp coordinates
+        hotspots = c.get("hotspots", []) or []
+        normalized = []
+        seen_ids = set()
+        for i, h in enumerate(hotspots):
+            if not isinstance(h, dict):
+                continue
+            hid = h.get("id") or f"hotspot_{i+1}"
+            if hid in seen_ids:
+                hid = f"{hid}_{i+1}"
+            seen_ids.add(hid)
+            try:
+                x = int(float(h.get("x", 50)))
+            except Exception:
+                x = 50
+            try:
+                y = int(float(h.get("y", 50)))
+            except Exception:
+                y = 50
+            x = max(0, min(100, x))
+            y = max(0, min(100, y))
+            normalized.append({
+                "id": hid,
+                "name": h.get("name", hid),
+                "x": x,
+                "y": y,
+                "description": h.get("description", ""),
+                "video": h.get("video", ""),
+                "roi": h.get("roi", ""),
+                "savings": h.get("savings", ""),
+            })
+        c["hotspots"] = normalized
+        return c
     return {}
 
 
