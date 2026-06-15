@@ -159,45 +159,26 @@ def render_filters(config: dict) -> None:
                 st.experimental_rerun()
 
 
-def render_plant(config: dict, highlight_ids=None) -> None:
+def render_plant(config: dict, highlight_ids=None, height: int = 800) -> None:
     plant_img_b64 = image_to_base64(config.get("plant_image_path", ""))
     img_src = f"data:image/png;base64,{plant_img_b64}" if plant_img_b64 else ""
 
     html = f"""
-    <div style="position:relative;width:100%;border-radius:8px;overflow:hidden;background:#0a0e1a;padding:6px;">
-      <img src=\"{img_src}\" style=\"width:100%; display:block; border-radius:6px;\" />
-      <div id=\"hotspots\" style=\"position:absolute;left:0;top:0;width:100%;height:100%;\">\n
+    <div style="width:100%;border-radius:8px;overflow:hidden;padding:0;background:transparent;">
+      <img src="{img_src}" style="width:100%; display:block; height:auto; object-fit:contain; border-radius:6px;" />
+    </div>
     """
-
-    for h in config.get("hotspots", []):
-        is_high = (highlight_ids is None) or (h.get("id") in (highlight_ids or []))
-        opacity = "1" if is_high else "0.25"
-        left = f"{h.get('x', 50)}%"
-        top = f"{h.get('y', 50)}%"
-        name = h.get("name", "")
-        hid = h.get("id")
-        html += f"""
-        <div class=\"hotspot-hexagon\" title=\"{name}\" onclick=\"(function(){{try{{Streamlit.setComponentValue('{hid}');}}catch(e){{window.parent.postMessage({{'hotspot':'{hid}'}}, '*');}}}})()\"
-             style=\"position:absolute;left:{left};top:{top};transform:translate(-50%,-50%);width:36px;height:36px;\
-                background:rgba(232,76,34,{opacity});border-radius:50%;cursor:pointer;box-shadow:0 6px 18px rgba(0,0,0,0.4);\
-                display:flex;align-items:center;justify-content:center;color:white;font-weight:bold;\">
-          <span style=\"font-size:12px;\">●</span>
-        </div>\n
-        """
-
-    html += "</div></div>"
 
     import streamlit.components.v1 as components
     try:
-        clicked = components.html(html, height=560, scrolling=False)
+        components.html(html, height=height, scrolling=False)
     except Exception:
         try:
-            st.iframe(html, height=560)
+            st.markdown(html, unsafe_allow_html=True)
         except Exception:
             st.write("[Error rendering plant view]")
-        clicked = None
 
-    return clicked
+    return None
 
 
 def render_right_panel(config: dict, selected_hotspot_id: str = None) -> None:
@@ -282,12 +263,7 @@ def main():
         st.session_state.chat = []
     config = load_config()
 
-    # Inject minimal CSS for hexagons
-    css = """
-    .hotspot-hexagon { position: absolute; width: 36px; height: 36px; border-radius: 50%; display:flex; align-items:center; justify-content:center; }
-    .hotspot-hexagon span { font-size:12px }
-    """
-    st.markdown(f"<style>{css}</style>", unsafe_allow_html=True)
+    # Render header and filters
 
     render_header()
     render_filters(config)
@@ -295,10 +271,8 @@ def main():
     mapping = config.get("solutions_mapping", {})
     highlight_ids = None if active_filter == "All" else mapping.get(active_filter, [])
 
-    c1, c2 = st.columns([2, 1])
-    clicked = None
-    with c1:
-        clicked = render_plant(config, highlight_ids=highlight_ids)
+    # Render plant image full-width for maximum space
+    clicked = render_plant(config, highlight_ids=highlight_ids, height=800)
 
     if clicked:
         try:
@@ -315,7 +289,8 @@ def main():
         except Exception:
             pass
 
-    with c2:
+    # Move right panel into collapsible expander to free up space
+    with st.expander("Detalles de planta y overview", expanded=False):
         params = get_query_params_compat()
         hotspot_id = st.session_state.get("selected_hotspot") or params.get("hotspot", [None])[0]
         render_right_panel(config, selected_hotspot_id=hotspot_id)
