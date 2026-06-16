@@ -1,6 +1,6 @@
 {
   "overview_text": "INGECART helps corrugator plants eliminate bottlenecks through automation, intralogistics, and operational intelligence. We integrate customized solutions to reduce downtime, risk, and cost per ton, with phased implementation and a focus on real KPIs.",
-  "general_video_path": "assets\\videos\\general\\overview.mp4",
+  "general_video_path": "https://senarzuniga.github.io/public/videos/ingecart-supercorr-2024-720p-hd.mp4",
   "plant_image_path": "assets\\images\\smart_plant_overview.png",
   "hotspots": [
     {
@@ -9,7 +9,7 @@
       "x": 37,
       "y": 16,
       "description": "Sistema de extracción de residuos",
-      "video": "",
+      "video": "https://senarzuniga.github.io/public/videos/sr1400-la-solucion-para-recoger-y-transportar-to-720p-hd.mp4",
       "roi": "16 meses",
       "savings": "125.000€/año"
     },
@@ -19,7 +19,7 @@
       "x": 35,
       "y": 30,
       "description": "Sistema de transporte interno",
-      "video": "",
+      "video": "https://senarzuniga.github.io/public/videos/ingetrans-280-automated-reel-transport-system-720p-hd.mp4",
       "roi": "12 meses",
       "savings": "80.000€/año"
     },
@@ -29,7 +29,7 @@
       "x": 38,
       "y": 64,
       "description": "Robots móviles autónomos",
-      "video": "",
+      "video": "https://senarzuniga.github.io/public/videos/ip-amr-project-digital-twin-trials-2-2026-06-12-165030-editado.mp4",
       "roi": "18 meses",
       "savings": "200.000€/año"
     },
@@ -39,7 +39,7 @@
       "x": 70,
       "y": 45,
       "description": "Sistema de embalaje automático",
-      "video": "",
+      "video": "https://senarzuniga.github.io/public/videos/folder-gluer-easy-pack-espanol-720p-hd.mp4",
       "roi": "14 meses",
       "savings": "95.000€/año"
     },
@@ -49,7 +49,7 @@
       "x": 60,
       "y": 22,
       "description": "Paletizado robótico",
-      "video": "",
+      "video": "https://senarzuniga.github.io/public/videos/paletizador-ffg-robot-paletizador-el-mas-rapido-720p-hd.mp4",
       "roi": "20 meses",
       "savings": "150.000€/año"
     },
@@ -59,7 +59,7 @@
       "x": 73,
       "y": 65,
       "description": "Carga automática de camiones",
-      "video": "",
+      "video": "https://senarzuniga.github.io/public/videos/truck-auto-loading.mp4",
       "roi": "16 meses",
       "savings": "110.000€/año"
     }
