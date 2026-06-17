@@ -1,6 +1,6 @@
 {
   "overview_text": "INGECART helps corrugator plants eliminate bottlenecks through automation, intralogistics, and operational intelligence. We integrate customized solutions to reduce downtime, risk, and cost per ton, with phased implementation and a focus on real KPIs.",
-  "general_video_path": "https://senarzuniga.github.io/public/videos/ingecart-supercorr-2024-720p-hd.mp4",
+  "general_video_path": "assets/videos/general/overview.mp4",
   "plant_image_path": "assets\\images\\smart_plant_overview.png",
   "hotspots": [
     {
@@ -8,8 +8,8 @@
       "name": "SR-1400",
       "x": 37,
       "y": 16,
-      "description": "Sistema de extracción de residuos",
-      "video": "https://senarzuniga.github.io/public/videos/sr1400-la-solucion-para-recoger-y-transportar-to-720p-hd.mp4",
+      "description": "Sistema de extracción y transporte de residuos en líneas corrugadoras para reducir intervenciones manuales y paradas por limpieza.",
+      "video": "assets/videos/hotspots/sr1400/demo.mp4",
       "roi": "16 meses",
       "savings": "125.000€/año"
     },
@@ -18,8 +18,8 @@
       "name": "Ingetrans",
       "x": 35,
       "y": 30,
-      "description": "Sistema de transporte interno",
-      "video": "https://senarzuniga.github.io/public/videos/ingetrans-280-automated-reel-transport-system-720p-hd.mp4",
+      "description": "Sistema automatizado de transporte de bobinas/reels que optimiza el flujo entre procesos y reduce manipulaciones manuales.",
+      "video": "assets/videos/hotspots/ingetrans/demo.mp4",
       "roi": "12 meses",
       "savings": "80.000€/año"
     },
@@ -28,8 +28,8 @@
       "name": "AMR",
       "x": 38,
       "y": 64,
-      "description": "Robots móviles autónomos",
-      "video": "https://senarzuniga.github.io/public/videos/ip-amr-project-digital-twin-trials-2-2026-06-12-165030-editado.mp4",
+      "description": "Robots móviles autónomos para intralogística, reducen tiempos de transporte interno y la dependencia de mano de obra en tareas repetitivas.",
+      "video": "assets/videos/hotspots/amr/demo.mp4",
       "roi": "18 meses",
       "savings": "200.000€/año"
     },
@@ -38,8 +38,8 @@
       "name": "EasyPack",
       "x": 70,
       "y": 45,
-      "description": "Sistema de embalaje automático",
-      "video": "https://senarzuniga.github.io/public/videos/folder-gluer-easy-pack-espanol-720p-hd.mp4",
+      "description": "Folder-gluer / sistema de embalaje automático que mejora la velocidad y consistencia del embalado final reduciendo rechazos.",
+      "video": "assets/videos/hotspots/easypack/demo.mp4",
       "roi": "14 meses",
       "savings": "95.000€/año"
     },
@@ -48,8 +48,8 @@
       "name": "Palletizing",
       "x": 60,
       "y": 22,
-      "description": "Paletizado robótico",
-      "video": "https://senarzuniga.github.io/public/videos/paletizador-ffg-robot-paletizador-el-mas-rapido-720p-hd.mp4",
+      "description": "Celda de paletizado robotizada para producto terminado que acelera el ciclo de paletizado y reduce la necesidad de operarios.",
+      "video": "assets/videos/hotspots/palletizing/demo.mp4",
       "roi": "20 meses",
       "savings": "150.000€/año"
     },
@@ -58,8 +58,8 @@
       "name": "Truck Loading",
       "x": 73,
       "y": 65,
-      "description": "Carga automática de camiones",
-      "video": "https://senarzuniga.github.io/public/videos/truck-auto-loading.mp4",
+      "description": "Solución de carga automática de camiones para optimizar tiempos de expedición y reducir costes operativos en logística.",
+      "video": "assets/videos/hotspots/truck_loading/demo.mp4",
       "roi": "16 meses",
       "savings": "110.000€/año"
     }
