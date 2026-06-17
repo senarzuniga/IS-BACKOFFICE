@@ -14,6 +14,7 @@ from api.routes.intelligence_ingestion import router as intelligence_ingestion_r
 from api.routes.scraping import router as scraping_router
 from api.routes.market_intelligence import router as intelligence_router
 from api.routes.simulation import router as simulation_router
+from api.routes.transcription import router as transcription_router
 
 app = FastAPI(
     title="IS-BACKOFFICE – AI Commercial Intelligence Platform",
@@ -39,6 +40,7 @@ app.include_router(intelligence_ingestion_router, dependencies=[Depends(optional
 app.include_router(scraping_router, dependencies=[Depends(optional_oauth_token)])
 app.include_router(intelligence_router, dependencies=[Depends(optional_oauth_token)])
 app.include_router(simulation_router, dependencies=[Depends(optional_oauth_token)])
+app.include_router(transcription_router, dependencies=[Depends(optional_oauth_token)])
 
 
 @app.get("/")

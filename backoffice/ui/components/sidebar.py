@@ -31,6 +31,12 @@ _WORKSPACES: list[dict[str, str]] = [
         "description": "Investigación, análisis documental y trazabilidad.",
     },
     {
+        "page": "Transcriptions",
+        "icon": "🎧",
+        "label": "Audio Transcription",
+        "description": "Upload audio, transcribe with AI, diarize speakers and summarise (EN/ES).",
+    },
+    {
         "page": "AI Agents",
         "icon": "🤖",
         "label": "AI Agents",

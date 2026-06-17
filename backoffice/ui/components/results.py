@@ -254,6 +254,149 @@ def _page_ingestion() -> None:
 
 
 # ---------------------------------------------------------------------------
+# Transcription page
+# ---------------------------------------------------------------------------
+
+def _page_transcription() -> None:
+    _section_header("🎧 AUDIO TRANSCRIPTION", "Upload audio and generate transcription + summary (English/Spanish)")
+
+    st.subheader("Upload audio file")
+    accepted = ["mp3", "wav", "m4a", "mp4", "ogg", "flac", "aac", "wma"]
+    uploaded = st.file_uploader(
+        "Select an audio file (mp3, wav, m4a, mp4, ogg, flac)",
+        type=accepted,
+        accept_multiple_files=False,
+        key="trans_file_uploader",
+    )
+
+    lang = st.selectbox("Language", ["English", "Spanish"], index=0, key="trans_lang_select")
+    diarize = st.checkbox("Attempt speaker diarization and timestamps (AI-based)", value=True, key="trans_diarize")
+    speakers = st.selectbox("Max speakers (AI will attempt to identify)", [1, 2, 3, 4, 5, 6], index=1, key="trans_speakers")
+    save_assets = st.checkbox("Save transcripts to assets/transcripts", value=True, key="trans_save_assets")
+
+    if st.button("🎙️ Transcribe", type="primary", key="trans_run_button", use_container_width=True):
+        if not uploaded:
+            st.warning("Please upload an audio file to transcribe.")
+            st.stop()
+
+        import tempfile
+        import os
+        from datetime import datetime
+
+        tmpdir = tempfile.TemporaryDirectory()
+        tmp_path = os.path.join(tmpdir.name, uploaded.name)
+        with open(tmp_path, "wb") as f:
+            f.write(uploaded.getbuffer())
+
+        st.info(f"Saved upload to temporary path: {tmp_path}")
+
+        try:
+            from backoffice.agents.transcription_agent import TranscriptionAgent
+
+            agent = TranscriptionAgent()
+        except Exception as exc:
+            st.error(f"Unable to initialize TranscriptionAgent: {exc}")
+            st.stop()
+
+        with st.spinner("Transcribing audio with OpenAI Whisper..."):
+            try:
+                resp = agent.transcribe_file(tmp_path, language="es" if lang == "Spanish" else "en")
+                raw_text = resp.get("text") or str(resp.get("raw") or "")
+            except Exception as exc:
+                st.error(f"Transcription failed: {exc}")
+                st.stop()
+
+        # Try to get audio duration for better timestamping (optional)
+        duration = None
+        try:
+            from moviepy.editor import AudioFileClip
+
+            clip = AudioFileClip(tmp_path)
+            duration = float(clip.duration)
+            clip.close()
+        except Exception:
+            duration = None
+
+        transcript_with_marks = None
+        summary = None
+
+        if diarize:
+            try:
+                import openai
+                import json as _json
+
+                if not os.environ.get("OPENAI_API_KEY"):
+                    st.warning("OPENAI_API_KEY not set; set it under Settings & Integrations to enable diarization and LLM summaries.")
+                else:
+                    prompt = (
+                        f"You are a professional transcription post-processor. "
+                        f"Audio length (seconds): {duration or 'unknown'}.\n"
+                        f"Language: {lang}.\n"
+                        "Input is the raw transcription text below.\n"
+                        "Produce a JSON object with keys: 'transcript' (string) and 'summary' (string).\n"
+                        "The 'transcript' should include time marks in [HH:MM:SS] and speaker labels 'Speaker 1', 'Speaker 2', etc., and be human-readable.\n"
+                        "The 'summary' should be 3–6 bullet points in the requested language.\n\n"
+                        "Raw transcription:\n" + raw_text
+                    )
+
+                    completion = openai.ChatCompletion.create(
+                        model="gpt-3.5-turbo",
+                        messages=[{"role": "user", "content": prompt}],
+                        temperature=0.0,
+                    )
+                    content = completion["choices"][0]["message"]["content"]
+
+                    # Try parse JSON
+                    try:
+                        parsed = _json.loads(content)
+                        transcript_with_marks = parsed.get("transcript")
+                        summary = parsed.get("summary")
+                    except Exception:
+                        # If not valid JSON, assume the assistant returned a human transcript + summary
+                        transcript_with_marks = content
+            except Exception as exc:
+                st.warning(f"Diarization/post-processing skipped: {exc}")
+
+        # If diarization skipped or didn't produce a summary, generate one via agent
+        if not summary or (isinstance(summary, str) and not summary.strip()):
+            try:
+                summary = agent.summarise_text(raw_text, language="es" if lang == "Spanish" else "en")
+            except Exception:
+                summary = "(summary not available)"
+
+        # Display results
+        st.markdown("### Transcription")
+        st.code(transcript_with_marks or raw_text, language="")
+
+        st.markdown("### Summary")
+        if isinstance(summary, str):
+            st.markdown(summary)
+        else:
+            st.markdown(str(summary))
+
+        # Download buttons
+        ts = datetime.now().strftime("%Y%m%d_%H%M%S")
+        trans_name = f"transcription_{ts}.txt"
+        summ_name = f"transcription_summary_{ts}.md"
+
+        st.download_button("⬇️ Download Transcription (TXT)", data=(transcript_with_marks or raw_text), file_name=trans_name, mime="text/plain")
+        st.download_button("⬇️ Download Summary (MD)", data=(summary or ""), file_name=summ_name, mime="text/markdown")
+
+        # Optionally save to assets
+        if save_assets:
+            try:
+                os.makedirs(os.path.join("assets", "transcripts"), exist_ok=True)
+                with open(os.path.join("assets", "transcripts", trans_name), "w", encoding="utf-8") as f:
+                    f.write(transcript_with_marks or raw_text)
+                with open(os.path.join("assets", "transcripts", summ_name), "w", encoding="utf-8") as f:
+                    f.write(summary or "")
+                st.success(f"Saved files to assets/transcripts/{trans_name} and {summ_name}")
+            except Exception as exc:
+                st.warning(f"Could not save to assets: {exc}")
+
+
+
+# ---------------------------------------------------------------------------
 # Cleaning page
 # ---------------------------------------------------------------------------
 
@@ -924,6 +1067,11 @@ def render_main_content() -> None:
     current_section = st.session_state.get("current_section", "")
     current_action = st.session_state.get("current_action", "")
     last_result = st.session_state.get("last_result")
+
+    # New: Audio Transcription workspace
+    if active_page == "Transcriptions":
+        _page_transcription()
+        return
 
     # Primary workspace routing based on active_page.
     if active_page == "Intelligence Center":
