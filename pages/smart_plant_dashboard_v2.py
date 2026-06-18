@@ -128,28 +128,29 @@ def image_to_base64(path: str) -> str | None:
     return None
 
 
-def render_header():
+def render_header() -> None:
     cols = st.columns([1, 6, 1])
     with cols[1]:
-        st.markdown("---")
-        st.markdown("### 📋 OVERVIEW")
-        st.write(config.get("overview_text", ""))
+        st.markdown(
+            "<div style='text-align:center'>"
+            "<h1 style='color:#E84C22;margin:0'>INGECART</h1>"
+            "<h3 style='color:#8892b0;margin:0'>Smart Corrugated Plant</h3>"
+            "<p style='color:#5a6a8a;margin:0'>Interactive path to the efficiency</p>"
+            "</div>",
+            unsafe_allow_html=True,
+        )
 
-        if selected_hotspot_id:
-            st.markdown("---")
-            hotspot = next((h for h in config.get("hotspots", []) if h.get("id") == selected_hotspot_id), None)
-            if hotspot:
-                st.markdown(f"### 🔧 {hotspot.get('name')}")
-                st.write(hotspot.get("description", ""))
-                st.write("**ROI:**", hotspot.get("roi", ""))
-                st.write("**Ahorro anual:**", hotspot.get("savings", ""))
-                if hotspot.get("video") and Path(hotspot["video"]).exists():
-                    st.video(str(hotspot["video"]))
-                st.download_button("📥 Brochure (placeholder)", data="PDF", file_name=f"{hotspot.get('id')}_brochure.pdf")
-                if st.button("Enviar detalle al chat"):
-                    st.session_state.chat = st.session_state.get("chat", [])
-                    st.session_state.chat.append(f"{hotspot.get('name')}: {hotspot.get('description')}")
-                    st.experimental_rerun()
+
+def render_filters(config: dict) -> None:
+    filters = [
+        "All",
+        "Labor shortage",
+        "Productivity",
+        "Waste",
+        "Logistics",
+        "Sustainability",
+        "Energy",
+    ]
     cols = st.columns(len(filters))
     for i, f in enumerate(filters):
         with cols[i]:
