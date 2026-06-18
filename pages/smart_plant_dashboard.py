@@ -172,15 +172,8 @@ def render_plant(config: dict, highlight_ids=None) -> None:
 
 
 def render_right_panel(config: dict, selected_hotspot_id: str | None = None) -> None:
-    st.markdown("### 📊 PLANT STATUS")
-    kpis = config.get("kpis", {})
-    for key, val in kpis.items():
-        st.markdown(f"**{key.capitalize()}**: {val}%")
-        try:
-            st.progress(int(val))
-        except Exception:
-            pass
-
+    # Plant status KPIs removed per request — show overview and hotspot details below the
+    # full-width plant image instead.
     st.markdown("---")
     st.markdown("### 🎥 OVERVIEW VIDEO")
     vpath = config.get("general_video_path", "")
@@ -272,31 +265,29 @@ def main():
     mapping = config.get("solutions_mapping", {})
     highlight_ids = None if active_filter == "All" else mapping.get(active_filter, [])
 
-    c1, c2 = st.columns([2, 1])
+    # Render the plant full-width (no right-hand status column)
     clicked = None
-    with c1:
-        if use_3d:
-            try:
-                from components.threejs_plant import render_3d_plant
+    if use_3d:
+        try:
+            from components.threejs_plant import render_3d_plant
 
-                render_3d_plant(config.get("hotspots", []), highlight_ids=highlight_ids, height=600)
-            except Exception:
-                st.error("No se pudo cargar el componente 3D. Se mostrará la vista 2D.")
-                clicked = render_plant(config, highlight_ids=highlight_ids)
-        else:
+            render_3d_plant(config.get("hotspots", []), highlight_ids=highlight_ids, height=700)
+        except Exception:
+            st.error("No se pudo cargar el componente 3D. Se mostrará la vista 2D.")
             clicked = render_plant(config, highlight_ids=highlight_ids)
+    else:
+        # Render plant at a larger height so it occupies most of the page width/height
+        clicked = render_plant(config, highlight_ids=highlight_ids)
 
     # If the components.html returned a clicked hotspot id, apply it to session state and query params
     if clicked:
         try:
-            # clicked may be a dict or string depending on Streamlit version
             if isinstance(clicked, dict) and "hotspot" in clicked:
                 hid = clicked.get("hotspot")
             else:
                 hid = str(clicked)
             st.session_state["selected_hotspot"] = hid
             set_query_params_compat({"hotspot": hid})
-            # Force a rerun so the right panel updates immediately
             try:
                 st.experimental_rerun()
             except Exception:
@@ -304,12 +295,11 @@ def main():
         except Exception:
             pass
 
-    with c2:
-        # Prefer session_state selection; fallback to URL params
-        params = get_query_params_compat()
-        hotspot_id = st.session_state.get("selected_hotspot") or params.get("hotspot", [None])[0]
-        render_right_panel(config, selected_hotspot_id=hotspot_id)
-        render_chat_area()
+    # After the full-width image, render overview and hotspot details below
+    params = get_query_params_compat()
+    hotspot_id = st.session_state.get("selected_hotspot") or params.get("hotspot", [None])[0]
+    render_right_panel(config, selected_hotspot_id=hotspot_id)
+    render_chat_area()
 
 
 if __name__ == "__main__":
