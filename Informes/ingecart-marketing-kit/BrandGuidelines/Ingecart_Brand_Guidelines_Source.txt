@@ -1,0 +1,348 @@
+# Recomendación Integral de Imagen de Marca para INGECART
+
+## (Separando la identidad de FESPA y construyendo una estética propia)
+
+La clave estratégica aquí es muy importante:
+
+Los azules, morados y lilas pertenecen visualmente al universo gráfico de FESPA 2026, no al ADN de INGECART.
+
+Si INGECART quiere construir una identidad fuerte, reconocible y escalable internacionalmente, debe evitar “contaminar” su branding con los colores de la feria y desarrollar una línea visual propia, consistente y técnicamente reconocible.
+
+---
+
+# 1. DIRECCIÓN VISUAL RECOMENDADA PARA INGECART
+
+## Posicionamiento visual ideal
+
+INGECART debería verse como:
+
+* empresa de ingeniería industrial avanzada
+* integrador tecnológico premium
+* especialista en automatización industrial
+* partner estratégico de productividad
+* compañía robusta, seria y técnica
+* industria 4.0 aplicada a producción real
+
+No como:
+
+* startup tecnológica genérica
+* empresa de software SaaS
+* feria tecnológica futurista
+* marca “digital” azul corporativo típica
+
+---
+
+# 2. PALETA CORPORATIVA RECOMENDADA (SIN AZULES)
+
+## A. Negro Industrial Premium
+
+Color principal.
+
+* HEX: `#05070B`
+
+Uso:
+
+* fondos
+* presentaciones
+* web
+* stands
+* portadas
+* renders
+
+Transmite:
+
+* robustez
+* ingeniería
+* tecnología industrial
+* sofisticación
+
+---
+
+## B. Naranja Tecnológico INGECART
+
+Debe convertirse en el color icónico de marca.
+
+* HEX: `#FF6A00`
+
+Uso:
+
+* highlights
+* CTAs
+* palabras clave
+* iconografía
+* líneas técnicas
+* gráficos importantes
+
+Transmite:
+
+* energía
+* automatización
+* movimiento
+* innovación aplicada
+* maquinaria industrial
+
+Es el color más coherente con:
+
+* robots industriales
+* AGVs
+* automatización
+* fábricas
+* ingeniería mecánica
+
+---
+
+## C. Blanco Técnico
+
+* HEX: `#F4F5F7`
+
+Uso:
+
+* tipografía
+* espacios limpios
+* diagramas
+* contraste
+
+---
+
+## D. Gris Metal
+
+* HEX: `#7E848E`
+
+Uso:
+
+* textos secundarios
+* UI técnica
+* líneas
+* tablas
+* infografías
+
+---
+
+## E. Gris Acero Oscuro
+
+* HEX: `#1A1D24`
+
+Modo RGB (el más común en Word)
+Color	Valor
+Red (R)	26
+Green (G)	29
+Blue (B)	36
+
+Uso:
+
+* fondos secundarios
+* bloques
+* overlays
+* paneles
+
+---
+
+# 3. ADN VISUAL RECOMENDADO
+
+## Concepto:
+
+### “Industrial Intelligence”
+
+INGECART no vende solo maquinaria.
+
+Debe comunicar:
+
+* optimización
+* rendimiento
+* flujo
+* productividad
+* automatización inteligente
+* reducción de bottlenecks
+* eficiencia medible
+
+---
+
+# 4. ESTILO VISUAL QUE MÁS LE FAVORECE
+
+## Estética recomendada:
+
+### Dark Industrial Premium
+
+Inspiración:
+
+* automatización alemana
+* integradores industriales
+* NVIDIA industrial AI
+* Siemens factory systems
+* ABB robotics
+* KUKA
+* Tesla factories
+
+---
+
+# 5. REGLAS DE COMPOSICIÓN
+
+## Distribución visual ideal
+
+### 70%
+
+Negros y tonos oscuros
+
+### 20%
+
+Grises metálicos
+
+### 10%
+
+Naranja INGECART
+
+Esto hace que el naranja tenga muchísimo impacto visual y se convierta en firma visual.
+
+---
+
+# 6. ELEMENTOS VISUALES QUE DEBERÍAN REPETIRSE
+
+## Muy recomendables
+
+### Líneas técnicas finas
+
+Tipo blueprint industrial.
+
+### Glow naranja sutil
+
+En robots, AGVs, sensores, flujos.
+
+### Fotografías:
+
+* oscuras
+* contrastadas
+* industriales
+* con profundidad
+
+### Ambientes:
+
+* fábricas modernas
+* automatización
+* logística interna
+* corrugado
+* movimiento
+
+---
+
+# 7. TIPOGRAFÍAS IDEALES
+
+## Títulos
+
+* Montserrat ExtraBold
+* Bebas Neue
+* Oswald
+
+## Texto técnico
+
+* Inter
+* Roboto
+* IBM Plex Sans
+
+---
+
+# 8. ESTILO DE MENSAJES
+
+INGECART debe sonar:
+
+* técnico
+* preciso
+* experto
+* orientado a resultados
+* industrial
+* confiable
+
+No:
+
+* excesivamente comercial
+* “marketing startup”
+* futurista vacío
+
+---
+
+# 9. MENSAJES DE MARCA RECOMENDADOS
+
+## Muy alineados con la estética
+
+### Engineering That Optimizes.
+
+### Automation That Transforms.
+
+### Industrial Intelligence Applied to Performance.
+
+### Solving Real Bottlenecks.
+
+### Tailored Automation & Intralogistics.
+
+### Performance-Driven Engineering.
+
+### Automation Designed Around Reality.
+
+---
+
+# 10. IDENTIDAD VISUAL IDEAL PARA PRESENTACIONES
+
+## Portadas
+
+* fondo negro industrial
+* fotografía hero industrial
+* título blanco
+* palabra clave naranja
+
+Ejemplo:
+
+> SOLVING
+> REAL BOTTLENECKS
+> IN CORRUGATED PLANTS
+
+---
+
+# 11. ESTILO PERFECTO PARA LINKEDIN
+
+## Publicaciones:
+
+* minimalistas
+* técnicas
+* oscuras
+* contundentes
+* visualmente limpias
+
+Menos:
+
+* texto excesivo
+* colores vivos múltiples
+* diseños recargados
+
+Más:
+
+* imagen potente
+* claim fuerte
+* datos concretos
+* look premium industrial
+
+---
+
+# 12. RECOMENDACIÓN MÁS IMPORTANTE
+
+FESPA debe verse como:
+
+* el contexto
+
+INGECART debe verse como:
+
+* la empresa tecnológica protagonista
+
+Por eso:
+
+* puedes conservar pequeños detalles morados/lilas SOLO en la franja oficial de FESPA
+* pero todo el universo visual principal debería migrar a:
+
+  * negro
+  * gris industrial
+  * naranja INGECART
+
+Eso construye:
+
+* identidad propia
+* reconocimiento
+* consistencia internacional
+* branding premium industrial real.

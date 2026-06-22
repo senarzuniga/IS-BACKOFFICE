@@ -1,0 +1,31 @@
+/* Ingecart brand CSS variables and helpers
+   Source: Ingecart Brand Guidelines (canonical copy in this folder)
+   Usage: include this CSS in HTML reports/templates to apply brand tokens
+*/
+:root{
+  --inge-black: #05070B;
+  --inge-orange: #FF6A00;
+  --inge-white: #F4F5F7;
+  --inge-gray: #7E848E;
+  --inge-steel: #1A1D24;
+  --inge-muted: #6E6E6E;
+  --inge-font-sans: 'Inter', 'Segoe UI', Arial, sans-serif;
+}
+
+body { font-family: var(--inge-font-sans); color: var(--inge-black); background: var(--inge-white); }
+
+.brand-header{ display:flex; align-items:center; gap:12px; padding:12px; background:var(--inge-black); color:var(--inge-white); }
+.brand-logo{ height:44px; }
+.brand-title h1{ margin:0; font-size:20px; color:var(--inge-white); }
+.brand-title .muted{ color:var(--inge-gray); font-size:13px; margin-top:4px; }
+
+.btn-brand{ background:var(--inge-orange); color:var(--inge-white); padding:8px 12px; border-radius:6px; border:none; cursor:pointer; }
+
+.text-muted{ color:var(--inge-gray); }
+.card{ background:var(--inge-white); border-left:4px solid var(--inge-orange); padding:12px; border-radius:6px; box-shadow:0 1px 2px rgba(0,0,0,0.04); }
+
+/* Utility classes */
+.small{ font-size:13px; }
+.center{ text-align:center; }
+
+/* Use strong orange accents sparingly to respect composition rules (70/20/10) */
