@@ -5,13 +5,21 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Ingecart — Informe 360° (Executive)</title>
   <style>
-    :root{--bg:#ffffff;--primary:#0B63B6;--accent:#FF8A00;--text:#222;--muted:#666}
+    :root{
+      --bg: #ffffff;
+      --primary: #116dff;
+      --accent: #2b5672;
+      --text: #222;
+      --muted: #6E6E6E;
+    }
     body{font-family:Inter,Segoe UI,Arial,sans-serif;color:var(--text);background:var(--bg);margin:28px}
-    header{border-left:8px solid var(--primary);padding:12px 18px;margin-bottom:18px}
-    h1{margin:0;font-size:24px}
-    h2{color:var(--primary);margin-top:20px}
+    .brand-header{display:flex;align-items:center;gap:14px;padding:18px;border-radius:8px;background:linear-gradient(90deg,var(--primary) 0%, rgba(17,109,255,0.9) 60%);color:#fff;margin-bottom:18px}
+    .brand-logo{height:48px;width:auto;display:block}
+    .brand-title h1{margin:0;font-size:22px}
+    .brand-title .muted{color:rgba(255,255,255,0.9);font-size:13px;margin-top:6px}
+    h2{color:var(--accent);margin-top:20px}
     p{line-height:1.4}
-    .kpi{display:inline-block;background:#f7f9fc;padding:8px 12px;border-radius:6px;margin-right:8px;color:var(--muted)}
+    .kpi{display:inline-block;background:rgba(17,109,255,0.06);padding:8px 12px;border-radius:6px;margin-right:8px;color:var(--muted);border:1px solid rgba(17,109,255,0.08)}
     table{width:100%;border-collapse:collapse;margin-top:8px}
     th,td{padding:8px;border:1px solid #eee;text-align:left}
     .swot{display:grid;grid-template-columns:1fr 1fr;gap:10px}
@@ -21,9 +29,12 @@
   </style>
 </head>
 <body>
-  <header>
-    <h1>Ingecart — Informe 360°</h1>
-    <div style="margin-top:6px">Fecha: 2026-06-22 • Autor: Equipo de análisis</div>
+  <header class="brand-header">
+    <img src="../Assets/ingecart_assets_v2/logo%20ingecart%20blanco.png" alt="Ingecart logo" class="brand-logo">
+    <div class="brand-title">
+      <h1>Ingecart — Informe 360°</h1>
+      <div class="muted">Fecha: 2026-06-22 • Autor: Equipo de análisis</div>
+    </div>
   </header>
 
   <section>

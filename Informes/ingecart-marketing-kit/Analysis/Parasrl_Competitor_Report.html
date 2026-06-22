@@ -5,11 +5,19 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Parasrl — Análisis Competitivo</title>
   <style>
-    :root{--bg:#fff;--primary:#0B63B6;--accent:#FF8A00;--text:#222}
+    :root{
+      --bg:#fff;
+      --primary:#116dff;
+      --accent:#2b5672;
+      --text:#222;
+      --muted:#6E6E6E;
+    }
     body{font-family:Inter,Segoe UI,Arial,sans-serif;color:var(--text);background:var(--bg);margin:28px}
-    h1{color:var(--primary)}
-    h2{color:var(--primary);margin-top:18px}
-    .muted{color:#666}
+    .brand-header{display:flex;align-items:center;gap:12px;padding:12px;border-radius:8px;background:var(--primary);color:#fff;margin-bottom:14px}
+    .brand-logo{height:40px}
+    h1{margin:0;color:#fff;font-size:20px}
+    h2{color:var(--accent);margin-top:18px}
+    .muted{color:#e9eef9}
     table{width:100%;border-collapse:collapse;margin-top:8px}
     th,td{padding:8px;border:1px solid #eee}
     .quote{background:#f5f8ff;padding:10px;border-left:4px solid var(--primary);border-radius:4px}
@@ -17,8 +25,13 @@
   </style>
 </head>
 <body>
-  <h1>PARA S.r.l. — Análisis Competitivo (Resumen)</h1>
-  <div class="muted">Fecha: 2026-06-22 • Fuente: https://www.parasrl.com/en/ + prensa sectorial</div>
+  <header class="brand-header">
+    <img src="../Assets/ingecart_assets_v2/logo%20ingecart%20blanco.png" alt="Ingecart logo" class="brand-logo">
+    <div>
+      <h1>PARA S.r.l. — Análisis Competitivo (Resumen)</h1>
+      <div class="muted">Fecha: 2026-06-22 • Fuente: https://www.parasrl.com/en/ + prensa sectorial</div>
+    </div>
+  </header>
 
   <section>
     <h2>Perfil de la empresa</h2>
