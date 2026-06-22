@@ -1,0 +1,12 @@
+:root{
+  --inge-black:#05070B;
+  --inge-white:#FFFFFF;
+  --inge-orange:#FF6A00;
+}
+body{background:var(--inge-black);color:var(--inge-white);}
+.brand-header{display:flex;align-items:center;gap:12px;padding:12px 0}
+.brand-header img{height:40px}
+h1,h2,h3{color:var(--inge-white)}
+h2{color:var(--inge-orange)}
+.card{background:#0b0b0b;border:1px solid #111;padding:12px;border-radius:8px}
+a{color:var(--inge-orange)}

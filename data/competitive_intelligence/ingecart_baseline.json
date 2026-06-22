@@ -1,0 +1,20 @@
+{
+  "company_name": "INGECART",
+  "description": "Ingeniería y automatización para la industria del cartón corrugado.",
+  "key_strengths": [
+    "Proyectos llave en mano",
+    "Flexibilidad frente a grandes multinacionales",
+    "Capacidad de integración con equipos de otros fabricantes"
+  ],
+  "key_technologies": ["SR-1400", "AMR", "EasyPack", "Palletizing"],
+  "estimated_revenue": "15-25 M€",
+  "employees": "50-80",
+  "markets": ["Europa", "Latinoamérica", "USA"],
+  "typical_project_roi": "24-36 meses",
+  "innovation_focus": "Smart Factory, IA aplicada a corrugado",
+  "competitive_advantages": [
+    "Flexibilidad",
+    "Coste competitivo",
+    "Integración con OEMs"
+  ]
+}

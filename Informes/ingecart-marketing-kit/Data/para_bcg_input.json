@@ -1,0 +1,23 @@
+{
+  "executive_summary": "PARA ha consolidado una posición de liderazgo en equipos de final de línea para corrugado gracias a una estrategia basada en: especialización profunda; escala productiva; presencia internacional; capacidad de fabricación propia. Sin embargo, presenta debilidades estructurales en digitalización avanzada, flexibilidad de ingeniería, integración multi-OEM y servicios de optimización operacional.",
+  "market_analysis": "Mercado mundial de corrugado: tamaño de mercado y CAGR esperado (placeholder). Regiones de crecimiento: América Latina, Norteamérica, Asia.\n\nTendencias:\n- Automatización de final de línea\n- Escasez de mano de obra\n- Digitalización y gemelos digitales\n- IA aplicada a producción\n- Mantenimiento predictivo",
+  "competitive_map": [
+    {"company":"PARA","fabricacion":5,"integracion":2,"digital":2,"servicio":3,"escala":5},
+    {"company":"Ingecart","fabricacion":2,"integracion":5,"digital":4,"servicio":5,"escala":2},
+    {"company":"Emba","fabricacion":5,"integracion":3,"digital":3,"servicio":3,"escala":5},
+    {"company":"Fosber","fabricacion":5,"integracion":3,"digital":3,"servicio":4,"escala":5},
+    {"company":"BHS","fabricacion":5,"integracion":3,"digital":4,"servicio":4,"escala":5}
+  ],
+  "company_profile": {
+    "clients": "Grandes grupos corrugadores; integradores OEM; plantas brownfield",
+    "value_proposition": "Equipos robustos; amplio portfolio; fabricación propia",
+    "channels": "Ventas directas; distribuidores; ferias",
+    "key_resources": "Plantas de fabricación; equipos de ingeniería; red comercial"
+  },
+  "benchmarking": "PARA gana en fabricación y escala; Ingecart destaca en integración y flexibilidad.",
+  "advantages": "Donde gana PARA: equipos estándar (prefeeders, palletizers, stackers) y grandes proyectos CAPEX. Donde gana Ingecart: retrofit, integración multi-OEM y optimización con ROI rápido.",
+  "scenarios": "1) PARA mantiene crecimiento como fabricante; 2) PARA desarrolla plataforma digital (amenaza alta); 3) Consolidación sectorial (oportunidad para integradores).",
+  "opportunities": "Retrofit Automation: mercado objetivo XX M€; Smart Factory Platform: mercado objetivo XX M€; AI Predictive Maintenance: mercado objetivo XX M€.",
+  "strategic_plan": "H1 (0-12m): posicionamiento 'Independent Plant Performance Partner'; lanzar Smart Plant Dashboard; casos de éxito ROI. H2 (1-3y): red internacional de partners; oficina USA; plataforma SaaS. H3 (3-5y): Digital Twin; IA operacional; marketplace de servicios.",
+  "conclusion": "PARA es un competidor superior en fabricación y escala. La estrategia recomendada es que Ingecart no compita como fabricante, sino como socio independiente de transformación tecnológica de plantas."
+}

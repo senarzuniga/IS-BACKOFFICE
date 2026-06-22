@@ -1,0 +1,11 @@
+:root{
+  --inge-orange: #ff6a00;
+  --inge-bg: #000000;
+  --inge-surface: #0b0b0b;
+  --inge-muted: #888888;
+}
+body{background:var(--inge-bg);color:#ffffff;font-family:Inter,Segoe UI,Arial}
+.wrap{max-width:1100px;margin:18px auto;padding:18px}
+h1{color:var(--inge-orange)}
+a{color:var(--inge-orange)}
+.card{background:var(--inge-surface);border:1px solid #111;padding:12px;border-radius:8px}

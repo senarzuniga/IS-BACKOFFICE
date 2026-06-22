@@ -1,0 +1,23 @@
+{
+  "executive_summary": "Ingecart debe posicionarse como 'Independent Plant Performance Partner', enfocándose en integración multi-OEM, retrofit, digitalización y servicios que entreguen ROI medible. No competir en fabricación directa frente a PARA.",
+  "market_analysis": "Mercado objetivo: retrofit y mejora de plantas (brownfield) con necesidades inmediatas de automatización y digitalización. Tendencias clave: automatización de final de línea, digitalización industrial, IA y mantenimiento predictivo.",
+  "competitive_map": [
+    {"company":"PARA","fabricacion":5,"integracion":2,"digital":2,"servicio":3,"escala":5},
+    {"company":"Ingecart","fabricacion":2,"integracion":5,"digital":4,"servicio":5,"escala":2},
+    {"company":"Emba","fabricacion":5,"integracion":3,"digital":3,"servicio":3,"escala":5},
+    {"company":"Fosber","fabricacion":5,"integracion":3,"digital":3,"servicio":4,"escala":5},
+    {"company":"BHS","fabricacion":5,"integracion":3,"digital":4,"servicio":4,"escala":5}
+  ],
+  "company_profile": {
+    "clients": "Medianas y grandes plantas corrugadoras; operadores de planta; integradores",
+    "value_proposition": "Alta flexibilidad de ingeniería; neutralidad tecnológica; foco en ROI y optimización operacional",
+    "channels": "Consultoría técnica; partnerships; proyectos piloto",
+    "key_resources": "Equipo de integración; know-how en automatización; capacidades de software"
+  },
+  "benchmarking": "Ingeniería: PARA > Ingecart en fabricación; Integración/Consultoría: Ingecart > PARA; Digital: potencial alto para Ingecart.",
+  "advantages": "Ingecart gana en proyectos complejos, retrofit y soluciones multi-OEM. Debilidades: alcance internacional y escala de producción.",
+  "scenarios": "1) PARA expande digitalidad: amenaza; 2) Ingecart escala partners: oportunidad; 3) Consolidación acelera demanda de integradores.",
+  "opportunities": "Retrofit Automation: XX M€; Smart Plant (SaaS + dashboard): XX M€; IA Predictive Maintenance: XX M€.",
+  "strategic_plan": "H1: crear discurso 'Independent Technology Partner' + piloto Smart Plant Dashboard; H2: establecer partners comerciales y lanzar MVP SaaS; H3: invertir en Digital Twin y capacidades IA.",
+  "conclusion": "Priorizar ventas consultivas y proyectos con ROI rápido; invertir en plataforma SaaS y alianzas OEM selectivas."
+}
