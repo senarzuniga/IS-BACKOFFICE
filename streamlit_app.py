@@ -59,6 +59,7 @@ def _create_enhanced_app():
             "🕵️ Inteligencia Web",
             "🖼️ Scraping",
             "📹 Medios",
+            "🔊 Transcripción",
             "🎨 INGECART ARTWORK",
             "🏭 Plant Simulator",
             "🏭 Smart Plant Dashboard",
@@ -76,6 +77,7 @@ def _create_enhanced_app():
         "🕵️ Inteligencia Web": "intelligence",
         "🖼️ Scraping": "scraping",
         "📹 Medios": "media_upload",
+        "🔊 Transcripción": "audio_transcription",
         "🎨 INGECART ARTWORK": "ingecart_artwork",
         "🏭 Plant Simulator": "plant_simulator",
         "🏭 Smart Plant Dashboard": "smart_plant_dashboard",
@@ -104,6 +106,10 @@ def _create_enhanced_app():
     elif st.session_state.current_page == "media_upload":
         from backoffice.ui.media_upload_panel import render_media_upload_panel
         render_media_upload_panel()
+
+    elif st.session_state.current_page == "audio_transcription":
+        from backoffice.ui.audio_transcription_panel import render_audio_transcription_panel
+        render_audio_transcription_panel()
 
     elif st.session_state.current_page == "ingecart_artwork":
         st.switch_page("pages/ingecart_artwork.py")
