@@ -1,0 +1,1 @@
+[LLM unavailable] Install `openai` and set `OPENAI_API_KEY` to enable full functionality.
