@@ -57,6 +57,7 @@ if str(ROOT) not in sys.path:
         sys.path.insert(0, str(ROOT))
 
 import logging
+from logging.handlers import RotatingFileHandler
 
 # Defensive imports: try to import the marketing-kit `plant_simulator` package
 IMPORT_ERROR = None
@@ -72,6 +73,7 @@ try:
     logging.getLogger(__name__).info('Imported plant_simulator package successfully')
 except Exception as e:
     IMPORT_ERROR = e
+    _LAST_ERROR = e
     # Provide safe placeholders and fallbacks so the Streamlit page doesn't crash
     PlantConfig = None
     PlantType = None
@@ -82,7 +84,11 @@ except Exception as e:
     build_canvas_html = None
     generate_excel_report = None
     generate_pdf_report = None
-    CORRUGATOR_CATALOG = CONVERTER_CATALOG = TRANSPORT_CATALOG = SECTOR_BENCHMARKS = None
+    # Safe defaults: empty catalogs and minimal sector benchmarks to avoid crashes
+    CORRUGATOR_CATALOG = []
+    CONVERTER_CATALOG = []
+    TRANSPORT_CATALOG = []
+    SECTOR_BENCHMARKS = {"corrugator_oee": 0.8, "world_class_oee": 0.85}
 
     logging.getLogger(__name__).warning('plant_simulator import failed; entering fallback mode: %s', e)
 
@@ -100,6 +106,38 @@ def _fallback_build_canvas_html(canvas_cfg, height=600):
 
 if build_canvas_html is None:
     build_canvas_html = _fallback_build_canvas_html
+
+# --- Runtime logging (file) and global error capture ---
+try:
+    LOG_DIR = ROOT / "logs"
+    LOG_DIR.mkdir(parents=True, exist_ok=True)
+    log_file_path = LOG_DIR / "plant_simulator.log"
+    logger = logging.getLogger("plant_simulator_page")
+    if not logger.handlers:
+        handler = RotatingFileHandler(str(log_file_path), maxBytes=5 * 1024 * 1024, backupCount=3, encoding="utf-8")
+        formatter = logging.Formatter("%(asctime)s %(levelname)s %(name)s: %(message)s")
+        handler.setFormatter(formatter)
+        logger.addHandler(handler)
+        logger.setLevel(logging.INFO)
+    logger.info("Plant simulator page loaded; sys.path top: %s", sys.path[:6])
+except Exception as e:
+    logging.basicConfig(level=logging.INFO)
+    logging.getLogger(__name__).exception("Failed to initialize file logging: %s", e)
+
+try:
+    _LAST_ERROR
+except NameError:
+    _LAST_ERROR = None
+
+def _handle_uncaught(exc_type, exc_value, exc_tb):
+    global _LAST_ERROR
+    _LAST_ERROR = exc_value
+    try:
+        logging.getLogger("plant_simulator_page").exception("Uncaught exception", exc_info=(exc_type, exc_value, exc_tb))
+    except Exception:
+        logging.getLogger(__name__).exception("Uncaught exception (failed to log)")
+
+sys.excepthook = _handle_uncaught
 
 # ============================================================
 # PAGE CONFIG
@@ -238,6 +276,30 @@ with col_title:
 
 st.markdown("---")
 
+# Developer tools in sidebar
+with st.sidebar.expander("Developer", expanded=False):
+    try:
+        dev_mode = st.checkbox("Developer mode (show logs & sys.path)", value=False)
+    except Exception:
+        dev_mode = False
+
+    if dev_mode:
+        st.markdown("**Import error**")
+        st.write(str(IMPORT_ERROR) if IMPORT_ERROR else "None")
+        st.markdown("**Last error**")
+        st.write(str(_LAST_ERROR) if _LAST_ERROR else "None")
+        st.markdown("**sys.path (top)**")
+        st.code("\n".join(sys.path[:12]))
+        try:
+            if 'log_file_path' in globals() and log_file_path.exists():
+                with open(str(log_file_path), 'r', encoding='utf-8') as _f:
+                    txt = _f.read()[-20000:]
+                st.text_area("Recent logs", txt, height=300)
+                with open(str(log_file_path), 'rb') as _bf:
+                    st.download_button(label="📥 Download logs", data=_bf.read(), file_name=log_file_path.name)
+        except Exception as e:
+            st.error(f"Cannot read log file: {e}")
+
 # ============================================================
 # TABS
 # ============================================================
@@ -268,6 +330,7 @@ with tab1:
             scenarios = agent.demo_scenarios()
         except Exception as e:
             logging.getLogger(__name__).warning('demo_scenarios() failed: %s', e)
+            _LAST_ERROR = e
             scenarios = [("Demo (fallback)", {})]
 
         cols_sc = st.columns(max(1, len(scenarios)))
@@ -282,6 +345,8 @@ with tab1:
                     except Exception as e:
                         st.error('Failed to build config from scenario.')
                         st.exception(e)
+                        logging.getLogger(__name__).exception('Failed to build config from scenario: %s', e)
+                        _LAST_ERROR = e
                         st.session_state.cps_config = None
                     st.rerun()
 
@@ -445,6 +510,7 @@ with tab2:
             canvas_cfg = demo_cfg.to_canvas_config()
         except Exception as e:
             logging.getLogger(__name__).warning('Failed to build demo canvas config: %s', e)
+            _LAST_ERROR = e
             # fallback empty canvas config
             canvas_cfg = {}
     else:
@@ -464,6 +530,7 @@ with tab2:
         components.html(html, height=620, scrolling=False)
     except Exception as e:
         logging.getLogger(__name__).exception('Canvas rendering failed: %s', e)
+        _LAST_ERROR = e
         fallback_html = _fallback_build_canvas_html({"error": str(e)})
         components.html(fallback_html, height=400, scrolling=True)
 
@@ -504,7 +571,12 @@ with tab3:
                 f"Duración: {cfg.simulation_duration_hours:.0f}h"
             )
         with col_run2:
-            run_sim = st.button("▶ Ejecutar Simulación Analítica", type="primary", use_container_width=True)
+            run_sim = st.button(
+                "▶ Ejecutar Simulación Analítica",
+                type="primary",
+                use_container_width=True,
+                disabled=(SimulationEngine is None),
+            )
 
         if run_sim:
             with st.spinner("⚙️ Ejecutando simulación…"):
@@ -694,7 +766,11 @@ with tab3:
                 unsafe_allow_html=True,
             )
 
-            if st.button("▶ Ejecutar Optimización Multi-Escenario (5 variantes)", type="secondary"):
+            if st.button(
+                "▶ Ejecutar Optimización Multi-Escenario (5 variantes)",
+                type="secondary",
+                disabled=(ScenarioOptimizer is None),
+            ):
                 with st.spinner("Ejecutando 5 escenarios…"):
                     pb_sc = st.progress(0)
                     optimizer = ScenarioOptimizer()
@@ -782,7 +858,7 @@ with tab4:
                 "y recomendaciones de optimización. Ideal para presentaciones de cliente.</p>",
                 unsafe_allow_html=True,
             )
-            if st.button("⬇️ Descargar PDF", type="primary", use_container_width=True):
+            if st.button("⬇️ Descargar PDF", type="primary", use_container_width=True, disabled=(generate_pdf_report is None)):
                 with st.spinner("Generando PDF…"):
                     try:
                         pdf_bytes = generate_pdf_report(results)
@@ -795,6 +871,8 @@ with tab4:
                             use_container_width=True,
                         )
                     except Exception as e:
+                        _LAST_ERROR = e
+                        logging.getLogger(__name__).exception('Error generating PDF: %s', e)
                         st.error(f"Error generando PDF: {e}")
 
         with col_r2:
@@ -805,7 +883,7 @@ with tab4:
                 "timeline por minuto y cuellos de botella. Listo para análisis externo.</p>",
                 unsafe_allow_html=True,
             )
-            if st.button("⬇️ Descargar Excel", type="primary", use_container_width=True):
+            if st.button("⬇️ Descargar Excel", type="primary", use_container_width=True, disabled=(generate_excel_report is None)):
                 with st.spinner("Generando Excel…"):
                     try:
                         xl_bytes = generate_excel_report(results)
@@ -818,6 +896,8 @@ with tab4:
                             use_container_width=True,
                         )
                     except Exception as e:
+                        _LAST_ERROR = e
+                        logging.getLogger(__name__).exception('Error generating Excel: %s', e)
                         st.error(f"Error generando Excel: {e}")
 
         st.markdown("---")
@@ -964,8 +1044,13 @@ with tab6:
                     with col_btn_h1:
                         if st.button(f"📂 Cargar esta configuración", key=f"load_{idx}"):
                             st.session_state.cps_answers = dict(entry["answers"])
-                            st.session_state.cps_config = agent.build_config(entry["answers"])
-                            st.success(f"✅ Cargado: {entry['name']}")
+                            try:
+                                st.session_state.cps_config = agent.build_config(entry["answers"])
+                                st.success(f"✅ Cargado: {entry['name']}")
+                            except Exception as e:
+                                _LAST_ERROR = e
+                                logging.getLogger(__name__).exception('Failed to load saved configuration: %s', e)
+                                st.error('Failed to load saved configuration.')
                     with col_btn_h2:
                         if st.button(f"🗑️ Eliminar", key=f"del_{idx}"):
                             st.session_state.cps_history.pop(idx)
