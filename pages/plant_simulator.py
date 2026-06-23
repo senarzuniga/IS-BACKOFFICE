@@ -56,14 +56,50 @@ if str(ROOT) not in sys.path:
     else:
         sys.path.insert(0, str(ROOT))
 
-from plant_simulator.models import PlantConfig, PlantType
-from plant_simulator.config_agent import ConfigAgent, STEPS
-from plant_simulator.simulation_engine import SimulationEngine, ScenarioOptimizer
-from plant_simulator.canvas_builder import build_canvas_html
-from plant_simulator.report_generator import generate_excel_report, generate_pdf_report
-from plant_simulator.equipment_library import (
-    CORRUGATOR_CATALOG, CONVERTER_CATALOG, TRANSPORT_CATALOG, SECTOR_BENCHMARKS
-)
+import logging
+
+# Defensive imports: try to import the marketing-kit `plant_simulator` package
+IMPORT_ERROR = None
+try:
+    from plant_simulator.models import PlantConfig, PlantType
+    from plant_simulator.config_agent import ConfigAgent, STEPS
+    from plant_simulator.simulation_engine import SimulationEngine, ScenarioOptimizer
+    from plant_simulator.canvas_builder import build_canvas_html
+    from plant_simulator.report_generator import generate_excel_report, generate_pdf_report
+    from plant_simulator.equipment_library import (
+        CORRUGATOR_CATALOG, CONVERTER_CATALOG, TRANSPORT_CATALOG, SECTOR_BENCHMARKS
+    )
+    logging.getLogger(__name__).info('Imported plant_simulator package successfully')
+except Exception as e:
+    IMPORT_ERROR = e
+    # Provide safe placeholders and fallbacks so the Streamlit page doesn't crash
+    PlantConfig = None
+    PlantType = None
+    ConfigAgent = None
+    STEPS = []
+    SimulationEngine = None
+    ScenarioOptimizer = None
+    build_canvas_html = None
+    generate_excel_report = None
+    generate_pdf_report = None
+    CORRUGATOR_CATALOG = CONVERTER_CATALOG = TRANSPORT_CATALOG = SECTOR_BENCHMARKS = None
+
+    logging.getLogger(__name__).warning('plant_simulator import failed; entering fallback mode: %s', e)
+
+# If build_canvas_html isn't available, provide a minimal fallback that returns safe HTML
+def _fallback_build_canvas_html(canvas_cfg, height=600):
+    info = ''
+    try:
+        if isinstance(canvas_cfg, dict):
+            info = f"Keys: {', '.join(list(canvas_cfg.keys())[:8])}"
+        else:
+            info = str(type(canvas_cfg))
+    except Exception:
+        info = 'unavailable'
+    return f"<div style='padding:18px;font-family:system-ui'>Canvas unavailable (fallback). {info}</div>"
+
+if build_canvas_html is None:
+    build_canvas_html = _fallback_build_canvas_html
 
 # ============================================================
 # PAGE CONFIG
@@ -133,7 +169,47 @@ _init_state()
 # ============================================================
 # HELPERS
 # ============================================================
-agent = ConfigAgent()
+# Instantiate agent, with fallback behavior if ConfigAgent is missing
+if ConfigAgent is not None:
+    try:
+        agent = ConfigAgent()
+    except Exception as e:
+        logging.getLogger(__name__).warning('ConfigAgent instantiation failed, using fallback agent: %s', e)
+        ConfigAgent = None
+        agent = None
+else:
+    agent = None
+
+# Minimal fallback agent implementation to keep UI responsive when the real agent is missing
+class _FallbackAgent:
+    def demo_scenarios(self):
+        return [("Demo (fallback)", {"plant_name": "Demo Plant"})]
+
+    def get_visible_steps(self, answers):
+        return []
+
+    def get_hint(self, sid, answers):
+        return ""
+
+    def get_ai_recommendation(self, answers):
+        return "AI agent unavailable — install the marketing kit for full features."
+
+    def build_config(self, answers):
+        class _Cfg:
+            name = answers.get("plant_name", "Demo Plant") if isinstance(answers, dict) else "Demo Plant"
+            plant_type = type("PT", (), {"value": "Demo"})
+            converters = []
+            transport = type("T", (), {"num_forklifts": 0})
+            simulation_duration_hours = 1
+            simulation_speed = 1
+
+            def to_canvas_config(self):
+                return {}
+
+        return _Cfg()
+
+if agent is None:
+    agent = _FallbackAgent()
 
 def _color_oee(val: float) -> str:
     if val >= 85: return "#4fc17b"
@@ -188,13 +264,25 @@ with tab1:
 
     # Quick-start scenarios
     with st.expander("⚡ Inicio rápido — escenarios predefinidos", expanded=False):
-        scenarios = agent.demo_scenarios()
-        cols_sc = st.columns(len(scenarios))
+        try:
+            scenarios = agent.demo_scenarios()
+        except Exception as e:
+            logging.getLogger(__name__).warning('demo_scenarios() failed: %s', e)
+            scenarios = [("Demo (fallback)", {})]
+
+        cols_sc = st.columns(max(1, len(scenarios)))
         for i, (label, ans) in enumerate(scenarios):
-            with cols_sc[i]:
+            # guard against mismatched column counts
+            col_index = i % len(cols_sc)
+            with cols_sc[col_index]:
                 if st.button(label, key=f"scenario_{i}", use_container_width=True):
                     st.session_state.cps_answers = dict(ans)
-                    st.session_state.cps_config = agent.build_config(ans)
+                    try:
+                        st.session_state.cps_config = agent.build_config(ans)
+                    except Exception as e:
+                        st.error('Failed to build config from scenario.')
+                        st.exception(e)
+                        st.session_state.cps_config = None
                     st.rerun()
 
     st.markdown("---")
@@ -349,11 +437,16 @@ with tab2:
             "🏭 No hay modelo configurado. Ve a **🏭 Configurar** y pulsa "
             "**Generar Modelo y Lanzar Simulación**, o usa un escenario de inicio rápido."
         )
-        # Show default demo
+        # Show default demo (safe fallback)
         st.markdown("#### Demo rápida — Planta completa con 3 convertidoras")
-        demo_ans = agent.demo_scenarios()[0][1]
-        demo_cfg = agent.build_config(demo_ans)
-        canvas_cfg = demo_cfg.to_canvas_config()
+        try:
+            demo_ans = agent.demo_scenarios()[0][1]
+            demo_cfg = agent.build_config(demo_ans)
+            canvas_cfg = demo_cfg.to_canvas_config()
+        except Exception as e:
+            logging.getLogger(__name__).warning('Failed to build demo canvas config: %s', e)
+            # fallback empty canvas config
+            canvas_cfg = {}
     else:
         canvas_cfg = cfg.to_canvas_config()
         st.markdown(
@@ -365,9 +458,14 @@ with tab2:
             unsafe_allow_html=True,
         )
 
-    # Render canvas
-    html = build_canvas_html(canvas_cfg, height=600)
-    components.html(html, height=620, scrolling=False)
+    # Render canvas with protection against rendering errors
+    try:
+        html = build_canvas_html(canvas_cfg, height=600)
+        components.html(html, height=620, scrolling=False)
+    except Exception as e:
+        logging.getLogger(__name__).exception('Canvas rendering failed: %s', e)
+        fallback_html = _fallback_build_canvas_html({"error": str(e)})
+        components.html(fallback_html, height=400, scrolling=True)
 
     # Legend
     col_l1, col_l2, col_l3, col_l4, col_l5 = st.columns(5)
