@@ -28,11 +28,33 @@ import streamlit.components.v1 as components
 
 # --- Project root on path ---
 ROOT = Path(__file__).resolve().parent.parent
-MKT_KIT = ROOT / "ingecart-marketing-kit"
-if str(ROOT) not in sys.path:
-    sys.path.insert(0, str(ROOT))
-if str(MKT_KIT) not in sys.path:
+# Locate the ingecart marketing kit package in common locations
+_candidates = [
+    ROOT / "ingecart-marketing-kit",
+    ROOT / "informes" / "ingecart-marketing-kit" / "ingecart-marketing-kit",
+    ROOT / "informes" / "ingecart-marketing-kit",
+]
+MKT_KIT = None
+for _p in _candidates:
+    try:
+        if _p.exists():
+            MKT_KIT = _p
+            break
+    except Exception:
+        # permission or path issues — ignore and continue
+        continue
+
+# Insert MKT_KIT first (if found) so its `plant_simulator` package takes precedence,
+# then ensure project root is also on sys.path.
+if MKT_KIT and str(MKT_KIT) not in sys.path:
+    # place marketing kit path first so its `plant_simulator` package is preferred
     sys.path.insert(0, str(MKT_KIT))
+if str(ROOT) not in sys.path:
+    # insert ROOT after MKT_KIT if MKT_KIT exists, otherwise at front
+    if MKT_KIT and str(MKT_KIT) in sys.path:
+        sys.path.insert(1, str(ROOT))
+    else:
+        sys.path.insert(0, str(ROOT))
 
 from plant_simulator.models import PlantConfig, PlantType
 from plant_simulator.config_agent import ConfigAgent, STEPS
