@@ -56,6 +56,7 @@ def _create_enhanced_app():
         "Navegación",
         [
             "🏠 Command Center",
+            "🧠 Inteligencia de Conocimiento",
             "🕵️ Inteligencia Web",
             "🖼️ Scraping",
             "📹 Medios",
@@ -74,6 +75,7 @@ def _create_enhanced_app():
 
     page_map = {
         "🏠 Command Center": "command_center",
+        "🧠 Inteligencia de Conocimiento": "knowledge_intelligence",
         "🕵️ Inteligencia Web": "intelligence",
         "🖼️ Scraping": "scraping",
         "📹 Medios": "media_upload",
@@ -98,6 +100,13 @@ def _create_enhanced_app():
     elif st.session_state.current_page == "intelligence":
         from backoffice.ui.market_intelligence_panel import render_market_intelligence_panel
         render_market_intelligence_panel()
+
+    elif st.session_state.current_page == "knowledge_intelligence":
+        try:
+            from pages.knowledge_intelligence import main as knowledge_main
+            knowledge_main()
+        except Exception:
+            st.error("No se puede cargar `pages/knowledge_intelligence.py`. Comprueba que el archivo existe.")
 
     elif st.session_state.current_page == "scraping":
         from backoffice.ui.scraping_panel import render_scraping_panel

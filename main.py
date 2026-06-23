@@ -1,4 +1,11 @@
 """FastAPI application entry point."""
+# Load external secrets early so API routes and agents can access them.
+try:
+    from utils.load_external_env import load_external_env
+    load_external_env()
+except Exception:
+    pass
+
 from typing import Optional
 
 from fastapi import FastAPI, Depends
