@@ -483,37 +483,112 @@ def render_simulation():
     if SIM.get("engine_A") and SIM.get("engine_B") and SIM.get("running") and (not SIM.get("thread") or not SIM.get("thread").is_alive()):
         start_worker_if_needed(speed)
 
-    # Display canvases side-by-side
+    # Display canvases side-by-side (SVG animation preferred)
     colA, colB = st.columns(2)
+
+    # Attempt to import SVG renderer (graceful fallback to image renderer)
+    try:
+        from utils.renderer_svg import render_svg_scene
+    except Exception:
+        try:
+            mod_svg = _import_from_repo("utils/renderer_svg.py", "utils.renderer_svg")
+            render_svg_scene = getattr(mod_svg, "render_svg_scene")
+        except Exception:
+            render_svg_scene = None
+
     with colA:
         st.subheader("🚜 Escenario A — Carretillas")
-        if SIM.get("img_A"):
-            st.image(SIM["img_A"], use_column_width=True)
-        else:
-            st.write("(imagen no disponible todavía)")
-        kA = SIM.get("k_A") or _safe_get_kpis(SIM.get("engine_A"))
-        st.markdown("**KPIs (A)**")
-        st.write({
-            "OEE": _format_percent(kA.get("oee")),
-            "Reel/h": round(kA.get("reel_changes_per_hour", kA.get("reel_changes_hour", 0)), 2),
-            "Utilización (media)": _format_percent(_avg_utilization_pct(kA)),
-            "Cola (órdenes)": kA.get("queue_length", "N/A"),
-        })
+        placeholder_A = st.empty()
+        kpi_A_box = st.empty()
+        lpi_A_box = st.empty()
+        # fallback: show last produced image
+        if not render_svg_scene:
+            if SIM.get("img_A"):
+                st.image(SIM["img_A"], use_column_width=True)
+            else:
+                st.write("(imagen no disponible todavía)")
+            kA = SIM.get("k_A") or _safe_get_kpis(SIM.get("engine_A"))
+            st.markdown("**KPIs (A)**")
+            st.write({
+                "OEE": _format_percent(kA.get("oee")),
+                "Reel/h": round(kA.get("reel_changes_per_hour", kA.get("reel_changes_hour", 0)), 2),
+                "Utilización (media)": _format_percent(_avg_utilization_pct(kA)),
+                "Cola (órdenes)": kA.get("queue_length", "N/A"),
+            })
 
     with colB:
         st.subheader("🤖 Escenario B — INGETRANS")
-        if SIM.get("img_B"):
-            st.image(SIM["img_B"], use_column_width=True)
-        else:
-            st.write("(imagen no disponible todavía)")
-        kB = SIM.get("k_B") or _safe_get_kpis(SIM.get("engine_B"))
-        st.markdown("**KPIs (B)**")
-        st.write({
-            "OEE": _format_percent(kB.get("oee")),
-            "Reel/h": round(kB.get("reel_changes_per_hour", kB.get("reel_changes_hour", 0)), 2),
-            "Utilización (media)": _format_percent(_avg_utilization_pct(kB)),
-            "Cola (órdenes)": kB.get("queue_length", "N/A"),
-        })
+        placeholder_B = st.empty()
+        kpi_B_box = st.empty()
+        lpi_B_box = st.empty()
+        if not render_svg_scene:
+            if SIM.get("img_B"):
+                st.image(SIM["img_B"], use_column_width=True)
+            else:
+                st.write("(imagen no disponible todavía)")
+            kB = SIM.get("k_B") or _safe_get_kpis(SIM.get("engine_B"))
+            st.markdown("**KPIs (B)**")
+            st.write({
+                "OEE": _format_percent(kB.get("oee")),
+                "Reel/h": round(kB.get("reel_changes_per_hour", kB.get("reel_changes_hour", 0)), 2),
+                "Utilización (media)": _format_percent(_avg_utilization_pct(kB)),
+                "Cola (órdenes)": kB.get("queue_length", "N/A"),
+            })
+
+    # If SVG renderer and Streamlit fragment are available, switch to animated loop
+    has_fragment = hasattr(st, "fragment")
+    if render_svg_scene and has_fragment:
+        # prefer fragment-based stepping; stop background worker if running
+        if SIM.get("thread"):
+            stop_worker()
+
+        @st.fragment(run_every=0.1)
+        def animation_loop():
+            if not SIM.get("running"):
+                return
+
+            # Engine A
+            if SIM.get("engine_A"):
+                try:
+                    SIM["engine_A"].step()
+                    snapA = SIM["engine_A"].get_snapshot()
+                    svgA = render_svg_scene(snapA, "A")
+                    try:
+                        placeholder_A.components.v1.html(svgA, height=520)
+                    except Exception:
+                        placeholder_A.write("(error rendering SVG)")
+                    try:
+                        kpisA = SIM["engine_A"].get_full_kpis()
+                    except Exception:
+                        kpisA = _safe_get_kpis(SIM.get("engine_A"))
+                    kpi_A_box.json(kpisA)
+                    lpi_A_box.metric("LPI A", f"{kpisA.get('lpi', 50):.0f}/100")
+                    SIM["k_A"] = kpisA
+                except Exception:
+                    pass
+
+            # Engine B
+            if SIM.get("engine_B"):
+                try:
+                    SIM["engine_B"].step()
+                    snapB = SIM["engine_B"].get_snapshot()
+                    svgB = render_svg_scene(snapB, "B")
+                    try:
+                        placeholder_B.components.v1.html(svgB, height=520)
+                    except Exception:
+                        placeholder_B.write("(error rendering SVG)")
+                    try:
+                        kpisB = SIM["engine_B"].get_full_kpis()
+                    except Exception:
+                        kpisB = _safe_get_kpis(SIM.get("engine_B"))
+                    kpi_B_box.json(kpisB)
+                    lpi_B_box.metric("LPI B", f"{kpisB.get('lpi', 50):.0f}/100")
+                    SIM["k_B"] = kpisB
+                except Exception:
+                    pass
+
+        # iniciar el fragment (se ejecutará periódicamente)
+        animation_loop()
 
     # Comparative chart
     st.markdown("---")

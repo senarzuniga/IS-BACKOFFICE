@@ -200,6 +200,33 @@ class BaseSimulationEngine:
         self.metrics["distance_m"] = self.metrics.get("distance_m", 0.0) + moved
         self.metrics["utilization_time_min"][entity.get("id", "")] = self.metrics["utilization_time_min"].get(entity.get("id", ""), 0.0) + self.step_min
 
+    def calculate_lpi(self) -> float:
+        """Calcula el Logistic Pressure Index (0..100) basado en métricas internas.
+
+        Fórmula (ponderada):
+          - utilización promedio (0..1) * 0.4
+          - saturación de cola (0..1, capped 10) * 0.2
+          - starvations (0..1 capped 5) * 0.2
+          - distancia relativa (distance_m / 20000) * 0.2
+        """
+        # evitar división por cero
+        time_total = max(self.time_min, 1e-6)
+        util_minutes = self.metrics.get("utilization_time_min", {}) or {}
+        util_fracs = []
+        for t in util_minutes.values():
+            try:
+                util_fracs.append(float(t) / time_total)
+            except Exception:
+                continue
+        avg_util = float(sum(util_fracs) / len(util_fracs)) if util_fracs else 0.0
+
+        queue_len = len(self.queue)
+        starvations = int(self.metrics.get("starvations", 0))
+        distance_ratio = float(self.metrics.get("distance_m", 0.0)) / 20000.0
+
+        lpi_frac = (avg_util * 0.4) + (min(queue_len, 10) / 10.0 * 0.2) + (min(starvations, 5) / 5.0 * 0.2) + (distance_ratio * 0.2)
+        return min(100.0, max(0.0, lpi_frac * 100.0))
+
     def get_full_kpis(self) -> Dict[str, Any]:
         """Calcula KPIs a partir de métricas acumuladas.
 
@@ -259,6 +286,7 @@ class BaseSimulationEngine:
             "time_min": time_total,
             "utilization_minutes": m.get("utilization_time_min", {}),
             "total_vehicle_minutes": sum(m.get("utilization_time_min", {}).values()) if m.get("utilization_time_min") else 0.0,
+            "lpi": self.calculate_lpi(),
         }
 
     def inject_event(self, event_type: str, payload: Optional[Dict[str, Any]] = None) -> bool:
