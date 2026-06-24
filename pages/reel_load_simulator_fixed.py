@@ -346,6 +346,13 @@ def render_setup():
         "pickup_time": 6.0,
         "dropoff_time": 6.0,
         "transfer_capacity": 1,
+        # Demo / ROI params
+        "orders_per_shift": 120,
+        "shift_minutes": 480.0,
+        "capex": 350000.0,
+        "labor_cost_per_hour": 25.0,
+        "workdays_per_year": 250,
+        "shifts_per_day": 1.0,
     }
 
     if "config" not in st.session_state:
@@ -389,6 +396,42 @@ def render_setup():
             SIM["orders"] = orders
             st.success(f"Generadas {len(orders)} órdenes ({scenario})")
 
+        # Demo / ROI controls
+        st.markdown("---")
+        st.subheader("📈 Demo Comercial y ROI")
+        cfg["orders_per_shift"] = int(st.number_input("Órdenes por turno (para demo)", min_value=1.0, max_value=2000.0, value=float(cfg.get("orders_per_shift", 120))))
+        cfg["shift_minutes"] = float(st.number_input("Minutos por turno", min_value=60.0, max_value=1440.0, value=float(cfg.get("shift_minutes", 480.0))))
+        cfg["capex"] = float(st.number_input("CapEx estimado (EUR)", min_value=10000.0, max_value=5000000.0, value=float(cfg.get("capex", 350000.0)), step=1000.0))
+        cfg["labor_cost_per_hour"] = float(st.number_input("Coste laboral (EUR/h)", min_value=5.0, max_value=200.0, value=float(cfg.get("labor_cost_per_hour", 25.0)), step=0.5))
+        cfg["workdays_per_year"] = int(st.number_input("Días laborales/año", min_value=100.0, max_value=365.0, value=float(cfg.get("workdays_per_year", 250))))
+        cfg["shifts_per_day"] = float(st.number_input("Turnos/día", min_value=0.5, max_value=3.0, value=float(cfg.get("shifts_per_day", 1.0)), step=0.5))
+
+        # preset save/load
+        presets_file = Path("config") / "sim_presets.json"
+        presets = {}
+        if presets_file.exists():
+            try:
+                presets = json.loads(presets_file.read_text(encoding="utf-8"))
+            except Exception:
+                presets = {}
+
+        preset_names = ["(none)"] + list(presets.keys())
+        sel = st.selectbox("Cargar preset", preset_names, index=0)
+        if sel and sel != "(none)":
+            p = presets.get(sel, {})
+            for k, v in p.items():
+                cfg[k] = v
+            st.success(f"Preset '{sel}' cargado.")
+
+        preset_name = st.text_input("Guardar preset como (nombre)", value="")
+        if st.button("💾 Guardar preset") and preset_name:
+            presets[preset_name] = {
+                k: cfg.get(k) for k in ("orders_per_shift", "shift_minutes", "capex", "labor_cost_per_hour", "workdays_per_year", "shifts_per_day")
+            }
+            presets_file.parent.mkdir(parents=True, exist_ok=True)
+            presets_file.write_text(json.dumps(presets, indent=2), encoding="utf-8")
+            st.success(f"Preset '{preset_name}' guardado en config/sim_presets.json")
+
         orders = st.session_state.get("generated_orders") or SIM.get("orders")
         if orders:
             df = pd.DataFrame(orders)
@@ -403,8 +446,17 @@ def render_setup():
 
     # Quick commercial demo button
     if st.button("📈 Correr Demo Comercial (Penedès / Covington)"):
-        demo = run_commercial_demo(shift_min=480.0, orders_per_shift=120)
+        orders_n = int(st.session_state.config.get("orders_per_shift", 120))
+        shift_min = float(st.session_state.config.get("shift_minutes", 480.0))
+        demo = run_commercial_demo(shift_min=shift_min, orders_per_shift=orders_n)
+        # store along with ROI params used
         st.session_state.commercial_demo = demo
+        st.session_state.commercial_demo_params = {
+            "capex": float(st.session_state.config.get("capex", 350000.0)),
+            "labor_cost_per_hour": float(st.session_state.config.get("labor_cost_per_hour", 25.0)),
+            "workdays_per_year": int(st.session_state.config.get("workdays_per_year", 250)),
+            "shifts_per_day": float(st.session_state.config.get("shifts_per_day", 1.0)),
+        }
         SIM.update({"engine_A": None, "engine_B": None})
         st.success("Demo comercial ejecutada. Ve a Results para ver KPIs y ROI.")
 
@@ -530,7 +582,13 @@ def render_results():
 
     st.subheader("Diferencias y ROI estimado")
     diff = compute_differential_kpis(kA, kB)
-    roi = compute_roi(kA, kB, {"labor_cost_per_hour": 25.0, "workdays_per_year": 250, "capex": 350000.0})
+    roi_params = st.session_state.get("commercial_demo_params") or {
+        "labor_cost_per_hour": float(st.session_state.config.get("labor_cost_per_hour", 25.0)),
+        "workdays_per_year": int(st.session_state.config.get("workdays_per_year", 250)),
+        "capex": float(st.session_state.config.get("capex", 350000.0)),
+        "shifts_per_day": float(st.session_state.config.get("shifts_per_day", 1.0)),
+    }
+    roi = compute_roi(kA, kB, roi_params)
     st.json({"differential": diff, "roi": roi})
 
     # Export options
@@ -541,6 +599,27 @@ def render_results():
         st.download_button("📥 Descargar KPIs CSV", data=csv_io.getvalue(), file_name="reel_kpis.csv", mime="text/csv")
     with col2:
         st.download_button("📥 Descargar KPIs JSON", data=json.dumps({"forklift": kA, "ingetrans": kB}, default=str, indent=2), file_name="reel_kpis.json", mime="application/json")
+
+    # Text summary and download
+    try:
+        saved_cost = roi.get("saved_cost_per_year") if isinstance(roi, dict) else None
+        payback = roi.get("estimated_payback_years") if isinstance(roi, dict) else None
+    except Exception:
+        saved_cost = None
+        payback = None
+
+    summary_lines = [
+        "Reel Load Commercial Demo Summary",
+        "---------------------------------",
+        f"Forklift (Penedès): OEE={_format_percent(kA.get('oee'))}, Utilización promedio={_format_percent(_avg_utilization_pct(kA))}, Starvations={kA.get('starvations', 'N/A')}, Distancia_km={round(kA.get('distance_m',0)/1000.0,1)}",
+        f"INGETRANS (Covington): OEE={_format_percent(kB.get('oee'))}, Utilización promedio={_format_percent(_avg_utilization_pct(kB))}, Starvations={kB.get('starvations', 'N/A')}, Distancia_km={round(kB.get('distance_m',0)/1000.0,1)}",
+        "",
+        f"Diferencial Reel/h: Forklift={kA.get('reel_changes_per_hour')} vs INGETRANS={kB.get('reel_changes_per_hour')}",
+        f"Ahorro estimado anual (EUR): {saved_cost}",
+        f"Payback estimado (años): {payback}",
+    ]
+    summary_text = "\n".join(summary_lines)
+    st.download_button("📥 Descargar resumen TXT", data=summary_text, file_name="reel_demo_summary.txt", mime="text/plain")
 
     if st.button("🔄 Nueva simulación"):
         # stop worker and clear engines
