@@ -22,6 +22,10 @@ def generate_orders(n: int, seed: Optional[int] = None, dist: Tuple[float, float
     """
     if seed is not None:
         random.seed(seed)
+    # Defensive: allow callers to pass dist=None explicitly and fall back
+    # to the library default distribution.
+    if dist is None:
+        dist = (0.2, 0.5, 0.3)
     orders = []
     for i in range(n):
         r = random.random()
@@ -55,6 +59,8 @@ def generate_orders(n: int, seed: Optional[int] = None, dist: Tuple[float, float
             "priority": priority,
             "track_id": track_id,
             "deadline_min": random.randint(60, 300),
+            # timestamp when the order was created (simulation minutes)
+            "created_time_min": 0.0,
         }
         orders.append(order)
     return orders

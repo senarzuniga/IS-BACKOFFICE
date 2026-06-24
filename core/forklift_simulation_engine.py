@@ -52,6 +52,8 @@ class ForkliftSimulationEngine(BaseSimulationEngine):
                 # tomar una orden si existe
                 if self.orders:
                     order = self.orders.pop(0)
+                    # mark when this order started processing
+                    order["start_time_min"] = self.time_min
                     e["task"] = order
                     e["state"] = "to_warehouse"
                 else:
@@ -110,6 +112,16 @@ class ForkliftSimulationEngine(BaseSimulationEngine):
                             self.reels[reel]["status"] = "on_track"
                             self.reels[reel]["pos"] = (tx, ty)
                             self.metrics["reel_changes"] += 1
+                            # mark completion
+                            try:
+                                start = e["task"].get("start_time_min", e["task"].get("created_time_min", 0.0))
+                                dt = max(0.0, self.time_min - float(start))
+                                self.metrics.setdefault("delivery_times_min", []).append(dt)
+                            except Exception:
+                                pass
+                            self.metrics["completed_orders"] = int(self.metrics.get("completed_orders", 0)) + 1
+                        # finish task and return
+                        e["task"] = None
                         e["state"] = "returning"
                 else:
                     # track no encontrado

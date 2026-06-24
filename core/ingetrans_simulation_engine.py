@@ -38,6 +38,7 @@ class IngetransSimulationEngine(BaseSimulationEngine):
             # tomar orden si existe
             if self.orders:
                 order = self.orders.pop(0)
+                order["start_time_min"] = self.time_min
                 ent["task"] = order
                 ent["state"] = "to_exchange"
 
@@ -78,6 +79,14 @@ class IngetransSimulationEngine(BaseSimulationEngine):
                     self.reels[reel]["status"] = "on_track"
                     self.reels[reel]["pos"] = tuple(self.layout["tracks"][ent["task"]["track_id"]]["pos"])
                     self.metrics["reel_changes"] += 1
+                    # mark completion
+                    try:
+                        start = ent["task"].get("start_time_min", ent["task"].get("created_time_min", 0.0))
+                        dt = max(0.0, self.time_min - float(start))
+                        self.metrics.setdefault("delivery_times_min", []).append(dt)
+                    except Exception:
+                        pass
+                    self.metrics["completed_orders"] = int(self.metrics.get("completed_orders", 0)) + 1
                 ent["loaded"] = []
                 ent["state"] = "return_home"
 

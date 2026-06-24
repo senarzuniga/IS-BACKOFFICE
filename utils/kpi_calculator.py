@@ -27,10 +27,34 @@ def compute_roi(forklift_metrics: Dict[str, Any], ingetrans_metrics: Dict[str, A
     """Cálculo simplificado de ROI basado en diferencial de horas de operador y costes.
     params: {'labor_cost_per_hour': float}
     """
-    # estimar horas operador: para forklift sum utilization time de carretillas
-    h_fork = sum([v for v in forklift_metrics.get("utilization", {}).values()]) / 60.0
-    h_ing = sum([v for v in ingetrans_metrics.get("utilization", {}).values()]) / 60.0
-    labor_cost = params.get("labor_cost_per_hour", 20.0)
-    saved_hours = max(0.0, h_fork - h_ing)
-    saved_cost = saved_hours * labor_cost
-    return {"saved_hours": saved_hours, "saved_cost": saved_cost}
+    # Expected keys: 'utilization_minutes' or 'total_vehicle_minutes' and 'time_min'
+    labor_cost = float(params.get("labor_cost_per_hour", 20.0))
+    workdays = int(params.get("workdays_per_year", 250))
+    shifts_per_day = float(params.get("shifts_per_day", 1.0))
+    capex = float(params.get("capex", 350000.0))
+
+    # compute total vehicle hours during the measured period
+    uf_min = float(forklift_metrics.get("total_vehicle_minutes", sum([v for v in forklift_metrics.get("utilization_minutes", {}).values()])) if forklift_metrics else 0.0)
+    ui_min = float(ingetrans_metrics.get("total_vehicle_minutes", sum([v for v in ingetrans_metrics.get("utilization_minutes", {}).values()])) if ingetrans_metrics else 0.0)
+    # duration of the run in minutes
+    duration_min = float(forklift_metrics.get("time_min", ingetrans_metrics.get("time_min", 60.0)))
+    # normalize to hours per shift
+    uf_h_per_shift = (uf_min / 60.0) * (1.0 if duration_min >= 1e-6 else 0.0) * (480.0 / duration_min) if duration_min > 0 else uf_min / 60.0
+    ui_h_per_shift = (ui_min / 60.0) * (1.0 if duration_min >= 1e-6 else 0.0) * (480.0 / duration_min) if duration_min > 0 else ui_min / 60.0
+
+    # saved operator hours per shift
+    saved_hours_per_shift = max(0.0, uf_h_per_shift - ui_h_per_shift)
+    # annualize
+    saved_hours_per_year = saved_hours_per_shift * shifts_per_day * workdays
+    saved_cost_per_year = saved_hours_per_year * labor_cost
+
+    # simple payback estimation
+    payback_years = capex / saved_cost_per_year if saved_cost_per_year > 0 else float("inf")
+
+    return {
+        "saved_hours_per_shift": saved_hours_per_shift,
+        "saved_hours_per_year": saved_hours_per_year,
+        "saved_cost_per_year": saved_cost_per_year,
+        "estimated_payback_years": payback_years,
+        "capex": capex,
+    }

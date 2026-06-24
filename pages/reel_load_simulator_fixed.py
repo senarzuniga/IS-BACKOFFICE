@@ -21,17 +21,109 @@ import json
 import threading
 import time
 import io
+import sys
 from pathlib import Path
 from typing import Any, Dict, Optional, Tuple
+import importlib.util
 
 import pandas as pd
 import streamlit as st
 
-from core.forklift_simulation_engine import ForkliftSimulationEngine
-from core.ingetrans_simulation_engine import IngetransSimulationEngine
-from utils.order_generator import generate_orders
-from utils.canvas_renderer import render_scene
-from utils.kpi_calculator import compute_differential_kpis, compute_roi
+# Ensure repo root is on sys.path so `core` and `utils` import reliably.
+# Streamlit may copy scripts to a temp folder; prefer robust detection:
+# 1) look for a parent containing both `core/` and `utils/` next to this file
+# 2) fallback to the current working directory
+# 3) fallback to the original heuristic
+def _ensure_repo_on_path():
+    p = Path(__file__).resolve()
+    tried: list[str] = []
+    root = None
+    # 1) search parents of this file for markers
+    for parent in [p] + list(p.parents):
+        tried.append(str(parent))
+        if (parent / "core").is_dir() and (parent / "utils").is_dir():
+            root = parent
+            break
+    else:
+        # 2) try cwd
+        cwd = Path.cwd()
+        tried.append(f"cwd:{cwd}")
+        if (cwd / "core").is_dir() and (cwd / "utils").is_dir():
+            root = cwd
+        else:
+            # 3) walk cwd parents
+            for parent in [cwd] + list(cwd.parents):
+                tried.append(f"cwd_parent:{parent}")
+                if (parent / "core").is_dir() and (parent / "utils").is_dir():
+                    root = parent
+                    break
+            else:
+                # 4) best-effort fallback: parent[1]
+                root = p.parents[1]
+
+    # write debug to repo root (best-effort) so we can inspect what was chosen
+    try:
+        debug_file = Path.cwd() / "streamlit_import_debug.txt"
+        debug_text = "tried:\n" + "\n".join(tried) + "\nselected:\n" + str(root) + "\nsys.path (head):\n" + "\n".join(sys.path[:10])
+        debug_file.write_text(debug_text, encoding="utf-8")
+    except Exception:
+        pass
+
+    if str(root) not in sys.path:
+        sys.path.insert(0, str(root))
+
+
+_REPO_ROOT = _ensure_repo_on_path()
+
+
+def _import_from_repo(module_rel_path: str, module_name: str):
+    """Load a module from a relative path inside the repo root."""
+    p = Path(_REPO_ROOT) / module_rel_path
+    if not p.exists():
+        raise FileNotFoundError(p)
+    spec = importlib.util.spec_from_file_location(module_name, str(p))
+    module = importlib.util.module_from_spec(spec)
+    loader = spec.loader
+    if loader is None:
+        raise ImportError(f"No loader for {module_name}")
+    loader.exec_module(module)
+    return module
+
+try:
+    from core.forklift_simulation_engine import ForkliftSimulationEngine
+    from core.ingetrans_simulation_engine import IngetransSimulationEngine
+    from utils.order_generator import generate_orders
+    from utils.canvas_renderer import render_scene
+    from utils.kpi_calculator import compute_differential_kpis, compute_roi
+    from core.commercial_simulator import run_commercial_demo
+except Exception:
+    # Fallback: import modules directly from repo files
+    try:
+        mod_a = _import_from_repo("core/forklift_simulation_engine.py", "core.forklift_simulation_engine")
+        ForkliftSimulationEngine = getattr(mod_a, "ForkliftSimulationEngine")
+    except Exception as e:  # pragma: no cover - fallback safety
+        raise
+    try:
+        mod_b = _import_from_repo("core/ingetrans_simulation_engine.py", "core.ingetrans_simulation_engine")
+        IngetransSimulationEngine = getattr(mod_b, "IngetransSimulationEngine")
+    except Exception:
+        raise
+    try:
+        mod_o = _import_from_repo("utils/order_generator.py", "utils.order_generator")
+        generate_orders = getattr(mod_o, "generate_orders")
+    except Exception:
+        raise
+    try:
+        mod_r = _import_from_repo("utils/canvas_renderer.py", "utils.canvas_renderer")
+        render_scene = getattr(mod_r, "render_scene")
+    except Exception:
+        raise
+    try:
+        mod_k = _import_from_repo("utils/kpi_calculator.py", "utils.kpi_calculator")
+        compute_differential_kpis = getattr(mod_k, "compute_differential_kpis")
+        compute_roi = getattr(mod_k, "compute_roi")
+    except Exception:
+        raise
 
 
 # Page config
@@ -268,19 +360,31 @@ def render_setup():
         cfg["num_tracks"] = st.slider("Nº Tracks", 4, 16, int(cfg.get("num_tracks", 10)))
         cfg["buffer_capacity"] = st.slider("Capacidad Buffer", 2, 20, int(cfg.get("buffer_capacity", 8)))
         st.markdown("**Velocidades (m/min)**")
-        cfg["forklift_speed_loaded"] = st.number_input("Carretilla cargada (m/min)", 30, 150, float(cfg.get("forklift_speed_loaded", 70.0)))
-        cfg["forklift_speed_empty"] = st.number_input("Carretilla vacía (m/min)", 40, 200, float(cfg.get("forklift_speed_empty", 100.0)))
-        cfg["transfer_speed"] = st.number_input("Transfer INGETRANS (m/min)", 40, 200, float(cfg.get("transfer_speed", 80.0)))
+        cfg["forklift_speed_loaded"] = st.number_input(
+            "Carretilla cargada (m/min)", min_value=30.0, max_value=150.0, value=float(cfg.get("forklift_speed_loaded", 70.0))
+        )
+        cfg["forklift_speed_empty"] = st.number_input(
+            "Carretilla vacía (m/min)", min_value=40.0, max_value=200.0, value=float(cfg.get("forklift_speed_empty", 100.0))
+        )
+        cfg["transfer_speed"] = st.number_input(
+            "Transfer INGETRANS (m/min)", min_value=40.0, max_value=200.0, value=float(cfg.get("transfer_speed", 80.0))
+        )
 
     with col2:
         st.subheader("📋 Órdenes de Producción")
         scenario = st.selectbox("Escenario de órdenes", list(SCENARIOS.keys()))
-        custom_n = st.number_input("N órdenes (solo Personalizado)", min_value=1, max_value=200, value=12)
+        custom_n = st.number_input("N órdenes (solo Personalizado)", min_value=1.0, max_value=200.0, value=float(12))
         if st.button("🎲 Generar órdenes"):
             params = SCENARIOS.get(scenario, {"n": 12, "seed": 42}).copy()
             if scenario == "Personalizado":
                 params["n"] = int(custom_n)
-            orders = generate_orders(params.get("n", 12), seed=params.get("seed"), dist=params.get("dist"))
+            n = int(params.get("n", 12))
+            seed = params.get("seed")
+            dist = params.get("dist")
+            if dist is None:
+                orders = generate_orders(n, seed=seed)
+            else:
+                orders = generate_orders(n, seed=seed, dist=dist)
             st.session_state.generated_orders = orders
             SIM["orders"] = orders
             st.success(f"Generadas {len(orders)} órdenes ({scenario})")
@@ -296,6 +400,13 @@ def render_setup():
         orders = orders or generate_orders(12, seed=42)
         init_engines(st.session_state.config, orders)
         st.success("Motores inicializados. Haz Start para ejecutar la simulación.")
+
+    # Quick commercial demo button
+    if st.button("📈 Correr Demo Comercial (Penedès / Covington)"):
+        demo = run_commercial_demo(shift_min=480.0, orders_per_shift=120)
+        st.session_state.commercial_demo = demo
+        SIM.update({"engine_A": None, "engine_B": None})
+        st.success("Demo comercial ejecutada. Ve a Results para ver KPIs y ROI.")
 
 
 # -----------------------
@@ -395,13 +506,17 @@ def render_simulation():
 
 def render_results():
     st.title("📊 Resultados y ROI")
-
-    if not SIM.get("engine_A") or not SIM.get("engine_B"):
-        st.warning("No hay datos de simulación. Inicializa y ejecuta la simulación primero.")
-        return
-
-    kA = SIM.get("k_A") or _safe_get_kpis(SIM.get("engine_A"))
-    kB = SIM.get("k_B") or _safe_get_kpis(SIM.get("engine_B"))
+    # allow viewing calibrated commercial demo stored in session_state
+    if st.session_state.get("commercial_demo"):
+        demo = st.session_state.get("commercial_demo")
+        kA = demo.get("forklift")
+        kB = demo.get("ingetrans")
+    else:
+        if not SIM.get("engine_A") or not SIM.get("engine_B"):
+            st.warning("No hay datos de simulación. Inicializa y ejecuta la simulación primero.")
+            return
+        kA = SIM.get("k_A") or _safe_get_kpis(SIM.get("engine_A"))
+        kB = SIM.get("k_B") or _safe_get_kpis(SIM.get("engine_B"))
 
     st.subheader("KPIs principales")
     df = pd.DataFrame([
@@ -415,7 +530,7 @@ def render_results():
 
     st.subheader("Diferencias y ROI estimado")
     diff = compute_differential_kpis(kA, kB)
-    roi = compute_roi(kA, kB, {"labor_cost_per_hour": 20.0})
+    roi = compute_roi(kA, kB, {"labor_cost_per_hour": 25.0, "workdays_per_year": 250, "capex": 350000.0})
     st.json({"differential": diff, "roi": roi})
 
     # Export options

@@ -48,11 +48,17 @@ class BaseSimulationEngine:
             "delivery_times_min": [],
             "utilization_time_min": {},
             "wait_time_min": 0.0,
+            "starvations": 0,
         }
 
         # thread control para modo run()
         self._running = False
         self._lock = threading.RLock()
+
+        # starvation detection helpers
+        self._idle_no_orders_min = 0.0
+        # starvation flag to detect gaps in supply
+        self._starving_flag = False
 
         # inicializar layout y recursos (subclases pueden extender _init_resources)
         try:
@@ -77,6 +83,19 @@ class BaseSimulationEngine:
             # hooks para subclases
             self._update_queue()
             self._update_resources()
+            # Detectar eventos de starvation: cuando no hay órdenes en cola ni activas
+            try:
+                has_queue = bool(self.queue)
+                has_active = bool(self.active_orders)
+            except Exception:
+                has_queue = bool(self.queue)
+                has_active = bool(self.active_orders)
+            if not has_queue and not has_active:
+                if not getattr(self, "_starving_flag", False):
+                    self.metrics["starvations"] = self.metrics.get("starvations", 0) + 1
+                    self._starving_flag = True
+            else:
+                self._starving_flag = False
 
     def run(self, duration_min: float) -> None:
         """Ejecuta la simulación por `duration_min` minutos en modo síncrono (headless).
@@ -95,8 +114,24 @@ class BaseSimulationEngine:
         self._running = False
 
     def _update_queue(self) -> None:
-        """Hook para gestionar la cola de órdenes. Subclases lo implementan."""
-        return
+        """Basic queue update with lightweight starvation detection.
+
+        In many plant simulations a starvation event is when the system
+        (machines/feeds) has no material to process for a sustained period.
+        We provide a configurable threshold `starvation_threshold_min` in
+        `self.config` (default 2.0 minutes) and increment the
+        `metrics['starvations']` counter when the queue remains empty
+        beyond the threshold.
+        """
+        if not self.queue:
+            self._idle_no_orders_min += self.dt_min
+            threshold = float(self.config.get("starvation_threshold_min", 2.0))
+            if self._idle_no_orders_min >= threshold:
+                self.metrics["starvations"] = int(self.metrics.get("starvations", 0)) + 1
+                # reset to avoid rapid repeated counts
+                self._idle_no_orders_min = 0.0
+        else:
+            self._idle_no_orders_min = 0.0
 
     def _update_resources(self) -> None:
         """Hook para actualizar entidades y recursos. Subclases lo implementan."""
@@ -221,6 +256,9 @@ class BaseSimulationEngine:
             "distance_m": m.get("distance_m", 0.0),
             "collisions": collisions,
             "completed_orders": completed,
+            "time_min": time_total,
+            "utilization_minutes": m.get("utilization_time_min", {}),
+            "total_vehicle_minutes": sum(m.get("utilization_time_min", {}).values()) if m.get("utilization_time_min") else 0.0,
         }
 
     def inject_event(self, event_type: str, payload: Optional[Dict[str, Any]] = None) -> bool:
