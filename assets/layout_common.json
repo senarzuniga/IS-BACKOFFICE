@@ -1,0 +1,16 @@
+{
+  "corrugator": {"pos": [50, 5], "size": [60, 12]},
+  "warehouse": {"pos": [0, 5], "size": [15, 30]},
+  "tracks": {
+    "RS1_A": {"pos": [18, 18], "length": 12},
+    "RS1_B": {"pos": [22, 18], "length": 12},
+    "RS2_A": {"pos": [38, 18], "length": 12},
+    "RS2_B": {"pos": [42, 18], "length": 12},
+    "RS3_A": {"pos": [58, 18], "length": 12},
+    "RS3_B": {"pos": [62, 18], "length": 12},
+    "RS4_A": {"pos": [78, 18], "length": 12},
+    "RS4_B": {"pos": [82, 18], "length": 12},
+    "RS5_A": {"pos": [92, 18], "length": 12},
+    "RS5_B": {"pos": [96, 18], "length": 12}
+  }
+}

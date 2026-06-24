@@ -1,0 +1,5 @@
+{
+  "buffer_zone": {"pos": [15, 27], "size": [20, 8]},
+  "forklift_lane": {"pos": [15, 20], "size": [95, 5]},
+  "congestion_points": {"cp01": [15, 30], "cp02": [55, 22], "cp03": [95, 22]}
+}

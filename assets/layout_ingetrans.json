@@ -1,0 +1,5 @@
+{
+  "exchange_zone": {"pos": [24, 14], "size": [6, 12]},
+  "rail": {"from": [30, 20], "to": [105, 20], "length": 75},
+  "ingetrans_home": [30, 20]
+}

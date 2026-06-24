@@ -1,0 +1,91 @@
+SIMULATOR_DESCRIPTION
+
+Resumen: Este archivo documenta la lógica del "Bobina Load Simulator" (comparativa Forklift vs INGETRANS), los engines implementados, el render 2D, KPIs, eventos y cómo ejecutar/validar.
+
+1) Arquitectura y archivos principales
+- core/simulation_engine.py  : Clase base `BaseSimulationEngine` con geometría común, tiempo y helpers de movimiento.
+- core/forklift_simulation_engine.py : `ForkliftSimulationEngine` (carretillas).
+- core/ingetrans_simulation_engine.py: `IngetransSimulationEngine` (transfer sobre rail).
+- utils/canvas_renderer.py   : Renderizado 2D usando PIL (crea Image y dibuja rectángulos, círculos, iconos).
+- utils/kpi_calculator.py    : Cálculo de KPIs y métricas diferenciales + ROI simplificado.
+- assets/layout_common.json  : Geometría común (corrugadora, almacén, tracks).
+- assets/layout_forklift.json: Extensiones para Forklift (buffer, pasillo, puntos de congestión).
+- assets/layout_ingetrans.json: Extensiones para INGETRANS (exchange zone, rail, home).
+- pages/bobina_load_simulator.py: Panel Streamlit (controles, loop de simulación, render, KPIs, eventos).
+- README_SIMULATOR.md       : Instrucciones de uso rápidas.
+
+2) Lógica temporal y física
+- Paso de simulación: `step_min = 0.1` minutos (6 segundos) en `BaseSimulationEngine.step()`.
+- Movimiento: `move_entity_towards(entity, target, speed_m_per_min)` calcula desplazamiento lineal limitado por `speed * step_min`.
+- Distancias en metros; visualización: 1 m = 10 px (configurado en `utils/canvas_renderer.py` PIXELS_PER_M = 10).
+
+3) `BaseSimulationEngine` (roles y datos)
+- Mantiene: `layout`, `orders`, `config`, `time_min`, `entities`, `reels` y `metrics`.
+- `reels`: mapa de bobina -> estado y posición (in_warehouse, in_buffer, on_forklift, on_transfer, on_track).
+- KPIs básicos acumulados: reel_changes, distance_m, collisions, starvations, downtime_min, utilization_time_min, wait_time_min.
+- Métodos expuestos: `step()`, `get_state()`, `get_kpis()`, `inject_event(event_type, payload)` (subclases deben implementar manejo).
+
+4) `ForkliftSimulationEngine` (resumen)
+- Recursos: n carretillas (config `n_forklifts`) inicializadas en `warehouse.pos`.
+- Estados simples por carretilla: idle, to_warehouse, to_buffer, waiting_buffer, to_track, returning, blocked.
+- Buffer: `buffer_slots` con capacidad configurable (por defecto 8), ubicados dentro de `buffer_zone` del layout.
+- Velocidades: `forklift_speed_loaded` (m/min, por defecto 60) y `forklift_speed_empty` (m/min, por defecto 80).
+- Lógica de asignación: una carretilla idle toma la primera orden de `orders` y realiza ciclo Warehouse → Buffer → Track → Warehouse.
+- Colisiones: detección simple por proximidad (<0.5 m) incrementa `metrics['collisions']`.
+- Eventos soportados (ejemplos manejados): `forklift_blocked` (bloquea una carretilla).
+
+5) `IngetransSimulationEngine` (resumen)
+- Recurso: 1 transfer que viaja longitudinalmente sobre un rail.
+- Config: `transfer_speed` (m/min), `pick_up_s`, `drop_off_s`, `capacity`.
+- Ciclo: idle → to_exchange → pickup (timer) → to_track → dropoff (timer) → return_home.
+- Carga: `ent['loaded']` lista de bobinas actualmente transportadas.
+- Eventos soportados: `transfer_delay` (añade tiempo extra a pickup/dropoff).
+
+6) Renderizado 2D
+- `render_scene(state, layout, scenario)` devuelve una PIL.Image (1200x400 px) con:
+  - Corrugadora (rectángulo), Warehouse (rect), Tracks (rects verticales), Buffer (si aplica), Exchange zone y Rail (si aplica).
+  - Entidades móviles: carretillas (rectángulos amarillos con icono) y transfer (rectángulo azul).
+  - Bobinas: círculos coloreados según estado.
+- Actualización en UI: la página Streamlit actualiza imágenes cada 0.1 s (100 ms) con `time.sleep(0.1 / speed)` (variable `speed` controla velocidad de simulación 1x..10x).
+
+7) KPIs y métricas
+- KPIs comunes calculados por `BaseSimulationEngine.get_kpis()`:
+  - `reel_changes_hour`: reel_changes / time_min * 60
+  - `distance_m`: distancia total recorrida por todos los agentes
+  - `collisions`: número de conflictos detectados
+  - `starvations`, `downtime_min`, `utilization` (por entidad), `wait_time_min`
+- Métricas diferenciales: `utils/kpi_calculator.compute_differential_kpis(kf, ki)` compara Forklift vs INGETRANS y calcula diferencias y riesgo heurístico de colisión.
+- ROI: `compute_roi` estima horas y coste ahorrado basado en diferencial de utilización y coste por hora (parametrizable).
+
+8) Eventos inyectables
+- Forklift: `forklift_waiting`, `forklift_blocked`, `operator_break`, `operator_shift_change`, `operator_not_available`, `traffic_conflict`, `reel_not_found`, `wrong_reel_delivered`, `track_busy`, `reel_return_pending`.
+- Ingetrans: `transfer_delay`, `reel_defective`, `track_blocked`, `maintenance_required`.
+- Implementación actual: algunos eventos simples implementados (`forklift_blocked`, `transfer_delay`). Otros pueden mapearse a cambios de estado, timers, o bloqueo de recursos.
+
+9) Puntos importantes para análisis
+- Geometría común: `assets/layout_common.json` se usa como base; los escenarios solo añaden zonas específicas para mantener comparación científica válida.
+- Paso de simulación fijo: para obtener KPIs replicables usar siempre `step_min=0.1`.
+- Eventos y aleatoriedad: actualmente hay decisiones aleatorias (p.ej. reintentos de buffer). Para análisis reproducible, fijar seed o eliminar aleatoriedad.
+- Colisiones: el modelo actual registra proximidad pero no resuelve rutas — considerar un módulo de pathfinding y planificación (A*/reservation) para simulaciones más realistas.
+
+10) Ejecución y validación
+- Ejecutar UI: `streamlit run pages/bobina_load_simulator.py`
+- Validación offline rápida (headless): importar los motores y ejecutar N pasos (ejemplo usado: 100 pasos) para comparar KPIs.
+- Comandos útiles:
+  - Ejecutar validación de 100 pasos (desde raíz del repo, con venv activado):
+    python -c "import json,sys,os; sys.path.insert(0,os.getcwd()); ..."  (ver `tests` o scripts de ejemplo en el repo)
+  - Ejecutar UI:
+    streamlit run pages/bobina_load_simulator.py
+
+11) Resultado esperado (ejemplo real desde validación de 100 pasos)
+- Forklift: reel_changes/h ≈ 96.0, distance ≈ 1043 m, collisions ≈ 58, utilizaciones por carretilla ≈ 83 min
+- INGETRANS: reel_changes/h ≈ 48.0, distance ≈ 533 m, collisions ≈ 0, transfer utilization ≈ 76 min
+- Diferencia típica: Forklift mayor número de movimientos, más distancia y riesgo de colisión; INGETRANS menor distancia, menos colisiones, ahorro operativo.
+
+12) Próximos pasos recomendados
+- Añadir logging persistente de eventos y posiciones (CSV/JSON) para análisis offline.
+- Reemplazar render PIL por canvas en JS o WebGL para animación más fluida si se necesita UI en producción.
+- Implementar planificación de rutas para carretillas y control de semáforos en puntos de congestión.
+- Añadir tests unitarios y de integración que comprueben: carga de layout, inicialización de entidades, paso único, asignación de órdenes y KPIs actualizados.
+
+Contacto: Si quieres, genero también un CSV con los resultados de la validación o amplío la descripción con diagramas o pseudocódigo detallado.
