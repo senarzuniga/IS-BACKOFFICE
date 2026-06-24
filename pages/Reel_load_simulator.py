@@ -139,15 +139,104 @@ def main() -> None:
         st.markdown(f"**Movimientos:** {engine_B.result.movements}  •  **Reel changes:** {engine_B.result.reel_changes}")
         placeholder_b = st.empty()
 
-    # Helper to render simple canvas HTML when build_canvas_html is unavailable
-    def _render_simple_canvas(engine: SimulationEngine) -> str:
-        return (
-            f"<div style='font-family:system-ui;padding:12px;'>"
-            f"<strong>Time (min):</strong> {engine.time_min}<br/>"
-            f"<strong>Movements:</strong> {engine.result.movements}<br/>"
-            f"<strong>Reel changes:</strong> {engine.result.reel_changes}<br/>"
+    # Helper: rich SVG/HTML renderer when build_canvas_html is unavailable
+    def _render_rich_canvas(engine: SimulationEngine) -> str:
+        st_state = engine.to_canvas_state()
+        metrics = st_state.get("metrics", {})
+
+        width = 560
+        height = 280
+        # layout widths (px)
+        w_warehouse = int(width * 0.25)
+        w_exchange = int(width * 0.20)
+        w_tracks = int(width * 0.40)
+        w_corr = width - (w_warehouse + w_exchange + w_tracks)
+
+        x_wh = 0
+        x_ex = x_wh + w_warehouse
+        x_tr = x_ex + w_exchange
+        x_co = x_tr + w_tracks
+
+        # Build SVG elements
+        svg_parts: list[str] = []
+        svg_parts.append(f"<rect x='{x_wh}' y='0' width='{w_warehouse}' height='{height}' fill='#f0f0f0' stroke='#bbb' />")
+        svg_parts.append(f"<rect x='{x_ex}' y='0' width='{w_exchange}' height='{height}' fill='#fff4e6' stroke='#ffbb88' />")
+        svg_parts.append(f"<rect x='{x_tr}' y='0' width='{w_tracks}' height='{height}' fill='#f9f9f9' stroke='#ccc' />")
+        svg_parts.append(f"<rect x='{x_co}' y='0' width='{w_corr}' height='{height}' fill='#e9e9e9' stroke='#999' />")
+
+        # Racks in warehouse (3 racks)
+        rack_w = w_warehouse / 3.0
+        rack_h = height - 20
+        racks = st_state.get("racks", [1, 1, 1])
+        for i in range(3):
+            rx = x_wh + int(i * rack_w)
+            svg_parts.append(f"<rect x='{rx+6}' y='10' width='{int(rack_w-12)}' height='{int(rack_h)}' fill='#ddd' stroke='#999' />")
+            # bobinas circulares
+            count = racks[i] if i < len(racks) else 0
+            for j in range(count):
+                cx = rx + 16 + (j % 3) * 18
+                cy = 30 + (j // 3) * 28
+                color = '#8B4513' if j % 3 == 0 else ('#D2B48C' if j % 3 == 1 else '#F5F5DC')
+                svg_parts.append(f"<circle cx='{cx}' cy='{cy}' r='8' fill='{color}' stroke='#555' />")
+
+        # Tracks (10 lanes)
+        lane_w = w_tracks / 10.0
+        tracks = st_state.get("tracks", [])
+        for i in range(10):
+            lx = x_tr + int(i * lane_w) + int(lane_w/2) - 6
+            ly = int(height * 0.45)
+            svg_parts.append(f"<rect x='{lx}' y='{ly}' width='12' height='{int(height*0.45)}' fill='#eee' stroke='#bbb' />")
+            occupied = False
+            if i < len(tracks):
+                occupied = bool(tracks[i].get("occupied"))
+            if occupied:
+                svg_parts.append(f"<circle cx='{lx+6}' cy='{ly+18}' r='10' fill='#88cc88' stroke='#336633' />")
+            else:
+                svg_parts.append(f"<circle cx='{lx+6}' cy='{ly+18}' r='6' fill='#ffffff' stroke='#999' />")
+
+        # Corrugadora icon
+        svg_parts.append(f"<text x='{x_co+10}' y='20' font-size='12' fill='#333'>Corrugadora</text>")
+
+        # Dynamic elements: forklifts or transfer
+        if st_state.get("scenario") == "A":
+            for f in st_state.get("forklifts", []):
+                fx = max(0, min(100, float(f.get("x", 25))))
+                fy = max(10, min(90, float(f.get("y", 40))))
+                px = int((fx / 100.0) * width)
+                py = int((fy / 100.0) * height)
+                color = '#ff4444' if f.get('carrying') else '#007bff'
+                svg_parts.append(f"<rect x='{px-10}' y='{py-8}' width='20' height='14' rx='3' fill='{color}' stroke='#222' />")
+                svg_parts.append(f"<text x='{px-8}' y='{py+4}' font-size='9' fill='#fff'>{f.get('id')}</text>")
+        else:
+            tr = st_state.get("transfer", {"pos": 30, "carrying": []})
+            tx = float(tr.get("pos", 30))
+            px = int((tx / 100.0) * width)
+            py = int(height * 0.2)
+            svg_parts.append(f"<rect x='{px-20}' y='{py-12}' width='40' height='24' rx='6' fill='#E84C22' stroke='#b33' />")
+            svg_parts.append(f"<text x='{px-14}' y='{py+6}' font-size='10' fill='#fff'>TRANSFER</text>")
+            # show carried bobinas
+            carrying = tr.get("carrying") or []
+            for k, _ in enumerate(carrying):
+                svg_parts.append(f"<circle cx='{px + 18 + k*12}' cy='{py}' r='6' fill='#8B4513' stroke='#000' />")
+
+        # KPIs area
+        kpi_html = (
+            f"<div style='font-family:system-ui;padding:8px 0 0 0;'>"
+            f"<strong>Time (min):</strong> {metrics.get('time_min', 0)} &nbsp;"
+            f"<strong>Movements:</strong> {metrics.get('movements', 0)} &nbsp;"
+            f"<strong>Reel changes:</strong> {metrics.get('reel_changes', 0)} &nbsp;"
+            f"<strong>Starv.:</strong> {metrics.get('starvation_events', 0)}"
             f"</div>"
         )
+
+        svg_full = """
+        <svg xmlns='http://www.w3.org/2000/svg' width='{}' height='{}' style='background:#ffffff;border:1px solid #ddd;'>
+        {}
+        </svg>
+        """.format(width, height, "\n".join(svg_parts))
+
+        html = f"<div style='font-family:system-ui'>{svg_full}{kpi_html}</div>"
+        return html
 
     # Single step
     if step_button:
@@ -167,14 +256,20 @@ def main() -> None:
                 try:
                     html_a = build_canvas_html({"engine": "A"}, height=300)
                     html_b = build_canvas_html({"engine": "B"}, height=300)
-                    placeholder_a.components.html(html_a, height=300)
-                    placeholder_b.components.html(html_b, height=300)
+                    with placeholder_a:
+                        components.html(html_a, height=300)
+                    with placeholder_b:
+                        components.html(html_b, height=300)
                 except Exception:
-                    placeholder_a.components.html(_render_simple_canvas(engine_A), height=200)
-                    placeholder_b.components.html(_render_simple_canvas(engine_B), height=200)
+                    with placeholder_a:
+                        components.html(_render_rich_canvas(engine_A), height=260)
+                    with placeholder_b:
+                        components.html(_render_rich_canvas(engine_B), height=260)
             else:
-                placeholder_a.components.html(_render_simple_canvas(engine_A), height=200)
-                placeholder_b.components.html(_render_simple_canvas(engine_B), height=200)
+                with placeholder_a:
+                    components.html(_render_rich_canvas(engine_A), height=260)
+                with placeholder_b:
+                    components.html(_render_rich_canvas(engine_B), height=260)
 
             time.sleep(sleep_s)
 
@@ -193,14 +288,20 @@ def main() -> None:
         try:
             html_a = build_canvas_html({"engine": "A"}, height=300)
             html_b = build_canvas_html({"engine": "B"}, height=300)
-            placeholder_a.components.html(html_a, height=300)
-            placeholder_b.components.html(html_b, height=300)
+            with placeholder_a:
+                components.html(html_a, height=300)
+            with placeholder_b:
+                components.html(html_b, height=300)
         except Exception:
-            placeholder_a.components.html(_render_simple_canvas(engine_A), height=200)
-            placeholder_b.components.html(_render_simple_canvas(engine_B), height=200)
+            with placeholder_a:
+                components.html(_render_rich_canvas(engine_A), height=260)
+            with placeholder_b:
+                components.html(_render_rich_canvas(engine_B), height=260)
     else:
-        placeholder_a.components.html(_render_simple_canvas(engine_A), height=200)
-        placeholder_b.components.html(_render_simple_canvas(engine_B), height=200)
+        with placeholder_a:
+            components.html(_render_rich_canvas(engine_A), height=260)
+        with placeholder_b:
+            components.html(_render_rich_canvas(engine_B), height=260)
 
 
 if __name__ == "__main__":
