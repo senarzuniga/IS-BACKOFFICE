@@ -59,38 +59,66 @@ if str(ROOT) not in sys.path:
 import logging
 from logging.handlers import RotatingFileHandler
 
-# Defensive imports: try to import the marketing-kit `plant_simulator` package
-IMPORT_ERROR = None
-try:
-    from plant_simulator.models import PlantConfig, PlantType
-    from plant_simulator.config_agent import ConfigAgent, STEPS
-    from plant_simulator.simulation_engine import SimulationEngine, ScenarioOptimizer
-    from plant_simulator.canvas_builder import build_canvas_html
-    from plant_simulator.report_generator import generate_excel_report, generate_pdf_report
-    from plant_simulator.equipment_library import (
-        CORRUGATOR_CATALOG, CONVERTER_CATALOG, TRANSPORT_CATALOG, SECTOR_BENCHMARKS
-    )
-    logging.getLogger(__name__).info('Imported plant_simulator package successfully')
-except Exception as e:
-    IMPORT_ERROR = e
-    _LAST_ERROR = e
-    # Provide safe placeholders and fallbacks so the Streamlit page doesn't crash
-    PlantConfig = None
-    PlantType = None
-    ConfigAgent = None
-    STEPS = []
-    SimulationEngine = None
-    ScenarioOptimizer = None
-    build_canvas_html = None
-    generate_excel_report = None
-    generate_pdf_report = None
-    # Safe defaults: empty catalogs and minimal sector benchmarks to avoid crashes
-    CORRUGATOR_CATALOG = []
-    CONVERTER_CATALOG = []
-    TRANSPORT_CATALOG = []
-    SECTOR_BENCHMARKS = {"corrugator_oee": 0.8, "world_class_oee": 0.85}
+import importlib
+import importlib.util
 
-    logging.getLogger(__name__).warning('plant_simulator import failed; entering fallback mode: %s', e)
+# Defensive import using importlib so we can detect presence of an external
+# `plant_simulator` package (marketing kit) and gracefully fall back when
+# it's not available.
+IMPORT_ERROR = None
+
+# Default placeholders
+PlantConfig = None
+PlantType = None
+ConfigAgent = None
+STEPS = []
+SimulationEngine = None
+ScenarioOptimizer = None
+build_canvas_html = None
+generate_excel_report = None
+generate_pdf_report = None
+CORRUGATOR_CATALOG = []
+CONVERTER_CATALOG = []
+TRANSPORT_CATALOG = []
+SECTOR_BENCHMARKS = {"corrugator_oee": 0.8, "world_class_oee": 0.85}
+
+_spec = importlib.util.find_spec("plant_simulator")
+if _spec is None:
+    IMPORT_ERROR = ModuleNotFoundError("plant_simulator package not found in sys.path")
+    logging.getLogger(__name__).warning("plant_simulator package not found; running in fallback mode")
+else:
+    try:
+        # import submodules explicitly
+        models = importlib.import_module("plant_simulator.models")
+        PlantConfig = getattr(models, "PlantConfig", None)
+        PlantType = getattr(models, "PlantType", None)
+
+        ca = importlib.import_module("plant_simulator.config_agent")
+        ConfigAgent = getattr(ca, "ConfigAgent", None)
+        STEPS = getattr(ca, "STEPS", [])
+
+        se = importlib.import_module("plant_simulator.simulation_engine")
+        SimulationEngine = getattr(se, "SimulationEngine", None)
+        ScenarioOptimizer = getattr(se, "ScenarioOptimizer", None)
+
+        cb = importlib.import_module("plant_simulator.canvas_builder")
+        build_canvas_html = getattr(cb, "build_canvas_html", None)
+
+        rg = importlib.import_module("plant_simulator.report_generator")
+        generate_excel_report = getattr(rg, "generate_excel_report", None)
+        generate_pdf_report = getattr(rg, "generate_pdf_report", None)
+
+        el = importlib.import_module("plant_simulator.equipment_library")
+        CORRUGATOR_CATALOG = getattr(el, "CORRUGATOR_CATALOG", [])
+        CONVERTER_CATALOG = getattr(el, "CONVERTER_CATALOG", [])
+        TRANSPORT_CATALOG = getattr(el, "TRANSPORT_CATALOG", [])
+        SECTOR_BENCHMARKS = getattr(el, "SECTOR_BENCHMARKS", SECTOR_BENCHMARKS)
+
+        logging.getLogger(__name__).info('Imported plant_simulator package successfully')
+    except Exception as e:
+        IMPORT_ERROR = e
+        _LAST_ERROR = e
+        logging.getLogger(__name__).warning('plant_simulator import failed; entering fallback mode: %s', e)
 
 # If build_canvas_html isn't available, provide a minimal fallback that returns safe HTML
 def _fallback_build_canvas_html(canvas_cfg, height=600):

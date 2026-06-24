@@ -1,0 +1,22 @@
+{
+  "id": "346da9bb-977a-4f1f-8d09-55e8b285c57c",
+  "company": "PARA SRL",
+  "started_at": "2026-06-23T09:26:36.070982Z",
+  "status": "finished",
+  "steps": [
+    {
+      "step": "market_intelligence",
+      "status": "done"
+    },
+    {
+      "step": "benchmark",
+      "status": "done"
+    },
+    {
+      "step": "synthesis",
+      "status": "done"
+    }
+  ],
+  "finished_at": "2026-06-23T09:27:00.934037Z",
+  "report": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\data\\competitive_intelligence\\reports\\PARA SRL_20260623T092700Z.md"
+}
