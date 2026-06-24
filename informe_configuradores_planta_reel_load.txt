@@ -1,0 +1,141 @@
+Informe: Configuradores — Planta de Corrugado y Reel Load
+Fecha: 2026-06-24
+
+Resumen:
+Este documento resume cómo están implementados y configurados los configuradores
+del simulador "Reel Load" y del configurador/visor de la "Planta de Corrugado".
+Incluye rutas de código, parámetros de configuración principales, lógica de
+ejecución, representación gráfica, KPIs/resultados y entregables generados.
+
+1) REEL LOAD SIMULATOR
+-----------------------
+Ubicación principal de código:
+- Interfaz / panel: pages/Reel_load_simulator.py
+- Motor de simulación: core/Reel_load_simulator.py
+- Agentes (config, movimiento, órdenes, KPI, ROI): agents/Reel_load_simulator/*.py
+  - config_agent.py, movement_agent.py, work_order_agent.py, kpi_agent.py, roi_agent.py
+
+Almacenamiento de configuración y salidas:
+- Config por defecto: data/Reel_load_simulator/config_default.json (guardado por ConfigAgent)
+- Runs guardadas: data/Reel_load_simulator/completed_runs/run_*.json (JSON con métricas)
+
+Parámetros de configuración clave (valores por defecto/llaves):
+- corrugator_wet_end_m
+- num_spindles
+- num_tracks
+- conventional_num_forklifts
+- ingetrans_transfer_speed
+- forklift_speed_min_m_per_min, forklift_speed_max_m_per_min
+- forklift_pick_sec, forklift_drop_sec
+- ingetrans_pick_sec, ingetrans_drop_sec, transfer_capacity
+- reels_per_change, defect_rate
+- plant_width_m, plant_height_m (mapa)
+
+Lógica principal:
+- Step-based engine: core.Reel_load_simulator.SimulationEngine.step(step_minutes=1.0).
+- Entidades: Task, Vehicle (forklift o transfer), SimpleMap (racks, exchange, tracks, corrugadora).
+- Generación de tareas: 1 task por orden (WorkOrderAgent.generate_orders).
+- Asignación:
+  - Escenario A (Carretillas): asigna el forklift idle más cercano. Si está disponible,
+    usa PathPlanner (agents.Reel_load_simulator.movement_agent.PathPlanner) para rutas
+    basadas en nodos (racks, exchange, tracks, corrugadora).
+  - Escenario B (INGETRANS / transfer): comportamiento FIFO; el transfer toma la siguiente tarea.
+- Movimiento: kinemática simple con velocidad (m/min), movimientos máximos por paso,
+  comprobación de colisiones por distancia mínima (safety_dist).
+- Procesamiento en pista: tiempo = load + conveyor_travel + unload (se calcula usando
+  parámetros del mapa como conveyor_speed_m_per_min, track_load_time_min, track_unload_time_min).
+- Eventos aleatorios: fallos (MTBF), downtime, starvation event probabilístico.
+
+KPIs y métricas calculadas:
+- Almacenadas en SimulationResult: time_min, movements, reel_changes, starvation_events,
+  downtime_min, utilization_pct, total_distance_m.
+- compute_kpis (agents/Reel_load_simulator/kpi_agent.py) devuelve: reel_changes_per_hour,
+  avg_time_per_task_min, utilization_pct, total_distance_m, entre otros campos.
+- ROI heurístico: agents/Reel_load_simulator/roi_agent.ROIAgent.estimate -> annual_savings_eur, capex_eur, payback_years.
+
+Representación gráfica / UI:
+- pages/Reel_load_simulator.py ofrece UI Streamlit con:
+  - Sidebar para editar / guardar parámetros (usa ConfigAgent).
+  - Generación de órdenes (WorkOrderAgent) y controles Run/Step/Stop.
+  - Visualización dual A vs B usando HTML/SVG (función _render_rich_canvas) o
+    integrando plant_simulator.canvas_builder si está disponible.
+- Gráficos SVG construidos dinámicamente: racks (círculos/bobinas), tracks (rectángulos),
+  corrugadora, forklifts (rectángulos) o TRANSFER (rectángulo con círculos de carga).
+- KPIs mostrados junto al canvas: Time (min), Movements, Reel changes, Starvation.
+  Soporta render intermedio durante ejecución (Run con progreso).
+
+Entregables / Salida:
+- JSON de simulación guardado en data/Reel_load_simulator/completed_runs/*.json (sim_id, scenario, metrics).
+- Integración opcional: llamada a utils.knowledge_hub.save_simulation si existe (no obligatoria).
+- ROI y KPIs calculados accesibles desde agentes; no hay generación automática de PDF/XLSX
+  dentro de pages/Reel_load_simulator.py (pero el módulo plant_simulator incluye generadores de informe placeholders).
+
+Observaciones rápidas:
+- PathPlanner (Dijkstra) mejora realismo de rutas; si se elimina, se usa heurística euclidiana.
+- ConfigAgent de Reel Load crea config_default.json en data/Reel_load_simulator al guardar.
+
+2) PLANTA DE CORRUGADO (Smart Plant / plant_simulator)
+------------------------------------------------------
+Ubicación principal de código:
+- Interfaz / dashboard: pages/smart_plant_dashboard.py
+- Módulo de simulador / stub: plant_simulator/
+  - plant_simulator/config_agent.py (builder de configuración, escenarios demo)
+  - plant_simulator/simulation_engine.py (SimulationEngine y ScenarioOptimizer: generan resultados demo)
+  - plant_simulator/report_generator.py (generate_pdf_report, generate_excel_report — placeholders)
+- Componente 3D: components/threejs_plant.py (Three.js embed para vista 3D)
+
+Almacenamiento de configuración y assets:
+- Config del dashboard: data/smart_plant_config.json (creado/normalizado por load_config()).
+- Assets usados: assets/images/smart_plant_overview.png y assets/videos/general/overview.mp4 (referenciados en config).
+
+Parámetros y formato de configuración:
+- smart_plant_config.json contiene: overview_text, general_video_path, plant_image_path,
+  hotspots (lista de diccionarios con id, name, x, y, description, video, roi, savings), kpis, subpages, solutions_mapping.
+- plant_simulator.config_agent.build_config(answers) -> objeto SimpleNamespace usado por SimulationEngine stub.
+
+Lógica y resultados:
+- El `plant_simulator.SimulationEngine` es un stub/demo que devuelve un objeto con:
+  plant_name, plant_type, duration_hours, m2_produced, total_units_converted, corrugator_efficiency,
+  average_oee, buffer_avg_occupancy, transport_utilization, recommendations, bottlenecks, machine_metrics.
+- ScenarioOptimizer.run_all devuelve comparativa de escenarios (S1, S2) con métricas agregadas.
+
+Representación gráfica / UI:
+- pages/smart_plant_dashboard.py renderiza:
+  - Vista 2D: imagen de planta con `hotspots` interactivos (HTML creado y embebido via components.html).
+  - Vista 3D opcional: `components/threejs_plant.render_3d_plant` (Three.js, labels y detección de clicks que postMessage al padre).
+  - Panel derecho: video overview, descripción, detalles del hotspot, botón de descarga (placeholder) y envío al chat.
+
+Entregables / Salida:
+- Smart Plant permite descargar un brochure (placeholder) y muestra vídeos/descr.
+- plant_simulator.report_generator ofrece funciones para generar bytes de PDF/XLSX (placeholders), útil como punto de extensión para generar informes reales.
+
+Integraciones y puntos de extensión comunes:
+- Ambos configuradores guardan/leen JSON desde `data/` (data/Reel_load_simulator y data/smart_plant_config.json).
+- Reel Load intenta usar `agents.Reel_load_simulator.movement_agent.PathPlanner` y `plant_simulator.canvas_builder` si están presentes.
+- Guardado de runs en Reel Load llama opcionalmente a `utils.knowledge_hub.save_simulation` si existe.
+
+Conclusión breve:
+- El proyecto incluye dos configuradores principales:
+  - `Reel Load`: simulador 2D detallado, conservador y extensible (routing, mtbf, procesamiento de pistas,
+    visualización SVG y export JSON). Ideal para comparativas Carretillas vs Transfer.
+  - `Smart Plant / Planta de Corrugado`: dashboard interactivo (hotspots + 3D), con un `plant_simulator`
+    que actúa como stub para generar resultados y permitir generación de informes (placeholders).
+- Entregables reales inmediatos: JSON de runs (Reel Load) y bytes de reporte placeholders (plant_simulator).
+  Para informes PDF/XLSX reales conviene conectar `report_generator` a una librería de reportes y consumir
+  los resultados/KPIs ya calculados.
+
+Archivos clave mencionados (resumen de rutas):
+- pages/Reel_load_simulator.py
+- core/Reel_load_simulator.py
+- agents/Reel_load_simulator/config_agent.py
+- agents/Reel_load_simulator/movement_agent.py
+- agents/Reel_load_simulator/kpi_agent.py
+- agents/Reel_load_simulator/work_order_agent.py
+- agents/Reel_load_simulator/roi_agent.py
+- plant_simulator/config_agent.py
+- plant_simulator/simulation_engine.py
+- plant_simulator/report_generator.py
+- pages/smart_plant_dashboard.py
+- components/threejs_plant.py
+
+Fin del informe.
