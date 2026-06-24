@@ -1,4 +1,4 @@
-"""
+""
 INGECART Smart Corrugated Plant Dashboard
 Interactive Digital Factory Platform
 

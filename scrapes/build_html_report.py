@@ -40,13 +40,11 @@ def build(report_json: Path, out_html: Path):
     if data.get("meta_description"):
         lines.append(f"<p><em>{data.get('meta_description')}</em></p>")
 
-    # Regions and projects
-    lines.append("<h2>Regions & Projects</h2>")
-    for region in data.get("regions", []):
-        lines.append(f"<h3>{region.get('region')}</h3>")
-        for p in region.get("projects", []):
-            lines.append(f"<h4>{p.get('title')}</h4>")
-            # embed image if available
+    # Projects (either flat list or grouped regions)
+    if data.get("projects"):
+        lines.append("<h2>Projects</h2>")
+        for p in data.get("projects", []):
+            lines.append(f"<h3>{p.get('title')}</h3>")
             img_local = p.get("image_local")
             if img_local:
                 img_path = report_json.parent / "assets" / img_local
@@ -57,6 +55,25 @@ def build(report_json: Path, out_html: Path):
                 lines.append(f"<p>{p.get('description')}</p>")
             if p.get("link"):
                 lines.append(f"<p><a href=\"{p.get('link')}\">Project link</a></p>")
+            if p.get("detail_text"):
+                lines.append(f"<pre style=\"white-space:pre-wrap;\">{p.get('detail_text')}</pre>")
+    else:
+        lines.append("<h2>Regions & Projects</h2>")
+        for region in data.get("regions", []):
+            lines.append(f"<h3>{region.get('region')}</h3>")
+            for p in region.get("projects", []):
+                lines.append(f"<h4>{p.get('title')}</h4>")
+                # embed image if available
+                img_local = p.get("image_local")
+                if img_local:
+                    img_path = report_json.parent / "assets" / img_local
+                    data_uri = image_to_data_uri(img_path) if img_path.exists() else ""
+                    if data_uri:
+                        lines.append(f"<img src=\"{data_uri}\" alt=\"{p.get('title')}\">")
+                if p.get("description"):
+                    lines.append(f"<p>{p.get('description')}</p>")
+                if p.get("link"):
+                    lines.append(f"<p><a href=\"{p.get('link')}\">Project link</a></p>")
 
     # partners
     partners = data.get("partners_local") or []

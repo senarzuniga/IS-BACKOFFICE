@@ -250,11 +250,12 @@ def run(url: str, output_dir: Path, follow_links: bool = True, max_follow: int =
         if p.get('image_local'):
             md_lines.append(f"![{p.get('title')}]({assets_dir.name}/{p.get('image_local')})")
         if p.get('description'):
-            md_lines.append('', p.get('description'))
+            md_lines.extend(['', p.get('description')])
         if p.get('link'):
-            md_lines.append('', f"[Link]({p.get('link')})")
+            md_lines.extend(['', f"[Link]({p.get('link')})"]) 
         if p.get('detail_text'):
-            md_lines.append('', p.get('detail_text')[:1000] + ('...' if len(p.get('detail_text')) > 1000 else ''))
+            snippet = p.get('detail_text')[:1000] + ('...' if len(p.get('detail_text')) > 1000 else '')
+            md_lines.extend(['', snippet])
         md_lines.append('')
 
     md_path = outdir / 'report.md'
