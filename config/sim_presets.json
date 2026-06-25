@@ -1,0 +1,10 @@
+{
+  "prueba": {
+    "orders_per_shift": 120,
+    "shift_minutes": 480.0,
+    "capex": 350000.0,
+    "labor_cost_per_hour": 35.5,
+    "workdays_per_year": 330,
+    "shifts_per_day": 1.5
+  }
+}

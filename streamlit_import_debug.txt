@@ -1,0 +1,17 @@
+tried:
+C:\Users\Inaki Senar\Documents\GitHub\IS-BACKOFFICE\pages\reel_load_simulator_fixed.py
+C:\Users\Inaki Senar\Documents\GitHub\IS-BACKOFFICE\pages
+C:\Users\Inaki Senar\Documents\GitHub\IS-BACKOFFICE
+selected:
+C:\Users\Inaki Senar\Documents\GitHub\IS-BACKOFFICE
+sys.path (head):
+C:\Users\Inaki Senar\Documents\GitHub\IS-BACKOFFICE\pages\reel_load_simulator_fixed.py
+C:\Users\Inaki Senar\Documents\GitHub\IS-BACKOFFICE
+C:\Users\Inaki Senar\Documents\GitHub\IS-BACKOFFICE\pages
+C:\Users\Inaki Senar\AppData\Local\Programs\Python\Python314\Scripts\streamlit.exe
+C:\Users\Inaki Senar\AppData\Local\Programs\Python\Python314\python314.zip
+C:\Users\Inaki Senar\AppData\Local\Programs\Python\Python314\DLLs
+C:\Users\Inaki Senar\AppData\Local\Programs\Python\Python314\Lib
+C:\Users\Inaki Senar\AppData\Local\Programs\Python\Python314
+C:\Users\Inaki Senar\AppData\Roaming\Python\Python314\site-packages
+C:\Users\Inaki Senar\AppData\Local\Programs\Python\Python314\Lib\site-packages

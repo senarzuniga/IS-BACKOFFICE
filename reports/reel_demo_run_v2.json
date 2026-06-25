@@ -1,0 +1,34 @@
+{
+  "kpis_A": {
+    "oee": 14.792452830188774,
+    "availability": 15.094339622641606,
+    "performance": 100.0,
+    "quality": 98.0,
+    "meters_produced": 15000.0,
+    "meters_theoretical": 15000.0,
+    "reels_changed": 0,
+    "starvation_events": 0,
+    "starvation_time": 51.000000000000455,
+    "reels_delivered": 0,
+    "reels_returned": 0,
+    "downtime_min": 0.0,
+    "changeovers": 0,
+    "utilization": 0.0
+  },
+  "kpis_B": {
+    "oee": 14.792452830188774,
+    "availability": 15.094339622641606,
+    "performance": 100.0,
+    "quality": 98.0,
+    "meters_produced": 15000.0,
+    "meters_theoretical": 15000.0,
+    "reels_changed": 0,
+    "starvation_events": 0,
+    "starvation_time": 51.000000000000455,
+    "reels_delivered": 0,
+    "reels_returned": 0,
+    "downtime_min": 0.0,
+    "changeovers": 0,
+    "utilization": 0.0
+  }
+}
