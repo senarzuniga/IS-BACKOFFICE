@@ -16,7 +16,7 @@ st.markdown("""
 """)
 
 # Mostrar tabla resumen
-table = st.dataframe(df, use_container_width=True)
+table = st.dataframe(df)
 
 # Selección de acción
 opciones = df.apply(lambda x: f"{x['Lead']} — {x['Empresa']} — {x['Acción'][:40]}", axis=1)

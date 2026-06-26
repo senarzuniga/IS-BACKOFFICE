@@ -1,0 +1,418 @@
+{
+  "meta": {
+    "duration_min": 480.0,
+    "seeds": [
+      1,
+      2,
+      3,
+      42
+    ],
+    "timestamp": 1782378985.6290889
+  },
+  "configs": {
+    "baseline": {
+      "config": {
+        "name": "baseline",
+        "num_tracks": 10,
+        "num_forklifts": 1,
+        "forklift_speed_loaded": 60.0,
+        "transfer_speed": 80.0,
+        "corrugator_speed_m_min": 250.0,
+        "initial_reel_weight_kg": 1000.0,
+        "dt_min": 0.5
+      },
+      "summary_A": {
+        "oee": {
+          "mean": 2.2365145228215795,
+          "stdev": 0.0
+        },
+        "meters_produced": {
+          "mean": 120000.0,
+          "stdev": 0.0
+        },
+        "starvation_time": {
+          "mean": 471.0,
+          "stdev": 0.0
+        },
+        "reels_changed": {
+          "mean": 0.0,
+          "stdev": 0.0
+        },
+        "downtime_min": {
+          "mean": 70.0,
+          "stdev": 0.0
+        },
+        "utilization": {
+          "mean": 0.0,
+          "stdev": 0.0
+        }
+      },
+      "summary_B": {
+        "oee": {
+          "mean": 1.8708781673030128,
+          "stdev": 0.0
+        },
+        "meters_produced": {
+          "mean": 120000.0,
+          "stdev": 0.0
+        },
+        "starvation_time": {
+          "mean": 471.0,
+          "stdev": 0.0
+        },
+        "reels_changed": {
+          "mean": 0.0,
+          "stdev": 0.0
+        },
+        "downtime_min": {
+          "mean": 0.0,
+          "stdev": 0.0
+        },
+        "utilization": {
+          "mean": 0.0,
+          "stdev": 0.0
+        }
+      },
+      "mean_A": {
+        "availability": 2.2821576763485507,
+        "changeovers": 0.0,
+        "downtime_min": 70.0,
+        "meters_produced": 120000.0,
+        "meters_theoretical": 120000.0,
+        "oee": 2.2365145228215795,
+        "performance": 100.0,
+        "quality": 98.0,
+        "reels_changed": 0.0,
+        "reels_delivered": 0.0,
+        "reels_returned": 0.0,
+        "starvation_events": 0.0,
+        "starvation_time": 471.0,
+        "utilization": 0.0
+      },
+      "mean_B": {
+        "availability": 1.9090593543908296,
+        "changeovers": 0.0,
+        "downtime_min": 0.0,
+        "meters_produced": 120000.0,
+        "meters_theoretical": 120000.0,
+        "oee": 1.8708781673030128,
+        "performance": 100.0,
+        "quality": 98.0,
+        "reels_changed": 0.0,
+        "reels_delivered": 0.0,
+        "reels_returned": 0.0,
+        "starvation_events": 0.0,
+        "starvation_time": 471.0,
+        "utilization": 0.0
+      },
+      "roi": {
+        "extra_meters": 0.0,
+        "total_savings_eur": 0.0,
+        "payback_years": null
+      }
+    },
+    "more_tracks": {
+      "config": {
+        "name": "more_tracks",
+        "num_tracks": 20,
+        "num_forklifts": 1,
+        "forklift_speed_loaded": 60.0,
+        "transfer_speed": 80.0,
+        "corrugator_speed_m_min": 250.0,
+        "initial_reel_weight_kg": 1000.0,
+        "dt_min": 0.5
+      },
+      "summary_A": {
+        "oee": {
+          "mean": 2.2365145228215795,
+          "stdev": 0.0
+        },
+        "meters_produced": {
+          "mean": 120000.0,
+          "stdev": 0.0
+        },
+        "starvation_time": {
+          "mean": 471.0,
+          "stdev": 0.0
+        },
+        "reels_changed": {
+          "mean": 0.0,
+          "stdev": 0.0
+        },
+        "downtime_min": {
+          "mean": 70.0,
+          "stdev": 0.0
+        },
+        "utilization": {
+          "mean": 0.0,
+          "stdev": 0.0
+        }
+      },
+      "summary_B": {
+        "oee": {
+          "mean": 1.8708781673030128,
+          "stdev": 0.0
+        },
+        "meters_produced": {
+          "mean": 120000.0,
+          "stdev": 0.0
+        },
+        "starvation_time": {
+          "mean": 471.0,
+          "stdev": 0.0
+        },
+        "reels_changed": {
+          "mean": 0.0,
+          "stdev": 0.0
+        },
+        "downtime_min": {
+          "mean": 0.0,
+          "stdev": 0.0
+        },
+        "utilization": {
+          "mean": 0.0,
+          "stdev": 0.0
+        }
+      },
+      "mean_A": {
+        "availability": 2.2821576763485507,
+        "changeovers": 0.0,
+        "downtime_min": 70.0,
+        "meters_produced": 120000.0,
+        "meters_theoretical": 120000.0,
+        "oee": 2.2365145228215795,
+        "performance": 100.0,
+        "quality": 98.0,
+        "reels_changed": 0.0,
+        "reels_delivered": 0.0,
+        "reels_returned": 0.0,
+        "starvation_events": 0.0,
+        "starvation_time": 471.0,
+        "utilization": 0.0
+      },
+      "mean_B": {
+        "availability": 1.9090593543908296,
+        "changeovers": 0.0,
+        "downtime_min": 0.0,
+        "meters_produced": 120000.0,
+        "meters_theoretical": 120000.0,
+        "oee": 1.8708781673030128,
+        "performance": 100.0,
+        "quality": 98.0,
+        "reels_changed": 0.0,
+        "reels_delivered": 0.0,
+        "reels_returned": 0.0,
+        "starvation_events": 0.0,
+        "starvation_time": 471.0,
+        "utilization": 0.0
+      },
+      "roi": {
+        "extra_meters": 0.0,
+        "total_savings_eur": 0.0,
+        "payback_years": null
+      }
+    },
+    "more_forklifts": {
+      "config": {
+        "name": "more_forklifts",
+        "num_tracks": 10,
+        "num_forklifts": 3,
+        "forklift_speed_loaded": 60.0,
+        "transfer_speed": 80.0,
+        "corrugator_speed_m_min": 250.0,
+        "initial_reel_weight_kg": 1000.0,
+        "dt_min": 0.5
+      },
+      "summary_A": {
+        "oee": {
+          "mean": 2.2365145228215795,
+          "stdev": 0.0
+        },
+        "meters_produced": {
+          "mean": 120000.0,
+          "stdev": 0.0
+        },
+        "starvation_time": {
+          "mean": 471.0,
+          "stdev": 0.0
+        },
+        "reels_changed": {
+          "mean": 0.0,
+          "stdev": 0.0
+        },
+        "downtime_min": {
+          "mean": 70.0,
+          "stdev": 0.0
+        },
+        "utilization": {
+          "mean": 0.0,
+          "stdev": 0.0
+        }
+      },
+      "summary_B": {
+        "oee": {
+          "mean": 1.8708781673030128,
+          "stdev": 0.0
+        },
+        "meters_produced": {
+          "mean": 120000.0,
+          "stdev": 0.0
+        },
+        "starvation_time": {
+          "mean": 471.0,
+          "stdev": 0.0
+        },
+        "reels_changed": {
+          "mean": 0.0,
+          "stdev": 0.0
+        },
+        "downtime_min": {
+          "mean": 0.0,
+          "stdev": 0.0
+        },
+        "utilization": {
+          "mean": 0.0,
+          "stdev": 0.0
+        }
+      },
+      "mean_A": {
+        "availability": 2.2821576763485507,
+        "changeovers": 0.0,
+        "downtime_min": 70.0,
+        "meters_produced": 120000.0,
+        "meters_theoretical": 120000.0,
+        "oee": 2.2365145228215795,
+        "performance": 100.0,
+        "quality": 98.0,
+        "reels_changed": 0.0,
+        "reels_delivered": 0.0,
+        "reels_returned": 0.0,
+        "starvation_events": 0.0,
+        "starvation_time": 471.0,
+        "utilization": 0.0
+      },
+      "mean_B": {
+        "availability": 1.9090593543908296,
+        "changeovers": 0.0,
+        "downtime_min": 0.0,
+        "meters_produced": 120000.0,
+        "meters_theoretical": 120000.0,
+        "oee": 1.8708781673030128,
+        "performance": 100.0,
+        "quality": 98.0,
+        "reels_changed": 0.0,
+        "reels_delivered": 0.0,
+        "reels_returned": 0.0,
+        "starvation_events": 0.0,
+        "starvation_time": 471.0,
+        "utilization": 0.0
+      },
+      "roi": {
+        "extra_meters": 0.0,
+        "total_savings_eur": 0.0,
+        "payback_years": null
+      }
+    },
+    "faster_transfer": {
+      "config": {
+        "name": "faster_transfer",
+        "num_tracks": 10,
+        "num_forklifts": 1,
+        "forklift_speed_loaded": 60.0,
+        "transfer_speed": 100.0,
+        "corrugator_speed_m_min": 250.0,
+        "initial_reel_weight_kg": 1000.0,
+        "dt_min": 0.5
+      },
+      "summary_A": {
+        "oee": {
+          "mean": 2.2365145228215795,
+          "stdev": 0.0
+        },
+        "meters_produced": {
+          "mean": 120000.0,
+          "stdev": 0.0
+        },
+        "starvation_time": {
+          "mean": 471.0,
+          "stdev": 0.0
+        },
+        "reels_changed": {
+          "mean": 0.0,
+          "stdev": 0.0
+        },
+        "downtime_min": {
+          "mean": 70.0,
+          "stdev": 0.0
+        },
+        "utilization": {
+          "mean": 0.0,
+          "stdev": 0.0
+        }
+      },
+      "summary_B": {
+        "oee": {
+          "mean": 1.8708781673030128,
+          "stdev": 0.0
+        },
+        "meters_produced": {
+          "mean": 120000.0,
+          "stdev": 0.0
+        },
+        "starvation_time": {
+          "mean": 471.0,
+          "stdev": 0.0
+        },
+        "reels_changed": {
+          "mean": 0.0,
+          "stdev": 0.0
+        },
+        "downtime_min": {
+          "mean": 0.0,
+          "stdev": 0.0
+        },
+        "utilization": {
+          "mean": 0.0,
+          "stdev": 0.0
+        }
+      },
+      "mean_A": {
+        "availability": 2.2821576763485507,
+        "changeovers": 0.0,
+        "downtime_min": 70.0,
+        "meters_produced": 120000.0,
+        "meters_theoretical": 120000.0,
+        "oee": 2.2365145228215795,
+        "performance": 100.0,
+        "quality": 98.0,
+        "reels_changed": 0.0,
+        "reels_delivered": 0.0,
+        "reels_returned": 0.0,
+        "starvation_events": 0.0,
+        "starvation_time": 471.0,
+        "utilization": 0.0
+      },
+      "mean_B": {
+        "availability": 1.9090593543908296,
+        "changeovers": 0.0,
+        "downtime_min": 0.0,
+        "meters_produced": 120000.0,
+        "meters_theoretical": 120000.0,
+        "oee": 1.8708781673030128,
+        "performance": 100.0,
+        "quality": 98.0,
+        "reels_changed": 0.0,
+        "reels_delivered": 0.0,
+        "reels_returned": 0.0,
+        "starvation_events": 0.0,
+        "starvation_time": 471.0,
+        "utilization": 0.0
+      },
+      "roi": {
+        "extra_meters": 0.0,
+        "total_savings_eur": 0.0,
+        "payback_years": null
+      }
+    }
+  }
+}

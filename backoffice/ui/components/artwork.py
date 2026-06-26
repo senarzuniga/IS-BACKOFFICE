@@ -298,7 +298,7 @@ def render_ingecart_artwork_block() -> None:
             st.warning("La ruta indicada no existe o no es valida.")
 
     st.code(str(ARTWORK_OUTPUT_DIR), language="text")
-    generate = st.button("Generar INGECART ARTWORK", type="primary", use_container_width=True, key="artwork_generate")
+    generate = st.button("Generar INGECART ARTWORK", type="primary", key="artwork_generate")
 
     if generate:
         if selected_image is None:
@@ -312,4 +312,4 @@ def render_ingecart_artwork_block() -> None:
         st.caption(render_message)
         st.write(f"PNG: {output_png}")
         st.write(f"HTML: {output_html}")
-        st.image(str(output_png), caption=output_png.name, use_container_width=True)
+        st.image(str(output_png), caption=output_png.name)

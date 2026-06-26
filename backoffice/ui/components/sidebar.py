@@ -103,15 +103,15 @@ def _render_system_status(health: dict[str, bool]) -> None:
 def _render_quick_actions() -> str | None:
     st.sidebar.markdown("---")
     st.sidebar.subheader("AI Commands")
-    if st.sidebar.button("📄 Open document workspace", key="qa_doc_analysis", use_container_width=True):
+    if st.sidebar.button("📄 Open document workspace", key="qa_doc_analysis"):
         return "Document Analysis"
-    if st.sidebar.button("💬 Open command workspace", key="qa_instruction", use_container_width=True):
+    if st.sidebar.button("💬 Open command workspace", key="qa_instruction"):
         return "Instruction Panel"
-    if st.sidebar.button("⚠️ Show risky accounts", key="qa_risky_accounts", use_container_width=True):
+    if st.sidebar.button("⚠️ Show risky accounts", key="qa_risky_accounts"):
         return "Show Risky Accounts"
-    if st.sidebar.button("📈 Review pipeline now", key="qa_pipeline_review", use_container_width=True):
+    if st.sidebar.button("📈 Review pipeline now", key="qa_pipeline_review"):
         return "Review Pipeline"
-    if st.sidebar.button("🤖 Open agent center", key="qa_ai_agents", use_container_width=True):
+    if st.sidebar.button("🤖 Open agent center", key="qa_ai_agents"):
         return "Open Agent Center"
     return None
 
@@ -145,7 +145,7 @@ def render_sidebar() -> dict[str, Any]:
 
     for workspace in _WORKSPACES:
         label = f"{workspace['icon']} {workspace['label']}"
-        if st.sidebar.button(label, key=f"workspace_{workspace['page']}", use_container_width=True):
+        if st.sidebar.button(label, key=f"workspace_{workspace['page']}"):
             st.session_state["active_page"] = workspace["page"]
             st.rerun()
         if active_page == workspace["page"]:
@@ -156,7 +156,7 @@ def render_sidebar() -> dict[str, Any]:
         for group_name, items in _POWER_VIEWS:
             st.markdown(f"**{group_name}**")
             for page_name, icon in items:
-                if st.button(f"{icon} {page_name}", key=f"view_{page_name.replace(' ', '_')}", use_container_width=True):
+                if st.button(f"{icon} {page_name}", key=f"view_{page_name.replace(' ', '_')}"):
                     st.session_state["active_page"] = page_name
                     st.rerun()
 

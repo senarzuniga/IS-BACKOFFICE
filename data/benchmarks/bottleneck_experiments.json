@@ -1,0 +1,89 @@
+{
+  "tight_tracks": {
+    "cfg": {
+      "num_tracks": 1,
+      "num_forklifts": 1,
+      "dt_min": 0.5
+    },
+    "summary": {
+      "meters": {
+        "A_mean": 60000.0,
+        "B_mean": 60000.0
+      },
+      "oee": {
+        "A_mean": 97.53833112251655,
+        "B_mean": 98.0
+      },
+      "starvation_time": {
+        "A_mean": 1.1666666666666667,
+        "B_mean": 0.0
+      }
+    }
+  },
+  "limited_buffer": {
+    "cfg": {
+      "buffer_capacity": 1,
+      "num_forklifts": 1,
+      "num_tracks": 5,
+      "dt_min": 0.5
+    },
+    "summary": {
+      "meters": {
+        "A_mean": 60000.0,
+        "B_mean": 60000.0
+      },
+      "oee": {
+        "A_mean": 97.53833112251655,
+        "B_mean": 98.0
+      },
+      "starvation_time": {
+        "A_mean": 1.1666666666666667,
+        "B_mean": 0.0
+      }
+    }
+  },
+  "slow_forklift": {
+    "cfg": {
+      "num_tracks": 5,
+      "num_forklifts": 1,
+      "forklift_speed_loaded": 30.0,
+      "dt_min": 0.5
+    },
+    "summary": {
+      "meters": {
+        "A_mean": 60000.0,
+        "B_mean": 60000.0
+      },
+      "oee": {
+        "A_mean": 97.53833112251655,
+        "B_mean": 98.0
+      },
+      "starvation_time": {
+        "A_mean": 1.1666666666666667,
+        "B_mean": 0.0
+      }
+    }
+  },
+  "fast_ingetrans": {
+    "cfg": {
+      "num_tracks": 5,
+      "num_forklifts": 1,
+      "transfer_speed": 120.0,
+      "dt_min": 0.5
+    },
+    "summary": {
+      "meters": {
+        "A_mean": 60000.0,
+        "B_mean": 60000.0
+      },
+      "oee": {
+        "A_mean": 97.53833112251655,
+        "B_mean": 98.0
+      },
+      "starvation_time": {
+        "A_mean": 1.1666666666666667,
+        "B_mean": 0.0
+      }
+    }
+  }
+}
