@@ -1,0 +1,37 @@
+# config_track.yaml
+# Propósito: Parámetros de configuración para tracks
+
+entity:
+  name: "Track"
+  category: "infrastructure"
+
+parameters:
+  - name: "length_m"
+    description: "Longitud del track en metros"
+    unit: "m"
+    default: 12.0
+    min: 0.5
+    max: 200.0
+    recommended: 12.0
+    mandatory: true
+    optional: false
+    validation_rule: ">0"
+  - name: "lanes"
+    description: "Número de carriles en el track"
+    unit: "uds"
+    default: 1
+    min: 1
+    max: 4
+    recommended: 1
+    mandatory: true
+    optional: false
+    validation_rule: ">=1"
+
+validation:
+  cross_parameter_rules: []
+
+kpi_impacted:
+  - "throughput_track"
+
+risk: "Tracks mal dimensionados"
+priority: "High"

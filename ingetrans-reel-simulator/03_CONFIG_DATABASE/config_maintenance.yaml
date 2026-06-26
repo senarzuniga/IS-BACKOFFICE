@@ -1,0 +1,27 @@
+# config_maintenance.yaml
+# Propósito: Parámetros de configuración para mantenimiento
+
+entity:
+  name: "Maintenance"
+  category: "operations"
+
+parameters:
+  - name: "default_mttr_min"
+    description: "MTTR por defecto en minutos"
+    unit: "min"
+    default: 60.0
+    min: 1.0
+    max: 10000.0
+    recommended: 60.0
+    mandatory: false
+    optional: true
+    validation_rule: ">0"
+
+validation:
+  cross_parameter_rules: []
+
+kpi_impacted:
+  - "mttr"
+
+risk: "Mantenimiento insuficiente"
+priority: "High"

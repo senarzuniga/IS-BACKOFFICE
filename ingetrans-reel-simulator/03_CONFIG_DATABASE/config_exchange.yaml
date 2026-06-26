@@ -1,0 +1,42 @@
+# config_exchange.yaml
+# Propósito: Parámetros de configuración de la zona de intercambio (Exchange).
+# Nivel de calibración: 1-Generic
+
+entity:
+  name: "Exchange"
+  category: "exchange"
+
+parameters:
+  - name: "capacity_slots"
+    description: "Número de slots disponibles en la zona de intercambio"
+    unit: "uds"
+    default: 2
+    min: 1
+    max: 100
+    recommended: 2
+    mandatory: true
+    optional: false
+    depends_on: ""
+    validation_rule: ">=1"
+  - name: "slot_length_m"
+    description: "Longitud de slot en metros"
+    unit: "m"
+    default: 9.0
+    min: 0.5
+    max: 50.0
+    recommended: 9.0
+    mandatory: true
+    optional: false
+    depends_on: ""
+    validation_rule: ">0"
+
+validation:
+  cross_parameter_rules:
+    - "capacity_slots >= 1"
+
+kpi_impacted:
+  - "throughput_exchange"
+  - "waiting_time_exchange"
+
+risk: "Zona de intercambio pequeña genera cuellos de botella"
+priority: "High"

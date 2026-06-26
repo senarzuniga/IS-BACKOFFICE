@@ -1,0 +1,10 @@
+# scenario_05_high_failure_rate.yaml
+name: "High Failure Rate"
+description: "Planta con tasa de fallos elevada para stress testing"
+overrides:
+  failure:
+    mtbf_h_default:
+      default: 40
+  maintenance:
+    default_mttr_min:
+      default: 60

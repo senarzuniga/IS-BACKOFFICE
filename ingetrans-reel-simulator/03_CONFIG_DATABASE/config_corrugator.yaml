@@ -1,0 +1,38 @@
+# config_corrugator.yaml
+# Propósito: Parámetros de configuración para la corrugadora
+
+entity:
+  name: "Corrugator"
+  category: "machine"
+
+parameters:
+  - name: "nominal_speed_m_min"
+    description: "Velocidad nominal en m/min"
+    unit: "m/min"
+    default: 1200.0
+    min: 100.0
+    max: 5000.0
+    recommended: 1200.0
+    mandatory: true
+    optional: false
+    validation_rule: ">0"
+  - name: "efficiency"
+    description: "Eficiencia operativa (0-1)"
+    unit: "ratio"
+    default: 0.95
+    min: 0.0
+    max: 1.0
+    recommended: 0.95
+    mandatory: false
+    optional: true
+    validation_rule: ">=0 and <=1"
+
+validation:
+  cross_parameter_rules: []
+
+kpi_impacted:
+  - "oee"
+  - "throughput"
+
+risk: "Velocidad mal configurada"
+priority: "High"

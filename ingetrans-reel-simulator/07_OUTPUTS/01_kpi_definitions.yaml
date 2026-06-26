@@ -1,0 +1,22 @@
+# KPI Definitions
+
+- id: kpi_throughput
+  name: Throughput
+  description: Number of finished production rolls per hour
+  unit: rolls_per_hour
+  sampling: instantaneous
+  formula: "COUNT(production_order.completed) / (run_duration_hours)"
+
+- id: kpi_oee
+  name: OEE
+  description: Overall Equipment Effectiveness (availability * performance * quality)
+  unit: percent
+  sampling: periodic
+  formula: "availability * performance * quality"
+
+- id: kpi_avg_inventory_days
+  name: Avg Inventory Days
+  description: Average inventory days equivalent
+  unit: days
+  sampling: snapshot
+  formula: "(avg_inventory_mass_kg / daily_demand_mass_kg)"

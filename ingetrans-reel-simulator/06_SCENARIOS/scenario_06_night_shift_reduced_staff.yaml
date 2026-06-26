@@ -1,0 +1,7 @@
+# scenario_06_night_shift_reduced_staff.yaml
+name: "Night Shift Reduced Staff"
+description: "Operación en turno nocturno con plantilla reducida"
+overrides:
+  shift:
+    staffing_ratio:
+      default: 0.6

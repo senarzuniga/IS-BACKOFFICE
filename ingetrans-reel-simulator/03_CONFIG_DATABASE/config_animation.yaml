@@ -1,0 +1,37 @@
+# config_animation.yaml
+# Propósito: Parámetros para el motor de animación (opcional)
+
+entity:
+  name: "AnimationEngine"
+  category: "debug"
+
+parameters:
+  - name: "enabled"
+    description: "Si el motor de animación genera trazas"
+    unit: "bool"
+    default: false
+    min: false
+    max: true
+    recommended: false
+    mandatory: false
+    optional: true
+    validation_rule: ""
+  - name: "sample_rate_s"
+    description: "Intervalo de muestreo en segundos"
+    unit: "s"
+    default: 1
+    min: 1
+    max: 60
+    recommended: 1
+    mandatory: false
+    optional: true
+    validation_rule: ">=1"
+
+validation:
+  cross_parameter_rules: []
+
+kpi_impacted:
+  - ""
+
+risk: "Archivos grandes si se activa"
+priority: "Low"

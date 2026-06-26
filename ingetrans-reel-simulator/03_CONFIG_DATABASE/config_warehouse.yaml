@@ -1,0 +1,53 @@
+# config_warehouse.yaml
+# Propósito: Parámetros de configuración del almacén principal.
+# Nivel de calibración: 1-Generic
+
+entity:
+  name: Warehouse
+  category: storage
+
+parameters:
+  - name: capacity_kg
+    description: Total mass capacity of the warehouse
+    unit: kg
+    default: 100000.0
+    min: 0.0
+    max: 10000000.0
+    recommended: 500000.0
+    mandatory: true
+    optional: false
+    depends_on: ""
+    validation_rule: "value >= 0"
+  - name: capacity_units
+    description: Number of reel slots that can be stored
+    unit: uds
+    default: 1000
+    min: 1
+    max: 100000
+    recommended: 2000
+    mandatory: true
+    optional: false
+    depends_on: ""
+    validation_rule: "value >= 1"
+  - name: storage_slots
+    description: Physical storage slots available
+    unit: uds
+    default: 200
+    min: 1
+    max: 100000
+    recommended: 200
+    mandatory: true
+    optional: false
+    depends_on: ""
+    validation_rule: "value >= 1"
+
+validation:
+  cross_parameter_rules:
+    - "capacity_units >= storage_slots"
+
+kpi_impacted:
+  - "Storage utilization"
+  - "Average put-away time"
+
+risk: "Misconfigured capacity or unit mismatch"
+priority: "High"

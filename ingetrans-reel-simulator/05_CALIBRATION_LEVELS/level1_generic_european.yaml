@@ -1,0 +1,17 @@
+# level1_generic_european.yaml
+# Hereda de: config_master.yaml
+
+overrides:
+  forklift:
+    max_speed_m_s:
+      default: 1.2
+      min: 0.5
+      max: 3.0
+  ingetrans_transfer:
+    cycle_time:
+      default: 30
+      unit: s
+
+validation_target:
+  oee_min: 75
+  throughput_target: 1200

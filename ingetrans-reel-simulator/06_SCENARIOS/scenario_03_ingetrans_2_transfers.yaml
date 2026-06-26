@@ -1,0 +1,9 @@
+# scenario_03_ingetrans_2_transfers.yaml
+name: "INGETRANS - 2 Transfers"
+description: "Planta con dos transfers automatizados INGETRANS"
+overrides:
+  forklift:
+    enabled: false
+  ingetrans:
+    enabled: true
+    transfers: 2

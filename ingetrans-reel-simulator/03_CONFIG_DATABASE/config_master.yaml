@@ -1,0 +1,29 @@
+# config_master.yaml
+# Propósito: Archivo maestro que fusiona y permite overrides por escenario
+
+master:
+  name: "ingetrans_reel_simulator_master"
+  version: "v4"
+
+includes:
+  - config_warehouse.yaml
+  - config_exchange.yaml
+  - config_transfer.yaml
+  - config_track.yaml
+  - config_rollstand.yaml
+  - config_corrugator.yaml
+  - config_forklift.yaml
+  - config_ingetrans.yaml
+  - config_operator.yaml
+  - config_reel.yaml
+  - config_production_order.yaml
+  - config_paper_grade.yaml
+  - config_shift.yaml
+  - config_maintenance.yaml
+  - config_failure.yaml
+  - config_kpi.yaml
+  - config_financial.yaml
+  - config_simulation_clock.yaml
+  - config_event_queue.yaml
+
+overrides: {}

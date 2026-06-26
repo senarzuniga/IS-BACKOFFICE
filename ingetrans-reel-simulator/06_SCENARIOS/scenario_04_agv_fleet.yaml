@@ -1,0 +1,9 @@
+# scenario_04_agv_fleet.yaml
+name: "AGV Fleet"
+description: "Planta operando con flota de AGVs" 
+overrides:
+  forklift:
+    enabled: false
+  agv:
+    enabled: true
+    fleet_size: 4

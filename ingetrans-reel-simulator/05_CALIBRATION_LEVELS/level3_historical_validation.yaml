@@ -1,0 +1,15 @@
+# level3_historical_validation.yaml
+# Hereda de: level2_customer_plant.yaml
+
+overrides:
+  failure:
+    mtbf_h_default:
+      default: 150.0
+  maintenance:
+    default_mttr_min:
+      default: 45.0
+
+validation_target:
+  oee_min: 80
+  throughput_target: 1350
+  historical_match_tolerance: 0.05

@@ -1,0 +1,27 @@
+# config_kpi.yaml
+# Propósito: Parámetros para motor KPI
+
+entity:
+  name: "KPIEngine"
+  category: "metrics"
+
+parameters:
+  - name: "sampling_interval_s"
+    description: "Intervalo de muestreo para agregación de metrics"
+    unit: "s"
+    default: 60
+    min: 1
+    max: 3600
+    recommended: 60
+    mandatory: false
+    optional: true
+    validation_rule: ">=1"
+
+validation:
+  cross_parameter_rules: []
+
+kpi_impacted:
+  - "all"
+
+risk: "Muestreo inadecuado"
+priority: "High"

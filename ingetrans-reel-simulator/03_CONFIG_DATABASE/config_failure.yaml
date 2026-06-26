@@ -1,0 +1,27 @@
+# config_failure.yaml
+# Propósito: Parámetros de configuración para generación de fallos
+
+entity:
+  name: "Failure"
+  category: "stochastic"
+
+parameters:
+  - name: "mtbf_h_default"
+    description: "MTBF por defecto en horas"
+    unit: "h"
+    default: 200.0
+    min: 0.0
+    max: 1e6
+    recommended: 200.0
+    mandatory: false
+    optional: true
+    validation_rule: ">=0"
+
+validation:
+  cross_parameter_rules: []
+
+kpi_impacted:
+  - "mtbf"
+
+risk: "Modelado de fallos incompleto"
+priority: "High"

@@ -1,0 +1,28 @@
+# config_financial.yaml
+# Propósito: Parámetros para motor financiero
+
+entity:
+  name: "FinancialEngine"
+  category: "finance"
+
+parameters:
+  - name: "currency"
+    description: "Moneda usada para cálculos"
+    unit: ""
+    default: "EUR"
+    min: ""
+    max: ""
+    recommended: "EUR"
+    mandatory: true
+    optional: false
+    validation_rule: "in:[EUR,USD,GBP]"
+
+validation:
+  cross_parameter_rules: []
+
+kpi_impacted:
+  - "costs"
+  - "roi"
+
+risk: "Supuestos financieros incorrectos"
+priority: "High"

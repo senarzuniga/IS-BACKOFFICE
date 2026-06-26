@@ -1,0 +1,10 @@
+# scenario_01_baseline_forklift.yaml
+name: "Baseline Forklift"
+description: "Planta operando con carretillas (forklifts) como baseline"
+overrides:
+  forklift:
+    enabled: true
+  ingetrans:
+    enabled: false
+  agv:
+    enabled: false

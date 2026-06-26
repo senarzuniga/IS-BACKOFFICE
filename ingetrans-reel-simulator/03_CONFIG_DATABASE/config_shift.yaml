@@ -1,0 +1,27 @@
+# config_shift.yaml
+# Propósito: Parámetros de configuración para turnos
+
+entity:
+  name: "Shift"
+  category: "schedule"
+
+parameters:
+  - name: "default_shifts"
+    description: "Lista de turnos por defecto"
+    unit: ""
+    default: ["06:00-14:00","14:00-22:00","22:00-06:00"]
+    min: []
+    max: []
+    recommended: ["06:00-14:00","14:00-22:00","22:00-06:00"]
+    mandatory: true
+    optional: false
+    validation_rule: ""
+
+validation:
+  cross_parameter_rules: []
+
+kpi_impacted:
+  - "labor_availability"
+
+risk: "Horarios mal definidos"
+priority: "Medium"

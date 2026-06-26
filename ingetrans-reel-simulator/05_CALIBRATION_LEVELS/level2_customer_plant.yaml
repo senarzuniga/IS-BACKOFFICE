@@ -1,0 +1,14 @@
+# level2_customer_plant.yaml
+# Hereda de: level1_generic_european.yaml
+
+overrides:
+  warehouse:
+    capacity_units:
+      default: 1500
+  corrugator:
+    nominal_speed_m_min:
+      default: 1300
+
+validation_target:
+  oee_min: 78
+  throughput_target: 1300

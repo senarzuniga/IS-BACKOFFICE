@@ -1,0 +1,27 @@
+# config_production_order.yaml
+# Propósito: Parámetros de configuración para órdenes de producción
+
+entity:
+  name: "ProductionOrder"
+  category: "process"
+
+parameters:
+  - name: "default_target_length_m"
+    description: "Longitud por defecto de orden en metros"
+    unit: "m"
+    default: 100000.0
+    min: 1.0
+    max: 1e9
+    recommended: 100000.0
+    mandatory: true
+    optional: false
+    validation_rule: ">0"
+
+validation:
+  cross_parameter_rules: []
+
+kpi_impacted:
+  - "throughput"
+
+risk: "Ordenes mal definidas"
+priority: "High"

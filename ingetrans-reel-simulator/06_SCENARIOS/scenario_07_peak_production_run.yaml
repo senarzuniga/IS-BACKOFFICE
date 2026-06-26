@@ -1,0 +1,7 @@
+# scenario_07_peak_production_run.yaml
+name: "Peak Production Run"
+description: "Escenario enfocado en maximizar throughput (pruebas de capacidad)"
+overrides:
+  production_order:
+    interarrival_min_s:
+      default: 10

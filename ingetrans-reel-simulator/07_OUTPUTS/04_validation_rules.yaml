@@ -1,0 +1,16 @@
+# Validation Rules
+
+- id: vr_run_duration_positive
+  description: Run duration must be positive
+  expression: "run.end_time > run.start_time"
+  severity: error
+
+- id: vr_throughput_min
+  description: Throughput must be >= expected minimum
+  expression: "kpis.throughput >= config.validation.throughput_target"
+  severity: warning
+
+- id: vr_no_negative_inventory
+  description: Inventory remaining must never be negative
+  expression: "forall inventory.remaining_m >= 0"
+  severity: error

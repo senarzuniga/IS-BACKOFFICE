@@ -1,0 +1,27 @@
+# config_paper_grade.yaml
+# Propósito: Parámetros de configuración para PaperGrade
+
+entity:
+  name: "PaperGrade"
+  category: "material_property"
+
+parameters:
+  - name: "gramaje_g_m2"
+    description: "Gramaje típico"
+    unit: "g/m2"
+    default: 120.0
+    min: 10.0
+    max: 1000.0
+    recommended: 120.0
+    mandatory: true
+    optional: false
+    validation_rule: ">0"
+
+validation:
+  cross_parameter_rules: []
+
+kpi_impacted:
+  - "material_consumption_accuracy"
+
+risk: "Gramaje no coherente"
+priority: "Medium"

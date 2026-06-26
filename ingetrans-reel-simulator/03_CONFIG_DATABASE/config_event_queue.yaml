@@ -1,0 +1,27 @@
+# config_event_queue.yaml
+# Propósito: Parámetros para la cola de eventos
+
+entity:
+  name: "EventQueue"
+  category: "infrastructure"
+
+parameters:
+  - name: "max_size"
+    description: "Tamaño máximo de la cola de eventos"
+    unit: "uds"
+    default: 100000
+    min: 1
+    max: 10000000
+    recommended: 100000
+    mandatory: false
+    optional: true
+    validation_rule: ">=1"
+
+validation:
+  cross_parameter_rules: []
+
+kpi_impacted:
+  - "event_latency"
+
+risk: "Cola saturada"
+priority: "High"

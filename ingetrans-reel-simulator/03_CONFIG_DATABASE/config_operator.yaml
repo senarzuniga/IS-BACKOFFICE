@@ -1,0 +1,27 @@
+# config_operator.yaml
+# Propósito: Parámetros de configuración para operadores humanos
+
+entity:
+  name: "Operator"
+  category: "human"
+
+parameters:
+  - name: "skill_level_default"
+    description: "Nivel de habilidad por defecto (1-5)"
+    unit: ""
+    default: 3
+    min: 1
+    max: 5
+    recommended: 3
+    mandatory: true
+    optional: false
+    validation_rule: "1<=value<=5"
+
+validation:
+  cross_parameter_rules: []
+
+kpi_impacted:
+  - "labor_utilization"
+
+risk: "Falta de operadores"
+priority: "Medium"
