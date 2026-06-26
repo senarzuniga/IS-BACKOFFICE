@@ -1,0 +1,4831 @@
+{
+  "run_at": "2026-06-25T15:12:24.324254Z",
+  "config": {
+    "num_roll_stands": 5,
+    "tracks_per_roll_stand": 2,
+    "num_tracks": 10,
+    "avg_track_length": 12,
+    "exchange_to_track_load": 9,
+    "exchange_to_track_return": 7,
+    "transfer_travel_length": 50,
+    "reel_staging_capacity": 6,
+    "avg_order_length": 1.1,
+    "min_order_length": 150,
+    "max_order_length": 8000,
+    "short_orders_ratio": 35,
+    "medium_orders_ratio": 45,
+    "long_orders_ratio": 20,
+    "avg_reel_consumption_rate": 5.5,
+    "corrugator_avg_speed": 220,
+    "paper_grades_managed": 18,
+    "max_reel_diameter": 1500,
+    "avg_reel_diameter": 1250,
+    "min_reel_diameter": 850,
+    "avg_reel_weight": 2100,
+    "max_reel_weight": 3500,
+    "avg_reel_width": 2500,
+    "avg_reel_remaining_at_return": 18,
+    "num_forklifts": 1,
+    "forklift_loaded_speed": 60,
+    "forklift_empty_speed": 80,
+    "forklift_pickup_time": 30,
+    "forklift_dropoff_time": 20,
+    "avg_search_time": 25,
+    "avg_waiting_time": 20,
+    "avg_maneuver_time": 15,
+    "shift_change_delay": 5,
+    "break_duration": 15,
+    "break_frequency": 2,
+    "forklift_availability": 92,
+    "forklift_mtbf": 80,
+    "forklift_mttr": 30,
+    "wrong_reel_probability": 0.5,
+    "damaged_reel_probability": 0.2,
+    "urgent_orders_per_shift": 3,
+    "blocked_track_probability": 2,
+    "warehouse_delay_probability": 5,
+    "reel_return_frequency": 12,
+    "operator_absence_probability": 1,
+    "maintenance_events_per_month": 2,
+    "transfer_pickup_reel": 6,
+    "transfer_dropoff_reel": 6,
+    "transfer_acceleration_ramp": 4.5,
+    "transfer_deceleration_ramp": 4.5,
+    "transfer_start_stop_overhead": 9,
+    "transfer_max_speed": 80,
+    "transfer_capacity": 2,
+    "forklift_operator_cost": 35,
+    "maintenance_cost_forklift": 12000,
+    "maintenance_cost_ingetrans": 4000,
+    "electricity_cost": 0.15,
+    "cost_of_corrugator_downtime": 45,
+    "cost_per_starvation_event": 150,
+    "cost_per_wrong_reel_event": 350,
+    "ingetrans_capex": 1400000,
+    "avg_reel_length": 5000,
+    "ingetrans_predictive_lead_time_min": 12
+  },
+  "scenario_A": {
+    "scenario": "A",
+    "total_production_m": 10041500.0,
+    "production_m_per_h": 59770.833333333336,
+    "starvation_count": 2005,
+    "deliveries_scheduled": 2005,
+    "deliveries_successful": 2005,
+    "delivery_success_rate_pct": 100.0,
+    "avg_kpis": {
+      "track_saturation": 11.666666666666666,
+      "RRI": 0.6308142857142857,
+      "PSS": 99.83188035721186,
+      "LPI": 9.357142857142858,
+      "OEE": 90.64219821896322
+    },
+    "samples": [
+      {
+        "time_min": 60.0,
+        "production_meters": 60560.0,
+        "starvation_count": 10,
+        "deliveries_scheduled": 10,
+        "deliveries_successful": 10,
+        "kpis": {
+          "track_saturation": 0.0,
+          "RRI": 0.8664000000000001,
+          "PSS": 100.0,
+          "LPI": 0.0,
+          "OEE": 91.75757575757576
+        }
+      },
+      {
+        "time_min": 120.0,
+        "production_meters": 121780.0,
+        "starvation_count": 20,
+        "deliveries_scheduled": 20,
+        "deliveries_successful": 20,
+        "kpis": {
+          "track_saturation": 0.0,
+          "RRI": 0.19319999999999998,
+          "PSS": 100.0,
+          "LPI": 0.0,
+          "OEE": 92.25757575757576
+        }
+      },
+      {
+        "time_min": 180.0,
+        "production_meters": 180060.0,
+        "starvation_count": 35,
+        "deliveries_scheduled": 35,
+        "deliveries_successful": 35,
+        "kpis": {
+          "track_saturation": 0.0,
+          "RRI": 1.1964,
+          "PSS": 100.0,
+          "LPI": 0.0,
+          "OEE": 90.93939393939394
+        }
+      },
+      {
+        "time_min": 240.0,
+        "production_meters": 241720.0,
+        "starvation_count": 45,
+        "deliveries_scheduled": 45,
+        "deliveries_successful": 45,
+        "kpis": {
+          "track_saturation": 0.0,
+          "RRI": 0.4968000000000001,
+          "PSS": 100.0,
+          "LPI": 0.0,
+          "OEE": 91.56060606060606
+        }
+      },
+      {
+        "time_min": 300.0,
+        "production_meters": 300440.0,
+        "starvation_count": 60,
+        "deliveries_scheduled": 60,
+        "deliveries_successful": 57,
+        "kpis": {
+          "track_saturation": 50.0,
+          "RRI": 0.5735999999999999,
+          "PSS": 95.0,
+          "LPI": 30.0,
+          "OEE": 91.04242424242425
+        }
+      },
+      {
+        "time_min": 360.0,
+        "production_meters": 361000.0,
+        "starvation_count": 70,
+        "deliveries_scheduled": 70,
+        "deliveries_successful": 70,
+        "kpis": {
+          "track_saturation": 0.0,
+          "RRI": 0.8399999999999999,
+          "PSS": 100.0,
+          "LPI": 0.0,
+          "OEE": 91.16161616161617
+        }
+      },
+      {
+        "time_min": 420.0,
+        "production_meters": 421120.0,
+        "starvation_count": 80,
+        "deliveries_scheduled": 81,
+        "deliveries_successful": 80,
+        "kpis": {
+          "track_saturation": 10.0,
+          "RRI": 0.2328,
+          "PSS": 98.76543209876543,
+          "LPI": 10.0,
+          "OEE": 91.15151515151516
+        }
+      },
+      {
+        "time_min": 480.0,
+        "production_meters": 479400.0,
+        "starvation_count": 95,
+        "deliveries_scheduled": 95,
+        "deliveries_successful": 94,
+        "kpis": {
+          "track_saturation": 20.0,
+          "RRI": 0.9359999999999999,
+          "PSS": 98.94736842105263,
+          "LPI": 12.0,
+          "OEE": 90.79545454545455
+        }
+      },
+      {
+        "time_min": 540.0,
+        "production_meters": 540180.0,
+        "starvation_count": 105,
+        "deliveries_scheduled": 105,
+        "deliveries_successful": 105,
+        "kpis": {
+          "track_saturation": 0.0,
+          "RRI": 0.5892,
+          "PSS": 100.0,
+          "LPI": 0.0,
+          "OEE": 90.93939393939394
+        }
+      },
+      {
+        "time_min": 600.0,
+        "production_meters": 599680.0,
+        "starvation_count": 118,
+        "deliveries_scheduled": 118,
+        "deliveries_successful": 116,
+        "kpis": {
+          "track_saturation": 20.0,
+          "RRI": 0.31920000000000004,
+          "PSS": 98.30508474576271,
+          "LPI": 16.0,
+          "OEE": 90.86060606060606
+        }
+      },
+      {
+        "time_min": 660.0,
+        "production_meters": 659680.0,
+        "starvation_count": 130,
+        "deliveries_scheduled": 130,
+        "deliveries_successful": 130,
+        "kpis": {
+          "track_saturation": 0.0,
+          "RRI": 0.9192,
+          "PSS": 100.0,
+          "LPI": 0.0,
+          "OEE": 90.86501377410468
+        }
+      },
+      {
+        "time_min": 720.0,
+        "production_meters": 720840.0,
+        "starvation_count": 141,
+        "deliveries_scheduled": 141,
+        "deliveries_successful": 140,
+        "kpis": {
+          "track_saturation": 10.0,
+          "RRI": 0.2496,
+          "PSS": 99.29078014184397,
+          "LPI": 10.0,
+          "OEE": 91.01515151515152
+        }
+      },
+      {
+        "time_min": 780.0,
+        "production_meters": 778960.0,
+        "starvation_count": 155,
+        "deliveries_scheduled": 155,
+        "deliveries_successful": 155,
+        "kpis": {
+          "track_saturation": 20.0,
+          "RRI": 1.2624,
+          "PSS": 100.0,
+          "LPI": 12.0,
+          "OEE": 90.78787878787878
+        }
+      },
+      {
+        "time_min": 840.0,
+        "production_meters": 839960.0,
+        "starvation_count": 165,
+        "deliveries_scheduled": 165,
+        "deliveries_successful": 165,
+        "kpis": {
+          "track_saturation": 0.0,
+          "RRI": 0.6024,
+          "PSS": 100.0,
+          "LPI": 0.0,
+          "OEE": 90.9047619047619
+        }
+      },
+      {
+        "time_min": 900.0,
+        "production_meters": 899900.0,
+        "starvation_count": 178,
+        "deliveries_scheduled": 179,
+        "deliveries_successful": 176,
+        "kpis": {
+          "track_saturation": 30.0,
+          "RRI": 0.30600000000000005,
+          "PSS": 98.32402234636871,
+          "LPI": 30.0,
+          "OEE": 90.8989898989899
+        }
+      },
+      {
+        "time_min": 960.0,
+        "production_meters": 959020.0,
+        "starvation_count": 190,
+        "deliveries_scheduled": 190,
+        "deliveries_successful": 190,
+        "kpis": {
+          "track_saturation": 0.0,
+          "RRI": 0.9588,
+          "PSS": 100.0,
+          "LPI": 0.0,
+          "OEE": 90.81628787878788
+        }
+      },
+      {
+        "time_min": 1020.0,
+        "production_meters": 1019300.0,
+        "starvation_count": 201,
+        "deliveries_scheduled": 201,
+        "deliveries_successful": 200,
+        "kpis": {
+          "track_saturation": 10.0,
+          "RRI": 0.3420000000000001,
+          "PSS": 99.50248756218906,
+          "LPI": 10.0,
+          "OEE": 90.84670231729055
+        }
+      },
+      {
+        "time_min": 1080.0,
+        "production_meters": 1077860.0,
+        "starvation_count": 215,
+        "deliveries_scheduled": 215,
+        "deliveries_successful": 213,
+        "kpis": {
+          "track_saturation": 30.0,
+          "RRI": 0.7283999999999999,
+          "PSS": 99.06976744186046,
+          "LPI": 22.0,
+          "OEE": 90.72895622895622
+        }
+      },
+      {
+        "time_min": 1140.0,
+        "production_meters": 1138200.0,
+        "starvation_count": 225,
+        "deliveries_scheduled": 225,
+        "deliveries_successful": 225,
+        "kpis": {
+          "track_saturation": 0.0,
+          "RRI": 0.708,
+          "PSS": 100.0,
+          "LPI": 0.0,
+          "OEE": 90.76555023923444
+        }
+      },
+      {
+        "time_min": 1200.0,
+        "production_meters": 1198040.0,
+        "starvation_count": 236,
+        "deliveries_scheduled": 237,
+        "deliveries_successful": 236,
+        "kpis": {
+          "track_saturation": 20.0,
+          "RRI": 0.4176000000000001,
+          "PSS": 99.57805907172997,
+          "LPI": 16.0,
+          "OEE": 90.76060606060607
+        }
+      },
+      {
+        "time_min": 1260.0,
+        "production_meters": 1256820.0,
+        "starvation_count": 250,
+        "deliveries_scheduled": 250,
+        "deliveries_successful": 250,
+        "kpis": {
+          "track_saturation": 0.0,
+          "RRI": 1.0908000000000002,
+          "PSS": 100.0,
+          "LPI": 0.0,
+          "OEE": 90.67965367965368
+        }
+      },
+      {
+        "time_min": 1320.0,
+        "production_meters": 1317540.0,
+        "starvation_count": 261,
+        "deliveries_scheduled": 261,
+        "deliveries_successful": 260,
+        "kpis": {
+          "track_saturation": 10.0,
+          "RRI": 0.4476,
+          "PSS": 99.61685823754789,
+          "LPI": 10.0,
+          "OEE": 90.7396694214876
+        }
+      },
+      {
+        "time_min": 1380.0,
+        "production_meters": 1376540.0,
+        "starvation_count": 275,
+        "deliveries_scheduled": 275,
+        "deliveries_successful": 271,
+        "kpis": {
+          "track_saturation": 40.0,
+          "RRI": 0.2076,
+          "PSS": 98.54545454545455,
+          "LPI": 32.0,
+          "OEE": 90.68115942028986
+        }
+      },
+      {
+        "time_min": 1440.0,
+        "production_meters": 1436660.0,
+        "starvation_count": 285,
+        "deliveries_scheduled": 285,
+        "deliveries_successful": 285,
+        "kpis": {
+          "track_saturation": 0.0,
+          "RRI": 0.8004000000000001,
+          "PSS": 100.0,
+          "LPI": 0.0,
+          "OEE": 90.69823232323232
+        }
+      },
+      {
+        "time_min": 1500.0,
+        "production_meters": 1497160.0,
+        "starvation_count": 296,
+        "deliveries_scheduled": 296,
+        "deliveries_successful": 296,
+        "kpis": {
+          "track_saturation": 10.0,
+          "RRI": 0.4704,
+          "PSS": 100.0,
+          "LPI": 6.0,
+          "OEE": 90.7369696969697
+        }
+      },
+      {
+        "time_min": 1560.0,
+        "production_meters": 1555720.0,
+        "starvation_count": 310,
+        "deliveries_scheduled": 310,
+        "deliveries_successful": 310,
+        "kpis": {
+          "track_saturation": 10.0,
+          "RRI": 1.1568,
+          "PSS": 100.0,
+          "LPI": 6.0,
+          "OEE": 90.65967365967366
+        }
+      },
+      {
+        "time_min": 1620.0,
+        "production_meters": 1616280.0,
+        "starvation_count": 320,
+        "deliveries_scheduled": 320,
+        "deliveries_successful": 320,
+        "kpis": {
+          "track_saturation": 0.0,
+          "RRI": 0.5232,
+          "PSS": 100.0,
+          "LPI": 0.0,
+          "OEE": 90.7003367003367
+        }
+      },
+      {
+        "time_min": 1680.0,
+        "production_meters": 1676000.0,
+        "starvation_count": 333,
+        "deliveries_scheduled": 333,
+        "deliveries_successful": 332,
+        "kpis": {
+          "track_saturation": 20.0,
+          "RRI": 0.54,
+          "PSS": 99.69969969969969,
+          "LPI": 16.0,
+          "OEE": 90.6926406926407
+        }
+      },
+      {
+        "time_min": 1740.0,
+        "production_meters": 1735560.0,
+        "starvation_count": 345,
+        "deliveries_scheduled": 345,
+        "deliveries_successful": 345,
+        "kpis": {
+          "track_saturation": 0.0,
+          "RRI": 0.8664000000000001,
+          "PSS": 100.0,
+          "LPI": 0.0,
+          "OEE": 90.67711598746081
+        }
+      },
+      {
+        "time_min": 1800.0,
+        "production_meters": 1796060.0,
+        "starvation_count": 356,
+        "deliveries_scheduled": 357,
+        "deliveries_successful": 356,
+        "kpis": {
+          "track_saturation": 20.0,
+          "RRI": 0.5364,
+          "PSS": 99.71988795518207,
+          "LPI": 16.0,
+          "OEE": 90.71010101010101
+        }
+      },
+      {
+        "time_min": 1860.0,
+        "production_meters": 1854400.0,
+        "starvation_count": 370,
+        "deliveries_scheduled": 370,
+        "deliveries_successful": 368,
+        "kpis": {
+          "track_saturation": 30.0,
+          "RRI": 0.6360000000000001,
+          "PSS": 99.45945945945947,
+          "LPI": 22.0,
+          "OEE": 90.63538611925709
+        }
+      },
+      {
+        "time_min": 1920.0,
+        "production_meters": 1914740.0,
+        "starvation_count": 380,
+        "deliveries_scheduled": 380,
+        "deliveries_successful": 380,
+        "kpis": {
+          "track_saturation": 0.0,
+          "RRI": 0.6155999999999999,
+          "PSS": 100.0,
+          "LPI": 0.0,
+          "OEE": 90.66003787878788
+        }
+      },
+      {
+        "time_min": 1980.0,
+        "production_meters": 1974520.0,
+        "starvation_count": 392,
+        "deliveries_scheduled": 393,
+        "deliveries_successful": 391,
+        "kpis": {
+          "track_saturation": 20.0,
+          "RRI": 0.3288,
+          "PSS": 99.49109414758269,
+          "LPI": 20.0,
+          "OEE": 90.6574839302112
+        }
+      },
+      {
+        "time_min": 2040.0,
+        "production_meters": 2033140.0,
+        "starvation_count": 405,
+        "deliveries_scheduled": 405,
+        "deliveries_successful": 405,
+        "kpis": {
+          "track_saturation": 0.0,
+          "RRI": 1.0116,
+          "PSS": 100.0,
+          "LPI": 0.0,
+          "OEE": 90.60338680926915
+        }
+      },
+      {
+        "time_min": 2100.0,
+        "production_meters": 2093420.0,
+        "starvation_count": 416,
+        "deliveries_scheduled": 416,
+        "deliveries_successful": 415,
+        "kpis": {
+          "track_saturation": 10.0,
+          "RRI": 0.3948,
+          "PSS": 99.75961538461539,
+          "LPI": 10.0,
+          "OEE": 90.62424242424242
+        }
+      },
+      {
+        "time_min": 2160.0,
+        "production_meters": 2152860.0,
+        "starvation_count": 430,
+        "deliveries_scheduled": 430,
+        "deliveries_successful": 428,
+        "kpis": {
+          "track_saturation": 30.0,
+          "RRI": 0.7283999999999999,
+          "PSS": 99.53488372093024,
+          "LPI": 26.0,
+          "OEE": 90.60858585858585
+        }
+      },
+      {
+        "time_min": 2220.0,
+        "production_meters": 2212760.0,
+        "starvation_count": 440,
+        "deliveries_scheduled": 440,
+        "deliveries_successful": 440,
+        "kpis": {
+          "track_saturation": 0.0,
+          "RRI": 0.7343999999999999,
+          "PSS": 100.0,
+          "LPI": 0.0,
+          "OEE": 90.61261261261261
+        }
+      },
+      {
+        "time_min": 2280.0,
+        "production_meters": 2273200.0,
+        "starvation_count": 452,
+        "deliveries_scheduled": 452,
+        "deliveries_successful": 451,
+        "kpis": {
+          "track_saturation": 10.0,
+          "RRI": 0.4079999999999999,
+          "PSS": 99.77876106194691,
+          "LPI": 10.0,
+          "OEE": 90.63795853269538
+        }
+      },
+      {
+        "time_min": 2340.0,
+        "production_meters": 2331600.0,
+        "starvation_count": 465,
+        "deliveries_scheduled": 465,
+        "deliveries_successful": 465,
+        "kpis": {
+          "track_saturation": 10.0,
+          "RRI": 1.104,
+          "PSS": 100.0,
+          "LPI": 6.0,
+          "OEE": 90.58275058275058
+        }
+      },
+      {
+        "time_min": 2400.0,
+        "production_meters": 2392760.0,
+        "starvation_count": 476,
+        "deliveries_scheduled": 476,
+        "deliveries_successful": 475,
+        "kpis": {
+          "track_saturation": 10.0,
+          "RRI": 0.43439999999999995,
+          "PSS": 99.78991596638656,
+          "LPI": 6.0,
+          "OEE": 90.63484848484849
+        }
+      },
+      {
+        "time_min": 2460.0,
+        "production_meters": 2452700.0,
+        "starvation_count": 489,
+        "deliveries_scheduled": 490,
+        "deliveries_successful": 487,
+        "kpis": {
+          "track_saturation": 30.0,
+          "RRI": 0.43799999999999994,
+          "PSS": 99.38775510204081,
+          "LPI": 26.0,
+          "OEE": 90.63932002956393
+        }
+      },
+      {
+        "time_min": 2520.0,
+        "production_meters": 2512320.0,
+        "starvation_count": 500,
+        "deliveries_scheduled": 500,
+        "deliveries_successful": 500,
+        "kpis": {
+          "track_saturation": 0.0,
+          "RRI": 0.7607999999999999,
+          "PSS": 100.0,
+          "LPI": 0.0,
+          "OEE": 90.63203463203463
+        }
+      },
+      {
+        "time_min": 2580.0,
+        "production_meters": 2571940.0,
+        "starvation_count": 511,
+        "deliveries_scheduled": 512,
+        "deliveries_successful": 511,
+        "kpis": {
+          "track_saturation": 10.0,
+          "RRI": 0.4835999999999999,
+          "PSS": 99.8046875,
+          "LPI": 10.0,
+          "OEE": 90.62508809020436
+        }
+      },
+      {
+        "time_min": 2640.0,
+        "production_meters": 2630940.0,
+        "starvation_count": 525,
+        "deliveries_scheduled": 525,
+        "deliveries_successful": 525,
+        "kpis": {
+          "track_saturation": 20.0,
+          "RRI": 1.1436,
+          "PSS": 100.0,
+          "LPI": 12.0,
+          "OEE": 90.59710743801654
+        }
+      },
+      {
+        "time_min": 2700.0,
+        "production_meters": 2691440.0,
+        "starvation_count": 536,
+        "deliveries_scheduled": 536,
+        "deliveries_successful": 535,
+        "kpis": {
+          "track_saturation": 10.0,
+          "RRI": 0.5136,
+          "PSS": 99.81343283582089,
+          "LPI": 10.0,
+          "OEE": 90.62087542087542
+        }
+      },
+      {
+        "time_min": 2760.0,
+        "production_meters": 2751000.0,
+        "starvation_count": 548,
+        "deliveries_scheduled": 548,
+        "deliveries_successful": 546,
+        "kpis": {
+          "track_saturation": 20.0,
+          "RRI": 0.24,
+          "PSS": 99.63503649635037,
+          "LPI": 16.0,
+          "OEE": 90.61264822134387
+        }
+      },
+      {
+        "time_min": 2820.0,
+        "production_meters": 2810780.0,
+        "starvation_count": 560,
+        "deliveries_scheduled": 560,
+        "deliveries_successful": 560,
+        "kpis": {
+          "track_saturation": 0.0,
+          "RRI": 0.8532,
+          "PSS": 100.0,
+          "LPI": 0.0,
+          "OEE": 90.61186331399097
+        }
+      },
+      {
+        "time_min": 2880.0,
+        "production_meters": 2870840.0,
+        "starvation_count": 571,
+        "deliveries_scheduled": 571,
+        "deliveries_successful": 571,
+        "kpis": {
+          "track_saturation": 10.0,
+          "RRI": 0.5496,
+          "PSS": 100.0,
+          "LPI": 6.0,
+          "OEE": 90.6199494949495
+        }
+      },
+      {
+        "time_min": 2940.0,
+        "production_meters": 2929180.0,
+        "starvation_count": 585,
+        "deliveries_scheduled": 585,
+        "deliveries_successful": 583,
+        "kpis": {
+          "track_saturation": 20.0,
+          "RRI": 0.6492,
+          "PSS": 99.65811965811966,
+          "LPI": 20.0,
+          "OEE": 90.57452071737787
+        }
+      },
+      {
+        "time_min": 3000.0,
+        "production_meters": 2990180.0,
+        "starvation_count": 595,
+        "deliveries_scheduled": 596,
+        "deliveries_successful": 595,
+        "kpis": {
+          "track_saturation": 10.0,
+          "RRI": 0.5892,
+          "PSS": 99.83221476510067,
+          "LPI": 10.0,
+          "OEE": 90.61151515151515
+        }
+      },
+      {
+        "time_min": 3060.0,
+        "production_meters": 3049680.0,
+        "starvation_count": 608,
+        "deliveries_scheduled": 608,
+        "deliveries_successful": 606,
+        "kpis": {
+          "track_saturation": 20.0,
+          "RRI": 0.31920000000000004,
+          "PSS": 99.67105263157895,
+          "LPI": 16.0,
+          "OEE": 90.602495543672
+        }
+      },
+      {
+        "time_min": 3120.0,
+        "production_meters": 3109240.0,
+        "starvation_count": 620,
+        "deliveries_scheduled": 620,
+        "deliveries_successful": 620,
+        "kpis": {
+          "track_saturation": 0.0,
+          "RRI": 0.9456000000000001,
+          "PSS": 100.0,
+          "LPI": 0.0,
+          "OEE": 90.59557109557109
+        }
+      },
+      {
+        "time_min": 3180.0,
+        "production_meters": 3169300.0,
+        "starvation_count": 631,
+        "deliveries_scheduled": 631,
+        "deliveries_successful": 631,
+        "kpis": {
+          "track_saturation": 10.0,
+          "RRI": 0.6420000000000001,
+          "PSS": 100.0,
+          "LPI": 6.0,
+          "OEE": 90.60320182961692
+        }
+      },
+      {
+        "time_min": 3240.0,
+        "production_meters": 3228640.0,
+        "starvation_count": 643,
+        "deliveries_scheduled": 644,
+        "deliveries_successful": 643,
+        "kpis": {
+          "track_saturation": 10.0,
+          "RRI": 0.6816,
+          "PSS": 99.84472049689441,
+          "LPI": 10.0,
+          "OEE": 90.59034792368126
+        }
+      },
+      {
+        "time_min": 3300.0,
+        "production_meters": 3288640.0,
+        "starvation_count": 655,
+        "deliveries_scheduled": 655,
+        "deliveries_successful": 655,
+        "kpis": {
+          "track_saturation": 0.0,
+          "RRI": 0.6816,
+          "PSS": 100.0,
+          "LPI": 0.0,
+          "OEE": 90.59614325068871
+        }
+      },
+      {
+        "time_min": 3360.0,
+        "production_meters": 3348580.0,
+        "starvation_count": 668,
+        "deliveries_scheduled": 668,
+        "deliveries_successful": 667,
+        "kpis": {
+          "track_saturation": 20.0,
+          "RRI": 0.6852,
+          "PSS": 99.8502994011976,
+          "LPI": 16.0,
+          "OEE": 90.60010822510822
+        }
+      },
+      {
+        "time_min": 3420.0,
+        "production_meters": 3407920.0,
+        "starvation_count": 680,
+        "deliveries_scheduled": 680,
+        "deliveries_successful": 680,
+        "kpis": {
+          "track_saturation": 20.0,
+          "RRI": 1.0248,
+          "PSS": 100.0,
+          "LPI": 12.0,
+          "OEE": 90.5879851143009
+        }
+      },
+      {
+        "time_min": 3480.0,
+        "production_meters": 3467760.0,
+        "starvation_count": 691,
+        "deliveries_scheduled": 691,
+        "deliveries_successful": 691,
+        "kpis": {
+          "track_saturation": 10.0,
+          "RRI": 0.7343999999999999,
+          "PSS": 100.0,
+          "LPI": 6.0,
+          "OEE": 90.58934169278997
+        }
+      },
+      {
+        "time_min": 3540.0,
+        "production_meters": 3527100.0,
+        "starvation_count": 703,
+        "deliveries_scheduled": 703,
+        "deliveries_successful": 703,
+        "kpis": {
+          "track_saturation": 10.0,
+          "RRI": 0.774,
+          "PSS": 100.0,
+          "LPI": 6.0,
+          "OEE": 90.57781201849
+        }
+      },
+      {
+        "time_min": 3600.0,
+        "production_meters": 3586440.0,
+        "starvation_count": 715,
+        "deliveries_scheduled": 715,
+        "deliveries_successful": 715,
+        "kpis": {
+          "track_saturation": 0.0,
+          "RRI": 0.8136,
+          "PSS": 100.0,
+          "LPI": 0.0,
+          "OEE": 90.56666666666666
+        }
+      },
+      {
+        "time_min": 3660.0,
+        "production_meters": 3646720.0,
+        "starvation_count": 726,
+        "deliveries_scheduled": 727,
+        "deliveries_successful": 726,
+        "kpis": {
+          "track_saturation": 10.0,
+          "RRI": 0.4968000000000001,
+          "PSS": 99.86244841815682,
+          "LPI": 10.0,
+          "OEE": 90.5792349726776
+        }
+      },
+      {
+        "time_min": 3720.0,
+        "production_meters": 3705940.0,
+        "starvation_count": 740,
+        "deliveries_scheduled": 740,
+        "deliveries_successful": 738,
+        "kpis": {
+          "track_saturation": 20.0,
+          "RRI": 0.5436,
+          "PSS": 99.72972972972973,
+          "LPI": 16.0,
+          "OEE": 90.5654936461388
+        }
+      },
+      {
+        "time_min": 3780.0,
+        "production_meters": 3766220.0,
+        "starvation_count": 751,
+        "deliveries_scheduled": 751,
+        "deliveries_successful": 750,
+        "kpis": {
+          "track_saturation": 10.0,
+          "RRI": 0.5268,
+          "PSS": 99.86684420772303,
+          "LPI": 6.0,
+          "OEE": 90.57768157768157
+        }
+      },
+      {
+        "time_min": 3840.0,
+        "production_meters": 3826220.0,
+        "starvation_count": 763,
+        "deliveries_scheduled": 763,
+        "deliveries_successful": 762,
+        "kpis": {
+          "track_saturation": 10.0,
+          "RRI": 0.5268,
+          "PSS": 99.8689384010485,
+          "LPI": 6.0,
+          "OEE": 90.58285984848486
+        }
+      },
+      {
+        "time_min": 3900.0,
+        "production_meters": 3885560.0,
+        "starvation_count": 775,
+        "deliveries_scheduled": 775,
+        "deliveries_successful": 775,
+        "kpis": {
+          "track_saturation": 0.0,
+          "RRI": 0.8664000000000001,
+          "PSS": 100.0,
+          "LPI": 0.0,
+          "OEE": 90.57249417249417
+        }
+      },
+      {
+        "time_min": 3960.0,
+        "production_meters": 3945340.0,
+        "starvation_count": 787,
+        "deliveries_scheduled": 787,
+        "deliveries_successful": 785,
+        "kpis": {
+          "track_saturation": 20.0,
+          "RRI": 0.2796,
+          "PSS": 99.74587039390089,
+          "LPI": 16.0,
+          "OEE": 90.57254361799816
+        }
+      },
+      {
+        "time_min": 4020.0,
+        "production_meters": 4004620.0,
+        "starvation_count": 800,
+        "deliveries_scheduled": 800,
+        "deliveries_successful": 798,
+        "kpis": {
+          "track_saturation": 20.0,
+          "RRI": 0.6228,
+          "PSS": 99.75,
+          "LPI": 20.0,
+          "OEE": 90.56128448665763
+        }
+      },
+      {
+        "time_min": 4080.0,
+        "production_meters": 4065180.0,
+        "starvation_count": 810,
+        "deliveries_scheduled": 810,
+        "deliveries_successful": 810,
+        "kpis": {
+          "track_saturation": 0.0,
+          "RRI": 0.5892,
+          "PSS": 100.0,
+          "LPI": 0.0,
+          "OEE": 90.5788770053476
+        }
+      },
+      {
+        "time_min": 4140.0,
+        "production_meters": 4124460.0,
+        "starvation_count": 823,
+        "deliveries_scheduled": 823,
+        "deliveries_successful": 822,
+        "kpis": {
+          "track_saturation": 20.0,
+          "RRI": 0.6324000000000001,
+          "PSS": 99.87849331713244,
+          "LPI": 16.0,
+          "OEE": 90.56785243741766
+        }
+      },
+      {
+        "time_min": 4200.0,
+        "production_meters": 4183580.0,
+        "starvation_count": 835,
+        "deliveries_scheduled": 835,
+        "deliveries_successful": 835,
+        "kpis": {
+          "track_saturation": 0.0,
+          "RRI": 0.9851999999999999,
+          "PSS": 100.0,
+          "LPI": 0.0,
+          "OEE": 90.55367965367965
+        }
+      },
+      {
+        "time_min": 4260.0,
+        "production_meters": 4244520.0,
+        "starvation_count": 846,
+        "deliveries_scheduled": 847,
+        "deliveries_successful": 845,
+        "kpis": {
+          "track_saturation": 20.0,
+          "RRI": 0.3288,
+          "PSS": 99.76387249114522,
+          "LPI": 20.0,
+          "OEE": 90.57874519846351
+        }
+      },
+      {
+        "time_min": 4320.0,
+        "production_meters": 4303520.0,
+        "starvation_count": 860,
+        "deliveries_scheduled": 860,
+        "deliveries_successful": 857,
+        "kpis": {
+          "track_saturation": 30.0,
+          "RRI": 0.3888,
+          "PSS": 99.65116279069768,
+          "LPI": 26.0,
+          "OEE": 90.56228956228956
+        }
+      },
+      {
+        "time_min": 4380.0,
+        "production_meters": 4364300.0,
+        "starvation_count": 870,
+        "deliveries_scheduled": 870,
+        "deliveries_successful": 870,
+        "kpis": {
+          "track_saturation": 0.0,
+          "RRI": 0.6420000000000001,
+          "PSS": 100.0,
+          "LPI": 0.0,
+          "OEE": 90.5832295558323
+        }
+      },
+      {
+        "time_min": 4440.0,
+        "production_meters": 4423860.0,
+        "starvation_count": 882,
+        "deliveries_scheduled": 883,
+        "deliveries_successful": 882,
+        "kpis": {
+          "track_saturation": 20.0,
+          "RRI": 0.6684000000000001,
+          "PSS": 99.88674971687429,
+          "LPI": 16.0,
+          "OEE": 90.57862407862409
+        }
+      },
+      {
+        "time_min": 4500.0,
+        "production_meters": 4483360.0,
+        "starvation_count": 895,
+        "deliveries_scheduled": 895,
+        "deliveries_successful": 895,
+        "kpis": {
+          "track_saturation": 10.0,
+          "RRI": 0.9984,
+          "PSS": 100.0,
+          "LPI": 6.0,
+          "OEE": 90.57292929292929
+        }
+      },
+      {
+        "time_min": 4560.0,
+        "production_meters": 4543800.0,
+        "starvation_count": 907,
+        "deliveries_scheduled": 907,
+        "deliveries_successful": 905,
+        "kpis": {
+          "track_saturation": 20.0,
+          "RRI": 0.372,
+          "PSS": 99.7794928335171,
+          "LPI": 20.0,
+          "OEE": 90.58612440191386
+        }
+      },
+      {
+        "time_min": 4620.0,
+        "production_meters": 4602920.0,
+        "starvation_count": 919,
+        "deliveries_scheduled": 919,
+        "deliveries_successful": 917,
+        "kpis": {
+          "track_saturation": 20.0,
+          "RRI": 0.4248,
+          "PSS": 99.78237214363439,
+          "LPI": 16.0,
+          "OEE": 90.57300275482095
+        }
+      },
+      {
+        "time_min": 4680.0,
+        "production_meters": 4662980.0,
+        "starvation_count": 930,
+        "deliveries_scheduled": 930,
+        "deliveries_successful": 930,
+        "kpis": {
+          "track_saturation": 0.0,
+          "RRI": 0.7212000000000001,
+          "PSS": 100.0,
+          "LPI": 0.0,
+          "OEE": 90.57847707847708
+        }
+      },
+      {
+        "time_min": 4740.0,
+        "production_meters": 4722980.0,
+        "starvation_count": 942,
+        "deliveries_scheduled": 942,
+        "deliveries_successful": 942,
+        "kpis": {
+          "track_saturation": 10.0,
+          "RRI": 0.7212000000000001,
+          "PSS": 100.0,
+          "LPI": 6.0,
+          "OEE": 90.58266206367472
+        }
+      },
+      {
+        "time_min": 4800.0,
+        "production_meters": 4782260.0,
+        "starvation_count": 955,
+        "deliveries_scheduled": 955,
+        "deliveries_successful": 954,
+        "kpis": {
+          "track_saturation": 20.0,
+          "RRI": 0.7644000000000001,
+          "PSS": 99.89528795811519,
+          "LPI": 12.0,
+          "OEE": 90.57310606060605
+        }
+      },
+      {
+        "time_min": 4860.0,
+        "production_meters": 4842760.0,
+        "starvation_count": 966,
+        "deliveries_scheduled": 967,
+        "deliveries_successful": 965,
+        "kpis": {
+          "track_saturation": 20.0,
+          "RRI": 0.4344,
+          "PSS": 99.79317476732162,
+          "LPI": 20.0,
+          "OEE": 90.58660680882903
+        }
+      },
+      {
+        "time_min": 4920.0,
+        "production_meters": 4902100.0,
+        "starvation_count": 978,
+        "deliveries_scheduled": 978,
+        "deliveries_successful": 977,
+        "kpis": {
+          "track_saturation": 10.0,
+          "RRI": 0.474,
+          "PSS": 99.89775051124744,
+          "LPI": 6.0,
+          "OEE": 90.57834441980783
+        }
+      },
+      {
+        "time_min": 4980.0,
+        "production_meters": 4961880.0,
+        "starvation_count": 990,
+        "deliveries_scheduled": 990,
+        "deliveries_successful": 990,
+        "kpis": {
+          "track_saturation": 0.0,
+          "RRI": 0.7872000000000001,
+          "PSS": 100.0,
+          "LPI": 0.0,
+          "OEE": 90.57831325301204
+        }
+      },
+      {
+        "time_min": 5040.0,
+        "production_meters": 5021000.0,
+        "starvation_count": 1002,
+        "deliveries_scheduled": 1002,
+        "deliveries_successful": 1002,
+        "kpis": {
+          "track_saturation": 10.0,
+          "RRI": 0.8399999999999999,
+          "PSS": 100.0,
+          "LPI": 6.0,
+          "OEE": 90.56637806637806
+        }
+      },
+      {
+        "time_min": 5100.0,
+        "production_meters": 5081660.0,
+        "starvation_count": 1014,
+        "deliveries_scheduled": 1014,
+        "deliveries_successful": 1013,
+        "kpis": {
+          "track_saturation": 10.0,
+          "RRI": 0.5004,
+          "PSS": 99.90138067061145,
+          "LPI": 10.0,
+          "OEE": 90.58217468805704
+        }
+      },
+      {
+        "time_min": 5160.0,
+        "production_meters": 5141380.0,
+        "starvation_count": 1027,
+        "deliveries_scheduled": 1027,
+        "deliveries_successful": 1025,
+        "kpis": {
+          "track_saturation": 20.0,
+          "RRI": 0.5172,
+          "PSS": 99.80525803310614,
+          "LPI": 20.0,
+          "OEE": 90.58104298801973
+        }
+      },
+      {
+        "time_min": 5220.0,
+        "production_meters": 5201220.0,
+        "starvation_count": 1038,
+        "deliveries_scheduled": 1038,
+        "deliveries_successful": 1038,
+        "kpis": {
+          "track_saturation": 10.0,
+          "RRI": 0.8267999999999999,
+          "PSS": 100.0,
+          "LPI": 6.0,
+          "OEE": 90.58202716823406
+        }
+      },
+      {
+        "time_min": 5280.0,
+        "production_meters": 5261000.0,
+        "starvation_count": 1050,
+        "deliveries_scheduled": 1050,
+        "deliveries_successful": 1049,
+        "kpis": {
+          "track_saturation": 10.0,
+          "RRI": 0.54,
+          "PSS": 99.90476190476191,
+          "LPI": 6.0,
+          "OEE": 90.581955922865
+        }
+      },
+      {
+        "time_min": 5340.0,
+        "production_meters": 5321220.0,
+        "starvation_count": 1062,
+        "deliveries_scheduled": 1062,
+        "deliveries_successful": 1062,
+        "kpis": {
+          "track_saturation": 0.0,
+          "RRI": 0.8268,
+          "PSS": 100.0,
+          "LPI": 0.0,
+          "OEE": 90.58937691521962
+        }
+      },
+      {
+        "time_min": 5400.0,
+        "production_meters": 5381660.0,
+        "starvation_count": 1074,
+        "deliveries_scheduled": 1074,
+        "deliveries_successful": 1073,
+        "kpis": {
+          "track_saturation": 10.0,
+          "RRI": 0.5004,
+          "PSS": 99.90689013035382,
+          "LPI": 10.0,
+          "OEE": 90.6003367003367
+        }
+      },
+      {
+        "time_min": 5460.0,
+        "production_meters": 5440940.0,
+        "starvation_count": 1087,
+        "deliveries_scheduled": 1087,
+        "deliveries_successful": 1085,
+        "kpis": {
+          "track_saturation": 20.0,
+          "RRI": 0.5436,
+          "PSS": 99.81600735970562,
+          "LPI": 20.0,
+          "OEE": 90.5917415917416
+        }
+      },
+      {
+        "time_min": 5520.0,
+        "production_meters": 5500780.0,
+        "starvation_count": 1098,
+        "deliveries_scheduled": 1098,
+        "deliveries_successful": 1097,
+        "kpis": {
+          "track_saturation": 10.0,
+          "RRI": 0.5532,
+          "PSS": 99.90892531876139,
+          "LPI": 10.0,
+          "OEE": 90.5925559947299
+        }
+      },
+      {
+        "time_min": 5580.0,
+        "production_meters": 5560560.0,
+        "starvation_count": 1110,
+        "deliveries_scheduled": 1110,
+        "deliveries_successful": 1109,
+        "kpis": {
+          "track_saturation": 20.0,
+          "RRI": 0.5664,
+          "PSS": 99.90990990990991,
+          "LPI": 16.0,
+          "OEE": 90.59237536656892
+        }
+      },
+      {
+        "time_min": 5640.0,
+        "production_meters": 5620120.0,
+        "starvation_count": 1122,
+        "deliveries_scheduled": 1122,
+        "deliveries_successful": 1122,
+        "kpis": {
+          "track_saturation": 0.0,
+          "RRI": 0.8927999999999999,
+          "PSS": 100.0,
+          "LPI": 0.0,
+          "OEE": 90.58865248226951
+        }
+      },
+      {
+        "time_min": 5700.0,
+        "production_meters": 5680620.0,
+        "starvation_count": 1133,
+        "deliveries_scheduled": 1133,
+        "deliveries_successful": 1133,
+        "kpis": {
+          "track_saturation": 0.0,
+          "RRI": 0.5628,
+          "PSS": 100.0,
+          "LPI": 0.0,
+          "OEE": 90.60000000000001
+        }
+      },
+      {
+        "time_min": 5760.0,
+        "production_meters": 5739680.0,
+        "starvation_count": 1146,
+        "deliveries_scheduled": 1147,
+        "deliveries_successful": 1145,
+        "kpis": {
+          "track_saturation": 20.0,
+          "RRI": 0.6192,
+          "PSS": 99.8256320836966,
+          "LPI": 16.0,
+          "OEE": 90.58838383838383
+        }
+      },
+      {
+        "time_min": 5820.0,
+        "production_meters": 5800120.0,
+        "starvation_count": 1158,
+        "deliveries_scheduled": 1158,
+        "deliveries_successful": 1157,
+        "kpis": {
+          "track_saturation": 10.0,
+          "RRI": 0.5928,
+          "PSS": 99.91364421416235,
+          "LPI": 10.0,
+          "OEE": 90.59856294907841
+        }
+      },
+      {
+        "time_min": 5880.0,
+        "production_meters": 5860560.0,
+        "starvation_count": 1170,
+        "deliveries_scheduled": 1170,
+        "deliveries_successful": 1168,
+        "kpis": {
+          "track_saturation": 20.0,
+          "RRI": 0.2664,
+          "PSS": 99.82905982905983,
+          "LPI": 20.0,
+          "OEE": 90.60853432282003
+        }
+      },
+      {
+        "time_min": 5940.0,
+        "production_meters": 5919020.0,
+        "starvation_count": 1182,
+        "deliveries_scheduled": 1182,
+        "deliveries_successful": 1182,
+        "kpis": {
+          "track_saturation": 0.0,
+          "RRI": 0.9588,
+          "PSS": 100.0,
+          "LPI": 0.0,
+          "OEE": 90.58800122436486
+        }
+      },
+      {
+        "time_min": 6000.0,
+        "production_meters": 5978860.0,
+        "starvation_count": 1193,
+        "deliveries_scheduled": 1193,
+        "deliveries_successful": 1193,
+        "kpis": {
+          "track_saturation": 10.0,
+          "RRI": 0.6684000000000001,
+          "PSS": 100.0,
+          "LPI": 6.0,
+          "OEE": 90.58878787878788
+        }
+      },
+      {
+        "time_min": 6060.0,
+        "production_meters": 6037480.0,
+        "starvation_count": 1206,
+        "deliveries_scheduled": 1207,
+        "deliveries_successful": 1204,
+        "kpis": {
+          "track_saturation": 40.0,
+          "RRI": 0.45120000000000005,
+          "PSS": 99.75144987572494,
+          "LPI": 32.0,
+          "OEE": 90.57125712571256
+        }
+      },
+      {
+        "time_min": 6120.0,
+        "production_meters": 6097320.0,
+        "starvation_count": 1217,
+        "deliveries_scheduled": 1217,
+        "deliveries_successful": 1217,
+        "kpis": {
+          "track_saturation": 0.0,
+          "RRI": 0.7607999999999999,
+          "PSS": 100.0,
+          "LPI": 0.0,
+          "OEE": 90.57219251336899
+        }
+      },
+      {
+        "time_min": 6180.0,
+        "production_meters": 6157820.0,
+        "starvation_count": 1228,
+        "deliveries_scheduled": 1228,
+        "deliveries_successful": 1228,
+        "kpis": {
+          "track_saturation": 0.0,
+          "RRI": 0.4308,
+          "PSS": 100.0,
+          "LPI": 0.0,
+          "OEE": 90.58281847602237
+        }
+      },
+      {
+        "time_min": 6240.0,
+        "production_meters": 6216380.0,
+        "starvation_count": 1242,
+        "deliveries_scheduled": 1242,
+        "deliveries_successful": 1242,
+        "kpis": {
+          "track_saturation": 10.0,
+          "RRI": 1.1172,
+          "PSS": 100.0,
+          "LPI": 6.0,
+          "OEE": 90.56497668997669
+        }
+      },
+      {
+        "time_min": 6300.0,
+        "production_meters": 6276660.0,
+        "starvation_count": 1253,
+        "deliveries_scheduled": 1253,
+        "deliveries_successful": 1252,
+        "kpis": {
+          "track_saturation": 10.0,
+          "RRI": 0.5004,
+          "PSS": 99.92019154030328,
+          "LPI": 6.0,
+          "OEE": 90.57229437229437
+        }
+      },
+      {
+        "time_min": 6360.0,
+        "production_meters": 6336660.0,
+        "starvation_count": 1265,
+        "deliveries_scheduled": 1266,
+        "deliveries_successful": 1263,
+        "kpis": {
+          "track_saturation": 30.0,
+          "RRI": 0.2004,
+          "PSS": 99.76303317535546,
+          "LPI": 26.0,
+          "OEE": 90.5754716981132
+        }
+      },
+      {
+        "time_min": 6420.0,
+        "production_meters": 6396220.0,
+        "starvation_count": 1277,
+        "deliveries_scheduled": 1277,
+        "deliveries_successful": 1277,
+        "kpis": {
+          "track_saturation": 0.0,
+          "RRI": 0.8268,
+          "PSS": 100.0,
+          "LPI": 0.0,
+          "OEE": 90.5723591050694
+        }
+      },
+      {
+        "time_min": 6480.0,
+        "production_meters": 6456720.0,
+        "starvation_count": 1288,
+        "deliveries_scheduled": 1288,
+        "deliveries_successful": 1288,
+        "kpis": {
+          "track_saturation": 0.0,
+          "RRI": 0.4968,
+          "PSS": 100.0,
+          "LPI": 0.0,
+          "OEE": 90.58249158249158
+        }
+      },
+      {
+        "time_min": 6540.0,
+        "production_meters": 6515280.0,
+        "starvation_count": 1302,
+        "deliveries_scheduled": 1302,
+        "deliveries_successful": 1301,
+        "kpis": {
+          "track_saturation": 30.0,
+          "RRI": 0.8832,
+          "PSS": 99.9231950844854,
+          "LPI": 22.0,
+          "OEE": 90.56547122602169
+        }
+      },
+      {
+        "time_min": 6600.0,
+        "production_meters": 6575340.0,
+        "starvation_count": 1313,
+        "deliveries_scheduled": 1313,
+        "deliveries_successful": 1312,
+        "kpis": {
+          "track_saturation": 10.0,
+          "RRI": 0.5795999999999999,
+          "PSS": 99.92383853769992,
+          "LPI": 6.0,
+          "OEE": 90.56942148760331
+        }
+      },
+      {
+        "time_min": 6660.0,
+        "production_meters": 6635620.0,
+        "starvation_count": 1324,
+        "deliveries_scheduled": 1324,
+        "deliveries_successful": 1323,
+        "kpis": {
+          "track_saturation": 10.0,
+          "RRI": 0.2628,
+          "PSS": 99.92447129909365,
+          "LPI": 10.0,
+          "OEE": 90.57630357630357
+        }
+      },
+      {
+        "time_min": 6720.0,
+        "production_meters": 6695120.0,
+        "starvation_count": 1337,
+        "deliveries_scheduled": 1337,
+        "deliveries_successful": 1337,
+        "kpis": {
+          "track_saturation": 0.0,
+          "RRI": 0.8927999999999999,
+          "PSS": 100.0,
+          "LPI": 0.0,
+          "OEE": 90.57251082251082
+        }
+      },
+      {
+        "time_min": 6780.0,
+        "production_meters": 6755400.0,
+        "starvation_count": 1348,
+        "deliveries_scheduled": 1348,
+        "deliveries_successful": 1348,
+        "kpis": {
+          "track_saturation": 0.0,
+          "RRI": 0.5760000000000001,
+          "PSS": 100.0,
+          "LPI": 0.0,
+          "OEE": 90.57924376508447
+        }
+      },
+      {
+        "time_min": 6840.0,
+        "production_meters": 6814460.0,
+        "starvation_count": 1361,
+        "deliveries_scheduled": 1362,
+        "deliveries_successful": 1361,
+        "kpis": {
+          "track_saturation": 30.0,
+          "RRI": 0.9324000000000001,
+          "PSS": 99.92657856093979,
+          "LPI": 22.0,
+          "OEE": 90.56964380648591
+        }
+      },
+      {
+        "time_min": 6900.0,
+        "production_meters": 6874240.0,
+        "starvation_count": 1373,
+        "deliveries_scheduled": 1373,
+        "deliveries_successful": 1372,
+        "kpis": {
+          "track_saturation": 10.0,
+          "RRI": 0.6456,
+          "PSS": 99.92716678805536,
+          "LPI": 10.0,
+          "OEE": 90.56969696969696
+        }
+      },
+      {
+        "time_min": 6960.0,
+        "production_meters": 6934740.0,
+        "starvation_count": 1384,
+        "deliveries_scheduled": 1384,
+        "deliveries_successful": 1383,
+        "kpis": {
+          "track_saturation": 10.0,
+          "RRI": 0.3156,
+          "PSS": 99.92774566473989,
+          "LPI": 10.0,
+          "OEE": 90.57915360501568
+        }
+      },
+      {
+        "time_min": 7020.0,
+        "production_meters": 6993800.0,
+        "starvation_count": 1397,
+        "deliveries_scheduled": 1397,
+        "deliveries_successful": 1397,
+        "kpis": {
+          "track_saturation": 10.0,
+          "RRI": 0.9719999999999999,
+          "PSS": 100.0,
+          "LPI": 6.0,
+          "OEE": 90.56980056980058
+        }
+      },
+      {
+        "time_min": 7080.0,
+        "production_meters": 7054740.0,
+        "starvation_count": 1408,
+        "deliveries_scheduled": 1408,
+        "deliveries_successful": 1408,
+        "kpis": {
+          "track_saturation": 0.0,
+          "RRI": 0.6155999999999999,
+          "PSS": 100.0,
+          "LPI": 0.0,
+          "OEE": 90.58474576271186
+        }
+      },
+      {
+        "time_min": 7140.0,
+        "production_meters": 7113580.0,
+        "starvation_count": 1421,
+        "deliveries_scheduled": 1421,
+        "deliveries_successful": 1420,
+        "kpis": {
+          "track_saturation": 30.0,
+          "RRI": 0.6852,
+          "PSS": 99.92962702322308,
+          "LPI": 18.0,
+          "OEE": 90.57270180799593
+        }
+      },
+      {
+        "time_min": 7200.0,
+        "production_meters": 7173360.0,
+        "starvation_count": 1433,
+        "deliveries_scheduled": 1433,
+        "deliveries_successful": 1432,
+        "kpis": {
+          "track_saturation": 10.0,
+          "RRI": 0.6984000000000001,
+          "PSS": 99.93021632937894,
+          "LPI": 6.0,
+          "OEE": 90.57272727272728
+        }
+      },
+      {
+        "time_min": 7260.0,
+        "production_meters": 7234580.0,
+        "starvation_count": 1443,
+        "deliveries_scheduled": 1444,
+        "deliveries_successful": 1443,
+        "kpis": {
+          "track_saturation": 10.0,
+          "RRI": 0.32520000000000004,
+          "PSS": 99.93074792243767,
+          "LPI": 10.0,
+          "OEE": 90.5907838717756
+        }
+      },
+      {
+        "time_min": 7320.0,
+        "production_meters": 7292920.0,
+        "starvation_count": 1457,
+        "deliveries_scheduled": 1457,
+        "deliveries_successful": 1456,
+        "kpis": {
+          "track_saturation": 20.0,
+          "RRI": 0.7247999999999999,
+          "PSS": 99.93136582017846,
+          "LPI": 12.0,
+          "OEE": 90.57277694982614
+        }
+      },
+      {
+        "time_min": 7380.0,
+        "production_meters": 7352980.0,
+        "starvation_count": 1468,
+        "deliveries_scheduled": 1468,
+        "deliveries_successful": 1468,
+        "kpis": {
+          "track_saturation": 0.0,
+          "RRI": 0.7212000000000001,
+          "PSS": 100.0,
+          "LPI": 0.0,
+          "OEE": 90.57625030795762
+        }
+      },
+      {
+        "time_min": 7440.0,
+        "production_meters": 7412540.0,
+        "starvation_count": 1480,
+        "deliveries_scheduled": 1481,
+        "deliveries_successful": 1479,
+        "kpis": {
+          "track_saturation": 30.0,
+          "RRI": 0.4476,
+          "PSS": 99.86495611073599,
+          "LPI": 22.0,
+          "OEE": 90.57355816226784
+        }
+      },
+      {
+        "time_min": 7500.0,
+        "production_meters": 7471600.0,
+        "starvation_count": 1493,
+        "deliveries_scheduled": 1493,
+        "deliveries_successful": 1492,
+        "kpis": {
+          "track_saturation": 10.0,
+          "RRI": 0.804,
+          "PSS": 99.93302076356329,
+          "LPI": 10.0,
+          "OEE": 90.56484848484848
+        }
+      },
+      {
+        "time_min": 7560.0,
+        "production_meters": 7532160.0,
+        "starvation_count": 1503,
+        "deliveries_scheduled": 1503,
+        "deliveries_successful": 1503,
+        "kpis": {
+          "track_saturation": 0.0,
+          "RRI": 0.4704,
+          "PSS": 100.0,
+          "LPI": 0.0,
+          "OEE": 90.57431457431457
+        }
+      },
+      {
+        "time_min": 7620.0,
+        "production_meters": 7591880.0,
+        "starvation_count": 1516,
+        "deliveries_scheduled": 1517,
+        "deliveries_successful": 1516,
+        "kpis": {
+          "track_saturation": 10.0,
+          "RRI": 0.7872000000000001,
+          "PSS": 99.9340804218853,
+          "LPI": 10.0,
+          "OEE": 90.57361011691721
+        }
+      },
+      {
+        "time_min": 7680.0,
+        "production_meters": 7651880.0,
+        "starvation_count": 1528,
+        "deliveries_scheduled": 1528,
+        "deliveries_successful": 1528,
+        "kpis": {
+          "track_saturation": 0.0,
+          "RRI": 0.7872000000000001,
+          "PSS": 100.0,
+          "LPI": 0.0,
+          "OEE": 90.57623106060606
+        }
+      },
+      {
+        "time_min": 7740.0,
+        "production_meters": 7711600.0,
+        "starvation_count": 1541,
+        "deliveries_scheduled": 1541,
+        "deliveries_successful": 1538,
+        "kpis": {
+          "track_saturation": 30.0,
+          "RRI": 0.20400000000000001,
+          "PSS": 99.80532121998702,
+          "LPI": 22.0,
+          "OEE": 90.57552266854593
+        }
+      },
+      {
+        "time_min": 7800.0,
+        "production_meters": 7770940.0,
+        "starvation_count": 1553,
+        "deliveries_scheduled": 1553,
+        "deliveries_successful": 1551,
+        "kpis": {
+          "track_saturation": 20.0,
+          "RRI": 0.5436,
+          "PSS": 99.87121699935608,
+          "LPI": 16.0,
+          "OEE": 90.57039627039627
+        }
+      },
+      {
+        "time_min": 7860.0,
+        "production_meters": 7831720.0,
+        "starvation_count": 1563,
+        "deliveries_scheduled": 1563,
+        "deliveries_successful": 1563,
+        "kpis": {
+          "track_saturation": 0.0,
+          "RRI": 0.4968,
+          "PSS": 100.0,
+          "LPI": 0.0,
+          "OEE": 90.5820032384918
+        }
+      },
+      {
+        "time_min": 7920.0,
+        "production_meters": 7891000.0,
+        "starvation_count": 1576,
+        "deliveries_scheduled": 1576,
+        "deliveries_successful": 1576,
+        "kpis": {
+          "track_saturation": 10.0,
+          "RRI": 0.8399999999999999,
+          "PSS": 100.0,
+          "LPI": 6.0,
+          "OEE": 90.57621671258035
+        }
+      },
+      {
+        "time_min": 7980.0,
+        "production_meters": 7950560.0,
+        "starvation_count": 1588,
+        "deliveries_scheduled": 1588,
+        "deliveries_successful": 1588,
+        "kpis": {
+          "track_saturation": 10.0,
+          "RRI": 0.8664000000000001,
+          "PSS": 100.0,
+          "LPI": 6.0,
+          "OEE": 90.57370699475963
+        }
+      },
+      {
+        "time_min": 8040.0,
+        "production_meters": 8011060.0,
+        "starvation_count": 1599,
+        "deliveries_scheduled": 1601,
+        "deliveries_successful": 1599,
+        "kpis": {
+          "track_saturation": 30.0,
+          "RRI": 0.5364,
+          "PSS": 99.87507807620237,
+          "LPI": 26.0,
+          "OEE": 90.58186341022162
+        }
+      },
+      {
+        "time_min": 8100.0,
+        "production_meters": 8069900.0,
+        "starvation_count": 1612,
+        "deliveries_scheduled": 1613,
+        "deliveries_successful": 1611,
+        "kpis": {
+          "track_saturation": 20.0,
+          "RRI": 0.6060000000000001,
+          "PSS": 99.87600743955363,
+          "LPI": 16.0,
+          "OEE": 90.57126823793492
+        }
+      },
+      {
+        "time_min": 8160.0,
+        "production_meters": 8129740.0,
+        "starvation_count": 1623,
+        "deliveries_scheduled": 1623,
+        "deliveries_successful": 1623,
+        "kpis": {
+          "track_saturation": 0.0,
+          "RRI": 0.6155999999999999,
+          "PSS": 100.0,
+          "LPI": 0.0,
+          "OEE": 90.5719696969697
+        }
+      },
+      {
+        "time_min": 8220.0,
+        "production_meters": 8188360.0,
+        "starvation_count": 1636,
+        "deliveries_scheduled": 1636,
+        "deliveries_successful": 1634,
+        "kpis": {
+          "track_saturation": 20.0,
+          "RRI": 0.3983999999999999,
+          "PSS": 99.87775061124694,
+          "LPI": 16.0,
+          "OEE": 90.55916832559168
+        }
+      },
+      {
+        "time_min": 8280.0,
+        "production_meters": 8247920.0,
+        "starvation_count": 1648,
+        "deliveries_scheduled": 1648,
+        "deliveries_successful": 1647,
+        "kpis": {
+          "track_saturation": 10.0,
+          "RRI": 0.7247999999999999,
+          "PSS": 99.93932038834951,
+          "LPI": 10.0,
+          "OEE": 90.55687307861221
+        }
+      },
+      {
+        "time_min": 8340.0,
+        "production_meters": 8308200.0,
+        "starvation_count": 1659,
+        "deliveries_scheduled": 1659,
+        "deliveries_successful": 1658,
+        "kpis": {
+          "track_saturation": 10.0,
+          "RRI": 0.4079999999999999,
+          "PSS": 99.93972272453286,
+          "LPI": 6.0,
+          "OEE": 90.56245912361021
+        }
+      },
+      {
+        "time_min": 8400.0,
+        "production_meters": 8367700.0,
+        "starvation_count": 1672,
+        "deliveries_scheduled": 1672,
+        "deliveries_successful": 1671,
+        "kpis": {
+          "track_saturation": 10.0,
+          "RRI": 0.738,
+          "PSS": 99.9401913875598,
+          "LPI": 10.0,
+          "OEE": 90.55952380952381
+        }
+      },
+      {
+        "time_min": 8460.0,
+        "production_meters": 8428420.0,
+        "starvation_count": 1683,
+        "deliveries_scheduled": 1683,
+        "deliveries_successful": 1683,
+        "kpis": {
+          "track_saturation": 0.0,
+          "RRI": 0.6947999999999999,
+          "PSS": 100.0,
+          "LPI": 0.0,
+          "OEE": 90.56973995271868
+        }
+      },
+      {
+        "time_min": 8520.0,
+        "production_meters": 8488200.0,
+        "starvation_count": 1695,
+        "deliveries_scheduled": 1696,
+        "deliveries_successful": 1694,
+        "kpis": {
+          "track_saturation": 20.0,
+          "RRI": 0.40800000000000003,
+          "PSS": 99.88207547169812,
+          "LPI": 20.0,
+          "OEE": 90.56978233034572
+        }
+      },
+      {
+        "time_min": 8580.0,
+        "production_meters": 8547040.0,
+        "starvation_count": 1708,
+        "deliveries_scheduled": 1708,
+        "deliveries_successful": 1707,
+        "kpis": {
+          "track_saturation": 10.0,
+          "RRI": 0.7776,
+          "PSS": 99.94145199063233,
+          "LPI": 10.0,
+          "OEE": 90.5598643780462
+        }
+      },
+      {
+        "time_min": 8640.0,
+        "production_meters": 8606880.0,
+        "starvation_count": 1719,
+        "deliveries_scheduled": 1719,
+        "deliveries_successful": 1718,
+        "kpis": {
+          "track_saturation": 10.0,
+          "RRI": 0.4872000000000001,
+          "PSS": 99.94182664339732,
+          "LPI": 6.0,
+          "OEE": 90.56060606060606
+        }
+      },
+      {
+        "time_min": 8700.0,
+        "production_meters": 8666380.0,
+        "starvation_count": 1732,
+        "deliveries_scheduled": 1732,
+        "deliveries_successful": 1730,
+        "kpis": {
+          "track_saturation": 30.0,
+          "RRI": 0.5172,
+          "PSS": 99.88452655889145,
+          "LPI": 22.0,
+          "OEE": 90.55778474399165
+        }
+      },
+      {
+        "time_min": 8760.0,
+        "production_meters": 8725780.0,
+        "starvation_count": 1743,
+        "deliveries_scheduled": 1743,
+        "deliveries_successful": 1743,
+        "kpis": {
+          "track_saturation": 10.0,
+          "RRI": 0.8532,
+          "PSS": 100.0,
+          "LPI": 6.0,
+          "OEE": 90.55396430053965
+        }
+      },
+      {
+        "time_min": 8820.0,
+        "production_meters": 8785400.0,
+        "starvation_count": 1754,
+        "deliveries_scheduled": 1754,
+        "deliveries_successful": 1754,
+        "kpis": {
+          "track_saturation": 0.0,
+          "RRI": 0.5760000000000001,
+          "PSS": 100.0,
+          "LPI": 0.0,
+          "OEE": 90.55246340960626
+        }
+      },
+      {
+        "time_min": 8880.0,
+        "production_meters": 8844460.0,
+        "starvation_count": 1767,
+        "deliveries_scheduled": 1767,
+        "deliveries_successful": 1766,
+        "kpis": {
+          "track_saturation": 10.0,
+          "RRI": 0.6324000000000001,
+          "PSS": 99.94340690435767,
+          "LPI": 6.0,
+          "OEE": 90.54524979524979
+        }
+      },
+      {
+        "time_min": 8940.0,
+        "production_meters": 8905340.0,
+        "starvation_count": 1779,
+        "deliveries_scheduled": 1779,
+        "deliveries_successful": 1778,
+        "kpis": {
+          "track_saturation": 10.0,
+          "RRI": 0.5795999999999999,
+          "PSS": 99.94378864530636,
+          "LPI": 10.0,
+          "OEE": 90.55664022778117
+        }
+      },
+      {
+        "time_min": 9000.0,
+        "production_meters": 8964680.0,
+        "starvation_count": 1791,
+        "deliveries_scheduled": 1791,
+        "deliveries_successful": 1790,
+        "kpis": {
+          "track_saturation": 20.0,
+          "RRI": 0.6192,
+          "PSS": 99.94416527079844,
+          "LPI": 12.0,
+          "OEE": 90.55232323232323
+        }
+      },
+      {
+        "time_min": 9060.0,
+        "production_meters": 9024680.0,
+        "starvation_count": 1803,
+        "deliveries_scheduled": 1803,
+        "deliveries_successful": 1802,
+        "kpis": {
+          "track_saturation": 10.0,
+          "RRI": 0.6192,
+          "PSS": 99.94453688297283,
+          "LPI": 10.0,
+          "OEE": 90.55468593216938
+        }
+      },
+      {
+        "time_min": 9120.0,
+        "production_meters": 9085400.0,
+        "starvation_count": 1814,
+        "deliveries_scheduled": 1814,
+        "deliveries_successful": 1814,
+        "kpis": {
+          "track_saturation": 0.0,
+          "RRI": 0.5760000000000001,
+          "PSS": 100.0,
+          "LPI": 0.0,
+          "OEE": 90.56419457735248
+        }
+      },
+      {
+        "time_min": 9180.0,
+        "production_meters": 9144240.0,
+        "starvation_count": 1827,
+        "deliveries_scheduled": 1827,
+        "deliveries_successful": 1826,
+        "kpis": {
+          "track_saturation": 10.0,
+          "RRI": 0.6456,
+          "PSS": 99.94526546250684,
+          "LPI": 10.0,
+          "OEE": 90.55496137849079
+        }
+      },
+      {
+        "time_min": 9240.0,
+        "production_meters": 9204240.0,
+        "starvation_count": 1839,
+        "deliveries_scheduled": 1839,
+        "deliveries_successful": 1839,
+        "kpis": {
+          "track_saturation": 10.0,
+          "RRI": 0.9456000000000001,
+          "PSS": 100.0,
+          "LPI": 6.0,
+          "OEE": 90.55726092089729
+        }
+      },
+      {
+        "time_min": 9300.0,
+        "production_meters": 9264460.0,
+        "starvation_count": 1851,
+        "deliveries_scheduled": 1851,
+        "deliveries_successful": 1849,
+        "kpis": {
+          "track_saturation": 20.0,
+          "RRI": 0.3323999999999999,
+          "PSS": 99.89195029713667,
+          "LPI": 16.0,
+          "OEE": 90.56168132942327
+        }
+      },
+      {
+        "time_min": 9360.0,
+        "production_meters": 9323640.0,
+        "starvation_count": 1862,
+        "deliveries_scheduled": 1864,
+        "deliveries_successful": 1862,
+        "kpis": {
+          "track_saturation": 30.0,
+          "RRI": 0.6816,
+          "PSS": 99.89270386266095,
+          "LPI": 26.0,
+          "OEE": 90.55594405594405
+        }
+      },
+      {
+        "time_min": 9420.0,
+        "production_meters": 9383860.0,
+        "starvation_count": 1874,
+        "deliveries_scheduled": 1874,
+        "deliveries_successful": 1874,
+        "kpis": {
+          "track_saturation": 0.0,
+          "RRI": 0.6684000000000001,
+          "PSS": 100.0,
+          "LPI": 0.0,
+          "OEE": 90.56031654120827
+        }
+      },
+      {
+        "time_min": 9480.0,
+        "production_meters": 9443200.0,
+        "starvation_count": 1886,
+        "deliveries_scheduled": 1886,
+        "deliveries_successful": 1885,
+        "kpis": {
+          "track_saturation": 10.0,
+          "RRI": 0.40800000000000003,
+          "PSS": 99.94697773064686,
+          "LPI": 10.0,
+          "OEE": 90.55619485999233
+        }
+      },
+      {
+        "time_min": 9540.0,
+        "production_meters": 9502040.0,
+        "starvation_count": 1899,
+        "deliveries_scheduled": 1899,
+        "deliveries_successful": 1898,
+        "kpis": {
+          "track_saturation": 10.0,
+          "RRI": 0.7776,
+          "PSS": 99.94734070563455,
+          "LPI": 10.0,
+          "OEE": 90.54736039641699
+        }
+      },
+      {
+        "time_min": 9600.0,
+        "production_meters": 9562320.0,
+        "starvation_count": 1910,
+        "deliveries_scheduled": 1910,
+        "deliveries_successful": 1910,
+        "kpis": {
+          "track_saturation": 10.0,
+          "RRI": 0.7607999999999999,
+          "PSS": 100.0,
+          "LPI": 6.0,
+          "OEE": 90.55227272727274
+        }
+      },
+      {
+        "time_min": 9660.0,
+        "production_meters": 9621600.0,
+        "starvation_count": 1923,
+        "deliveries_scheduled": 1923,
+        "deliveries_successful": 1920,
+        "kpis": {
+          "track_saturation": 30.0,
+          "RRI": 0.20400000000000001,
+          "PSS": 99.84399375975039,
+          "LPI": 26.0,
+          "OEE": 90.5477131564088
+        }
+      },
+      {
+        "time_min": 9720.0,
+        "production_meters": 9681440.0,
+        "starvation_count": 1934,
+        "deliveries_scheduled": 1935,
+        "deliveries_successful": 1934,
+        "kpis": {
+          "track_saturation": 10.0,
+          "RRI": 0.8136,
+          "PSS": 99.9483204134367,
+          "LPI": 10.0,
+          "OEE": 90.54844743733632
+        }
+      },
+      {
+        "time_min": 9780.0,
+        "production_meters": 9741940.0,
+        "starvation_count": 1945,
+        "deliveries_scheduled": 1945,
+        "deliveries_successful": 1945,
+        "kpis": {
+          "track_saturation": 0.0,
+          "RRI": 0.48360000000000003,
+          "PSS": 100.0,
+          "LPI": 0.0,
+          "OEE": 90.55530767800707
+        }
+      },
+      {
+        "time_min": 9840.0,
+        "production_meters": 9801380.0,
+        "starvation_count": 1959,
+        "deliveries_scheduled": 1959,
+        "deliveries_successful": 1958,
+        "kpis": {
+          "track_saturation": 10.0,
+          "RRI": 0.8172000000000001,
+          "PSS": 99.94895354772844,
+          "LPI": 10.0,
+          "OEE": 90.55229120473022
+        }
+      },
+      {
+        "time_min": 9900.0,
+        "production_meters": 9861880.0,
+        "starvation_count": 1970,
+        "deliveries_scheduled": 1970,
+        "deliveries_successful": 1970,
+        "kpis": {
+          "track_saturation": 10.0,
+          "RRI": 0.7872000000000001,
+          "PSS": 100.0,
+          "LPI": 6.0,
+          "OEE": 90.55904499540863
+        }
+      },
+      {
+        "time_min": 9960.0,
+        "production_meters": 9921820.0,
+        "starvation_count": 1983,
+        "deliveries_scheduled": 1983,
+        "deliveries_successful": 1980,
+        "kpis": {
+          "track_saturation": 30.0,
+          "RRI": 0.19080000000000003,
+          "PSS": 99.84871406959152,
+          "LPI": 26.0,
+          "OEE": 90.56060606060606
+        }
+      },
+      {
+        "time_min": 10020.0,
+        "production_meters": 9980780.0,
+        "starvation_count": 1994,
+        "deliveries_scheduled": 1994,
+        "deliveries_successful": 1994,
+        "kpis": {
+          "track_saturation": 0.0,
+          "RRI": 0.8532,
+          "PSS": 100.0,
+          "LPI": 0.0,
+          "OEE": 90.5532571221194
+        }
+      },
+      {
+        "time_min": 10080.0,
+        "production_meters": 10041500.0,
+        "starvation_count": 2005,
+        "deliveries_scheduled": 2005,
+        "deliveries_successful": 2005,
+        "kpis": {
+          "track_saturation": 0.0,
+          "RRI": 0.51,
+          "PSS": 100.0,
+          "LPI": 0.0,
+          "OEE": 90.56186868686868
+        }
+      }
+    ]
+  },
+  "scenario_B": {
+    "scenario": "B",
+    "total_production_m": 11088000.0,
+    "production_m_per_h": 66000.0,
+    "starvation_count": 0,
+    "deliveries_scheduled": 4200,
+    "deliveries_successful": 4195,
+    "delivery_success_rate_pct": 99.88095238095238,
+    "avg_kpis": {
+      "track_saturation": 50.0,
+      "RRI": 0.708,
+      "PSS": 99.32093418068791,
+      "LPI": 30.0,
+      "OEE": 100.0
+    },
+    "samples": [
+      {
+        "time_min": 60.0,
+        "production_meters": 66000.0,
+        "starvation_count": 0,
+        "deliveries_scheduled": 25,
+        "deliveries_successful": 20,
+        "kpis": {
+          "track_saturation": 50.0,
+          "RRI": 0.708,
+          "PSS": 80.0,
+          "LPI": 30.0,
+          "OEE": 100.0
+        }
+      },
+      {
+        "time_min": 120.0,
+        "production_meters": 132000.0,
+        "starvation_count": 0,
+        "deliveries_scheduled": 50,
+        "deliveries_successful": 45,
+        "kpis": {
+          "track_saturation": 50.0,
+          "RRI": 0.708,
+          "PSS": 90.0,
+          "LPI": 30.0,
+          "OEE": 100.0
+        }
+      },
+      {
+        "time_min": 180.0,
+        "production_meters": 198000.0,
+        "starvation_count": 0,
+        "deliveries_scheduled": 75,
+        "deliveries_successful": 70,
+        "kpis": {
+          "track_saturation": 50.0,
+          "RRI": 0.708,
+          "PSS": 93.33333333333333,
+          "LPI": 30.0,
+          "OEE": 100.0
+        }
+      },
+      {
+        "time_min": 240.0,
+        "production_meters": 264000.0,
+        "starvation_count": 0,
+        "deliveries_scheduled": 100,
+        "deliveries_successful": 95,
+        "kpis": {
+          "track_saturation": 50.0,
+          "RRI": 0.708,
+          "PSS": 95.0,
+          "LPI": 30.0,
+          "OEE": 100.0
+        }
+      },
+      {
+        "time_min": 300.0,
+        "production_meters": 330000.0,
+        "starvation_count": 0,
+        "deliveries_scheduled": 125,
+        "deliveries_successful": 120,
+        "kpis": {
+          "track_saturation": 50.0,
+          "RRI": 0.708,
+          "PSS": 96.0,
+          "LPI": 30.0,
+          "OEE": 100.0
+        }
+      },
+      {
+        "time_min": 360.0,
+        "production_meters": 396000.0,
+        "starvation_count": 0,
+        "deliveries_scheduled": 150,
+        "deliveries_successful": 145,
+        "kpis": {
+          "track_saturation": 50.0,
+          "RRI": 0.708,
+          "PSS": 96.66666666666667,
+          "LPI": 30.0,
+          "OEE": 100.0
+        }
+      },
+      {
+        "time_min": 420.0,
+        "production_meters": 462000.0,
+        "starvation_count": 0,
+        "deliveries_scheduled": 175,
+        "deliveries_successful": 170,
+        "kpis": {
+          "track_saturation": 50.0,
+          "RRI": 0.708,
+          "PSS": 97.14285714285714,
+          "LPI": 30.0,
+          "OEE": 100.0
+        }
+      },
+      {
+        "time_min": 480.0,
+        "production_meters": 528000.0,
+        "starvation_count": 0,
+        "deliveries_scheduled": 200,
+        "deliveries_successful": 195,
+        "kpis": {
+          "track_saturation": 50.0,
+          "RRI": 0.708,
+          "PSS": 97.5,
+          "LPI": 30.0,
+          "OEE": 100.0
+        }
+      },
+      {
+        "time_min": 540.0,
+        "production_meters": 594000.0,
+        "starvation_count": 0,
+        "deliveries_scheduled": 225,
+        "deliveries_successful": 220,
+        "kpis": {
+          "track_saturation": 50.0,
+          "RRI": 0.708,
+          "PSS": 97.77777777777777,
+          "LPI": 30.0,
+          "OEE": 100.0
+        }
+      },
+      {
+        "time_min": 600.0,
+        "production_meters": 660000.0,
+        "starvation_count": 0,
+        "deliveries_scheduled": 250,
+        "deliveries_successful": 245,
+        "kpis": {
+          "track_saturation": 50.0,
+          "RRI": 0.708,
+          "PSS": 98.0,
+          "LPI": 30.0,
+          "OEE": 100.0
+        }
+      },
+      {
+        "time_min": 660.0,
+        "production_meters": 726000.0,
+        "starvation_count": 0,
+        "deliveries_scheduled": 275,
+        "deliveries_successful": 270,
+        "kpis": {
+          "track_saturation": 50.0,
+          "RRI": 0.708,
+          "PSS": 98.18181818181819,
+          "LPI": 30.0,
+          "OEE": 100.0
+        }
+      },
+      {
+        "time_min": 720.0,
+        "production_meters": 792000.0,
+        "starvation_count": 0,
+        "deliveries_scheduled": 300,
+        "deliveries_successful": 295,
+        "kpis": {
+          "track_saturation": 50.0,
+          "RRI": 0.708,
+          "PSS": 98.33333333333333,
+          "LPI": 30.0,
+          "OEE": 100.0
+        }
+      },
+      {
+        "time_min": 780.0,
+        "production_meters": 858000.0,
+        "starvation_count": 0,
+        "deliveries_scheduled": 325,
+        "deliveries_successful": 320,
+        "kpis": {
+          "track_saturation": 50.0,
+          "RRI": 0.708,
+          "PSS": 98.46153846153847,
+          "LPI": 30.0,
+          "OEE": 100.0
+        }
+      },
+      {
+        "time_min": 840.0,
+        "production_meters": 924000.0,
+        "starvation_count": 0,
+        "deliveries_scheduled": 350,
+        "deliveries_successful": 345,
+        "kpis": {
+          "track_saturation": 50.0,
+          "RRI": 0.708,
+          "PSS": 98.57142857142858,
+          "LPI": 30.0,
+          "OEE": 100.0
+        }
+      },
+      {
+        "time_min": 900.0,
+        "production_meters": 990000.0,
+        "starvation_count": 0,
+        "deliveries_scheduled": 375,
+        "deliveries_successful": 370,
+        "kpis": {
+          "track_saturation": 50.0,
+          "RRI": 0.708,
+          "PSS": 98.66666666666667,
+          "LPI": 30.0,
+          "OEE": 100.0
+        }
+      },
+      {
+        "time_min": 960.0,
+        "production_meters": 1056000.0,
+        "starvation_count": 0,
+        "deliveries_scheduled": 400,
+        "deliveries_successful": 395,
+        "kpis": {
+          "track_saturation": 50.0,
+          "RRI": 0.708,
+          "PSS": 98.75,
+          "LPI": 30.0,
+          "OEE": 100.0
+        }
+      },
+      {
+        "time_min": 1020.0,
+        "production_meters": 1122000.0,
+        "starvation_count": 0,
+        "deliveries_scheduled": 425,
+        "deliveries_successful": 420,
+        "kpis": {
+          "track_saturation": 50.0,
+          "RRI": 0.708,
+          "PSS": 98.82352941176471,
+          "LPI": 30.0,
+          "OEE": 100.0
+        }
+      },
+      {
+        "time_min": 1080.0,
+        "production_meters": 1188000.0,
+        "starvation_count": 0,
+        "deliveries_scheduled": 450,
+        "deliveries_successful": 445,
+        "kpis": {
+          "track_saturation": 50.0,
+          "RRI": 0.708,
+          "PSS": 98.88888888888889,
+          "LPI": 30.0,
+          "OEE": 100.0
+        }
+      },
+      {
+        "time_min": 1140.0,
+        "production_meters": 1254000.0,
+        "starvation_count": 0,
+        "deliveries_scheduled": 475,
+        "deliveries_successful": 470,
+        "kpis": {
+          "track_saturation": 50.0,
+          "RRI": 0.708,
+          "PSS": 98.94736842105263,
+          "LPI": 30.0,
+          "OEE": 100.0
+        }
+      },
+      {
+        "time_min": 1200.0,
+        "production_meters": 1320000.0,
+        "starvation_count": 0,
+        "deliveries_scheduled": 500,
+        "deliveries_successful": 495,
+        "kpis": {
+          "track_saturation": 50.0,
+          "RRI": 0.708,
+          "PSS": 99.0,
+          "LPI": 30.0,
+          "OEE": 100.0
+        }
+      },
+      {
+        "time_min": 1260.0,
+        "production_meters": 1386000.0,
+        "starvation_count": 0,
+        "deliveries_scheduled": 525,
+        "deliveries_successful": 520,
+        "kpis": {
+          "track_saturation": 50.0,
+          "RRI": 0.708,
+          "PSS": 99.04761904761905,
+          "LPI": 30.0,
+          "OEE": 100.0
+        }
+      },
+      {
+        "time_min": 1320.0,
+        "production_meters": 1452000.0,
+        "starvation_count": 0,
+        "deliveries_scheduled": 550,
+        "deliveries_successful": 545,
+        "kpis": {
+          "track_saturation": 50.0,
+          "RRI": 0.708,
+          "PSS": 99.0909090909091,
+          "LPI": 30.0,
+          "OEE": 100.0
+        }
+      },
+      {
+        "time_min": 1380.0,
+        "production_meters": 1518000.0,
+        "starvation_count": 0,
+        "deliveries_scheduled": 575,
+        "deliveries_successful": 570,
+        "kpis": {
+          "track_saturation": 50.0,
+          "RRI": 0.708,
+          "PSS": 99.1304347826087,
+          "LPI": 30.0,
+          "OEE": 100.0
+        }
+      },
+      {
+        "time_min": 1440.0,
+        "production_meters": 1584000.0,
+        "starvation_count": 0,
+        "deliveries_scheduled": 600,
+        "deliveries_successful": 595,
+        "kpis": {
+          "track_saturation": 50.0,
+          "RRI": 0.708,
+          "PSS": 99.16666666666667,
+          "LPI": 30.0,
+          "OEE": 100.0
+        }
+      },
+      {
+        "time_min": 1500.0,
+        "production_meters": 1650000.0,
+        "starvation_count": 0,
+        "deliveries_scheduled": 625,
+        "deliveries_successful": 620,
+        "kpis": {
+          "track_saturation": 50.0,
+          "RRI": 0.708,
+          "PSS": 99.2,
+          "LPI": 30.0,
+          "OEE": 100.0
+        }
+      },
+      {
+        "time_min": 1560.0,
+        "production_meters": 1716000.0,
+        "starvation_count": 0,
+        "deliveries_scheduled": 650,
+        "deliveries_successful": 645,
+        "kpis": {
+          "track_saturation": 50.0,
+          "RRI": 0.708,
+          "PSS": 99.23076923076923,
+          "LPI": 30.0,
+          "OEE": 100.0
+        }
+      },
+      {
+        "time_min": 1620.0,
+        "production_meters": 1782000.0,
+        "starvation_count": 0,
+        "deliveries_scheduled": 675,
+        "deliveries_successful": 670,
+        "kpis": {
+          "track_saturation": 50.0,
+          "RRI": 0.708,
+          "PSS": 99.25925925925925,
+          "LPI": 30.0,
+          "OEE": 100.0
+        }
+      },
+      {
+        "time_min": 1680.0,
+        "production_meters": 1848000.0,
+        "starvation_count": 0,
+        "deliveries_scheduled": 700,
+        "deliveries_successful": 695,
+        "kpis": {
+          "track_saturation": 50.0,
+          "RRI": 0.708,
+          "PSS": 99.28571428571429,
+          "LPI": 30.0,
+          "OEE": 100.0
+        }
+      },
+      {
+        "time_min": 1740.0,
+        "production_meters": 1914000.0,
+        "starvation_count": 0,
+        "deliveries_scheduled": 725,
+        "deliveries_successful": 720,
+        "kpis": {
+          "track_saturation": 50.0,
+          "RRI": 0.708,
+          "PSS": 99.3103448275862,
+          "LPI": 30.0,
+          "OEE": 100.0
+        }
+      },
+      {
+        "time_min": 1800.0,
+        "production_meters": 1980000.0,
+        "starvation_count": 0,
+        "deliveries_scheduled": 750,
+        "deliveries_successful": 745,
+        "kpis": {
+          "track_saturation": 50.0,
+          "RRI": 0.708,
+          "PSS": 99.33333333333333,
+          "LPI": 30.0,
+          "OEE": 100.0
+        }
+      },
+      {
+        "time_min": 1860.0,
+        "production_meters": 2046000.0,
+        "starvation_count": 0,
+        "deliveries_scheduled": 775,
+        "deliveries_successful": 770,
+        "kpis": {
+          "track_saturation": 50.0,
+          "RRI": 0.708,
+          "PSS": 99.35483870967742,
+          "LPI": 30.0,
+          "OEE": 100.0
+        }
+      },
+      {
+        "time_min": 1920.0,
+        "production_meters": 2112000.0,
+        "starvation_count": 0,
+        "deliveries_scheduled": 800,
+        "deliveries_successful": 795,
+        "kpis": {
+          "track_saturation": 50.0,
+          "RRI": 0.708,
+          "PSS": 99.375,
+          "LPI": 30.0,
+          "OEE": 100.0
+        }
+      },
+      {
+        "time_min": 1980.0,
+        "production_meters": 2178000.0,
+        "starvation_count": 0,
+        "deliveries_scheduled": 825,
+        "deliveries_successful": 820,
+        "kpis": {
+          "track_saturation": 50.0,
+          "RRI": 0.708,
+          "PSS": 99.39393939393939,
+          "LPI": 30.0,
+          "OEE": 100.0
+        }
+      },
+      {
+        "time_min": 2040.0,
+        "production_meters": 2244000.0,
+        "starvation_count": 0,
+        "deliveries_scheduled": 850,
+        "deliveries_successful": 845,
+        "kpis": {
+          "track_saturation": 50.0,
+          "RRI": 0.708,
+          "PSS": 99.41176470588235,
+          "LPI": 30.0,
+          "OEE": 100.0
+        }
+      },
+      {
+        "time_min": 2100.0,
+        "production_meters": 2310000.0,
+        "starvation_count": 0,
+        "deliveries_scheduled": 875,
+        "deliveries_successful": 870,
+        "kpis": {
+          "track_saturation": 50.0,
+          "RRI": 0.708,
+          "PSS": 99.42857142857143,
+          "LPI": 30.0,
+          "OEE": 100.0
+        }
+      },
+      {
+        "time_min": 2160.0,
+        "production_meters": 2376000.0,
+        "starvation_count": 0,
+        "deliveries_scheduled": 900,
+        "deliveries_successful": 895,
+        "kpis": {
+          "track_saturation": 50.0,
+          "RRI": 0.708,
+          "PSS": 99.44444444444444,
+          "LPI": 30.0,
+          "OEE": 100.0
+        }
+      },
+      {
+        "time_min": 2220.0,
+        "production_meters": 2442000.0,
+        "starvation_count": 0,
+        "deliveries_scheduled": 925,
+        "deliveries_successful": 920,
+        "kpis": {
+          "track_saturation": 50.0,
+          "RRI": 0.708,
+          "PSS": 99.45945945945947,
+          "LPI": 30.0,
+          "OEE": 100.0
+        }
+      },
+      {
+        "time_min": 2280.0,
+        "production_meters": 2508000.0,
+        "starvation_count": 0,
+        "deliveries_scheduled": 950,
+        "deliveries_successful": 945,
+        "kpis": {
+          "track_saturation": 50.0,
+          "RRI": 0.708,
+          "PSS": 99.47368421052632,
+          "LPI": 30.0,
+          "OEE": 100.0
+        }
+      },
+      {
+        "time_min": 2340.0,
+        "production_meters": 2574000.0,
+        "starvation_count": 0,
+        "deliveries_scheduled": 975,
+        "deliveries_successful": 970,
+        "kpis": {
+          "track_saturation": 50.0,
+          "RRI": 0.708,
+          "PSS": 99.48717948717949,
+          "LPI": 30.0,
+          "OEE": 100.0
+        }
+      },
+      {
+        "time_min": 2400.0,
+        "production_meters": 2640000.0,
+        "starvation_count": 0,
+        "deliveries_scheduled": 1000,
+        "deliveries_successful": 995,
+        "kpis": {
+          "track_saturation": 50.0,
+          "RRI": 0.708,
+          "PSS": 99.5,
+          "LPI": 30.0,
+          "OEE": 100.0
+        }
+      },
+      {
+        "time_min": 2460.0,
+        "production_meters": 2706000.0,
+        "starvation_count": 0,
+        "deliveries_scheduled": 1025,
+        "deliveries_successful": 1020,
+        "kpis": {
+          "track_saturation": 50.0,
+          "RRI": 0.708,
+          "PSS": 99.51219512195122,
+          "LPI": 30.0,
+          "OEE": 100.0
+        }
+      },
+      {
+        "time_min": 2520.0,
+        "production_meters": 2772000.0,
+        "starvation_count": 0,
+        "deliveries_scheduled": 1050,
+        "deliveries_successful": 1045,
+        "kpis": {
+          "track_saturation": 50.0,
+          "RRI": 0.708,
+          "PSS": 99.52380952380952,
+          "LPI": 30.0,
+          "OEE": 100.0
+        }
+      },
+      {
+        "time_min": 2580.0,
+        "production_meters": 2838000.0,
+        "starvation_count": 0,
+        "deliveries_scheduled": 1075,
+        "deliveries_successful": 1070,
+        "kpis": {
+          "track_saturation": 50.0,
+          "RRI": 0.708,
+          "PSS": 99.53488372093024,
+          "LPI": 30.0,
+          "OEE": 100.0
+        }
+      },
+      {
+        "time_min": 2640.0,
+        "production_meters": 2904000.0,
+        "starvation_count": 0,
+        "deliveries_scheduled": 1100,
+        "deliveries_successful": 1095,
+        "kpis": {
+          "track_saturation": 50.0,
+          "RRI": 0.708,
+          "PSS": 99.54545454545455,
+          "LPI": 30.0,
+          "OEE": 100.0
+        }
+      },
+      {
+        "time_min": 2700.0,
+        "production_meters": 2970000.0,
+        "starvation_count": 0,
+        "deliveries_scheduled": 1125,
+        "deliveries_successful": 1120,
+        "kpis": {
+          "track_saturation": 50.0,
+          "RRI": 0.708,
+          "PSS": 99.55555555555556,
+          "LPI": 30.0,
+          "OEE": 100.0
+        }
+      },
+      {
+        "time_min": 2760.0,
+        "production_meters": 3036000.0,
+        "starvation_count": 0,
+        "deliveries_scheduled": 1150,
+        "deliveries_successful": 1145,
+        "kpis": {
+          "track_saturation": 50.0,
+          "RRI": 0.708,
+          "PSS": 99.56521739130434,
+          "LPI": 30.0,
+          "OEE": 100.0
+        }
+      },
+      {
+        "time_min": 2820.0,
+        "production_meters": 3102000.0,
+        "starvation_count": 0,
+        "deliveries_scheduled": 1175,
+        "deliveries_successful": 1170,
+        "kpis": {
+          "track_saturation": 50.0,
+          "RRI": 0.708,
+          "PSS": 99.57446808510639,
+          "LPI": 30.0,
+          "OEE": 100.0
+        }
+      },
+      {
+        "time_min": 2880.0,
+        "production_meters": 3168000.0,
+        "starvation_count": 0,
+        "deliveries_scheduled": 1200,
+        "deliveries_successful": 1195,
+        "kpis": {
+          "track_saturation": 50.0,
+          "RRI": 0.708,
+          "PSS": 99.58333333333333,
+          "LPI": 30.0,
+          "OEE": 100.0
+        }
+      },
+      {
+        "time_min": 2940.0,
+        "production_meters": 3234000.0,
+        "starvation_count": 0,
+        "deliveries_scheduled": 1225,
+        "deliveries_successful": 1220,
+        "kpis": {
+          "track_saturation": 50.0,
+          "RRI": 0.708,
+          "PSS": 99.59183673469387,
+          "LPI": 30.0,
+          "OEE": 100.0
+        }
+      },
+      {
+        "time_min": 3000.0,
+        "production_meters": 3300000.0,
+        "starvation_count": 0,
+        "deliveries_scheduled": 1250,
+        "deliveries_successful": 1245,
+        "kpis": {
+          "track_saturation": 50.0,
+          "RRI": 0.708,
+          "PSS": 99.6,
+          "LPI": 30.0,
+          "OEE": 100.0
+        }
+      },
+      {
+        "time_min": 3060.0,
+        "production_meters": 3366000.0,
+        "starvation_count": 0,
+        "deliveries_scheduled": 1275,
+        "deliveries_successful": 1270,
+        "kpis": {
+          "track_saturation": 50.0,
+          "RRI": 0.708,
+          "PSS": 99.6078431372549,
+          "LPI": 30.0,
+          "OEE": 100.0
+        }
+      },
+      {
+        "time_min": 3120.0,
+        "production_meters": 3432000.0,
+        "starvation_count": 0,
+        "deliveries_scheduled": 1300,
+        "deliveries_successful": 1295,
+        "kpis": {
+          "track_saturation": 50.0,
+          "RRI": 0.708,
+          "PSS": 99.61538461538461,
+          "LPI": 30.0,
+          "OEE": 100.0
+        }
+      },
+      {
+        "time_min": 3180.0,
+        "production_meters": 3498000.0,
+        "starvation_count": 0,
+        "deliveries_scheduled": 1325,
+        "deliveries_successful": 1320,
+        "kpis": {
+          "track_saturation": 50.0,
+          "RRI": 0.708,
+          "PSS": 99.62264150943396,
+          "LPI": 30.0,
+          "OEE": 100.0
+        }
+      },
+      {
+        "time_min": 3240.0,
+        "production_meters": 3564000.0,
+        "starvation_count": 0,
+        "deliveries_scheduled": 1350,
+        "deliveries_successful": 1345,
+        "kpis": {
+          "track_saturation": 50.0,
+          "RRI": 0.708,
+          "PSS": 99.62962962962963,
+          "LPI": 30.0,
+          "OEE": 100.0
+        }
+      },
+      {
+        "time_min": 3300.0,
+        "production_meters": 3630000.0,
+        "starvation_count": 0,
+        "deliveries_scheduled": 1375,
+        "deliveries_successful": 1370,
+        "kpis": {
+          "track_saturation": 50.0,
+          "RRI": 0.708,
+          "PSS": 99.63636363636364,
+          "LPI": 30.0,
+          "OEE": 100.0
+        }
+      },
+      {
+        "time_min": 3360.0,
+        "production_meters": 3696000.0,
+        "starvation_count": 0,
+        "deliveries_scheduled": 1400,
+        "deliveries_successful": 1395,
+        "kpis": {
+          "track_saturation": 50.0,
+          "RRI": 0.708,
+          "PSS": 99.64285714285714,
+          "LPI": 30.0,
+          "OEE": 100.0
+        }
+      },
+      {
+        "time_min": 3420.0,
+        "production_meters": 3762000.0,
+        "starvation_count": 0,
+        "deliveries_scheduled": 1425,
+        "deliveries_successful": 1420,
+        "kpis": {
+          "track_saturation": 50.0,
+          "RRI": 0.708,
+          "PSS": 99.64912280701755,
+          "LPI": 30.0,
+          "OEE": 100.0
+        }
+      },
+      {
+        "time_min": 3480.0,
+        "production_meters": 3828000.0,
+        "starvation_count": 0,
+        "deliveries_scheduled": 1450,
+        "deliveries_successful": 1445,
+        "kpis": {
+          "track_saturation": 50.0,
+          "RRI": 0.708,
+          "PSS": 99.6551724137931,
+          "LPI": 30.0,
+          "OEE": 100.0
+        }
+      },
+      {
+        "time_min": 3540.0,
+        "production_meters": 3894000.0,
+        "starvation_count": 0,
+        "deliveries_scheduled": 1475,
+        "deliveries_successful": 1470,
+        "kpis": {
+          "track_saturation": 50.0,
+          "RRI": 0.708,
+          "PSS": 99.66101694915255,
+          "LPI": 30.0,
+          "OEE": 100.0
+        }
+      },
+      {
+        "time_min": 3600.0,
+        "production_meters": 3960000.0,
+        "starvation_count": 0,
+        "deliveries_scheduled": 1500,
+        "deliveries_successful": 1495,
+        "kpis": {
+          "track_saturation": 50.0,
+          "RRI": 0.708,
+          "PSS": 99.66666666666667,
+          "LPI": 30.0,
+          "OEE": 100.0
+        }
+      },
+      {
+        "time_min": 3660.0,
+        "production_meters": 4026000.0,
+        "starvation_count": 0,
+        "deliveries_scheduled": 1525,
+        "deliveries_successful": 1520,
+        "kpis": {
+          "track_saturation": 50.0,
+          "RRI": 0.708,
+          "PSS": 99.672131147541,
+          "LPI": 30.0,
+          "OEE": 100.0
+        }
+      },
+      {
+        "time_min": 3720.0,
+        "production_meters": 4092000.0,
+        "starvation_count": 0,
+        "deliveries_scheduled": 1550,
+        "deliveries_successful": 1545,
+        "kpis": {
+          "track_saturation": 50.0,
+          "RRI": 0.708,
+          "PSS": 99.67741935483872,
+          "LPI": 30.0,
+          "OEE": 100.0
+        }
+      },
+      {
+        "time_min": 3780.0,
+        "production_meters": 4158000.0,
+        "starvation_count": 0,
+        "deliveries_scheduled": 1575,
+        "deliveries_successful": 1570,
+        "kpis": {
+          "track_saturation": 50.0,
+          "RRI": 0.708,
+          "PSS": 99.68253968253968,
+          "LPI": 30.0,
+          "OEE": 100.0
+        }
+      },
+      {
+        "time_min": 3840.0,
+        "production_meters": 4224000.0,
+        "starvation_count": 0,
+        "deliveries_scheduled": 1600,
+        "deliveries_successful": 1595,
+        "kpis": {
+          "track_saturation": 50.0,
+          "RRI": 0.708,
+          "PSS": 99.6875,
+          "LPI": 30.0,
+          "OEE": 100.0
+        }
+      },
+      {
+        "time_min": 3900.0,
+        "production_meters": 4290000.0,
+        "starvation_count": 0,
+        "deliveries_scheduled": 1625,
+        "deliveries_successful": 1620,
+        "kpis": {
+          "track_saturation": 50.0,
+          "RRI": 0.708,
+          "PSS": 99.6923076923077,
+          "LPI": 30.0,
+          "OEE": 100.0
+        }
+      },
+      {
+        "time_min": 3960.0,
+        "production_meters": 4356000.0,
+        "starvation_count": 0,
+        "deliveries_scheduled": 1650,
+        "deliveries_successful": 1645,
+        "kpis": {
+          "track_saturation": 50.0,
+          "RRI": 0.708,
+          "PSS": 99.69696969696969,
+          "LPI": 30.0,
+          "OEE": 100.0
+        }
+      },
+      {
+        "time_min": 4020.0,
+        "production_meters": 4422000.0,
+        "starvation_count": 0,
+        "deliveries_scheduled": 1675,
+        "deliveries_successful": 1670,
+        "kpis": {
+          "track_saturation": 50.0,
+          "RRI": 0.708,
+          "PSS": 99.70149253731343,
+          "LPI": 30.0,
+          "OEE": 100.0
+        }
+      },
+      {
+        "time_min": 4080.0,
+        "production_meters": 4488000.0,
+        "starvation_count": 0,
+        "deliveries_scheduled": 1700,
+        "deliveries_successful": 1695,
+        "kpis": {
+          "track_saturation": 50.0,
+          "RRI": 0.708,
+          "PSS": 99.70588235294117,
+          "LPI": 30.0,
+          "OEE": 100.0
+        }
+      },
+      {
+        "time_min": 4140.0,
+        "production_meters": 4554000.0,
+        "starvation_count": 0,
+        "deliveries_scheduled": 1725,
+        "deliveries_successful": 1720,
+        "kpis": {
+          "track_saturation": 50.0,
+          "RRI": 0.708,
+          "PSS": 99.71014492753623,
+          "LPI": 30.0,
+          "OEE": 100.0
+        }
+      },
+      {
+        "time_min": 4200.0,
+        "production_meters": 4620000.0,
+        "starvation_count": 0,
+        "deliveries_scheduled": 1750,
+        "deliveries_successful": 1745,
+        "kpis": {
+          "track_saturation": 50.0,
+          "RRI": 0.708,
+          "PSS": 99.71428571428571,
+          "LPI": 30.0,
+          "OEE": 100.0
+        }
+      },
+      {
+        "time_min": 4260.0,
+        "production_meters": 4686000.0,
+        "starvation_count": 0,
+        "deliveries_scheduled": 1775,
+        "deliveries_successful": 1770,
+        "kpis": {
+          "track_saturation": 50.0,
+          "RRI": 0.708,
+          "PSS": 99.71830985915493,
+          "LPI": 30.0,
+          "OEE": 100.0
+        }
+      },
+      {
+        "time_min": 4320.0,
+        "production_meters": 4752000.0,
+        "starvation_count": 0,
+        "deliveries_scheduled": 1800,
+        "deliveries_successful": 1795,
+        "kpis": {
+          "track_saturation": 50.0,
+          "RRI": 0.708,
+          "PSS": 99.72222222222223,
+          "LPI": 30.0,
+          "OEE": 100.0
+        }
+      },
+      {
+        "time_min": 4380.0,
+        "production_meters": 4818000.0,
+        "starvation_count": 0,
+        "deliveries_scheduled": 1825,
+        "deliveries_successful": 1820,
+        "kpis": {
+          "track_saturation": 50.0,
+          "RRI": 0.708,
+          "PSS": 99.72602739726028,
+          "LPI": 30.0,
+          "OEE": 100.0
+        }
+      },
+      {
+        "time_min": 4440.0,
+        "production_meters": 4884000.0,
+        "starvation_count": 0,
+        "deliveries_scheduled": 1850,
+        "deliveries_successful": 1845,
+        "kpis": {
+          "track_saturation": 50.0,
+          "RRI": 0.708,
+          "PSS": 99.72972972972973,
+          "LPI": 30.0,
+          "OEE": 100.0
+        }
+      },
+      {
+        "time_min": 4500.0,
+        "production_meters": 4950000.0,
+        "starvation_count": 0,
+        "deliveries_scheduled": 1875,
+        "deliveries_successful": 1870,
+        "kpis": {
+          "track_saturation": 50.0,
+          "RRI": 0.708,
+          "PSS": 99.73333333333333,
+          "LPI": 30.0,
+          "OEE": 100.0
+        }
+      },
+      {
+        "time_min": 4560.0,
+        "production_meters": 5016000.0,
+        "starvation_count": 0,
+        "deliveries_scheduled": 1900,
+        "deliveries_successful": 1895,
+        "kpis": {
+          "track_saturation": 50.0,
+          "RRI": 0.708,
+          "PSS": 99.73684210526315,
+          "LPI": 30.0,
+          "OEE": 100.0
+        }
+      },
+      {
+        "time_min": 4620.0,
+        "production_meters": 5082000.0,
+        "starvation_count": 0,
+        "deliveries_scheduled": 1925,
+        "deliveries_successful": 1920,
+        "kpis": {
+          "track_saturation": 50.0,
+          "RRI": 0.708,
+          "PSS": 99.74025974025975,
+          "LPI": 30.0,
+          "OEE": 100.0
+        }
+      },
+      {
+        "time_min": 4680.0,
+        "production_meters": 5148000.0,
+        "starvation_count": 0,
+        "deliveries_scheduled": 1950,
+        "deliveries_successful": 1945,
+        "kpis": {
+          "track_saturation": 50.0,
+          "RRI": 0.708,
+          "PSS": 99.74358974358975,
+          "LPI": 30.0,
+          "OEE": 100.0
+        }
+      },
+      {
+        "time_min": 4740.0,
+        "production_meters": 5214000.0,
+        "starvation_count": 0,
+        "deliveries_scheduled": 1975,
+        "deliveries_successful": 1970,
+        "kpis": {
+          "track_saturation": 50.0,
+          "RRI": 0.708,
+          "PSS": 99.74683544303798,
+          "LPI": 30.0,
+          "OEE": 100.0
+        }
+      },
+      {
+        "time_min": 4800.0,
+        "production_meters": 5280000.0,
+        "starvation_count": 0,
+        "deliveries_scheduled": 2000,
+        "deliveries_successful": 1995,
+        "kpis": {
+          "track_saturation": 50.0,
+          "RRI": 0.708,
+          "PSS": 99.75,
+          "LPI": 30.0,
+          "OEE": 100.0
+        }
+      },
+      {
+        "time_min": 4860.0,
+        "production_meters": 5346000.0,
+        "starvation_count": 0,
+        "deliveries_scheduled": 2025,
+        "deliveries_successful": 2020,
+        "kpis": {
+          "track_saturation": 50.0,
+          "RRI": 0.708,
+          "PSS": 99.75308641975309,
+          "LPI": 30.0,
+          "OEE": 100.0
+        }
+      },
+      {
+        "time_min": 4920.0,
+        "production_meters": 5412000.0,
+        "starvation_count": 0,
+        "deliveries_scheduled": 2050,
+        "deliveries_successful": 2045,
+        "kpis": {
+          "track_saturation": 50.0,
+          "RRI": 0.708,
+          "PSS": 99.7560975609756,
+          "LPI": 30.0,
+          "OEE": 100.0
+        }
+      },
+      {
+        "time_min": 4980.0,
+        "production_meters": 5478000.0,
+        "starvation_count": 0,
+        "deliveries_scheduled": 2075,
+        "deliveries_successful": 2070,
+        "kpis": {
+          "track_saturation": 50.0,
+          "RRI": 0.708,
+          "PSS": 99.75903614457832,
+          "LPI": 30.0,
+          "OEE": 100.0
+        }
+      },
+      {
+        "time_min": 5040.0,
+        "production_meters": 5544000.0,
+        "starvation_count": 0,
+        "deliveries_scheduled": 2100,
+        "deliveries_successful": 2095,
+        "kpis": {
+          "track_saturation": 50.0,
+          "RRI": 0.708,
+          "PSS": 99.76190476190476,
+          "LPI": 30.0,
+          "OEE": 100.0
+        }
+      },
+      {
+        "time_min": 5100.0,
+        "production_meters": 5610000.0,
+        "starvation_count": 0,
+        "deliveries_scheduled": 2125,
+        "deliveries_successful": 2120,
+        "kpis": {
+          "track_saturation": 50.0,
+          "RRI": 0.708,
+          "PSS": 99.76470588235294,
+          "LPI": 30.0,
+          "OEE": 100.0
+        }
+      },
+      {
+        "time_min": 5160.0,
+        "production_meters": 5676000.0,
+        "starvation_count": 0,
+        "deliveries_scheduled": 2150,
+        "deliveries_successful": 2145,
+        "kpis": {
+          "track_saturation": 50.0,
+          "RRI": 0.708,
+          "PSS": 99.76744186046511,
+          "LPI": 30.0,
+          "OEE": 100.0
+        }
+      },
+      {
+        "time_min": 5220.0,
+        "production_meters": 5742000.0,
+        "starvation_count": 0,
+        "deliveries_scheduled": 2175,
+        "deliveries_successful": 2170,
+        "kpis": {
+          "track_saturation": 50.0,
+          "RRI": 0.708,
+          "PSS": 99.77011494252874,
+          "LPI": 30.0,
+          "OEE": 100.0
+        }
+      },
+      {
+        "time_min": 5280.0,
+        "production_meters": 5808000.0,
+        "starvation_count": 0,
+        "deliveries_scheduled": 2200,
+        "deliveries_successful": 2195,
+        "kpis": {
+          "track_saturation": 50.0,
+          "RRI": 0.708,
+          "PSS": 99.77272727272727,
+          "LPI": 30.0,
+          "OEE": 100.0
+        }
+      },
+      {
+        "time_min": 5340.0,
+        "production_meters": 5874000.0,
+        "starvation_count": 0,
+        "deliveries_scheduled": 2225,
+        "deliveries_successful": 2220,
+        "kpis": {
+          "track_saturation": 50.0,
+          "RRI": 0.708,
+          "PSS": 99.7752808988764,
+          "LPI": 30.0,
+          "OEE": 100.0
+        }
+      },
+      {
+        "time_min": 5400.0,
+        "production_meters": 5940000.0,
+        "starvation_count": 0,
+        "deliveries_scheduled": 2250,
+        "deliveries_successful": 2245,
+        "kpis": {
+          "track_saturation": 50.0,
+          "RRI": 0.708,
+          "PSS": 99.77777777777777,
+          "LPI": 30.0,
+          "OEE": 100.0
+        }
+      },
+      {
+        "time_min": 5460.0,
+        "production_meters": 6006000.0,
+        "starvation_count": 0,
+        "deliveries_scheduled": 2275,
+        "deliveries_successful": 2270,
+        "kpis": {
+          "track_saturation": 50.0,
+          "RRI": 0.708,
+          "PSS": 99.78021978021978,
+          "LPI": 30.0,
+          "OEE": 100.0
+        }
+      },
+      {
+        "time_min": 5520.0,
+        "production_meters": 6072000.0,
+        "starvation_count": 0,
+        "deliveries_scheduled": 2300,
+        "deliveries_successful": 2295,
+        "kpis": {
+          "track_saturation": 50.0,
+          "RRI": 0.708,
+          "PSS": 99.78260869565217,
+          "LPI": 30.0,
+          "OEE": 100.0
+        }
+      },
+      {
+        "time_min": 5580.0,
+        "production_meters": 6138000.0,
+        "starvation_count": 0,
+        "deliveries_scheduled": 2325,
+        "deliveries_successful": 2320,
+        "kpis": {
+          "track_saturation": 50.0,
+          "RRI": 0.708,
+          "PSS": 99.78494623655914,
+          "LPI": 30.0,
+          "OEE": 100.0
+        }
+      },
+      {
+        "time_min": 5640.0,
+        "production_meters": 6204000.0,
+        "starvation_count": 0,
+        "deliveries_scheduled": 2350,
+        "deliveries_successful": 2345,
+        "kpis": {
+          "track_saturation": 50.0,
+          "RRI": 0.708,
+          "PSS": 99.7872340425532,
+          "LPI": 30.0,
+          "OEE": 100.0
+        }
+      },
+      {
+        "time_min": 5700.0,
+        "production_meters": 6270000.0,
+        "starvation_count": 0,
+        "deliveries_scheduled": 2375,
+        "deliveries_successful": 2370,
+        "kpis": {
+          "track_saturation": 50.0,
+          "RRI": 0.708,
+          "PSS": 99.78947368421053,
+          "LPI": 30.0,
+          "OEE": 100.0
+        }
+      },
+      {
+        "time_min": 5760.0,
+        "production_meters": 6336000.0,
+        "starvation_count": 0,
+        "deliveries_scheduled": 2400,
+        "deliveries_successful": 2395,
+        "kpis": {
+          "track_saturation": 50.0,
+          "RRI": 0.708,
+          "PSS": 99.79166666666667,
+          "LPI": 30.0,
+          "OEE": 100.0
+        }
+      },
+      {
+        "time_min": 5820.0,
+        "production_meters": 6402000.0,
+        "starvation_count": 0,
+        "deliveries_scheduled": 2425,
+        "deliveries_successful": 2420,
+        "kpis": {
+          "track_saturation": 50.0,
+          "RRI": 0.708,
+          "PSS": 99.79381443298969,
+          "LPI": 30.0,
+          "OEE": 100.0
+        }
+      },
+      {
+        "time_min": 5880.0,
+        "production_meters": 6468000.0,
+        "starvation_count": 0,
+        "deliveries_scheduled": 2450,
+        "deliveries_successful": 2445,
+        "kpis": {
+          "track_saturation": 50.0,
+          "RRI": 0.708,
+          "PSS": 99.79591836734694,
+          "LPI": 30.0,
+          "OEE": 100.0
+        }
+      },
+      {
+        "time_min": 5940.0,
+        "production_meters": 6534000.0,
+        "starvation_count": 0,
+        "deliveries_scheduled": 2475,
+        "deliveries_successful": 2470,
+        "kpis": {
+          "track_saturation": 50.0,
+          "RRI": 0.708,
+          "PSS": 99.79797979797979,
+          "LPI": 30.0,
+          "OEE": 100.0
+        }
+      },
+      {
+        "time_min": 6000.0,
+        "production_meters": 6600000.0,
+        "starvation_count": 0,
+        "deliveries_scheduled": 2500,
+        "deliveries_successful": 2495,
+        "kpis": {
+          "track_saturation": 50.0,
+          "RRI": 0.708,
+          "PSS": 99.8,
+          "LPI": 30.0,
+          "OEE": 100.0
+        }
+      },
+      {
+        "time_min": 6060.0,
+        "production_meters": 6666000.0,
+        "starvation_count": 0,
+        "deliveries_scheduled": 2525,
+        "deliveries_successful": 2520,
+        "kpis": {
+          "track_saturation": 50.0,
+          "RRI": 0.708,
+          "PSS": 99.8019801980198,
+          "LPI": 30.0,
+          "OEE": 100.0
+        }
+      },
+      {
+        "time_min": 6120.0,
+        "production_meters": 6732000.0,
+        "starvation_count": 0,
+        "deliveries_scheduled": 2550,
+        "deliveries_successful": 2545,
+        "kpis": {
+          "track_saturation": 50.0,
+          "RRI": 0.708,
+          "PSS": 99.80392156862746,
+          "LPI": 30.0,
+          "OEE": 100.0
+        }
+      },
+      {
+        "time_min": 6180.0,
+        "production_meters": 6798000.0,
+        "starvation_count": 0,
+        "deliveries_scheduled": 2575,
+        "deliveries_successful": 2570,
+        "kpis": {
+          "track_saturation": 50.0,
+          "RRI": 0.708,
+          "PSS": 99.80582524271846,
+          "LPI": 30.0,
+          "OEE": 100.0
+        }
+      },
+      {
+        "time_min": 6240.0,
+        "production_meters": 6864000.0,
+        "starvation_count": 0,
+        "deliveries_scheduled": 2600,
+        "deliveries_successful": 2595,
+        "kpis": {
+          "track_saturation": 50.0,
+          "RRI": 0.708,
+          "PSS": 99.8076923076923,
+          "LPI": 30.0,
+          "OEE": 100.0
+        }
+      },
+      {
+        "time_min": 6300.0,
+        "production_meters": 6930000.0,
+        "starvation_count": 0,
+        "deliveries_scheduled": 2625,
+        "deliveries_successful": 2620,
+        "kpis": {
+          "track_saturation": 50.0,
+          "RRI": 0.708,
+          "PSS": 99.80952380952381,
+          "LPI": 30.0,
+          "OEE": 100.0
+        }
+      },
+      {
+        "time_min": 6360.0,
+        "production_meters": 6996000.0,
+        "starvation_count": 0,
+        "deliveries_scheduled": 2650,
+        "deliveries_successful": 2645,
+        "kpis": {
+          "track_saturation": 50.0,
+          "RRI": 0.708,
+          "PSS": 99.81132075471699,
+          "LPI": 30.0,
+          "OEE": 100.0
+        }
+      },
+      {
+        "time_min": 6420.0,
+        "production_meters": 7062000.0,
+        "starvation_count": 0,
+        "deliveries_scheduled": 2675,
+        "deliveries_successful": 2670,
+        "kpis": {
+          "track_saturation": 50.0,
+          "RRI": 0.708,
+          "PSS": 99.81308411214953,
+          "LPI": 30.0,
+          "OEE": 100.0
+        }
+      },
+      {
+        "time_min": 6480.0,
+        "production_meters": 7128000.0,
+        "starvation_count": 0,
+        "deliveries_scheduled": 2700,
+        "deliveries_successful": 2695,
+        "kpis": {
+          "track_saturation": 50.0,
+          "RRI": 0.708,
+          "PSS": 99.81481481481481,
+          "LPI": 30.0,
+          "OEE": 100.0
+        }
+      },
+      {
+        "time_min": 6540.0,
+        "production_meters": 7194000.0,
+        "starvation_count": 0,
+        "deliveries_scheduled": 2725,
+        "deliveries_successful": 2720,
+        "kpis": {
+          "track_saturation": 50.0,
+          "RRI": 0.708,
+          "PSS": 99.81651376146789,
+          "LPI": 30.0,
+          "OEE": 100.0
+        }
+      },
+      {
+        "time_min": 6600.0,
+        "production_meters": 7260000.0,
+        "starvation_count": 0,
+        "deliveries_scheduled": 2750,
+        "deliveries_successful": 2745,
+        "kpis": {
+          "track_saturation": 50.0,
+          "RRI": 0.708,
+          "PSS": 99.81818181818181,
+          "LPI": 30.0,
+          "OEE": 100.0
+        }
+      },
+      {
+        "time_min": 6660.0,
+        "production_meters": 7326000.0,
+        "starvation_count": 0,
+        "deliveries_scheduled": 2775,
+        "deliveries_successful": 2770,
+        "kpis": {
+          "track_saturation": 50.0,
+          "RRI": 0.708,
+          "PSS": 99.81981981981983,
+          "LPI": 30.0,
+          "OEE": 100.0
+        }
+      },
+      {
+        "time_min": 6720.0,
+        "production_meters": 7392000.0,
+        "starvation_count": 0,
+        "deliveries_scheduled": 2800,
+        "deliveries_successful": 2795,
+        "kpis": {
+          "track_saturation": 50.0,
+          "RRI": 0.708,
+          "PSS": 99.82142857142857,
+          "LPI": 30.0,
+          "OEE": 100.0
+        }
+      },
+      {
+        "time_min": 6780.0,
+        "production_meters": 7458000.0,
+        "starvation_count": 0,
+        "deliveries_scheduled": 2825,
+        "deliveries_successful": 2820,
+        "kpis": {
+          "track_saturation": 50.0,
+          "RRI": 0.708,
+          "PSS": 99.82300884955752,
+          "LPI": 30.0,
+          "OEE": 100.0
+        }
+      },
+      {
+        "time_min": 6840.0,
+        "production_meters": 7524000.0,
+        "starvation_count": 0,
+        "deliveries_scheduled": 2850,
+        "deliveries_successful": 2845,
+        "kpis": {
+          "track_saturation": 50.0,
+          "RRI": 0.708,
+          "PSS": 99.82456140350877,
+          "LPI": 30.0,
+          "OEE": 100.0
+        }
+      },
+      {
+        "time_min": 6900.0,
+        "production_meters": 7590000.0,
+        "starvation_count": 0,
+        "deliveries_scheduled": 2875,
+        "deliveries_successful": 2870,
+        "kpis": {
+          "track_saturation": 50.0,
+          "RRI": 0.708,
+          "PSS": 99.82608695652175,
+          "LPI": 30.0,
+          "OEE": 100.0
+        }
+      },
+      {
+        "time_min": 6960.0,
+        "production_meters": 7656000.0,
+        "starvation_count": 0,
+        "deliveries_scheduled": 2900,
+        "deliveries_successful": 2895,
+        "kpis": {
+          "track_saturation": 50.0,
+          "RRI": 0.708,
+          "PSS": 99.82758620689656,
+          "LPI": 30.0,
+          "OEE": 100.0
+        }
+      },
+      {
+        "time_min": 7020.0,
+        "production_meters": 7722000.0,
+        "starvation_count": 0,
+        "deliveries_scheduled": 2925,
+        "deliveries_successful": 2920,
+        "kpis": {
+          "track_saturation": 50.0,
+          "RRI": 0.708,
+          "PSS": 99.82905982905983,
+          "LPI": 30.0,
+          "OEE": 100.0
+        }
+      },
+      {
+        "time_min": 7080.0,
+        "production_meters": 7788000.0,
+        "starvation_count": 0,
+        "deliveries_scheduled": 2950,
+        "deliveries_successful": 2945,
+        "kpis": {
+          "track_saturation": 50.0,
+          "RRI": 0.708,
+          "PSS": 99.83050847457628,
+          "LPI": 30.0,
+          "OEE": 100.0
+        }
+      },
+      {
+        "time_min": 7140.0,
+        "production_meters": 7854000.0,
+        "starvation_count": 0,
+        "deliveries_scheduled": 2975,
+        "deliveries_successful": 2970,
+        "kpis": {
+          "track_saturation": 50.0,
+          "RRI": 0.708,
+          "PSS": 99.83193277310924,
+          "LPI": 30.0,
+          "OEE": 100.0
+        }
+      },
+      {
+        "time_min": 7200.0,
+        "production_meters": 7920000.0,
+        "starvation_count": 0,
+        "deliveries_scheduled": 3000,
+        "deliveries_successful": 2995,
+        "kpis": {
+          "track_saturation": 50.0,
+          "RRI": 0.708,
+          "PSS": 99.83333333333333,
+          "LPI": 30.0,
+          "OEE": 100.0
+        }
+      },
+      {
+        "time_min": 7260.0,
+        "production_meters": 7986000.0,
+        "starvation_count": 0,
+        "deliveries_scheduled": 3025,
+        "deliveries_successful": 3020,
+        "kpis": {
+          "track_saturation": 50.0,
+          "RRI": 0.708,
+          "PSS": 99.83471074380165,
+          "LPI": 30.0,
+          "OEE": 100.0
+        }
+      },
+      {
+        "time_min": 7320.0,
+        "production_meters": 8052000.0,
+        "starvation_count": 0,
+        "deliveries_scheduled": 3050,
+        "deliveries_successful": 3045,
+        "kpis": {
+          "track_saturation": 50.0,
+          "RRI": 0.708,
+          "PSS": 99.8360655737705,
+          "LPI": 30.0,
+          "OEE": 100.0
+        }
+      },
+      {
+        "time_min": 7380.0,
+        "production_meters": 8118000.0,
+        "starvation_count": 0,
+        "deliveries_scheduled": 3075,
+        "deliveries_successful": 3070,
+        "kpis": {
+          "track_saturation": 50.0,
+          "RRI": 0.708,
+          "PSS": 99.83739837398375,
+          "LPI": 30.0,
+          "OEE": 100.0
+        }
+      },
+      {
+        "time_min": 7440.0,
+        "production_meters": 8184000.0,
+        "starvation_count": 0,
+        "deliveries_scheduled": 3100,
+        "deliveries_successful": 3095,
+        "kpis": {
+          "track_saturation": 50.0,
+          "RRI": 0.708,
+          "PSS": 99.83870967741936,
+          "LPI": 30.0,
+          "OEE": 100.0
+        }
+      },
+      {
+        "time_min": 7500.0,
+        "production_meters": 8250000.0,
+        "starvation_count": 0,
+        "deliveries_scheduled": 3125,
+        "deliveries_successful": 3120,
+        "kpis": {
+          "track_saturation": 50.0,
+          "RRI": 0.708,
+          "PSS": 99.83999999999999,
+          "LPI": 30.0,
+          "OEE": 100.0
+        }
+      },
+      {
+        "time_min": 7560.0,
+        "production_meters": 8316000.0,
+        "starvation_count": 0,
+        "deliveries_scheduled": 3150,
+        "deliveries_successful": 3145,
+        "kpis": {
+          "track_saturation": 50.0,
+          "RRI": 0.708,
+          "PSS": 99.84126984126985,
+          "LPI": 30.0,
+          "OEE": 100.0
+        }
+      },
+      {
+        "time_min": 7620.0,
+        "production_meters": 8382000.0,
+        "starvation_count": 0,
+        "deliveries_scheduled": 3175,
+        "deliveries_successful": 3170,
+        "kpis": {
+          "track_saturation": 50.0,
+          "RRI": 0.708,
+          "PSS": 99.84251968503936,
+          "LPI": 30.0,
+          "OEE": 100.0
+        }
+      },
+      {
+        "time_min": 7680.0,
+        "production_meters": 8448000.0,
+        "starvation_count": 0,
+        "deliveries_scheduled": 3200,
+        "deliveries_successful": 3195,
+        "kpis": {
+          "track_saturation": 50.0,
+          "RRI": 0.708,
+          "PSS": 99.84375,
+          "LPI": 30.0,
+          "OEE": 100.0
+        }
+      },
+      {
+        "time_min": 7740.0,
+        "production_meters": 8514000.0,
+        "starvation_count": 0,
+        "deliveries_scheduled": 3225,
+        "deliveries_successful": 3220,
+        "kpis": {
+          "track_saturation": 50.0,
+          "RRI": 0.708,
+          "PSS": 99.84496124031008,
+          "LPI": 30.0,
+          "OEE": 100.0
+        }
+      },
+      {
+        "time_min": 7800.0,
+        "production_meters": 8580000.0,
+        "starvation_count": 0,
+        "deliveries_scheduled": 3250,
+        "deliveries_successful": 3245,
+        "kpis": {
+          "track_saturation": 50.0,
+          "RRI": 0.708,
+          "PSS": 99.84615384615385,
+          "LPI": 30.0,
+          "OEE": 100.0
+        }
+      },
+      {
+        "time_min": 7860.0,
+        "production_meters": 8646000.0,
+        "starvation_count": 0,
+        "deliveries_scheduled": 3275,
+        "deliveries_successful": 3270,
+        "kpis": {
+          "track_saturation": 50.0,
+          "RRI": 0.708,
+          "PSS": 99.84732824427482,
+          "LPI": 30.0,
+          "OEE": 100.0
+        }
+      },
+      {
+        "time_min": 7920.0,
+        "production_meters": 8712000.0,
+        "starvation_count": 0,
+        "deliveries_scheduled": 3300,
+        "deliveries_successful": 3295,
+        "kpis": {
+          "track_saturation": 50.0,
+          "RRI": 0.708,
+          "PSS": 99.84848484848486,
+          "LPI": 30.0,
+          "OEE": 100.0
+        }
+      },
+      {
+        "time_min": 7980.0,
+        "production_meters": 8778000.0,
+        "starvation_count": 0,
+        "deliveries_scheduled": 3325,
+        "deliveries_successful": 3320,
+        "kpis": {
+          "track_saturation": 50.0,
+          "RRI": 0.708,
+          "PSS": 99.84962406015038,
+          "LPI": 30.0,
+          "OEE": 100.0
+        }
+      },
+      {
+        "time_min": 8040.0,
+        "production_meters": 8844000.0,
+        "starvation_count": 0,
+        "deliveries_scheduled": 3350,
+        "deliveries_successful": 3345,
+        "kpis": {
+          "track_saturation": 50.0,
+          "RRI": 0.708,
+          "PSS": 99.85074626865672,
+          "LPI": 30.0,
+          "OEE": 100.0
+        }
+      },
+      {
+        "time_min": 8100.0,
+        "production_meters": 8910000.0,
+        "starvation_count": 0,
+        "deliveries_scheduled": 3375,
+        "deliveries_successful": 3370,
+        "kpis": {
+          "track_saturation": 50.0,
+          "RRI": 0.708,
+          "PSS": 99.85185185185185,
+          "LPI": 30.0,
+          "OEE": 100.0
+        }
+      },
+      {
+        "time_min": 8160.0,
+        "production_meters": 8976000.0,
+        "starvation_count": 0,
+        "deliveries_scheduled": 3400,
+        "deliveries_successful": 3395,
+        "kpis": {
+          "track_saturation": 50.0,
+          "RRI": 0.708,
+          "PSS": 99.8529411764706,
+          "LPI": 30.0,
+          "OEE": 100.0
+        }
+      },
+      {
+        "time_min": 8220.0,
+        "production_meters": 9042000.0,
+        "starvation_count": 0,
+        "deliveries_scheduled": 3425,
+        "deliveries_successful": 3420,
+        "kpis": {
+          "track_saturation": 50.0,
+          "RRI": 0.708,
+          "PSS": 99.85401459854015,
+          "LPI": 30.0,
+          "OEE": 100.0
+        }
+      },
+      {
+        "time_min": 8280.0,
+        "production_meters": 9108000.0,
+        "starvation_count": 0,
+        "deliveries_scheduled": 3450,
+        "deliveries_successful": 3445,
+        "kpis": {
+          "track_saturation": 50.0,
+          "RRI": 0.708,
+          "PSS": 99.85507246376811,
+          "LPI": 30.0,
+          "OEE": 100.0
+        }
+      },
+      {
+        "time_min": 8340.0,
+        "production_meters": 9174000.0,
+        "starvation_count": 0,
+        "deliveries_scheduled": 3475,
+        "deliveries_successful": 3470,
+        "kpis": {
+          "track_saturation": 50.0,
+          "RRI": 0.708,
+          "PSS": 99.85611510791367,
+          "LPI": 30.0,
+          "OEE": 100.0
+        }
+      },
+      {
+        "time_min": 8400.0,
+        "production_meters": 9240000.0,
+        "starvation_count": 0,
+        "deliveries_scheduled": 3500,
+        "deliveries_successful": 3495,
+        "kpis": {
+          "track_saturation": 50.0,
+          "RRI": 0.708,
+          "PSS": 99.85714285714286,
+          "LPI": 30.0,
+          "OEE": 100.0
+        }
+      },
+      {
+        "time_min": 8460.0,
+        "production_meters": 9306000.0,
+        "starvation_count": 0,
+        "deliveries_scheduled": 3525,
+        "deliveries_successful": 3520,
+        "kpis": {
+          "track_saturation": 50.0,
+          "RRI": 0.708,
+          "PSS": 99.8581560283688,
+          "LPI": 30.0,
+          "OEE": 100.0
+        }
+      },
+      {
+        "time_min": 8520.0,
+        "production_meters": 9372000.0,
+        "starvation_count": 0,
+        "deliveries_scheduled": 3550,
+        "deliveries_successful": 3545,
+        "kpis": {
+          "track_saturation": 50.0,
+          "RRI": 0.708,
+          "PSS": 99.85915492957747,
+          "LPI": 30.0,
+          "OEE": 100.0
+        }
+      },
+      {
+        "time_min": 8580.0,
+        "production_meters": 9438000.0,
+        "starvation_count": 0,
+        "deliveries_scheduled": 3575,
+        "deliveries_successful": 3570,
+        "kpis": {
+          "track_saturation": 50.0,
+          "RRI": 0.708,
+          "PSS": 99.86013986013987,
+          "LPI": 30.0,
+          "OEE": 100.0
+        }
+      },
+      {
+        "time_min": 8640.0,
+        "production_meters": 9504000.0,
+        "starvation_count": 0,
+        "deliveries_scheduled": 3600,
+        "deliveries_successful": 3595,
+        "kpis": {
+          "track_saturation": 50.0,
+          "RRI": 0.708,
+          "PSS": 99.86111111111111,
+          "LPI": 30.0,
+          "OEE": 100.0
+        }
+      },
+      {
+        "time_min": 8700.0,
+        "production_meters": 9570000.0,
+        "starvation_count": 0,
+        "deliveries_scheduled": 3625,
+        "deliveries_successful": 3620,
+        "kpis": {
+          "track_saturation": 50.0,
+          "RRI": 0.708,
+          "PSS": 99.86206896551724,
+          "LPI": 30.0,
+          "OEE": 100.0
+        }
+      },
+      {
+        "time_min": 8760.0,
+        "production_meters": 9636000.0,
+        "starvation_count": 0,
+        "deliveries_scheduled": 3650,
+        "deliveries_successful": 3645,
+        "kpis": {
+          "track_saturation": 50.0,
+          "RRI": 0.708,
+          "PSS": 99.86301369863013,
+          "LPI": 30.0,
+          "OEE": 100.0
+        }
+      },
+      {
+        "time_min": 8820.0,
+        "production_meters": 9702000.0,
+        "starvation_count": 0,
+        "deliveries_scheduled": 3675,
+        "deliveries_successful": 3670,
+        "kpis": {
+          "track_saturation": 50.0,
+          "RRI": 0.708,
+          "PSS": 99.8639455782313,
+          "LPI": 30.0,
+          "OEE": 100.0
+        }
+      },
+      {
+        "time_min": 8880.0,
+        "production_meters": 9768000.0,
+        "starvation_count": 0,
+        "deliveries_scheduled": 3700,
+        "deliveries_successful": 3695,
+        "kpis": {
+          "track_saturation": 50.0,
+          "RRI": 0.708,
+          "PSS": 99.86486486486487,
+          "LPI": 30.0,
+          "OEE": 100.0
+        }
+      },
+      {
+        "time_min": 8940.0,
+        "production_meters": 9834000.0,
+        "starvation_count": 0,
+        "deliveries_scheduled": 3725,
+        "deliveries_successful": 3720,
+        "kpis": {
+          "track_saturation": 50.0,
+          "RRI": 0.708,
+          "PSS": 99.86577181208054,
+          "LPI": 30.0,
+          "OEE": 100.0
+        }
+      },
+      {
+        "time_min": 9000.0,
+        "production_meters": 9900000.0,
+        "starvation_count": 0,
+        "deliveries_scheduled": 3750,
+        "deliveries_successful": 3745,
+        "kpis": {
+          "track_saturation": 50.0,
+          "RRI": 0.708,
+          "PSS": 99.86666666666667,
+          "LPI": 30.0,
+          "OEE": 100.0
+        }
+      },
+      {
+        "time_min": 9060.0,
+        "production_meters": 9966000.0,
+        "starvation_count": 0,
+        "deliveries_scheduled": 3775,
+        "deliveries_successful": 3770,
+        "kpis": {
+          "track_saturation": 50.0,
+          "RRI": 0.708,
+          "PSS": 99.86754966887416,
+          "LPI": 30.0,
+          "OEE": 100.0
+        }
+      },
+      {
+        "time_min": 9120.0,
+        "production_meters": 10032000.0,
+        "starvation_count": 0,
+        "deliveries_scheduled": 3800,
+        "deliveries_successful": 3795,
+        "kpis": {
+          "track_saturation": 50.0,
+          "RRI": 0.708,
+          "PSS": 99.86842105263159,
+          "LPI": 30.0,
+          "OEE": 100.0
+        }
+      },
+      {
+        "time_min": 9180.0,
+        "production_meters": 10098000.0,
+        "starvation_count": 0,
+        "deliveries_scheduled": 3825,
+        "deliveries_successful": 3820,
+        "kpis": {
+          "track_saturation": 50.0,
+          "RRI": 0.708,
+          "PSS": 99.86928104575163,
+          "LPI": 30.0,
+          "OEE": 100.0
+        }
+      },
+      {
+        "time_min": 9240.0,
+        "production_meters": 10164000.0,
+        "starvation_count": 0,
+        "deliveries_scheduled": 3850,
+        "deliveries_successful": 3845,
+        "kpis": {
+          "track_saturation": 50.0,
+          "RRI": 0.708,
+          "PSS": 99.87012987012987,
+          "LPI": 30.0,
+          "OEE": 100.0
+        }
+      },
+      {
+        "time_min": 9300.0,
+        "production_meters": 10230000.0,
+        "starvation_count": 0,
+        "deliveries_scheduled": 3875,
+        "deliveries_successful": 3870,
+        "kpis": {
+          "track_saturation": 50.0,
+          "RRI": 0.708,
+          "PSS": 99.87096774193547,
+          "LPI": 30.0,
+          "OEE": 100.0
+        }
+      },
+      {
+        "time_min": 9360.0,
+        "production_meters": 10296000.0,
+        "starvation_count": 0,
+        "deliveries_scheduled": 3900,
+        "deliveries_successful": 3895,
+        "kpis": {
+          "track_saturation": 50.0,
+          "RRI": 0.708,
+          "PSS": 99.87179487179488,
+          "LPI": 30.0,
+          "OEE": 100.0
+        }
+      },
+      {
+        "time_min": 9420.0,
+        "production_meters": 10362000.0,
+        "starvation_count": 0,
+        "deliveries_scheduled": 3925,
+        "deliveries_successful": 3920,
+        "kpis": {
+          "track_saturation": 50.0,
+          "RRI": 0.708,
+          "PSS": 99.87261146496816,
+          "LPI": 30.0,
+          "OEE": 100.0
+        }
+      },
+      {
+        "time_min": 9480.0,
+        "production_meters": 10428000.0,
+        "starvation_count": 0,
+        "deliveries_scheduled": 3950,
+        "deliveries_successful": 3945,
+        "kpis": {
+          "track_saturation": 50.0,
+          "RRI": 0.708,
+          "PSS": 99.87341772151899,
+          "LPI": 30.0,
+          "OEE": 100.0
+        }
+      },
+      {
+        "time_min": 9540.0,
+        "production_meters": 10494000.0,
+        "starvation_count": 0,
+        "deliveries_scheduled": 3975,
+        "deliveries_successful": 3970,
+        "kpis": {
+          "track_saturation": 50.0,
+          "RRI": 0.708,
+          "PSS": 99.87421383647799,
+          "LPI": 30.0,
+          "OEE": 100.0
+        }
+      },
+      {
+        "time_min": 9600.0,
+        "production_meters": 10560000.0,
+        "starvation_count": 0,
+        "deliveries_scheduled": 4000,
+        "deliveries_successful": 3995,
+        "kpis": {
+          "track_saturation": 50.0,
+          "RRI": 0.708,
+          "PSS": 99.875,
+          "LPI": 30.0,
+          "OEE": 100.0
+        }
+      },
+      {
+        "time_min": 9660.0,
+        "production_meters": 10626000.0,
+        "starvation_count": 0,
+        "deliveries_scheduled": 4025,
+        "deliveries_successful": 4020,
+        "kpis": {
+          "track_saturation": 50.0,
+          "RRI": 0.708,
+          "PSS": 99.87577639751552,
+          "LPI": 30.0,
+          "OEE": 100.0
+        }
+      },
+      {
+        "time_min": 9720.0,
+        "production_meters": 10692000.0,
+        "starvation_count": 0,
+        "deliveries_scheduled": 4050,
+        "deliveries_successful": 4045,
+        "kpis": {
+          "track_saturation": 50.0,
+          "RRI": 0.708,
+          "PSS": 99.87654320987654,
+          "LPI": 30.0,
+          "OEE": 100.0
+        }
+      },
+      {
+        "time_min": 9780.0,
+        "production_meters": 10758000.0,
+        "starvation_count": 0,
+        "deliveries_scheduled": 4075,
+        "deliveries_successful": 4070,
+        "kpis": {
+          "track_saturation": 50.0,
+          "RRI": 0.708,
+          "PSS": 99.87730061349693,
+          "LPI": 30.0,
+          "OEE": 100.0
+        }
+      },
+      {
+        "time_min": 9840.0,
+        "production_meters": 10824000.0,
+        "starvation_count": 0,
+        "deliveries_scheduled": 4100,
+        "deliveries_successful": 4095,
+        "kpis": {
+          "track_saturation": 50.0,
+          "RRI": 0.708,
+          "PSS": 99.8780487804878,
+          "LPI": 30.0,
+          "OEE": 100.0
+        }
+      },
+      {
+        "time_min": 9900.0,
+        "production_meters": 10890000.0,
+        "starvation_count": 0,
+        "deliveries_scheduled": 4125,
+        "deliveries_successful": 4120,
+        "kpis": {
+          "track_saturation": 50.0,
+          "RRI": 0.708,
+          "PSS": 99.87878787878788,
+          "LPI": 30.0,
+          "OEE": 100.0
+        }
+      },
+      {
+        "time_min": 9960.0,
+        "production_meters": 10956000.0,
+        "starvation_count": 0,
+        "deliveries_scheduled": 4150,
+        "deliveries_successful": 4145,
+        "kpis": {
+          "track_saturation": 50.0,
+          "RRI": 0.708,
+          "PSS": 99.87951807228916,
+          "LPI": 30.0,
+          "OEE": 100.0
+        }
+      },
+      {
+        "time_min": 10020.0,
+        "production_meters": 11022000.0,
+        "starvation_count": 0,
+        "deliveries_scheduled": 4175,
+        "deliveries_successful": 4170,
+        "kpis": {
+          "track_saturation": 50.0,
+          "RRI": 0.708,
+          "PSS": 99.88023952095809,
+          "LPI": 30.0,
+          "OEE": 100.0
+        }
+      },
+      {
+        "time_min": 10080.0,
+        "production_meters": 11088000.0,
+        "starvation_count": 0,
+        "deliveries_scheduled": 4200,
+        "deliveries_successful": 4195,
+        "kpis": {
+          "track_saturation": 50.0,
+          "RRI": 0.708,
+          "PSS": 99.88095238095238,
+          "LPI": 30.0,
+          "OEE": 100.0
+        }
+      }
+    ]
+  },
+  "costs_A": {
+    "labor_cost": 5880,
+    "maintenance": 230.76923076923077,
+    "starvation_cost": 300750,
+    "downtime_min": 10025,
+    "downtime_cost": 451125,
+    "amortization_week": 0.0,
+    "total_operational_cost_week": 757985.7692307692
+  },
+  "costs_B": {
+    "labor_cost": 0,
+    "maintenance": 76.92307692307692,
+    "starvation_cost": 0,
+    "downtime_min": 0,
+    "downtime_cost": 0,
+    "amortization_week": 2692.3076923076924,
+    "total_operational_cost_week": 2769.2307692307695
+  },
+  "comparison": {
+    "production_diff_m": 1046500.0,
+    "cost_diff_eur": -755216.5384615385,
+    "cost_per_extra_m": -0.7216593774118858
+  }
+}

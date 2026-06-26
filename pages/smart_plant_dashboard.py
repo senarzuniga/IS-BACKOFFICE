@@ -114,7 +114,7 @@ def render_filters(config: dict) -> None:
     cols = st.columns(len(filters))
     for i, f in enumerate(filters):
         with cols[i]:
-            if st.button(f, key=f"filter_{f}", use_container_width=True):
+            if st.button(f, key=f"filter_{f}"):
                 st.session_state.active_filter = f
                 st.experimental_rerun()
 

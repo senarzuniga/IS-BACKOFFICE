@@ -83,6 +83,24 @@ class MaterialsFlow:
         self.returned.append(reel)
         return True
 
+    def return_partial_reel(self, track_id: str) -> bool:
+        """Move a partial reel from a track to the returned list.
+
+        Criteria: if a track has a reel and its weight < 300 kg, treat as partial.
+        """
+        if track_id not in self.tracks:
+            return False
+        reel = self.tracks[track_id]
+        if reel is None:
+            return False
+        if reel.weight < 300.0:
+            reel.location = "returned"
+            reel.is_partial = True
+            self.returned.append(reel)
+            self.tracks[track_id] = None
+            return True
+        return False
+
     def get_track_status(self) -> Dict:
         return {
             track_id: {

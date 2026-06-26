@@ -196,6 +196,18 @@ class CorrugatorEngine:
             # request new reel to fill the track
             self._request_new_reel(track["id"])
         else:
+            # If no pre-loaded track has a usable reel, try to request a
+            # replacement to an empty track (real plants pre-fill tracks).
+            empty_track = None
+            for t in self.tracks:
+                if not t.get("occupied"):
+                    empty_track = t
+                    break
+            if empty_track is not None:
+                # create a request to deliver a reel to this empty track
+                self._request_new_reel(empty_track["id"])
+                return
+
             # starvation: no reel available immediately
             if not self.starvation.is_starving:
                 self.event_log.append({"time": self.time, "type": "starvation_start"})
@@ -236,13 +248,18 @@ class CorrugatorEngine:
 
         # movement time depends on scenario
         if self.scenario == "A" and self.human:
+            # human variability: normal noise around delivery time
             search_time = self.human.get_search_time()
             traffic_delay = self.human.get_traffic_delay()
-            delivery_time = 2.0 + search_time + traffic_delay
+            base_delivery = 2.0 + search_time + traffic_delay
+            noise = self.rng.normalvariate(0, 0.3)
+            delivery_time = max(0.1, base_delivery + noise)
             free_resource.handling_time += delivery_time
             free_resource.distance += 50.0
         else:
-            delivery_time = 1.0
+            base_delivery = 1.0
+            noise = self.rng.normalvariate(0, 0.05)
+            delivery_time = max(0.05, base_delivery + noise)
             free_resource.handling_time += delivery_time
             free_resource.distance += 30.0
 
@@ -277,6 +294,11 @@ class CorrugatorEngine:
                     self.flow.return_reel(Reel(id=f"RET-{len(self.flow.returned)+1}", weight=track["reel_weight"], type=track["reel_type"], location="returned", is_partial=True))
                     self.metrics["reels_returned"] += 1
                     track["occupied"] = False
+                # also attempt to move partial reels via materials_flow API
+                try:
+                    self.flow.return_partial_reel(track["id"])
+                except Exception:
+                    pass
                 break
 
     def _update_resources(self):

@@ -11,13 +11,16 @@ class HumanFactors:
     def __init__(self, config: Dict, rng: random.Random):
         self.rng = rng
         self.shift_interval = config.get("shift_interval_min", 240)  # 4h
-        self.shift_duration = config.get("shift_duration_min", 5)
+        # configurable durations: shift change and operator break (minutes)
+        self.shift_duration = config.get("shift_duration_min", 10)
         self.operator_break_interval = config.get("operator_break_interval_min", 120)  # 2h
         self.operator_break_duration = config.get("operator_break_duration_min", 15)
-        self.reel_search_prob = config.get("reel_search_prob", 0.10)
-        self.traffic_prob = config.get("traffic_prob", 0.20)
-        self.error_prob = config.get("error_prob", 0.02)
-        self.conflict_prob = config.get("conflict_prob", 0.05)
+
+        # probabilities tuned to PENEDÈS-like behavior (amplify human variability)
+        self.reel_search_prob = config.get("reel_search_prob", 0.15)
+        self.traffic_prob = config.get("traffic_prob", 0.25)
+        self.error_prob = config.get("error_prob", 0.03)
+        self.conflict_prob = config.get("conflict_prob", 0.10)
 
     def get_search_time(self) -> float:
         """Tiempo de búsqueda de bobina en almacén (15-90s) en minutos."""

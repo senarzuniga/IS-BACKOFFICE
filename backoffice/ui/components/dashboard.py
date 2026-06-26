@@ -94,12 +94,12 @@ def _render_ai_command_layer() -> None:
     suggestion_cols = st.columns(len(_COMMAND_SUGGESTIONS))
     for idx, suggestion in enumerate(_COMMAND_SUGGESTIONS):
         with suggestion_cols[idx]:
-            if st.button(suggestion, key=f"cmd_suggestion_{idx}", use_container_width=True):
+            if st.button(suggestion, key=f"cmd_suggestion_{idx}"):
                 st.session_state["intelligence_command"] = suggestion
                 st.session_state["intelligence_command_result"] = _classify_command(suggestion)
                 st.rerun()
 
-    if st.button("Run AI command", type="primary", key="run_intelligence_command", use_container_width=True):
+    if st.button("Run AI command", type="primary", key="run_intelligence_command"):
         st.session_state["intelligence_command"] = command
         st.session_state["intelligence_command_result"] = _classify_command(command or "Executive review")
 
@@ -118,7 +118,7 @@ def _render_ai_command_layer() -> None:
         with st.expander("Recommended Actions", expanded=True):
             for action in result["actions"]:
                 st.write(f"→ {action}")
-        if st.button("Open recommended workspace", key="open_command_workspace", use_container_width=True):
+        if st.button("Open recommended workspace", key="open_command_workspace"):
             st.session_state["active_page"] = result["workspace"]
             st.rerun()
 
@@ -135,7 +135,7 @@ def _render_insight_feed() -> None:
             st.markdown(f"**{title}**")
             st.caption(severity)
             st.write(reason)
-            st.button(action, key=f"insight_action_{idx}", use_container_width=True)
+            st.button(action, key=f"insight_action_{idx}")
 
 
 def _render_alerts_and_sources() -> None:
@@ -149,7 +149,7 @@ def _render_alerts_and_sources() -> None:
                 {"Alert": "Pipeline EMEA con conversión baja", "Severity": "Medium", "Why": "Caída del 11% semanal"},
             ]
         )
-        st.dataframe(alerts, use_container_width=True, hide_index=True)
+        st.dataframe(alerts, hide_index=True)
     with right:
         st.markdown("### Source Traceability")
         st.caption("Every insight keeps its evidence trail.")
@@ -197,7 +197,7 @@ def render_default_dashboard() -> None:
                 {"Agent": "Forecast Agent", "Status": "Healthy", "Last action": "Updated revenue outlook"},
             ]
         )
-        st.dataframe(agents, use_container_width=True, hide_index=True)
+        st.dataframe(agents, hide_index=True)
 
     st.markdown("---")
     render_ingecart_artwork_block()

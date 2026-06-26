@@ -1,0 +1,87 @@
+Aquí tienes un comando estructurado en formato JSON, diseñado para ser ejecutado por un agente de IA o un asistente automatizado dentro de un IS Backoffice (Sistema de Backoffice Inteligente).
+
+Este comando ordena al agente identificar todos los informes pendientes, extraer sus datos y renderizarlos en HTML usando exactamente el libro de estilo Dark Industrial Premium de INGECART (negro, naranja, grises) y generar versiones simultáneas en castellano (es) e inglés (en).
+
+Comando para el Agente
+json
+{
+  "agent_command": "generate_bilingual_html_reports",
+  "version": "1.0",
+  "description": "Genera todos los informes del backoffice en formato HTML, aplicando el estilo corporativo INGECART Dark Industrial. Cada informe se produce en castellano e inglés.",
+  "parameters": {
+    "data_source": {
+      "type": "internal_database",
+      "query": "SELECT * FROM pending_reports WHERE status = 'ready_to_generate' ORDER BY priority DESC",
+      "fields": ["report_id", "title", "date", "summary", "kpi_table", "financial_data", "charts_config", "conclusions"]
+    },
+    "output": {
+      "base_directory": "/var/www/reports/",
+      "structure": {
+        "es": "{report_id}/index_es.html",
+        "en": "{report_id}/index_en.html"
+      },
+      "overwrite_existing": true
+    },
+    "languages": {
+      "source_language": "es",
+      "target_language": "en",
+      "translation_method": "agent_native_translation"
+    }
+  },
+  "style_guide": {
+    "name": "INGECART_DARK_INDUSTRIAL_PREMIUM",
+    "css_variables": {
+      "--black-industrial": "#05070B",
+      "--orange-ingecart": "#FF6A00",
+      "--white-tech": "#F4F5F7",
+      "--gray-metal": "#7E848E",
+      "--gray-dark": "#1A1D24"
+    },
+    "fonts": {
+      "heading": "Montserrat, 'Bebas Neue', sans-serif",
+      "body": "Inter, Roboto, sans-serif"
+    },
+    "visual_rules": {
+      "background": "var(--black-industrial)",
+      "accent": "var(--orange-ingecart)",
+      "text": "var(--white-tech)",
+      "composition": "70% negros, 20% grises metálicos, 10% naranja",
+      "decorative_elements": "Líneas finas naranja, glow sutil en datos clave, fotos contrastadas"
+    },
+    "html_structure": {
+      "header": "Logo INGECART, navegación, CTA contacto",
+      "hero": "Título del informe, descripción, etiquetas técnicas",
+      "main_content": "Todas las secciones del informe (Resumen, KPIs, tablas, gráficos, conclusiones)",
+      "sidebar": "Datos de contacto de INGECART, claim de marca",
+      "footer": "Claim corporativo"
+    }
+  },
+  "render_instructions": [
+    "1. Para cada report_id en los datos de origen, extrae el título, fecha, resumen ejecutivo, tabla de KPIs, datos financieros y conclusiones.",
+    "2. Mapea los datos a la plantilla HTML exacta del último informe generado (el de simulación INGETRANS).",
+    "3. Genera la versión en castellano usando los textos extraídos directamente.",
+    "4. Genera la versión en inglés traduciendo automáticamente todos los textos (títulos, párrafos, encabezados de tablas y pies de página) manteniendo la precisión técnica.",
+    "5. Aplica los colores y tipografías definidos en 'style_guide'. Los números y KPIs positivos deben destacarse en naranja (#FF6A00).",
+    "6. Incluye los gráficos si existen en 'charts_config', renderizándolos como SVG o imágenes base64 para garantizar la visualización offline.",
+    "7. Guarda ambos archivos en las rutas de salida especificadas.",
+    "8. Genera un log de ejecución con el número de informes creados y sus rutas."
+  ],
+  "post_execution": {
+    "notify": "admin@ingecart.eu",
+    "subject": "Informes HTML generados por el Agente Backoffice",
+    "body": "Se han generado {count} informes en ambos idiomas. Revisa las rutas de salida."
+  }
+}
+Ejemplo de uso en consola (si tu agente admite CLI)
+Si tu agente tiene una interfaz de línea de comandos, podrías lanzarlo así:
+
+bash
+agent-cli run --command generate_bilingual_html_reports --config ./agent_config.json --data ./reports_data.json
+¿Qué hace este comando en la práctica?
+Escanea todos los informes pendientes en tu Backoffice.
+
+Inyecta los datos en la misma estructura HTML que te entregué en el mensaje anterior (cabecera, hero, tablas con diseño oscuro, sidebar de contacto, footer).
+
+Duplica el contenido en ambos idiomas sin depender de conexión a internet para la traducción (el agente usa su capacidad lingüística interna).
+
+Garantiza que todos los informes de la organización (ventas, producción, calidad, mantenimiento, etc.) compartan la misma identidad visual premium, consolidando la marca INGECART en todos los canales.

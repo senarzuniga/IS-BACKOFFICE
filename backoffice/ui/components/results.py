@@ -132,7 +132,7 @@ def _page_ingestion() -> None:
         with col2:
             st.write("")
             st.write("")
-            run = st.button("📥 Ingestar Archivos", type="primary", key="ing_run_upload", use_container_width=True)
+            run = st.button("📥 Ingestar Archivos", type="primary", key="ing_run_upload")
 
         if run and uploaded:
             from backoffice.ui.app import _run_real_operation
@@ -163,7 +163,7 @@ def _page_ingestion() -> None:
         with col2:
             st.write("")
             st.write("")
-            run_url = st.button("🌐 Ingestar URL", type="primary", key="ing_run_url", use_container_width=True)
+            run_url = st.button("🌐 Ingestar URL", type="primary", key="ing_run_url")
 
         if run_url and url:
             from backoffice.ui.app import _run_url_analysis
@@ -181,7 +181,7 @@ def _page_ingestion() -> None:
             auto = st.toggle("Activar monitoreo automático", value=False, key="ing_watch_auto")
         with col2:
             interval = st.selectbox("Frecuencia", ["5 min", "15 min", "30 min", "1 hora"], key="ing_watch_interval")
-        run_watch = st.button("▶️ Analizar Carpeta Ahora", type="primary", key="ing_run_watch", use_container_width=True)
+        run_watch = st.button("▶️ Analizar Carpeta Ahora", type="primary", key="ing_run_watch")
 
         if run_watch and folder:
             safe = _resolve_safe_path(folder)
@@ -209,7 +209,7 @@ def _page_ingestion() -> None:
         if bulk_files:
             st.caption(f"{len(bulk_files)} archivo(s) seleccionados")
             st.progress(0.0, text="Listo para procesar")
-        run_bulk = st.button("📦 Importar Masivamente", type="primary", key="ing_run_bulk", use_container_width=True)
+        run_bulk = st.button("📦 Importar Masivamente", type="primary", key="ing_run_bulk")
 
         if run_bulk and bulk_files:
             from backoffice.ui.app import _run_real_operation
@@ -232,7 +232,7 @@ def _page_ingestion() -> None:
             depth = st.slider("Profundidad de scraping", min_value=1, max_value=5, value=1, key="ing_scraper_depth")
         with col2:
             scrape_output = st.selectbox("Output type", ["summary", "report", "list"], key="ing_scraper_output")
-        run_scraper = st.button("🕷️ Ejecutar Scraper", type="primary", key="ing_run_scraper", use_container_width=True)
+        run_scraper = st.button("🕷️ Ejecutar Scraper", type="primary", key="ing_run_scraper")
 
         if run_scraper and urls_text.strip():
             urls = [u.strip() for u in urls_text.strip().splitlines() if u.strip()]
@@ -274,7 +274,7 @@ def _page_transcription() -> None:
     speakers = st.selectbox("Max speakers (AI will attempt to identify)", [1, 2, 3, 4, 5, 6], index=1, key="trans_speakers")
     save_assets = st.checkbox("Save transcripts to assets/transcripts", value=True, key="trans_save_assets")
 
-    if st.button("🎙️ Transcribe", type="primary", key="trans_run_button", use_container_width=True):
+    if st.button("🎙️ Transcribe", type="primary", key="trans_run_button"):
         if not uploaded:
             st.warning("Please upload an audio file to transcribe.")
             st.stop()
@@ -418,7 +418,7 @@ def _page_cleaning() -> None:
             )
         with col2:
             threshold = st.slider("Umbral de similitud", 0.5, 1.0, 0.85, 0.01, key="clean_dedup_thresh")
-        run = st.button("🔁 Ejecutar Deduplicación", type="primary", key="clean_run_dedup", use_container_width=True)
+        run = st.button("🔁 Ejecutar Deduplicación", type="primary", key="clean_run_dedup")
         if run:
             st.info(f"Deduplicando '{entity_type}' con umbral {threshold}. Ingesta datos primero para resultados reales.")
             _render_before_after_stub()
@@ -430,7 +430,7 @@ def _page_cleaning() -> None:
             ["Teléfonos E.164", "Fechas ISO-8601", "Normalización de moneda", "Limpieza de direcciones"],
             key="clean_std_preset",
         )
-        run = st.button("📐 Estandarizar", type="primary", key="clean_run_std", use_container_width=True)
+        run = st.button("📐 Estandarizar", type="primary", key="clean_run_std")
         if run:
             st.info(f"Aplicando regla '{preset}'. Ingesta datos primero para resultados reales.")
             _render_before_after_stub()
@@ -442,7 +442,7 @@ def _page_cleaning() -> None:
             ["clientes", "ofertas", "ventas", "oportunidades", "documentos"],
             key="clean_audit_dataset",
         )
-        run = st.button("✅ Ejecutar Auditoría", type="primary", key="clean_run_audit", use_container_width=True)
+        run = st.button("✅ Ejecutar Auditoría", type="primary", key="clean_run_audit")
         if run:
             st.info(f"Auditando '{dataset}'. Ingesta datos primero para resultados reales.")
             _render_quality_stub()
@@ -454,7 +454,7 @@ def _page_cleaning() -> None:
             column = st.text_input("Columna a analizar", placeholder="deal_value", key="clean_outlier_col")
         with col2:
             method = st.selectbox("Método", ["IQR", "Z-score", "Isolation Forest"], key="clean_outlier_method")
-        run = st.button("⚠️ Detectar Outliers", type="primary", key="clean_run_outliers", use_container_width=True)
+        run = st.button("⚠️ Detectar Outliers", type="primary", key="clean_run_outliers")
         if run:
             st.info(f"Detectando outliers en '{column}' con método '{method}'. Ingesta datos primero.")
 
@@ -465,7 +465,7 @@ def _page_cleaning() -> None:
             fuzz_thresh = st.slider("Umbral fuzzy", 0.5, 1.0, 0.9, 0.01, key="clean_fuzzy_thresh")
         with col2:
             review_mode = st.toggle("Modo revisión manual", value=True, key="clean_fuzzy_review")
-        run = st.button("🔗 Ejecutar Fuzzy Merge", type="primary", key="clean_run_fuzzy", use_container_width=True)
+        run = st.button("🔗 Ejecutar Fuzzy Merge", type="primary", key="clean_run_fuzzy")
         if run:
             st.info(f"Fuzzy merge con umbral {fuzz_thresh}. Ingesta datos primero para resultados reales.")
 
@@ -478,10 +478,10 @@ def _render_before_after_stub() -> None:
     after = pd.DataFrame([{"phone": "+15551234567", "date": "2026-12-01", "amount": "25000.00"}])
     with col1:
         st.markdown("**Antes**")
-        st.dataframe(before, use_container_width=True)
+        st.dataframe(before)
     with col2:
         st.markdown("**Después**")
-        st.dataframe(after, use_container_width=True)
+        st.dataframe(after)
 
 
 def _render_quality_stub() -> None:
@@ -489,7 +489,7 @@ def _render_quality_stub() -> None:
         {"fila": 14, "problema": "Formato de fecha inválido", "sugerencia": "Convertir a ISO-8601"},
         {"fila": 21, "problema": "Posible duplicado", "sugerencia": "Fusionar con fila 17"},
     ])
-    st.dataframe(issues, use_container_width=True)
+    st.dataframe(issues)
     st.metric("Puntuación de calidad", "94", delta="+12")
 
 
@@ -513,7 +513,7 @@ def _page_extraction() -> None:
             default=["PERSON", "ORG", "DATE"],
             key="ext_ner_types",
         )
-        run = st.button("📝 Extraer Entidades", type="primary", key="ext_run_ner", use_container_width=True)
+        run = st.button("📝 Extraer Entidades", type="primary", key="ext_run_ner")
         if run and text_input.strip():
             with st.spinner("Analizando texto..."):
                 entities = pd.DataFrame([
@@ -521,7 +521,7 @@ def _page_extraction() -> None:
                     {"Entidad": "Juan García", "Tipo": "PERSON", "Confianza": 0.92},
                     {"Entidad": "2024-01-15", "Tipo": "DATE", "Confianza": 0.88},
                 ])
-                st.dataframe(entities, use_container_width=True)
+                st.dataframe(entities)
                 hist = pd.DataFrame({"bucket": ["0.8–0.85", "0.86–0.9", "0.91–0.95", "0.96–1.0"], "count": [0, 1, 1, 1]})
                 st.bar_chart(hist.set_index("bucket"))
         elif run and not text_input.strip():
@@ -535,7 +535,7 @@ def _page_extraction() -> None:
             accept_multiple_files=True,
             key="ext_pdf_uploader",
         )
-        run = st.button("📄 Procesar PDFs", type="primary", key="ext_run_pdf", use_container_width=True)
+        run = st.button("📄 Procesar PDFs", type="primary", key="ext_run_pdf")
         if run and pdf_files:
             from backoffice.ui.app import _run_real_operation
             result = _run_real_operation("🔍 EXTRACTION", "Process documents", {"documents": pdf_files})
@@ -553,7 +553,7 @@ def _page_extraction() -> None:
             default=["clientes", "ofertas"],
             key="ext_batch_types",
         )
-        run = st.button("⚙️ Ejecutar Batch", type="primary", key="ext_run_batch", use_container_width=True)
+        run = st.button("⚙️ Ejecutar Batch", type="primary", key="ext_run_batch")
         if run and folder_path:
             safe = _resolve_safe_path(folder_path)
             if safe is None:
@@ -575,7 +575,7 @@ def _page_extraction() -> None:
             key="ext_fewshot_examples",
         )
         test_text = st.text_area("Texto de prueba", height=100, key="ext_fewshot_test")
-        run = st.button("🎯 Ejecutar Few-Shot", type="primary", key="ext_run_fewshot", use_container_width=True)
+        run = st.button("🎯 Ejecutar Few-Shot", type="primary", key="ext_run_fewshot")
         if run:
             st.info("Few-shot extraction requiere modelo de IA. Configura OPENAI_API_KEY para activar.")
 
@@ -587,7 +587,7 @@ def _page_extraction() -> None:
             key="ext_table_uploader",
         )
         detect = st.toggle("Detección automática de tablas", value=True, key="ext_table_detect")
-        run = st.button("📊 Extraer Tablas", type="primary", key="ext_run_tables", use_container_width=True)
+        run = st.button("📊 Extraer Tablas", type="primary", key="ext_run_tables")
         if run and table_file:
             st.info("Extracción de tablas de imágenes requiere Tesseract OCR instalado.")
         elif run and not table_file:
@@ -610,7 +610,7 @@ def _page_graph() -> None:
     with tab_search:
         st.subheader("Buscar en el grafo de conocimiento")
         query = st.text_input("Consulta", placeholder="ACME digital roadmap", key="graph_search_query")
-        run = st.button("🔍 Buscar", type="primary", key="graph_run_search", use_container_width=True)
+        run = st.button("🔍 Buscar", type="primary", key="graph_run_search")
         if run and query:
             st.info(f"Buscando '{query}' en el grafo. Ingesta documentos primero para poblar el grafo.")
             _render_graph_results_stub()
@@ -624,7 +624,7 @@ def _page_graph() -> None:
             entity_id = st.text_input("ID de entidad", value="entity_001", key="graph_explore_id")
         with col2:
             depth = st.slider("Profundidad", 1, 5, 2, key="graph_explore_depth")
-        run = st.button("🧩 Explorar Conexiones", type="primary", key="graph_run_explore", use_container_width=True)
+        run = st.button("🧩 Explorar Conexiones", type="primary", key="graph_run_explore")
         if run:
             st.info(f"Explorando entidad '{entity_id}' a profundidad {depth}.")
             _render_graph_html_stub()
@@ -636,14 +636,14 @@ def _page_graph() -> None:
             from_entity = st.text_input("Entidad origen", value="client_001", key="graph_path_from")
         with col2:
             to_entity = st.text_input("Entidad destino", value="offer_210", key="graph_path_to")
-        run = st.button("🛣️ Encontrar Camino", type="primary", key="graph_run_path", use_container_width=True)
+        run = st.button("🛣️ Encontrar Camino", type="primary", key="graph_run_path")
         if run:
             st.info(f"Buscando camino entre '{from_entity}' y '{to_entity}'.")
 
     with tab_comm:
         st.subheader("Detección de comunidades")
         include_stats = st.toggle("Incluir estadísticas del grafo", value=True, key="graph_comm_stats")
-        run = st.button("👥 Detectar Comunidades", type="primary", key="graph_run_comm", use_container_width=True)
+        run = st.button("👥 Detectar Comunidades", type="primary", key="graph_run_comm")
         if run:
             st.info("Detección de comunidades requiere datos en el grafo. Ingesta documentos primero.")
 
@@ -651,7 +651,7 @@ def _page_graph() -> None:
         st.subheader("Visualizador de subgrafo interactivo")
         center_entity = st.text_input("Entidad central", value="client_001", key="graph_viz_center")
         viz_depth = st.slider("Profundidad de visualización", 1, 5, 2, key="graph_viz_depth")
-        run = st.button("🌐 Visualizar Subgrafo", type="primary", key="graph_run_viz", use_container_width=True)
+        run = st.button("🌐 Visualizar Subgrafo", type="primary", key="graph_run_viz")
         if run:
             _render_graph_html_stub()
 
@@ -663,7 +663,7 @@ def _render_graph_results_stub() -> None:
         {"Entidad": "ACME Corp", "Tipo": "Cliente", "Conexiones": 12, "Relevancia": 0.95},
         {"Entidad": "Digital Roadmap", "Tipo": "Oferta", "Conexiones": 5, "Relevancia": 0.87},
     ])
-    st.dataframe(data, use_container_width=True)
+    st.dataframe(data)
 
 
 def _render_graph_html_stub() -> None:
@@ -706,7 +706,7 @@ def _page_analytics() -> None:
                 ["anomalías", "tendencias", "correlaciones", "distribución"],
                 key="anal_insights_type",
             )
-        run = st.button("💡 Generar Insights", type="primary", key="anal_run_insights", use_container_width=True)
+        run = st.button("💡 Generar Insights", type="primary", key="anal_run_insights")
         if run:
             _render_analytics_stub()
 
@@ -718,7 +718,7 @@ def _page_analytics() -> None:
             height=120,
             key="anal_nlq_question",
         )
-        run = st.button("🔍 Consultar", type="primary", key="anal_run_nlq", use_container_width=True)
+        run = st.button("🔍 Consultar", type="primary", key="anal_run_nlq")
         if run and question.strip():
             st.markdown("**Respuesta:**")
             st.info(
@@ -741,7 +741,7 @@ def _page_analytics() -> None:
             horizon = st.slider("Horizonte (meses)", 1, 24, 6, key="anal_forecast_horizon")
         with col3:
             model = st.selectbox("Modelo", ["Prophet", "ARIMA", "Media móvil"], key="anal_forecast_model")
-        run = st.button("📈 Generar Forecast", type="primary", key="anal_run_forecast", use_container_width=True)
+        run = st.button("📈 Generar Forecast", type="primary", key="anal_run_forecast")
         if run:
             chart_df = pd.DataFrame({
                 "mes": ["Ene", "Feb", "Mar", "Abr", "May", "Jun"],
@@ -778,7 +778,7 @@ def _page_analytics() -> None:
             ["Ejecutivo", "Operaciones", "Ventas", "Documentos", "Financiero"],
             key="anal_dash_layout",
         )
-        run = st.button("🖥️ Generar Dashboard", type="primary", key="anal_run_dash", use_container_width=True)
+        run = st.button("🖥️ Generar Dashboard", type="primary", key="anal_run_dash")
         if run:
             _render_analytics_stub()
             st.info(f"Dashboard '{layout}' generado. Ingesta datos para valores reales.")
@@ -834,7 +834,7 @@ def _page_reporting() -> None:
             key="rep_gen_context",
         )
 
-        run = st.button("📋 Generar Informe", type="primary", key="rep_run_gen", use_container_width=True)
+        run = st.button("📋 Generar Informe", type="primary", key="rep_run_gen")
         if run:
             with st.spinner(f"Generando '{template}'..."):
                 preview_content = f"""# {template}
@@ -900,7 +900,7 @@ Ingesta documentos y datos para obtener contenido personalizado.
                 key="rep_sched_template",
             )
         recipients = st.text_input("Destinatarios (email, separados por coma)", key="rep_sched_recipients")
-        run = st.button("⏰ Activar Programación", type="primary", key="rep_run_sched", use_container_width=True)
+        run = st.button("⏰ Activar Programación", type="primary", key="rep_run_sched")
         if run:
             st.success(f"✅ Informe '{sched_template}' programado: {frequency} en formato {sched_format}.")
 
@@ -912,14 +912,14 @@ Ingesta documentos y datos para obtener contenido personalizado.
             key="rep_export_format",
         )
         include_charts = st.toggle("Incluir gráficos", value=True, key="rep_export_charts")
-        run = st.button("💾 Exportar", type="primary", key="rep_run_export", use_container_width=True)
+        run = st.button("💾 Exportar", type="primary", key="rep_run_export")
         if run:
             sample_data = pd.DataFrame([
                 {"módulo": "Ingesta", "estado": "OK", "archivos": 120},
                 {"módulo": "Extracción", "estado": "OK", "entidades": 1450},
                 {"módulo": "Reporting", "estado": "OK", "informes": 12},
             ])
-            st.dataframe(sample_data, use_container_width=True)
+            st.dataframe(sample_data)
             ts = datetime.now().strftime("%Y%m%d_%H%M%S")
             st.download_button(
                 f"⬇️ Descargar {export_format}",
@@ -937,7 +937,7 @@ Ingesta documentos y datos para obtener contenido personalizado.
         )
         recipient_list = st.text_area("Lista de destinatarios", placeholder="email1@company.com, email2@company.com", key="rep_email_recipients")
         email_subject = st.text_input("Asunto", placeholder="Informe mensual IS-BACKOFFICE", key="rep_email_subject")
-        run = st.button("📧 Preparar Email", type="primary", key="rep_run_email", use_container_width=True)
+        run = st.button("📧 Preparar Email", type="primary", key="rep_run_email")
         if run:
             st.success(f"Plantilla '{email_template}' lista. Configura SMTP para envío automático.")
 
@@ -951,7 +951,7 @@ Ingesta documentos y datos para obtener contenido personalizado.
         ])
         if not show_failed:
             history = history[history["estado"] == "✅ Completado"]
-        st.dataframe(history, use_container_width=True)
+        st.dataframe(history)
 
     _render_agent_orchestrator_panel(section="📑 REPORTING")
 
@@ -971,7 +971,7 @@ def _page_agents() -> None:
             "El orquestador ejecuta todos los agentes secuencialmente sobre los datos ingestados. "
             "Ingesta documentos primero para obtener resultados reales."
         )
-        run = st.button("🤖 Ejecutar Todos los Agentes", type="primary", key="agents_run_all", use_container_width=True)
+        run = st.button("🤖 Ejecutar Todos los Agentes", type="primary", key="agents_run_all")
         if run:
             agents = [
                 "IngestionAgent", "CleaningAgent", "ExtractionAgent",
@@ -996,7 +996,7 @@ def _page_agents() -> None:
             {"Agente": "AnalyticsAgent", "Estado": "✅ OK", "Última ejecución": "hace 12 min", "Insights": 15, "Errores": 0},
             {"Agente": "ReportingAgent", "Estado": "⚠️ Pendiente", "Última ejecución": "nunca", "Informes": 0, "Errores": 0},
         ])
-        st.dataframe(status_data, use_container_width=True)
+        st.dataframe(status_data)
 
     with tab_config:
         st.subheader("Configuración de agentes")
