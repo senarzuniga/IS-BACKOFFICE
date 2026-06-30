@@ -1,0 +1,11 @@
+name: "RC1 Smoke Test"
+description: "Smoke test scenario for RC1 validation: fast production orders to generate events"
+production_order:
+  interarrival_min_s: 3.0
+  size: 1
+run_duration_s: 30
+overrides:
+  forklift:
+    enabled: true
+  ingetrans:
+    enabled: false
