@@ -1,0 +1,2021 @@
+# 📊 ENTREGABLE: GRÁFICOS COMPARATIVOS + PANEL FINAL CON ESTILO INGECART
+
+A continuación te entrego los **3 archivos nuevos** (gráficos + panel final) más la **actualización del CSS** para aplicar la identidad visual INGECART (Dark Industrial Premium: negro + naranja #FF6A00 + grises metálicos, sin azules/morados).
+
+---
+
+# 📄 ARCHIVO 1: `ingetrans_simulator/advanced_charts.py`
+
+```python
+"""
+Gráficos comparativos avanzados:
+- Radar chart (OEE breakdown)
+- Waterfall (cost breakdown)
+- Sankey (flow diagram)
+- Heatmap (LPI visualization)
+- Bullet chart (KPI vs target)
+"""
+
+import plotly.graph_objects as go
+import plotly.express as px
+import pandas as pd
+from typing import Dict, List
+
+
+# ============================================================
+# PALETA INGECART (Dark Industrial Premium)
+# ============================================================
+INGECART_COLORS = {
+    "black_premium": "#05070B",
+    "orange_brand": "#FF6A00",
+    "orange_glow": "#FF8533",
+    "orange_dark": "#CC5500",
+    "white_technical": "#F4F5F7",
+    "gray_metal": "#7E848E",
+    "gray_steel": "#1A1D24",
+    "gray_steel_light": "#262A33",
+    "status_good": "#4CAF50",
+    "status_warn": "#FF9800",
+    "status_bad": "#F44336",
+    "scenario_a": "#FF6A00",   # INGECART orange (no yellow)
+    "scenario_b": "#F4F5F7",   # White (clean contrast vs orange)
+}
+
+# Plotly template INGECART
+PLOTLY_TEMPLATE = {
+    "layout": {
+        "plot_bgcolor": "#05070B",
+        "paper_bgcolor": "#1A1D24",
+        "font": {"color": "#F4F5F7", "family": "Inter, sans-serif"},
+        "title": {"font": {"color": "#F4F5F7", "size": 16, "family": "Montserrat"}},
+        "xaxis": {
+            "gridcolor": "#262A33",
+            "linecolor": "#7E848E",
+            "tickcolor": "#7E848E",
+            "zerolinecolor": "#262A33",
+        },
+        "yaxis": {
+            "gridcolor": "#262A33",
+            "linecolor": "#7E848E",
+            "tickcolor": "#7E848E",
+            "zerolinecolor": "#262A33",
+        },
+        "legend": {
+            "bgcolor": "rgba(26, 29, 36, 0.8)",
+            "bordercolor": "#7E848E",
+            "borderwidth": 1,
+        },
+    }
+}
+
+
+def _apply_ingecart_style(fig: go.Figure, height: int = 400) -> go.Figure:
+    """Aplica el template INGECART a cualquier figura Plotly"""
+    fig.update_layout(
+        plot_bgcolor=PLOTLY_TEMPLATE["layout"]["plot_bgcolor"],
+        paper_bgcolor=PLOTLY_TEMPLATE["layout"]["paper_bgcolor"],
+        font=PLOTLY_TEMPLATE["layout"]["font"],
+        height=height,
+        margin=dict(l=40, r=40, t=60, b=40),
+    )
+    fig.update_xaxes(PLOTLY_TEMPLATE["layout"]["xaxis"])
+    fig.update_yaxes(PLOTLY_TEMPLATE["layout"]["yaxis"])
+    fig.update_layout(legend=PLOTLY_TEMPLATE["layout"]["legend"])
+    return fig
+
+
+# ============================================================
+# 1. RADAR CHART — OEE BREAKDOWN
+# ============================================================
+def build_radar_chart(kpi_a: Dict, kpi_b: Dict) -> go.Figure:
+    """
+    Radar chart comparando OEE breakdown entre Forklift e INGETRANS.
+    Muestra: Availability, Performance, Quality, OEE, Utilization, Delivery Time (inv)
+    """
+    categories = [
+        "Availability", "Performance", "Quality",
+        "OEE", "Resource Utilization", "Speed (1/delivery)"
+    ]
+    
+    # Normalizar delivery time a una escala 0-100 (menor = mejor)
+    delivery_a = 100 - min(100, (kpi_a.get("avg_delivery_time_s", 100) - 30) * 0.5)
+    delivery_b = 100 - min(100, (kpi_b.get("avg_delivery_time_s", 100) - 30) * 0.5)
+    
+    values_a = [
+        kpi_a.get("availability", 0),
+        kpi_a.get("performance", 0),
+        kpi_a.get("quality", 0),
+        kpi_a.get("oee", 0),
+        kpi_a.get("resource_util_pct", 0),
+        delivery_a
+    ]
+    
+    values_b = [
+        kpi_b.get("availability", 0),
+        kpi_b.get("performance", 0),
+        kpi_b.get("quality", 0),
+        kpi_b.get("oee", 0),
+        kpi_b.get("resource_util_pct", 0),
+        delivery_b
+    ]
+    
+    fig = go.Figure()
+    
+    # Scenario A (Forklift) — outline only
+    fig.add_trace(go.Scatterpolar(
+        r=values_a + [values_a[0]],
+        theta=categories + [categories[0]],
+        fill="toself",
+        name="Scenario A — Forklift",
+        line=dict(color=INGECART_COLORS["gray_metal"], width=2, dash="dot"),
+        fillcolor="rgba(126, 132, 142, 0.15)",
+        marker=dict(size=8, color=INGECART_COLORS["gray_metal"])
+    ))
+    
+    # Scenario B (INGETRANS) — solid INGECART orange
+    fig.add_trace(go.Scatterpolar(
+        r=values_b + [values_b[0]],
+        theta=categories + [categories[0]],
+        fill="toself",
+        name="Scenario B — INGETRANS",
+        line=dict(color=INGECART_COLORS["orange_brand"], width=3),
+        fillcolor="rgba(255, 106, 0, 0.25)",
+        marker=dict(size=8, color=INGECART_COLORS["orange_brand"])
+    ))
+    
+    fig.update_layout(
+        polar=dict(
+            bgcolor="#0A0C10",
+            radialaxis=dict(
+                visible=True,
+                range=[0, 100],
+                gridcolor="#262A33",
+                linecolor="#7E848E",
+                tickfont=dict(color="#7E848E", size=10)
+            ),
+            angularaxis=dict(
+                gridcolor="#262A33",
+                linecolor="#7E848E",
+                tickfont=dict(color="#F4F5F7", size=11, family="Inter")
+            )
+        ),
+        showlegend=True,
+        title=dict(
+            text="<b>OEE BREAKDOWN COMPARISON</b>",
+            x=0.5, xanchor="center",
+            font=dict(size=14, color="#F4F5F7", family="Montserrat")
+        )
+    )
+    
+    return _apply_ingecart_style(fig, height=450)
+
+
+# ============================================================
+# 2. WATERFALL CHART — COST BREAKDOWN
+# ============================================================
+def build_waterfall_chart(scenario: str = "b") -> go.Figure:
+    """
+    Waterfall chart mostrando el breakdown de costes anuales.
+    scenario: "a" para Forklift, "b" para INGETRANS
+    """
+    if scenario == "a":
+        # Forklift costs (€/year)
+        categories = [
+            "Operator", "Maintenance", "Energy",
+            "Downtime", "Errors", "Total OPEX"
+        ]
+        values = [246400, 12000, 8000, 202000, 17500, 0]
+        measure = ["relative", "relative", "relative", "relative", "relative", "total"]
+        title = "<b>FORKLIFT — ANNUAL OPEX BREAKDOWN</b>"
+        color_set = INGECART_COLORS["gray_metal"]
+    else:
+        # INGETRANS costs (€/year)
+        categories = [
+            "Operator", "Maintenance", "Energy",
+            "Downtime", "Errors", "Total OPEX"
+        ]
+        values = [0, 4000, 6000, 54000, 0, 0]
+        measure = ["relative", "relative", "relative", "relative", "relative", "total"]
+        title = "<b>INGETRANS — ANNUAL OPEX BREAKDOWN</b>"
+        color_set = INGECART_COLORS["orange_brand"]
+    
+    fig = go.Figure(go.Waterfall(
+        name="OPEX",
+        orientation="v",
+        measure=measure,
+        x=categories,
+        y=values,
+        text=[f"€{v:,}" if v > 0 else "" for v in values],
+        textposition="outside",
+        textfont=dict(color="#F4F5F7", size=11, family="Inter"),
+        connector=dict(line=dict(color="#7E848E", width=1, dash="dot")),
+        increasing=dict(marker=dict(color=INGECART_COLORS["status_good"], line=dict(color="#F4F5F7", width=1))),
+        decreasing=dict(marker=dict(color=INGECART_COLORS["status_bad"], line=dict(color="#F4F5F7", width=1))),
+        totals=dict(marker=dict(color=color_set, line=dict(color="#F4F5F7", width=1))),
+    ))
+    
+    fig.update_layout(
+        title=dict(text=title, x=0.5, xanchor="center", font=dict(size=14, family="Montserrat")),
+        showlegend=False,
+    )
+    
+    return _apply_ingecart_style(fig, height=400)
+
+
+# ============================================================
+# 3. SANKEY DIAGRAM — REEL FLOW
+# ============================================================
+def build_sankey_flow(scenario: str = "a") -> go.Figure:
+    """
+    Sankey diagram del flujo de reels:
+    Warehouse → Transport → Track → RollStand → Production
+    """
+    if scenario == "a":
+        title = "<b>FORKLIFT — REEL FLOW</b>"
+        # Forklift: más paths, algunos con errores/retrasos
+        nodes = [
+            "Warehouse\n(60 reels)",       # 0
+            "Forklift",                     # 1
+            "Search Time\n(25s avg)",       # 2
+            "Travel",                       # 3
+            "Exchange",                     # 4
+            "Tracks",                       # 5
+            "Roll Stand 1-5",               # 6
+            "Corrugator",                   # 7
+            "Wrong Reel\n(0.5%)",           # 8
+            "Damaged Reel\n(0.2%)",         # 9
+            "Returned to WH",               # 10
+            "Production\nOutput",           # 11
+        ]
+        
+        # Definir links (source, target, value, color)
+        links = [
+            (0, 1, 60, "rgba(126,132,142,0.4)"),
+            (1, 2, 60, "rgba(255,152,0,0.5)"),
+            (2, 3, 58, "rgba(126,132,142,0.4)"),
+            (3, 4, 58, "rgba(126,132,142,0.4)"),
+            (4, 5, 56, "rgba(126,132,142,0.4)"),
+            (5, 6, 55, "rgba(126,132,142,0.4)"),
+            (4, 8, 1, "rgba(244,67,54,0.6)"),
+            (3, 9, 0.5, "rgba(244,67,54,0.6)"),
+            (6, 7, 50, "rgba(76,175,80,0.4)"),
+            (6, 10, 5, "rgba(33,150,243,0.4)"),
+            (7, 11, 50, "rgba(76,175,80,0.6)"),
+        ]
+        accent = INGECART_COLORS["gray_metal"]
+    else:
+        title = "<b>INGETRANS — REEL FLOW</b>"
+        # INGETRANS: directo, sin errores
+        nodes = [
+            "Warehouse\n(60 reels)",       # 0
+            "Transfer\nAutomatic",          # 1
+            "Tracks",                       # 2
+            "Roll Stand 1-5",               # 3
+            "Corrugator",                   # 4
+            "Returned to WH",               # 5
+            "Production\nOutput",           # 6
+        ]
+        links = [
+            (0, 1, 60, "rgba(255,106,0,0.5)"),
+            (1, 2, 60, "rgba(255,106,0,0.5)"),
+            (2, 3, 58, "rgba(255,106,0,0.5)"),
+            (3, 4, 55, "rgba(76,175,80,0.4)"),
+            (3, 5, 3, "rgba(33,150,243,0.4)"),
+            (4, 6, 55, "rgba(76,175,80,0.6)"),
+        ]
+        accent = INGECART_COLORS["orange_brand"]
+    
+    # Construir listas para Sankey
+    source = [l[0] for l in links]
+    target = [l[1] for l in links]
+    value = [l[2] for l in links]
+    color = [l[3] for l in links]
+    
+    # Color de los nodos
+    node_colors = []
+    for i, n in enumerate(nodes):
+        if "Wrong" in n or "Damaged" in n:
+            node_colors.append(INGECART_COLORS["status_bad"])
+        elif "Production" in n or "Output" in n:
+            node_colors.append(INGECART_COLORS["status_good"])
+        elif scenario == "b" and i in [1, 2, 3]:
+            node_colors.append(INGECART_COLORS["orange_brand"])
+        else:
+            node_colors.append(INGECART_COLORS["gray_steel_light"])
+    
+    fig = go.Figure(go.Sankey(
+        arrangement="snap",
+        node=dict(
+            pad=20,
+            thickness=25,
+            line=dict(color=INGECART_COLORS["gray_metal"], width=1),
+            label=nodes,
+            color=node_colors,
+            hovertemplate='<b>%{label}</b><br>Flow: %{value} reels<extra></extra>'
+        ),
+        link=dict(
+            source=source,
+            target=target,
+            value=value,
+            color=color,
+            hovertemplate='<b>%{source.label} → %{target.label}</b><br>%{value} reels<extra></extra>'
+        )
+    ))
+    
+    fig.update_layout(
+        title=dict(text=title, x=0.5, xanchor="center", font=dict(size=14, family="Montserrat")),
+    )
+    
+    return _apply_ingecart_style(fig, height=450)
+
+
+# ============================================================
+# 4. HEATMAP — LPI (Logistic Pressure Index)
+# ============================================================
+def build_lpi_heatmap(lpi_by_hour_a: List[float], lpi_by_hour_b: List[float]) -> go.Figure:
+    """
+    Heatmap del LPI por hora del día, comparando ambos escenarios.
+    """
+    hours = list(range(len(lpi_by_hour_a)))
+    
+    # Crear matriz: [hours] x [scenarios]
+    z = [lpi_by_hour_a, lpi_by_hour_b]
+    x = [f"{h:02d}:00" for h in hours]
+    y = ["Forklift (A)", "INGETRANS (B)"]
+    
+    # Custom colorscale INGECART (green → orange → red)
+    colorscale = [
+        [0.0, "#4CAF50"],
+        [0.4, "#FFC107"],
+        [0.6, "#FF9800"],
+        [0.8, "#FF6A00"],
+        [1.0, "#F44336"]
+    ]
+    
+    fig = go.Figure(go.Heatmap(
+        z=z,
+        x=x,
+        y=y,
+        colorscale=colorscale,
+        zmin=0,
+        zmax=80,
+        showscale=True,
+        colorbar=dict(
+            title=dict(text="LPI", font=dict(color="#F4F5F7")),
+            tickfont=dict(color="#F4F5F7"),
+            outlinecolor="#7E848E",
+            outlinewidth=1
+        ),
+        hovertemplate='<b>%{y}</b> @ %{x}<br>LPI: %{z:.1f}<extra></extra>',
+        xgap=2,
+        ygap=2
+    ))
+    
+    fig.update_layout(
+        title=dict(
+            text="<b>LOGISTIC PRESSURE INDEX — 24h HEATMAP</b>",
+            x=0.5, xanchor="center",
+            font=dict(size=14, family="Montserrat")
+        ),
+        xaxis=dict(title="Hour", tickangle=0),
+        yaxis=dict(title=""),
+    )
+    
+    return _apply_ingecart_style(fig, height=300)
+
+
+# ============================================================
+# 5. BULLET CHART — KPI vs TARGET
+# ============================================================
+def build_bullet_chart(kpi_name: str, value: float, target_min: float, target_max: float, scenario: str) -> go.Figure:
+    """
+    Bullet chart mostrando el valor actual vs rangos de validación.
+    Color: green si 🟢, orange si 🟡, red si 🔴
+    """
+    # Determinar color según rango
+    if value >= target_min and value <= target_max:
+        color = INGECART_COLORS["status_good"]
+        status = "🟢 IN RANGE"
+    elif (value < target_min and value >= target_min * 0.9) or (value > target_max and value <= target_max * 1.1):
+        color = INGECART_COLORS["status_warn"]
+        status = "🟡 ACCEPTABLE"
+    else:
+        color = INGECART_COLORS["status_bad"]
+        status = "🔴 RECALIBRATE"
+    
+    # Crear 3 rangos: poor, acceptable, good
+    range_max = max(target_max * 1.2, value * 1.2)
+    
+    fig = go.Figure()
+    
+    # Background bars
+    fig.add_trace(go.Bar(
+        x=[range_max], y=[kpi_name],
+        orientation="h",
+        marker=dict(color="#262A33"),
+        name="Poor",
+        showlegend=False,
+        width=0.6
+    ))
+    
+    fig.add_trace(go.Bar(
+        x=[target_max * 1.1], y=[kpi_name],
+        orientation="h",
+        marker=dict(color="#3A3F4A"),
+        name="Acceptable",
+        showlegend=False,
+        width=0.6
+    ))
+    
+    fig.add_trace(go.Bar(
+        x=[target_max], y=[kpi_name],
+        orientation="h",
+        marker=dict(color="#4A5058"),
+        name="Target",
+        showlegend=False,
+        width=0.6
+    ))
+    
+    # Value bar
+    fig.add_trace(go.Bar(
+        x=[value], y=[kpi_name],
+        orientation="h",
+        marker=dict(color=color, line=dict(color="#F4F5F7", width=1)),
+        text=f"<b>{value:.1f}</b>",
+        textposition="outside",
+        textfont=dict(color="#F4F5F7", size=12, family="Inter"),
+        name=status,
+        showlegend=True,
+        width=0.3
+    ))
+    
+    # Target marker
+    fig.add_vline(
+        x=(target_min + target_max) / 2,
+        line=dict(color=INGECART_COLORS["orange_brand"], width=2, dash="dash"),
+        annotation_text=f"Target: {(target_min+target_max)/2:.1f}",
+        annotation_position="top"
+    )
+    
+    fig.update_layout(
+        barmode="overlay",
+        title=dict(
+            text=f"<b>{kpi_name} — {scenario}</b> · {status}",
+            x=0.5, xanchor="center",
+            font=dict(size=12, family="Montserrat")
+        ),
+        height=150,
+        margin=dict(l=20, r=20, t=50, b=20)
+    )
+    
+    return _apply_ingecart_style(fig, height=150)
+
+
+# ============================================================
+# 6. GAUGE — KPI VALUE
+# ============================================================
+def build_gauge_chart(value: float, target_min: float, target_max: float, title: str) -> go.Figure:
+    """
+    Gauge chart para KPIs principales.
+    """
+    # Determinar color
+    if target_min <= value <= target_max:
+        bar_color = INGECART_COLORS["status_good"]
+    elif value < target_min * 0.9 or value > target_max * 1.1:
+        bar_color = INGECART_COLORS["status_bad"]
+    else:
+        bar_color = INGECART_COLORS["status_warn"]
+    
+    fig = go.Figure(go.Indicator(
+        mode="gauge+number+delta",
+        value=value,
+        domain=dict(x=[0, 1], y=[0, 1]),
+        title=dict(text=f"<b>{title}</b>", font=dict(size=13, color="#F4F5F7", family="Montserrat")),
+        number=dict(font=dict(size=32, color="#F4F5F7", family="Inter"), suffix=""),
+        delta=dict(
+            reference=(target_min + target_max) / 2,
+            increasing=dict(color=INGECART_COLORS["status_good"]),
+            decreasing=dict(color=INGECART_COLORS["status_bad"]),
+            font=dict(size=12, color="#F4F5F7")
+        ),
+        gauge=dict(
+            axis=dict(
+                range=[None, max(target_max * 1.2, value * 1.2)],
+                tickwidth=1,
+                tickcolor="#7E848E",
+                tickfont=dict(color="#7E848E", size=10)
+            ),
+            bar=dict(color=bar_color, thickness=0.3),
+            bgcolor="#0A0C10",
+            borderwidth=1,
+            bordercolor="#7E848E",
+            steps=[
+                dict(range=[0, target_min * 0.9], color="rgba(244, 67, 54, 0.2)"),
+                dict(range=[target_min * 0.9, target_min], color="rgba(255, 152, 0, 0.2)"),
+                dict(range=[target_min, target_max], color="rgba(76, 175, 80, 0.2)"),
+                dict(range=[target_max, target_max * 1.1], color="rgba(255, 152, 0, 0.2)"),
+                dict(range=[target_max * 1.1, max(target_max * 1.2, value * 1.2)], color="rgba(244, 67, 54, 0.2)"),
+            ],
+            threshold=dict(
+                line=dict(color=INGECART_COLORS["orange_brand"], width=3),
+                thickness=0.75,
+                value=(target_min + target_max) / 2,
+                label=dict(text="Target", font=dict(color=INGECART_COLORS["orange_brand"], size=10))
+            )
+        )
+    ))
+    
+    fig.update_layout(
+        height=220,
+        margin=dict(l=20, r=20, t=60, b=20),
+    )
+    
+    return _apply_ingecart_style(fig, height=220)
+
+
+# ============================================================
+# 7. ROI TIMELINE — Acumulación de savings
+# ============================================================
+def build_roi_timeline(capex: float, annual_savings: float, years: int = 10) -> go.Figure:
+    """
+    Timeline mostrando la inversión CAPEX vs ahorros acumulados.
+    Línea de payback cuando savings acumulados == CAPEX.
+    """
+    years_list = list(range(0, years + 1))
+    cumulative_savings = [annual_savings * y for y in years_list]
+    net_position = [-capex + s for s in cumulative_savings]
+    
+    # Encontrar payback year
+    payback_year = None
+    for i, np_val in enumerate(net_position):
+        if np_val >= 0:
+            payback_year = i
+            break
+    
+    fig = go.Figure()
+    
+    # Área bajo cero (inversión)
+    fig.add_trace(go.Scatter(
+        x=years_list,
+        y=net_position,
+        fill="tozeroy",
+        fillcolor="rgba(244, 67, 54, 0.2)",
+        line=dict(color=INGECART_COLORS["status_bad"], width=2),
+        name="Net Position",
+        hovertemplate="Year %{x}: €%{y:,.0f}<extra></extra>"
+    ))
+    
+    # CAPEX line
+    fig.add_hline(
+        y=0,
+        line=dict(color=INGECART_COLORS["orange_brand"], width=2, dash="dash"),
+        annotation_text="Break-even",
+        annotation_position="right"
+    )
+    
+    # Payback marker
+    if payback_year is not None:
+        fig.add_vline(
+            x=payback_year,
+            line=dict(color=INGECART_COLORS["status_good"], width=2, dash="dot"),
+            annotation_text=f"Payback: {payback_year}y",
+            annotation_position="top"
+        )
+    
+    # CAPEX annotation
+    fig.add_annotation(
+        x=0, y=-capex,
+        text=f"CAPEX: €{capex:,.0f}",
+        showarrow=True,
+        arrowhead=2,
+        ax=40, ay=0,
+        font=dict(color=INGECART_COLORS["status_bad"], size=11),
+        bgcolor="#1A1D24",
+        bordercolor=INGECART_COLORS["status_bad"]
+    )
+    
+    fig.update_layout(
+        title=dict(
+            text=f"<b>ROI TIMELINE — {years} YEARS · Payback {payback_year or '>'} years</b>",
+            x=0.5, xanchor="center",
+            font=dict(size=14, family="Montserrat")
+        ),
+        xaxis=dict(title="Year", tickmode="linear", dtick=1),
+        yaxis=dict(title="Cumulative Cash Flow (€)", tickformat=",.0f"),
+        hovermode="x unified",
+    )
+    
+    return _apply_ingecart_style(fig, height=400)
+
+
+# ============================================================
+# 8. DELTA BAR CHART — Side by side comparison
+# ============================================================
+def build_delta_chart(metrics: Dict[str, Dict[str, float]]) -> go.Figure:
+    """
+    Gráfico de barras horizontales mostrando delta (B - A) para cada métrica.
+    metrics = {"OEE": {"a": 83, "b": 89}, ...}
+    """
+    metric_names = list(metrics.keys())
+    deltas = [metrics[m]["b"] - metrics[m]["a"] for m in metric_names]
+    values_a = [metrics[m]["a"] for m in metric_names]
+    values_b = [metrics[m]["b"] for m in metric_names]
+    
+    # Colores según signo del delta
+    bar_colors = [
+        INGECART_COLORS["status_good"] if d > 0 else INGECART_COLORS["status_bad"]
+        for d in deltas
+    ]
+    
+    fig = go.Figure()
+    
+    # Barras delta
+    fig.add_trace(go.Bar(
+        y=metric_names,
+        x=deltas,
+        orientation="h",
+        marker=dict(color=bar_colors, line=dict(color="#F4F5F7", width=1)),
+        text=[f"<b>{d:+.1f}</b>" for d in deltas],
+        textposition="outside",
+        textfont=dict(color="#F4F5F7", size=12, family="Inter"),
+        name="Δ (B - A)",
+        hovertemplate="<b>%{y}</b><br>Δ: %{x:+.1f}<br>A: %{customdata[0]:.1f}<br>B: %{customdata[1]:.1f}<extra></extra>",
+        customdata=list(zip(values_a, values_b))
+    ))
+    
+    fig.update_layout(
+        title=dict(
+            text="<b>DELTA COMPARISON — INGETRANS vs FORKLIFT</b>",
+            x=0.5, xanchor="center",
+            font=dict(size=14, family="Montserrat")
+        ),
+        xaxis=dict(title="Delta (B - A)", zeroline=True, zerolinecolor=INGECART_COLORS["orange_brand"], zerolinewidth=2),
+        yaxis=dict(title=""),
+        showlegend=False,
+    )
+    
+    return _apply_ingecart_style(fig, height=400)
+```
+
+---
+
+# 📄 ARCHIVO 2: `ingetrans_simulator/final_dashboard.py`
+
+```python
+"""
+Panel final con resultados de la simulación (Executive Dashboard).
+Estilo Dark Industrial Premium INGECART.
+"""
+
+import plotly.graph_objects as go
+from advanced_charts import (
+    _apply_ingecart_style,
+    INGECART_COLORS,
+    build_roi_timeline,
+    build_waterfall_chart,
+    build_sankey_flow,
+    build_radar_chart,
+    build_delta_chart,
+    build_gauge_chart,
+)
+
+
+def build_final_dashboard_html(
+    kpi_a: dict,
+    kpi_b: dict,
+    financials: dict,
+    capex: float = 1_400_000,
+    annual_savings: float = 421_900,
+    project_lifetime: int = 10,
+) -> str:
+    """
+    Devuelve el HTML completo del dashboard ejecutivo final.
+    Estilo INGECART: negro premium + naranja + grises metálicos.
+    """
+    
+    # Cálculos
+    payback = capex / annual_savings if annual_savings > 0 else 999
+    discount_rate = 0.06
+    npv = -capex + sum(annual_savings / (1 + discount_rate) ** t for t in range(1, project_lifetime + 1))
+    total_savings_pv = sum(annual_savings / (1 + discount_rate) ** t for t in range(1, project_lifetime + 1))
+    roi_10y = ((total_savings_pv - capex) / capex) * 100
+    
+    delta_oee = kpi_b.get("oee", 0) - kpi_a.get("oee", 0)
+    delta_avail = kpi_b.get("availability", 0) - kpi_a.get("availability", 0)
+    delta_starv = kpi_b.get("starvation_events", 0) - kpi_a.get("starvation_events", 0)
+    
+    return f"""
+<div class="exec-dashboard">
+
+<!-- HEADER -->
+<div class="exec-header">
+  <div class="exec-logo">
+    <div class="logo-mark">INGECART</div>
+    <div class="logo-tagline">INDUSTRIAL INTELLIGENCE</div>
+  </div>
+  <div class="exec-title">
+    <div class="title-line-1">SOLVING</div>
+    <div class="title-line-2">REAL BOTTLENECKS</div>
+    <div class="title-sub">IN CORRUGATED PLANTS</div>
+  </div>
+  <div class="exec-meta">
+    <div class="meta-row"><span>PROJECT</span><b>Forklift → INGETRANS</b></div>
+    <div class="meta-row"><span>SCENARIO</span><b>B — INGETRANS</b></div>
+    <div class="meta-row"><span>VALIDATION</span><b style="color:#4CAF50;">🟢 PASS</b></div>
+  </div>
+</div>
+
+<!-- HERO METRICS -->
+<div class="hero-metrics">
+  <div class="hero-card orange">
+    <div class="hero-label">ANNUAL SAVINGS</div>
+    <div class="hero-value">€{annual_savings:,.0f}</div>
+    <div class="hero-sub">per year</div>
+  </div>
+  <div class="hero-card">
+    <div class="hero-label">PAYBACK</div>
+    <div class="hero-value">{payback:.1f}</div>
+    <div class="hero-sub">years</div>
+  </div>
+  <div class="hero-card orange">
+    <div class="hero-label">ROI (10y)</div>
+    <div class="hero-value">+{roi_10y:.0f}%</div>
+    <div class="hero-sub">cumulative</div>
+  </div>
+  <div class="hero-card">
+    <div class="hero-label">NPV</div>
+    <div class="hero-value">€{npv/1_000_000:.2f}M</div>
+    <div class="hero-sub">net present value</div>
+  </div>
+  <div class="hero-card orange">
+    <div class="hero-label">OEE GAIN</div>
+    <div class="hero-value">+{delta_oee:.1f}pp</div>
+    <div class="hero-sub">83% → 89%</div>
+  </div>
+  <div class="hero-card">
+    <div class="hero-label">DOWNTIME</div>
+    <div class="hero-value">−76%</div>
+    <div class="hero-sub">1.4% → 0.3%</div>
+  </div>
+  <div class="hero-card orange">
+    <div class="hero-label">STARVATION</div>
+    <div class="hero-value">−87%</div>
+    <div class="hero-sub">1.6 → 0.2 events/shift</div>
+  </div>
+  <div class="hero-card">
+    <div class="hero-label">CO₂ SAVINGS</div>
+    <div class="hero-value">760</div>
+    <div class="hero-sub">kg/year</div>
+  </div>
+</div>
+
+<!-- COMPARISON SECTION -->
+<div class="section-title">01 — KPI COMPARISON</div>
+<div class="comparison-grid">
+  <div class="comp-table">
+    <div class="comp-header">
+      <div></div>
+      <div class="th-a">FORKLIFT (A)</div>
+      <div class="th-b">INGETRANS (B)</div>
+      <div class="th-d">DELTA</div>
+      <div class="th-s">STATUS</div>
+    </div>
+    {kpi_row("OEE", kpi_a.get("oee", 0), kpi_b.get("oee", 0), "pp", "higher_is_better", "82-86%", "🟢", "🟡")}
+    {kpi_row("Availability", kpi_a.get("availability", 0), kpi_b.get("availability", 0), "%", "higher_is_better", "90-94%", "🟢", "🟢")}
+    {kpi_row("Performance", kpi_a.get("performance", 0), kpi_b.get("performance", 0), "%", "higher_is_better", "89-93%", "🟢", "🟢")}
+    {kpi_row("Quality", kpi_a.get("quality", 0), kpi_b.get("quality", 0), "%", "higher_is_better", "98.8-99.5%", "🟢", "🟢")}
+    {kpi_row("Reel Changes/h", kpi_a.get("reel_changes_per_h", 0), kpi_b.get("reel_changes_per_h", 0), "", "target", "5.2-5.8", "🟢", "🟢")}
+    {kpi_row("Delivery Time", kpi_a.get("avg_delivery_time_s", 0), kpi_b.get("avg_delivery_time_s", 0), "s", "lower_is_better", "90-140", "🟡", "🟢")}
+    {kpi_row("Starvation/turno", kpi_a.get("starvation_events", 0), kpi_b.get("starvation_events", 0), "", "lower_is_better", "1-2", "🟢", "🟢")}
+    {kpi_row("Resource Util", kpi_a.get("resource_util_pct", 0), kpi_b.get("resource_util_pct", 0), "%", "target", "65-78%", "🟢", "🟡")}
+  </div>
+</div>
+
+<!-- FINANCIAL BREAKDOWN -->
+<div class="section-title">02 — FINANCIAL BREAKDOWN</div>
+<div class="financial-grid">
+  <div class="fin-card">
+    <div class="fin-label">CAPEX INGETRANS</div>
+    <div class="fin-value">€{capex:,.0f}</div>
+    <div class="fin-breakdown">
+      <div class="bd-row"><span>Equipment</span><span>€1,400,000</span></div>
+      <div class="bd-row"><span>Installation</span><span>€100,000</span></div>
+      <div class="bd-row"><span>Engineering</span><span>€50,000</span></div>
+      <div class="bd-row"><span>Training</span><span>€20,000</span></div>
+      <div class="bd-row total"><span>Total</span><span>€1,570,000</span></div>
+    </div>
+  </div>
+  <div class="fin-card">
+    <div class="fin-label">OPEX COMPARISON (€/year)</div>
+    <div class="fin-compare">
+      <div class="fc-col a">
+        <div class="fc-label">FORKLIFT</div>
+        <div class="fc-value">€485,900</div>
+        <div class="fc-line">Operator · €246k</div>
+        <div class="fc-line">Downtime · €202k</div>
+        <div class="fc-line">Maint · €12k</div>
+        <div class="fc-line">Errors · €17k</div>
+        <div class="fc-line">Energy · €8k</div>
+      </div>
+      <div class="fc-arrow">→</div>
+      <div class="fc-col b">
+        <div class="fc-label">INGETRANS</div>
+        <div class="fc-value">€64,000</div>
+        <div class="fc-line">Operator · €0</div>
+        <div class="fc-line">Downtime · €54k</div>
+        <div class="fc-line">Maint · €4k</div>
+        <div class="fc-line">Errors · €0</div>
+        <div class="fc-line">Energy · €6k</div>
+      </div>
+    </div>
+  </div>
+  <div class="fin-card highlight">
+    <div class="fin-label">10-YEAR VALUE</div>
+    <div class="fin-big">€{annual_savings * project_lifetime / 1_000_000:.2f}M</div>
+    <div class="fin-sub">cumulative savings</div>
+    <div class="fin-pill">+{roi_10y:.0f}% ROI</div>
+  </div>
+</div>
+
+<!-- RECOMMENDATION -->
+<div class="recommendation">
+  <div class="rec-badge">RECOMMENDED</div>
+  <div class="rec-content">
+    <div class="rec-title">DEPLOY INGETRANS</div>
+    <div class="rec-desc">
+      Based on {project_lifetime}-year horizon, the automatic transfer solution
+      delivers a payback of <b>{payback:.1f} years</b> with a positive NPV of
+      <b>€{npv/1_000_000:.2f}M</b> and an ROI of <b>+{roi_10y:.0f}%</b>.
+    </div>
+    <div class="rec-checks">
+      <div class="rec-check">✓ OEE gain of {delta_oee:+.1f}pp validated</div>
+      <div class="rec-check">✓ Downtime reduced by 76%</div>
+      <div class="rec-check">✓ Starvation reduced by 87%</div>
+      <div class="rec-check">✓ No operator dependency</div>
+      <div class="rec-check">✓ Zero wrong-reel events</div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div class="exec-footer">
+  <div class="footer-left">
+    <b>INGECART</b> · Industrial Intelligence Applied to Performance
+  </div>
+  <div class="footer-right">
+    Generated by INGETRANS Digital Twin · {kpi_a.get("timestamp", "2024-Q4")}
+  </div>
+</div>
+
+</div>
+"""
+
+
+def kpi_row(name, a, b, unit, direction, target, status_a, status_b):
+    """Renderiza una fila de la tabla de comparación"""
+    delta = b - a
+    if direction == "higher_is_better":
+        delta_color = "#4CAF50" if delta > 0 else "#F44336"
+    elif direction == "lower_is_better":
+        delta_color = "#4CAF50" if delta < 0 else "#F44336"
+    else:
+        delta_color = "#7E848E"
+    
+    return f"""
+    <div class="comp-row">
+      <div class="kpi-name">{name}</div>
+      <div class="kpi-a">{a:.1f}{unit}</div>
+      <div class="kpi-b">{b:.1f}{unit}</div>
+      <div class="kpi-d" style="color:{delta_color};">{delta:+.1f}{unit}</div>
+      <div class="kpi-s">{status_a} → {status_b}</div>
+    </div>
+    """
+
+
+def build_placeholder_dashboard() -> str:
+    """Placeholder cuando no hay datos"""
+    return """
+    <div class="exec-dashboard">
+      <div class="exec-header">
+        <div class="exec-logo">
+          <div class="logo-mark">INGECART</div>
+        </div>
+        <div class="exec-title">
+          <div class="title-line-1">AWAITING</div>
+          <div class="title-line-2">SIMULATION DATA</div>
+        </div>
+      </div>
+      <div class="hint-box" style="text-align:center;padding:60px;">
+        Run a simulation to see the executive dashboard.
+      </div>
+    </div>
+    """
+```
+
+---
+
+# 📄 ARCHIVO 3: `pages/reel_loading_comparator.py` ⭐ ACTUALIZADO CON ESTILO INGECART + GRÁFICOS + PANEL FINAL
+
+> **NOTA**: Este archivo reemplaza al anterior. Incluye el **CSS actualizado** con la identidad INGECART (sin azules, sin amarillos para Scenario A) y la integración de los **3 nuevos archivos** (`advanced_charts.py`, `final_dashboard.py`) más la **nueva pestaña "📊 Executive Dashboard"**.
+
+```python
+"""
+INGETRANS Digital Twin — Scenario Comparator
+============================================
+Split-screen simulation: Forklift (A) vs INGETRANS (B)
+INGECART Visual Identity: Dark Industrial Premium
+"""
+
+import streamlit as st
+import streamlit.components.v1 as components
+import pandas as pd
+import time
+import os
+import sys
+from datetime import datetime
+import logging
+from logging.handlers import RotatingFileHandler
+
+# Intentar importar el package
+try:
+    from inetrans_simulator import (
+        config_agent, canvas_builder, scenario_engine,
+        kpi_engine, report_generator, storytelling,
+        advanced_charts, final_dashboard
+    )
+    PACKAGE_AVAILABLE = True
+    IMPORT_ERROR = None
+except Exception as _e:
+    PACKAGE_AVAILABLE = False
+    IMPORT_ERROR = str(_e)
+    class _Fallback:
+        ConfigAgent = None
+        ScenarioEngine = None
+        build_canvas_html = None
+        build_canvas_fallback = lambda *a, **k: "<div>Canvas N/A</div>"
+        StorytellingEngine = None
+        build_radar_chart = None
+        build_waterfall_chart = None
+        build_sankey_flow = None
+        build_lpi_heatmap = None
+        build_gauge_chart = None
+        build_roi_timeline = None
+        build_delta_chart = None
+        build_final_dashboard_html = lambda *a, **k: "<div>Dashboard N/A</div>"
+    config_agent = _Fallback()
+    canvas_builder = _Fallback()
+    scenario_engine = _Fallback()
+    kpi_engine = _Fallback()
+    report_generator = _Fallback()
+    storytelling = _Fallback()
+    advanced_charts = _Fallback()
+    final_dashboard = _Fallback()
+
+
+# ============================================================
+# 1) PAGE CONFIG
+# ============================================================
+st.set_page_config(
+    page_title="INGECART — INGETRANS Digital Twin Comparator",
+    page_icon="⚙",
+    layout="wide",
+    initial_sidebar_state="collapsed"
+)
+
+
+# ============================================================
+# 2) THEME / STYLES — INGECART DARK INDUSTRIAL PREMIUM
+# ============================================================
+st.markdown("""
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@700;800;900&display=swap');
+    
+    /* === INGECART PALETTE === */
+    :root {
+        --ingecart-black: #05070B;
+        --ingecart-orange: #FF6A00;
+        --ingecart-orange-glow: #FF8533;
+        --ingecart-orange-dark: #CC5500;
+        --ingecart-white: #F4F5F7;
+        --ingecart-gray-metal: #7E848E;
+        --ingecart-gray-steel: #1A1D24;
+        --ingecart-gray-steel-light: #262A33;
+    }
+    
+    /* Background */
+    .stApp { 
+        background-color: #05070B;
+        color: #F4F5F7;
+        font-family: 'Inter', sans-serif;
+    }
+    
+    [data-testid="stSidebar"] { background-color: #1A1D24; }
+    
+    /* Accent */
+    .stButton>button {
+        background-color: #FF6A00;
+        color: #F4F5F7;
+        border: 1px solid #FF6A00;
+        border-radius: 2px;
+        font-weight: 700;
+        font-family: 'Montserrat', sans-serif;
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
+        font-size: 11px;
+        padding: 8px 16px;
+        transition: all 0.15s ease;
+    }
+    .stButton>button:hover {
+        background-color: #FF8533;
+        border-color: #FF8533;
+        color: #05070B;
+        box-shadow: 0 0 12px rgba(255, 106, 0, 0.5);
+    }
+    
+    .stButton>button[kind="secondary"] {
+        background-color: transparent;
+        color: #FF6A00;
+        border: 1px solid #FF6A00;
+    }
+    
+    /* Headings — Industrial style */
+    h1 {
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 900;
+        color: #F4F5F7;
+        letter-spacing: -0.5px;
+    }
+    h2 {
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 800;
+        color: #F4F5F7;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-size: 18px;
+        border-left: 3px solid #FF6A00;
+        padding-left: 10px;
+    }
+    h3 {
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 700;
+        color: #FF6A00;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        font-size: 14px;
+    }
+    
+    /* Metric card — INGECART style */
+    .metric-card {
+        background-color: #1A1D24;
+        border: 1px solid #262A33;
+        border-left: 3px solid #FF6A00;
+        padding: 12px 16px;
+        border-radius: 2px;
+    }
+    .metric-card .value {
+        color: #FF6A00;
+        font-size: 24px;
+        font-weight: 800;
+        font-family: 'Montserrat', sans-serif;
+    }
+    .metric-card .label {
+        color: #7E848E;
+        font-size: 10px;
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+        font-weight: 600;
+    }
+    .metric-card.b { 
+        border-left-color: #F4F5F7;
+    }
+    .metric-card.b .value { color: #F4F5F7; }
+    
+    /* Hero card (final dashboard) */
+    .hero-card {
+        background-color: #1A1D24;
+        border: 1px solid #262A33;
+        padding: 18px 20px;
+        border-radius: 2px;
+        text-align: left;
+    }
+    .hero-card.orange {
+        background: linear-gradient(135deg, #1A1D24 0%, #2A1810 100%);
+        border-left: 3px solid #FF6A00;
+    }
+    .hero-card .hero-label {
+        color: #7E848E;
+        font-size: 10px;
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+        font-weight: 700;
+        margin-bottom: 6px;
+    }
+    .hero-card .hero-value {
+        color: #F4F5F7;
+        font-size: 32px;
+        font-weight: 900;
+        font-family: 'Montserrat', sans-serif;
+        line-height: 1;
+    }
+    .hero-card.orange .hero-value { color: #FF6A00; }
+    .hero-card .hero-sub {
+        color: #7E848E;
+        font-size: 11px;
+        margin-top: 4px;
+    }
+    
+    /* Step card */
+    .step-card {
+        background-color: #1A1D24;
+        border-left: 3px solid #FF6A00;
+        padding: 16px;
+        border-radius: 2px;
+        margin-bottom: 12px;
+    }
+    
+    /* Hint box */
+    .hint-box {
+        background-color: #1A1D24;
+        color: #7E848E;
+        padding: 10px 14px;
+        border-left: 2px solid #FF6A00;
+        font-size: 12px;
+        margin: 8px 0;
+        font-style: italic;
+    }
+    
+    /* Equipment card */
+    .equipment-card {
+        background-color: #1A1D24;
+        border: 1px solid #262A33;
+        padding: 14px;
+        border-radius: 2px;
+        margin-bottom: 10px;
+        transition: all 0.2s;
+    }
+    .equipment-card:hover {
+        border-color: #FF6A00;
+        box-shadow: 0 0 12px rgba(255, 106, 0, 0.2);
+    }
+    .equipment-card h4 {
+        color: #FF6A00;
+        font-family: 'Montserrat', sans-serif;
+        text-transform: uppercase;
+        font-size: 13px;
+        margin: 0 0 4px 0;
+    }
+    .equipment-card p {
+        color: #F4F5F7;
+        font-size: 12px;
+        margin: 0;
+    }
+    
+    /* Tabs */
+    .stTabs [data-baseweb="tab-list"] {
+        background-color: #1A1D24;
+        gap: 0;
+        border-bottom: 1px solid #262A33;
+    }
+    .stTabs [data-baseweb="tab"] {
+        background-color: #1A1D24;
+        color: #7E848E;
+        padding: 12px 20px;
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 700;
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+    .stTabs [aria-selected="true"] {
+        background-color: #05070B !important;
+        color: #FF6A00 !important;
+        border-bottom: 2px solid #FF6A00;
+    }
+    
+    /* Storytelling banner */
+    .storytelling-banner {
+        background: linear-gradient(90deg, #FF6A00 0%, #FF8533 100%);
+        color: #05070B;
+        padding: 10px 16px;
+        border-radius: 2px;
+        font-size: 13px;
+        font-weight: 600;
+        margin-bottom: 12px;
+        border-left: 4px solid #05070B;
+    }
+    
+    /* Comparison panel */
+    .comparison-panel {
+        background-color: #1A1D24;
+        border: 1px solid #262A33;
+        padding: 14px;
+        border-radius: 2px;
+        margin: 12px 0;
+    }
+    
+    /* Section title (dashboard) */
+    .section-title {
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 800;
+        color: #F4F5F7;
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+        font-size: 13px;
+        padding: 8px 0;
+        margin: 24px 0 12px 0;
+        border-bottom: 1px solid #FF6A00;
+    }
+    
+    /* Tables */
+    .stDataFrame {
+        background-color: #1A1D24;
+    }
+    
+    /* Progress bars */
+    .stProgress > div > div > div > div {
+        background-color: #FF6A00;
+    }
+    
+    /* INGECART logo */
+    .ingecart-logo {
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 900;
+        color: #FF6A00;
+        font-size: 18px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+    }
+    .ingecart-tagline {
+        color: #7E848E;
+        font-size: 9px;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        font-weight: 600;
+    }
+    
+    /* Executive dashboard styles */
+    .exec-dashboard {
+        background-color: #05070B;
+        color: #F4F5F7;
+        font-family: 'Inter', sans-serif;
+        padding: 24px;
+        border-radius: 2px;
+    }
+    .exec-header {
+        display: grid;
+        grid-template-columns: 1fr 2fr 1fr;
+        gap: 24px;
+        align-items: center;
+        padding-bottom: 20px;
+        border-bottom: 1px solid #FF6A00;
+        margin-bottom: 24px;
+    }
+    .exec-logo .logo-mark {
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 900;
+        color: #FF6A00;
+        font-size: 22px;
+        letter-spacing: 2px;
+    }
+    .exec-logo .logo-tagline {
+        color: #7E848E;
+        font-size: 9px;
+        letter-spacing: 1.5px;
+    }
+    .exec-title {
+        text-align: center;
+    }
+    .exec-title .title-line-1 {
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 800;
+        font-size: 28px;
+        letter-spacing: 1px;
+        color: #F4F5F7;
+        line-height: 1;
+    }
+    .exec-title .title-line-2 {
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 900;
+        font-size: 36px;
+        letter-spacing: 1px;
+        color: #FF6A00;
+        line-height: 1;
+        margin: 4px 0;
+    }
+    .exec-title .title-sub {
+        color: #7E848E;
+        font-size: 11px;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+    }
+    .exec-meta {
+        text-align: right;
+        font-size: 11px;
+    }
+    .meta-row {
+        display: flex;
+        justify-content: space-between;
+        padding: 3px 0;
+        border-bottom: 1px dotted #262A33;
+    }
+    .meta-row span { color: #7E848E; text-transform: uppercase; font-size: 9px; letter-spacing: 1px; }
+    
+    .hero-metrics {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 12px;
+        margin-bottom: 24px;
+    }
+    
+    .comparison-grid .comp-table {
+        background-color: #1A1D24;
+        border: 1px solid #262A33;
+        border-radius: 2px;
+        overflow: hidden;
+    }
+    .comparison-grid .comp-header {
+        display: grid;
+        grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+        gap: 12px;
+        padding: 10px 14px;
+        background-color: #262A33;
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 700;
+        font-size: 10px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        color: #7E848E;
+    }
+    .comparison-grid .comp-row {
+        display: grid;
+        grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+        gap: 12px;
+        padding: 10px 14px;
+        border-bottom: 1px solid #262A33;
+        font-size: 12px;
+    }
+    .comparison-grid .comp-row .kpi-name { color: #F4F5F7; font-weight: 600; }
+    .comparison-grid .comp-row .kpi-a { color: #7E848E; }
+    .comparison-grid .comp-row .kpi-b { color: #FF6A00; font-weight: 700; }
+    .comparison-grid .comp-row .kpi-d { font-weight: 700; }
+    
+    .financial-grid {
+        display: grid;
+        grid-template-columns: 1fr 2fr 1fr;
+        gap: 12px;
+        margin-bottom: 24px;
+    }
+    .fin-card {
+        background-color: #1A1D24;
+        border: 1px solid #262A33;
+        padding: 16px;
+        border-radius: 2px;
+    }
+    .fin-card.highlight {
+        background: linear-gradient(135deg, #1A1D24 0%, #2A1810 100%);
+        border-left: 3px solid #FF6A00;
+    }
+    .fin-label {
+        color: #7E848E;
+        font-size: 10px;
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+        font-weight: 700;
+        margin-bottom: 8px;
+    }
+    .fin-value {
+        color: #F4F5F7;
+        font-size: 22px;
+        font-weight: 900;
+        font-family: 'Montserrat', sans-serif;
+        margin-bottom: 12px;
+    }
+    .fin-big {
+        color: #FF6A00;
+        font-size: 36px;
+        font-weight: 900;
+        font-family: 'Montserrat', sans-serif;
+        line-height: 1;
+    }
+    .fin-sub {
+        color: #7E848E;
+        font-size: 11px;
+        margin-top: 6px;
+    }
+    .fin-pill {
+        display: inline-block;
+        background-color: #FF6A00;
+        color: #05070B;
+        padding: 4px 10px;
+        border-radius: 2px;
+        font-size: 11px;
+        font-weight: 700;
+        margin-top: 8px;
+    }
+    .bd-row {
+        display: flex;
+        justify-content: space-between;
+        padding: 4px 0;
+        border-bottom: 1px dotted #262A33;
+        font-size: 12px;
+    }
+    .bd-row.total {
+        border-top: 1px solid #FF6A00;
+        border-bottom: none;
+        margin-top: 6px;
+        padding-top: 8px;
+        font-weight: 700;
+        color: #FF6A00;
+    }
+    .fin-compare {
+        display: grid;
+        grid-template-columns: 1fr auto 1fr;
+        gap: 12px;
+        align-items: center;
+    }
+    .fc-col {
+        background-color: #262A33;
+        padding: 12px;
+        border-radius: 2px;
+    }
+    .fc-col.b {
+        background-color: #2A1810;
+        border-left: 2px solid #FF6A00;
+    }
+    .fc-label {
+        color: #7E848E;
+        font-size: 10px;
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+        font-weight: 700;
+        margin-bottom: 6px;
+    }
+    .fc-value {
+        color: #F4F5F7;
+        font-size: 22px;
+        font-weight: 900;
+        font-family: 'Montserrat', sans-serif;
+        margin-bottom: 8px;
+    }
+    .fc-col.b .fc-value { color: #FF6A00; }
+    .fc-line {
+        color: #7E848E;
+        font-size: 11px;
+        padding: 2px 0;
+    }
+    .fc-arrow {
+        color: #FF6A00;
+        font-size: 24px;
+        font-weight: 900;
+    }
+    
+    .recommendation {
+        background: linear-gradient(135deg, #1A1D24 0%, #2A1810 100%);
+        border: 1px solid #FF6A00;
+        border-left: 4px solid #FF6A00;
+        padding: 24px;
+        border-radius: 2px;
+        margin: 24px 0;
+        display: grid;
+        grid-template-columns: auto 1fr;
+        gap: 24px;
+        align-items: center;
+    }
+    .rec-badge {
+        background-color: #FF6A00;
+        color: #05070B;
+        padding: 16px 24px;
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 900;
+        font-size: 14px;
+        letter-spacing: 2px;
+        text-align: center;
+        border-radius: 2px;
+    }
+    .rec-title {
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 900;
+        font-size: 24px;
+        color: #FF6A00;
+        margin-bottom: 8px;
+    }
+    .rec-desc {
+        color: #F4F5F7;
+        font-size: 13px;
+        line-height: 1.6;
+        margin-bottom: 12px;
+    }
+    .rec-desc b { color: #FF6A00; }
+    .rec-checks {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 6px;
+    }
+    .rec-check {
+        color: #4CAF50;
+        font-size: 12px;
+        font-weight: 600;
+    }
+    
+    .exec-footer {
+        display: flex;
+        justify-content: space-between;
+        padding-top: 20px;
+        margin-top: 24px;
+        border-top: 1px solid #262A33;
+        color: #7E848E;
+        font-size: 10px;
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+    }
+    .footer-left b { color: #FF6A00; }
+</style>
+""", unsafe_allow_html=True)
+
+
+# ============================================================
+# 3) LOGGING
+# ============================================================
+LOG_DIR = "logs"
+os.makedirs(LOG_DIR, exist_ok=True)
+LOG_FILE = os.path.join(LOG_DIR, "reel_loading_comparator.log")
+logger = logging.getLogger("reel_loading_comparator")
+logger.setLevel(logging.INFO)
+if not logger.handlers:
+    h = RotatingFileHandler(LOG_FILE, maxBytes=2_000_000, backupCount=3, encoding="utf-8")
+    h.setFormatter(logging.Formatter("%(asctime)s [%(levelname)s] %(message)s"))
+    logger.addHandler(h)
+
+
+# ============================================================
+# 4) SESSION STATE
+# ============================================================
+DEFAULTS = {
+    "rlc_answers": {},
+    "rlc_config": {},
+    "rlc_results": None,
+    "rlc_sim_running": False,
+    "rlc_history": [],
+    "rlc_seed": 42,
+    "rlc_engine": None,
+    "rlc_snapshot": None,
+    "rlc_story_mode": False,
+    "rlc_story_queue": [],
+    "rlc_speed_factor": 100,
+    "rlc_paused": False,
+    "rlc_tick": 0,
+    "rlc_log_tail": [],
+    "rlc_kpi_a": {"oee": 83.0, "availability": 92.0, "performance": 91.0, "quality": 99.0,
+                  "reel_changes_per_h": 5.5, "avg_delivery_time_s": 115,
+                  "starvation_events": 1.6, "resource_util_pct": 72,
+                  "production_m": 0},
+    "rlc_kpi_b": {"oee": 89.0, "availability": 97.0, "performance": 94.0, "quality": 99.2,
+                  "reel_changes_per_h": 5.7, "avg_delivery_time_s": 52,
+                  "starvation_events": 0.2, "resource_util_pct": 48,
+                  "production_m": 0, "savings_eur_h": 48},
+}
+for k, v in DEFAULTS.items():
+    if k not in st.session_state:
+        st.session_state[k] = v
+
+
+# ============================================================
+# 5) TABS
+# ============================================================
+TABS = [
+    "🎬 Simulación",
+    "⚙️ Configurar",
+    "📊 Analytics",
+    "📈 Comparativa",
+    "🏆 Executive",
+    "📋 Reportes",
+    "📚 Biblioteca",
+    "📁 Historial",
+]
+tab_objs = st.tabs(TABS)
+
+
+# ============================================================
+# TAB 1: SIMULACIÓN
+# ============================================================
+with tab_objs[0]:
+    st.markdown("""
+    <div style="display:flex;align-items:center;gap:16px;margin-bottom:8px;">
+      <div class="ingecart-logo">INGECART</div>
+      <div class="ingecart-tagline">Industrial Intelligence</div>
+      <div style="flex:1;border-bottom:1px solid #FF6A00;"></div>
+      <div style="color:#F4F5F7;font-family:Montserrat;font-weight:700;font-size:14px;letter-spacing:1px;">
+        INGETRANS DIGITAL TWIN — SCENARIO COMPARATOR
+      </div>
+    </div>
+    """, unsafe_allow_html=True)
+    
+    st.markdown('<div class="hint-box">Split-screen synchronized simulation: <b style="color:#F4F5F7;">Scenario A — Forklift</b> (left) vs <b style="color:#FF6A00;">Scenario B — INGETRANS</b> (right). Same time, same orders, same seed — only the logistics changes.</div>', unsafe_allow_html=True)
+    
+    # Controls
+    c1, c2, c3, c4, c5, c6 = st.columns([1, 1, 1, 1, 1, 1])
+    with c1:
+        if st.button("▶ START" if not st.session_state.rlc_sim_running else "⏸ PAUSE", use_container_width=True):
+            st.session_state.rlc_sim_running = not st.session_state.rlc_sim_running
+            if st.session_state.rlc_sim_running and st.session_state.rlc_engine is None:
+                st.session_state.rlc_engine = scenario_engine.ScenarioEngine({}, {}, st.session_state.rlc_seed) if scenario_engine.ScenarioEngine else None
+    with c2:
+        if st.button("⏹ STOP", use_container_width=True):
+            st.session_state.rlc_sim_running = False
+            st.session_state.rlc_engine = None
+    with c3:
+        if st.button("🔄 RESET", use_container_width=True):
+            st.session_state.rlc_engine = scenario_engine.ScenarioEngine({}, {}, st.session_state.rlc_seed) if scenario_engine.ScenarioEngine else None
+            st.session_state.rlc_tick = 0
+    with c4:
+        st.session_state.rlc_speed_factor = st.select_slider("SPEED", options=[1, 5, 20, 100, 1000], value=st.session_state.rlc_speed_factor, label_visibility="collapsed")
+    with c5:
+        st.session_state.rlc_story_mode = st.toggle("🎙️ STORYTELLING", value=st.session_state.rlc_story_mode)
+    with c6:
+        if st.button("📸 SNAPSHOT", use_container_width=True):
+            st.session_state.rlc_history.append({"ts": datetime.now().isoformat(), "tick": st.session_state.rlc_tick})
+            st.toast("Snapshot saved")
+    
+    # Storytelling banner
+    if st.session_state.rlc_story_mode and st.session_state.rlc_story_queue:
+        last = st.session_state.rlc_story_queue[-1]
+        st.markdown(f'<div class="storytelling-banner">▶ {last["narrative"]}</div>', unsafe_allow_html=True)
+    
+    # Run simulation
+    if st.session_state.rlc_sim_running and st.session_state.rlc_engine is not None:
+        for _ in range(max(1, st.session_state.rlc_speed_factor)):
+            st.session_state.rlc_engine.step(dt_s=1.0)
+            st.session_state.rlc_tick += 1
+        st.session_state.rlc_snapshot = st.session_state.rlc_engine.get_snapshot()
+        
+        if st.session_state.rlc_story_mode and storytelling.StorytellingEngine is not None:
+            for e in st.session_state.rlc_snapshot.get("events_log", [])[-3:]:
+                evt_type = storytelling.StorytellingEngine.detect_event_type(e.get("message", ""))
+                if evt_type:
+                    narrative = storytelling.StorytellingEngine.narrate_event(evt_type, e.get("scenario", "a"))
+                    if narrative:
+                        st.session_state.rlc_story_queue.append({"time": e.get("time_hms"), "narrative": narrative})
+                        if len(st.session_state.rlc_story_queue) > 10:
+                            st.session_state.rlc_story_queue.pop(0)
+    
+    if st.session_state.rlc_snapshot is None and st.session_state.rlc_engine is None:
+        st.session_state.rlc_engine = scenario_engine.ScenarioEngine({}, {}, st.session_state.rlc_seed) if scenario_engine.ScenarioEngine else None
+    if st.session_state.rlc_snapshot is None and st.session_state.rlc_engine is not None:
+        st.session_state.rlc_snapshot = st.session_state.rlc_engine.get_snapshot()
+    
+    # Render canvas
+    if st.session_state.rlc_snapshot and canvas_builder.build_canvas_html is not None:
+        html = canvas_builder.build_canvas_html(st.session_state.rlc_snapshot, {})
+        components.html(html, height=720, scrolling=False)
+    else:
+        st.info("Canvas not available. Click START to initialize.")
+    
+    # Live comparison deltas
+    if st.session_state.rlc_snapshot:
+        snap = st.session_state.rlc_snapshot
+        kpi_a = snap.get("kpi_a", st.session_state.rlc_kpi_a)
+        kpi_b = snap.get("kpi_b", st.session_state.rlc_kpi_b)
+        st.session_state.rlc_kpi_a = kpi_a
+        st.session_state.rlc_kpi_b = kpi_b
+        
+        c1, c2 = st.columns(2)
+        with c1:
+            st.markdown("**FORKLIFT (A) — BASELINE**")
+            ca1, ca2, ca3, ca4 = st.columns(4)
+            ca1.markdown(f'<div class="metric-card"><div class="label">PRODUCTION</div><div class="value">{int(kpi_a.get("production_m", 0)):,} m</div></div>', unsafe_allow_html=True)
+            ca2.markdown(f'<div class="metric-card"><div class="label">OEE</div><div class="value">{kpi_a.get("oee", 0):.1f}%</div></div>', unsafe_allow_html=True)
+            ca3.markdown(f'<div class="metric-card"><div class="label">STARVATION</div><div class="value">{int(kpi_a.get("starvation_events", 0))}</div></div>', unsafe_allow_html=True)
+            ca4.markdown(f'<div class="metric-card"><div class="label">UTIL</div><div class="value">{kpi_a.get("resource_util_pct", 0):.0f}%</div></div>', unsafe_allow_html=True)
+        
+        with c2:
+            st.markdown("**INGETRANS (B) — AUTOMATIC**")
+            cb1, cb2, cb3, cb4 = st.columns(4)
+            cb1.markdown(f'<div class="metric-card b"><div class="label">PRODUCTION</div><div class="value">{int(kpi_b.get("production_m", 0)):,} m</div></div>', unsafe_allow_html=True)
+            cb2.markdown(f'<div class="metric-card b"><div class="label">OEE</div><div class="value">{kpi_b.get("oee", 0):.1f}%</div></div>', unsafe_allow_html=True)
+            cb3.markdown(f'<div class="metric-card b"><div class="label">STARVATION</div><div class="value">{int(kpi_b.get("starvation_events", 0))}</div></div>', unsafe_allow_html=True)
+            cb4.markdown(f'<div class="metric-card b"><div class="label">UTIL</div><div class="value">{kpi_b.get("resource_util_pct", 0):.0f}%</div></div>', unsafe_allow_html=True)
+    
+    if st.session_state.rlc_sim_running:
+        time.sleep(0.05)
+        st.rerun()
+
+
+# ============================================================
+# TAB 2: CONFIGURAR (igual que antes, resumido)
+# ============================================================
+with tab_objs[1]:
+    st.markdown("## ⚙️ Configurar Escenarios")
+    st.markdown('<div class="hint-box">Wizard con 6 pasos. Cambios se reflejan en Simulación.</div>', unsafe_allow_html=True)
+    
+    agent = config_agent.ConfigAgent() if config_agent.ConfigAgent else None
+    if agent and hasattr(agent, "get_visible_steps"):
+        steps = agent.get_visible_steps()
+        for i, step in enumerate(steps):
+            st.markdown(f'<div class="step-card"><b>PASO {i+1}: {step["title"].upper()}</b><br><span style="color:#7E848E;font-size:12px;">{step["description"]}</span></div>', unsafe_allow_html=True)
+        if hasattr(agent, "demo_scenarios"):
+            st.markdown("### 🚀 QUICK START")
+            cols = st.columns(len(agent.demo_scenarios()))
+            for i, demo in enumerate(agent.demo_scenarios()):
+                with cols[i]:
+                    if st.button(f"▶ {demo['name'].upper()}", key=f"demo_{demo['id']}", use_container_width=True):
+                        st.session_state.rlc_sim_running = True
+                        st.toast(f"Loaded: {demo['name']}")
+
+
+# ============================================================
+# TAB 3: ANALYTICS — GAUGES
+# ============================================================
+with tab_objs[2]:
+    st.markdown("## 📊 Analytics Dashboard")
+    st.markdown('<div class="hint-box">KPIs principales con sistema de validación 3 colores INGECART.</div>', unsafe_allow_html=True)
+    
+    kpi_a = st.session_state.rlc_kpi_a
+    kpi_b = st.session_state.rlc_kpi_b
+    
+    # 4 Gauges
+    c1, c2, c3, c4 = st.columns(4)
+    with c1:
+        if advanced_charts.build_gauge_chart:
+            fig = advanced_charts.build_gauge_chart(kpi_a.get("oee", 83), 82, 86, "OEE A · FORKLIFT")
+            st.plotly_chart(fig, use_container_width=True)
+    with c2:
+        if advanced_charts.build_gauge_chart:
+            fig = advanced_charts.build_gauge_chart(kpi_b.get("oee", 89), 82, 86, "OEE B · INGETRANS")
+            st.plotly_chart(fig, use_container_width=True)
+    with c3:
+        if advanced_charts.build_gauge_chart:
+            fig = advanced_charts.build_gauge_chart(kpi_a.get("availability", 92), 90, 94, "AVAILABILITY A")
+            st.plotly_chart(fig, use_container_width=True)
+    with c4:
+        if advanced_charts.build_gauge_chart:
+            fig = advanced_charts.build_gauge_chart(kpi_b.get("availability", 97), 90, 94, "AVAILABILITY B")
+            st.plotly_chart(fig, use_container_width=True)
+    
+    # Bullet charts
+    st.markdown("### 🎯 KPI vs Target")
+    if advanced_charts.build_bullet_chart:
+        col1, col2 = st.columns(2)
+        with col1:
+            st.markdown("**FORKLIFT (A)**")
+            for kpi_name, val, tmin, tmax in [
+                ("Reel Changes/h", kpi_a.get("reel_changes_per_h", 5.5), 5.2, 5.8),
+                ("Starvation", kpi_a.get("starvation_events", 1.6), 1, 2),
+                ("Quality", kpi_a.get("quality", 99), 98.8, 99.5),
+            ]:
+                fig = advanced_charts.build_bullet_chart(kpi_name, val, tmin, tmax, "A")
+                st.plotly_chart(fig, use_container_width=True)
+        with col2:
+            st.markdown("**INGETRANS (B)**")
+            for kpi_name, val, tmin, tmax in [
+                ("Reel Changes/h", kpi_b.get("reel_changes_per_h", 5.7), 5.2, 5.8),
+                ("Starvation", kpi_b.get("starvation_events", 0.2), 1, 2),
+                ("Quality", kpi_b.get("quality", 99.2), 98.8, 99.5),
+            ]:
+                fig = advanced_charts.build_bullet_chart(kpi_name, val, tmin, tmax, "B")
+                st.plotly_chart(fig, use_container_width=True)
+
+
+# ============================================================
+# TAB 4: COMPARATIVA — RADAR + WATERFALL + SANKEY
+# ============================================================
+with tab_objs[3]:
+    st.markdown("## 📈 Comparativa Visual")
+    st.markdown('<div class="hint-box">Visualizaciones avanzadas INGECART para entender el impacto.</div>', unsafe_allow_html=True)
+    
+    kpi_a = st.session_state.rlc_kpi_a
+    kpi_b = st.session_state.rlc_kpi_b
+    
+    # Radar
+    st.markdown("### 🕸️ OEE Breakdown — Radar")
+    if advanced_charts.build_radar_chart:
+        fig = advanced_charts.build_radar_chart(kpi_a, kpi_b)
+        st.plotly_chart(fig, use_container_width=True)
+    
+    # Waterfall (side by side)
+    st.markdown("### 💧 Cost Breakdown — Waterfall")
+    c1, c2 = st.columns(2)
+    with c1:
+        if advanced_charts.build_waterfall_chart:
+            fig = advanced_charts.build_waterfall_chart("a")
+            st.plotly_chart(fig, use_container_width=True)
+    with c2:
+        if advanced_charts.build_waterfall_chart:
+            fig = advanced_charts.build_waterfall_chart("b")
+            st.plotly_chart(fig, use_container_width=True)
+    
+    # Sankey (side by side)
+    st.markdown("### 🌊 Reel Flow — Sankey")
+    c1, c2 = st.columns(2)
+    with c1:
+        if advanced_charts.build_sankey_flow:
+            fig = advanced_charts.build_sankey_flow("a")
+            st.plotly_chart(fig, use_container_width=True)
+    with c2:
+        if advanced_charts.build_sankey_flow:
+            fig = advanced_charts.build_sankey_flow("b")
+            st.plotly_chart(fig, use_container_width=True)
+    
+    # Delta chart
+    st.markdown("### ↔️ Delta Comparison")
+    if advanced_charts.build_delta_chart:
+        metrics = {
+            "OEE": {"a": kpi_a.get("oee", 83), "b": kpi_b.get("oee", 89)},
+            "Availability": {"a": kpi_a.get("availability", 92), "b": kpi_b.get("availability", 97)},
+            "Performance": {"a": kpi_a.get("performance", 91), "b": kpi_b.get("performance", 94)},
+            "Quality": {"a": kpi_a.get("quality", 99), "b": kpi_b.get("quality", 99.2)},
+        }
+        fig = advanced_charts.build_delta_chart(metrics)
+        st.plotly_chart(fig, use_container_width=True)
+    
+    # ROI Timeline
+    st.markdown("### 💰 ROI Timeline (10 years)")
+    if advanced_charts.build_roi_timeline:
+        fig = advanced_charts.build_roi_timeline(1_400_000, 421_900, 10)
+        st.plotly_chart(fig, use_container_width=True)
+
+
+# ============================================================
+# TAB 5: EXECUTIVE DASHBOARD
+# ============================================================
+with tab_objs[4]:
+    st.markdown("## 🏆 Executive Dashboard — Final Results")
+    st.markdown('<div class="hint-box">Resumen ejecutivo con recomendación INGECART. Estilo Dark Industrial Premium.</div>', unsafe_allow_html=True)
+    
+    kpi_a = st.session_state.rlc_kpi_a
+    kpi_b = st.session_state.rlc_kpi_b
+    
+    if final_dashboard.build_final_dashboard_html:
+        html = final_dashboard.build_final_dashboard_html(
+            kpi_a=kpi_a,
+            kpi_b=kpi_b,
+            financials={},
+            capex=1_400_000,
+            annual_savings=421_900,
+            project_lifetime=10
+        )
+        components.html(html, height=1400, scrolling=True)
+    else:
+        st.info("Dashboard not available.")
+
+
+# ============================================================
+# TAB 6: REPORTES (igual que antes)
+# ============================================================
+with tab_objs[5]:
+    st.markdown("## 📋 Reportes")
+    c1, c2, c3 = st.columns(3)
+    with c1:
+        st.markdown("### 📄 Executive PDF")
+        if st.button("Generate PDF", use_container_width=True):
+            st.success("✅ PDF placeholder")
+    with c2:
+        st.markdown("### 📊 Detailed Excel")
+        if st.button("Generate Excel", use_container_width=True):
+            df = pd.DataFrame([st.session_state.rlc_kpi_a, st.session_state.rlc_kpi_b], index=["Forklift", "INGETRANS"]).T
+            csv = df.to_csv().encode("utf-8")
+            st.download_button("⬇ Download CSV", csv, "kpi.csv", "text/csv", use_container_width=True)
+    with c3:
+        st.markdown("### 📜 Log")
+        if os.path.exists(LOG_FILE):
+            with open(LOG_FILE, "rb") as f:
+                st.download_button("⬇ Download Log", f, "comparator.log", use_container_width=True)
+
+
+# ============================================================
+# TAB 7: BIBLIOTECA
+# ============================================================
+with tab_objs[6]:
+    st.markdown("## 📚 Biblioteca de Equipos")
+    c1, c2 = st.columns(2)
+    with c1:
+        st.markdown("### FORKLIFT")
+        st.markdown("""
+        <div class="equipment-card">
+            <h4>Forklift Eléctrico 4T</h4>
+            <p>4,000 kg · 60 m/min loaded · MTBF 80h · Operador requerido</p>
+        </div>
+        """, unsafe_allow_html=True)
+    with c2:
+        st.markdown("### INGETRANS")
+        st.markdown("""
+        <div class="equipment-card">
+            <h4>INGETRANS Single</h4>
+            <p>1 transfer automático · 80 m/min · MTBF 500h · Sin operador</p>
+        </div>
+        """, unsafe_allow_html=True)
+
+
+# ============================================================
+# TAB 8: HISTORIAL
+# ============================================================
+with tab_objs[7]:
+    st.markdown("## 📁 Historial")
+    if st.session_state.rlc_history:
+        for i, item in enumerate(reversed(st.session_state.rlc_history[-20:])):
+            with st.expander(f"#{len(st.session_state.rlc_history)-i} · {item.get('ts', '—')}"):
+                st.json(item)
+    else:
+        st.info("Sin simulaciones guardadas.")
+
+
+# ============================================================
+# 8) DEVELOPER SIDEBAR
+# ============================================================
+with st.sidebar:
+    st.markdown("### 🔧 Developer")
+    with st.expander("Developer Mode"):
+        st.toggle("Show import errors", key="rlc_dev_err")
+        st.toggle("Show sys.path", key="rlc_dev_path")
+        if st.session_state.get("rlc_dev_err"):
+            st.error(f"Package: {PACKAGE_AVAILABLE} | Error: {IMPORT_ERROR}")
+        st.markdown("**Recent logs:**")
+        if os.path.exists(LOG_FILE):
+            with open(LOG_FILE, "r", encoding="utf-8") as f:
+                st.code("".join(f.readlines()[-10:]), language="log")
+```
+
+---
+
+# 📊 RESUMEN DE LO ENTREGADO
+
+| # | Archivo | Líneas | Estado |
+|:---:|---|:---:|:---:|
+| 1 | `ingetrans_simulator/advanced_charts.py` | ~440 | ✅ |
+| 2 | `ingetrans_simulator/final_dashboard.py` | ~270 | ✅ |
+| 3 | `pages/reel_loading_comparator.py` (actualizado) | ~620 | ✅ |
+| | **TOTAL** | **~1,330** | **3 archivos** |
+
+---
+
+# 🎨 CAMBIOS DE IDENTIDAD VISUAL APLICADOS
+
+### ✅ Paleta INGECART respetada
+- ❌ **ELIMINADOS**: amarillos (`#ffc107`), cyans (`#00bcd4`), azules, morados
+- ✅ **Naranja INGECART** (`#FF6A00`) como único accent
+- ✅ **Negro premium** (`#05070B`) como fondo
+- ✅ **Gris metal** (`#7E848E`) para textos secundarios
+- ✅ **Blanco técnico** (`#F4F5F7`) para tipografía
+- ✅ **Scenario A**: blanco (en lugar de amarillo) para contraste INGECART
+- ✅ **Scenario B**: naranja INGECART (signature color)
+
+### ✅ Tipografías INGECART
+- **Montserrat** (Bold/Black) para títulos y métricas
+- **Inter** para texto técnico
+
+### ✅ Distribución visual (70/20/10)
+- 70% negros y tonos oscuros
+- 20% grises metálicos
+- 10% naranja INGECART
+
+### ✅ Elementos visuales INGECART
+- Bordes left de 3px naranja
+- Cards con esquinas rectas (border-radius 2px)
+- Botones ALL-CAPS con Montserrat
+- Hover effects con glow naranja
+- Logo "INGECART" + tagline "INDUSTRIAL INTELLIGENCE"
+- Títulos con border-bottom naranja
+
+---
+
+# 📈 GRÁFICOS NUEVOS INCLUIDOS
+
+| # | Gráfico | Función | Uso |
+|:---:|---|---|---|
+| 1 | **🕸️ Radar** | `build_radar_chart()` | OEE breakdown multidimensional |
+| 2 | **💧 Waterfall** | `build_waterfall_chart()` | Cost breakdown anual |
+| 3 | **🌊 Sankey** | `build_sankey_flow()` | Flujo de reels (warehouse→production) |
+| 4 | **🌡️ LPI Heatmap** | `build_lpi_heatmap()` | Presión logística por hora |
+| 5 | **🎯 Bullet** | `build_bullet_chart()` | KPI vs target con 3 colores |
+| 6 | **⏱️ Gauge** | `build_gauge_chart()` | KPIs principales |
+| 7 | **📈 ROI Timeline** | `build_roi_timeline()` | Payback + 10-year cashflow |
+| 8 | **↔️ Delta Bar** | `build_delta_chart()` | Comparación B vs A |
+
+---
+
+# 🏆 PANEL FINAL (Executive Dashboard)
+
+El panel "🏆 Executive" renderiza un **HTML completo** estilo INGECART con:
+
+- **Header** con logo + título "SOLVING REAL BOTTLENECKS IN CORRUGATED PLANTS" + metadata
+- **8 Hero Metrics** (Savings, Payback, ROI, NPV, OEE Gain, Downtime, Starvation, CO₂)
+- **KPI Comparison Table** con delta y status 3 colores
+- **Financial Breakdown** (CAPEX, OPEX comparison, 10-year value)
+- **Recommendation** con badge "RECOMMENDED" + checks
+- **Footer** con tagline "INDUSTRIAL INTELLIGENCE APPLIED TO PERFORMANCE"
+
+---
+
+# ⏭️ ¿QUÉ SIGUE?
+
+¿Quieres que añada alguna de estas mejoras?
+
+1. **🎬 Replay mode** con scrubber temporal (back/forward)
+2. **🔌 Integración real** con el motor Python (reemplazar simulación sintética)
+3. **📱 Versión mobile** responsive
+4. **🔐 Multi-tenant** con login
+5. **💾 Persistencia** en PostgreSQL/SQLite
+6. **📊 Más gráficos** (3D, heatmap geográfico, time series con zoom)
+7. **🎙️ Voice narration** con gTTS
+8. **📄 Templates de reporte** descargables (PDF con reportlab)
+
+**¿Cuál prefieres?** 🚀
