@@ -157,6 +157,73 @@ def init_db() -> None:
         """
     )
 
+    # ERP foundation: suppliers, projects, purchase orders, documents
+    c.execute(
+        """
+        CREATE TABLE IF NOT EXISTS suppliers(
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            supplier_name TEXT,
+            nif TEXT,
+            address TEXT,
+            city TEXT,
+            province TEXT,
+            postal_code TEXT,
+            country TEXT,
+            phone TEXT,
+            email TEXT,
+            contact_person TEXT
+        )
+        """
+    )
+
+    c.execute(
+        """
+        CREATE TABLE IF NOT EXISTS projects(
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            name TEXT,
+            code TEXT,
+            description TEXT,
+            start_date TEXT,
+            end_date TEXT,
+            budget REAL,
+            status TEXT
+        )
+        """
+    )
+
+    c.execute(
+        """
+        CREATE TABLE IF NOT EXISTS purchase_orders(
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            po_number TEXT UNIQUE,
+            po_date TEXT,
+            supplier_id INTEGER,
+            project_id INTEGER,
+            subtotal REAL,
+            iva REAL,
+            total REAL,
+            status TEXT,
+            notes TEXT,
+            FOREIGN KEY (supplier_id) REFERENCES suppliers(id),
+            FOREIGN KEY (project_id) REFERENCES projects(id)
+        )
+        """
+    )
+
+    c.execute(
+        """
+        CREATE TABLE IF NOT EXISTS documents(
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            doc_type TEXT,
+            doc_name TEXT,
+            path TEXT,
+            uploaded_at TEXT,
+            source TEXT,
+            tags TEXT
+        )
+        """
+    )
+
     init_company_profile(conn)
 
     conn.commit()
@@ -479,6 +546,76 @@ def list_invoices(limit: int = 100) -> List[Dict]:
     ).fetchall()
     conn.close()
     return [dict(r) for r in rows]
+
+
+def add_supplier(supplier_name: str, nif: str = "", address: str = "", city: str = "", province: str = "", postal_code: str = "", country: str = "", phone: str = "", email: str = "", contact_person: str = "") -> int:
+    init_db()
+    conn = _get_conn()
+    c = conn.cursor()
+    c.execute(
+        """
+        INSERT INTO suppliers(
+            supplier_name, nif, address, city, province, postal_code, country, phone, email, contact_person
+        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+        """,
+        (supplier_name, nif, address, city, province, postal_code, country, phone, email, contact_person),
+    )
+    supplier_id = c.lastrowid
+    conn.commit()
+    conn.close()
+    return int(supplier_id)
+
+
+def add_project(name: str, code: str = "", description: str = "", start_date: str = "", end_date: str = "", budget: float = 0.0, status: str = "active") -> int:
+    init_db()
+    conn = _get_conn()
+    c = conn.cursor()
+    c.execute(
+        """
+        INSERT INTO projects(name, code, description, start_date, end_date, budget, status)
+        VALUES (?, ?, ?, ?, ?, ?, ?)
+        """,
+        (name, code, description, start_date, end_date, budget, status),
+    )
+    project_id = c.lastrowid
+    conn.commit()
+    conn.close()
+    return int(project_id)
+
+
+def create_purchase_order(po_number: str, po_date: str, supplier_id: int, project_id: int | None, subtotal: float, iva: float, total: float, status: str = "open", notes: str = "") -> Dict:
+    init_db()
+    conn = _get_conn()
+    c = conn.cursor()
+    c.execute(
+        """
+        INSERT INTO purchase_orders(po_number, po_date, supplier_id, project_id, subtotal, iva, total, status, notes)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+        """,
+        (po_number, po_date, supplier_id, project_id, subtotal, iva, total, status, notes),
+    )
+    po_id = c.lastrowid
+    conn.commit()
+    conn.close()
+    return {"po_id": int(po_id), "po_number": po_number}
+
+
+def add_document(doc_type: str, doc_name: str, path: str, source: str = "local", tags: str = "") -> int:
+    init_db()
+    conn = _get_conn()
+    c = conn.cursor()
+    uploaded_at = datetime.now().isoformat()
+    c.execute(
+        """
+        INSERT INTO documents(doc_type, doc_name, path, uploaded_at, source, tags)
+        VALUES (?, ?, ?, ?, ?, ?)
+        """,
+        (doc_type, doc_name, path, uploaded_at, source, tags),
+    )
+    doc_id = c.lastrowid
+    conn.commit()
+    conn.close()
+    return int(doc_id)
 
 
 def dashboard_metrics() -> Dict[str, float]:

@@ -1,0 +1,84 @@
+{
+  "report_date": "2026-07-01",
+  "report_type": "Executive Strategic Report (draft, repo-only evidence)",
+  "company": {
+    "name": "Ingecart",
+    "legal_name": "Ingecart S.L.",
+    "profile_version": "1.0",
+    "last_updated": "2026-05-09",
+    "industry": "Industrial Equipment — Printing & Signage",
+    "geography": { "primary": "Spain", "secondary": ["Portugal"], "reach": "European" },
+    "currency": "EUR",
+    "strengths": [
+      "Established commercial network with manufacturers and distributors",
+      "Experience in large-format equipment integration projects",
+      "Proven logistics and technical-support capacity"
+    ],
+    "growth_vectors": ["Digital technology and automation incorporation","Active tech-partner search","International expansion via trade fairs"],
+    "technology_appetite": {"areas_of_interest":["Production optimisation AI agents","Intelligent pricing and quoting","Predictive maintenance"], "readiness_level":"high"}
+  },
+  "products_and_offers": [
+    "Ingetrans 2800 (automated coil handling)",
+    "Ingetrans Roller (porta bobinas)",
+    "Sistema Retal SR1400 (scrap management)",
+    "Paletizer / EasyPack (palletizing solutions)",
+    "IAR (AI-enabled production optimisation) — pilot/product concept"
+  ],
+  "market_intelligence": {
+    "source_last_updated": "2026-05-09",
+    "key_metrics": {
+      "fespa_2026_exhibitors": 700,
+      "fespa_2026_visitors": 25000,
+      "ai_downtime_reduction_pct_estimate_low": 18,
+      "ai_downtime_reduction_pct_estimate_high": 35
+    },
+    "dominant_trends": [
+      "End-to-end production workflow automation",
+      "Digitalisation of analogue processes",
+      "Sustainability and eco-printing",
+      "AI in order management, quality control, pricing"
+    ],
+    "fespa_scenarios_eur": {
+      "iar_investment_low": 3500,
+      "iar_investment_high": 6000,
+      "pilot_contract_avg_low": 8000,
+      "pilot_contract_avg_high": 15000,
+      "scenarios": {
+        "conservative": {"pilot_contracts": 3, "revenue_eur_low": 24000, "revenue_eur_high": 45000},
+        "base": {"pilot_contracts": 5, "revenue_eur_low": 40000, "revenue_eur_high": 75000},
+        "optimistic": {"pilot_contracts": 8, "revenue_eur_low": 64000, "revenue_eur_high": 120000}
+      }
+    }
+  },
+  "project_level_financials": {
+    "psc_visalia": {
+      "internal_working_sheet_total_sale_value_usd": 7873480,
+      "internal_working_sheet_cost_base_usd": 5439600,
+      "earlier_deck_reference_usd_approx": 6920000,
+      "user_target_scope_usd": 6500000,
+      "source": "informes/PSC_VISALIA_EXECUTIVE_REPORT_2026-05-11.md"
+    }
+  },
+  "financial_gaps": {
+    "latest_audited_financial_statements": "DATA NOT AVAILABLE",
+    "annual_revenues": "DATA NOT AVAILABLE",
+    "ebitda": "DATA NOT AVAILABLE",
+    "cash_position": "DATA NOT AVAILABLE",
+    "customer_concentration": "DATA NOT AVAILABLE",
+    "backlog": "DATA NOT AVAILABLE"
+  },
+  "strategic_recommendations": [
+    "Reconcile capex and approve single project budget for large projects (PSC Visalia)",
+    "Secure written OEM/vendor support for relocation and commissioning before green-light",
+    "Fund a phased IAR pilot at trade-fairs using repo scenarios (pilot budget range €3.5k–€6k)",
+    "Provide audited P&L and balance sheet to replace DATA NOT AVAILABLE items and enable ROI modelling",
+    "Productise IAR into repeatable pilot + services packages priced per repo ROI calculator"
+  ],
+  "sources": {
+    "company_profile": "informes/ingecart-marketing-kit/Research/ingecart/company_profile/ingecart_company_profile.json",
+    "market_intelligence": "informes/ingecart-marketing-kit/Research/ingecart/market_intelligence/ingecart_market_intelligence.json",
+    "fespa_deep_crawl": "informes/ingecart-marketing-kit/Research/ingecart/ingecart_fespa_iar_deep_data_2026-05-08.json",
+    "psc_visalia_memo": "informes/PSC_VISALIA_EXECUTIVE_REPORT_2026-05-11.md",
+    "template": "informes/ingecart-marketing-kit/Templates/ingecart_report_base.html"
+  }
+}

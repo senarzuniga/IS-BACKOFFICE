@@ -1,0 +1,26 @@
+{
+  "generated_at": "2026-07-01T15:48:26.222984",
+  "url": "http://localhost:8501",
+  "checks": [
+    {
+      "label": "\ud83c\udfe0 Command Center",
+      "expect": "Command Center",
+      "ok": true,
+      "errors": []
+    },
+    {
+      "label": "\ud83c\udfa8 INGECART ARTWORK",
+      "expect": "INGECART ARTWORK",
+      "ok": true,
+      "errors": []
+    },
+    {
+      "label": "\ud83e\uddfe Facturaci\u00f3n ERP",
+      "expect": "Facturaci\u00f3n ERP",
+      "ok": true,
+      "errors": []
+    }
+  ],
+  "initial_loaded": true,
+  "sidebar_html_snippet": "<div data-testid=\"stSidebarContent\" class=\"st-emotion-cache-1csi29a eelgd2m2\"><div data-testid=\"stSidebarHeader\" class=\"st-emotion-cache-10p9htt eelgd2m4\"><div data-testid=\"stLogoSpacer\" class=\"st-emotion-cache-11ukie eelgd2m9\"></div><div data-testid=\"stSidebarCollapseButton\" class=\"st-emotion-cache-1j014rs eelgd2m10\"><button kind=\"headerNoPadding\" data-testid=\"stBaseButton-headerNoPadding\" aria-label=\"\" class=\"st-emotion-cache-10zifob e7msn5c15\"><span color=\"rgba(241, 245, 249, 0.6)\" class=\"st-emotion-cache-2x5h05 epifhcv2\"><span color=\"rgba(241, 245, 249, 0.6)\" data-testid=\"stIconMaterial\" translate=\"no\" class=\"st-emotion-cache-13qy8gz ed4y4ls0\">keyboard_double_arrow_left</span></span></button></div></div><div data-testid=\"stSidebarNav\" class=\"st-emotion-cache-a8oa3z e1lpckdq0\"><ul data-testid=\"stSidebarNavItems\" class=\"st-emotion-cache-1gczx66 e1lpckdq1\"><li class=\"st-emotion-cache-1ag8dug e1lpckdq4\"><div data-testid=\"stSidebarNavLinkContainer\" class=\"st-emotion-cache-1gb1rig e1lpckdq2\"><a data-testid=\"stSidebarNavLink\" href=\"http://localhost:8501/\" aria-current=\"page\" class=\"st-emotion-cache-ubp7vr e1lpckdq5\"><span label=\"streamlit app\" class=\"st-emotion-cache-1bzb36e e1lpckdq6\"><div data-testid=\"stMarkdownContainer\" class=\"st-emotion-cache-z3xv7v e18fvw670\"><p>streamlit app</p></div></span></a></div></li><li class=\"st-emotion-cache-1ag8dug e1lpckdq4\"><div data-testid=\"stSidebarNavLinkContainer\" class=\"st-emotion-cache-1gb1rig e1lpckdq2\"><a data-testid=\"stSidebarNavLink\" href=\"http://localhost:8501/bobina_load_simulator\" class=\"st-emotion-cache-itlj9g e1lpckdq5\"><span label=\"bobina load simulator\" class=\"st-emotion-cache-2wh28p e1lpckdq6\"><div data-testid=\"stMarkdownContainer\" class=\"st-emotion-cache-z3xv7v e18fvw670\"><p>bobina load simulator</p></div></span></a></div></li><li class=\"st-emotion-cache-1ag8dug e1lpckdq4\"><div data-testid=\"stSidebarNavLinkContainer\" class=\"st-emotion-cache-1gb1rig e1lpckdq2\"><a data-testid=\"stSidebarNavLink\" href=\"http://localhost:"
+}

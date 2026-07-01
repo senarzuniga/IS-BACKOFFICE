@@ -1,0 +1,39 @@
+{
+  "generated_at": "2026-07-01T10:57:56.671509+00:00",
+  "required_inputs": {
+    "financial_inputs": [
+      "audited_p_and_l",
+      "balance_sheet",
+      "cash_position",
+      "ebitda",
+      "revenue",
+      "gross_margin",
+      "accounts_receivable",
+      "accounts_payable",
+      "debt",
+      "capex"
+    ],
+    "project_inputs": [
+      "project_scope",
+      "project_capex",
+      "project_costs",
+      "project_timeline",
+      "vendor_support",
+      "site_survey",
+      "utility_requirements"
+    ],
+    "risk_inputs": [
+      "operational_risks",
+      "safety_risks",
+      "supply_chain_risks",
+      "financial_risks",
+      "regulatory_risks"
+    ],
+    "client_inputs": [
+      "customer_list",
+      "backlog",
+      "contract_terms",
+      "customer_concentration"
+    ]
+  }
+}

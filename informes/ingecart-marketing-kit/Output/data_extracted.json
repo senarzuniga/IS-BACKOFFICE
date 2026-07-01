@@ -1,0 +1,1884 @@
+{
+  "report_generated_at": "2026-07-01T10:57:56.939980+00:00",
+  "evidence_base": {
+    "scan_time": "2026-07-01T10:57:56.670449+00:00",
+    "files": [
+      {
+        "name": "BLOQUE 1. Situación financiera actu.txt",
+        "full_path": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\DIRECCION\\ANALISIS RIESGOS Y FIANANCIERO PREVISIONS 2027\\BLOQUE 1. Situación financiera actu.txt",
+        "size_bytes": 369,
+        "last_modified": "2026-06-30T11:24:04.888653+00:00"
+      },
+      {
+        "name": "BLOQUE 2. Forma de trabajar actual.txt",
+        "full_path": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\DIRECCION\\ANALISIS RIESGOS Y FIANANCIERO PREVISIONS 2027\\BLOQUE 2. Forma de trabajar actual.txt",
+        "size_bytes": 297,
+        "last_modified": "2026-06-30T11:24:45.419144+00:00"
+      },
+      {
+        "name": "BLOQUE 3. Condiciones comerciales.txt",
+        "full_path": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\DIRECCION\\ANALISIS RIESGOS Y FIANANCIERO PREVISIONS 2027\\BLOQUE 3. Condiciones comerciales.txt",
+        "size_bytes": 335,
+        "last_modified": "2026-06-30T11:25:39.107184+00:00"
+      },
+      {
+        "name": "BLOQUE 4. Proveedores.txt",
+        "full_path": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\DIRECCION\\ANALISIS RIESGOS Y FIANANCIERO PREVISIONS 2027\\BLOQUE 4. Proveedores.txt",
+        "size_bytes": 275,
+        "last_modified": "2026-06-30T11:26:11.682734+00:00"
+      },
+      {
+        "name": "CFO de empresas industriales.txt",
+        "full_path": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\DIRECCION\\ANALISIS RIESGOS Y FIANANCIERO PREVISIONS 2027\\CFO de empresas industriales.txt",
+        "size_bytes": 167,
+        "last_modified": "2026-06-30T11:10:33.147026+00:00"
+      },
+      {
+        "name": "FOTO GLOBAL DEL PORTFOLIO previsones INGECART 07 2026.txt",
+        "full_path": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\DIRECCION\\ANALISIS RIESGOS Y FIANANCIERO PREVISIONS 2027\\FOTO GLOBAL DEL PORTFOLIO previsones INGECART 07 2026.txt",
+        "size_bytes": 63,
+        "last_modified": "2026-07-01T10:08:55.828437+00:00"
+      },
+      {
+        "name": "GUÍA DE ANÁLISIS DE REQUERIMIENTOS proyectos futuros.txt",
+        "full_path": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\DIRECCION\\ANALISIS RIESGOS Y FIANANCIERO PREVISIONS 2027\\GUÍA DE ANÁLISIS DE REQUERIMIENTOS proyectos futuros.txt",
+        "size_bytes": 72,
+        "last_modified": "2026-07-01T09:53:08.501103+00:00"
+      },
+      {
+        "name": "IGK Finance Operating System.txt",
+        "full_path": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\DIRECCION\\ANALISIS RIESGOS Y FIANANCIERO PREVISIONS 2027\\IGK Finance Operating System.txt",
+        "size_bytes": 227,
+        "last_modified": "2026-06-30T11:29:30.566080+00:00"
+      },
+      {
+        "name": "INFORME ESTRATÉGICO DE FINANCIAC.txt",
+        "full_path": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\DIRECCION\\ANALISIS RIESGOS Y FIANANCIERO PREVISIONS 2027\\INFORME ESTRATÉGICO DE FINANCIAC.txt",
+        "size_bytes": 6768,
+        "last_modified": "2026-07-01T08:44:02.080703+00:00"
+      },
+      {
+        "name": "Previson crecimiento Ingecart 07 2026.txt",
+        "full_path": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\DIRECCION\\ANALISIS RIESGOS Y FIANANCIERO PREVISIONS 2027\\Previson crecimiento Ingecart 07 2026.txt",
+        "size_bytes": 8761,
+        "last_modified": "2026-07-01T09:49:00.912168+00:00"
+      },
+      {
+        "name": "Project Finance Playbook.txt",
+        "full_path": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\DIRECCION\\ANALISIS RIESGOS Y FIANANCIERO PREVISIONS 2027\\Project Finance Playbook.txt",
+        "size_bytes": 636,
+        "last_modified": "2026-06-30T11:34:46.559338+00:00"
+      },
+      {
+        "name": "SITUACION FINANCIERA ACTUAL ASUNCIÓN IS 07 2026.txt",
+        "full_path": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\DIRECCION\\ANALISIS RIESGOS Y FIANANCIERO PREVISIONS 2027\\SITUACION FINANCIERA ACTUAL ASUNCIÓN IS 07 2026.txt",
+        "size_bytes": 11533,
+        "last_modified": "2026-07-01T09:35:11.083412+00:00"
+      },
+      {
+        "name": "Valoración de Proyectos.txt",
+        "full_path": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\DIRECCION\\ANALISIS RIESGOS Y FIANANCIERO PREVISIONS 2027\\Valoración de Proyectos.txt",
+        "size_bytes": 517,
+        "last_modified": "2026-06-30T11:20:38.974154+00:00"
+      }
+    ]
+  },
+  "data_contract": {
+    "generated_at": "2026-07-01T10:57:56.671509+00:00",
+    "required_inputs": {
+      "financial_inputs": [
+        "audited_p_and_l",
+        "balance_sheet",
+        "cash_position",
+        "ebitda",
+        "revenue",
+        "gross_margin",
+        "accounts_receivable",
+        "accounts_payable",
+        "debt",
+        "capex"
+      ],
+      "project_inputs": [
+        "project_scope",
+        "project_capex",
+        "project_costs",
+        "project_timeline",
+        "vendor_support",
+        "site_survey",
+        "utility_requirements"
+      ],
+      "risk_inputs": [
+        "operational_risks",
+        "safety_risks",
+        "supply_chain_risks",
+        "financial_risks",
+        "regulatory_risks"
+      ],
+      "client_inputs": [
+        "customer_list",
+        "backlog",
+        "contract_terms",
+        "customer_concentration"
+      ]
+    }
+  },
+  "extracted_data": {
+    "audited_p_and_l": [
+      {
+        "file": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\DIRECCION\\ANALISIS RIESGOS Y FIANANCIERO PREVISIONS 2027\\INFORME ESTRATÉGICO DE FINANCIAC.txt",
+        "phrases_found": [
+          {
+            "phrase": "auditor",
+            "excerpt": "ograma IPIL de la OEPM que cubren hasta el 80% de las tasas.\n   2. Estudio de Libertad de Operación (FTO): Realizar una auditoría previa de patentes en EE. UU. durante estos meses para garantizar que el nuevo software no infringe los derechos de c",
+            "line": 54
+          }
+        ],
+        "currency_found": [
+          {
+            "match": "75.000",
+            "excerpt": "Pyme Invierte): Ofrece préstamos coinvertidos (a partir de 75.000 €) destinados expresamente a los gastos de constitución de",
+            "line": 35
+          },
+          {
+            "match": "60.000",
+            "excerpt": "calización de ACCIÓ: Ayuda directa a fondo perdido de hasta 60.000 € de la Generalitat de Catalunya. Cubre los gastos notarial",
+            "line": 36
+          }
+        ]
+      },
+      {
+        "file": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\DIRECCION\\ANALISIS RIESGOS Y FIANANCIERO PREVISIONS 2027\\Previson crecimiento Ingecart 07 2026.txt",
+        "phrases_found": [],
+        "currency_found": [
+          {
+            "match": "€,",
+            "excerpt": "e tamaño reducido y medio, normalmente inferiores a 500.000 €, con ciclos de ejecución relativamente cortos y unas necesid",
+            "line": 17
+          },
+          {
+            "match": "€.",
+            "excerpt": "Riesgos para aprobar cualquier proyecto superior a 500.000 €.\n\n---\n\n### 8.\n\nDiseñar un cuadro de mando semanal con:\n\n* ca",
+            "line": 501
+          },
+          {
+            "match": "500.000",
+            "excerpt": "yectos de tamaño reducido y medio, normalmente inferiores a 500.000 €, con ciclos de ejecución relativamente cortos y unas nece",
+            "line": 17
+          },
+          {
+            "match": "500.000",
+            "excerpt": "omité de Riesgos para aprobar cualquier proyecto superior a 500.000 €.\n\n---\n\n### 8.\n\nDiseñar un cuadro de mando semanal con:\n\n*",
+            "line": 501
+          }
+        ]
+      },
+      {
+        "file": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\DIRECCION\\ANALISIS RIESGOS Y FIANANCIERO PREVISIONS 2027\\Project Finance Playbook.txt",
+        "phrases_found": [],
+        "currency_found": [
+          {
+            "match": "€.",
+            "excerpt": "inance Playbook\n\nPara cualquier proyecto superior a 250.000 €.\n\nIncluiría, entre otros:\n\nChecklist antes de ofertar.\nMatri",
+            "line": 3
+          },
+          {
+            "match": "250.000",
+            "excerpt": "roject Finance Playbook\n\nPara cualquier proyecto superior a 250.000 €.\n\nIncluiría, entre otros:\n\nChecklist antes de ofertar.\nMa",
+            "line": 3
+          }
+        ]
+      },
+      {
+        "file": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\DIRECCION\\ANALISIS RIESGOS Y FIANANCIERO PREVISIONS 2027\\SITUACION FINANCIERA ACTUAL ASUNCIÓN IS 07 2026.txt",
+        "phrases_found": [],
+        "currency_found": [
+          {
+            "match": "200.000",
+            "excerpt": "E COSTES FIJOS\nComponentes principales\nDirección (socios): >200.000 € conjunto\nJefaturas técnicas: ~200.000 € aprox.\nEquipo téc",
+            "line": 82
+          },
+          {
+            "match": "200.000",
+            "excerpt": "irección (socios): >200.000 € conjunto\nJefaturas técnicas: ~200.000 € aprox.\nEquipo técnico reducido pero operativo\nConsultoría",
+            "line": 83
+          },
+          {
+            "match": "96.000",
+            "excerpt": "quipo técnico reducido pero operativo\nConsultoría externa: ~96.000 €/año\nInfraestructura operativa (vehículos, soporte, etc.)",
+            "line": 85
+          },
+          {
+            "match": "100.000",
+            "excerpt": "TURA ORGANIZATIVA (COSTE FIJO)\n\n### Socios\n\n* María Jesús: >100.000 €\n* Diego García: >100.000 €\n\n### Dirección operativa\n\n* Je",
+            "line": 273
+          },
+          {
+            "match": "100.000",
+            "excerpt": "JO)\n\n### Socios\n\n* María Jesús: >100.000 €\n* Diego García: >100.000 €\n\n### Dirección operativa\n\n* Jefe mantenimiento: 80.000 €",
+            "line": 274
+          },
+          {
+            "match": "80.000",
+            "excerpt": ">100.000 €\n\n### Dirección operativa\n\n* Jefe mantenimiento: 80.000 €\n* Jefe ingeniería: ~60.000 €\n* Jefe programación: ~60.000",
+            "line": 278
+          },
+          {
+            "match": "60.000",
+            "excerpt": "erativa\n\n* Jefe mantenimiento: 80.000 €\n* Jefe ingeniería: ~60.000 €\n* Jefe programación: ~60.000 €\n\n### Equipo técnico\n\n* 2 t",
+            "line": 279
+          },
+          {
+            "match": "60.000",
+            "excerpt": "80.000 €\n* Jefe ingeniería: ~60.000 €\n* Jefe programación: ~60.000 €\n\n### Equipo técnico\n\n* 2 técnicos taller (medio)\n* 2 técn",
+            "line": 280
+          },
+          {
+            "match": "6.000",
+            "excerpt": "ia ingeniería\n\n### Servicios externos\n\n* Consultor externo: 6.000 €/mes (~72.000 €/año)\n* Consultor financiero: ~2.000 €/mes",
+            "line": 291
+          },
+          {
+            "match": "72.000",
+            "excerpt": "### Servicios externos\n\n* Consultor externo: 6.000 €/mes (~72.000 €/año)\n* Consultor financiero: ~2.000 €/mes (~24.000 €/año",
+            "line": 291
+          },
+          {
+            "match": "2.000",
+            "excerpt": "terno: 6.000 €/mes (~72.000 €/año)\n* Consultor financiero: ~2.000 €/mes (~24.000 €/año aprox.)\n\n### Estructura indirecta adic",
+            "line": 292
+          },
+          {
+            "match": "24.000",
+            "excerpt": "/mes (~72.000 €/año)\n* Consultor financiero: ~2.000 €/mes (~24.000 €/año aprox.)\n\n### Estructura indirecta adicional\n\n* 3 vehí",
+            "line": 292
+          }
+        ]
+      },
+      {
+        "file": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\DIRECCION\\ANALISIS RIESGOS Y FIANANCIERO PREVISIONS 2027\\Valoración de Proyectos.txt",
+        "phrases_found": [],
+        "currency_found": [
+          {
+            "match": "500.000",
+            "excerpt": "gún proyecto superior a una determinada cifra (por ejemplo, 500.000 € o 1 M€) debería aceptarse sin revisar una lista de contro",
+            "line": 7
+          }
+        ]
+      }
+    ],
+    "balance_sheet": [
+      {
+        "file": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\DIRECCION\\ANALISIS RIESGOS Y FIANANCIERO PREVISIONS 2027\\INFORME ESTRATÉGICO DE FINANCIAC.txt",
+        "phrases_found": [],
+        "currency_found": [
+          {
+            "match": "75.000",
+            "excerpt": "Pyme Invierte): Ofrece préstamos coinvertidos (a partir de 75.000 €) destinados expresamente a los gastos de constitución de",
+            "line": 35
+          },
+          {
+            "match": "60.000",
+            "excerpt": "calización de ACCIÓ: Ayuda directa a fondo perdido de hasta 60.000 € de la Generalitat de Catalunya. Cubre los gastos notarial",
+            "line": 36
+          }
+        ]
+      },
+      {
+        "file": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\DIRECCION\\ANALISIS RIESGOS Y FIANANCIERO PREVISIONS 2027\\Previson crecimiento Ingecart 07 2026.txt",
+        "phrases_found": [],
+        "currency_found": [
+          {
+            "match": "€,",
+            "excerpt": "e tamaño reducido y medio, normalmente inferiores a 500.000 €, con ciclos de ejecución relativamente cortos y unas necesid",
+            "line": 17
+          },
+          {
+            "match": "€.",
+            "excerpt": "Riesgos para aprobar cualquier proyecto superior a 500.000 €.\n\n---\n\n### 8.\n\nDiseñar un cuadro de mando semanal con:\n\n* ca",
+            "line": 501
+          },
+          {
+            "match": "500.000",
+            "excerpt": "yectos de tamaño reducido y medio, normalmente inferiores a 500.000 €, con ciclos de ejecución relativamente cortos y unas nece",
+            "line": 17
+          },
+          {
+            "match": "500.000",
+            "excerpt": "omité de Riesgos para aprobar cualquier proyecto superior a 500.000 €.\n\n---\n\n### 8.\n\nDiseñar un cuadro de mando semanal con:\n\n*",
+            "line": 501
+          }
+        ]
+      },
+      {
+        "file": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\DIRECCION\\ANALISIS RIESGOS Y FIANANCIERO PREVISIONS 2027\\Project Finance Playbook.txt",
+        "phrases_found": [],
+        "currency_found": [
+          {
+            "match": "€.",
+            "excerpt": "inance Playbook\n\nPara cualquier proyecto superior a 250.000 €.\n\nIncluiría, entre otros:\n\nChecklist antes de ofertar.\nMatri",
+            "line": 3
+          },
+          {
+            "match": "250.000",
+            "excerpt": "roject Finance Playbook\n\nPara cualquier proyecto superior a 250.000 €.\n\nIncluiría, entre otros:\n\nChecklist antes de ofertar.\nMa",
+            "line": 3
+          }
+        ]
+      },
+      {
+        "file": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\DIRECCION\\ANALISIS RIESGOS Y FIANANCIERO PREVISIONS 2027\\SITUACION FINANCIERA ACTUAL ASUNCIÓN IS 07 2026.txt",
+        "phrases_found": [],
+        "currency_found": [
+          {
+            "match": "200.000",
+            "excerpt": "E COSTES FIJOS\nComponentes principales\nDirección (socios): >200.000 € conjunto\nJefaturas técnicas: ~200.000 € aprox.\nEquipo téc",
+            "line": 82
+          },
+          {
+            "match": "200.000",
+            "excerpt": "irección (socios): >200.000 € conjunto\nJefaturas técnicas: ~200.000 € aprox.\nEquipo técnico reducido pero operativo\nConsultoría",
+            "line": 83
+          },
+          {
+            "match": "96.000",
+            "excerpt": "quipo técnico reducido pero operativo\nConsultoría externa: ~96.000 €/año\nInfraestructura operativa (vehículos, soporte, etc.)",
+            "line": 85
+          },
+          {
+            "match": "100.000",
+            "excerpt": "TURA ORGANIZATIVA (COSTE FIJO)\n\n### Socios\n\n* María Jesús: >100.000 €\n* Diego García: >100.000 €\n\n### Dirección operativa\n\n* Je",
+            "line": 273
+          },
+          {
+            "match": "100.000",
+            "excerpt": "JO)\n\n### Socios\n\n* María Jesús: >100.000 €\n* Diego García: >100.000 €\n\n### Dirección operativa\n\n* Jefe mantenimiento: 80.000 €",
+            "line": 274
+          },
+          {
+            "match": "80.000",
+            "excerpt": ">100.000 €\n\n### Dirección operativa\n\n* Jefe mantenimiento: 80.000 €\n* Jefe ingeniería: ~60.000 €\n* Jefe programación: ~60.000",
+            "line": 278
+          },
+          {
+            "match": "60.000",
+            "excerpt": "erativa\n\n* Jefe mantenimiento: 80.000 €\n* Jefe ingeniería: ~60.000 €\n* Jefe programación: ~60.000 €\n\n### Equipo técnico\n\n* 2 t",
+            "line": 279
+          },
+          {
+            "match": "60.000",
+            "excerpt": "80.000 €\n* Jefe ingeniería: ~60.000 €\n* Jefe programación: ~60.000 €\n\n### Equipo técnico\n\n* 2 técnicos taller (medio)\n* 2 técn",
+            "line": 280
+          },
+          {
+            "match": "6.000",
+            "excerpt": "ia ingeniería\n\n### Servicios externos\n\n* Consultor externo: 6.000 €/mes (~72.000 €/año)\n* Consultor financiero: ~2.000 €/mes",
+            "line": 291
+          },
+          {
+            "match": "72.000",
+            "excerpt": "### Servicios externos\n\n* Consultor externo: 6.000 €/mes (~72.000 €/año)\n* Consultor financiero: ~2.000 €/mes (~24.000 €/año",
+            "line": 291
+          },
+          {
+            "match": "2.000",
+            "excerpt": "terno: 6.000 €/mes (~72.000 €/año)\n* Consultor financiero: ~2.000 €/mes (~24.000 €/año aprox.)\n\n### Estructura indirecta adic",
+            "line": 292
+          },
+          {
+            "match": "24.000",
+            "excerpt": "/mes (~72.000 €/año)\n* Consultor financiero: ~2.000 €/mes (~24.000 €/año aprox.)\n\n### Estructura indirecta adicional\n\n* 3 vehí",
+            "line": 292
+          }
+        ]
+      },
+      {
+        "file": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\DIRECCION\\ANALISIS RIESGOS Y FIANANCIERO PREVISIONS 2027\\Valoración de Proyectos.txt",
+        "phrases_found": [],
+        "currency_found": [
+          {
+            "match": "500.000",
+            "excerpt": "gún proyecto superior a una determinada cifra (por ejemplo, 500.000 € o 1 M€) debería aceptarse sin revisar una lista de contro",
+            "line": 7
+          }
+        ]
+      }
+    ],
+    "cash_position": [
+      {
+        "file": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\DIRECCION\\ANALISIS RIESGOS Y FIANANCIERO PREVISIONS 2027\\INFORME ESTRATÉGICO DE FINANCIAC.txt",
+        "phrases_found": [],
+        "currency_found": [
+          {
+            "match": "75.000",
+            "excerpt": "Pyme Invierte): Ofrece préstamos coinvertidos (a partir de 75.000 €) destinados expresamente a los gastos de constitución de",
+            "line": 35
+          },
+          {
+            "match": "60.000",
+            "excerpt": "calización de ACCIÓ: Ayuda directa a fondo perdido de hasta 60.000 € de la Generalitat de Catalunya. Cubre los gastos notarial",
+            "line": 36
+          }
+        ]
+      },
+      {
+        "file": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\DIRECCION\\ANALISIS RIESGOS Y FIANANCIERO PREVISIONS 2027\\Previson crecimiento Ingecart 07 2026.txt",
+        "phrases_found": [],
+        "currency_found": [
+          {
+            "match": "€,",
+            "excerpt": "e tamaño reducido y medio, normalmente inferiores a 500.000 €, con ciclos de ejecución relativamente cortos y unas necesid",
+            "line": 17
+          },
+          {
+            "match": "€.",
+            "excerpt": "Riesgos para aprobar cualquier proyecto superior a 500.000 €.\n\n---\n\n### 8.\n\nDiseñar un cuadro de mando semanal con:\n\n* ca",
+            "line": 501
+          },
+          {
+            "match": "500.000",
+            "excerpt": "yectos de tamaño reducido y medio, normalmente inferiores a 500.000 €, con ciclos de ejecución relativamente cortos y unas nece",
+            "line": 17
+          },
+          {
+            "match": "500.000",
+            "excerpt": "omité de Riesgos para aprobar cualquier proyecto superior a 500.000 €.\n\n---\n\n### 8.\n\nDiseñar un cuadro de mando semanal con:\n\n*",
+            "line": 501
+          }
+        ]
+      },
+      {
+        "file": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\DIRECCION\\ANALISIS RIESGOS Y FIANANCIERO PREVISIONS 2027\\Project Finance Playbook.txt",
+        "phrases_found": [],
+        "currency_found": [
+          {
+            "match": "€.",
+            "excerpt": "inance Playbook\n\nPara cualquier proyecto superior a 250.000 €.\n\nIncluiría, entre otros:\n\nChecklist antes de ofertar.\nMatri",
+            "line": 3
+          },
+          {
+            "match": "250.000",
+            "excerpt": "roject Finance Playbook\n\nPara cualquier proyecto superior a 250.000 €.\n\nIncluiría, entre otros:\n\nChecklist antes de ofertar.\nMa",
+            "line": 3
+          }
+        ]
+      },
+      {
+        "file": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\DIRECCION\\ANALISIS RIESGOS Y FIANANCIERO PREVISIONS 2027\\SITUACION FINANCIERA ACTUAL ASUNCIÓN IS 07 2026.txt",
+        "phrases_found": [],
+        "currency_found": [
+          {
+            "match": "200.000",
+            "excerpt": "E COSTES FIJOS\nComponentes principales\nDirección (socios): >200.000 € conjunto\nJefaturas técnicas: ~200.000 € aprox.\nEquipo téc",
+            "line": 82
+          },
+          {
+            "match": "200.000",
+            "excerpt": "irección (socios): >200.000 € conjunto\nJefaturas técnicas: ~200.000 € aprox.\nEquipo técnico reducido pero operativo\nConsultoría",
+            "line": 83
+          },
+          {
+            "match": "96.000",
+            "excerpt": "quipo técnico reducido pero operativo\nConsultoría externa: ~96.000 €/año\nInfraestructura operativa (vehículos, soporte, etc.)",
+            "line": 85
+          },
+          {
+            "match": "100.000",
+            "excerpt": "TURA ORGANIZATIVA (COSTE FIJO)\n\n### Socios\n\n* María Jesús: >100.000 €\n* Diego García: >100.000 €\n\n### Dirección operativa\n\n* Je",
+            "line": 273
+          },
+          {
+            "match": "100.000",
+            "excerpt": "JO)\n\n### Socios\n\n* María Jesús: >100.000 €\n* Diego García: >100.000 €\n\n### Dirección operativa\n\n* Jefe mantenimiento: 80.000 €",
+            "line": 274
+          },
+          {
+            "match": "80.000",
+            "excerpt": ">100.000 €\n\n### Dirección operativa\n\n* Jefe mantenimiento: 80.000 €\n* Jefe ingeniería: ~60.000 €\n* Jefe programación: ~60.000",
+            "line": 278
+          },
+          {
+            "match": "60.000",
+            "excerpt": "erativa\n\n* Jefe mantenimiento: 80.000 €\n* Jefe ingeniería: ~60.000 €\n* Jefe programación: ~60.000 €\n\n### Equipo técnico\n\n* 2 t",
+            "line": 279
+          },
+          {
+            "match": "60.000",
+            "excerpt": "80.000 €\n* Jefe ingeniería: ~60.000 €\n* Jefe programación: ~60.000 €\n\n### Equipo técnico\n\n* 2 técnicos taller (medio)\n* 2 técn",
+            "line": 280
+          },
+          {
+            "match": "6.000",
+            "excerpt": "ia ingeniería\n\n### Servicios externos\n\n* Consultor externo: 6.000 €/mes (~72.000 €/año)\n* Consultor financiero: ~2.000 €/mes",
+            "line": 291
+          },
+          {
+            "match": "72.000",
+            "excerpt": "### Servicios externos\n\n* Consultor externo: 6.000 €/mes (~72.000 €/año)\n* Consultor financiero: ~2.000 €/mes (~24.000 €/año",
+            "line": 291
+          },
+          {
+            "match": "2.000",
+            "excerpt": "terno: 6.000 €/mes (~72.000 €/año)\n* Consultor financiero: ~2.000 €/mes (~24.000 €/año aprox.)\n\n### Estructura indirecta adic",
+            "line": 292
+          },
+          {
+            "match": "24.000",
+            "excerpt": "/mes (~72.000 €/año)\n* Consultor financiero: ~2.000 €/mes (~24.000 €/año aprox.)\n\n### Estructura indirecta adicional\n\n* 3 vehí",
+            "line": 292
+          }
+        ]
+      },
+      {
+        "file": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\DIRECCION\\ANALISIS RIESGOS Y FIANANCIERO PREVISIONS 2027\\Valoración de Proyectos.txt",
+        "phrases_found": [],
+        "currency_found": [
+          {
+            "match": "500.000",
+            "excerpt": "gún proyecto superior a una determinada cifra (por ejemplo, 500.000 € o 1 M€) debería aceptarse sin revisar una lista de contro",
+            "line": 7
+          }
+        ]
+      }
+    ],
+    "ebitda": [
+      {
+        "file": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\DIRECCION\\ANALISIS RIESGOS Y FIANANCIERO PREVISIONS 2027\\INFORME ESTRATÉGICO DE FINANCIAC.txt",
+        "phrases_found": [],
+        "currency_found": [
+          {
+            "match": "75.000",
+            "excerpt": "Pyme Invierte): Ofrece préstamos coinvertidos (a partir de 75.000 €) destinados expresamente a los gastos de constitución de",
+            "line": 35
+          },
+          {
+            "match": "60.000",
+            "excerpt": "calización de ACCIÓ: Ayuda directa a fondo perdido de hasta 60.000 € de la Generalitat de Catalunya. Cubre los gastos notarial",
+            "line": 36
+          }
+        ]
+      },
+      {
+        "file": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\DIRECCION\\ANALISIS RIESGOS Y FIANANCIERO PREVISIONS 2027\\Previson crecimiento Ingecart 07 2026.txt",
+        "phrases_found": [
+          {
+            "phrase": "ebitda",
+            "excerpt": "tegración de automatización**. Ese cambio también modifica su valor como compañía: ya no se valoraría únicamente por su EBITDA histórico, sino por la combinación de cartera de clientes, capacidad de ejecución internacional, productos propios, ing",
+            "line": 524
+          }
+        ],
+        "currency_found": [
+          {
+            "match": "€,",
+            "excerpt": "e tamaño reducido y medio, normalmente inferiores a 500.000 €, con ciclos de ejecución relativamente cortos y unas necesid",
+            "line": 17
+          },
+          {
+            "match": "€.",
+            "excerpt": "Riesgos para aprobar cualquier proyecto superior a 500.000 €.\n\n---\n\n### 8.\n\nDiseñar un cuadro de mando semanal con:\n\n* ca",
+            "line": 501
+          },
+          {
+            "match": "500.000",
+            "excerpt": "yectos de tamaño reducido y medio, normalmente inferiores a 500.000 €, con ciclos de ejecución relativamente cortos y unas nece",
+            "line": 17
+          },
+          {
+            "match": "500.000",
+            "excerpt": "omité de Riesgos para aprobar cualquier proyecto superior a 500.000 €.\n\n---\n\n### 8.\n\nDiseñar un cuadro de mando semanal con:\n\n*",
+            "line": 501
+          }
+        ]
+      },
+      {
+        "file": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\DIRECCION\\ANALISIS RIESGOS Y FIANANCIERO PREVISIONS 2027\\Project Finance Playbook.txt",
+        "phrases_found": [],
+        "currency_found": [
+          {
+            "match": "€.",
+            "excerpt": "inance Playbook\n\nPara cualquier proyecto superior a 250.000 €.\n\nIncluiría, entre otros:\n\nChecklist antes de ofertar.\nMatri",
+            "line": 3
+          },
+          {
+            "match": "250.000",
+            "excerpt": "roject Finance Playbook\n\nPara cualquier proyecto superior a 250.000 €.\n\nIncluiría, entre otros:\n\nChecklist antes de ofertar.\nMa",
+            "line": 3
+          }
+        ]
+      },
+      {
+        "file": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\DIRECCION\\ANALISIS RIESGOS Y FIANANCIERO PREVISIONS 2027\\SITUACION FINANCIERA ACTUAL ASUNCIÓN IS 07 2026.txt",
+        "phrases_found": [],
+        "currency_found": [
+          {
+            "match": "200.000",
+            "excerpt": "E COSTES FIJOS\nComponentes principales\nDirección (socios): >200.000 € conjunto\nJefaturas técnicas: ~200.000 € aprox.\nEquipo téc",
+            "line": 82
+          },
+          {
+            "match": "200.000",
+            "excerpt": "irección (socios): >200.000 € conjunto\nJefaturas técnicas: ~200.000 € aprox.\nEquipo técnico reducido pero operativo\nConsultoría",
+            "line": 83
+          },
+          {
+            "match": "96.000",
+            "excerpt": "quipo técnico reducido pero operativo\nConsultoría externa: ~96.000 €/año\nInfraestructura operativa (vehículos, soporte, etc.)",
+            "line": 85
+          },
+          {
+            "match": "100.000",
+            "excerpt": "TURA ORGANIZATIVA (COSTE FIJO)\n\n### Socios\n\n* María Jesús: >100.000 €\n* Diego García: >100.000 €\n\n### Dirección operativa\n\n* Je",
+            "line": 273
+          },
+          {
+            "match": "100.000",
+            "excerpt": "JO)\n\n### Socios\n\n* María Jesús: >100.000 €\n* Diego García: >100.000 €\n\n### Dirección operativa\n\n* Jefe mantenimiento: 80.000 €",
+            "line": 274
+          },
+          {
+            "match": "80.000",
+            "excerpt": ">100.000 €\n\n### Dirección operativa\n\n* Jefe mantenimiento: 80.000 €\n* Jefe ingeniería: ~60.000 €\n* Jefe programación: ~60.000",
+            "line": 278
+          },
+          {
+            "match": "60.000",
+            "excerpt": "erativa\n\n* Jefe mantenimiento: 80.000 €\n* Jefe ingeniería: ~60.000 €\n* Jefe programación: ~60.000 €\n\n### Equipo técnico\n\n* 2 t",
+            "line": 279
+          },
+          {
+            "match": "60.000",
+            "excerpt": "80.000 €\n* Jefe ingeniería: ~60.000 €\n* Jefe programación: ~60.000 €\n\n### Equipo técnico\n\n* 2 técnicos taller (medio)\n* 2 técn",
+            "line": 280
+          },
+          {
+            "match": "6.000",
+            "excerpt": "ia ingeniería\n\n### Servicios externos\n\n* Consultor externo: 6.000 €/mes (~72.000 €/año)\n* Consultor financiero: ~2.000 €/mes",
+            "line": 291
+          },
+          {
+            "match": "72.000",
+            "excerpt": "### Servicios externos\n\n* Consultor externo: 6.000 €/mes (~72.000 €/año)\n* Consultor financiero: ~2.000 €/mes (~24.000 €/año",
+            "line": 291
+          },
+          {
+            "match": "2.000",
+            "excerpt": "terno: 6.000 €/mes (~72.000 €/año)\n* Consultor financiero: ~2.000 €/mes (~24.000 €/año aprox.)\n\n### Estructura indirecta adic",
+            "line": 292
+          },
+          {
+            "match": "24.000",
+            "excerpt": "/mes (~72.000 €/año)\n* Consultor financiero: ~2.000 €/mes (~24.000 €/año aprox.)\n\n### Estructura indirecta adicional\n\n* 3 vehí",
+            "line": 292
+          }
+        ]
+      },
+      {
+        "file": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\DIRECCION\\ANALISIS RIESGOS Y FIANANCIERO PREVISIONS 2027\\Valoración de Proyectos.txt",
+        "phrases_found": [],
+        "currency_found": [
+          {
+            "match": "500.000",
+            "excerpt": "gún proyecto superior a una determinada cifra (por ejemplo, 500.000 € o 1 M€) debería aceptarse sin revisar una lista de contro",
+            "line": 7
+          }
+        ]
+      }
+    ],
+    "revenue": [
+      {
+        "file": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\DIRECCION\\ANALISIS RIESGOS Y FIANANCIERO PREVISIONS 2027\\CFO de empresas industriales.txt",
+        "phrases_found": [
+          {
+            "phrase": "ventas",
+            "excerpt": "CFO de empresas industriales\n\n\nla mayoría de los problemas no vienen de la ingeniería ni de las ventas, sino de la estructura financiera y de gestión del riesgo.",
+            "line": 4
+          }
+        ],
+        "currency_found": []
+      },
+      {
+        "file": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\DIRECCION\\ANALISIS RIESGOS Y FIANANCIERO PREVISIONS 2027\\INFORME ESTRATÉGICO DE FINANCIAC.txt",
+        "phrases_found": [],
+        "currency_found": [
+          {
+            "match": "75.000",
+            "excerpt": "Pyme Invierte): Ofrece préstamos coinvertidos (a partir de 75.000 €) destinados expresamente a los gastos de constitución de",
+            "line": 35
+          },
+          {
+            "match": "60.000",
+            "excerpt": "calización de ACCIÓ: Ayuda directa a fondo perdido de hasta 60.000 € de la Generalitat de Catalunya. Cubre los gastos notarial",
+            "line": 36
+          }
+        ]
+      },
+      {
+        "file": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\DIRECCION\\ANALISIS RIESGOS Y FIANANCIERO PREVISIONS 2027\\Previson crecimiento Ingecart 07 2026.txt",
+        "phrases_found": [
+          {
+            "phrase": "ingresos",
+            "excerpt": "TDA histórico, sino por la combinación de cartera de clientes, capacidad de ejecución internacional, productos propios, ingresos recurrentes de servicio y potencial de crecimiento. Esa transición es precisamente la que multiplica el valor de las em",
+            "line": 524
+          },
+          {
+            "phrase": "ventas",
+            "excerpt": "io de dimensión.\n\nSi se materializa la cartera actual, la compañía podría situarse entre **15 y 17 millones de euros de ventas**, multiplicando por aproximadamente ocho su volumen histórico.\n\nEse crecimiento no supone únicamente vender más.\n\nSupo",
+            "line": 21
+          }
+        ],
+        "currency_found": [
+          {
+            "match": "€,",
+            "excerpt": "e tamaño reducido y medio, normalmente inferiores a 500.000 €, con ciclos de ejecución relativamente cortos y unas necesid",
+            "line": 17
+          },
+          {
+            "match": "€.",
+            "excerpt": "Riesgos para aprobar cualquier proyecto superior a 500.000 €.\n\n---\n\n### 8.\n\nDiseñar un cuadro de mando semanal con:\n\n* ca",
+            "line": 501
+          },
+          {
+            "match": "500.000",
+            "excerpt": "yectos de tamaño reducido y medio, normalmente inferiores a 500.000 €, con ciclos de ejecución relativamente cortos y unas nece",
+            "line": 17
+          },
+          {
+            "match": "500.000",
+            "excerpt": "omité de Riesgos para aprobar cualquier proyecto superior a 500.000 €.\n\n---\n\n### 8.\n\nDiseñar un cuadro de mando semanal con:\n\n*",
+            "line": 501
+          }
+        ]
+      },
+      {
+        "file": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\DIRECCION\\ANALISIS RIESGOS Y FIANANCIERO PREVISIONS 2027\\Project Finance Playbook.txt",
+        "phrases_found": [
+          {
+            "phrase": "ingresos",
+            "excerpt": "culo de margen.\nModelo de cálculo del flujo de caja del proyecto.\nNecesidad máxima de financiación.\nCurva S de costes e ingresos.\nMatriz de riesgos.\nProcedimiento de negociación de contratos.\nGestión de cambios (change orders).\nGestión de reclamaci",
+            "line": 12
+          }
+        ],
+        "currency_found": [
+          {
+            "match": "€.",
+            "excerpt": "inance Playbook\n\nPara cualquier proyecto superior a 250.000 €.\n\nIncluiría, entre otros:\n\nChecklist antes de ofertar.\nMatri",
+            "line": 3
+          },
+          {
+            "match": "250.000",
+            "excerpt": "roject Finance Playbook\n\nPara cualquier proyecto superior a 250.000 €.\n\nIncluiría, entre otros:\n\nChecklist antes de ofertar.\nMa",
+            "line": 3
+          }
+        ]
+      },
+      {
+        "file": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\DIRECCION\\ANALISIS RIESGOS Y FIANANCIERO PREVISIONS 2027\\SITUACION FINANCIERA ACTUAL ASUNCIÓN IS 07 2026.txt",
+        "phrases_found": [
+          {
+            "phrase": "ingresos",
+            "excerpt": "cución adelantada de costes\n5.2 Dinámica real\nSe ejecutan múltiples proyectos simultáneamente\nLos costes preceden a los ingresos\nEl crecimiento incrementa el consumo de caja\nConclusión\n\nEl crecimiento actual es intensivo en caja, no autofinanciado.",
+            "line": 61
+          },
+          {
+            "phrase": "ventas",
+            "excerpt": "ado, sino de arquitectura financiera del crecimiento.\n\nDiagnóstico en una frase\n\nIngecart ha evolucionado más rápido en ventas y ejecución que en su modelo de financiación operativa.\n\n2. POSICIÓN ESTRUCTURAL ACTUAL\n2.1 Modelo de empresa\nEmpresa d",
+            "line": 12
+          }
+        ],
+        "currency_found": [
+          {
+            "match": "200.000",
+            "excerpt": "E COSTES FIJOS\nComponentes principales\nDirección (socios): >200.000 € conjunto\nJefaturas técnicas: ~200.000 € aprox.\nEquipo téc",
+            "line": 82
+          },
+          {
+            "match": "200.000",
+            "excerpt": "irección (socios): >200.000 € conjunto\nJefaturas técnicas: ~200.000 € aprox.\nEquipo técnico reducido pero operativo\nConsultoría",
+            "line": 83
+          },
+          {
+            "match": "96.000",
+            "excerpt": "quipo técnico reducido pero operativo\nConsultoría externa: ~96.000 €/año\nInfraestructura operativa (vehículos, soporte, etc.)",
+            "line": 85
+          },
+          {
+            "match": "100.000",
+            "excerpt": "TURA ORGANIZATIVA (COSTE FIJO)\n\n### Socios\n\n* María Jesús: >100.000 €\n* Diego García: >100.000 €\n\n### Dirección operativa\n\n* Je",
+            "line": 273
+          },
+          {
+            "match": "100.000",
+            "excerpt": "JO)\n\n### Socios\n\n* María Jesús: >100.000 €\n* Diego García: >100.000 €\n\n### Dirección operativa\n\n* Jefe mantenimiento: 80.000 €",
+            "line": 274
+          },
+          {
+            "match": "80.000",
+            "excerpt": ">100.000 €\n\n### Dirección operativa\n\n* Jefe mantenimiento: 80.000 €\n* Jefe ingeniería: ~60.000 €\n* Jefe programación: ~60.000",
+            "line": 278
+          },
+          {
+            "match": "60.000",
+            "excerpt": "erativa\n\n* Jefe mantenimiento: 80.000 €\n* Jefe ingeniería: ~60.000 €\n* Jefe programación: ~60.000 €\n\n### Equipo técnico\n\n* 2 t",
+            "line": 279
+          },
+          {
+            "match": "60.000",
+            "excerpt": "80.000 €\n* Jefe ingeniería: ~60.000 €\n* Jefe programación: ~60.000 €\n\n### Equipo técnico\n\n* 2 técnicos taller (medio)\n* 2 técn",
+            "line": 280
+          },
+          {
+            "match": "6.000",
+            "excerpt": "ia ingeniería\n\n### Servicios externos\n\n* Consultor externo: 6.000 €/mes (~72.000 €/año)\n* Consultor financiero: ~2.000 €/mes",
+            "line": 291
+          },
+          {
+            "match": "72.000",
+            "excerpt": "### Servicios externos\n\n* Consultor externo: 6.000 €/mes (~72.000 €/año)\n* Consultor financiero: ~2.000 €/mes (~24.000 €/año",
+            "line": 291
+          },
+          {
+            "match": "2.000",
+            "excerpt": "terno: 6.000 €/mes (~72.000 €/año)\n* Consultor financiero: ~2.000 €/mes (~24.000 €/año aprox.)\n\n### Estructura indirecta adic",
+            "line": 292
+          },
+          {
+            "match": "24.000",
+            "excerpt": "/mes (~72.000 €/año)\n* Consultor financiero: ~2.000 €/mes (~24.000 €/año aprox.)\n\n### Estructura indirecta adicional\n\n* 3 vehí",
+            "line": 292
+          }
+        ]
+      },
+      {
+        "file": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\DIRECCION\\ANALISIS RIESGOS Y FIANANCIERO PREVISIONS 2027\\Valoración de Proyectos.txt",
+        "phrases_found": [],
+        "currency_found": [
+          {
+            "match": "500.000",
+            "excerpt": "gún proyecto superior a una determinada cifra (por ejemplo, 500.000 € o 1 M€) debería aceptarse sin revisar una lista de contro",
+            "line": 7
+          }
+        ]
+      }
+    ],
+    "gross_margin": [
+      {
+        "file": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\DIRECCION\\ANALISIS RIESGOS Y FIANANCIERO PREVISIONS 2027\\INFORME ESTRATÉGICO DE FINANCIAC.txt",
+        "phrases_found": [
+          {
+            "phrase": "margen",
+            "excerpt": "os en destino requiere capital a medio/largo plazo. La ventana temporal fijada para finales de año permite tramitar con margen las siguientes líneas:\n\n[JUNIO - OCTUBRE] ──────────────────────────► [FINALES DE AÑO]\nTramitación de Líneas",
+            "line": 28
+          }
+        ],
+        "currency_found": [
+          {
+            "match": "75.000",
+            "excerpt": "Pyme Invierte): Ofrece préstamos coinvertidos (a partir de 75.000 €) destinados expresamente a los gastos de constitución de",
+            "line": 35
+          },
+          {
+            "match": "60.000",
+            "excerpt": "calización de ACCIÓ: Ayuda directa a fondo perdido de hasta 60.000 € de la Generalitat de Catalunya. Cubre los gastos notarial",
+            "line": 36
+          }
+        ]
+      },
+      {
+        "file": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\DIRECCION\\ANALISIS RIESGOS Y FIANANCIERO PREVISIONS 2027\\Previson crecimiento Ingecart 07 2026.txt",
+        "phrases_found": [
+          {
+            "phrase": "margen",
+            "excerpt": "obar cualquier proyecto superior a 500.000 €.\n\n---\n\n### 8.\n\nDiseñar un cuadro de mando semanal con:\n\n* cartera\n* caja\n* margen\n* riesgos\n* avance de proyectos\n* desviaciones\n\n---\n\n# Mi valoración estratégica\n\nHay un aspecto que me parece especial",
+            "line": 511
+          }
+        ],
+        "currency_found": [
+          {
+            "match": "€,",
+            "excerpt": "e tamaño reducido y medio, normalmente inferiores a 500.000 €, con ciclos de ejecución relativamente cortos y unas necesid",
+            "line": 17
+          },
+          {
+            "match": "€.",
+            "excerpt": "Riesgos para aprobar cualquier proyecto superior a 500.000 €.\n\n---\n\n### 8.\n\nDiseñar un cuadro de mando semanal con:\n\n* ca",
+            "line": 501
+          },
+          {
+            "match": "500.000",
+            "excerpt": "yectos de tamaño reducido y medio, normalmente inferiores a 500.000 €, con ciclos de ejecución relativamente cortos y unas nece",
+            "line": 17
+          },
+          {
+            "match": "500.000",
+            "excerpt": "omité de Riesgos para aprobar cualquier proyecto superior a 500.000 €.\n\n---\n\n### 8.\n\nDiseñar un cuadro de mando semanal con:\n\n*",
+            "line": 501
+          }
+        ]
+      },
+      {
+        "file": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\DIRECCION\\ANALISIS RIESGOS Y FIANANCIERO PREVISIONS 2027\\Project Finance Playbook.txt",
+        "phrases_found": [
+          {
+            "phrase": "margen",
+            "excerpt": "€.\n\nIncluiría, entre otros:\n\nChecklist antes de ofertar.\nMatriz de aprobación de ofertas.\nModelo estándar de cálculo de margen.\nModelo de cálculo del flujo de caja del proyecto.\nNecesidad máxima de financiación.\nCurva S de costes e ingresos.\nMatr",
+            "line": 9
+          }
+        ],
+        "currency_found": [
+          {
+            "match": "€.",
+            "excerpt": "inance Playbook\n\nPara cualquier proyecto superior a 250.000 €.\n\nIncluiría, entre otros:\n\nChecklist antes de ofertar.\nMatri",
+            "line": 3
+          },
+          {
+            "match": "250.000",
+            "excerpt": "roject Finance Playbook\n\nPara cualquier proyecto superior a 250.000 €.\n\nIncluiría, entre otros:\n\nChecklist antes de ofertar.\nMa",
+            "line": 3
+          }
+        ]
+      },
+      {
+        "file": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\DIRECCION\\ANALISIS RIESGOS Y FIANANCIERO PREVISIONS 2027\\SITUACION FINANCIERA ACTUAL ASUNCIÓN IS 07 2026.txt",
+        "phrases_found": [
+          {
+            "phrase": "margen",
+            "excerpt": "n caja.\n\n3. DESEMPEÑO ECONÓMICO\nIndicadores clave (histórico 2022)\nRentabilidad sobre recursos propios: ~98% (muy alta)\nMargen operativo: ~38%\nRotación de activos: alta\nDeuda estructural: baja\nInterpretación\nEl negocio es intrínsecamente rentable",
+            "line": 29
+          }
+        ],
+        "currency_found": [
+          {
+            "match": "200.000",
+            "excerpt": "E COSTES FIJOS\nComponentes principales\nDirección (socios): >200.000 € conjunto\nJefaturas técnicas: ~200.000 € aprox.\nEquipo téc",
+            "line": 82
+          },
+          {
+            "match": "200.000",
+            "excerpt": "irección (socios): >200.000 € conjunto\nJefaturas técnicas: ~200.000 € aprox.\nEquipo técnico reducido pero operativo\nConsultoría",
+            "line": 83
+          },
+          {
+            "match": "96.000",
+            "excerpt": "quipo técnico reducido pero operativo\nConsultoría externa: ~96.000 €/año\nInfraestructura operativa (vehículos, soporte, etc.)",
+            "line": 85
+          },
+          {
+            "match": "100.000",
+            "excerpt": "TURA ORGANIZATIVA (COSTE FIJO)\n\n### Socios\n\n* María Jesús: >100.000 €\n* Diego García: >100.000 €\n\n### Dirección operativa\n\n* Je",
+            "line": 273
+          },
+          {
+            "match": "100.000",
+            "excerpt": "JO)\n\n### Socios\n\n* María Jesús: >100.000 €\n* Diego García: >100.000 €\n\n### Dirección operativa\n\n* Jefe mantenimiento: 80.000 €",
+            "line": 274
+          },
+          {
+            "match": "80.000",
+            "excerpt": ">100.000 €\n\n### Dirección operativa\n\n* Jefe mantenimiento: 80.000 €\n* Jefe ingeniería: ~60.000 €\n* Jefe programación: ~60.000",
+            "line": 278
+          },
+          {
+            "match": "60.000",
+            "excerpt": "erativa\n\n* Jefe mantenimiento: 80.000 €\n* Jefe ingeniería: ~60.000 €\n* Jefe programación: ~60.000 €\n\n### Equipo técnico\n\n* 2 t",
+            "line": 279
+          },
+          {
+            "match": "60.000",
+            "excerpt": "80.000 €\n* Jefe ingeniería: ~60.000 €\n* Jefe programación: ~60.000 €\n\n### Equipo técnico\n\n* 2 técnicos taller (medio)\n* 2 técn",
+            "line": 280
+          },
+          {
+            "match": "6.000",
+            "excerpt": "ia ingeniería\n\n### Servicios externos\n\n* Consultor externo: 6.000 €/mes (~72.000 €/año)\n* Consultor financiero: ~2.000 €/mes",
+            "line": 291
+          },
+          {
+            "match": "72.000",
+            "excerpt": "### Servicios externos\n\n* Consultor externo: 6.000 €/mes (~72.000 €/año)\n* Consultor financiero: ~2.000 €/mes (~24.000 €/año",
+            "line": 291
+          },
+          {
+            "match": "2.000",
+            "excerpt": "terno: 6.000 €/mes (~72.000 €/año)\n* Consultor financiero: ~2.000 €/mes (~24.000 €/año aprox.)\n\n### Estructura indirecta adic",
+            "line": 292
+          },
+          {
+            "match": "24.000",
+            "excerpt": "/mes (~72.000 €/año)\n* Consultor financiero: ~2.000 €/mes (~24.000 €/año aprox.)\n\n### Estructura indirecta adicional\n\n* 3 vehí",
+            "line": 292
+          }
+        ]
+      },
+      {
+        "file": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\DIRECCION\\ANALISIS RIESGOS Y FIANANCIERO PREVISIONS 2027\\Valoración de Proyectos.txt",
+        "phrases_found": [
+          {
+            "phrase": "margen",
+            "excerpt": "o superior a una determinada cifra (por ejemplo, 500.000 € o 1 M€) debería aceptarse sin revisar una lista de control:\n\nMargen esperado\nNecesidad máxima de caja\nRiesgos contractuales\nRiesgos técnicos\nCapacidad del equipo\nRecursos disponibles\nExpo",
+            "line": 9
+          }
+        ],
+        "currency_found": [
+          {
+            "match": "500.000",
+            "excerpt": "gún proyecto superior a una determinada cifra (por ejemplo, 500.000 € o 1 M€) debería aceptarse sin revisar una lista de contro",
+            "line": 7
+          }
+        ]
+      }
+    ],
+    "accounts_receivable": [
+      {
+        "file": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\DIRECCION\\ANALISIS RIESGOS Y FIANANCIERO PREVISIONS 2027\\INFORME ESTRATÉGICO DE FINANCIAC.txt",
+        "phrases_found": [],
+        "currency_found": [
+          {
+            "match": "75.000",
+            "excerpt": "Pyme Invierte): Ofrece préstamos coinvertidos (a partir de 75.000 €) destinados expresamente a los gastos de constitución de",
+            "line": 35
+          },
+          {
+            "match": "60.000",
+            "excerpt": "calización de ACCIÓ: Ayuda directa a fondo perdido de hasta 60.000 € de la Generalitat de Catalunya. Cubre los gastos notarial",
+            "line": 36
+          }
+        ]
+      },
+      {
+        "file": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\DIRECCION\\ANALISIS RIESGOS Y FIANANCIERO PREVISIONS 2027\\Previson crecimiento Ingecart 07 2026.txt",
+        "phrases_found": [],
+        "currency_found": [
+          {
+            "match": "€,",
+            "excerpt": "e tamaño reducido y medio, normalmente inferiores a 500.000 €, con ciclos de ejecución relativamente cortos y unas necesid",
+            "line": 17
+          },
+          {
+            "match": "€.",
+            "excerpt": "Riesgos para aprobar cualquier proyecto superior a 500.000 €.\n\n---\n\n### 8.\n\nDiseñar un cuadro de mando semanal con:\n\n* ca",
+            "line": 501
+          },
+          {
+            "match": "500.000",
+            "excerpt": "yectos de tamaño reducido y medio, normalmente inferiores a 500.000 €, con ciclos de ejecución relativamente cortos y unas nece",
+            "line": 17
+          },
+          {
+            "match": "500.000",
+            "excerpt": "omité de Riesgos para aprobar cualquier proyecto superior a 500.000 €.\n\n---\n\n### 8.\n\nDiseñar un cuadro de mando semanal con:\n\n*",
+            "line": 501
+          }
+        ]
+      },
+      {
+        "file": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\DIRECCION\\ANALISIS RIESGOS Y FIANANCIERO PREVISIONS 2027\\Project Finance Playbook.txt",
+        "phrases_found": [],
+        "currency_found": [
+          {
+            "match": "€.",
+            "excerpt": "inance Playbook\n\nPara cualquier proyecto superior a 250.000 €.\n\nIncluiría, entre otros:\n\nChecklist antes de ofertar.\nMatri",
+            "line": 3
+          },
+          {
+            "match": "250.000",
+            "excerpt": "roject Finance Playbook\n\nPara cualquier proyecto superior a 250.000 €.\n\nIncluiría, entre otros:\n\nChecklist antes de ofertar.\nMa",
+            "line": 3
+          }
+        ]
+      },
+      {
+        "file": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\DIRECCION\\ANALISIS RIESGOS Y FIANANCIERO PREVISIONS 2027\\SITUACION FINANCIERA ACTUAL ASUNCIÓN IS 07 2026.txt",
+        "phrases_found": [],
+        "currency_found": [
+          {
+            "match": "200.000",
+            "excerpt": "E COSTES FIJOS\nComponentes principales\nDirección (socios): >200.000 € conjunto\nJefaturas técnicas: ~200.000 € aprox.\nEquipo téc",
+            "line": 82
+          },
+          {
+            "match": "200.000",
+            "excerpt": "irección (socios): >200.000 € conjunto\nJefaturas técnicas: ~200.000 € aprox.\nEquipo técnico reducido pero operativo\nConsultoría",
+            "line": 83
+          },
+          {
+            "match": "96.000",
+            "excerpt": "quipo técnico reducido pero operativo\nConsultoría externa: ~96.000 €/año\nInfraestructura operativa (vehículos, soporte, etc.)",
+            "line": 85
+          },
+          {
+            "match": "100.000",
+            "excerpt": "TURA ORGANIZATIVA (COSTE FIJO)\n\n### Socios\n\n* María Jesús: >100.000 €\n* Diego García: >100.000 €\n\n### Dirección operativa\n\n* Je",
+            "line": 273
+          },
+          {
+            "match": "100.000",
+            "excerpt": "JO)\n\n### Socios\n\n* María Jesús: >100.000 €\n* Diego García: >100.000 €\n\n### Dirección operativa\n\n* Jefe mantenimiento: 80.000 €",
+            "line": 274
+          },
+          {
+            "match": "80.000",
+            "excerpt": ">100.000 €\n\n### Dirección operativa\n\n* Jefe mantenimiento: 80.000 €\n* Jefe ingeniería: ~60.000 €\n* Jefe programación: ~60.000",
+            "line": 278
+          },
+          {
+            "match": "60.000",
+            "excerpt": "erativa\n\n* Jefe mantenimiento: 80.000 €\n* Jefe ingeniería: ~60.000 €\n* Jefe programación: ~60.000 €\n\n### Equipo técnico\n\n* 2 t",
+            "line": 279
+          },
+          {
+            "match": "60.000",
+            "excerpt": "80.000 €\n* Jefe ingeniería: ~60.000 €\n* Jefe programación: ~60.000 €\n\n### Equipo técnico\n\n* 2 técnicos taller (medio)\n* 2 técn",
+            "line": 280
+          },
+          {
+            "match": "6.000",
+            "excerpt": "ia ingeniería\n\n### Servicios externos\n\n* Consultor externo: 6.000 €/mes (~72.000 €/año)\n* Consultor financiero: ~2.000 €/mes",
+            "line": 291
+          },
+          {
+            "match": "72.000",
+            "excerpt": "### Servicios externos\n\n* Consultor externo: 6.000 €/mes (~72.000 €/año)\n* Consultor financiero: ~2.000 €/mes (~24.000 €/año",
+            "line": 291
+          },
+          {
+            "match": "2.000",
+            "excerpt": "terno: 6.000 €/mes (~72.000 €/año)\n* Consultor financiero: ~2.000 €/mes (~24.000 €/año aprox.)\n\n### Estructura indirecta adic",
+            "line": 292
+          },
+          {
+            "match": "24.000",
+            "excerpt": "/mes (~72.000 €/año)\n* Consultor financiero: ~2.000 €/mes (~24.000 €/año aprox.)\n\n### Estructura indirecta adicional\n\n* 3 vehí",
+            "line": 292
+          }
+        ]
+      },
+      {
+        "file": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\DIRECCION\\ANALISIS RIESGOS Y FIANANCIERO PREVISIONS 2027\\Valoración de Proyectos.txt",
+        "phrases_found": [],
+        "currency_found": [
+          {
+            "match": "500.000",
+            "excerpt": "gún proyecto superior a una determinada cifra (por ejemplo, 500.000 € o 1 M€) debería aceptarse sin revisar una lista de contro",
+            "line": 7
+          }
+        ]
+      }
+    ],
+    "accounts_payable": [
+      {
+        "file": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\DIRECCION\\ANALISIS RIESGOS Y FIANANCIERO PREVISIONS 2027\\INFORME ESTRATÉGICO DE FINANCIAC.txt",
+        "phrases_found": [],
+        "currency_found": [
+          {
+            "match": "75.000",
+            "excerpt": "Pyme Invierte): Ofrece préstamos coinvertidos (a partir de 75.000 €) destinados expresamente a los gastos de constitución de",
+            "line": 35
+          },
+          {
+            "match": "60.000",
+            "excerpt": "calización de ACCIÓ: Ayuda directa a fondo perdido de hasta 60.000 € de la Generalitat de Catalunya. Cubre los gastos notarial",
+            "line": 36
+          }
+        ]
+      },
+      {
+        "file": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\DIRECCION\\ANALISIS RIESGOS Y FIANANCIERO PREVISIONS 2027\\Previson crecimiento Ingecart 07 2026.txt",
+        "phrases_found": [],
+        "currency_found": [
+          {
+            "match": "€,",
+            "excerpt": "e tamaño reducido y medio, normalmente inferiores a 500.000 €, con ciclos de ejecución relativamente cortos y unas necesid",
+            "line": 17
+          },
+          {
+            "match": "€.",
+            "excerpt": "Riesgos para aprobar cualquier proyecto superior a 500.000 €.\n\n---\n\n### 8.\n\nDiseñar un cuadro de mando semanal con:\n\n* ca",
+            "line": 501
+          },
+          {
+            "match": "500.000",
+            "excerpt": "yectos de tamaño reducido y medio, normalmente inferiores a 500.000 €, con ciclos de ejecución relativamente cortos y unas nece",
+            "line": 17
+          },
+          {
+            "match": "500.000",
+            "excerpt": "omité de Riesgos para aprobar cualquier proyecto superior a 500.000 €.\n\n---\n\n### 8.\n\nDiseñar un cuadro de mando semanal con:\n\n*",
+            "line": 501
+          }
+        ]
+      },
+      {
+        "file": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\DIRECCION\\ANALISIS RIESGOS Y FIANANCIERO PREVISIONS 2027\\Project Finance Playbook.txt",
+        "phrases_found": [],
+        "currency_found": [
+          {
+            "match": "€.",
+            "excerpt": "inance Playbook\n\nPara cualquier proyecto superior a 250.000 €.\n\nIncluiría, entre otros:\n\nChecklist antes de ofertar.\nMatri",
+            "line": 3
+          },
+          {
+            "match": "250.000",
+            "excerpt": "roject Finance Playbook\n\nPara cualquier proyecto superior a 250.000 €.\n\nIncluiría, entre otros:\n\nChecklist antes de ofertar.\nMa",
+            "line": 3
+          }
+        ]
+      },
+      {
+        "file": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\DIRECCION\\ANALISIS RIESGOS Y FIANANCIERO PREVISIONS 2027\\SITUACION FINANCIERA ACTUAL ASUNCIÓN IS 07 2026.txt",
+        "phrases_found": [],
+        "currency_found": [
+          {
+            "match": "200.000",
+            "excerpt": "E COSTES FIJOS\nComponentes principales\nDirección (socios): >200.000 € conjunto\nJefaturas técnicas: ~200.000 € aprox.\nEquipo téc",
+            "line": 82
+          },
+          {
+            "match": "200.000",
+            "excerpt": "irección (socios): >200.000 € conjunto\nJefaturas técnicas: ~200.000 € aprox.\nEquipo técnico reducido pero operativo\nConsultoría",
+            "line": 83
+          },
+          {
+            "match": "96.000",
+            "excerpt": "quipo técnico reducido pero operativo\nConsultoría externa: ~96.000 €/año\nInfraestructura operativa (vehículos, soporte, etc.)",
+            "line": 85
+          },
+          {
+            "match": "100.000",
+            "excerpt": "TURA ORGANIZATIVA (COSTE FIJO)\n\n### Socios\n\n* María Jesús: >100.000 €\n* Diego García: >100.000 €\n\n### Dirección operativa\n\n* Je",
+            "line": 273
+          },
+          {
+            "match": "100.000",
+            "excerpt": "JO)\n\n### Socios\n\n* María Jesús: >100.000 €\n* Diego García: >100.000 €\n\n### Dirección operativa\n\n* Jefe mantenimiento: 80.000 €",
+            "line": 274
+          },
+          {
+            "match": "80.000",
+            "excerpt": ">100.000 €\n\n### Dirección operativa\n\n* Jefe mantenimiento: 80.000 €\n* Jefe ingeniería: ~60.000 €\n* Jefe programación: ~60.000",
+            "line": 278
+          },
+          {
+            "match": "60.000",
+            "excerpt": "erativa\n\n* Jefe mantenimiento: 80.000 €\n* Jefe ingeniería: ~60.000 €\n* Jefe programación: ~60.000 €\n\n### Equipo técnico\n\n* 2 t",
+            "line": 279
+          },
+          {
+            "match": "60.000",
+            "excerpt": "80.000 €\n* Jefe ingeniería: ~60.000 €\n* Jefe programación: ~60.000 €\n\n### Equipo técnico\n\n* 2 técnicos taller (medio)\n* 2 técn",
+            "line": 280
+          },
+          {
+            "match": "6.000",
+            "excerpt": "ia ingeniería\n\n### Servicios externos\n\n* Consultor externo: 6.000 €/mes (~72.000 €/año)\n* Consultor financiero: ~2.000 €/mes",
+            "line": 291
+          },
+          {
+            "match": "72.000",
+            "excerpt": "### Servicios externos\n\n* Consultor externo: 6.000 €/mes (~72.000 €/año)\n* Consultor financiero: ~2.000 €/mes (~24.000 €/año",
+            "line": 291
+          },
+          {
+            "match": "2.000",
+            "excerpt": "terno: 6.000 €/mes (~72.000 €/año)\n* Consultor financiero: ~2.000 €/mes (~24.000 €/año aprox.)\n\n### Estructura indirecta adic",
+            "line": 292
+          },
+          {
+            "match": "24.000",
+            "excerpt": "/mes (~72.000 €/año)\n* Consultor financiero: ~2.000 €/mes (~24.000 €/año aprox.)\n\n### Estructura indirecta adicional\n\n* 3 vehí",
+            "line": 292
+          }
+        ]
+      },
+      {
+        "file": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\DIRECCION\\ANALISIS RIESGOS Y FIANANCIERO PREVISIONS 2027\\Valoración de Proyectos.txt",
+        "phrases_found": [],
+        "currency_found": [
+          {
+            "match": "500.000",
+            "excerpt": "gún proyecto superior a una determinada cifra (por ejemplo, 500.000 € o 1 M€) debería aceptarse sin revisar una lista de contro",
+            "line": 7
+          }
+        ]
+      }
+    ],
+    "debt": [
+      {
+        "file": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\DIRECCION\\ANALISIS RIESGOS Y FIANANCIERO PREVISIONS 2027\\BLOQUE 1. Situación financiera actu.txt",
+        "phrases_found": [
+          {
+            "phrase": "deuda",
+            "excerpt": "e\nLíneas de crédito\nConfirming\nFactoring\nPólizas\nLeasing\nRenting\nAvales disponibles\nPatrimonio\nPatrimonio Neto\nReservas\nDeuda bancaria\nGarantías personales existentes\nTesorería\nCaja media\nCaja mínima\nCaja máxima\nTesorería mensual",
+            "line": 17
+          }
+        ],
+        "currency_found": []
+      },
+      {
+        "file": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\DIRECCION\\ANALISIS RIESGOS Y FIANANCIERO PREVISIONS 2027\\INFORME ESTRATÉGICO DE FINANCIAC.txt",
+        "phrases_found": [],
+        "currency_found": [
+          {
+            "match": "75.000",
+            "excerpt": "Pyme Invierte): Ofrece préstamos coinvertidos (a partir de 75.000 €) destinados expresamente a los gastos de constitución de",
+            "line": 35
+          },
+          {
+            "match": "60.000",
+            "excerpt": "calización de ACCIÓ: Ayuda directa a fondo perdido de hasta 60.000 € de la Generalitat de Catalunya. Cubre los gastos notarial",
+            "line": 36
+          }
+        ]
+      },
+      {
+        "file": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\DIRECCION\\ANALISIS RIESGOS Y FIANANCIERO PREVISIONS 2027\\Previson crecimiento Ingecart 07 2026.txt",
+        "phrases_found": [],
+        "currency_found": [
+          {
+            "match": "€,",
+            "excerpt": "e tamaño reducido y medio, normalmente inferiores a 500.000 €, con ciclos de ejecución relativamente cortos y unas necesid",
+            "line": 17
+          },
+          {
+            "match": "€.",
+            "excerpt": "Riesgos para aprobar cualquier proyecto superior a 500.000 €.\n\n---\n\n### 8.\n\nDiseñar un cuadro de mando semanal con:\n\n* ca",
+            "line": 501
+          },
+          {
+            "match": "500.000",
+            "excerpt": "yectos de tamaño reducido y medio, normalmente inferiores a 500.000 €, con ciclos de ejecución relativamente cortos y unas nece",
+            "line": 17
+          },
+          {
+            "match": "500.000",
+            "excerpt": "omité de Riesgos para aprobar cualquier proyecto superior a 500.000 €.\n\n---\n\n### 8.\n\nDiseñar un cuadro de mando semanal con:\n\n*",
+            "line": 501
+          }
+        ]
+      },
+      {
+        "file": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\DIRECCION\\ANALISIS RIESGOS Y FIANANCIERO PREVISIONS 2027\\Project Finance Playbook.txt",
+        "phrases_found": [],
+        "currency_found": [
+          {
+            "match": "€.",
+            "excerpt": "inance Playbook\n\nPara cualquier proyecto superior a 250.000 €.\n\nIncluiría, entre otros:\n\nChecklist antes de ofertar.\nMatri",
+            "line": 3
+          },
+          {
+            "match": "250.000",
+            "excerpt": "roject Finance Playbook\n\nPara cualquier proyecto superior a 250.000 €.\n\nIncluiría, entre otros:\n\nChecklist antes de ofertar.\nMa",
+            "line": 3
+          }
+        ]
+      },
+      {
+        "file": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\DIRECCION\\ANALISIS RIESGOS Y FIANANCIERO PREVISIONS 2027\\SITUACION FINANCIERA ACTUAL ASUNCIÓN IS 07 2026.txt",
+        "phrases_found": [
+          {
+            "phrase": "deuda",
+            "excerpt": "(histórico 2022)\nRentabilidad sobre recursos propios: ~98% (muy alta)\nMargen operativo: ~38%\nRotación de activos: alta\nDeuda estructural: baja\nInterpretación\nEl negocio es intrínsecamente rentable\nEl modelo comercial funciona correctamente\nLa c",
+            "line": 31
+          }
+        ],
+        "currency_found": [
+          {
+            "match": "200.000",
+            "excerpt": "E COSTES FIJOS\nComponentes principales\nDirección (socios): >200.000 € conjunto\nJefaturas técnicas: ~200.000 € aprox.\nEquipo téc",
+            "line": 82
+          },
+          {
+            "match": "200.000",
+            "excerpt": "irección (socios): >200.000 € conjunto\nJefaturas técnicas: ~200.000 € aprox.\nEquipo técnico reducido pero operativo\nConsultoría",
+            "line": 83
+          },
+          {
+            "match": "96.000",
+            "excerpt": "quipo técnico reducido pero operativo\nConsultoría externa: ~96.000 €/año\nInfraestructura operativa (vehículos, soporte, etc.)",
+            "line": 85
+          },
+          {
+            "match": "100.000",
+            "excerpt": "TURA ORGANIZATIVA (COSTE FIJO)\n\n### Socios\n\n* María Jesús: >100.000 €\n* Diego García: >100.000 €\n\n### Dirección operativa\n\n* Je",
+            "line": 273
+          },
+          {
+            "match": "100.000",
+            "excerpt": "JO)\n\n### Socios\n\n* María Jesús: >100.000 €\n* Diego García: >100.000 €\n\n### Dirección operativa\n\n* Jefe mantenimiento: 80.000 €",
+            "line": 274
+          },
+          {
+            "match": "80.000",
+            "excerpt": ">100.000 €\n\n### Dirección operativa\n\n* Jefe mantenimiento: 80.000 €\n* Jefe ingeniería: ~60.000 €\n* Jefe programación: ~60.000",
+            "line": 278
+          },
+          {
+            "match": "60.000",
+            "excerpt": "erativa\n\n* Jefe mantenimiento: 80.000 €\n* Jefe ingeniería: ~60.000 €\n* Jefe programación: ~60.000 €\n\n### Equipo técnico\n\n* 2 t",
+            "line": 279
+          },
+          {
+            "match": "60.000",
+            "excerpt": "80.000 €\n* Jefe ingeniería: ~60.000 €\n* Jefe programación: ~60.000 €\n\n### Equipo técnico\n\n* 2 técnicos taller (medio)\n* 2 técn",
+            "line": 280
+          },
+          {
+            "match": "6.000",
+            "excerpt": "ia ingeniería\n\n### Servicios externos\n\n* Consultor externo: 6.000 €/mes (~72.000 €/año)\n* Consultor financiero: ~2.000 €/mes",
+            "line": 291
+          },
+          {
+            "match": "72.000",
+            "excerpt": "### Servicios externos\n\n* Consultor externo: 6.000 €/mes (~72.000 €/año)\n* Consultor financiero: ~2.000 €/mes (~24.000 €/año",
+            "line": 291
+          },
+          {
+            "match": "2.000",
+            "excerpt": "terno: 6.000 €/mes (~72.000 €/año)\n* Consultor financiero: ~2.000 €/mes (~24.000 €/año aprox.)\n\n### Estructura indirecta adic",
+            "line": 292
+          },
+          {
+            "match": "24.000",
+            "excerpt": "/mes (~72.000 €/año)\n* Consultor financiero: ~2.000 €/mes (~24.000 €/año aprox.)\n\n### Estructura indirecta adicional\n\n* 3 vehí",
+            "line": 292
+          }
+        ]
+      },
+      {
+        "file": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\DIRECCION\\ANALISIS RIESGOS Y FIANANCIERO PREVISIONS 2027\\Valoración de Proyectos.txt",
+        "phrases_found": [],
+        "currency_found": [
+          {
+            "match": "500.000",
+            "excerpt": "gún proyecto superior a una determinada cifra (por ejemplo, 500.000 € o 1 M€) debería aceptarse sin revisar una lista de contro",
+            "line": 7
+          }
+        ]
+      }
+    ],
+    "capex": [
+      {
+        "file": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\DIRECCION\\ANALISIS RIESGOS Y FIANANCIERO PREVISIONS 2027\\INFORME ESTRATÉGICO DE FINANCIAC.txt",
+        "phrases_found": [],
+        "currency_found": [
+          {
+            "match": "75.000",
+            "excerpt": "Pyme Invierte): Ofrece préstamos coinvertidos (a partir de 75.000 €) destinados expresamente a los gastos de constitución de",
+            "line": 35
+          },
+          {
+            "match": "60.000",
+            "excerpt": "calización de ACCIÓ: Ayuda directa a fondo perdido de hasta 60.000 € de la Generalitat de Catalunya. Cubre los gastos notarial",
+            "line": 36
+          }
+        ]
+      },
+      {
+        "file": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\DIRECCION\\ANALISIS RIESGOS Y FIANANCIERO PREVISIONS 2027\\Previson crecimiento Ingecart 07 2026.txt",
+        "phrases_found": [],
+        "currency_found": [
+          {
+            "match": "€,",
+            "excerpt": "e tamaño reducido y medio, normalmente inferiores a 500.000 €, con ciclos de ejecución relativamente cortos y unas necesid",
+            "line": 17
+          },
+          {
+            "match": "€.",
+            "excerpt": "Riesgos para aprobar cualquier proyecto superior a 500.000 €.\n\n---\n\n### 8.\n\nDiseñar un cuadro de mando semanal con:\n\n* ca",
+            "line": 501
+          },
+          {
+            "match": "500.000",
+            "excerpt": "yectos de tamaño reducido y medio, normalmente inferiores a 500.000 €, con ciclos de ejecución relativamente cortos y unas nece",
+            "line": 17
+          },
+          {
+            "match": "500.000",
+            "excerpt": "omité de Riesgos para aprobar cualquier proyecto superior a 500.000 €.\n\n---\n\n### 8.\n\nDiseñar un cuadro de mando semanal con:\n\n*",
+            "line": 501
+          }
+        ]
+      },
+      {
+        "file": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\DIRECCION\\ANALISIS RIESGOS Y FIANANCIERO PREVISIONS 2027\\Project Finance Playbook.txt",
+        "phrases_found": [],
+        "currency_found": [
+          {
+            "match": "€.",
+            "excerpt": "inance Playbook\n\nPara cualquier proyecto superior a 250.000 €.\n\nIncluiría, entre otros:\n\nChecklist antes de ofertar.\nMatri",
+            "line": 3
+          },
+          {
+            "match": "250.000",
+            "excerpt": "roject Finance Playbook\n\nPara cualquier proyecto superior a 250.000 €.\n\nIncluiría, entre otros:\n\nChecklist antes de ofertar.\nMa",
+            "line": 3
+          }
+        ]
+      },
+      {
+        "file": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\DIRECCION\\ANALISIS RIESGOS Y FIANANCIERO PREVISIONS 2027\\SITUACION FINANCIERA ACTUAL ASUNCIÓN IS 07 2026.txt",
+        "phrases_found": [],
+        "currency_found": [
+          {
+            "match": "200.000",
+            "excerpt": "E COSTES FIJOS\nComponentes principales\nDirección (socios): >200.000 € conjunto\nJefaturas técnicas: ~200.000 € aprox.\nEquipo téc",
+            "line": 82
+          },
+          {
+            "match": "200.000",
+            "excerpt": "irección (socios): >200.000 € conjunto\nJefaturas técnicas: ~200.000 € aprox.\nEquipo técnico reducido pero operativo\nConsultoría",
+            "line": 83
+          },
+          {
+            "match": "96.000",
+            "excerpt": "quipo técnico reducido pero operativo\nConsultoría externa: ~96.000 €/año\nInfraestructura operativa (vehículos, soporte, etc.)",
+            "line": 85
+          },
+          {
+            "match": "100.000",
+            "excerpt": "TURA ORGANIZATIVA (COSTE FIJO)\n\n### Socios\n\n* María Jesús: >100.000 €\n* Diego García: >100.000 €\n\n### Dirección operativa\n\n* Je",
+            "line": 273
+          },
+          {
+            "match": "100.000",
+            "excerpt": "JO)\n\n### Socios\n\n* María Jesús: >100.000 €\n* Diego García: >100.000 €\n\n### Dirección operativa\n\n* Jefe mantenimiento: 80.000 €",
+            "line": 274
+          },
+          {
+            "match": "80.000",
+            "excerpt": ">100.000 €\n\n### Dirección operativa\n\n* Jefe mantenimiento: 80.000 €\n* Jefe ingeniería: ~60.000 €\n* Jefe programación: ~60.000",
+            "line": 278
+          },
+          {
+            "match": "60.000",
+            "excerpt": "erativa\n\n* Jefe mantenimiento: 80.000 €\n* Jefe ingeniería: ~60.000 €\n* Jefe programación: ~60.000 €\n\n### Equipo técnico\n\n* 2 t",
+            "line": 279
+          },
+          {
+            "match": "60.000",
+            "excerpt": "80.000 €\n* Jefe ingeniería: ~60.000 €\n* Jefe programación: ~60.000 €\n\n### Equipo técnico\n\n* 2 técnicos taller (medio)\n* 2 técn",
+            "line": 280
+          },
+          {
+            "match": "6.000",
+            "excerpt": "ia ingeniería\n\n### Servicios externos\n\n* Consultor externo: 6.000 €/mes (~72.000 €/año)\n* Consultor financiero: ~2.000 €/mes",
+            "line": 291
+          },
+          {
+            "match": "72.000",
+            "excerpt": "### Servicios externos\n\n* Consultor externo: 6.000 €/mes (~72.000 €/año)\n* Consultor financiero: ~2.000 €/mes (~24.000 €/año",
+            "line": 291
+          },
+          {
+            "match": "2.000",
+            "excerpt": "terno: 6.000 €/mes (~72.000 €/año)\n* Consultor financiero: ~2.000 €/mes (~24.000 €/año aprox.)\n\n### Estructura indirecta adic",
+            "line": 292
+          },
+          {
+            "match": "24.000",
+            "excerpt": "/mes (~72.000 €/año)\n* Consultor financiero: ~2.000 €/mes (~24.000 €/año aprox.)\n\n### Estructura indirecta adicional\n\n* 3 vehí",
+            "line": 292
+          }
+        ]
+      },
+      {
+        "file": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\DIRECCION\\ANALISIS RIESGOS Y FIANANCIERO PREVISIONS 2027\\Valoración de Proyectos.txt",
+        "phrases_found": [],
+        "currency_found": [
+          {
+            "match": "500.000",
+            "excerpt": "gún proyecto superior a una determinada cifra (por ejemplo, 500.000 € o 1 M€) debería aceptarse sin revisar una lista de contro",
+            "line": 7
+          }
+        ]
+      }
+    ],
+    "project_scope": [],
+    "project_capex": [],
+    "project_costs": [],
+    "project_timeline": [
+      {
+        "file": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\DIRECCION\\ANALISIS RIESGOS Y FIANANCIERO PREVISIONS 2027\\INFORME ESTRATÉGICO DE FINANCIAC.txt",
+        "phrases_found": [
+          {
+            "phrase": "plazo",
+            "excerpt": "N EN EE. UU.\nLa apertura de la estructura física y el inventario de repuestos en destino requiere capital a medio/largo plazo. La ventana temporal fijada para finales de año permite tramitar con margen las siguientes líneas:\n\n[JUNIO - OCTUBRE] ─",
+            "line": 28
+          }
+        ],
+        "currency_found": []
+      },
+      {
+        "file": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\DIRECCION\\ANALISIS RIESGOS Y FIANANCIERO PREVISIONS 2027\\Previson crecimiento Ingecart 07 2026.txt",
+        "phrases_found": [
+          {
+            "phrase": "duración",
+            "excerpt": "na empresa de 15-20 millones.\n\nMi recomendación sería abordar esta transformación como un proyecto en sí mismo, con una duración aproximada de 12 a 18 meses. No se trata solo de crecer, sino de construir una organización capaz de sostener ese creci",
+            "line": 522
+          }
+        ],
+        "currency_found": []
+      },
+      {
+        "file": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\DIRECCION\\ANALISIS RIESGOS Y FIANANCIERO PREVISIONS 2027\\SITUACION FINANCIERA ACTUAL ASUNCIÓN IS 07 2026.txt",
+        "phrases_found": [
+          {
+            "phrase": "plazo",
+            "excerpt": "muy frágil para crecimiento acelerado**:\n\n* Alto peso de pasivo corriente (77,8%)\n* Dependencia de financiación a corto plazo\n* Fondo de maniobra positivo pero reducido (~105K€)\n\n---\n\n## 2. BALANCE (SITUACIÓN ESTRUCTURAL)\n\n### Activo\n\n* Muy inte",
+            "line": 185
+          }
+        ],
+        "currency_found": []
+      }
+    ],
+    "vendor_support": [],
+    "site_survey": [],
+    "utility_requirements": [],
+    "operational_risks": [
+      {
+        "file": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\DIRECCION\\ANALISIS RIESGOS Y FIANANCIERO PREVISIONS 2027\\Previson crecimiento Ingecart 07 2026.txt",
+        "phrases_found": [
+          {
+            "phrase": "riesgo operativo",
+            "excerpt": "peligrosa:\n\nEmpresa rentable\n\npero\n\nsin liquidez.\n\nEs el típico problema que mata empresas en crecimiento.\n\n---\n\n## B. Riesgo operativo\n\nActualmente la organización está preparada para gestionar varios proyectos pequeños.\n\nNo para:\n\n* cinco proyectos mult",
+            "line": 154
+          }
+        ],
+        "currency_found": []
+      },
+      {
+        "file": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\DIRECCION\\ANALISIS RIESGOS Y FIANANCIERO PREVISIONS 2027\\SITUACION FINANCIERA ACTUAL ASUNCIÓN IS 07 2026.txt",
+        "phrases_found": [
+          {
+            "phrase": "riesgo operativo",
+            "excerpt": "al\n8.3 Riesgo internacional (MEDIO-ALTO)\nExpansión USA\nMayor exigencia contractual\nMayor presión financiera y legal\n8.4 Riesgo operativo (MEDIO-ALTO)\nCrecimiento acelerado\nEscalado organizativo incompleto\nComplejidad multi-proyecto\n9. DIAGNÓSTICO ESTRATÉGI",
+            "line": 107
+          }
+        ],
+        "currency_found": []
+      }
+    ],
+    "safety_risks": [
+      {
+        "file": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\DIRECCION\\ANALISIS RIESGOS Y FIANANCIERO PREVISIONS 2027\\INFORME ESTRATÉGICO DE FINANCIAC.txt",
+        "phrases_found": [
+          {
+            "phrase": "seguridad",
+            "excerpt": "ución de la filial, el alquiler del almacén, la contratación del primer personal local y la compra del stock inicial de seguridad de maquinaria o recambios.\n* Subvención de Multilocalización de ACCIÓ: Ayuda directa a fondo perdido de hasta 60.000 €",
+            "line": 35
+          }
+        ],
+        "currency_found": []
+      }
+    ],
+    "supply_chain_risks": [
+      {
+        "file": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\DIRECCION\\ANALISIS RIESGOS Y FIANANCIERO PREVISIONS 2027\\BLOQUE 2. Forma de trabajar actual.txt",
+        "phrases_found": [
+          {
+            "phrase": "proveedor",
+            "excerpt": "UE 2. Forma de trabajar actual\n\n¿Cómo funciona un proyecto hoy?\n\nPor ejemplo:\n\nCliente\n\n↓\n\nOferta\n\n↓\n\nPedido\n\n↓\n\nCompra proveedores\n\n↓\n\nIngeniería\n\n↓\n\nFabricación\n\n↓\n\nMontaje\n\n↓\n\nPuesta en marcha\n\n↓\n\nCobro\n\nQuiero entender ese flujo.",
+            "line": 19
+          }
+        ],
+        "currency_found": []
+      },
+      {
+        "file": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\DIRECCION\\ANALISIS RIESGOS Y FIANANCIERO PREVISIONS 2027\\BLOQUE 4. Proveedores.txt",
+        "phrases_found": [
+          {
+            "phrase": "proveedor",
+            "excerpt": "BLOQUE 4. Proveedores\n\nNecesito saber quién soporta realmente el proyecto.\n\nPor ejemplo:\n\nKUKA\n\nfabricantes mecánicos\n\ncuadristas\n\nprograma",
+            "line": 1
+          }
+        ],
+        "currency_found": []
+      },
+      {
+        "file": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\DIRECCION\\ANALISIS RIESGOS Y FIANANCIERO PREVISIONS 2027\\Previson crecimiento Ingecart 07 2026.txt",
+        "phrases_found": [
+          {
+            "phrase": "supply chain",
+            "excerpt": "disponible en horario USA.\n\n---\n\n## Compras\n\nProfesionalizar compras.\n\nYa no vale comprar proyecto a proyecto.\n\n---\n\n## Supply Chain\n\nHabrá que controlar:\n\n* fabricación\n* logística\n* exportación\n* aduanas\n\n---\n\n## Dirección Financiera\n\nAquí probableme",
+            "line": 292
+          },
+          {
+            "phrase": "supply",
+            "excerpt": "disponible en horario USA.\n\n---\n\n## Compras\n\nProfesionalizar compras.\n\nYa no vale comprar proyecto a proyecto.\n\n---\n\n## Supply Chain\n\nHabrá que controlar:\n\n* fabricación\n* logística\n* exportación\n* aduanas\n\n---\n\n## Dirección Financiera\n\nAquí prob",
+            "line": 292
+          },
+          {
+            "phrase": "proveedor",
+            "excerpt": "abajar con:\n\n* pagos a 60-90-120 días\n* retenciones\n* hitos muy exigentes\n* aceptación final tardía\n\nMientras tanto:\n\n* proveedores exigen cobrar\n* ingeniería consume caja\n* fabricación consume caja\n\nPuede producirse una paradoja muy peligrosa:\n\nEmp",
+            "line": 138
+          }
+        ],
+        "currency_found": []
+      },
+      {
+        "file": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\DIRECCION\\ANALISIS RIESGOS Y FIANANCIERO PREVISIONS 2027\\Project Finance Playbook.txt",
+        "phrases_found": [
+          {
+            "phrase": "proveedor",
+            "excerpt": "Procedimiento de negociación de contratos.\nGestión de cambios (change orders).\nGestión de reclamaciones.\nAprobación de proveedores.\nGestión de hitos.\nGestión de avales.\nSeguros obligatorios.\nControl de desviaciones.\nCierre financiero del proyecto.",
+            "line": 17
+          }
+        ],
+        "currency_found": []
+      },
+      {
+        "file": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\DIRECCION\\ANALISIS RIESGOS Y FIANANCIERO PREVISIONS 2027\\Valoración de Proyectos.txt",
+        "phrases_found": [
+          {
+            "phrase": "proveedor",
+            "excerpt": "ontractuales\nRiesgos técnicos\nCapacidad del equipo\nRecursos disponibles\nExposición total al cliente\nExposición total al proveedor\nCoberturas y seguros\nPlan de financiación",
+            "line": 16
+          }
+        ],
+        "currency_found": []
+      }
+    ],
+    "financial_risks": [
+      {
+        "file": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\DIRECCION\\ANALISIS RIESGOS Y FIANANCIERO PREVISIONS 2027\\Previson crecimiento Ingecart 07 2026.txt",
+        "phrases_found": [
+          {
+            "phrase": "riesgo financiero",
+            "excerpt": "ión.\n\nCambia el modelo empresarial.\n\nHasta ahora:\n\n* proyectos pequeños\n* clientes europeos\n* pagos equilibrados\n* poco riesgo financiero\n* baja necesidad de estructura\n\nNuevo escenario:\n\n* proyectos multimillonarios\n* clientes multinacionales\n* contratos c",
+            "line": 105
+          }
+        ],
+        "currency_found": []
+      },
+      {
+        "file": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\DIRECCION\\ANALISIS RIESGOS Y FIANANCIERO PREVISIONS 2027\\SITUACION FINANCIERA ACTUAL ASUNCIÓN IS 07 2026.txt",
+        "phrases_found": [
+          {
+            "phrase": "riesgo financiero",
+            "excerpt": "cimiento”.\n\n14. SÍNTESIS EJECUTIVA\nNegocio: Muy sólido\nMercado: Expansivo\nRentabilidad: Alta\nRiesgo técnico: Controlado\nRiesgo financiero: Crítico\nRiesgo dominante: Caja\n---\n\n# BLOQUE 1 – SITUACIÓN FINANCIERA ACTUAL (INGECART)\n\n## 1. RESUMEN EJECUTIVO (DIAG",
+            "line": 163
+          }
+        ],
+        "currency_found": []
+      }
+    ],
+    "regulatory_risks": [],
+    "customer_list": [
+      {
+        "file": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\DIRECCION\\ANALISIS RIESGOS Y FIANANCIERO PREVISIONS 2027\\BLOQUE 3. Condiciones comerciales.txt",
+        "phrases_found": [
+          {
+            "phrase": "clientes",
+            "excerpt": "BLOQUE 3. Condiciones comerciales\n\nPara cada uno de estos clientes:\n\nInternational Paper\n\nSterner\n\nPacific Southwest\n\nPresident Container\n\nCascades\n\nDS Smith\n\nNecesito conocer aproximada",
+            "line": 3
+          },
+          {
+            "phrase": "clientes:",
+            "excerpt": "BLOQUE 3. Condiciones comerciales\n\nPara cada uno de estos clientes:\n\nInternational Paper\n\nSterner\n\nPacific Southwest\n\nPresident Container\n\nCascades\n\nDS Smith\n\nNecesito conocer aproximadam",
+            "line": 3
+          }
+        ],
+        "currency_found": []
+      },
+      {
+        "file": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\DIRECCION\\ANALISIS RIESGOS Y FIANANCIERO PREVISIONS 2027\\INFORME ESTRATÉGICO DE FINANCIAC.txt",
+        "phrases_found": [
+          {
+            "phrase": "clientes",
+            "excerpt": "## C. Sustituto de Factoring: Créditos Documentarios Confirmados\n\n* Estrategia: Exigir en los nuevos contratos que los clientes de EE. UU. abran una Carta de Crédito irrevocable y confirmada por un banco americano de primer nivel.\n* Ventaja: Asegu",
+            "line": 23
+          }
+        ],
+        "currency_found": []
+      },
+      {
+        "file": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\DIRECCION\\ANALISIS RIESGOS Y FIANANCIERO PREVISIONS 2027\\Previson crecimiento Ingecart 07 2026.txt",
+        "phrases_found": [
+          {
+            "phrase": "customer",
+            "excerpt": "ect Manager 2\n\nPlanner\n\nDocument Controller\n\n---\n\n## Ingeniería\n\nAutomatización\n\nMecánica\n\nEléctrica\n\nSoftware\n\n---\n\n## Customer Success USA (nuevo)\n\nEste puesto será crítico.\n\nNo es SAT.\n\nNo es comercial.\n\nEs alguien cuya misión sea:\n\n* atender cl",
+            "line": 264
+          },
+          {
+            "phrase": "clientes",
+            "excerpt": "Lo que realmente cambia\n\nNo cambia la facturación.\n\nCambia el modelo empresarial.\n\nHasta ahora:\n\n* proyectos pequeños\n* clientes europeos\n* pagos equilibrados\n* poco riesgo financiero\n* baja necesidad de estructura\n\nNuevo escenario:\n\n* proyectos mu",
+            "line": 103
+          }
+        ],
+        "currency_found": []
+      },
+      {
+        "file": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\DIRECCION\\ANALISIS RIESGOS Y FIANANCIERO PREVISIONS 2027\\SITUACION FINANCIERA ACTUAL ASUNCIÓN IS 07 2026.txt",
+        "phrases_found": [
+          {
+            "phrase": "clientes",
+            "excerpt": "CIPALES\n8.1 Riesgo de liquidez (CRÍTICO)\nDesfase entre pagos y cobros\nAnticipos insuficientes\nFinanciación implícita de clientes\n\nRiesgo dominante del sistema\n\n8.2 Riesgo de concentración (ALTO)\nPocos clientes grandes\nAlta exposición por proyecto\nD",
+            "line": 95
+          }
+        ],
+        "currency_found": []
+      }
+    ],
+    "backlog": [],
+    "contract_terms": [
+      {
+        "file": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\DIRECCION\\ANALISIS RIESGOS Y FIANANCIERO PREVISIONS 2027\\BLOQUE 3. Condiciones comerciales.txt",
+        "phrases_found": [
+          {
+            "phrase": "condiciones",
+            "excerpt": "BLOQUE 3. Condiciones comerciales\n\nPara cada uno de estos clientes:\n\nInternational Paper\n\nSterner\n\nPacific Southwest\n\nPresident Container\n\nCa",
+            "line": 1
+          }
+        ],
+        "currency_found": []
+      },
+      {
+        "file": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\DIRECCION\\ANALISIS RIESGOS Y FIANANCIERO PREVISIONS 2027\\Previson crecimiento Ingecart 07 2026.txt",
+        "phrases_found": [
+          {
+            "phrase": "contract",
+            "excerpt": "s multimillonarios simultáneamente.\n\nFalta:\n\n* Project Management Office\n* planificación\n* control documental\n* gestión contractual\n* control económico\n\n---\n\n## C. Riesgo de cliente\n\nHasta ahora:\n\nmuchos clientes pequeños.\n\nAhora:\n\ncinco clientes r",
+            "line": 167
+          }
+        ],
+        "currency_found": []
+      },
+      {
+        "file": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\DIRECCION\\ANALISIS RIESGOS Y FIANANCIERO PREVISIONS 2027\\SITUACION FINANCIERA ACTUAL ASUNCIÓN IS 07 2026.txt",
+        "phrases_found": [
+          {
+            "phrase": "contract",
+            "excerpt": "l sistema\n\n8.2 Riesgo de concentración (ALTO)\nPocos clientes grandes\nAlta exposición por proyecto\nDependencia de timing contractual\n8.3 Riesgo internacional (MEDIO-ALTO)\nExpansión USA\nMayor exigencia contractual\nMayor presión financiera y legal\n8.4",
+            "line": 102
+          }
+        ],
+        "currency_found": []
+      },
+      {
+        "file": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\DIRECCION\\ANALISIS RIESGOS Y FIANANCIERO PREVISIONS 2027\\Valoración de Proyectos.txt",
+        "phrases_found": [
+          {
+            "phrase": "contract",
+            "excerpt": "500.000 € o 1 M€) debería aceptarse sin revisar una lista de control:\n\nMargen esperado\nNecesidad máxima de caja\nRiesgos contractuales\nRiesgos técnicos\nCapacidad del equipo\nRecursos disponibles\nExposición total al cliente\nExposición total al proveed",
+            "line": 11
+          }
+        ],
+        "currency_found": []
+      }
+    ],
+    "customer_concentration": []
+  },
+  "files_used": [
+    "C:\\Users\\Inaki Senar\\Documents\\INGECART\\DIRECCION\\ANALISIS RIESGOS Y FIANANCIERO PREVISIONS 2027\\BLOQUE 1. Situación financiera actu.txt",
+    "C:\\Users\\Inaki Senar\\Documents\\INGECART\\DIRECCION\\ANALISIS RIESGOS Y FIANANCIERO PREVISIONS 2027\\BLOQUE 2. Forma de trabajar actual.txt",
+    "C:\\Users\\Inaki Senar\\Documents\\INGECART\\DIRECCION\\ANALISIS RIESGOS Y FIANANCIERO PREVISIONS 2027\\BLOQUE 3. Condiciones comerciales.txt",
+    "C:\\Users\\Inaki Senar\\Documents\\INGECART\\DIRECCION\\ANALISIS RIESGOS Y FIANANCIERO PREVISIONS 2027\\BLOQUE 4. Proveedores.txt",
+    "C:\\Users\\Inaki Senar\\Documents\\INGECART\\DIRECCION\\ANALISIS RIESGOS Y FIANANCIERO PREVISIONS 2027\\CFO de empresas industriales.txt",
+    "C:\\Users\\Inaki Senar\\Documents\\INGECART\\DIRECCION\\ANALISIS RIESGOS Y FIANANCIERO PREVISIONS 2027\\FOTO GLOBAL DEL PORTFOLIO previsones INGECART 07 2026.txt",
+    "C:\\Users\\Inaki Senar\\Documents\\INGECART\\DIRECCION\\ANALISIS RIESGOS Y FIANANCIERO PREVISIONS 2027\\GUÍA DE ANÁLISIS DE REQUERIMIENTOS proyectos futuros.txt",
+    "C:\\Users\\Inaki Senar\\Documents\\INGECART\\DIRECCION\\ANALISIS RIESGOS Y FIANANCIERO PREVISIONS 2027\\IGK Finance Operating System.txt",
+    "C:\\Users\\Inaki Senar\\Documents\\INGECART\\DIRECCION\\ANALISIS RIESGOS Y FIANANCIERO PREVISIONS 2027\\INFORME ESTRATÉGICO DE FINANCIAC.txt",
+    "C:\\Users\\Inaki Senar\\Documents\\INGECART\\DIRECCION\\ANALISIS RIESGOS Y FIANANCIERO PREVISIONS 2027\\Previson crecimiento Ingecart 07 2026.txt",
+    "C:\\Users\\Inaki Senar\\Documents\\INGECART\\DIRECCION\\ANALISIS RIESGOS Y FIANANCIERO PREVISIONS 2027\\Project Finance Playbook.txt",
+    "C:\\Users\\Inaki Senar\\Documents\\INGECART\\DIRECCION\\ANALISIS RIESGOS Y FIANANCIERO PREVISIONS 2027\\SITUACION FINANCIERA ACTUAL ASUNCIÓN IS 07 2026.txt",
+    "C:\\Users\\Inaki Senar\\Documents\\INGECART\\DIRECCION\\ANALISIS RIESGOS Y FIANANCIERO PREVISIONS 2027\\Valoración de Proyectos.txt"
+  ]
+}
