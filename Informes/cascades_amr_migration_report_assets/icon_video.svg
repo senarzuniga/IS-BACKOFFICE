@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" aria-label="video icon">
+  <rect width="48" height="48" rx="6" fill="#1A1D24"/>
+  <circle cx="24" cy="24" r="14" fill="#0f1720"/>
+  <polygon points="20,18 32,24 20,30" fill="#FF6A00"/>
+</svg>
