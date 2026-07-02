@@ -64,6 +64,12 @@ The AMR approach decouples material flow from rigid conveyor topology, enabling 
 
 ---
 
+## Product Videos
+
+- [AMR Concept Overview](https://youtu.be/WxZyXS8KufA) — Short walkthrough of AMR deployment and trident interactions.
+
+- [Operational Demo](https://youtu.be/blA9FnUDDcY) — Demonstration of AMR navigation and material handling.
+
 ## Layout Blueprint
 
 The HTML deliverable includes an inline SVG schematic representing the corrugator, main trident station, six converting lines, a central dual-lane AMR highway, a high-density WIP block and the shipping area. The diagram is schematic and is intended for concept validation; site dimensions must be verified.
