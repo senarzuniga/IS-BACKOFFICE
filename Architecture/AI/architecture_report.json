@@ -1,0 +1,89 @@
+{
+  "metadata": {
+    "generated_by": "GitHub Copilot (GPT-5 mini)",
+    "date": "2026-06-29T12:00:00Z",
+    "repo_root": "."
+  },
+  "top_level_folders": [
+    ".env.example",
+    ".forge",
+    ".git",
+    ".github",
+    ".vscode",
+    "agents",
+    "api",
+    "assets",
+    "backend",
+    "backoffice",
+    "core",
+    "data",
+    "docs",
+    "frontend",
+    "ingetrans-reel-simulator",
+    "plant_simulator",
+    "requirements.txt",
+    "tests"
+  ],
+  "module_summary": {
+    "agents": {"file_count": 49, "path": "agents/"},
+    "backoffice": {"file_count": 114, "path": "backoffice/"},
+    "core": {"file_count": 18, "path": "core/"},
+    "ingetrans_reel_simulator": {"file_count": 87, "path": "ingetrans-reel-simulator/"},
+    "plant_simulator": {"file_count": 11, "path": "plant_simulator/"},
+    "api_routes": {"file_count": 13, "path": "api/routes/"}
+  },
+  "agents_inventory": [
+    {"name": "ScraperAgent", "path": "backoffice/ingestion/intelligence/agents/scraper_agent.py"},
+    {"name": "SalesAgent", "path": "backoffice/ingestion/intelligence/agents/sales_agent.py"},
+    {"name": "PlannerAgent", "path": "backoffice/ingestion/intelligence/agents/planner_agent.py"},
+    {"name": "NormalizerAgent", "path": "backoffice/ingestion/intelligence/agents/normalizer_agent.py"},
+    {"name": "IntelligenceAgent", "path": "backoffice/ingestion/intelligence/agents/intelligence_agent.py"},
+    {"name": "ExtractorAgent", "path": "backoffice/ingestion/intelligence/agents/extractor_agent.py"},
+    {"name": "BackofficeAgent", "path": "backoffice/agents/backoffice_agent.py"},
+    {"name": "TranscriptionAgent", "path": "backoffice/agents/transcription_agent.py"},
+    {"name": "MultiAgentOrchestrator", "path": "backoffice/agents/orchestrator.py"},
+    {"name": "ConfigAgent", "path": "agents/Reel_load_simulator/config_agent.py"},
+    {"name": "WorkOrderAgent", "path": "agents/Reel_load_simulator/work_order_agent.py"},
+    {"name": "ROIAgent", "path": "agents/Reel_load_simulator/roi_agent.py"},
+    {"name": "PathPlanner", "path": "agents/Reel_load_simulator/movement_agent.py"},
+    {"name": "KnowledgeOrchestrator", "path": "agents/knowledge_intelligence/orchestrator.py"},
+    {"name": "ResearchManager", "path": "agents/knowledge_intelligence/agents/research_manager.py"},
+    {"name": "RepositoryKnowledgeAgent", "path": "agents/knowledge_intelligence/agents/repository_agent.py"},
+    {"name": "ReportArchitect", "path": "agents/knowledge_intelligence/agents/report_architect.py"},
+    {"name": "KnowledgeBuilder", "path": "agents/knowledge_intelligence/agents/knowledge_builder.py"},
+    {"name": "GapAnalysisAgent", "path": "agents/knowledge_intelligence/agents/gap_analysis_agent.py"},
+    {"name": "ExecutiveSummaryAgent", "path": "agents/knowledge_intelligence/agents/executive_summary_agent.py"},
+    {"name": "AnalystAgent", "path": "agents/knowledge_intelligence/agents/analyst_agent.py"},
+    {"name": "WebResearchAgent", "path": "agents/knowledge_intelligence/agents/web_research_agent.py"},
+    {"name": "ValidationAgent", "path": "agents/knowledge_intelligence/agents/validation_agent.py"},
+    {"name": "TechnicalWriter", "path": "agents/knowledge_intelligence/agents/technical_writer.py"},
+    {"name": "MarketIntelligenceAgent", "path": "agents/competitive_intelligence/market_intelligence_agent.py"},
+    {"name": "BenchmarkAgent", "path": "agents/competitive_intelligence/benchmark_agent.py"},
+    {"name": "ExecutiveStrategyAgent", "path": "agents/competitive_intelligence/executive_strategy_agent.py"}
+  ],
+  "findings": [
+    {"id": "missing_architecture_dir", "description": "CI workflow expects tools/architecture_assistant/check_architecture.py and Architecture/AI/architecture_report.json; the scanner script and Architecture/ directory are not present."},
+    {"id": "requirements_conflict", "description": "requirements.txt contains conflicting entries for 'supabase' (>=2.10.0 and >=1.2.0,<2.0.0)."},
+    {"id": "duplicate_simulation_implementations", "description": "Multiple simulator implementations (core/Reel_load_simulator.py, core/ingetrans_simulation_engine.py, plant_simulator/simulation_engine.py and the ingetrans-reel-simulator project) increasing maintenance burden."},
+    {"id": "no_agent_registry", "description": "Multiple agents and orchestrators exist without a central Agent Registry (no formal interface contracts or catalog)."},
+    {"id": "dev_requirements_missing", "description": "CI references requirements-dev.txt but it is not present in the repository root."},
+    {"id": "untracked_files", "description": "Unusual file 'nul' found at repo root (likely accidental)."}
+  ],
+  "risk_assessment": [
+    {"risk": "dependency_conflict", "impact": "High", "mitigation": "Consolidate and pin runtime vs dev deps; create requirements-dev.txt and CI lockfile step."},
+    {"risk": "architecture_drift", "impact": "Medium", "mitigation": "Establish ADRs, Architecture Hub and CI checks; create Agent Registry to document contracts."},
+    {"risk": "duplicate_code", "impact": "Medium", "mitigation": "Define canonical simulation core or extract shared libraries to avoid duplication."}
+  ],
+  "recommendations": [
+    "Sign-off this As-Is report before any implementation changes.",
+    "Produce a To-Be architecture and migration roadmap.",
+    "Create Architecture/ hub: ADRs, Agent Registry, Architecture dashboard (documentation only).",
+    "Add CI checks to validate presence and freshness of Architecture/ artifacts.",
+    "Consolidate requirements and add requirements-dev.txt; run dependency audit.",
+    "Select a single canonical simulation implementation or refactor to shared core modules."
+  ],
+  "next_steps": {
+    "immediate": ["Review and approve As-Is report"],
+    "after_approval": ["Produce To-Be architecture (detailed artifacts)", "Create Agent Registry and ADR templates in Architecture/", "Add CI governance to .github/workflows/"]
+  }
+}

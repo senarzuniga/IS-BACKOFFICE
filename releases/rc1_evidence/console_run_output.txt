@@ -1,0 +1,33 @@
+Run finished: run_20260630T055412Z
+Summary:
+{
+  "run_id": "run_20260630T055412Z",
+  "scenario": "scenario_rc1_smoketest.yaml",
+  "start_ts": "2026-06-30T05:54:12.618296Z",
+  "end_ts": "2026-06-30T05:54:12.618514Z",
+  "run_duration_s": 30.0,
+  "tick_s": 1.0,
+  "completed_orders": 15,
+  "throughput_rolls_per_hour": 1800.0
+}
+Outputs written to: C:\Users\Inaki Senar\Documents\GitHub\IS-BACKOFFICE\ingetrans-reel-simulator\outputs\run_20260630T055412Z
+Running RC1:  C:\Users\Inaki Senar\AppData\Local\Programs\Python\Python314\python.exe C:\Users\Inaki Senar\Documents\GitHub\IS-BACKOFFICE\ingetrans-reel-simulator\scripts\run_simulator.py --scenario ingetrans-reel-simulator\06_SCENARIOS\scenario_rc1_smoketest.yaml --duration 30 --seed 42
+Run outputs written to: C:\Users\Inaki Senar\Documents\GitHub\IS-BACKOFFICE\ingetrans-reel-simulator\outputs\run_20260630T055412Z
+Summary:
+{
+  "run_id": "run_20260630T055412Z",
+  "scenario": "scenario_rc1_smoketest.yaml",
+  "start_ts": "2026-06-30T05:54:12.618296Z",
+  "end_ts": "2026-06-30T05:54:12.618514Z",
+  "run_duration_s": 30.0,
+  "tick_s": 1.0,
+  "completed_orders": 15,
+  "throughput_rolls_per_hour": 1800.0
+}
+
+C:\Users\Inaki Senar\Documents\GitHub\IS-BACKOFFICE\ingetrans-reel-simulator\scripts\run_simulator.py:80: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  run_id = datetime.utcnow().strftime('run_%Y%m%dT%H%M%SZ')
+C:\Users\Inaki Senar\Documents\GitHub\IS-BACKOFFICE\ingetrans-reel-simulator\scripts\run_simulator.py:95: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  start_ts = datetime.utcnow().isoformat() + 'Z'
+C:\Users\Inaki Senar\Documents\GitHub\IS-BACKOFFICE\ingetrans-reel-simulator\scripts\run_simulator.py:119: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  end_ts = datetime.utcnow().isoformat() + 'Z'

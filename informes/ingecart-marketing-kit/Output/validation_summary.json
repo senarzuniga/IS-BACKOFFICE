@@ -1,0 +1,17 @@
+{
+  "total_required_inputs": 26,
+  "found_required_inputs": 17,
+  "percent_grounded": 65.38461538461539,
+  "missing_inputs": [
+    "project_scope",
+    "project_capex",
+    "project_costs",
+    "vendor_support",
+    "site_survey",
+    "utility_requirements",
+    "regulatory_risks",
+    "backlog",
+    "customer_concentration"
+  ],
+  "unverified_claims": 9
+}

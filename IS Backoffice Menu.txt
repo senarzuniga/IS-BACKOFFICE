@@ -1,0 +1,21 @@
+IS Backoffice Menu
+
+bobina_load_simulator.py
+competitive_intelligence.py
+document_analysis.py
+2 email_sender.py
+facturacion.py
+ingecart_artwork.py
+ingecart_video_editor.py
+2 instruction_panel.py
+2 knowledge_intelligence.py
+plant_simulator.py
+reel_load_simulator_fixed.py
+reel_load_simulator_v4.py
+2 reel_load_simulator_workbench.py
+reloading_commercial_demo_v2.py
+reloading_commercial_demo_v3.py
+smart_plant_config.py
+smart_plant_dashboard.py
+soc_workbench.py
+2 test_rapido.py

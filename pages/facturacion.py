@@ -14,8 +14,8 @@ spec.loader.exec_module(erp)
 
 erp.init_db()
 
-st.title("Facturacion ERP Profesional")
-st.caption("Dashboard, CRM clientes, facturacion multi-linea, impuestos y PDF profesional.")
+st.title("Facturación ERP Profesional")
+st.caption("Dashboard, CRM clientes, facturación multi-linea, impuestos y PDF profesional.")
 
 menu = st.sidebar.radio(
     "Modulo",

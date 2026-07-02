@@ -1,0 +1,42 @@
+{
+  "run_id": "run_20260626T125027Z",
+  "scenario": "scenario_01_baseline_forklift.yaml",
+  "metadata": {
+    "path": "ingetrans-reel-simulator/outputs/run_20260626T125027Z/run_summary.json",
+    "ingested_at": "2026-06-28T00:00:00Z",
+    "source": "ingetrans-reel-simulator outputs"
+  },
+  "run_summary": {
+    "run_id": "run_20260626T125027Z",
+    "scenario": "scenario_01_baseline_forklift.yaml",
+    "start_ts": "2026-06-26T12:50:27.621586Z",
+    "end_ts": "2026-06-26T12:50:27.621757Z",
+    "run_duration_s": 60.0,
+    "tick_s": 1.0,
+    "completed_orders": 0,
+    "throughput_rolls_per_hour": 0.0
+  },
+  "event_log_summary": {
+    "total_events": 60,
+    "event_type_counts": {"tick": 60},
+    "entity_type_counts": {"SimulationClock": 60},
+    "unique_payloads": [{"tick_s": 1.0}]
+  },
+  "coherence_check": {
+    "simulated_time_consistent": true,
+    "wallclock_timestamps_consistent": false,
+    "notes": "The run_summary 'run_duration_s' (60s) matches event_log timestamps (0.0..59.0). However the 'start_ts'/'end_ts' wall-clock timestamps are nearly identical, so they are not the simulated start/end times — they are likely file write timestamps."
+  },
+  "data_value_assessment": {
+    "useful": false,
+    "reason": "This run only contains SimulationClock tick events (no orders, no entity activity). Useful as a system smoke/test run but not for operational KPI analysis.",
+    "recommendation": "Keep as test artifact (tag 'test/no-events'). Prefer ingesting runs with non-empty entity events and KPIs for the superbase main index."
+  },
+  "sample_events": [
+    {"timestamp": 0.0, "entity_type": "SimulationClock", "event_type": "tick", "payload": {"tick_s": 1.0}},
+    {"timestamp": 1.0, "entity_type": "SimulationClock", "event_type": "tick", "payload": {"tick_s": 1.0}},
+    {"timestamp": 2.0, "entity_type": "SimulationClock", "event_type": "tick", "payload": {"tick_s": 1.0}},
+    {"timestamp": 3.0, "entity_type": "SimulationClock", "event_type": "tick", "payload": {"tick_s": 1.0}},
+    {"timestamp": 4.0, "entity_type": "SimulationClock", "event_type": "tick", "payload": {"tick_s": 1.0}}
+  ]
+}

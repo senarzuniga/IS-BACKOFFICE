@@ -1,0 +1,46 @@
+timestamp,entity_type,entity_id,event_type,payload
+0.0,SimulationClock,,tick,"{""tick_s"": 1.0}"
+1.0,SimulationClock,,tick,"{""tick_s"": 1.0}"
+2.0,SimulationClock,,tick,"{""tick_s"": 1.0}"
+3.0,SimulationClock,,tick,"{""tick_s"": 1.0}"
+4.0,ProductionOrder,1,completed,{}
+4.0,ProductionOrder,2,completed,{}
+4.0,SimulationClock,,tick,"{""tick_s"": 1.0}"
+5.0,ProductionOrder,3,completed,{}
+5.0,ProductionOrder,4,completed,{}
+5.0,SimulationClock,,tick,"{""tick_s"": 1.0}"
+6.0,SimulationClock,,tick,"{""tick_s"": 1.0}"
+7.0,SimulationClock,,tick,"{""tick_s"": 1.0}"
+8.0,SimulationClock,,tick,"{""tick_s"": 1.0}"
+9.0,ProductionOrder,5,completed,{}
+9.0,SimulationClock,,tick,"{""tick_s"": 1.0}"
+10.0,SimulationClock,,tick,"{""tick_s"": 1.0}"
+11.0,SimulationClock,,tick,"{""tick_s"": 1.0}"
+12.0,SimulationClock,,tick,"{""tick_s"": 1.0}"
+13.0,ProductionOrder,6,completed,{}
+13.0,SimulationClock,,tick,"{""tick_s"": 1.0}"
+14.0,SimulationClock,,tick,"{""tick_s"": 1.0}"
+15.0,SimulationClock,,tick,"{""tick_s"": 1.0}"
+16.0,SimulationClock,,tick,"{""tick_s"": 1.0}"
+17.0,SimulationClock,,tick,"{""tick_s"": 1.0}"
+18.0,SimulationClock,,tick,"{""tick_s"": 1.0}"
+19.0,ProductionOrder,7,completed,{}
+19.0,SimulationClock,,tick,"{""tick_s"": 1.0}"
+20.0,ProductionOrder,8,completed,{}
+20.0,SimulationClock,,tick,"{""tick_s"": 1.0}"
+21.0,ProductionOrder,9,completed,{}
+21.0,ProductionOrder,10,completed,{}
+21.0,SimulationClock,,tick,"{""tick_s"": 1.0}"
+22.0,ProductionOrder,11,completed,{}
+22.0,SimulationClock,,tick,"{""tick_s"": 1.0}"
+23.0,SimulationClock,,tick,"{""tick_s"": 1.0}"
+24.0,ProductionOrder,12,completed,{}
+24.0,ProductionOrder,13,completed,{}
+24.0,SimulationClock,,tick,"{""tick_s"": 1.0}"
+25.0,ProductionOrder,14,completed,{}
+25.0,SimulationClock,,tick,"{""tick_s"": 1.0}"
+26.0,SimulationClock,,tick,"{""tick_s"": 1.0}"
+27.0,SimulationClock,,tick,"{""tick_s"": 1.0}"
+28.0,ProductionOrder,15,completed,{}
+28.0,SimulationClock,,tick,"{""tick_s"": 1.0}"
+29.0,SimulationClock,,tick,"{""tick_s"": 1.0}"

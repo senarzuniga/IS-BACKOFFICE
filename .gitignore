@@ -4,3 +4,5 @@
 secrets.json
 __pycache__/
 *.pyc
+ingetrans-reel-simulator/outputs/
+data/sim_runs/*.db
