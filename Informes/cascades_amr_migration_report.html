@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>CASCADES — AMR Migration Report (Draft)</title>
+    <style>
+        /* Ingetrans-inspired premium industrial theme (self-contained) */
+        :root{--bg:#05070B;--panel:#0F1114;--muted:#7E848E;--accent:#FF6A00;--card:#1A1D24;--text:#F4F5F7}
+        html,body{height:100%;margin:0;font-family:Inter,Roboto,Arial,Helvetica,sans-serif;background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased}
+        .container{max-width:1100px;margin:0 auto;padding:2rem}
+        header.report-header{display:flex;align-items:center;justify-content:space-between;padding:1rem 0;border-bottom:1px solid rgba(255,106,0,0.08)}
+        .brand{display:flex;align-items:center;gap:.8rem}
+        .brand img{height:56px;opacity:.95}
+        .cover{display:flex;gap:2rem;align-items:center;padding:2rem 0}
+        .hero{flex:1}
+        .hero h1{font-size:1.9rem;margin:0 0 .5rem;color:var(--text);letter-spacing:.2px}
+        .hero p.lead{color:var(--muted);margin:0 0 1rem}
+        .meta{color:var(--muted);font-weight:600}
+        .toc{position:sticky;top:10px;margin-left:1.5rem;max-height:70vh;overflow:auto}
+        .toc a{display:block;color:var(--muted);text-decoration:none;padding:.25rem 0}
+        .chapter{display:inline-block;margin:1rem 0 .6rem 0;padding-bottom:.45rem;border-bottom:3px solid var(--accent);font-weight:800;font-size:1.2rem}
+        h2{color:var(--text);border-left:4px solid var(--accent);padding-left:1rem;margin-top:1.25rem}
+        .content-pad{padding:1.2rem 0}
+        .industrial-card{background:var(--card);padding:1rem;border-left:3px solid var(--accent);border-radius:8px}
+        p{color:var(--text);line-height:1.45}
+        .muted{color:var(--muted)}
+        .grid{display:grid;grid-template-columns:1fr 320px;gap:1.25rem}
+        /* Comparison table */
+        table.compare{width:100%;border-collapse:collapse;margin-top:.75rem}
+        table.compare th, table.compare td{padding:.75rem;border-bottom:1px solid rgba(126,132,142,0.08);vertical-align:top}
+        table.compare thead th{background:rgba(255,106,0,0.03);text-align:left}
+        .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;margin-top:12px}
+        .card{background:var(--card);padding:1rem;border-radius:8px;display:flex;gap:.75rem;align-items:flex-start}
+        .card img{width:48px;height:48px;flex:0 0 48px}
+        .card h4{margin:0 0 .25rem;color:var(--text)}
+        .diagram{background:linear-gradient(180deg,rgba(255,106,0,0.02),transparent);padding:1rem;border-radius:8px}
+        .legend{display:flex;gap:1rem;flex-wrap:wrap;margin-top:.5rem}
+        .legend .item{display:flex;gap:.5rem;align-items:center;color:var(--muted)}
+        .callout{background:rgba(255,106,0,0.04);padding:1rem;border-left:4px solid var(--accent);border-radius:6px;margin:12px 0}
+        footer.report-footer{display:flex;justify-content:space-between;padding:1rem;margin-top:2rem;border-top:1px solid rgba(126,132,142,0.06);color:var(--muted)}
+        /* Responsive */
+        @media (max-width:920px){.grid{grid-template-columns:1fr} .toc{display:none}}
+        @media print{body{background:white;color:black} .container{padding:0} nav, .toc, .brand img {display:none}}
+    </style>
+</head>
+<body>
+<div class="container">
+    <header class="report-header">
+        <div class="brand">
+            <img src="./cascades_amr_migration_report_assets/logo_orange.svg" alt="INGECART">
+            <div>
+                <div style="font-weight:800">INGECART — Systems & Automation</div>
+                <div class="muted">Concept Validation — Draft</div>
+            </div>
+        </div>
+        <div class="meta">Prepared for Cascades — Engineering & Operations · Version: 0.1 · Date: <!-- placeholder --></div>
+    </header>
+
+    <div class="grid">
+        <main>
+            <section class="cover">
+                <div class="hero">
+                    <div class="chapter">Migration from Fixed Transfer Car (BHS) to an AMR Fleet</div>
+                    <h1>Key Integration Points and High-Density WIP Layout Design for a Corrugated Packaging Plant</h1>
+                    <p class="lead">A pragmatic engineering approach to replace centralized transfer-car topology with an AMR-driven distributed material handling strategy, improving floor utilization, resiliency and operational flexibility.</p>
+                    <p class="meta muted">Prepared for: Cascades — Engineering & Operations</p>
+                </div>
+            </section>
+
+            <section id="executive-summary" class="content-pad">
+                <h2>Executive Summary</h2>
+                <div class="industrial-card">
+                    <strong>Proposal:</strong> Replace the fixed transfer car (BHS) with an AMR fleet and multiple trident stations coupled to a WCS/AMR Fleet Manager. The goal is to increase usable floor density, remove single points of failure, and enable JIT line feeding with lower mechanical maintenance exposure.
+                </div>
+                <p class="muted" style="margin-top:.75rem">This document presents the system comparison, core value drivers, a layout blueprint, flow dynamics, engineering considerations and recommended next steps for concept validation.</p>
+            </section>
+
+            <section id="comparison" class="content-pad">
+                <h2>Current vs Proposed System Comparison</h2>
+                <table class="compare" aria-label="System comparison">
+                    <thead>
+                        <tr><th>Operational Variable</th><th>Current System (BHS Transfer / Belts)</th><th>Proposed System (AMR + Trident Stations)</th><th>Operational Impact</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Space Density</td><td>Fixed lanes and transfer paths; large footprint</td><td>Cell-based blind-block storage; omnidirectional access</td><td>Higher volumetric density and more usable floor</td></tr>
+                        <tr><td>Flow Flexibility</td><td>Rigid mechanical routing</td><td>Dynamic routing and multi-path delivery</td><td>Faster reconfiguration and product mix handling</td></tr>
+                        <tr><td>Mechanical Maintenance</td><td>Heavy conveyors and transfer car wear points</td><td>Predictable AMR servicing and modular tridents</td><td>Lower unplanned downtime and simplified spares</td></tr>
+                        <tr><td>Flow Bottlenecks</td><td>Single transfer-car and handoffs create choke points</td><td>Distributed pickups and multiple trident buffers</td><td>Less cascading delay and more throughput resilience</td></tr>
+                        <tr><td>Expandability</td><td>Civil changes often required</td><td>Scale by fleet or storage cells</td><td>Lower incremental expansion cost</td></tr>
+                        <tr><td>Routing Adaptability</td><td>Low — physical reroute</td><td>High — fleet manager reconfigures paths</td><td>Reduced changeover lead times</td></tr>
+                        <tr><td>Operational Resilience</td><td>Single-point failures can stop lines</td><td>AMR redundancy and rerouting</td><td>Improved uptime</td></tr>
+                        <tr><td>Product Handling Quality</td><td>Transfer shock and complex handoffs</td><td>Soft handling and precise trident interfaces</td><td>Lower scrap and better yield</td></tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <section id="value-drivers" class="content-pad">
+                <h2>Key Value Drivers</h2>
+                <div class="cards">
+                    <div class="card">
+                        <img src="./cascades_amr_migration_report_assets/icon_space.svg" alt="space">
+                        <div>
+                            <h4>Maximized Floor Space / High-Density WIP</h4>
+                            <div class="muted">Convert aisle and conveyor volume into compact blind-block storage served by AMRs.</div>
+                            <p style="margin:.4rem 0 0">Cellised storage with zero-clearance stacking increases available WIP capacity and reduces retrieval times when combined with optimized AMR routing heuristics.</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <img src="./cascades_amr_migration_report_assets/icon_resilience.svg" alt="resilience">
+                        <div>
+                            <h4>Elimination of Single Point of Failure</h4>
+                            <div class="muted">Distributed delivery and multiple trident buffers replace centralized transfer dependencies.</div>
+                            <p style="margin:.4rem 0 0">AMR redundancy and fleet-level rerouting maintain throughput during equipment faults or maintenance windows.</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <img src="./cascades_amr_migration_report_assets/icon_routing.svg" alt="routing">
+                        <div>
+                            <h4>Decoupled Operational Flows</h4>
+                            <div class="muted">Asynchronous buffering and prioritized JIT deliveries reduce line starvation.</div>
+                            <p style="margin:.4rem 0 0">Trident handoffs provide job-change isolation and allow lines to continue during upstream variability.</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <img src="./cascades_amr_migration_report_assets/icon_maintenance.svg" alt="maintenance">
+                        <div>
+                            <h4>Reduced Mechanical Maintenance</h4>
+                            <div class="muted">Shift to serviceable robotic units and simple station hardware.</div>
+                            <p style="margin:.4rem 0 0">Predictable maintenance schedules for AMRs lower unplanned interventions and spare-part complexity.</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <img src="./cascades_amr_migration_report_assets/icon_quality.svg" alt="quality">
+                        <div>
+                            <h4>Improved Board Protection / Waste Reduction</h4>
+                            <div class="muted">Controlled handoffs and soft handling reduce board damage.</div>
+                            <p style="margin:.4rem 0 0">Precise posing at tridents and lower transfer shock improves first-pass yield and reduces rework.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="layout-blueprint" class="content-pad">
+                <h2>Layout Blueprint</h2>
+                <div class="diagram">
+                    <!-- Inline SVG diagram: corrugator, trident, 6 lines, AMR dual-lane, WIP block, shipping -->
+                    <svg viewBox="0 0 1200 520" width="100%" height="360" preserveAspectRatio="xMidYMid meet" aria-label="Layout blueprint diagram">
+                        <defs>
+                            <style>.lbl{font:14px/1.1 Inter, Roboto, Arial;fill:#F4F5F7}</style>
+                        </defs>
+                        <!-- Corrugator -->
+                        <rect x="20" y="40" width="180" height="110" rx="6" fill="#0f1720" stroke="#FF6A00" stroke-width="2"/>
+                        <text x="30" y="115" class="lbl">Corrugator take-off</text>
+
+                        <!-- Trident station -->
+                        <g transform="translate(220,70)">
+                            <rect x="0" y="0" width="120" height="70" rx="6" fill="#111215" stroke="#7E848E"/>
+                            <text x="8" y="42" class="lbl">Main Trident Station</text>
+                            <path d="M120 35 L200 10 L200 60 Z" fill="#0f1720" stroke="#FF6A00" stroke-width="1"/>
+                        </g>
+
+                        <!-- Converting lines (6) -->
+                        <g>
+                            <text x="40" y="180" class="lbl">Converting lines</text>
+                            <!-- six lines vertically -->
+                            <g transform="translate(20,200)">
+                                <rect x="0" y="0" width="120" height="24" rx="4" fill="#111215" stroke="#7E848E"/>
+                                <rect x="0" y="38" width="120" height="24" rx="4" fill="#111215" stroke="#7E848E"/>
+                                <rect x="0" y="76" width="120" height="24" rx="4" fill="#111215" stroke="#7E848E"/>
+                                <rect x="0" y="114" width="120" height="24" rx="4" fill="#111215" stroke="#7E848E"/>
+                                <rect x="0" y="152" width="120" height="24" rx="4" fill="#111215" stroke="#7E848E"/>
+                                <rect x="0" y="190" width="120" height="24" rx="4" fill="#111215" stroke="#7E848E"/>
+                            </g>
+                        </g>
+
+                        <!-- AMR dual-lane highway -->
+                        <rect x="260" y="160" width="420" height="48" rx="8" fill="#0b0e12" stroke="#3a3f46"/>
+                        <rect x="260" y="216" width="420" height="48" rx="8" fill="#0b0e12" stroke="#3a3f46"/>
+                        <!-- arrows along lanes -->
+                        <g fill="#FF6A00">
+                            <polygon points="330,190 350,180 350,200"/>
+                            <polygon points="460,190 480,180 480,200"/>
+                            <polygon points="600,190 620,180 620,200"/>
+                            <polygon points="740,190 760,180 760,200"/>
+                            <polygon points="880,190 900,180 900,200"/>
+                        </g>
+                        <g fill="#FF6A00">
+                            <polygon points="330,246 350,236 350,256"/>
+                            <polygon points="460,246 480,236 480,256"/>
+                            <polygon points="600,246 620,236 620,256"/>
+                            <polygon points="740,246 760,236 760,256"/>
+                            <polygon points="880,246 900,236 900,256"/>
+                        </g>
+
+                        <!-- AMR robots (icons) -->
+                        <g fill="#FF6A00" stroke="#0b0e12" stroke-width="2">
+                            <circle cx="380" cy="184" r="12" fill="#FF6A00"/>
+                            <circle cx="560" cy="184" r="12" fill="#FF6A00"/>
+                            <circle cx="700" cy="232" r="12" fill="#FF6A00"/>
+                            <circle cx="840" cy="232" r="12" fill="#FF6A00"/>
+                        </g>
+
+                        <!-- High-density WIP block -->
+                        <g>
+                            <rect x="720" y="80" width="420" height="260" rx="6" fill="#0f1720" stroke="#FF6A00" opacity="0.06"/>
+                            <text x="740" y="102" class="lbl">High-density WIP Block (blind-blocks)</text>
+                            <!-- grid of small cells -->
+                            <g transform="translate(740,120)" fill="#1C1F24">
+                                <rect x="0" y="0" width="36" height="24" rx="2" stroke="#2e3136"/>
+                                <rect x="44" y="0" width="36" height="24" rx="2" stroke="#2e3136"/>
+                                <rect x="88" y="0" width="36" height="24" rx="2" stroke="#2e3136"/>
+                                <rect x="132" y="0" width="36" height="24" rx="2" stroke="#2e3136"/>
+                                <rect x="176" y="0" width="36" height="24" rx="2" stroke="#2e3136"/>
+                                <rect x="220" y="0" width="36" height="24" rx="2" stroke="#2e3136"/>
+
+                                <rect x="0" y="32" width="36" height="24" rx="2" stroke="#2e3136"/>
+                                <rect x="44" y="32" width="36" height="24" rx="2" stroke="#2e3136"/>
+                                <rect x="88" y="32" width="36" height="24" rx="2" stroke="#2e3136"/>
+                                <rect x="132" y="32" width="36" height="24" rx="2" stroke="#2e3136"/>
+                                <rect x="176" y="32" width="36" height="24" rx="2" stroke="#2e3136"/>
+                                <rect x="220" y="32" width="36" height="24" rx="2" stroke="#2e3136"/>
+
+                                <rect x="0" y="64" width="36" height="24" rx="2" stroke="#2e3136"/>
+                                <rect x="44" y="64" width="36" height="24" rx="2" stroke="#2e3136"/>
+                                <rect x="88" y="64" width="36" height="24" rx="2" stroke="#2e3136"/>
+                                <rect x="132" y="64" width="36" height="24" rx="2" stroke="#2e3136"/>
+                                <rect x="176" y="64" width="36" height="24" rx="2" stroke="#2e3136"/>
+                                <rect x="220" y="64" width="36" height="24" rx="2" stroke="#2e3136"/>
+                            </g>
+                        </g>
+
+                        <!-- Shipping / Finished goods -->
+                        <rect x="720" y="360" width="240" height="80" rx="6" fill="#0f1720" stroke="#7E848E"/>
+                        <text x="740" y="400" class="lbl">Shipping / Finished Goods</text>
+
+                        <!-- Legend -->
+                        <g transform="translate(20,320)">
+                            <rect x="0" y="0" width="420" height="180" rx="8" fill="#0b0e12" stroke="#2b3035"/>
+                            <text x="12" y="22" class="lbl">Legend</text>
+                            <g transform="translate(12,36)">
+                                <g><rect x="0" y="0" width="18" height="12" fill="#FF6A00"/><text x="26" y="10" class="lbl">AMR (representative)</text></g>
+                                <g transform="translate(0,22)"><rect x="0" y="0" width="18" height="12" fill="#0f1720" stroke="#FF6A00"/><text x="26" y="10" class="lbl">High-density WIP cell</text></g>
+                                <g transform="translate(0,44)"><rect x="0" y="0" width="18" height="12" fill="#0b0e12" stroke="#3a3f46"/><text x="26" y="10" class="lbl">Dual-lane AMR highway</text></g>
+                            </g>
+                        </g>
+                    </svg>
+                    <div class="legend">
+                        <div class="item"><strong style="color:var(--text)">Note:</strong><span class="muted"> Diagram is schematic. Coordinates and dimensions must be validated on-site.</span></div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="material-flow" class="content-pad">
+                <h2>Material Flow Dynamics</h2>
+                <ol>
+                    <li><strong>Inbound induction from corrugator:</strong> Boards are inducted into the trident station; AMRs remove stacks to deep-lane cells to avoid obstructing corrugator flow. WCS assigns storage addresses and monitors residency time.</li>
+                    <li><strong>Deep-lane WIP allocation:</strong> Blind-block cells hold batches; AMRs perform consolidation and pre-staging to local tridents based on line demand forecasts.</li>
+                    <li><strong>JIT converting line feeding:</strong> AMRs deliver sequenced boards to trident stations at the line, handling off with minimal mechanical transfer and correct orientation for immediate processing.</li>
+                    <li><strong>Reverse logistics / overruns handling:</strong> Exceptions are isolated to quarantine cells and rework areas without blocking main flow; AMRs and WCS handle rerouting and exception lifecycles.</li>
+                </ol>
+            </section>
+
+            <section id="integration" class="content-pad">
+                <h2>Engineering & Integration Considerations</h2>
+                <div class="callout">Critical: define the WCS ↔ AMR Fleet Manager API and a clear I/O handshake for each trident station early in the project to reduce later integration risk.</div>
+                <ul>
+                    <li><strong>WCS / Fleet coordination:</strong> Job reservation, preemption rules, position reporting, and heartbeat events to ensure robust fleet operation.</li>
+                    <li><strong>Trident integration:</strong> Mechanical locators, presence sensors, electrical interlocks and PLC I/O for job-complete acknowledgement.</li>
+                    <li><strong>Traffic orchestration:</strong> Dual-lane policies, negotiated passes, and deadlock avoidance strategies with fallback to local buffers.</li>
+                    <li><strong>Exception handling:</strong> Design degraded modes that allow manual override and safe-park procedures for blocked robots or stations.</li>
+                </ul>
+            </section>
+
+            <section id="recommendation" class="content-pad">
+                <h2>Recommended Next Step: Concept Validation & Layout Engineering</h2>
+                <p>We recommend a focused concept validation phase to de-risk the migration and deliver a validated layout and sizing package suitable for a pilot deployment.</p>
+                <ul>
+                    <li>Site survey and dimensional validation</li>
+                    <li>Throughput simulation and bottleneck analysis</li>
+                    <li>WIP capacity model and blind-block sizing</li>
+                    <li>AMR fleet sizing and route modelling</li>
+                    <li>Trident station interface definition and mock-ups</li>
+                    <li>Phased migration plan and pilot deployment</li>
+                    <li>ROI / OPEX vs CAPEX model</li>
+                </ul>
+            </section>
+
+            <footer class="report-footer">
+                <div>INGECART — Systems & Automation</div>
+                <div class="muted">For Cascades — Confidential Draft</div>
+            </footer>
+        </main>
+
+        <aside class="toc" aria-label="Contents">
+            <nav>
+                <a href="#executive-summary">Executive Summary</a>
+                <a href="#comparison">Comparison</a>
+                <a href="#value-drivers">Key Value Drivers</a>
+                <a href="#layout-blueprint">Layout Blueprint</a>
+                <a href="#material-flow">Material Flow</a>
+                <a href="#integration">Engineering</a>
+                <a href="#recommendation">Recommended Next Step</a>
+            </nav>
+        </aside>
+    </div>
+</div>
+</body>
+</html>
