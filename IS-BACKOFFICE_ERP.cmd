@@ -7,7 +7,8 @@ set "PY=.venv\Scripts\python.exe"
 if not exist "%PY%" set "PY=python"
 
 for /l %%P in (8514,1,8535) do (
-    netstat -ano | findstr /r /c:":%%P .*LISTENING" >nul
+    rem Avoid depending on the English "LISTENING" word; just look for the port
+    netstat -ano | findstr /c":%%P " >nul
     if errorlevel 1 (
         set "PORT=%%P"
         goto :port_found

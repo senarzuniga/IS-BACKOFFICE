@@ -21,11 +21,12 @@ if %ERRORLEVEL% neq 0 (
 REM Find a free port between 8501 and 8530
 set "PORT="
 for /l %%P in (8501,1,8530) do (
-		netstat -ano | findstr /r /c:":%%P .*LISTENING" >nul 2>&1
-		if errorlevel 1 (
-				set "PORT=%%P"
-				goto :port_found
-		)
+        	rem Check for any usage of the port; avoid relying on the localized "LISTENING" word
+        	netstat -ano | findstr /c":%%P " >nul 2>&1
+        	if errorlevel 1 (
+                	set "PORT=%%P"
+                	goto :port_found
+        	)
 )
 
 echo No se encontro un puerto libre entre 8501 y 8530.

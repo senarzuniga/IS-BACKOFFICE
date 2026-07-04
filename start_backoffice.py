@@ -71,8 +71,10 @@ def kill_process_on_port(port):
     """Mata el proceso que usa un puerto (Windows)"""
     if sys.platform == "win32":
         try:
+            # Don't rely on the English "LISTENING" word (it may be localized).
+            # Instead, look for any netstat line that references the port and extract the PID.
             result = subprocess.run(
-                f'netstat -ano | findstr ":{port} " | findstr "LISTENING"',
+                f'netstat -ano | findstr ":{port} "',
                 shell=True,
                 capture_output=True,
                 text=True,
