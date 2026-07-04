@@ -299,7 +299,7 @@
   - .venv\Lib\site-packages\openai\cli\_api\completions.py
   - .venv\Lib\site-packages\openai\cli\_api\files.py
   - .venv\Lib\site-packages\openai\cli\_tools\migrate.py
-- Files with sqlite3.connect calls: 17
+- Files with sqlite3.connect calls: 18
   - erp_facturacion\erp.py
   - scripts\check_memory_db.py
   - scripts\ingest_sim_runs.py
@@ -308,6 +308,7 @@
   - soc\search.py
   - soc\brain\memory_store.py
   - knowledge_hub\competitive_intel\indexer.py
+  - knowledge_hub\competitive_intel\offers_extractor_orchestrator.py
   - informes\ingecart-marketing-kit\Scripts\generate_deep_report.py
   - backoffice\intelligence\storage.py
   - agents\knowledge_intelligence\memory\knowledge_memory.py

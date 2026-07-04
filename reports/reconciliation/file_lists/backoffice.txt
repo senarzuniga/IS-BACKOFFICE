@@ -1,0 +1,17 @@
+Backoffice package files (backoffice/)
+
+- backoffice/__init__.py
+- backoffice/ui/__init__.py
+- backoffice/ui/command_center.py
+- backoffice/ui/app.py
+- backoffice/ui/components/sidebar.py
+- backoffice/ui/components/results.py
+- backoffice/ui/components/dashboard.py
+- backoffice/reporting/generator.py
+- backoffice/ingestion/*
+- backoffice/analytics/*
+- backoffice/models/*
+
+Notes:
+- `backoffice/ui/command_center.py` was edited to add a quick action to open Facturación.
+- Validate that all pages referenced in the sidebar are reachable via `streamlit_app.py` mapping.

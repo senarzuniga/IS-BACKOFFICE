@@ -548,6 +548,52 @@ def list_invoices(limit: int = 100) -> List[Dict]:
     return [dict(r) for r in rows]
 
 
+def delete_invoice(invoice_id: int) -> bool:
+    """Delete an invoice and its related lines, expenses and payments by invoice id.
+
+    Returns True if deleted, False if invoice not found.
+    """
+    init_db()
+    conn = _get_conn()
+    c = conn.cursor()
+    header = c.execute("SELECT invoice_number FROM invoice_headers WHERE id = ?", (invoice_id,)).fetchone()
+    if not header:
+        conn.close()
+        return False
+
+    invoice_number = header["invoice_number"]
+    try:
+        c.execute("DELETE FROM invoice_lines WHERE invoice_id = ?", (invoice_id,))
+        c.execute("DELETE FROM invoice_expenses WHERE invoice_id = ?", (invoice_id,))
+        c.execute("DELETE FROM payments WHERE invoice_id = ?", (invoice_id,))
+        c.execute("DELETE FROM invoice_headers WHERE id = ?", (invoice_id,))
+        conn.commit()
+    finally:
+        conn.close()
+
+    # Remove generated PDF if exists
+    try:
+        pdf_path = os.path.join(INVOICE_DIR, f"{invoice_number}.pdf")
+        if os.path.exists(pdf_path):
+            os.remove(pdf_path)
+    except Exception:
+        # Best-effort cleanup; ignore failures
+        pass
+
+    return True
+
+
+def delete_invoice_by_number(invoice_number: str) -> bool:
+    """Delete an invoice by its invoice_number (e.g. 'REF-2026-002')."""
+    init_db()
+    conn = _get_conn()
+    row = conn.execute("SELECT id FROM invoice_headers WHERE invoice_number = ?", (invoice_number,)).fetchone()
+    conn.close()
+    if not row:
+        return False
+    return delete_invoice(int(row["id"]))
+
+
 def add_supplier(supplier_name: str, nif: str = "", address: str = "", city: str = "", province: str = "", postal_code: str = "", country: str = "", phone: str = "", email: str = "", contact_person: str = "") -> int:
     init_db()
     conn = _get_conn()

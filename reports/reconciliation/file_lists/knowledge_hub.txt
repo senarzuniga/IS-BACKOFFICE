@@ -1,0 +1,9 @@
+Knowledge hub and competitive intelligence (knowledge_hub/ and agents/knowledge_intelligence)
+
+- knowledge_hub/competitive_intel/* (many modules: truth_engine.py, streamlit_ci_panel.py, parser.py, indexer.py, hybrid_retrieval.py, etc.)
+- agents/knowledge_intelligence/orchestrator.py
+- agents/knowledge_intelligence/agents/* (web_research_agent.py, validation_agent.py, technical_writer.py, reviewer_agent.py, etc.)
+
+Notes:
+- These modules orchestrate multi-agent flows. They require LLM keys and environment variables to run in full mode.
+- Outputs and job artifacts live under `data/competitive_intelligence/jobs/` and `knowledge_hub/outputs/`.

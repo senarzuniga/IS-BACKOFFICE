@@ -477,6 +477,11 @@ class CommandCenter:
                     st.session_state.quick_command = cmd
 
             st.markdown("---")
+            # Quick navigation to legacy pages
+            if st.button("🧾 Abrir Facturación ERP", key="open_erp", help="Abrir formulario de facturación"):
+                st.session_state.current_page = "erp_facturacion"
+                st.experimental_rerun()
+
             st.caption("© 2026 IS-BACKOFFICE · v2.0")
 
     # ── Command input ─────────────────────────────────────────────────────────
