@@ -5,8 +5,9 @@ offer_pdf = r"C:\Users\Inaki Senar\Documents\GitHub\IS-BACKOFFICE\informes\ingec
 output_pdf = r"C:\Users\Inaki Senar\Documents\GitHub\IS-BACKOFFICE\informes\ingecart-marketing-kit\Informes\PSC_merged.pdf"
 
 merger = PdfMerger()
-merger.append(cover_pdf)
+# Append in reversed order so the second PDF becomes the first in the merged file
 merger.append(offer_pdf)
+merger.append(cover_pdf)
 
 with open(output_pdf, "wb") as f:
     merger.write(f)
