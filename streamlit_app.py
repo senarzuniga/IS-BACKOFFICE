@@ -67,6 +67,7 @@ def _create_enhanced_app():
             "⚙️ Configurar Smart Plant",
             "📋 Tareas",
             "🧾 Facturación ERP",
+            "📁 Project Closeout",
             "📊 Analytics",
         ],
         key="nav_radio",
@@ -86,6 +87,7 @@ def _create_enhanced_app():
         "⚙️ Configurar Smart Plant": "smart_plant_config",
         "📋 Tareas": "tasks",
         "🧾 Facturación ERP": "erp_facturacion",
+        "📁 Project Closeout": "project_closeout",
         "📊 Analytics": "analytics",
     }
 
@@ -149,6 +151,13 @@ def _create_enhanced_app():
 
     elif st.session_state.current_page == "erp_facturacion":
         st.switch_page("pages/facturacion.py")
+
+    elif st.session_state.current_page == "project_closeout":
+        try:
+            from pages.project_closeout import main as project_closeout_main
+            project_closeout_main()
+        except Exception as e:
+            st.error("No se puede cargar `pages/project_closeout.py`. Comprueba que el archivo existe. Error: " + str(e))
 
     elif st.session_state.current_page == "analytics":
         st.title("📊 Análisis y Reportes")

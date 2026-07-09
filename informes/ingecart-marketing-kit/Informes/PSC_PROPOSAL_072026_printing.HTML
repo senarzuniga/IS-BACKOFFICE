@@ -1,0 +1,1128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>PSC Proposal OFF-2026-110 | INGECART</title>
+  <meta name="description" content="PSC Visalia Executive Business Case - BHS Corrugator Relocation vs Integrated Industrial Redesign with INGETRANS and AMR Intralogistics" />
+  <style>
+    :root{
+      --ink:#0f172a;
+      --ink-2:#1e293b;
+      --muted:#475569;
+      --muted-2:#64748b;
+      --line:#dbe3ee;
+      --line-2:#e2e8f0;
+      --bg:#ffffff;
+      --bg-soft:#f8fafc;
+      --accent:#0f172a;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+      color:var(--ink);
+      background:#eef2f7;
+      line-height:1.55;
+    }
+
+    .document-shell{
+      max-width:1120px;
+      margin:0 auto;
+      background:var(--bg);
+      box-shadow:0 0 30px rgba(15,23,42,.08);
+      min-height:100vh;
+    }
+
+    /* PRINT */
+    @page{
+      size:A4;
+      margin:16mm 14mm 16mm 14mm;
+    }
+
+    @media print{
+      body{
+        background:#fff;
+      }
+      .document-shell{
+        max-width:none;
+        box-shadow:none;
+        margin:0;
+      }
+      .no-print{
+        display:none !important;
+      }
+      .page-break{
+        page-break-after:always;
+        break-after:page;
+      }
+      .avoid-break{
+        page-break-inside:avoid;
+        break-inside:avoid;
+      }
+      thead{
+        display:table-header-group;
+      }
+      tfoot{
+        display:table-footer-group;
+      }
+      tr, img, table{
+        page-break-inside:avoid;
+        break-inside:avoid;
+      }
+      .pdf-cover-page{
+        height:auto;
+        min-height:0;
+        margin:0;
+        padding:0;
+        page-break-after:always;
+        break-after:page;
+      }
+      .cover-pdf{
+        width:100%;
+        height:260mm;
+        min-height:260mm;
+      }
+      .site-header{
+        padding-top:0;
+      }
+    }
+
+    /* COVER PDF PAGE */
+    .pdf-cover-page{
+      width:100%;
+      min-height:100vh;
+      background:#fff;
+      display:flex;
+      align-items:stretch;
+      justify-content:center;
+      page-break-after:always;
+      break-after:page;
+    }
+
+    .cover-pdf{
+      width:100%;
+      min-height:100vh;
+      border:none;
+      display:block;
+    }
+
+    /* HEADER */
+    .site-header{
+      padding:24px 42px 16px;
+      border-bottom:1px solid var(--line-2);
+      background:#fff;
+    }
+
+    .header-topline{
+      font-size:.78rem;
+      text-transform:uppercase;
+      letter-spacing:.08em;
+      color:var(--muted-2);
+      margin:0 0 6px 0;
+      font-weight:700;
+    }
+
+    .header-brand{
+      font-size:1.32rem;
+      font-weight:800;
+      color:var(--ink);
+      margin:0;
+      letter-spacing:-.01em;
+    }
+
+    .header-ref{
+      margin-top:8px;
+      font-size:1rem;
+      font-weight:700;
+      color:var(--ink-2);
+    }
+
+    /* CONTENT */
+    .content{
+      padding:30px 42px 42px;
+    }
+
+    .title-block{
+      margin-bottom:26px;
+    }
+
+    .kicker{
+      font-size:.8rem;
+      text-transform:uppercase;
+      letter-spacing:.08em;
+      color:var(--muted-2);
+      font-weight:700;
+      margin:0 0 8px 0;
+    }
+
+    h1{
+      margin:0 0 10px 0;
+      font-size:2.1rem;
+      line-height:1.15;
+      letter-spacing:-.03em;
+      color:var(--ink);
+    }
+
+    .subtitle{
+      margin:0;
+      font-size:1.1rem;
+      line-height:1.45;
+      color:var(--muted);
+      max-width:960px;
+    }
+
+    .meta-note{
+      margin-top:16px;
+      padding:14px 16px;
+      background:var(--bg-soft);
+      border:1px solid var(--line-2);
+      border-radius:10px;
+      color:var(--muted);
+      font-size:.96rem;
+    }
+
+    h2{
+      margin:30px 0 12px;
+      font-size:1.42rem;
+      line-height:1.2;
+      color:var(--ink);
+      border-bottom:2px solid var(--line-2);
+      padding-bottom:8px;
+      letter-spacing:-.01em;
+    }
+
+    h3{
+      margin:22px 0 8px;
+      font-size:1.1rem;
+      line-height:1.3;
+      color:var(--ink);
+    }
+
+    h4{
+      margin:16px 0 6px;
+      font-size:1rem;
+      color:var(--ink);
+    }
+
+    p{
+      margin:0 0 12px 0;
+      color:var(--ink-2);
+      font-size:.97rem;
+    }
+
+    ul{
+      margin:8px 0 14px 22px;
+      padding:0;
+    }
+
+    li{
+      margin:0 0 6px 0;
+      color:var(--ink-2);
+      font-size:.97rem;
+    }
+
+    hr{
+      border:none;
+      border-top:2px solid var(--line-2);
+      margin:26px 0;
+    }
+
+    .section-intro{
+      color:var(--muted);
+      margin-bottom:10px;
+    }
+
+    .callout{
+      background:var(--bg-soft);
+      border:1px solid var(--line-2);
+      border-left:5px solid var(--accent);
+      border-radius:10px;
+      padding:16px 18px;
+      margin:16px 0 18px;
+    }
+
+    .callout p:last-child{
+      margin-bottom:0;
+    }
+
+    .highlight{
+      font-weight:700;
+      color:var(--ink);
+    }
+
+    .small{
+      font-size:.9rem;
+      color:var(--muted);
+    }
+
+    .grid-2{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:16px;
+      margin:12px 0 16px;
+    }
+
+    .mini-card{
+      background:#fff;
+      border:1px solid var(--line-2);
+      border-radius:10px;
+      padding:14px 16px;
+    }
+
+    .mini-card h4{
+      margin-top:0;
+      margin-bottom:8px;
+    }
+
+    .mini-card p:last-child{
+      margin-bottom:0;
+    }
+
+    /* TABLES */
+    table{
+      width:100%;
+      border-collapse:collapse;
+      margin:12px 0 18px;
+      font-size:.94rem;
+    }
+
+    thead th{
+      background:#f1f5f9;
+      color:var(--ink);
+      font-weight:700;
+      border:1px solid var(--line-2);
+      padding:10px 12px;
+      text-align:left;
+      vertical-align:top;
+    }
+
+    tbody td{
+      border:1px solid var(--line-2);
+      padding:9px 12px;
+      vertical-align:top;
+      color:var(--ink-2);
+      background:#fff;
+    }
+
+    tbody tr:nth-child(even) td{
+      background:#fafcff;
+    }
+
+    .text-right{
+      text-align:right;
+      white-space:nowrap;
+    }
+
+    .text-center{
+      text-align:center;
+    }
+
+    .table-note{
+      margin-top:-6px;
+      margin-bottom:16px;
+      font-size:.88rem;
+      color:var(--muted);
+    }
+
+    .total-row td{
+      font-weight:800;
+      background:#eef5ff !important;
+      color:var(--ink);
+    }
+
+    .subtle-row td{
+      background:#fbfdff !important;
+      color:var(--muted);
+    }
+
+    .badge{
+      display:inline-block;
+      padding:4px 10px;
+      border-radius:999px;
+      font-size:.82rem;
+      font-weight:700;
+      background:#e8eef7;
+      color:var(--ink);
+    }
+
+    .scenario-box{
+      border:1px solid var(--line-2);
+      border-radius:12px;
+      padding:18px 18px 10px;
+      margin:14px 0 18px;
+      background:#fff;
+    }
+
+    .scenario-box h3{
+      margin-top:0;
+    }
+
+    .footer-note{
+      padding:20px 42px 34px;
+      color:var(--muted);
+      font-size:.88rem;
+      border-top:1px solid var(--line-2);
+    }
+
+    .annex-title{
+      margin-top:34px;
+    }
+
+    .mono{
+      font-variant-numeric:tabular-nums;
+    }
+
+    .cover-fallback{
+      padding:40px;
+      text-align:center;
+      color:var(--muted);
+    }
+
+    @media (max-width:900px){
+      .site-header,
+      .content,
+      .footer-note{
+        padding-left:22px;
+        padding-right:22px;
+      }
+      .grid-2{
+        grid-template-columns:1fr;
+      }
+      h1{
+        font-size:1.72rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="document-shell">
+
+    <!-- PAGE 1: EXISTING COVER PDF -->
+    <section class="pdf-cover-page">
+      <object data="First page OF110.pdf" type="application/pdf" class="cover-pdf">
+        <div class="cover-fallback">
+          <p><strong>Cover page PDF could not be displayed.</strong></p>
+          <p>Please ensure the file <strong>First page OF110.pdf</strong> is located in the same folder as this HTML document.</p>
+        </div>
+      </object>
+    </section>
+
+    <!-- PAGE 2+: PROPOSAL -->
+    <header class="site-header">
+      <p class="header-topline">Industrial Proposal · Corrugated Operations Transformation</p>
+      <h2 class="header-brand" style="border:none;padding:0;margin:0;">INGECART _PACIFIC SOUTHWEST CONTAINER</h2>
+      <div class="header-ref">BHS Corrugator Line Relocation OFF-2026-110</div>
+    </header>
+
+    <main class="content">
+      <section class="title-block avoid-break">
+        <p class="kicker">Executive Business Case / Offer Document</p>
+        <h1>PSC VISALIA EXECUTIVE BUSINESS CASE</h1>
+        <p class="subtitle">
+          BHS Corrugator Relocation vs Integrated Industrial Redesign with INGETRANS and AMR Intralogistics
+        </p>
+        <div class="meta-note">
+          This document has been prepared by INGECART as a high-level executive proposal to support Pacific Southwest Container’s decision regarding the installation of corrugating capability at the Visalia site. The purpose of the document is not only to compare equipment packages, but to frame the investment decision as a choice between two different industrial operating models for the plant.
+        </div>
+      </section>
+
+      <h2>1. Executive Summary</h2>
+      <p>
+        Pacific Southwest Container (PSC) is evaluating the relocation and installation of a BHS corrugator line at its Visalia plant in order to internalize corrugated board supply, reduce dependence on externally sourced sheets and strengthen manufacturing responsiveness. At first sight, the project could be interpreted as a conventional machinery relocation. However, from an industrial and financial perspective, the decision is more strategic than a simple transfer of equipment.
+      </p>
+      <p>
+        PSC is effectively considering <span class="highlight">two different plant models</span>. The first one is a <span class="highlight">relocation-led scenario</span> focused on restoring in-house corrugating capability through the transfer of the BHS line, the installation of peripherals and the optional addition of a Triplex configuration. The second one is a broader <span class="highlight">industrial redesign scenario</span> in which the corrugator relocation becomes the anchor project for a more integrated operating architecture combining corrugating, automated reel feeding, AMR-based WIP intralogistics and higher material traceability across the plant.
+      </p>
+      <div class="callout">
+        <p>
+          <strong>Core recommendation of this proposal:</strong> PSC should not evaluate the project solely as a CAPEX comparison between two machinery packages. The key decision is whether the Visalia investment should simply restore corrugating capacity, or whether it should be used to establish a more automated, traceable and scalable operating model for the site.
+        </p>
+      </div>
+      <p>
+        Under the assumptions used in this proposal, both scenarios capture the same base economic benefit: the elimination of the current external sheet logistics burden currently estimated at <strong>USD 2.5M–3.0M per year</strong>. The key difference lies in the additional value created by Scenario B through automation of reel logistics, improved internal material flow, lower handling losses, better WIP visibility and reduced dependence on high-maintenance forklifts, transfers and conveyor-based handling infrastructure.
+      </p>
+      <p>
+        From an executive standpoint, the most relevant conclusion is that <strong>Scenario B should be understood as the preferred long-term industrial platform</strong>, while Scenario A remains a valid lower-complexity path if PSC’s priority is limited to the recovery of corrugating capability and the optional opening of Triplex product opportunities.
+      </p>
+
+      <h2>2. Project Context – PSC Visalia</h2>
+      <p>
+        PSC Visalia is currently a conversion-focused operation without integrated corrugating capacity. As a result, the plant relies on externally supplied corrugated sheets or intercompany board transfers, which introduces structural logistics costs, limits responsiveness and creates avoidable planning complexity between corrugating and converting operations.
+      </p>
+      <p>
+        Based on the commercial and strategic information provided for this business case, PSC as a group is estimated at approximately <strong>USD 326M annual revenue</strong>, while a modest plant within the group sits broadly in the range of <strong>USD 50M–80M annual revenue</strong>. For the purposes of this proposal, the lower bound of that range is used as the conservative economic basis for waste and productivity sensitivity.
+      </p>
+
+      <div class="grid-2 avoid-break">
+        <div class="mini-card">
+          <h4>Current industrial limitation</h4>
+          <p>
+            The Visalia site does not fully capture the value of a vertically integrated corrugated packaging operation because the corrugating stage is not physically embedded in the plant’s operating flow.
+          </p>
+        </div>
+        <div class="mini-card">
+          <h4>Strategic implication</h4>
+          <p>
+            Relocating the BHS line can do more than eliminate purchased sheet logistics. If properly designed, it can become the foundation for a new internal flow model linking corrugating, reel supply, WIP transport, converting and material traceability.
+          </p>
+        </div>
+      </div>
+
+      <h3>2.1 Main cost and performance drivers in the current model</h3>
+      <ul>
+        <li>Annual cost associated with external sheet supply and transfers estimated at <strong>USD 2.5M–3.0M per year</strong>.</li>
+        <li>Longer response times and lower flexibility in order sequencing compared with a plant operating its own corrugator.</li>
+        <li>Limited control over corrugating-to-converting synchronization and real-time material availability.</li>
+        <li>Reduced visibility of true paper consumption, WIP accumulation and internal handling losses.</li>
+        <li>Greater exposure to non-value-added transport, forklift traffic and fragmented material flow.</li>
+      </ul>
+
+      <h3>2.2 Strategic objective of the investment</h3>
+      <p>The project should be evaluated against the following industrial objectives:</p>
+      <ul>
+        <li>Install corrugating capability at Visalia.</li>
+        <li>Eliminate the structural cost and dependency of externally sourced corrugated sheets.</li>
+        <li>Improve customer responsiveness and internal scheduling flexibility.</li>
+        <li>Integrate corrugating and converting under one operating architecture.</li>
+        <li>Increase traceability of paper consumption, WIP and finished material flows.</li>
+        <li>Build a plant model that can scale more efficiently in productivity, logistics and operating control.</li>
+      </ul>
+
+      <h2>3. Investment Alternatives Considered</h2>
+      <p class="section-intro">
+        INGECART proposes to frame PSC’s decision around two alternative investment scenarios. Both scenarios include the same corrugator relocation base. The difference is whether the project stops at the equipment level or evolves into an integrated operating model redesign.
+      </p>
+
+      <div class="scenario-box avoid-break">
+        <h3>Scenario A – Corrugator Relocation + Peripherals + Optional Triplex</h3>
+        <p>
+          Scenario A is built around the relocation of the BHS corrugator line to Visalia, together with the required peripheral systems and the optional implementation of a Triplex configuration. It is the most direct way to restore corrugating capability in-house and immediately eliminate external sheet supply costs.
+        </p>
+        <ul>
+          <li>BHS corrugator sale, disassembly, transport, installation and commissioning.</li>
+          <li>Required peripherals for line operation.</li>
+          <li>Optional Triplex project to enable a broader product configuration.</li>
+          <li>PSC local responsibilities such as boiler, civil works, fees, transport and packaging support items.</li>
+        </ul>
+        <p>
+          The logic of Scenario A is therefore <strong>capacity recovery plus optional product capability expansion</strong>, with a relatively limited redesign of internal plant flow beyond what is necessary to install and operate the corrugator.
+        </p>
+      </div>
+
+      <div class="scenario-box avoid-break">
+        <h3>Scenario B – Corrugator Relocation + INGETRANS + AMR Intralogistics</h3>
+        <p>
+          Scenario B starts from the same relocation base, but reframes the project as an integrated industrial redesign of the Visalia site. In this scenario, the corrugator installation becomes the core around which PSC can redesign reel feeding, WIP transport, internal handling logic and material traceability.
+        </p>
+        <ul>
+          <li>BHS corrugator relocation and installation, identical base scope to Scenario A.</li>
+          <li>Required peripherals for corrugator operation.</li>
+          <li><strong>INGETRANS automated reel feeding system</strong> to automate reel supply and return at the corrugator.</li>
+          <li><strong>AMR intralogistics architecture for WIP flow between production islands</strong>, reducing manual internal transport and improving traceability of material “in” and “out”.</li>
+          <li>Optional future extension for internal scrap collection using the same AMR fleet with dedicated metallic cages, enabling automated collection, weighing and positioning of waste streams from converting and corrugating workstations.</li>
+          <li>PSC local responsibilities equivalent to the common base project items.</li>
+        </ul>
+        <p>
+          The logic of Scenario B is not only to internalize corrugating, but to <strong>build a more efficient plant operating model</strong> in which material moves with less friction, fewer manual interventions and greater data visibility.
+        </p>
+      </div>
+
+      <h2>4. Capital Expenditure Comparison</h2>
+      <p>
+        All values in this proposal are presented in <strong>USD</strong>. The following comparison reflects the corrected project values shared for the PSC offer and includes the revised AMR intralogistics investment of <strong>USD 1,125,000</strong>.
+      </p>
+
+      <table class="avoid-break">
+        <thead>
+          <tr>
+            <th>CAPEX Item</th>
+            <th class="text-right">Scenario A</th>
+            <th class="text-right">Scenario B</th>
+            <th>Comment</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>BHS corrugator relocation / machine section</td>
+            <td class="text-right mono">$2,950,000</td>
+            <td class="text-right mono">$2,950,000</td>
+            <td>Common base in both scenarios</td>
+          </tr>
+          <tr>
+            <td>Peripherals</td>
+            <td class="text-right mono">$1,541,500</td>
+            <td class="text-right mono">$1,541,500</td>
+            <td>Common base in both scenarios</td>
+          </tr>
+          <tr>
+            <td>PSC local project items</td>
+            <td class="text-right mono">$1,850,000</td>
+            <td class="text-right mono">$1,850,000</td>
+            <td>Boiler, civil works, transport, packaging, crane rental and fees</td>
+          </tr>
+          <tr>
+            <td>Triplex project</td>
+            <td class="text-right mono">$1,246,710</td>
+            <td class="text-right mono">—</td>
+            <td>Included only in Scenario A</td>
+          </tr>
+          <tr>
+            <td>INGETRANS automated reel feeding</td>
+            <td class="text-right mono">—</td>
+            <td class="text-right mono">$1,350,000</td>
+            <td>Included only in Scenario B</td>
+          </tr>
+          <tr>
+            <td>AMR intralogistics for WIP</td>
+            <td class="text-right mono">—</td>
+            <td class="text-right mono">$1,125,000</td>
+            <td>Included only in Scenario B</td>
+          </tr>
+          <tr class="total-row">
+            <td>Total estimated CAPEX</td>
+            <td class="text-right mono">$7,588,210</td>
+            <td class="text-right mono">$8,816,500</td>
+            <td>Total based on current scope assumptions</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p class="table-note">
+        Note: Scenario A includes the Triplex package, while Scenario B replaces that product capability investment with automated reel feeding and AMR-based intralogistics. The comparison should therefore be interpreted as a comparison between <em>product optionality</em> and <em>operating model transformation</em>, not as a like-for-like machinery bundle.
+      </p>
+
+      <h2>5. Industrial Value of Scenario A</h2>
+      <p>
+        Scenario A delivers a valid and defendable investment case if PSC’s main priority is to recover corrugating capability in-house and stop paying the structural cost of external sheet supply. In its simplest interpretation, it is the shortest path to vertical integration at Visalia.
+      </p>
+
+      <h3>5.1 Core industrial benefits</h3>
+      <ul>
+        <li>Eliminates the cost of externally sourced corrugated sheets.</li>
+        <li>Improves production autonomy and order responsiveness.</li>
+        <li>Allows corrugating and converting to be scheduled inside the same plant.</li>
+        <li>Potentially improves margin capture by integrating the corrugating stage internally.</li>
+        <li>Can open a broader product portfolio if Triplex is commercially exploited.</li>
+      </ul>
+
+      <h3>5.2 Specific value of the Triplex option</h3>
+      <p>
+        The Triplex project can create strategic value by enabling new product structures, opening the door to additional customers and strengthening commercial differentiation. However, at this stage no validated revenue forecast has been provided for that additional capability. For that reason, the Triplex value should be treated as <strong>strategic upside not included in the base ROI case</strong> unless PSC wishes to support it with a quantified commercial business case.
+      </p>
+
+      <h3>5.3 Structural limitations of Scenario A</h3>
+      <ul>
+        <li>The investment logic remains centered on machinery relocation rather than full plant flow redesign.</li>
+        <li>It does not structurally redesign reel feeding at the corrugator.</li>
+        <li>It does not inherently solve WIP flow and internal intralogistics between corrugating and converting islands.</li>
+        <li>It offers limited additional control over handling losses, internal material traceability and manual logistics burden.</li>
+        <li>It does not materially reduce exposure to forklift traffic and fragmented internal transport architecture beyond the corrugator installation itself.</li>
+      </ul>
+
+      <h2>6. Industrial Value of Scenario B</h2>
+      <p>
+        Scenario B creates value on two layers. The first layer is identical to Scenario A: it internalizes corrugating and removes the external sheet logistics burden. The second layer is the one that differentiates the project: it turns corrugator relocation into the first step of a more efficient, more traceable and more scalable operating architecture for the Visalia plant.
+      </p>
+
+      <h3>6.1 Value created by INGETRANS automated reel feeding</h3>
+      <ul>
+        <li>Automates reel supply to the corrugator and reduces manual handling around the wet end.</li>
+        <li>Improves continuity of corrugator feeding and reduces the risk of waiting time or supply disruption.</li>
+        <li>Provides a more controlled flow of consumed reels, returned reels and material traceability.</li>
+        <li>Reduces forklift traffic and manual interventions around the corrugator area.</li>
+        <li>Improves safety, ergonomics and operational discipline in a critical part of the line.</li>
+      </ul>
+
+      <h3>6.2 Value created by AMR intralogistics for WIP</h3>
+      <p>
+        The AMR package proposed in Scenario B is designed to manage intralogistics between production islands, with a focus on WIP flow between corrugating and converting areas and on the traceability of material moving through the plant. The objective is not simply to replace transport equipment, but to redesign the logic by which semi-finished loads move inside the factory.
+      </p>
+      <h4>1. Operational value of the WIP intralogistics architecture</h4>
+      <ul>
+        <li>Structured movement of WIP between corrugator output, intermediate buffers and converting islands.</li>
+        <li>Reduced dependency on manual forklift-based transport for repetitive internal moves.</li>
+        <li>Higher visibility of load origin, destination and status across the plant.</li>
+        <li>Improved discipline of material “in” and “out” flows at each process stage.</li>
+        <li>Lower risk of unnecessary handling, misplaced loads and internal transport congestion.</li>
+      </ul>
+
+      <h4>2. Optional extension for internal scrap handling</h4>
+      <p>
+        As an optional future layer, the same AMR fleet can also be used to support internal scrap collection from converting positions and corrugator-related waste points. This extension is not valued in the base economic case of this proposal, but it is operationally relevant because it would allow PSC to use the same intralogistics platform for a wider set of internal material movements.
+      </p>
+      <ul>
+        <li>Dedicated metallic cages can be used as scrap containers handled by the AMRs.</li>
+        <li>Waste generated at converting workstations and corrugating-related points can be automatically collected and repositioned.</li>
+        <li>The system can support weighing, identification and routing of internal waste streams.</li>
+        <li>This architecture would strengthen visibility over internal material losses and support future continuous improvement actions on waste reduction and recovery.</li>
+      </ul>
+
+      <h3>6.3 Maintenance savings and equipment simplification in Scenario B</h3>
+      <p>
+        A relevant but often underestimated benefit of Scenario B is the expected reduction in maintenance burden associated with internal transport equipment. In conventional plants, WIP movement and reel handling rely heavily on forklifts, transfer devices and conveyor-based transport sections, all of which require recurrent preventive maintenance, wear-part replacement, interventions caused by impacts and high-frequency operator support.
+      </p>
+      <p>
+        By shifting a significant portion of internal transport logic to INGETRANS and AMR-based intralogistics, PSC can reduce exposure to:
+      </p>
+      <ul>
+        <li>Maintenance of an oversized forklift fleet used for repetitive internal logistics tasks.</li>
+        <li>Frequent service interventions on transfer equipment and conveyor elements dedicated to internal load movement.</li>
+        <li>Operational losses linked to congestion, traffic incidents and material damage caused by manual handling.</li>
+        <li>Indirect labor time associated with reactive interventions and transport coordination.</li>
+      </ul>
+      <p>
+        At this stage, the maintenance benefit has not been assigned a standalone quantified savings line in the base model. However, it is explicitly considered as an additional upside factor in the medium case for Scenario B and should be validated during the detailed engineering and operating data review.
+      </p>
+
+      <h2>7. Economic Logic and ROI Framework</h2>
+      <p>
+        The financial evaluation of the project should not be reduced to a single generic ROI figure. Instead, the investment should be understood as the sum of several value layers. Some of those layers are common to both scenarios, while others are specific to either Scenario A or Scenario B.
+      </p>
+
+      <h3>7.1 Common savings layer – external sheet logistics elimination</h3>
+      <p>
+        Both scenarios are built on the same fundamental economic driver: once corrugating is internalized at Visalia, PSC should be able to eliminate a large share of the current cost associated with externally sourced sheets and related transfers. Based on the current working assumptions used for this proposal, the common annual saving is estimated at:
+      </p>
+      <div class="callout">
+        <p><strong>Base annual savings common to Scenario A and Scenario B: USD 2.5M–3.0M per year</strong></p>
+      </div>
+
+      <h3>7.2 Waste reduction logic</h3>
+      <p>
+        Using the commercial guidance provided for the plant, a conservative base assumption can be built from a <strong>USD 50M annual revenue plant</strong> and a waste impact equivalent to <strong>1% of annual sales</strong>. Under that assumption, the annual economic exposure linked to waste is approximately:
+      </p>
+      <div class="callout">
+        <p><strong>Estimated waste-related economic baseline at the low plant revenue assumption: USD 500,000 per year</strong></p>
+      </div>
+      <p>
+        Scenario B is better positioned than Scenario A to capture part of that value because it introduces a more structured internal material flow, less repetitive handling and stronger traceability of WIP and material movements. In this high-level proposal, only a portion of that waste value is considered bankable in the annual savings scenarios.
+      </p>
+
+      <h3>7.3 Scenario-specific economic logic</h3>
+      <div class="grid-2 avoid-break">
+        <div class="mini-card">
+          <h4>Scenario A incremental value</h4>
+          <p>
+            The main incremental value beyond the common base savings is the strategic optionality created by the Triplex package. Because this depends on product mix, commercial adoption and pricing, it is treated as upside rather than as a guaranteed annual saving in the base model.
+          </p>
+        </div>
+        <div class="mini-card">
+          <h4>Scenario B incremental value</h4>
+          <p>
+            Scenario B can create additional annual value through better reel logistics, lower manual handling, lower WIP friction, improved traceability, lower internal losses and reduced maintenance burden on internal transport assets.
+          </p>
+        </div>
+      </div>
+
+      <h2>8. High-Level Annual Savings Scenarios</h2>
+      <p>
+        The following annual savings scenarios are presented as a management tool to compare the economics of the two operating models. They are not a substitute for a detailed bottom-up engineering model, but they are sufficient to frame the order of magnitude of the investment case and to support an executive decision on project direction.
+      </p>
+
+      <table class="avoid-break">
+        <thead>
+          <tr>
+            <th>Scenario</th>
+            <th class="text-right">Scenario A Annual Savings</th>
+            <th class="text-right">Scenario B Annual Savings</th>
+            <th>Main assumptions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Conservative</strong></td>
+            <td class="text-right mono">$2,500,000</td>
+            <td class="text-right mono">$2,850,000</td>
+            <td>
+              External sheet savings only for A. For B, modest additional capture from reduced handling losses, limited WIP efficiency and early maintenance burden reduction.
+            </td>
+          </tr>
+          <tr>
+            <td><strong>Base</strong></td>
+            <td class="text-right mono">$2,750,000</td>
+            <td class="text-right mono">$3,350,000</td>
+            <td>
+              A includes a midpoint of common savings. B adds partial waste capture, WIP efficiency, lower manual transport burden and moderate maintenance savings from forklift / transfer reduction.
+            </td>
+          </tr>
+          <tr>
+            <td><strong>Advanced</strong></td>
+            <td class="text-right mono">$3,000,000</td>
+            <td class="text-right mono">$3,900,000</td>
+            <td>
+              Stronger execution of the integrated model in B, including broader productivity effects, higher waste capture and more visible maintenance / handling savings.
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p class="table-note">
+        These values do not include any revenue upside associated with Triplex product development in Scenario A, nor do they include the optional AMR-based internal scrap collection extension in Scenario B.
+      </p>
+
+      <h2>9. Indicative Payback Comparison</h2>
+      <p>
+        The indicative payback view below uses the total CAPEX values of each scenario and compares them against the high-level annual savings scenarios presented above. The intention is not to present a final investment approval model, but to provide PSC with a clear executive reading of the economic trade-off between the two alternatives.
+      </p>
+
+      <table class="avoid-break">
+        <thead>
+          <tr>
+            <th>Case</th>
+            <th class="text-right">Scenario A Payback</th>
+            <th class="text-right">Scenario B Payback</th>
+            <th>Interpretation</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Conservative case</td>
+            <td class="text-right mono">3.0 years</td>
+            <td class="text-right mono">3.1 years</td>
+            <td>Scenario B remains close to Scenario A even with cautious assumptions because the additional annual savings partly offset the higher CAPEX.</td>
+          </tr>
+          <tr>
+            <td>Base case</td>
+            <td class="text-right mono">2.8 years</td>
+            <td class="text-right mono">2.6 years</td>
+            <td>Under a realistic integrated-flow assumption, Scenario B becomes economically stronger despite the higher investment envelope.</td>
+          </tr>
+          <tr>
+            <td>Advanced case</td>
+            <td class="text-right mono">2.5 years</td>
+            <td class="text-right mono">2.3 years</td>
+            <td>If PSC captures the full operating benefits of the integrated model, Scenario B offers the best long-term return profile.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="callout">
+        <p>
+          <strong>Executive interpretation:</strong> Scenario A remains financially attractive because the external sheet savings alone already support the project. Scenario B requires a higher upfront investment, but it can surpass Scenario A economically if PSC intends to operate Visalia as an integrated corrugating and converting platform rather than as a simple corrugator relocation project.
+        </p>
+      </div>
+
+      <h2>10. Strategic Comparison of the Two Models</h2>
+      <table class="avoid-break">
+        <thead>
+          <tr>
+            <th>Decision Criterion</th>
+            <th>Scenario A</th>
+            <th>Scenario B</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Restores corrugating capability in-house</td>
+            <td>Yes</td>
+            <td>Yes</td>
+          </tr>
+          <tr>
+            <td>Eliminates external sheet supply burden</td>
+            <td>Yes</td>
+            <td>Yes</td>
+          </tr>
+          <tr>
+            <td>Includes peripherals required for operation</td>
+            <td>Yes</td>
+            <td>Yes</td>
+          </tr>
+          <tr>
+            <td>Includes PSC local project responsibilities</td>
+            <td>Yes</td>
+            <td>Yes</td>
+          </tr>
+          <tr>
+            <td>Provides Triplex product optionality</td>
+            <td>Yes</td>
+            <td>No in phase 1</td>
+          </tr>
+          <tr>
+            <td>Automates corrugator reel feeding</td>
+            <td>No</td>
+            <td>Yes</td>
+          </tr>
+          <tr>
+            <td>Improves traceability of paper and reel flows</td>
+            <td>Limited</td>
+            <td>High</td>
+          </tr>
+          <tr>
+            <td>Redesigns internal WIP flow between production islands</td>
+            <td>Limited</td>
+            <td>Yes</td>
+          </tr>
+          <tr>
+            <td>Reduces dependence on forklifts for repetitive internal transport</td>
+            <td>Limited</td>
+            <td>Yes</td>
+          </tr>
+          <tr>
+            <td>Creates a platform for future automated internal scrap handling</td>
+            <td>No</td>
+            <td>Yes, as optional extension</td>
+          </tr>
+          <tr>
+            <td>Reduces maintenance burden of internal transport infrastructure</td>
+            <td>Limited</td>
+            <td>Potentially significant</td>
+          </tr>
+          <tr>
+            <td>Long-term scalability of the plant model</td>
+            <td>Medium</td>
+            <td>High</td>
+          </tr>
+          <tr>
+            <td>Implementation complexity</td>
+            <td>Medium</td>
+            <td>Medium / High</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2>11. INGECART Recommendations to PSC</h2>
+      <p>
+        Based on the technical scope, economic assumptions and operating logic described in this proposal, INGECART’s recommendations to PSC are as follows.
+      </p>
+
+      <h3>11.1 Recommendation 1 – Frame the decision as a plant model choice, not only as a machinery choice</h3>
+      <p>
+        PSC should avoid reducing the evaluation to a narrow comparison between “Triplex versus automation”. The real decision is whether the Visalia site should only recover corrugating capability, or whether this investment should be used to define the next operating model of the plant. If the site is expected to remain a strategically relevant manufacturing platform for the group, the second question becomes the more important one.
+      </p>
+
+      <h3>11.2 Recommendation 2 – Keep Scenario A as a valid fallback path</h3>
+      <p>
+        Scenario A is a solid investment path if PSC’s immediate priority is to eliminate external sheet costs and install the corrugator with the lowest conceptual complexity. It should remain on the table as a valid option, especially if PSC wishes to prioritize Triplex capability in the near term and postpone broader intralogistics transformation.
+      </p>
+
+      <h3>11.3 Recommendation 3 – Consider Scenario B as the preferred long-term industrial architecture</h3>
+      <p>
+        If PSC’s objective is to convert Visalia into a more integrated, scalable and controlled corrugated packaging plant, INGECART recommends using the corrugator relocation as the starting point of a broader industrial redesign. In that case, Scenario B should be considered the preferred long-term architecture because it captures value not only from vertical integration, but also from internal flow redesign, automated reel handling and reduced logistics friction inside the plant.
+      </p>
+
+      <h3>11.4 Recommendation 4 – Use a phased implementation logic if needed</h3>
+      <p>
+        PSC does not need to treat the project as an “all or nothing” decision. A phased roadmap can be used to align CAPEX deployment with implementation risk and operational priorities.
+      </p>
+
+      <table class="avoid-break">
+        <thead>
+          <tr>
+            <th>Recommended Phase</th>
+            <th>Suggested Scope</th>
+            <th>Objective</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Phase 1</strong></td>
+            <td>BHS corrugator relocation + peripherals + correct plant layout + INGETRANS interfaces</td>
+            <td>Secure in-house corrugating capability and prepare the operating backbone of the new flow.</td>
+          </tr>
+          <tr>
+            <td><strong>Phase 2</strong></td>
+            <td>AMR intralogistics for WIP between production islands</td>
+            <td>Reduce internal logistics friction, improve traceability and lower dependence on manual transport.</td>
+          </tr>
+          <tr>
+            <td><strong>Phase 3</strong></td>
+            <td>Optional internal scrap collection loop with AMRs + optional Triplex decision review</td>
+            <td>Expand the value of the intralogistics platform and evaluate product capability expansion once the base flow is stabilized.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2>12. Final Recommendation</h2>
+      <p>
+        The BHS relocation project is financially justified under both scenarios because the elimination of the external sheet logistics burden alone already supports the investment. The question is therefore not whether PSC should move corrugating capability into Visalia, but <strong>how far PSC wants to go in turning that move into a structural plant advantage</strong>.
+      </p>
+      <p>
+        INGECART’s view is that Scenario B represents the stronger industrial option whenever PSC intends to use Visalia as a long-term strategic plant. It requires a higher investment than Scenario A, but it creates a more robust operating platform by combining corrugating capability with reel logistics automation, better WIP control and a future-ready intralogistics architecture. Scenario A remains a valid path if PSC wishes to prioritize a simpler implementation or maintain Triplex as the immediate differentiating lever.
+      </p>
+      <div class="callout">
+        <p>
+          <strong>In summary:</strong> Scenario A is a valid corrugator-led investment. Scenario B is a plant-model investment. If PSC wants Visalia to become a more integrated, efficient and scalable corrugated packaging operation, INGECART recommends using the BHS relocation as the foundation for the broader operating model represented by Scenario B.
+        </p>
+      </div>
+
+      <div class="page-break"></div>
+
+      <h2 class="annex-title">Annex A – Detailed Commercial Breakdown</h2>
+
+      <h3>A.1 Project Machine Sale – Corrugator Relocation / Machine Section</h3>
+      <table class="avoid-break">
+        <thead>
+          <tr>
+            <th>Item</th>
+            <th class="text-right">Value (USD)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Corrugated line</td><td class="text-right mono">$950,000</td></tr>
+          <tr><td>Machine disassembly*</td><td class="text-right mono">$185,000</td></tr>
+          <tr><td>Machine installation</td><td class="text-right mono">$355,000</td></tr>
+          <tr><td>Service cranes disassembly</td><td class="text-right mono">$52,000</td></tr>
+          <tr><td>Service cranes installation</td><td class="text-right mono">$104,000</td></tr>
+          <tr><td>Project management</td><td class="text-right mono">$78,000</td></tr>
+          <tr><td>Travel costs to the factory</td><td class="text-right mono">$15,580</td></tr>
+          <tr><td>Upgrades</td><td class="text-right mono">$210,000</td></tr>
+          <tr><td>Transport and packaging</td><td class="text-right mono">$450,000</td></tr>
+          <tr><td>Packaging*</td><td class="text-right mono">$78,000</td></tr>
+          <tr><td>Extra Ship Barcelona</td><td class="text-right mono">$140,500</td></tr>
+          <tr><td>Nave Extra BCN</td><td class="text-right mono">$41,860</td></tr>
+          <tr><td>Extra mechanical parts</td><td class="text-right mono">$97,500</td></tr>
+          <tr><td>New rails – 12 meters</td><td class="text-right mono">$240,500</td></tr>
+          <tr class="total-row"><td>Total machine section cost</td><td class="text-right mono">$2,950,000</td></tr>
+        </tbody>
+      </table>
+
+      <h3>A.2 Project Triplex</h3>
+      <table class="avoid-break">
+        <thead>
+          <tr>
+            <th>Item</th>
+            <th class="text-right">Value (USD)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Total Triplex machinery package</td><td class="text-right mono">$842,800</td></tr>
+          <tr><td>Nave Extra BCN</td><td class="text-right mono">$26,910</td></tr>
+          <tr><td>Transport and packaging</td><td class="text-right mono">$143,000</td></tr>
+          <tr><td>Installation</td><td class="text-right mono">$234,000</td></tr>
+          <tr class="total-row"><td>Total Triplex project cost</td><td class="text-right mono">$1,246,710</td></tr>
+        </tbody>
+      </table>
+
+      <p class="small">
+        Main Triplex machinery references included in the commercial scope: EWR corrugator model, new gluer unit, 3-level bridge, new brake for 3-level bridge, preheater Ø900, preconditioner Ø600, 2 roll stands, 4 feeding tracks and 2 splicers.
+      </p>
+
+      <h3>A.3 Project Peripherals</h3>
+      <table class="avoid-break">
+        <thead>
+          <tr>
+            <th>Item</th>
+            <th class="text-right">Value (USD)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Kitchen adhesive Flexamix</td><td class="text-right mono">$330,000</td></tr>
+          <tr><td>Assembly and supply of glue tubes</td><td class="text-right mono">$91,000</td></tr>
+          <tr><td>Assembly and supply of steam tubes</td><td class="text-right mono">$325,000</td></tr>
+          <tr><td>Cranes rental</td><td class="text-right mono">$45,500</td></tr>
+          <tr><td>Exit conveyor corrugated</td><td class="text-right mono">$750,000</td></tr>
+          <tr class="total-row"><td>Total peripherals project cost</td><td class="text-right mono">$1,541,500</td></tr>
+        </tbody>
+      </table>
+
+      <h3>A.4 Other Project Items / PSC Local Responsibilities</h3>
+      <table class="avoid-break">
+        <thead>
+          <tr>
+            <th>Item</th>
+            <th class="text-right">Value (USD)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Boiler</td><td class="text-right mono">$500,000</td></tr>
+          <tr><td>Civil work</td><td class="text-right mono">$850,000</td></tr>
+          <tr><td>Transport</td><td class="text-right mono">$70,000</td></tr>
+          <tr><td>Packaging</td><td class="text-right mono">$60,000</td></tr>
+          <tr><td>Crane rental</td><td class="text-right mono">$120,000</td></tr>
+          <tr><td>Fees</td><td class="text-right mono">$250,000</td></tr>
+          <tr class="total-row"><td>Total PSC local project items</td><td class="text-right mono">$1,850,000</td></tr>
+        </tbody>
+      </table>
+
+      <h3>A.5 General INGECART Commercial Summary</h3>
+      <table class="avoid-break">
+        <thead>
+          <tr>
+            <th>Commercial Block</th>
+            <th class="text-right">Value (USD)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Total machine section cost</td><td class="text-right mono">$2,950,000</td></tr>
+          <tr><td>Total Triplex project</td><td class="text-right mono">$1,246,710</td></tr>
+          <tr><td>Total peripherals project</td><td class="text-right mono">$1,541,500</td></tr>
+          <tr><td>INGETRANS</td><td class="text-right mono">$1,350,000</td></tr>
+          <tr><td>Intralogistics AMR</td><td class="text-right mono">$1,125,000</td></tr>
+          <tr class="total-row"><td>Total INGECART offer value</td><td class="text-right mono">$8,213,210</td></tr>
+        </tbody>
+      </table>
+
+      <div class="page-break"></div>
+
+      <h2 class="annex-title">Annex B – High-Level Technical Scope Summary</h2>
+      <p>
+        The purpose of this annex is to translate the commercial scope into a high-level technical structure suitable for executive review. It does not replace the detailed engineering proposal, but it clarifies what each project block represents in operational terms.
+      </p>
+
+      <h3>B.1 BHS Corrugator Relocation – Machine Section</h3>
+      <p>
+        The relocation project includes the transfer of the BHS corrugator line from its current location to the PSC Visalia site and the activities required to bring the line back into productive operation. At high level, the scope comprises the sale of the corrugated line itself, disassembly activities, transport and packaging, installation and reassembly, crane services, project management, travel costs, selected upgrades and additional mechanical and infrastructure elements such as the new rail section.
+      </p>
+      <p>
+        From a technical standpoint, this block should be understood as the <strong>industrial core of the project</strong>. It is the package that enables PSC to recover corrugating capability in-house and serves as the common base of both investment scenarios described in this proposal.
+      </p>
+
+      <h3>B.2 Triplex Project</h3>
+      <p>
+        The Triplex project adds a dedicated machinery package intended to expand the operating capability of the corrugator. The commercial scope provided includes a Triplex-related equipment set comprising an EWR corrugator model package, a new gluer unit, a 3-level bridge, a new brake for the 3-level bridge, a preheater, a preconditioner, two roll stands, four feeding tracks and two splicers, together with transport, packaging and installation.
+      </p>
+      <p>
+        In strategic terms, the Triplex project should be read as a <strong>product capability extension</strong>. It is not required to internalize corrugating capacity, but it may create future commercial and product flexibility if PSC wishes to pursue additional structures or market applications.
+      </p>
+
+      <h3>B.3 Peripherals Project</h3>
+      <p>
+        The peripherals package contains the supporting systems required to operate the corrugator in the new plant environment. The main items currently included are the Flexamix adhesive kitchen, glue tubing supply and assembly, steam tube supply and assembly, crane rental support and the corrugated exit conveyor.
+      </p>
+      <p>
+        These elements should be treated as <strong>mandatory enabling infrastructure</strong> rather than optional add-ons, because they provide the process utilities and transfer interfaces required for the corrugator to function under normal production conditions.
+      </p>
+
+      <h3>B.4 INGETRANS Automated Reel Feeding</h3>
+      <p>
+        The INGETRANS block is designed to automate reel supply to the corrugator and to structure the movement of reels into and out of the corrugator process in a safer and more controlled way. In operational terms, this system reduces manual intervention at a critical production interface, improves material traceability and supports continuity of supply to the corrugator.
+      </p>
+      <p>
+        In the context of Scenario B, INGETRANS is not merely an automation accessory. It is the <strong>first layer of internal flow redesign</strong>, because it changes the way the corrugator is fed, monitored and integrated into the rest of the plant.
+      </p>
+
+      <h3>B.5 AMR Intralogistics for WIP</h3>
+      <p>
+        The AMR intralogistics block is intended to manage internal movement of WIP between production islands and to create a more structured material flow between corrugating and converting areas. Its role is to reduce repetitive forklift-based transport, lower handling friction and improve the visibility of material status across the plant.
+      </p>
+      <p>
+        The proposed architecture can also serve as the basis for a future extension in which the same AMR fleet manages internal waste movements using dedicated metallic cages. This extension is not valued in the current base case, but it would allow PSC to use a single intralogistics layer to manage both productive WIP flows and selected non-productive material streams such as scrap collection.
+      </p>
+
+      <h3>B.6 PSC Local Responsibilities</h3>
+      <p>
+        The project also requires a series of local items under PSC responsibility, including boiler provision, civil works, local transport support, packaging-related activities, crane rental and fees. These items are essential for project execution even though they are not part of the INGECART machine supply itself, and they must be included in the full investment envelope of either scenario.
+      </p>
+
+      <h2 class="annex-title">Annex C – Proposal Notes and Commercial Assumptions</h2>
+      <ul>
+        <li>All financial values shown in this document are expressed in USD.</li>
+        <li>This proposal is intended as an executive and commercial business case; it is not a final engineering contract document.</li>
+        <li>Annual savings scenarios are indicative and should be validated with plant operating data, logistics baselines, labor assumptions and production mix before final investment approval.</li>
+        <li>Triplex upside is not included as bankable annual ROI in the base model because no validated commercial revenue case has been provided at this stage.</li>
+        <li>The optional AMR-based internal scrap collection loop is described as a future operating extension and is not valued in the base annual savings scenario.</li>
+        <li>Maintenance savings associated with reduced forklift / transfer / conveyor dependence are treated as a credible upside factor in Scenario B but should be validated during detailed engineering.</li>
+      </ul>
+    </main>
+
+    <footer class="footer-note">
+      <p>
+        Prepared by INGECART for Pacific Southwest Container – OFF-2026-110. This document is intended for executive review and proposal discussion purposes. Final technical scope, project responsibilities, implementation sequence and investment approval assumptions should be confirmed during the detailed engineering and commercial review stage.
+      </p>
+    </footer>
+  </div>
+</body>
+</html>
