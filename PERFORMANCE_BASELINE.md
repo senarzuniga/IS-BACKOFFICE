@@ -1,6 +1,6 @@
 # Performance Baseline
 
-- Memory lookup latency (avg): 1.062 ms
-- Local search latency (avg): 1.281 ms
-- Orchestrator execution time (avg): 2.078 ms
-- SQLite search (avg): 1.198 ms
+- Memory lookup latency (avg): 7.045 ms
+- Local search latency (avg): 10.849 ms
+- Orchestrator execution time (avg): 20.959 ms
+- SQLite search (avg): 17.032 ms

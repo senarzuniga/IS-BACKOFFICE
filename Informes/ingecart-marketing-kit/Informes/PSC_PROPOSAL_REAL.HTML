@@ -1,48 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>INGECART – PSC VISALIA | BHS Corrugator Relocation Business Case</title>
-  <meta name="description" content="PSC Visalia Executive Business Case – BHS Corrugator Relocation vs. future automation roadmap with INGETRANS, TRIPLEX and AMR intralogistics.">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>PSC VISALIA EXECUTIVE BUSINESS CASE — OFF-2026-110</title>
+  <meta name="description" content="PSC Visalia Executive Business Case – BHS Corrugator Relocation vs. Integrated Industrial Redesign with INGETRANS and Future Automation Phases" />
   <style>
+    :root{
+      --ink:#0f172a;
+      --muted:#475569;
+      --soft:#64748b;
+      --line:#e2e8f0;
+      --bg:#f8fafc;
+      --panel:#ffffff;
+      --accent:#f97316;
+      --accent-dark:#ea580c;
+      --accent-soft:#fff7ed;
+      --green:#166534;
+      --green-soft:#f0fdf4;
+      --blue-soft:#eff6ff;
+      --amber-soft:#fffbeb;
+      --red-soft:#fef2f2;
+    }
+
     *{box-sizing:border-box;margin:0;padding:0}
     html{scroll-behavior:smooth}
     body{
       font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
-      background:#f8fafc;
-      color:#1e293b;
-      line-height:1.6;
-      font-size:15px;
+      color:var(--ink);
+      background:var(--bg);
+      line-height:1.55;
+      -webkit-print-color-adjust:exact;
+      print-color-adjust:exact;
     }
+
     .site-shell{
       max-width:1180px;
       margin:0 auto;
       background:#fff;
       box-shadow:0 0 30px rgba(0,0,0,.06);
-      min-height:100vh;
     }
+
     .site-header{
-      padding:22px 34px 18px;
-      border-bottom:1px solid #e2e8f0;
-    }
-    .header-top{
       display:flex;
+      align-items:center;
       justify-content:space-between;
-      align-items:flex-start;
-      gap:20px;
-      flex-wrap:wrap;
+      gap:1rem;
+      padding:1rem 1.25rem;
+      border-bottom:1px solid var(--line);
     }
-    .brand-block{
+
+    .brand-lockup{
       display:flex;
-      gap:14px;
-      align-items:flex-start;
+      align-items:center;
+      gap:.9rem;
+      text-decoration:none;
+      color:var(--ink);
     }
+
     .brand-logo{
-      width:54px;
-      height:54px;
+      width:54px;height:54px;
       border-radius:10px;
-      background:#0f172a;
+      background:var(--ink);
       color:#fff;
       display:flex;
       align-items:center;
@@ -52,870 +71,1162 @@
       letter-spacing:.03em;
       flex:0 0 auto;
     }
+
     .eyebrow{
       font-size:.72rem;
-      text-transform:uppercase;
       letter-spacing:.08em;
-      color:#64748b;
-      margin-bottom:4px;
+      text-transform:uppercase;
+      color:var(--soft);
+      margin-bottom:.2rem;
     }
+
     .brand-name{
-      font-size:1.15rem;
-      font-weight:800;
-      color:#0f172a;
-      line-height:1.25;
-    }
-    .doc-ref{
-      text-align:right;
-      min-width:260px;
-    }
-    .doc-ref .ref-label{
-      font-size:.72rem;
-      text-transform:uppercase;
-      letter-spacing:.08em;
-      color:#64748b;
-      margin-bottom:4px;
-    }
-    .doc-ref .ref-value{
       font-size:1.05rem;
       font-weight:800;
-      color:#0f172a;
-    }
-    .doc-ref .ref-sub{
-      font-size:.92rem;
-      color:#475569;
-      margin-top:4px;
+      color:var(--ink);
+      line-height:1.25;
     }
 
-    .main{
-      padding:28px 34px 46px;
+    .doc-ref{
+      text-align:right;
+      font-size:.86rem;
+      color:var(--soft);
+      line-height:1.4;
+      font-weight:600;
     }
 
-    .cover-title{
-      margin-bottom:24px;
-      padding-bottom:18px;
-      border-bottom:2px solid #e2e8f0;
+    main{padding:0}
+    .panel{padding:1.5rem 1.5rem 2.5rem}
+
+    .hero{
+      border:1px solid var(--line);
+      border-radius:16px;
+      background:linear-gradient(135deg,#f8fafc 0%, #ffffff 50%, #fff7ed 100%);
+      padding:2rem 2rem 1.8rem;
+      margin-bottom:1.5rem;
     }
+
+    .hero-top{
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap:1.5rem;
+      flex-wrap:wrap;
+    }
+
+    .hero-title-wrap{max-width:860px}
+    .hero-kicker{
+      display:inline-block;
+      background:var(--accent-soft);
+      color:var(--accent-dark);
+      border:1px solid #fed7aa;
+      border-radius:999px;
+      padding:.38rem .8rem;
+      font-size:.8rem;
+      font-weight:700;
+      margin-bottom:1rem;
+    }
+
     h1{
       font-size:2.05rem;
       line-height:1.15;
       letter-spacing:-.02em;
-      color:#0f172a;
-      margin-bottom:10px;
-    }
-    .subtitle{
-      font-size:1.18rem;
-      color:#334155;
-      font-weight:500;
-      max-width:1000px;
+      margin-bottom:.65rem;
     }
 
-    .meta-grid{
+    .hero-subtitle{
+      font-size:1.08rem;
+      color:var(--muted);
+      max-width:920px;
+    }
+
+    .hero-grid{
       display:grid;
-      grid-template-columns:repeat(4,1fr);
-      gap:14px;
-      margin:18px 0 28px;
+      grid-template-columns:repeat(4,minmax(0,1fr));
+      gap:1rem;
+      margin-top:1.4rem;
     }
-    .meta-card{
-      border:1px solid #e2e8f0;
-      border-radius:12px;
-      padding:14px 16px;
-      background:#f8fafc;
+
+    .hero-stat{
+      background:#fff;
+      border:1px solid var(--line);
+      border-radius:14px;
+      padding:1rem 1rem .95rem;
     }
-    .meta-card .label{
-      font-size:.72rem;
+
+    .hero-stat .label{
+      font-size:.78rem;
       text-transform:uppercase;
-      letter-spacing:.08em;
-      color:#64748b;
-      margin-bottom:6px;
-    }
-    .meta-card .value{
-      font-size:1rem;
+      letter-spacing:.06em;
+      color:var(--soft);
+      margin-bottom:.35rem;
       font-weight:700;
-      color:#0f172a;
+    }
+
+    .hero-stat .value{
+      font-size:1.3rem;
+      font-weight:800;
+      color:var(--ink);
+      line-height:1.15;
+      margin-bottom:.2rem;
+    }
+
+    .hero-stat .sub{
+      font-size:.88rem;
+      color:var(--muted);
+    }
+
+    .toc{
+      display:flex;
+      flex-wrap:wrap;
+      gap:.65rem;
+      margin-top:1.2rem;
+    }
+
+    .toc a{
+      text-decoration:none;
+      color:var(--ink);
+      background:#fff;
+      border:1px solid var(--line);
+      border-radius:999px;
+      padding:.48rem .85rem;
+      font-size:.9rem;
+      font-weight:600;
+    }
+
+    .toc a:hover{border-color:#cbd5e1;background:#f8fafc}
+
+    section.content-section{
+      margin-top:1.7rem;
+      padding-top:.2rem;
     }
 
     h2{
       font-size:1.45rem;
-      font-weight:800;
-      color:#0f172a;
-      margin:34px 0 14px;
-      padding-bottom:8px;
-      border-bottom:2px solid #e2e8f0;
+      margin:0 0 .8rem;
+      padding-bottom:.35rem;
+      border-bottom:2px solid var(--line);
       letter-spacing:-.01em;
     }
+
     h3{
-      font-size:1.08rem;
-      font-weight:800;
-      color:#0f172a;
-      margin:22px 0 10px;
+      font-size:1.1rem;
+      margin:1.2rem 0 .55rem;
     }
-    p{margin:0 0 12px}
-    ul{margin:8px 0 14px 22px}
-    li{margin:0 0 6px}
-    .muted{color:#64748b}
-    .small{font-size:.92rem}
-    .strong{font-weight:800}
+
+    h4{
+      font-size:1rem;
+      margin:1rem 0 .45rem;
+      color:var(--ink);
+    }
+
+    p{margin:.55rem 0;color:var(--ink)}
+    .muted{color:var(--muted)}
+    .small{font-size:.92rem;color:var(--muted)}
     .note{
+      font-size:.9rem;
+      color:var(--muted);
       background:#f8fafc;
-      border:1px solid #e2e8f0;
-      border-left:4px solid #0f172a;
+      border-left:4px solid #cbd5e1;
+      padding:.9rem 1rem;
       border-radius:10px;
-      padding:14px 16px;
-      margin:14px 0 18px;
+      margin:.9rem 0 1rem;
     }
-    .highlight{
-      background:#fff7ed;
-      border:1px solid #fed7aa;
-      border-left:4px solid #ea580c;
-      border-radius:10px;
-      padding:14px 16px;
-      margin:14px 0 18px;
+
+    .lead{
+      font-size:1.03rem;
+      color:var(--ink);
     }
-    .section-block{
-      margin-top:10px;
+
+    ul{
+      padding-left:1.3rem;
+      margin:.5rem 0 1rem;
     }
-    .kpi-grid{
+    li{margin:.32rem 0}
+
+    .grid-2{
       display:grid;
-      grid-template-columns:repeat(4,1fr);
-      gap:14px;
-      margin:14px 0 18px;
+      grid-template-columns:1.2fr .8fr;
+      gap:1.25rem;
+      align-items:start;
     }
-    .kpi-card{
-      border:1px solid #e2e8f0;
-      border-radius:12px;
-      padding:16px;
+
+    .grid-3{
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:1rem;
+    }
+
+    .card{
       background:#fff;
+      border:1px solid var(--line);
+      border-radius:14px;
+      padding:1rem 1rem 1.05rem;
     }
-    .kpi-card .kpi-label{
-      font-size:.75rem;
-      text-transform:uppercase;
-      letter-spacing:.08em;
-      color:#64748b;
-      margin-bottom:8px;
+
+    .card.soft-blue{background:var(--blue-soft)}
+    .card.soft-green{background:var(--green-soft)}
+    .card.soft-amber{background:var(--amber-soft)}
+    .card.soft-red{background:var(--red-soft)}
+    .card.soft-orange{background:var(--accent-soft)}
+
+    .callout{
+      border:1px solid #fdba74;
+      background:var(--accent-soft);
+      border-radius:14px;
+      padding:1rem 1rem 1.05rem;
+      margin:1rem 0 1.1rem;
     }
-    .kpi-card .kpi-value{
-      font-size:1.32rem;
-      font-weight:800;
-      color:#0f172a;
-      line-height:1.15;
-    }
-    .kpi-card .kpi-sub{
-      font-size:.92rem;
-      color:#475569;
-      margin-top:6px;
-    }
+
+    .callout h3,.callout h4{margin-top:0}
 
     table.results{
       width:100%;
       border-collapse:collapse;
-      margin:12px 0 20px;
+      margin:.75rem 0 1.2rem;
       font-size:.95rem;
     }
-    table.results th, table.results td{
-      border:1px solid #e2e8f0;
+
+    table.results th,
+    table.results td{
+      border:1px solid var(--line);
       padding:10px 12px;
       vertical-align:top;
     }
+
     table.results th{
-      background:#f1f5f9;
-      color:#0f172a;
-      font-weight:800;
+      background:#f8fafc;
       text-align:left;
+      font-weight:700;
     }
-    table.results td{
-      background:#fff;
-    }
+
     table.results tr:nth-child(even) td{
-      background:#fafcff;
+      background:#fcfdff;
     }
+
     .text-right{text-align:right}
     .text-center{text-align:center}
-    .total-row td{
-      font-weight:800;
-      background:#eef2ff !important;
-    }
-    .grand-total-row td{
-      font-weight:800;
-      background:#e2e8f0 !important;
-      color:#0f172a;
-    }
-    .scenario-row td:first-child{
-      font-weight:800;
-    }
+    .nowrap{white-space:nowrap}
 
-    .scenario-box{
-      border:1px solid #e2e8f0;
-      border-radius:14px;
-      padding:18px 18px 16px;
-      margin:14px 0;
-      background:#fff;
-    }
-    .scenario-box.recommended{
-      border:2px solid #0f172a;
-      background:#f8fafc;
-    }
-    .scenario-title{
-      font-size:1.08rem;
-      font-weight:800;
-      color:#0f172a;
-      margin-bottom:8px;
-    }
-    .scenario-price{
-      font-size:1.35rem;
-      font-weight:800;
-      color:#0f172a;
-      margin-bottom:10px;
-    }
     .pill{
       display:inline-block;
-      font-size:.75rem;
-      text-transform:uppercase;
-      letter-spacing:.08em;
-      padding:5px 10px;
+      padding:.24rem .55rem;
       border-radius:999px;
-      background:#0f172a;
-      color:#fff;
-      margin-left:8px;
-      vertical-align:middle;
+      font-size:.8rem;
+      font-weight:700;
+      line-height:1;
+      white-space:nowrap;
     }
+    .pill.green{background:#dcfce7;color:#166534}
+    .pill.orange{background:#ffedd5;color:#9a3412}
+    .pill.blue{background:#dbeafe;color:#1d4ed8}
+    .pill.gray{background:#e2e8f0;color:#334155}
 
-    .two-col{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:20px;
-    }
-
-    .annex-card{
-      border:1px solid #e2e8f0;
-      border-radius:12px;
-      padding:16px;
+    .scenario-box{
+      border:1px solid var(--line);
+      border-radius:16px;
+      padding:1rem 1rem 1.1rem;
       background:#fff;
-      margin:14px 0 18px;
+      margin-bottom:1rem;
     }
+
+    .scenario-box h3{
+      margin-top:0;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:.75rem;
+      flex-wrap:wrap;
+    }
+
+    .scenario-tag{
+      display:inline-block;
+      font-size:.78rem;
+      font-weight:800;
+      text-transform:uppercase;
+      letter-spacing:.05em;
+      padding:.35rem .6rem;
+      border-radius:999px;
+      background:#f1f5f9;
+      color:#334155;
+    }
+
+    .recommendation-box{
+      border:2px solid #fdba74;
+      background:linear-gradient(180deg,#fff7ed 0%, #ffffff 100%);
+      border-radius:16px;
+      padding:1.2rem 1.2rem 1.25rem;
+      margin-top:1rem;
+    }
+
+    .recommendation-box h3{
+      margin-top:0;
+      color:#9a3412;
+    }
+
+    .kpi-grid{
+      display:grid;
+      grid-template-columns:repeat(4,minmax(0,1fr));
+      gap:1rem;
+      margin-top:.7rem;
+      margin-bottom:1rem;
+    }
+
+    .kpi{
+      border:1px solid var(--line);
+      border-radius:14px;
+      padding:.95rem;
+      background:#fff;
+    }
+
+    .kpi .k{
+      font-size:.78rem;
+      color:var(--soft);
+      text-transform:uppercase;
+      letter-spacing:.06em;
+      font-weight:700;
+      margin-bottom:.35rem;
+    }
+
+    .kpi .v{
+      font-size:1.28rem;
+      font-weight:800;
+      line-height:1.15;
+      margin-bottom:.25rem;
+    }
+
+    .kpi .s{
+      font-size:.88rem;
+      color:var(--muted);
+    }
+
+    .annex-table td:first-child{width:72%}
+    .annex-table td:last-child{width:28%}
 
     .site-footer{
-      border-top:1px solid #e2e8f0;
-      padding:18px 34px 26px;
-      color:#64748b;
+      border-top:1px solid var(--line);
+      padding:1.25rem 1.5rem 1.6rem;
+      text-align:center;
+      color:var(--soft);
       font-size:.9rem;
     }
 
     .page-break{
-      page-break-before:always;
       break-before:page;
-    }
-    .avoid-break{
-      page-break-inside:avoid;
-      break-inside:avoid;
+      page-break-before:always;
     }
 
-    @media (max-width:960px){
-      .meta-grid,.kpi-grid,.two-col{grid-template-columns:1fr 1fr}
+    @media (max-width:980px){
+      .hero-grid,.kpi-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+      .grid-2,.grid-3{grid-template-columns:1fr}
       .doc-ref{text-align:left}
     }
-    @media (max-width:720px){
-      .main,.site-header,.site-footer{padding-left:18px;padding-right:18px}
-      .meta-grid,.kpi-grid,.two-col{grid-template-columns:1fr}
-      h1{font-size:1.7rem}
-      .subtitle{font-size:1.05rem}
+
+    @media (max-width:680px){
+      .site-header{flex-direction:column;align-items:flex-start}
+      .hero{padding:1.35rem}
+      h1{font-size:1.65rem}
+      .hero-grid,.kpi-grid{grid-template-columns:1fr}
+      .panel{padding:1rem}
+      table.results{font-size:.9rem}
     }
 
     @media print{
       body{background:#fff}
       .site-shell{max-width:none;box-shadow:none}
-      .site-header{padding:18mm 14mm 8mm}
-      .main{padding:8mm 14mm 12mm}
-      .site-footer{padding:6mm 14mm 10mm}
-      h1{font-size:22pt}
-      h2{font-size:15pt}
-      h3{font-size:11.5pt}
-      p,li,td,th{font-size:10.5pt}
-      .meta-card,.kpi-card,.scenario-box,.annex-card,.note,.highlight{
-        break-inside:avoid;
-        page-break-inside:avoid;
-      }
-      table.results{
-        break-inside:auto;
-      }
-      table.results tr{
-        break-inside:avoid;
-        page-break-inside:avoid;
-      }
+      .site-header{padding:12mm 12mm 6mm}
+      .panel{padding:8mm 12mm 10mm}
+      .site-footer{padding:6mm 12mm 10mm}
       a{color:inherit;text-decoration:none}
+      .scenario-box,.card,.callout,.recommendation-box,.hero-stat,.kpi{
+        break-inside:avoid;
+        page-break-inside:avoid;
+      }
+      table, tr, td, th{break-inside:avoid;page-break-inside:avoid}
+      h2,h3{break-after:avoid-page}
     }
   </style>
 </head>
 <body>
   <div class="site-shell">
     <header class="site-header">
-      <div class="header-top">
-        <div class="brand-block">
-          <div class="brand-logo">IN</div>
-          <div>
-            <div class="eyebrow">INGECART – PACIFIC SOUTHWEST CONTAINER</div>
-            <div class="brand-name">BHS Corrugator Line Relocation – OFF-2026-110</div>
-          </div>
+      <div class="brand-lockup" aria-label="INGECART PSC Proposal">
+        <div class="brand-logo">IG</div>
+        <div>
+          <p class="eyebrow">INGECART · PACIFIC SOUTHWEST CONTAINER</p>
+          <div class="brand-name">BHS Corrugator Line Relocation Proposal — OFF-2026-110</div>
         </div>
-        <div class="doc-ref">
-          <div class="ref-label">Commercial proposal / Executive business case</div>
-          <div class="ref-value">PSC VISALIA</div>
-          <div class="ref-sub">Prepared by INGECART</div>
-        </div>
+      </div>
+      <div class="doc-ref">
+        PSC VISALIA EXECUTIVE BUSINESS CASE<br>
+        Relocation, Industrial Integration & Future Automation Roadmap
       </div>
     </header>
 
-    <main class="main">
-      <section class="cover-title avoid-break">
-        <h1>PSC VISALIA EXECUTIVE BUSINESS CASE</h1>
-        <p class="subtitle">
-          BHS Corrugator Relocation vs. Integrated Industrial Redesign Roadmap with INGETRANS, TRIPLEX and AMR Intralogistics
-        </p>
-      </section>
+    <main>
+      <section class="panel">
+        <div class="hero">
+          <div class="hero-top">
+            <div class="hero-title-wrap">
+              <span class="hero-kicker">Executive proposal for print / PDF issue</span>
+              <h1>PSC VISALIA EXECUTIVE BUSINESS CASE</h1>
+              <p class="hero-subtitle">
+                BHS Corrugator Relocation vs. Integrated Industrial Redesign with INGETRANS and Future Automation Phases.
+                This proposal consolidates the latest validated commercial structure for the PSC Visalia project and translates
+                it into an executive business case focused on <strong>time-to-market, operational continuity, industrial integration quality,
+                and future productivity upside</strong>.
+              </p>
+            </div>
+          </div>
 
-      <section class="meta-grid avoid-break">
-        <div class="meta-card">
-          <div class="label">Customer</div>
-          <div class="value">Pacific Southwest Container – Visalia</div>
-        </div>
-        <div class="meta-card">
-          <div class="label">Project reference</div>
-          <div class="value">OFF-2026-110</div>
-        </div>
-        <div class="meta-card">
-          <div class="label">Core objective</div>
-          <div class="value">Fast industrial restart and maximum time-to-market</div>
-        </div>
-        <div class="meta-card">
-          <div class="label">Proposal logic</div>
-          <div class="value">Phased implementation with future automation roadmap</div>
-        </div>
-      </section>
+          <div class="hero-grid">
+            <div class="hero-stat">
+              <div class="label">Base delivery strategy</div>
+              <div class="value">Scenario A</div>
+              <div class="sub">Relocation + Peripherals + PSC associated costs + INGETRANS + logistics & import allowances</div>
+            </div>
+            <div class="hero-stat">
+              <div class="label">Validated Scenario A estimate</div>
+              <div class="value">$7.194M</div>
+              <div class="sub">Latest client-facing reference basis provided by INGECART</div>
+            </div>
+            <div class="hero-stat">
+              <div class="label">Preferred industrial path</div>
+              <div class="value">Scenario B</div>
+              <div class="sub">Scenario A + Triplex productivity package as the strongest medium-term performance route</div>
+            </div>
+            <div class="hero-stat">
+              <div class="label">Future automation phase</div>
+              <div class="value">Scenario C</div>
+              <div class="sub">Scenario A + AMR intralogistics as the plant-wide efficiency backbone</div>
+            </div>
+          </div>
 
-      <section>
-        <h2>1. Executive Summary</h2>
-        <p>
-          This document presents INGECART’s final commercial and operational proposal for the relocation and restart of the PSC Visalia corrugator line. The proposal has been structured to balance three priorities: <strong>time-to-market</strong>, <strong>technical reliability at start-up</strong>, and <strong>a realistic automation roadmap for future productivity gains</strong>.
-        </p>
-        <p>
-          After reviewing the relocation scope, confirming the actual source equipment base, reassessing site execution needs, and consolidating the local cost framework required at destination, the project has been reorganized into a phased structure. This structure separates the <strong>core relocation and start-up scope</strong> from the <strong>future productivity and intralogistics enhancement phases</strong>.
-        </p>
-        <p>
-          Under this approach, the immediate priority is to deliver a plant capable of reaching production as early and as safely as possible. Additional modules such as <strong>TRIPLEX process equipment</strong> and <strong>AMR intralogistics for WIP handling and internal material flow</strong> remain highly valuable, but can be deployed in a second stage with lower interference on production, once the relocated corrugator line is fully stabilized.
-        </p>
+          <div class="toc">
+            <a href="#executive">Executive Summary</a>
+            <a href="#rationale">Project Rationale</a>
+            <a href="#scenarios">Scenario Structure</a>
+            <a href="#financial">Financial Summary</a>
+            <a href="#recommendation">INGECART Recommendation</a>
+            <a href="#annex">Annex</a>
+          </div>
+        </div>
 
-        <div class="highlight">
-          <p class="strong">INGECART recommendation to PSC:</p>
+        <section class="content-section" id="executive">
+          <h2>1. Executive Summary</h2>
+
+          <p class="lead">
+            The PSC Visalia project is not only a machine relocation exercise. It is a <strong>production continuity and time-to-market project</strong>
+            whose real objective is to bring the future plant to full operating condition as fast and as safely as possible, while preserving the option
+            to unlock additional productivity and automation gains in subsequent phases.
+          </p>
+
           <p>
-            <strong>Proceed with Scenario B</strong>: the base relocation project plus <strong>INGETRANS automated reel logistics</strong>. This is the best balance between fast start-up, improved corrugator continuity, safer reel feeding, reduced forklift dependency, and a strong foundation for future plant automation.
-          </p>
-          <p class="small muted" style="margin-bottom:0">
-            TRIPLEX and AMR intralogistics remain recommended future phases because they reinforce long-term efficiency, but they are not strictly required to achieve the first industrial milestone: <strong>a fast and stable return to production capacity</strong>.
-          </p>
-        </div>
-      </section>
-
-      <section>
-        <h2>2. Why the Project Value Has Been Updated</h2>
-        <p>
-          The final project values differ from the early working versions of the offer because the project definition has matured as technical and commercial assumptions were validated. This is not a change in commercial intent; it is the result of a more accurate understanding of the real execution model required to relocate, install and restart the asset under PSC conditions.
-        </p>
-
-        <h3>2.1 Confirmation of the actual relocation baseline</h3>
-        <p>
-          Initial internal references were partly benchmarked against a previous BHS relocation package executed in Spain. During the latest review phase, it was confirmed that the correct relocation baseline for this proposal is the <strong>original machine configuration located in Turkey</strong>. That confirmation affects the effective relocation scope, logistics configuration, auxiliary services and the real site effort required to deliver the project.
-        </p>
-
-        <h3>2.2 Inclusion of on-site project leadership as a dedicated cost item</h3>
-        <p>
-          The final offer explicitly includes <strong>8 months of On-Site Project Management (PMOS)</strong> within the machine relocation package. This resource is critical to coordinate dismantling interfaces, transport arrival sequencing, installation fronts, local contractors, start-up readiness and risk control during execution. It has therefore been separated and valued as a visible industrial delivery component rather than treated as an implicit overhead.
-        </p>
-
-        <h3>2.3 Consolidation of local destination costs and import exposure</h3>
-        <p>
-          The PSC local cost block has also been updated to reflect the destination reality of the project, including boiler, civil work, local transport, packaging support, crane rental and import-related fees. In particular, import duties and customs-related fees have been recalculated based on the project architecture and on the proportion of equipment value assumed to be subject to customs release.
-        </p>
-
-        <h3>2.4 Separation between “time-to-market” scope and future optimization scope</h3>
-        <p>
-          The proposal now clearly distinguishes between:
-        </p>
-        <ul>
-          <li><strong>Immediate start-up scope</strong>: relocation, installation, commissioning and the equipment required to place the plant back into production as quickly as possible.</li>
-          <li><strong>Future optimization scope</strong>: TRIPLEX process enhancements and AMR intralogistics, which are highly relevant for long-term efficiency but can be implemented later with lower disruption once the plant is operational.</li>
-        </ul>
-
-        <div class="note">
-          <p class="strong">Executive reading of the change:</p>
-          <p style="margin-bottom:0">
-            The updated commercial structure should be understood as the result of project definition maturity. As the origin machine, destination execution model, site management needs, and customs exposure were clarified, the proposal was refined to reflect the real industrial effort required for a successful relocation and start-up.
-          </p>
-        </div>
-      </section>
-
-      <section>
-        <h2>3. Project Structure and Scenario Logic</h2>
-        <p>
-          INGECART has structured the project in four decision scenarios. The scenarios are not alternative engineering philosophies; they are a <strong>phased investment roadmap</strong> built on the same industrial base.
-        </p>
-
-        <table class="results">
-          <thead>
-            <tr>
-              <th style="width:16%">Scenario</th>
-              <th style="width:28%">Scope</th>
-              <th>Strategic role</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr class="scenario-row">
-              <td>Scenario A</td>
-              <td>Base relocation package + peripherals + PSC local items</td>
-              <td>Fastest path to relocate, install and restart the corrugator line.</td>
-            </tr>
-            <tr class="scenario-row">
-              <td>Scenario B</td>
-              <td>Scenario A + INGETRANS automated reel logistics</td>
-              <td>Recommended solution: improves corrugator continuity, reel availability, safety and logistics stability from day one.</td>
-            </tr>
-            <tr class="scenario-row">
-              <td>Scenario C</td>
-              <td>Scenario A + TRIPLEX package</td>
-              <td>Future process enhancement phase focused on machine-side performance and process capability expansion.</td>
-            </tr>
-            <tr class="scenario-row">
-              <td>Scenario D</td>
-              <td>Scenario A + AMR intralogistics</td>
-              <td>Future intralogistics phase focused on WIP flow, internal material movement and the long-term digitalization of plant logistics.</td>
-            </tr>
-          </tbody>
-        </table>
-      </section>
-
-      <section>
-        <h2>4. Financial Overview by Scenario</h2>
-        <p>
-          The table below consolidates the current project structure. “Adjusted PSC Local Items” reflect the local cost block plus the import-fee adjustment applicable to the additional package included in each scenario. For Scenarios B, C and D, the additional fee has been calculated as <strong>15% over 65% of the added package sales value</strong>.
-        </p>
-
-        <table class="results">
-          <thead>
-            <tr>
-              <th>Cost Block</th>
-              <th class="text-right">Scenario A</th>
-              <th class="text-right">Scenario B</th>
-              <th class="text-right">Scenario C</th>
-              <th class="text-right">Scenario D</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Machine Relocation</td>
-              <td class="text-right">$3,204,940.00</td>
-              <td class="text-right">$3,204,940.00</td>
-              <td class="text-right">$3,204,940.00</td>
-              <td class="text-right">$3,204,940.00</td>
-            </tr>
-            <tr>
-              <td>Peripherals</td>
-              <td class="text-right">$1,749,531.50</td>
-              <td class="text-right">$1,749,531.50</td>
-              <td class="text-right">$1,749,531.50</td>
-              <td class="text-right">$1,749,531.50</td>
-            </tr>
-            <tr>
-              <td>INGETRANS</td>
-              <td class="text-right">—</td>
-              <td class="text-right">$1,350,000.00</td>
-              <td class="text-right">—</td>
-              <td class="text-right">—</td>
-            </tr>
-            <tr>
-              <td>TRIPLEX</td>
-              <td class="text-right">—</td>
-              <td class="text-right">—</td>
-              <td class="text-right">$1,322,759.31</td>
-              <td class="text-right">—</td>
-            </tr>
-            <tr>
-              <td>AMR Intralogistics</td>
-              <td class="text-right">—</td>
-              <td class="text-right">—</td>
-              <td class="text-right">—</td>
-              <td class="text-right">$1,125,000.00</td>
-            </tr>
-            <tr>
-              <td>Adjusted PSC Local Items</td>
-              <td class="text-right">$2,393,000.00</td>
-              <td class="text-right">$2,524,625.00</td>
-              <td class="text-right">$2,521,469.03</td>
-              <td class="text-right">$2,502,687.50</td>
-            </tr>
-            <tr class="grand-total-row">
-              <td>Total Estimated Project Value</td>
-              <td class="text-right">$7,347,471.50</td>
-              <td class="text-right">$8,829,096.50</td>
-              <td class="text-right">$8,798,699.84</td>
-              <td class="text-right">$8,582,159.00</td>
-            </tr>
-          </tbody>
-        </table>
-
-        <div class="note">
-          <p class="strong">Fee adjustment logic used for Scenarios B, C and D</p>
-          <ul style="margin-bottom:0">
-            <li><strong>Scenario B – INGETRANS:</strong> $1,350,000 × 65% × 15% = <strong>$131,625.00</strong></li>
-            <li><strong>Scenario C – TRIPLEX:</strong> $1,322,759.31 × 65% × 15% = <strong>$128,469.03</strong></li>
-            <li><strong>Scenario D – AMR:</strong> $1,125,000 × 65% × 15% = <strong>$109,687.50</strong></li>
-          </ul>
-        </div>
-      </section>
-
-      <section>
-        <h2>5. INGECART Recommendation to PSC</h2>
-
-        <div class="scenario-box recommended avoid-break">
-          <div class="scenario-title">Scenario B – Base Relocation + INGETRANS <span class="pill">Recommended</span></div>
-          <div class="scenario-price">$8,829,096.50 total estimated project value</div>
-          <p>
-            INGECART recommends Scenario B because it delivers the best balance between <strong>speed of implementation</strong>, <strong>start-up reliability</strong>, and <strong>early productivity protection</strong>. It preserves the primary objective of returning the plant to production as quickly as possible, while adding the automation block that most directly stabilizes corrugator feeding and logistics continuity.
+            Following the latest engineering and commercial review, the project structure has been reorganised into a clearer decision framework with
+            three purposes:
           </p>
           <ul>
-            <li>It protects the corrugator with a more reliable and synchronized reel feeding model from the start.</li>
-            <li>It reduces forklift exposure in the most critical logistics area of the plant.</li>
-            <li>It lowers logistics-related production interruptions and improves reel availability at the point of use.</li>
-            <li>It creates a cleaner future platform for subsequent phases such as TRIPLEX and AMR intralogistics.</li>
-            <li>It supports time-to-market without postponing the most critical automation lever linked to corrugator continuity.</li>
+            <li><strong>Separate the core start-up scope</strong> required to relocate and commission the corrugator successfully from the optional productivity phases that can be executed later.</li>
+            <li><strong>Reflect the actual industrial architecture of the project</strong>, including machine relocation, required peripherals, INGETRANS integration logic, and PSC-side associated costs.</li>
+            <li><strong>Present PSC with a phased investment roadmap</strong> where time-to-market is protected first, while future performance upgrades remain fully visible and economically assessable.</li>
           </ul>
-        </div>
 
-        <div class="two-col">
-          <div class="scenario-box avoid-break">
-            <div class="scenario-title">Scenario A – Base Relocation</div>
-            <div class="scenario-price">$7,347,471.50</div>
+          <div class="callout">
+            <h3>Executive positioning of the revised proposal</h3>
             <p>
-              Scenario A is the minimum industrial scope to relocate, install and restart the line. It is the fastest budget entry point, but it keeps reel logistics and plant flow closer to a conventional operating model, with less protection against logistics-driven production losses.
+              The updated proposal should not be read as a correction of a simple commercial list. It reflects the <strong>evolution of the project definition</strong>
+              as engineering discussions, logistics assumptions, equipment origin, site integration constraints and customs/import implications have become clearer.
+              As the project moved from an early budgetary structure into a more operationally grounded proposal, several cost blocks needed to be isolated and
+              represented in a way that is more consistent with actual execution responsibility.
             </p>
           </div>
 
-          <div class="scenario-box avoid-break">
-            <div class="scenario-title">Scenario C – Base Relocation + TRIPLEX</div>
-            <div class="scenario-price">$8,798,699.84</div>
-            <p>
-              Scenario C adds a process-enhancement package that can further improve operating capability, but it is not the first block INGECART would prioritize if the main objective is to restart production quickly and safely. It is better positioned as a second-phase upgrade after the relocated line has stabilized.
-            </p>
+          <div class="grid-2">
+            <div class="card soft-blue">
+              <h3>What Scenario A now represents</h3>
+              <p>
+                Scenario A is now the <strong>reference implementation path</strong> for launching the new PSC corrugator operation with the correct industrial basis:
+                machine relocation, essential project peripherals, PSC associated local costs, INGETRANS integration, and the additional logistics/import allowances
+                required to make the execution budget coherent with the final project structure.
+              </p>
+            </div>
+            <div class="card soft-green">
+              <h3>How future phases are treated</h3>
+              <p>
+                The <strong>Triplex package</strong> and the <strong>AMR intralogistics package</strong> remain highly relevant for long-term performance,
+                but they can be positioned as follow-on phases in order to protect start-up speed, reduce initial execution complexity, and minimise disruption
+                once the plant is already producing.
+              </p>
+            </div>
           </div>
+        </section>
 
-          <div class="scenario-box avoid-break">
-            <div class="scenario-title">Scenario D – Base Relocation + AMR Intralogistics</div>
-            <div class="scenario-price">$8,582,159.00</div>
-            <p>
-              Scenario D introduces a highly relevant intralogistics platform for future WIP management and plant flow orchestration. However, INGECART views AMR deployment as a second-step accelerator once the base line is already operational and the plant is ready to absorb a wider internal logistics redesign.
-            </p>
-          </div>
-        </div>
-      </section>
+        <section class="content-section" id="rationale">
+          <h2>2. Why the Project Structure Has Evolved</h2>
 
-      <section>
-        <h2>6. Why Scenario B Is the Strongest First Step</h2>
-        <p>
-          The relocation project is not only a mechanical transfer of equipment. It is the re-creation of an industrial flow under new physical, operational and economic conditions. For that reason, the best first investment is not necessarily the one with the highest total automation content, but the one that most effectively protects the <strong>critical path to production</strong>.
-        </p>
-
-        <h3>6.1 INGETRANS acts directly on the corrugator’s most critical logistics dependency</h3>
-        <p>
-          Corrugator productivity is highly sensitive to reel availability, delivery timing, feeding discipline and the elimination of avoidable waiting. INGETRANS addresses exactly that bottleneck by automating the reel transport flow between storage / staging and the corrugator feeding positions. This is why it has a stronger immediate time-to-market logic than other optional packages.
-        </p>
-
-        <h3>6.2 It improves start-up stability without overloading the first implementation phase</h3>
-        <p>
-          TRIPLEX and AMR are both valuable, but they expand the transformation perimeter into additional process and intralogistics domains. Scenario B keeps the first project wave centered on the core production heartbeat: <strong>corrugator availability, feeding continuity and logistics safety around the line</strong>.
-        </p>
-
-        <h3>6.3 It creates the right backbone for future phases</h3>
-        <p>
-          Once the plant is running, TRIPLEX and AMR can be integrated in a more controlled manner with lower disruption. In this roadmap, INGETRANS is not only a standalone productivity enabler; it also acts as the first structured automation layer that supports the plant’s future digital and intralogistics evolution.
-        </p>
-      </section>
-
-      <section>
-        <h2>7. INGETRANS Business Impact – Why It Matters in Scenario B</h2>
-        <p>
-          Based on INGECART’s benchmark logic for corrugated plants and on prior digital-twin analyses developed around automated reel logistics, the value of INGETRANS is not limited to labour reduction. Its real contribution is the stabilization of the reel-feeding process, which directly supports corrugator continuity, lower forklift congestion and better control of reel movements.
-        </p>
-
-        <div class="kpi-grid">
-          <div class="kpi-card">
-            <div class="kpi-label">Primary impact</div>
-            <div class="kpi-value">Corrugator continuity</div>
-            <div class="kpi-sub">Reel availability synchronized with machine consumption</div>
-          </div>
-          <div class="kpi-card">
-            <div class="kpi-label">Operational effect</div>
-            <div class="kpi-value">Fewer starvation events</div>
-            <div class="kpi-sub">Lower risk of waiting time caused by reel logistics</div>
-          </div>
-          <div class="kpi-card">
-            <div class="kpi-label">Plant effect</div>
-            <div class="kpi-value">Less forklift traffic</div>
-            <div class="kpi-sub">Cleaner and safer operating area around the corrugator</div>
-          </div>
-          <div class="kpi-card">
-            <div class="kpi-label">Strategic effect</div>
-            <div class="kpi-value">Automation backbone</div>
-            <div class="kpi-sub">Base layer for future intralogistics and plant control</div>
-          </div>
-        </div>
-
-        <h3>Expected qualitative benefits of INGETRANS in the PSC environment</h3>
-        <ul>
-          <li>Continuous reel availability at the corrugator and lower probability of feeding delays.</li>
-          <li>Reduction of forklift intervention in the highest-risk logistics area of the plant.</li>
-          <li>Improved order execution discipline through a more structured paper supply flow.</li>
-          <li>Lower exposure to handling damage and avoidable reel movement errors.</li>
-          <li>More stable production behavior during the first months after restart.</li>
-          <li>Better conditions for future plant standardization and data-driven operations.</li>
-        </ul>
-      </section>
-
-      <section>
-        <h2>8. Future Phase Logic – TRIPLEX and AMR</h2>
-        <p>
-          INGECART does not recommend discarding TRIPLEX or AMR. On the contrary, both remain strategically relevant. The recommendation is to <strong>sequence them after the first industrial milestone</strong> so that PSC secures early production, stabilizes the relocated line, and then expands the plant’s performance envelope with lower implementation risk.
-        </p>
-
-        <h3>8.1 Scenario C – TRIPLEX as a future performance phase</h3>
-        <p>
-          TRIPLEX should be considered as a future process enhancement phase that can strengthen machine-side capability and operating performance once the relocated line is fully operational. It is a valid next step for deeper process optimization, but it is not the first block INGECART would prioritize ahead of reel logistics continuity.
-        </p>
-
-        <h3>8.2 Scenario D – AMR as a future intralogistics backbone</h3>
-        <p>
-          AMR intralogistics should be understood as the long-term orchestrator of internal flow efficiency. It is especially relevant for WIP movement, internal routing discipline and the gradual digitalization of material movement across the plant. Deployed in a second phase, it can be integrated with lower disruption and with better operational visibility of the plant’s actual post-relocation needs.
-        </p>
-
-        <h3>8.3 AMR optional waste-flow extension</h3>
-        <p>
-          In addition to WIP logistics, the same AMR fleet architecture can optionally be extended to manage internal scrap and waste flow from corrugator and converting workstations. By using metallic cages or dedicated mobile containers handled by AMRs, the plant could centralize scrap collection, weighing, traceability and repositioning with minimal manual intervention. This optional layer is not valued in the current scenario totals, but it is operationally coherent with the AMR roadmap.
-        </p>
-      </section>
-
-      <section>
-        <h2>9. Maintenance and Operating Cost Considerations in the Automated Scenarios</h2>
-        <p>
-          One of the relevant structural benefits of the automated scenarios—particularly <strong>Scenario B with INGETRANS</strong>, and later <strong>Scenario D with AMR intralogistics</strong>—is the reduction of maintenance exposure associated with conventional logistics assets.
-        </p>
-        <p>
-          In a traditional corrugator supply environment, a significant share of maintenance effort is consumed by:
-        </p>
-        <ul>
-          <li>Forklift fleet usage, wear, battery charging logistics and operator-driven handling stress.</li>
-          <li>Conveyor sections, transfer devices and other movement interfaces with high intervention frequency.</li>
-          <li>Unplanned damage or alignment issues caused by repeated mechanical handling around the line.</li>
-        </ul>
-        <p>
-          By replacing a large part of the reel-handling dependency on forklifts and simplifying the logistics architecture around the corrugator, automated logistics reduces the amount of equipment subject to repetitive manual use and high-frequency maintenance. The exact savings depend on PSC’s current maintenance structure, spare-part policy, operating hours and labour rates, but the direction of impact is clear: <strong>less forklift dependency and fewer conventional logistics interfaces translate into a lower maintenance burden and lower operating volatility</strong>.
-        </p>
-      </section>
-
-      <section>
-        <h2>10. Commercial Positioning Message to PSC</h2>
-        <div class="note">
-          <p class="strong">INGECART recommendation to PSC management</p>
           <p>
-            The project should be approached as a staged industrial transformation rather than as a single all-inclusive capex event. The first objective is to put the Visalia plant back into production quickly, with the highest possible start-up reliability. For that reason, INGECART recommends prioritizing the relocation platform and protecting the corrugator with automated reel logistics through INGETRANS.
+            During the development of the offer, the project moved from a preliminary relocation concept into a more mature industrial integration scenario.
+            That transition has direct consequences on how the commercial structure must be presented to PSC.
           </p>
-          <p style="margin-bottom:0">
-            Once the line is operational and stabilized, PSC can execute the next phases—TRIPLEX and AMR intralogistics—with lower production risk and with a clearer understanding of the plant’s real post-start-up bottlenecks. This approach preserves time-to-market while keeping the full automation roadmap open.
-          </p>
-        </div>
-      </section>
 
-      <section class="page-break">
-        <h2>Annex 1 – Detailed Project Economics</h2>
-
-        <div class="annex-card avoid-break">
-          <h3>Annex 1.1 – Machine Relocation Package</h3>
+          <h3>2.1 Key reasons behind the revised project presentation</h3>
           <table class="results">
             <thead>
               <tr>
-                <th>Project Machine Sale</th>
-                <th class="text-right">Price (USD)</th>
+                <th>Adjustment area</th>
+                <th>Executive rationale</th>
               </tr>
             </thead>
             <tbody>
-              <tr><td>Corrugated line</td><td class="text-right">$950,000.00</td></tr>
-              <tr><td>Machine disassembly*</td><td class="text-right">$185,000.00</td></tr>
-              <tr><td>Service cranes disassembly</td><td class="text-right">$52,000.00</td></tr>
-              <tr><td>Travel costs to the factory</td><td class="text-right">$15,580.00</td></tr>
-              <tr><td>Extra ship Barcelona</td><td class="text-right">$140,500.00</td></tr>
-              <tr><td>Nave Extra BCN</td><td class="text-right">$41,860.00</td></tr>
-              <tr><td>Upgrades</td><td class="text-right">$210,000.00</td></tr>
-              <tr><td>Extra mechanical parts</td><td class="text-right">$97,500.00</td></tr>
-              <tr><td>New rails – 12 meters</td><td class="text-right">$240,500.00</td></tr>
-              <tr><td>Transport and packaging</td><td class="text-right">$450,000.00</td></tr>
-              <tr><td>Packaging*</td><td class="text-right">$78,000.00</td></tr>
-              <tr><td>Service cranes installation</td><td class="text-right">$104,000.00</td></tr>
-              <tr><td>Engineering</td><td class="text-right">$78,000.00</td></tr>
-              <tr><td>Machine installation</td><td class="text-right">$355,000.00</td></tr>
-              <tr><td>On-Site Project Management (8 months)</td><td class="text-right">$207,000.00</td></tr>
-              <tr class="grand-total-row"><td>Total Machine Relocation</td><td class="text-right">$3,204,940.00</td></tr>
+              <tr>
+                <td><strong>Machine relocation baseline clarified</strong></td>
+                <td>
+                  The relocation block has been restated using the latest validated structure for dismantling, transport, packaging, installation, engineering and upgrade-related works,
+                  so the core machine scope is shown with greater execution clarity.
+                </td>
+              </tr>
+              <tr>
+                <td><strong>Project management separated as an optional support layer</strong></td>
+                <td>
+                  The 8-month on-site project management support is shown independently as an optional relocation support service, allowing PSC to distinguish between the pure relocation
+                  price and the additional execution support layer that may be deployed depending on the final governance model.
+                </td>
+              </tr>
+              <tr>
+                <td><strong>Peripheral systems isolated as a dedicated project block</strong></td>
+                <td>
+                  Adhesive kitchen, glue and steam distribution, and exit conveyor systems have been grouped as a standalone block because they are essential to industrial readiness,
+                  but conceptually different from the relocated corrugator itself.
+                </td>
+              </tr>
+              <tr>
+                <td><strong>PSC associated local costs made explicit</strong></td>
+                <td>
+                  Boiler and civil works remain PSC-side enabling costs. Presenting them explicitly improves budget transparency and avoids mixing INGECART supply scope with local plant adaptation scope.
+                </td>
+              </tr>
+              <tr>
+                <td><strong>Import duties, logistics and handling allowances surfaced separately</strong></td>
+                <td>
+                  Fees, import taxes, transport packaging allowances and crane assumptions are now shown as dedicated consideration items where applicable, because they materially affect the total delivered project cost and are driven by the final sourcing / shipping structure rather than by the mechanical scope alone.
+                </td>
+              </tr>
+              <tr>
+                <td><strong>Automation phases decoupled from immediate start-up priority</strong></td>
+                <td>
+                  Triplex and AMR intralogistics have significant productivity potential, but they can be staged after start-up to reduce implementation risk and preserve the fastest route to production.
+                </td>
+              </tr>
             </tbody>
           </table>
-        </div>
 
-        <div class="annex-card avoid-break">
-          <h3>Annex 1.2 – Peripherals Package</h3>
+          <div class="note">
+            In commercial terms, this is the key message to PSC: <strong>the proposal has been refined to better match the real execution model of the project</strong>.
+            It is not a cosmetic repricing exercise; it is the consequence of progressively aligning engineering scope, import exposure, site responsibilities and phased industrial priorities.
+          </div>
+        </section>
+
+        <section class="content-section" id="scenarios">
+          <h2>3. Scenario Architecture</h2>
+
+          <p>
+            The project can now be discussed with PSC through a structured scenario logic. This is useful because it separates the <strong>minimum industrial path required to start the plant</strong>
+            from the <strong>future performance layers</strong> that may be added once the operation is stabilised.
+          </p>
+
+          <div class="scenario-box">
+            <h3>
+              <span>Scenario A — Core Relocation & Start-up Platform</span>
+              <span class="scenario-tag">Reference delivery path</span>
+            </h3>
+            <p>
+              Scenario A is the <strong>base industrial execution package</strong>. It combines the machine relocation, the essential project peripherals,
+              PSC associated enabling costs, the INGETRANS solution and the additional import / logistics allowances already identified for this scope.
+            </p>
+            <ul>
+              <li>Machine relocation package</li>
+              <li>Project peripherals package</li>
+              <li>PSC associated local items</li>
+              <li>INGETRANS system</li>
+              <li>Additional fees / import taxes estimation</li>
+              <li>Additional transport & packaging estimation</li>
+              <li>Additional cranes rental estimation</li>
+            </ul>
+            <p>
+              <strong>Strategic role of Scenario A:</strong> provide the fastest credible route to bring the plant into production with the correct mechanical, utility and logistics backbone already embedded.
+            </p>
+          </div>
+
+          <div class="scenario-box">
+            <h3>
+              <span>Scenario B — Scenario A + Triplex Productivity Upgrade</span>
+              <span class="scenario-tag">Recommended industrial path</span>
+            </h3>
+            <p>
+              Scenario B builds on Scenario A and adds the <strong>Triplex package</strong>. This phase is not only an equipment add-on; it is a productivity reinforcement layer that can improve
+              the corrugator’s operating envelope, support higher production stability, and strengthen the medium-term throughput capability of the plant.
+            </p>
+            <ul>
+              <li>Includes all Scenario A scope</li>
+              <li>Adds Triplex equipment package and associated integration works</li>
+              <li>Adds the additional import duties / fees specifically linked to the Triplex block</li>
+            </ul>
+            <p>
+              <strong>Strategic role of Scenario B:</strong> combine rapid plant activation with a stronger productivity architecture from day one or from a closely sequenced follow-on phase.
+            </p>
+          </div>
+
+          <div class="scenario-box">
+            <h3>
+              <span>Scenario C — Scenario A + AMR Intralogistics</span>
+              <span class="scenario-tag">Future automation phase</span>
+            </h3>
+            <p>
+              Scenario C keeps the same core base as Scenario A and adds the <strong>AMR intralogistics package</strong>. This is the scenario that begins to transform internal material flow,
+              operator dependency and future waste-control capability at plant level.
+            </p>
+            <ul>
+              <li>Includes all Scenario A scope</li>
+              <li>Adds AMR intralogistics package</li>
+              <li>Adds the additional import duties / fees specifically linked to the AMR block</li>
+            </ul>
+            <p>
+              <strong>Strategic role of Scenario C:</strong> turn the relocation project into the first step of a broader digital intralogistics architecture capable of supporting WIP handling,
+              internal flow control and a future waste-management automation layer.
+            </p>
+          </div>
+
+          <div class="recommendation-box">
+            <h3>INGECART recommendation on scenario logic</h3>
+            <p>
+              If PSC’s priority is to protect <strong>time-to-market</strong> while still preserving the industrial logic required for a high-performance plant,
+              INGECART recommends using <strong>Scenario A as the execution baseline</strong> and <strong>Scenario B as the preferred strategic target</strong>.
+            </p>
+            <p>
+              In practical terms, our recommendation is:
+            </p>
+            <ul>
+              <li><strong>Use Scenario A</strong> as the minimum validated implementation platform for start-up.</li>
+              <li><strong>Position Scenario B</strong> as the preferred productivity route because it improves the long-term performance architecture of the corrugator line without changing the fundamental execution logic of the base project.</li>
+              <li><strong>Position Scenario C</strong> as the plant-wide automation step that should follow once the operation is stabilised and PSC wants to extend control over internal flow, labour dependency and future waste-management processes.</li>
+            </ul>
+          </div>
+        </section>
+
+        <section class="content-section">
+          <h2>4. Industrial Value of INGETRANS in the Base Project</h2>
+
+          <p>
+            One of the most important strategic decisions in the revised structure is that <strong>INGETRANS is already included in Scenario A</strong>.
+            This is relevant because it means the base project is not just a machine move; it already incorporates a logistics and flow-control component
+            designed to improve how reels are supplied and managed around the corrugator.
+          </p>
+
+          <div class="grid-3">
+            <div class="card soft-blue">
+              <h3>1. Reel flow continuity</h3>
+              <p>
+                INGETRANS reduces dependence on ad-hoc forklift supply patterns and creates a more predictable and synchronised reel-feeding process,
+                supporting better production continuity at the corrugator.
+              </p>
+            </div>
+            <div class="card soft-green">
+              <h3>2. Lower logistics disruption</h3>
+              <p>
+                By structuring the flow of reels around the machine more efficiently, INGETRANS contributes to lower congestion, fewer handling conflicts,
+                and a cleaner operating environment in one of the most sensitive zones of the plant.
+              </p>
+            </div>
+            <div class="card soft-orange">
+              <h3>3. Better platform for future automation</h3>
+              <p>
+                Integrating INGETRANS in the base scenario creates a stronger platform for future AMR intralogistics phases because the plant flow is already being organised around a more structured internal logistics model.
+              </p>
+            </div>
+          </div>
+
+          <h3>4.1 Indicative performance logic associated with INGETRANS</h3>
+          <p>
+            Based on prior corrugated logistics benchmarks and INGECART’s digital twin logic for automated reel supply, the value of INGETRANS is typically expressed through:
+          </p>
+          <ul>
+            <li>Higher reel availability at the corrugator interface</li>
+            <li>Lower risk of logistics-induced waiting time</li>
+            <li>Reduced forklift traffic concentration around the line</li>
+            <li>More stable reel replenishment cycles</li>
+            <li>Lower exposure to manual handling variability</li>
+          </ul>
+
+          <p class="small">
+            Exact performance values must be calibrated against PSC production data, reel consumption patterns, staffing model and final plant layout.
+            For that reason, this proposal frames the benefit as an industrial performance lever rather than as a guaranteed single-number saving.
+          </p>
+        </section>
+
+        <section class="content-section">
+          <h2>5. Role of Triplex and AMR as Future Value Layers</h2>
+
+          <h3>5.1 Triplex as a productivity expansion phase</h3>
+          <p>
+            The Triplex package should be understood as a <strong>corrugator productivity and capability enhancement block</strong>. While it is not required to start the plant,
+            it can materially improve the machine’s medium-term operating envelope by upgrading the line architecture around key paper handling and process functions.
+          </p>
+
+          <div class="card soft-amber">
+            <h4>Why Triplex matters strategically</h4>
+            <ul>
+              <li>Improves the production platform beyond simple relocation.</li>
+              <li>Supports a stronger long-term productivity ratio once the plant is stabilised.</li>
+              <li>Can be executed as a follow-on industrial phase if PSC wants to protect immediate time-to-market first.</li>
+            </ul>
+          </div>
+
+          <h3>5.2 AMR intralogistics as the future backbone of plant efficiency</h3>
+          <p>
+            The AMR package should be positioned as the <strong>catalyst of the next automation layer</strong> for PSC. Its role is broader than transport:
+            it becomes the organising backbone for internal material movement, route discipline, WIP flow support and future traceable waste handling logic.
+          </p>
+
+          <div class="grid-2">
+            <div class="card soft-blue">
+              <h4>AMR value in a future phase</h4>
+              <ul>
+                <li>Structured internal movement of materials and WIP between defined production points.</li>
+                <li>Lower manual transport dependency in repetitive internal routes.</li>
+                <li>Potential reduction in handling-related waste through more controlled movements.</li>
+                <li>Stronger traceability logic for “in” and “out” material flows.</li>
+              </ul>
+            </div>
+            <div class="card soft-green">
+              <h4>Optional waste-flow application</h4>
+              <p>
+                As a non-valued optional extension, the same AMR fleet can later be used for internal waste collection from corrugator and converting positions,
+                using metallic cages as transport containers. AMRs can collect, weigh and relocate these containers to the required destination points,
+                creating a structured basis for internal scrap traceability and waste-flow discipline.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section class="content-section" id="financial">
+          <h2>6. Financial Summary by Scenario</h2>
+
+          <p>
+            The tables below use the latest validated numbers you have provided. In the annexes, all detailed line items are reproduced as given, without recalculation.
+            The scenario summary below is therefore intended as the executive commercial view for client discussion.
+          </p>
+
           <table class="results">
+            <thead>
+              <tr>
+                <th>Scenario</th>
+                <th>Scope summary</th>
+                <th class="text-right">Base scenario value</th>
+                <th class="text-right">Additional fees / import taxes to consider</th>
+                <th class="text-right">Indicative total decision value</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Scenario A</strong></td>
+                <td>
+                  Machine relocation + optional PM reference + Peripherals + PSC associated costs + INGETRANS + additional fees / transport / cranes allowances
+                </td>
+                <td class="text-right nowrap"><strong>$7,193,940</strong></td>
+                <td class="text-right">Included in the Scenario A structure as presented</td>
+                <td class="text-right nowrap"><strong>$7,193,940</strong></td>
+              </tr>
+              <tr>
+                <td><strong>Scenario B</strong></td>
+                <td>
+                  Scenario A + Triplex package
+                </td>
+                <td class="text-right nowrap">$7,193,940 + $1,246,710</td>
+                <td class="text-right nowrap">$126,420</td>
+                <td class="text-right nowrap"><strong>$8,567,070</strong></td>
+              </tr>
+              <tr>
+                <td><strong>Scenario C</strong></td>
+                <td>
+                  Scenario A + AMR intralogistics
+                </td>
+                <td class="text-right nowrap">$7,193,940 + $1,125,000</td>
+                <td class="text-right nowrap">$101,250</td>
+                <td class="text-right nowrap"><strong>$8,420,190</strong></td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div class="note">
+            <strong>Important commercial note:</strong> Scenario A is the validated base scenario and already includes the “to consider” allowances you have listed
+            for fees/import taxes, transport & packaging estimation and cranes rental estimation. Scenario B and Scenario C therefore add only the incremental fees specifically linked to the Triplex and AMR packages respectively.
+          </div>
+
+          <h3>6.1 Executive reading of the financial structure</h3>
+          <div class="grid-3">
+            <div class="card">
+              <h4>Scenario A</h4>
+              <p>
+                Best used as the <strong>core execution budget</strong> for plant activation. It is the reference package for time-to-market and includes the required relocation,
+                peripherals, local enabling costs and the INGETRANS layer.
+              </p>
+            </div>
+            <div class="card">
+              <h4>Scenario B</h4>
+              <p>
+                Adds a meaningful productivity upgrade on top of the base execution package. This is the strongest option if PSC wants to couple relocation with a more ambitious performance platform.
+              </p>
+            </div>
+            <div class="card">
+              <h4>Scenario C</h4>
+              <p>
+                Opens the door to structured intralogistics automation and future waste-control workflows. It is best positioned as the next plant-efficiency phase after start-up stabilisation.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section class="content-section">
+          <h2>7. Business-Case Logic and Indicative ROI View</h2>
+
+          <p>
+            At this stage, the economic discussion with PSC should be framed around <strong>three different value layers</strong>, not around a single simplistic payback number:
+          </p>
+
+          <div class="kpi-grid">
+            <div class="kpi">
+              <div class="k">Layer 1</div>
+              <div class="v">Time-to-market</div>
+              <div class="s">How quickly PSC can restore full production capability in Visalia</div>
+            </div>
+            <div class="kpi">
+              <div class="k">Layer 2</div>
+              <div class="v">Productivity platform</div>
+              <div class="s">How the chosen architecture improves throughput stability and operational discipline</div>
+            </div>
+            <div class="kpi">
+              <div class="k">Layer 3</div>
+              <div class="v">Future efficiency</div>
+              <div class="s">How Triplex and AMR can unlock additional value after stabilisation</div>
+            </div>
+            <div class="kpi">
+              <div class="k">Commercial lens</div>
+              <div class="v">Phased investment</div>
+              <div class="s">Protect start-up now; add performance blocks when the plant is ready</div>
+            </div>
+          </div>
+
+          <h3>7.1 Scenario A ROI logic</h3>
+          <p>
+            Scenario A should not be judged only as a cost package; it is the price of bringing the new plant into production with the correct industrial backbone.
+            Its economic return is therefore primarily linked to:
+          </p>
+          <ul>
+            <li>Avoiding delays in production start-up.</li>
+            <li>Reducing the risk of under-designed integration during commissioning.</li>
+            <li>Embedding INGETRANS from the beginning instead of retrofitting the core reel logistics architecture later.</li>
+            <li>Creating a plant layout and execution basis that supports future productivity phases without having to re-open the core relocation logic.</li>
+          </ul>
+
+          <h3>7.2 Scenario B ROI logic</h3>
+          <p>
+            Scenario B adds the Triplex package and should be presented as the <strong>highest-value productivity extension</strong> once PSC wants to strengthen the corrugator’s medium-term operating performance.
+            The return logic here is associated with:
+          </p>
+          <ul>
+            <li>Higher long-term line capability versus a relocation-only approach.</li>
+            <li>Potential throughput improvement through a more capable corrugator architecture.</li>
+            <li>Better use of the relocated asset by complementing it with upgraded process modules rather than simply re-installing the line “as-is”.</li>
+          </ul>
+
+          <h3>7.3 Scenario C ROI logic</h3>
+          <p>
+            Scenario C adds AMR intralogistics and should be positioned as the <strong>plant efficiency and automation multiplier</strong>. The value case is not limited to labour substitution:
+          </p>
+          <ul>
+            <li>More disciplined internal material movement.</li>
+            <li>Reduced manual handling exposure and lower operator dependency on repetitive routes.</li>
+            <li>Potential reduction of handling-related waste and misrouting.</li>
+            <li>Creation of the future platform for traceable internal waste logistics.</li>
+          </ul>
+
+          <div class="callout">
+            <h3>Commercial guidance for ROI discussion with PSC</h3>
+            <p>
+              INGECART should avoid presenting one “hard” payback number unless PSC provides the operating data needed for a proper model:
+              current productivity, labour structure, expected throughput, waste cost, shift pattern, maintenance cost of current internal transport assets, and target output ramp-up plan.
+              Until then, the proposal should frame ROI as a <strong>phased industrial value roadmap</strong> rather than as a single over-simplified financial promise.
+            </p>
+          </div>
+        </section>
+
+        <section class="content-section" id="recommendation">
+          <h2>8. INGECART Recommendation to PSC</h2>
+
+          <div class="recommendation-box">
+            <h3>Recommended path for project award and execution</h3>
+            <p>
+              Based on the current state of the project, INGECART’s recommendation to PSC is to use the project structure as follows:
+            </p>
+            <ol style="padding-left:1.25rem;margin:.5rem 0 1rem;">
+              <li style="margin:.35rem 0;">
+                <strong>Approve Scenario A as the core implementation platform</strong>, because it is the fastest route to bring the Visalia plant into operation with the correct relocation,
+                utility, peripheral and reel logistics foundations.
+              </li>
+              <li style="margin:.35rem 0;">
+                <strong>Evaluate Scenario B as the preferred next decision step</strong>, because it is the most coherent route if PSC wants to combine plant activation with a stronger productivity platform and avoid postponing the Triplex performance benefits too far into the future.
+              </li>
+              <li style="margin:.35rem 0;">
+                <strong>Plan Scenario C as the future intralogistics automation phase</strong>, to be deployed once the plant is stabilised and PSC wants to move from a relocated line to a more digitally orchestrated internal flow model.
+              </li>
+            </ol>
+
+            <p>
+              In short, INGECART believes the project should be understood in two layers:
+            </p>
+            <ul>
+              <li><strong>Immediate mission:</strong> get the plant producing, fast and safely, with the right industrial backbone.</li>
+              <li><strong>Strategic mission:</strong> build the future productivity and automation roadmap in a way that minimises disruption to production once the plant is live.</li>
+            </ul>
+          </div>
+
+          <h3>8.1 Final executive message to PSC</h3>
+          <p>
+            The relocation project should not be viewed as a one-off mechanical move. It is the opportunity to build a <strong>future-ready corrugated production platform</strong> in Visalia.
+            The recommended structure protects time-to-market today, while preserving a credible path toward higher throughput, better logistics discipline and deeper automation tomorrow.
+          </p>
+        </section>
+
+        <section class="content-section page-break" id="annex">
+          <h2>Annex A — Scenario Summary Tables</h2>
+
+          <h3>Scenario A — Executive composition</h3>
+          <table class="results annex-table">
+            <thead>
+              <tr>
+                <th>Scenario A component</th>
+                <th class="text-right">Value</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>Machine relocation</td><td class="text-right">$2,997,940</td></tr>
+              <tr><td>Optional: INGECART Project Manager 8 months on site</td><td class="text-right">$207,000</td></tr>
+              <tr><td>Project Peripherals</td><td class="text-right">$1,496,000</td></tr>
+              <tr><td>PSC Scenario A associated cost</td><td class="text-right">$1,350,000</td></tr>
+              <tr><td>INGETRANS</td><td class="text-right">$1,350,000</td></tr>
+              <tr><td>Additional fees, import taxes estimation</td><td class="text-right">$450,000</td></tr>
+              <tr><td>Additional transport and packaging estimation</td><td class="text-right">$114,000</td></tr>
+              <tr><td>Additional cranes rental estimation</td><td class="text-right">$150,000</td></tr>
+              <tr><td><strong>Total estimated Scenario A</strong></td><td class="text-right"><strong>$7,193,940</strong></td></tr>
+            </tbody>
+          </table>
+
+          <h3>Scenario B — Executive composition</h3>
+          <table class="results annex-table">
+            <thead>
+              <tr>
+                <th>Scenario B component</th>
+                <th class="text-right">Value</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>Scenario A associated cost</td><td class="text-right">$7,193,940</td></tr>
+              <tr><td>Project Triplex</td><td class="text-right">$1,246,710</td></tr>
+              <tr><td>Additional fees / import taxes estimation related to Triplex</td><td class="text-right">$126,420</td></tr>
+              <tr><td><strong>Indicative total Scenario B</strong></td><td class="text-right"><strong>$8,567,070</strong></td></tr>
+            </tbody>
+          </table>
+
+          <h3>Scenario C — Executive composition</h3>
+          <table class="results annex-table">
+            <thead>
+              <tr>
+                <th>Scenario C component</th>
+                <th class="text-right">Value</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>Scenario A associated cost</td><td class="text-right">$7,193,940</td></tr>
+              <tr><td>AMR Intralogistics</td><td class="text-right">$1,125,000</td></tr>
+              <tr><td>Additional fees / import taxes estimation related to AMR</td><td class="text-right">$101,250</td></tr>
+              <tr><td><strong>Indicative total Scenario C</strong></td><td class="text-right"><strong>$8,420,190</strong></td></tr>
+            </tbody>
+          </table>
+        </section>
+
+        <section class="content-section">
+          <h2>Annex B — Detailed Project Breakdown as Provided</h2>
+
+          <p class="small">
+            The following annex reproduces the latest validated project breakdown supplied for the proposal. No recalculation has been applied to the individual annex lines; they are shown as provided for commercial clarity.
+          </p>
+
+          <h3>B.1 Scenario A — Machine relocation price breakdown</h3>
+          <table class="results annex-table">
+            <thead>
+              <tr>
+                <th>Machine relocation price breakdown</th>
+                <th class="text-right">Price</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>Corrugated line</td><td class="text-right">950000</td></tr>
+              <tr><td>Machine disassembly*</td><td class="text-right">185000</td></tr>
+              <tr><td>Service cranes Disassembly</td><td class="text-right">52000</td></tr>
+              <tr><td>Travel costs to the factory</td><td class="text-right">15580</td></tr>
+              <tr><td>Extra Ship Barcelona</td><td class="text-right">140500</td></tr>
+              <tr><td>Nave Extra BCN</td><td class="text-right">41860</td></tr>
+              <tr><td>Upgrades</td><td class="text-right">210000</td></tr>
+              <tr><td>Extra Mech Parts</td><td class="text-right">97500</td></tr>
+              <tr><td>Rails new 12 meters</td><td class="text-right">240500</td></tr>
+              <tr><td>Transport and packaging</td><td class="text-right">450000</td></tr>
+              <tr><td>packaging*</td><td class="text-right">78000</td></tr>
+              <tr><td>Service cranes installation</td><td class="text-right">104000</td></tr>
+              <tr><td>Engineering</td><td class="text-right">78000</td></tr>
+              <tr><td>Machine installation</td><td class="text-right">355000</td></tr>
+              <tr><td><strong>Total machine relocation</strong></td><td class="text-right"><strong>$2.997.940,00</strong></td></tr>
+            </tbody>
+          </table>
+
+          <table class="results annex-table">
+            <thead>
+              <tr>
+                <th>Optional relocation support item</th>
+                <th class="text-right">Price</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>INGECART PROJECT MANAGER 8 MONTHS ON SITE</td><td class="text-right">$207.000,00</td></tr>
+            </tbody>
+          </table>
+
+          <h3>B.2 Scenario A — Project Peripherals</h3>
+          <table class="results annex-table">
             <thead>
               <tr>
                 <th>Project Peripherals</th>
-                <th class="text-right">Price (USD)</th>
+                <th class="text-right">Price</th>
               </tr>
             </thead>
             <tbody>
-              <tr><td>Kitchen adhesive Flexamix</td><td class="text-right">$330,000.00</td></tr>
-              <tr><td>Assembly and supply of glue tubes</td><td class="text-right">$91,000.00</td></tr>
-              <tr><td>Assembly and supply of steam tubes</td><td class="text-right">$325,000.00</td></tr>
-              <tr><td>Cranes rental</td><td class="text-right">$45,500.00</td></tr>
-              <tr><td>Exit conveyor corrugated</td><td class="text-right">$750,000.00</td></tr>
-              <tr><td>Transport and packaging</td><td class="text-right">$114,000.00</td></tr>
-              <tr><td>On-Site Project Management</td><td class="text-right">$94,031.50</td></tr>
-              <tr class="grand-total-row"><td>Total Peripherals</td><td class="text-right">$1,749,531.50</td></tr>
+              <tr><td>Kitchen adhesive Flexamix</td><td class="text-right">330000</td></tr>
+              <tr><td>Assembly and supply of glue tubes.</td><td class="text-right">91000</td></tr>
+              <tr><td>Assembly and supply of steam tubes</td><td class="text-right">325000</td></tr>
+              <tr><td>Exit conveyor corrugated</td><td class="text-right">750000</td></tr>
+              <tr><td><strong>TOTAL Project Peripherals</strong></td><td class="text-right"><strong>$1.496.000,00</strong></td></tr>
             </tbody>
           </table>
-        </div>
 
-        <div class="annex-card avoid-break">
-          <h3>Annex 1.3 – PSC Local Items (Scenario A Base)</h3>
-          <table class="results">
+          <h3>B.3 Scenario A — PSC associated cost</h3>
+          <table class="results annex-table">
             <thead>
               <tr>
-                <th>Project Other Items</th>
-                <th class="text-right">Price (USD)</th>
+                <th>PSC Scenario A associated cost</th>
+                <th class="text-right">Price (Estimated)</th>
               </tr>
             </thead>
             <tbody>
-              <tr><td>Boiler</td><td class="text-right">$500,000.00</td></tr>
-              <tr><td>Civil work</td><td class="text-right">$850,000.00</td></tr>
-              <tr><td>Transport</td><td class="text-right">$70,000.00</td></tr>
-              <tr><td>Packaging</td><td class="text-right">$60,000.00</td></tr>
-              <tr><td>Crane rental</td><td class="text-right">$120,000.00</td></tr>
-              <tr><td>Fees / import duties</td><td class="text-right">$793,000.00</td></tr>
-              <tr class="grand-total-row"><td>Total PSC Local Items – Scenario A</td><td class="text-right">$2,393,000.00</td></tr>
+              <tr><td>Boiler</td><td class="text-right">$500.000</td></tr>
+              <tr><td>Civil Work</td><td class="text-right">$850.000</td></tr>
+              <tr><td>Crane rental</td><td class="text-right"></td></tr>
+              <tr><td>Fees</td><td class="text-right"></td></tr>
+              <tr><td><strong>TOTAL Project other items</strong></td><td class="text-right"><strong>$1.350.000</strong></td></tr>
             </tbody>
           </table>
-        </div>
 
-        <div class="annex-card avoid-break">
-          <h3>Annex 1.4 – Optional Future Packages</h3>
-          <table class="results">
+          <h3>B.4 Scenario A — Additional items to consider</h3>
+          <table class="results annex-table">
             <thead>
               <tr>
-                <th>Optional Package</th>
-                <th class="text-right">Price (USD)</th>
+                <th>Additional items to consider</th>
+                <th class="text-right">Value</th>
               </tr>
             </thead>
             <tbody>
-              <tr><td>INGETRANS automated reel logistics</td><td class="text-right">$1,350,000.00</td></tr>
-              <tr><td>TRIPLEX package</td><td class="text-right">$1,322,759.31</td></tr>
-              <tr><td>AMR intralogistics package</td><td class="text-right">$1,125,000.00</td></tr>
+              <tr><td>INGETRANS</td><td class="text-right">1350000</td></tr>
+              <tr><td>Fees, import taxes estimation</td><td class="text-right">450000</td></tr>
+              <tr><td>Transport and packaging estimation</td><td class="text-right">114000</td></tr>
+              <tr><td>Cranes rental estimation</td><td class="text-right">150000</td></tr>
+              <tr><td>Note: considered that the Boiler total price is shipping included</td><td class="text-right">—</td></tr>
+              <tr><td><strong>Total estimated Scenario A</strong></td><td class="text-right"><strong>$7.193.940</strong></td></tr>
             </tbody>
           </table>
-        </div>
+
+          <h3>B.5 Scenario B — Triplex</h3>
+          <table class="results annex-table">
+            <thead>
+              <tr>
+                <th>Project Triplex</th>
+                <th class="text-right">Price</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>EWR (Corrugator model)</td><td class="text-right"></td></tr>
+              <tr><td>New Gluer Unit</td><td class="text-right"></td></tr>
+              <tr><td>3 Level Bridge</td><td class="text-right"></td></tr>
+              <tr><td>New Brake 3 Level Bridge</td><td class="text-right"></td></tr>
+              <tr><td>PreHeater (Ø900)</td><td class="text-right"></td></tr>
+              <tr><td>PreAcconditioner (Ø600)</td><td class="text-right"></td></tr>
+              <tr><td>Rollstand X2</td><td class="text-right"></td></tr>
+              <tr><td>Feeding Tracks x4</td><td class="text-right"></td></tr>
+              <tr><td>Splicer x2</td><td class="text-right"></td></tr>
+              <tr><td>Total maquinaria</td><td class="text-right">842800</td></tr>
+              <tr><td>Nave Extra BCN</td><td class="text-right">26910</td></tr>
+              <tr><td>Transporte y emabalaje</td><td class="text-right">143000</td></tr>
+              <tr><td>Instalacion</td><td class="text-right">234000</td></tr>
+              <tr><td><strong>TOTAL Project Triplex</strong></td><td class="text-right"><strong>1246710</strong></td></tr>
+            </tbody>
+          </table>
+
+          <table class="results annex-table">
+            <thead>
+              <tr>
+                <th>Scenario B additional consideration</th>
+                <th class="text-right">Value</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>Additional fees / import taxes estimation impacting Scenario B</td><td class="text-right">126420</td></tr>
+            </tbody>
+          </table>
+
+          <h3>B.6 Scenario C — AMR Intralogistics</h3>
+          <table class="results annex-table">
+            <thead>
+              <tr>
+                <th>Scenario C component</th>
+                <th class="text-right">Value</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>Scenario A associated cost</td><td class="text-right">$7.193.940,00</td></tr>
+              <tr><td>AMR Intralogistics</td><td class="text-right">1125000</td></tr>
+              <tr><td><strong>Total estimated Scenario C</strong></td><td class="text-right"><strong>$8.318.940,00</strong></td></tr>
+            </tbody>
+          </table>
+
+          <table class="results annex-table">
+            <thead>
+              <tr>
+                <th>Scenario C additional consideration</th>
+                <th class="text-right">Value</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>Additional fees / import taxes estimation impacting Scenario C</td><td class="text-right">101250</td></tr>
+            </tbody>
+          </table>
+
+          <div class="note">
+            All estimates would benefit from a joint validation session with the PSC finance team, especially for import duties, local enabling costs, crane assumptions and any final allocation of responsibilities between PSC and INGECART.
+          </div>
+        </section>
       </section>
 
-      <section>
-        <h2>Annex 2 – Scenario Fee Adjustments Applied to PSC Local Items</h2>
-        <p>
-          For the optional packages added to Scenarios B, C and D, INGECART has adjusted the PSC local cost block by applying an additional import-fee provision based on the rule agreed for this proposal:
-        </p>
-        <div class="note">
-          <p style="margin-bottom:0"><strong>Additional PSC fee = 15% × 65% × value of the additional package included in the scenario</strong></p>
-        </div>
-
-        <table class="results">
-          <thead>
-            <tr>
-              <th>Scenario</th>
-              <th>Additional Package</th>
-              <th class="text-right">Additional Package Value</th>
-              <th class="text-right">Additional PSC Fee</th>
-              <th class="text-right">Adjusted PSC Local Items</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Scenario A</td>
-              <td>None</td>
-              <td class="text-right">—</td>
-              <td class="text-right">—</td>
-              <td class="text-right">$2,393,000.00</td>
-            </tr>
-            <tr>
-              <td>Scenario B</td>
-              <td>INGETRANS</td>
-              <td class="text-right">$1,350,000.00</td>
-              <td class="text-right">$131,625.00</td>
-              <td class="text-right">$2,524,625.00</td>
-            </tr>
-            <tr>
-              <td>Scenario C</td>
-              <td>TRIPLEX</td>
-              <td class="text-right">$1,322,759.31</td>
-              <td class="text-right">$128,469.03</td>
-              <td class="text-right">$2,521,469.03</td>
-            </tr>
-            <tr>
-              <td>Scenario D</td>
-              <td>AMR intralogistics</td>
-              <td class="text-right">$1,125,000.00</td>
-              <td class="text-right">$109,687.50</td>
-              <td class="text-right">$2,502,687.50</td>
-            </tr>
-          </tbody>
-        </table>
-      </section>
-
-      <section>
-        <h2>Annex 3 – Final Summary by Scenario</h2>
-        <table class="results">
-          <thead>
-            <tr>
-              <th>Scenario</th>
-              <th>Included Scope</th>
-              <th class="text-right">Total Estimated Value (USD)</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><strong>Scenario A</strong></td>
-              <td>Machine relocation + peripherals + PSC local items</td>
-              <td class="text-right"><strong>$7,347,471.50</strong></td>
-            </tr>
-            <tr>
-              <td><strong>Scenario B</strong></td>
-              <td>Scenario A + INGETRANS</td>
-              <td class="text-right"><strong>$8,829,096.50</strong></td>
-            </tr>
-            <tr>
-              <td><strong>Scenario C</strong></td>
-              <td>Scenario A + TRIPLEX</td>
-              <td class="text-right"><strong>$8,798,699.84</strong></td>
-            </tr>
-            <tr>
-              <td><strong>Scenario D</strong></td>
-              <td>Scenario A + AMR intralogistics</td>
-              <td class="text-right"><strong>$8,582,159.00</strong></td>
-            </tr>
-          </tbody>
-        </table>
-      </section>
+      <footer class="site-footer">
+        <p>© 2026 INGECART · PSC Visalia Proposal · OFF-2026-110</p>
+      </footer>
     </main>
-
-    <footer class="site-footer">
-      <p>© 2026 INGECART · PSC VISALIA · Executive Business Case / Commercial Proposal Reference OFF-2026-110</p>
-    </footer>
   </div>
 </body>
 </html>

@@ -299,11 +299,12 @@
   - .venv\Lib\site-packages\openai\cli\_api\completions.py
   - .venv\Lib\site-packages\openai\cli\_api\files.py
   - .venv\Lib\site-packages\openai\cli\_tools\migrate.py
-- Files with sqlite3.connect calls: 18
+- Files with sqlite3.connect calls: 19
   - erp_facturacion\erp.py
   - scripts\check_memory_db.py
   - scripts\ingest_sim_runs.py
   - scripts\persist_fespa_company_intelligence.py
+  - services\project_closeout_service.py
   - soc\indexer.py
   - soc\search.py
   - soc\brain\memory_store.py
