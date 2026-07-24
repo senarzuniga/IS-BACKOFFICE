@@ -56,6 +56,7 @@ def _create_enhanced_app():
         "Navegación",
         [
             "🏠 Command Center",
+            "🧩 SPOE Workbench",
             "🧠 Inteligencia de Conocimiento",
             "🕵️ Inteligencia Web",
             "🖼️ Scraping",
@@ -76,6 +77,7 @@ def _create_enhanced_app():
 
     page_map = {
         "🏠 Command Center": "command_center",
+        "🧩 SPOE Workbench": "spoe_workbench",
         "🧠 Inteligencia de Conocimiento": "knowledge_intelligence",
         "🕵️ Inteligencia Web": "intelligence",
         "🖼️ Scraping": "scraping",
@@ -98,6 +100,9 @@ def _create_enhanced_app():
 
     if st.session_state.current_page == "command_center":
         _resolve_main()()
+
+    elif st.session_state.current_page == "spoe_workbench":
+        st.switch_page("pages/spoe_workbench.py")
 
     elif st.session_state.current_page == "intelligence":
         from backoffice.ui.market_intelligence_panel import render_market_intelligence_panel

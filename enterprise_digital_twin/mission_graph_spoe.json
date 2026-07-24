@@ -1,0 +1,35 @@
+{
+  "mission": "SPOE",
+  "updated_at": "2026-07-23T00:00:00Z",
+  "nodes": [
+    {"id": "workbench", "label": "Standard Product Offer Engine Workbench"},
+    {"id": "catalog", "label": "Product Catalog"},
+    {"id": "template_manager", "label": "Template Manager"},
+    {"id": "engineering_calculator", "label": "Engineering Calculator"},
+    {"id": "commercial_generator", "label": "Commercial Generator"},
+    {"id": "document_generator", "label": "Document Generator"},
+    {"id": "image_generator", "label": "Image Generator"},
+    {"id": "video_integration", "label": "Video Integration"},
+    {"id": "export_engine", "label": "Export Engine"},
+    {"id": "knowledge_hub", "label": "Knowledge Hub"},
+    {"id": "ai_coordinator", "label": "AI Coordinator"},
+    {"id": "mission_manager", "label": "Mission Manager"},
+    {"id": "hypothesis_engine", "label": "Hypothesis Engine"},
+    {"id": "platform_score", "label": "Platform Maturity Score"}
+  ],
+  "edges": [
+    {"from": "workbench", "to": "catalog"},
+    {"from": "catalog", "to": "template_manager"},
+    {"from": "template_manager", "to": "engineering_calculator"},
+    {"from": "engineering_calculator", "to": "commercial_generator"},
+    {"from": "commercial_generator", "to": "document_generator"},
+    {"from": "document_generator", "to": "image_generator"},
+    {"from": "image_generator", "to": "video_integration"},
+    {"from": "video_integration", "to": "export_engine"},
+    {"from": "export_engine", "to": "knowledge_hub"},
+    {"from": "knowledge_hub", "to": "ai_coordinator"},
+    {"from": "ai_coordinator", "to": "mission_manager"},
+    {"from": "mission_manager", "to": "hypothesis_engine"},
+    {"from": "hypothesis_engine", "to": "platform_score"}
+  ]
+}

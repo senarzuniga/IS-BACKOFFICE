@@ -1,0 +1,113 @@
+{
+  "product": "sr1400",
+  "rounding": "ceil",
+  "variables": [
+    "line_length_m",
+    "turns_90",
+    "ramps_count",
+    "ramp_length_m"
+  ],
+  "components": [
+    {
+      "name": "Chains",
+      "formula": {
+        "base": 2,
+        "terms": [
+          {"variable": "line_length_m", "coefficient": 0.11},
+          {"variable": "turns_90", "coefficient": 0.8},
+          {"variable": "ramps_count", "coefficient": 0.3}
+        ]
+      }
+    },
+    {
+      "name": "Trailing Arms",
+      "formula": {
+        "base": 4,
+        "terms": [
+          {"variable": "line_length_m", "coefficient": 0.065},
+          {"variable": "turns_90", "coefficient": 0.6}
+        ]
+      }
+    },
+    {
+      "name": "Plates",
+      "formula": {
+        "base": 12,
+        "terms": [
+          {"variable": "line_length_m", "coefficient": 0.45},
+          {"variable": "ramp_length_m", "coefficient": 0.25}
+        ]
+      }
+    },
+    {
+      "name": "Covers",
+      "formula": {
+        "base": 10,
+        "terms": [
+          {"variable": "line_length_m", "coefficient": 0.4},
+          {"variable": "turns_90", "coefficient": 0.4}
+        ]
+      }
+    },
+    {
+      "name": "Brushes",
+      "formula": {
+        "base": 6,
+        "terms": [
+          {"variable": "line_length_m", "coefficient": 0.22},
+          {"variable": "ramps_count", "coefficient": 0.7}
+        ]
+      }
+    },
+    {
+      "name": "Motors",
+      "formula": {
+        "base": 1,
+        "terms": [
+          {"variable": "line_length_m", "coefficient": 0.015},
+          {"variable": "turns_90", "coefficient": 0.12}
+        ]
+      }
+    },
+    {
+      "name": "Lubrication System",
+      "formula": {
+        "base": 1,
+        "terms": [
+          {"variable": "line_length_m", "coefficient": 0.01}
+        ]
+      }
+    },
+    {
+      "name": "Electrical Panels",
+      "formula": {
+        "base": 1,
+        "terms": [
+          {"variable": "line_length_m", "coefficient": 0.008},
+          {"variable": "ramps_count", "coefficient": 0.2}
+        ]
+      }
+    },
+    {
+      "name": "Extensions",
+      "formula": {
+        "base": 0,
+        "terms": [
+          {"variable": "line_length_m", "coefficient": 0.035},
+          {"variable": "ramp_length_m", "coefficient": 0.07}
+        ]
+      }
+    },
+    {
+      "name": "Accessories",
+      "formula": {
+        "base": 3,
+        "terms": [
+          {"variable": "line_length_m", "coefficient": 0.05},
+          {"variable": "turns_90", "coefficient": 0.25},
+          {"variable": "ramps_count", "coefficient": 0.3}
+        ]
+      }
+    }
+  ]
+}
