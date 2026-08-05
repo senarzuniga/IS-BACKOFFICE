@@ -10,7 +10,7 @@
   ║  2. Replace every {{PLACEHOLDER}} with actual content.       ║
   ║  3. Add / remove <div class="page"> blocks as needed.        ║
   ║  4. Footer brand label is always "Ing_RESEARCH".             ║
-  ║  5. Logo path: use the absolute path below; the onerror      ║
+    ║  5. CorporateHeader logo path uses ingeeniering.png; onerror  ║
   ║     fallback renders an orange "I" SVG if file is missing.  ║
   ║                                                              ║
   ║  PLACEHOLDERS                                                ║
@@ -71,7 +71,7 @@
         }
 
         /* ══════════════════════ HEADER ══════════════════════ */
-        .report-header {
+        .corporate-header {
             display: flex;
             justify-content: flex-end;
             align-items: center;
@@ -80,7 +80,7 @@
             margin-bottom: 1.8rem;
         }
 
-        .logo-area img {
+        .corporate-logo img {
             max-height: 60px;
             width: auto;
             opacity: 0.70;          /* 70 % transparency as spec */
@@ -269,7 +269,7 @@
         @media (max-width: 800px) {
             .chapter { font-size: 1.45rem; }
             h2 { font-size: 1.25rem; }
-            .report-header, .report-footer, .content-pad { padding-left: 1rem; padding-right: 1rem; }
+            .corporate-header, .report-footer, .content-pad { padding-left: 1rem; padding-right: 1rem; }
             table { font-size: 0.72rem; }
             td, th { padding: 5px 7px; }
         }
@@ -293,9 +293,9 @@
     Each page follows this skeleton:
 
     <div class="page">
-        <div class="report-header">
-            <div class="logo-area">
-                <img src="C:\Users\Inaki Senar\Documents\INGECART\MARKETING\LOGOS\ICON ORANGE.png"
+        <div class="corporate-header">
+            <div class="corporate-logo">
+                <img src="C:\Users\Inaki Senar\Documents\INGECART\MARKETING\LOGOS\ingeeniering.png"
                      alt="INGECART"
                      onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 100 100\'%3E%3Crect width=\'100\' height=\'100\' fill=\'%23FF6A00\' opacity=\'0.7\'/%3E%3Ctext x=\'50\' y=\'67\' font-size=\'40\' text-anchor=\'middle\' fill=\'%2305070B\' font-weight=\'bold\'%3EI%3C/text%3E%3C/svg%3E';">
             </div>

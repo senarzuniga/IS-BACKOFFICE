@@ -1,0 +1,1063 @@
+{
+  "document_id": "5d9494d0a9564a799eea8f46cc53f052",
+  "title": "Corrugated Plant Automation Solutions",
+  "components": [
+    {
+      "id": "6de48bda38ff43b1bd72a6f1a2919565",
+      "component_kind": "text",
+      "title": "TAILORED AUTOMATION",
+      "body": "TAILORED AUTOMATION",
+      "items": [
+        {
+          "title": "Heading",
+          "body": "TAILORED AUTOMATION\n& INTRALOGISTICS"
+        },
+        {
+          "title": "Heading",
+          "body": "The Corrugated Plant \nof the Future \nStarts Here"
+        },
+        {
+          "title": "Text",
+          "body": "Corrugated Plant Automation Solutions"
+        }
+      ],
+      "props": {
+        "layout": "two-column",
+        "labels": [
+          "automation",
+          "corrugated",
+          "future",
+          "heading",
+          "here",
+          "intralogistics",
+          "plant",
+          "shape",
+          "solutions",
+          "starts",
+          "tailored",
+          "text"
+        ],
+        "confidence": 6.2
+      },
+      "asset_ids": [],
+      "style_tokens": [],
+      "evidence_ids": [],
+      "knowledge_keys": [],
+      "semantic_labels": [],
+      "confidence": 1.0
+    },
+    {
+      "id": "1e8d578f6d0a4c2e8655f3da3c78d6a1",
+      "component_kind": "text",
+      "title": "Automated Corrugator Paper Reel Feeding System",
+      "body": "Automated Corrugator Paper Reel Feeding System",
+      "items": [
+        {
+          "title": "Text",
+          "body": "Automated Corrugator Paper Reel Feeding System"
+        },
+        {
+          "title": "Heading",
+          "body": "INGETRANS"
+        },
+        {
+          "title": "Text",
+          "body": "INTRALOGISTICS\nAMR"
+        },
+        {
+          "title": "Text",
+          "body": "WIP AUTOMATION \nAMR"
+        },
+        {
+          "title": "Text",
+          "body": "RFID\nROLL \nMANAGEMENT"
+        },
+        {
+          "title": "Heading",
+          "body": "PALLETIZING\n & \nLOAD FORMING"
+        },
+        {
+          "title": "Heading",
+          "body": "AUTOMATIC TRUCK LOADING"
+        },
+        {
+          "title": "Heading",
+          "body": "SR-1400 \nunified solution for collecting and transporting all waiste"
+        },
+        {
+          "title": "Title",
+          "body": "EasyPack"
+        }
+      ],
+      "props": {
+        "layout": "two-column",
+        "labels": [
+          "all",
+          "amr",
+          "and",
+          "automated",
+          "automatic",
+          "automation",
+          "collecting",
+          "corrugator",
+          "easypack",
+          "feeding",
+          "for",
+          "forming"
+        ],
+        "confidence": 8.3
+      },
+      "asset_ids": [],
+      "style_tokens": [],
+      "evidence_ids": [],
+      "knowledge_keys": [],
+      "semantic_labels": [],
+      "confidence": 1.0
+    },
+    {
+      "id": "1a00c7ec1fd946c491fc066700671921",
+      "component_kind": "text",
+      "title": "1.268\t28\t\t26\t\t194",
+      "body": "1.268\t28\t\t26\t\t194",
+      "items": [
+        {
+          "title": "Heading",
+          "body": "1.268\t28\t\t26\t\t194\n       Projects      Years\t      Agreements            Installations"
+        }
+      ],
+      "props": {
+        "layout": "single-column",
+        "labels": [
+          "1.268",
+          "194",
+          "agreements",
+          "heading",
+          "installations",
+          "projects",
+          "shape",
+          "years"
+        ],
+        "confidence": 6.2
+      },
+      "asset_ids": [],
+      "style_tokens": [],
+      "evidence_ids": [],
+      "knowledge_keys": [],
+      "semantic_labels": [],
+      "confidence": 1.0
+    },
+    {
+      "id": "997b7e5207b44c4f86dc271bf6b1879a",
+      "component_kind": "text",
+      "title": "Slide 4",
+      "body": "Slide 4",
+      "items": [],
+      "props": {
+        "layout": "single-column",
+        "labels": [
+          "shape",
+          "slide"
+        ],
+        "confidence": 6.2
+      },
+      "asset_ids": [],
+      "style_tokens": [],
+      "evidence_ids": [],
+      "knowledge_keys": [],
+      "semantic_labels": [],
+      "confidence": 1.0
+    },
+    {
+      "id": "7ee1859a21f84115af252c371c9f2b89",
+      "component_kind": "text",
+      "title": "Industrial machinery\t\t\tOperational efficiency and reduced manual handling",
+      "body": "Industrial machinery\t\t\tOperational efficiency and reduced manual handling",
+      "items": [
+        {
+          "title": "Heading",
+          "body": "Industrial machinery\t\t\tOperational efficiency and reduced manual handling\nInstallation & commissioning\t\tSeamless integration into your existing plant flow\nRobotics & palletizing\t\t\tLower error rates, higher throughput, improved safety\nProject management\t\t\tSingle point of contact for the entire project lifecycle\n360° turnkey solution\t\t\tDesign, execution, training, and startup from A to Z\nTechnical auditing\t\t\tIndependent diagnosis, free from manufacturer bias\nIndustrial Intelligence (Ing_PRO)\t\tAI applied to operations, maintenance, and quality"
+        },
+        {
+          "title": "Title",
+          "body": "WHAT WE DO"
+        }
+      ],
+      "props": {
+        "layout": "single-column",
+        "labels": [
+          "360°",
+          "and",
+          "applied",
+          "auditing",
+          "bias",
+          "commissioning",
+          "contact",
+          "design",
+          "diagnosis",
+          "efficiency",
+          "entire",
+          "error"
+        ],
+        "confidence": 8.3
+      },
+      "asset_ids": [],
+      "style_tokens": [],
+      "evidence_ids": [],
+      "knowledge_keys": [],
+      "semantic_labels": [],
+      "confidence": 1.0
+    },
+    {
+      "id": "da53d5c27e004f3a94c10fe6b335577d",
+      "component_kind": "text",
+      "title": "Slide 6",
+      "body": "Slide 6",
+      "items": [],
+      "props": {
+        "layout": "single-column",
+        "labels": [
+          "shape",
+          "slide"
+        ],
+        "confidence": 6.2
+      },
+      "asset_ids": [],
+      "style_tokens": [],
+      "evidence_ids": [],
+      "knowledge_keys": [],
+      "semantic_labels": [],
+      "confidence": 1.0
+    },
+    {
+      "id": "6565509becea4ded8e80423cf95242d1",
+      "component_kind": "text",
+      "title": "Automated Corrugator Paper Reel Feeding System",
+      "body": "Automated Corrugator Paper Reel Feeding System",
+      "items": [
+        {
+          "title": "Text",
+          "body": "Automated Corrugator Paper Reel Feeding System\n\nINGETRANS is a complete automated solution for managing paper reel supply to multiple consumption points on the corrugator, including the automatic return of unused, or partially used, reels to their assigned storage locations. Designed and manufactured by Ingecart, this system eliminates forklift dependency, reduces accident risks, and significantly improves operational efficiency.\n\nThe KEY 👉 \nWith the available operational data, a clear conclusion emerges:\n the real bottleneck is not the travel speed of the forklift,\nbut the availability, synchronization, \nand coordination of reel supply. \nINGETRANS delivers its value not by moving faster,\n but by transforming reel handling into a continuous, predictable, and automated process. \nThis results in fewer supply interruptions, \nimproved corrugator availability, higher OEE, enhanced operational safety, and a more stable and efficient logistics flow throughout the plant."
+        },
+        {
+          "title": "Title",
+          "body": "INTRALOGISTICS INGETRANS"
+        }
+      ],
+      "props": {
+        "layout": "two-column",
+        "labels": [
+          "accident",
+          "and",
+          "assigned",
+          "automated",
+          "automatic",
+          "availability",
+          "available",
+          "bottleneck",
+          "but",
+          "clear",
+          "complete",
+          "conclusion"
+        ],
+        "confidence": 8.3
+      },
+      "asset_ids": [],
+      "style_tokens": [],
+      "evidence_ids": [],
+      "knowledge_keys": [],
+      "semantic_labels": [],
+      "confidence": 1.0
+    },
+    {
+      "id": "fd332070895341fabb7375acf3676d94",
+      "component_kind": "text",
+      "title": "Slide 8",
+      "body": "Slide 8",
+      "items": [],
+      "props": {
+        "layout": "single-column",
+        "labels": [
+          "shape",
+          "slide"
+        ],
+        "confidence": 6.2
+      },
+      "asset_ids": [],
+      "style_tokens": [],
+      "evidence_ids": [],
+      "knowledge_keys": [],
+      "semantic_labels": [],
+      "confidence": 1.0
+    },
+    {
+      "id": "c91b439105694db3be2014504ed6bdf8",
+      "component_kind": "text",
+      "title": "TECHNICAL SPECIFICATIONS",
+      "body": "TECHNICAL SPECIFICATIONS",
+      "items": [
+        {
+          "title": "Text",
+          "body": "TECHNICAL SPECIFICATIONS\n\n- System type: Surface rail-guided vehicle\n- Track system: Floor-mounted rails\n- Operation: Fully automated (no forklift or direct personnel intervention)\n- Adaptability: Custom design per client layout (number of lanes, length, consumption points)\n- Integration: Compatible with customer's planning / MES system\n\nBENEFITS\n\n- Eliminates forklift traffic – removes uncontrolled vehicle movement from corrugator work area\n- Reduces accident risk – protects personnel operating near machines\n- Labor cost reduction – minimizes manual roll handling tasks\n- Minimizes downtime – rolls arrive exactly when needed\n- Fast ROI – quick payback through efficiency gains and cost savings\n- Increased profitability – higher overall equipment effectiveness (OEE)\n\nHOW IT WORKS\n\n1. Start – The process begins in the customer's warehouse\n2. Transport – The Ingetrans carriage moves along floor-mounted rails\n3. Delivery – Rolls are delivered to consumption points on the corrugator\n4. Return – Unused rolls are automatically returned to assigned locations"
+        },
+        {
+          "title": "Title",
+          "body": "INTRALOGISTICS INGETRANS"
+        }
+      ],
+      "props": {
+        "layout": "two-column",
+        "labels": [
+          "accident",
+          "adaptability",
+          "along",
+          "and",
+          "are",
+          "area",
+          "arrive",
+          "assigned",
+          "automated",
+          "automatically",
+          "begins",
+          "benefits"
+        ],
+        "confidence": 8.3
+      },
+      "asset_ids": [],
+      "style_tokens": [],
+      "evidence_ids": [],
+      "knowledge_keys": [],
+      "semantic_labels": [],
+      "confidence": 1.0
+    },
+    {
+      "id": "6937af2faa5e4e6fb52fe3043d56fa19",
+      "component_kind": "text",
+      "title": "More meters per minute.",
+      "body": "More meters per minute.",
+      "items": [
+        {
+          "title": "Title",
+          "body": "More meters per minute.\nZero chaos at the corrugator."
+        },
+        {
+          "title": "Title",
+          "body": "Safe productivity for corrugated plants."
+        },
+        {
+          "title": "Text",
+          "body": "More real line capacity: continuous, production-synchronized supply.\nAutomates reel movement, delivery, and return from warehouse to corrugator.\nCreates safer workspaces by eliminating uncontrolled circulation."
+        },
+        {
+          "title": "Heading",
+          "body": "The Corrugated Plant\nof the Future"
+        }
+      ],
+      "props": {
+        "layout": "single-column",
+        "labels": [
+          "and",
+          "automates",
+          "capacity",
+          "chaos",
+          "circulation",
+          "continuous",
+          "corrugated",
+          "corrugator",
+          "creates",
+          "delivery",
+          "eliminating",
+          "for"
+        ],
+        "confidence": 8.3
+      },
+      "asset_ids": [],
+      "style_tokens": [],
+      "evidence_ids": [],
+      "knowledge_keys": [],
+      "semantic_labels": [],
+      "confidence": 1.0
+    },
+    {
+      "id": "8b7400b4dda74f6c8b5a24b71d0a2bad",
+      "component_kind": "text",
+      "title": "Plug&Play Palletizer + Easypack",
+      "body": "Plug&Play Palletizer + Easypack",
+      "items": [
+        {
+          "title": "Title",
+          "body": "Plug&Play Palletizer + Easypack"
+        }
+      ],
+      "props": {
+        "layout": "single-column",
+        "labels": [
+          "easypack",
+          "palletizer",
+          "plug&play",
+          "shape",
+          "title"
+        ],
+        "confidence": 6.2
+      },
+      "asset_ids": [],
+      "style_tokens": [],
+      "evidence_ids": [],
+      "knowledge_keys": [],
+      "semantic_labels": [],
+      "confidence": 1.0
+    },
+    {
+      "id": "3cd2644cbe4c4cf6b7474a5b2437c9fe",
+      "component_kind": "text",
+      "title": "12 stable production rate with interlayers, automatic pallet exit",
+      "body": "12 stable production rate with interlayers, automatic pallet exit",
+      "items": [
+        {
+          "title": "Text",
+          "body": "12 stable production rate with interlayers, automatic pallet exit\n  Up to 1200x1200x2300 palletizing area\n  From 250x250 to 700x900 bundle size\n  Compact design: 3x3 meter footprint \n🔌 No production stoppage. Plug, configure, and palletize.\n🛠️ Universal gripper. 50+ sizes. Zero changeover time.\n   No tools needed. Just a recipe.\n📈 ROI: Automation pays for itself.\n🧠 Multi-language HMI + ERP. Real-time data.\n   Traceability and control from day one.\n📦 Scale without redesigning your plant.\n   Growth doesn't have to be complicated."
+        },
+        {
+          "title": "Title",
+          "body": "Plug&Play Easypack+Palletizer :  Stack higher. Stack faster. Zero errors.."
+        }
+      ],
+      "props": {
+        "layout": "two-column",
+        "labels": [
+          "1200x1200x2300",
+          "250x250",
+          "3x3",
+          "50+",
+          "700x900",
+          "and",
+          "area",
+          "automatic",
+          "automation",
+          "bundle",
+          "changeover",
+          "compact"
+        ],
+        "confidence": 8.100000000000001
+      },
+      "asset_ids": [],
+      "style_tokens": [],
+      "evidence_ids": [],
+      "knowledge_keys": [],
+      "semantic_labels": [],
+      "confidence": 1.0
+    },
+    {
+      "id": "0e4b4512e5224ab98137c6f559bdf524",
+      "component_kind": "text",
+      "title": "13,2 stable production rate with interlayers, automatic pallet exit",
+      "body": "13,2 stable production rate with interlayers, automatic pallet exit",
+      "items": [
+        {
+          "title": "Text",
+          "body": "13,2 stable production rate with interlayers, automatic pallet exit\n   Squaring System\n   Up to 1600x1600x2300 palletizing area\n   From 350x400 to 1400x1500 bundle size\n🛠️ Universal gripper. 50+ sizes. Zero changeover time.\n    No tools needed. Just a recipe.\n 📈 ROI: Automation pays for itself.\n🧠 Multi-language HMI + ERP. Real-time data.\n   Traceability and control from day one.\nGrowth doesn't have to be complicated."
+        },
+        {
+          "title": "Title",
+          "body": "Custom palletizer:  Stack higher. Stack faster. Zero errors.."
+        }
+      ],
+      "props": {
+        "layout": "two-column",
+        "labels": [
+          "13,2",
+          "1400x1500",
+          "1600x1600x2300",
+          "350x400",
+          "50+",
+          "and",
+          "area",
+          "automatic",
+          "automation",
+          "bundle",
+          "changeover",
+          "complicated"
+        ],
+        "confidence": 6.2
+      },
+      "asset_ids": [],
+      "style_tokens": [],
+      "evidence_ids": [],
+      "knowledge_keys": [],
+      "semantic_labels": [],
+      "confidence": 1.0
+    },
+    {
+      "id": "08ff1501b09e495aa6125664a52f3c11",
+      "component_kind": "text",
+      "title": "High-speed converting machines producing more than 400 bundle per minute or operating with multiple output lines require",
+      "body": "High-speed converting machines producing more than 400 bundle per minute or operating with multiple output lines require",
+      "items": [
+        {
+          "title": "Text",
+          "body": "High-speed converting machines producing more than 400 bundle per minute or operating with multiple output lines require quick and efficient load formers. \nOur robotic palletizers and conveyor systems provide tailor-made solutions for every FFG and RDC machine output."
+        },
+        {
+          "title": "Heading",
+          "body": "Custom\nHigh Speed\n Palletizer"
+        },
+        {
+          "title": "Text",
+          "body": "Robot Arm Stacking Ability: (Pallet size: 1200W*1200L, 4 Bundles/Layer; (485W*635L*125H)\nHigh Speed Single Bundle Max. Stacking Time:  23±1times/Min。\n  High Speed Double Bundle Max. Stacking Time:  36±2times/Min。"
+        }
+      ],
+      "props": {
+        "layout": "two-column",
+        "labels": [
+          "1200w*1200l",
+          "23±1times/min。",
+          "36±2times/min。",
+          "400",
+          "485w*635l*125h",
+          "ability",
+          "and",
+          "arm",
+          "bundle",
+          "bundles/layer",
+          "converting",
+          "conveyor"
+        ],
+        "confidence": 6.2
+      },
+      "asset_ids": [],
+      "style_tokens": [],
+      "evidence_ids": [],
+      "knowledge_keys": [],
+      "semantic_labels": [],
+      "confidence": 1.0
+    },
+    {
+      "id": "48c76fef16eb4bd19576446d2027d66a",
+      "component_kind": "text",
+      "title": "INTRALOGISTICS",
+      "body": "INTRALOGISTICS",
+      "items": [
+        {
+          "title": "Heading",
+          "body": "INTRALOGISTICS\nAMR"
+        },
+        {
+          "title": "Heading",
+          "body": "INTRALOGISTICS\nAMR\nSupported by KUKA, Ingecart has develop \na unique automated system for improving \nthe WIP management, efficiency\nprecision cost reduction ."
+        }
+      ],
+      "props": {
+        "layout": "single-column",
+        "labels": [
+          "amr",
+          "automated",
+          "cost",
+          "develop",
+          "efficiency",
+          "for",
+          "has",
+          "heading",
+          "improving",
+          "ingecart",
+          "intralogistics",
+          "kuka"
+        ],
+        "confidence": 6.2
+      },
+      "asset_ids": [],
+      "style_tokens": [],
+      "evidence_ids": [],
+      "knowledge_keys": [],
+      "semantic_labels": [],
+      "confidence": 1.0
+    },
+    {
+      "id": "25ee16be3b854d568558280f9e631868",
+      "component_kind": "text",
+      "title": "Ingecart Intralogistics Management System – AMR-Based Solution",
+      "body": "Ingecart Intralogistics Management System – AMR-Based Solution",
+      "items": [
+        {
+          "title": "Text",
+          "body": "Ingecart Intralogistics Management System – AMR-Based Solution\nAutomate. Optimize. Maximize Every Square Meter.\nAutonomous Mobile Robots (AMRs) significantly increase efficiency in storage and production environments. They automate transport and logistics processes, accelerating task execution and optimizing goods flow.\n\nIngecart's compact and flexible AMR models integrate seamlessly into existing supply chains – saving substantial time and resources."
+        },
+        {
+          "title": "Heading",
+          "body": "Ingecart Intralogistics Management System \nAMR-Based Solution"
+        }
+      ],
+      "props": {
+        "layout": "two-column",
+        "labels": [
+          "accelerating",
+          "amr",
+          "amr-based",
+          "amrs",
+          "and",
+          "automate",
+          "autonomous",
+          "chains",
+          "compact",
+          "efficiency",
+          "environments",
+          "every"
+        ],
+        "confidence": 8.3
+      },
+      "asset_ids": [],
+      "style_tokens": [],
+      "evidence_ids": [],
+      "knowledge_keys": [],
+      "semantic_labels": [],
+      "confidence": 1.0
+    },
+    {
+      "id": "c45b8233ed0b462db7824b72eec37b62",
+      "component_kind": "text",
+      "title": "Intelligent Internal Logistics for the Entire Corrugated Plant",
+      "body": "Intelligent Internal Logistics for the Entire Corrugated Plant",
+      "items": [
+        {
+          "title": "Text",
+          "body": "Intelligent Internal Logistics for the Entire Corrugated Plant\n\nTransform every internal material movement into an autonomous,\n intelligent and fully connected logistics ecosystem.\nOur AMR Platform automates not only WIP management, \nbut also waste handling, production supplies, \npackaging materials and auxiliary logistics,\ncreating a unified intralogistics infrastructure for the entire plant.\n\nOne Platform. Multiple Material Flows.\n\nA single fleet of autonomous mobile robots manages every internal logistics process across the plant.\nInstead of deploying dedicated transport systems for each application, one intelligent AMR fleet dynamically executes multiple missions according to real-time production priorities."
+        },
+        {
+          "title": "Heading",
+          "body": "Ingecart Intralogistics Management System \nIntralogistics"
+        }
+      ],
+      "props": {
+        "layout": "two-column",
+        "labels": [
+          "according",
+          "across",
+          "also",
+          "amr",
+          "and",
+          "application",
+          "automates",
+          "autonomous",
+          "auxiliary",
+          "but",
+          "connected",
+          "corrugated"
+        ],
+        "confidence": 8.3
+      },
+      "asset_ids": [],
+      "style_tokens": [],
+      "evidence_ids": [],
+      "knowledge_keys": [],
+      "semantic_labels": [],
+      "confidence": 1.0
+    },
+    {
+      "id": "05786a5460d0471e806a403a4da16552",
+      "component_kind": "text",
+      "title": "Slide 18",
+      "body": "Slide 18",
+      "items": [],
+      "props": {
+        "layout": "single-column",
+        "labels": [
+          "shape",
+          "slide"
+        ],
+        "confidence": 6.2
+      },
+      "asset_ids": [],
+      "style_tokens": [],
+      "evidence_ids": [],
+      "knowledge_keys": [],
+      "semantic_labels": [],
+      "confidence": 1.0
+    },
+    {
+      "id": "be2b2c942acc4219b91354d6b46b93a6",
+      "component_kind": "text",
+      "title": "Slide 19",
+      "body": "Slide 19",
+      "items": [],
+      "props": {
+        "layout": "single-column",
+        "labels": [
+          "shape",
+          "slide"
+        ],
+        "confidence": 6.2
+      },
+      "asset_ids": [],
+      "style_tokens": [],
+      "evidence_ids": [],
+      "knowledge_keys": [],
+      "semantic_labels": [],
+      "confidence": 1.0
+    },
+    {
+      "id": "859acc82c15945a291fd6861dfded3c7",
+      "component_kind": "text",
+      "title": "Slide 20",
+      "body": "Slide 20",
+      "items": [],
+      "props": {
+        "layout": "single-column",
+        "labels": [
+          "shape",
+          "slide"
+        ],
+        "confidence": 6.2
+      },
+      "asset_ids": [],
+      "style_tokens": [],
+      "evidence_ids": [],
+      "knowledge_keys": [],
+      "semantic_labels": [],
+      "confidence": 1.0
+    },
+    {
+      "id": "1801b5dc26764c41910a2cf3ef03203f",
+      "component_kind": "text",
+      "title": "Slide 21",
+      "body": "Slide 21",
+      "items": [],
+      "props": {
+        "layout": "single-column",
+        "labels": [
+          "shape",
+          "slide"
+        ],
+        "confidence": 6.2
+      },
+      "asset_ids": [],
+      "style_tokens": [],
+      "evidence_ids": [],
+      "knowledge_keys": [],
+      "semantic_labels": [],
+      "confidence": 1.0
+    },
+    {
+      "id": "e2579c7aaf1342b0b6e75af2b11ea2bc",
+      "component_kind": "text",
+      "title": "WHAT IT HANDLES",
+      "body": "WHAT IT HANDLES",
+      "items": [
+        {
+          "title": "Text",
+          "body": "WHAT IT HANDLES\n- Casemaker waste\n- Die-cutter waste\n- Corrugator waste\n- Sheet waste\n\nKEY BENEFITS\n- Very low energy consumption\n- Low noise level\n- No airborne dust\n- Reduced fire hazard"
+        },
+        {
+          "title": "Heading",
+          "body": "SR-1400 \nunified solution for collecting and transporting all waste"
+        }
+      ],
+      "props": {
+        "layout": "two-column",
+        "labels": [
+          "airborne",
+          "all",
+          "and",
+          "benefits",
+          "casemaker",
+          "collecting",
+          "consumption",
+          "corrugator",
+          "die-cutter",
+          "dust",
+          "energy",
+          "fire"
+        ],
+        "confidence": 6.2
+      },
+      "asset_ids": [],
+      "style_tokens": [],
+      "evidence_ids": [],
+      "knowledge_keys": [],
+      "semantic_labels": [],
+      "confidence": 1.0
+    },
+    {
+      "id": "a67dededb7114f25b367f94b360ee8c0",
+      "component_kind": "text",
+      "title": "Auto-lubrication system",
+      "body": "Auto-lubrication system",
+      "items": [
+        {
+          "title": "Text",
+          "body": "Auto-lubrication system\nSectional stop at each machine:\nSafety push-buttons allow operators to stop non-operative sections, improving safety and saving energy.\nAnti-wear plates at line ends\nSpecial chain & arm design\nDeveloped after studying multiple customer installations. Eliminates common fixing failures and constant maintenance issues.\nChain link breaking strength\n35,000 kg – Metal fins allow screw fixing for easy annual inspections.\nSpeed inverters for flow control\nComplete system integration\nWaste from the corrugator is collected and transported without a cyclone, further reducing energy costs and avoiding system duplication."
+        },
+        {
+          "title": "Heading",
+          "body": "SR-1400 \nunified solution for collecting and transporting all waste"
+        }
+      ],
+      "props": {
+        "layout": "two-column",
+        "labels": [
+          "35,000",
+          "after",
+          "all",
+          "allow",
+          "and",
+          "annual",
+          "anti-wear",
+          "arm",
+          "auto-lubrication",
+          "avoiding",
+          "breaking",
+          "chain"
+        ],
+        "confidence": 8.2
+      },
+      "asset_ids": [],
+      "style_tokens": [],
+      "evidence_ids": [],
+      "knowledge_keys": [],
+      "semantic_labels": [],
+      "confidence": 1.0
+    },
+    {
+      "id": "384ace351b7b4aceba0d89064509caff",
+      "component_kind": "text",
+      "title": "RFID",
+      "body": "RFID",
+      "items": [
+        {
+          "title": "Heading",
+          "body": "RFID\nROLL \nMANAGEMENT"
+        },
+        {
+          "title": "Heading",
+          "body": "fully integrated, cost-effective RFID-based solution to automatically identify, track, and validate paper rolls at every critical station"
+        }
+      ],
+      "props": {
+        "layout": "single-column",
+        "labels": [
+          "and",
+          "automatically",
+          "cost-effective",
+          "critical",
+          "every",
+          "fully",
+          "heading",
+          "identify",
+          "integrated",
+          "management",
+          "paper",
+          "rfid"
+        ],
+        "confidence": 6.2
+      },
+      "asset_ids": [],
+      "style_tokens": [],
+      "evidence_ids": [],
+      "knowledge_keys": [],
+      "semantic_labels": [],
+      "confidence": 1.0
+    },
+    {
+      "id": "45b129d7bc2146d0823b85dcbbd3c6db",
+      "component_kind": "text",
+      "title": "Slide 25",
+      "body": "Slide 25",
+      "items": [],
+      "props": {
+        "layout": "single-column",
+        "labels": [
+          "shape",
+          "slide"
+        ],
+        "confidence": 6.2
+      },
+      "asset_ids": [],
+      "style_tokens": [],
+      "evidence_ids": [],
+      "knowledge_keys": [],
+      "semantic_labels": [],
+      "confidence": 1.0
+    },
+    {
+      "id": "563cdd3768254aa7ba2c3e7184f45e9e",
+      "component_kind": "text",
+      "title": "AUTOMATIC ",
+      "body": "AUTOMATIC ",
+      "items": [
+        {
+          "title": "Heading",
+          "body": "AUTOMATIC \nTRUCK LOADING"
+        },
+        {
+          "title": "Heading",
+          "body": "Automatic Truck Loading Systems (ATLS) completely revolutionize warehouse logistics by turning 30-to-60 minute manual loading processes into operations that take just 3 to 8 minutes. \n\nThe truck is loaded in 50 sec."
+        }
+      ],
+      "props": {
+        "layout": "single-column",
+        "labels": [
+          "30-to-60",
+          "atls",
+          "automatic",
+          "completely",
+          "heading",
+          "into",
+          "just",
+          "loaded",
+          "loading",
+          "logistics",
+          "manual",
+          "minute"
+        ],
+        "confidence": 8.3
+      },
+      "asset_ids": [],
+      "style_tokens": [],
+      "evidence_ids": [],
+      "knowledge_keys": [],
+      "semantic_labels": [],
+      "confidence": 1.0
+    },
+    {
+      "id": "3cd444013c844d63b8cead8041d008b3",
+      "component_kind": "text",
+      "title": "Real case ",
+      "body": "Real case ",
+      "items": [
+        {
+          "title": "Heading",
+          "body": "Real case \nin Barcelona. \nOpen to Customers,\nReady for visit"
+        }
+      ],
+      "props": {
+        "layout": "two-column",
+        "labels": [
+          "barcelona",
+          "case",
+          "customers",
+          "for",
+          "heading",
+          "open",
+          "ready",
+          "real",
+          "shape",
+          "visit"
+        ],
+        "confidence": 6.2
+      },
+      "asset_ids": [],
+      "style_tokens": [],
+      "evidence_ids": [],
+      "knowledge_keys": [],
+      "semantic_labels": [],
+      "confidence": 1.0
+    },
+    {
+      "id": "a91f64d234a947e1b8832e0089232099",
+      "component_kind": "text",
+      "title": "Slide 28",
+      "body": "Slide 28",
+      "items": [],
+      "props": {
+        "layout": "single-column",
+        "labels": [
+          "shape",
+          "slide"
+        ],
+        "confidence": 6.2
+      },
+      "asset_ids": [],
+      "style_tokens": [],
+      "evidence_ids": [],
+      "knowledge_keys": [],
+      "semantic_labels": [],
+      "confidence": 1.0
+    },
+    {
+      "id": "0c48fd3bc8224a3e820eb00c179f2b2a",
+      "component_kind": "text",
+      "title": "Slide 29",
+      "body": "Slide 29",
+      "items": [],
+      "props": {
+        "layout": "single-column",
+        "labels": [
+          "shape",
+          "slide"
+        ],
+        "confidence": 6.2
+      },
+      "asset_ids": [],
+      "style_tokens": [],
+      "evidence_ids": [],
+      "knowledge_keys": [],
+      "semantic_labels": [],
+      "confidence": 1.0
+    }
+  ],
+  "diagram_components": [],
+  "tables": [],
+  "kpis": [],
+  "images": [],
+  "products": [
+    "Corrugated_Plant_Automation"
+  ],
+  "clients": [
+    "INGECART"
+  ],
+  "technologies": [],
+  "concepts": [
+    "Heading",
+    "Text",
+    "Title"
+  ],
+  "prompts": [],
+  "hypotheses": [
+    {
+      "id": "H1",
+      "name": "Strict structure-first reconstruction",
+      "engineering": 9.3,
+      "business": 8.3,
+      "quality": 9.2,
+      "risk": 2.0,
+      "executive_score": 8.61
+    },
+    {
+      "id": "H2",
+      "name": "Balanced semantic-first reconstruction",
+      "engineering": 8.4,
+      "business": 8.9,
+      "quality": 8.7,
+      "risk": 2.4,
+      "executive_score": 8.16
+    },
+    {
+      "id": "H3",
+      "name": "Visual-priority reconstruction",
+      "engineering": 8.0,
+      "business": 8.2,
+      "quality": 8.4,
+      "risk": 2.9,
+      "executive_score": 7.63
+    }
+  ],
+  "selected_hypothesis": {
+    "id": "H1",
+    "name": "Strict structure-first reconstruction",
+    "engineering": 9.3,
+    "business": 8.3,
+    "quality": 9.2,
+    "risk": 2.0,
+    "executive_score": 8.61
+  },
+  "decisions": {
+    "variant": "slide_flow",
+    "score": {
+      "visual_similarity_score": 100.0,
+      "structure_score": 100.0,
+      "theme_score": 100.0,
+      "typography_score": 100.0,
+      "layout_score": 100.0,
+      "image_score": 100.0,
+      "corporate_identity_score": 100.0,
+      "executive_quality_score": 100.0
+    }
+  }
+}

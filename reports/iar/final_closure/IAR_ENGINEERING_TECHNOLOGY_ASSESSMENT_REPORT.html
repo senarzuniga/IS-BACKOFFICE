@@ -1,0 +1,459 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Informe de Evaluacion Tecnologica de Ingenieria IAR</title>
+<script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
+<style>
+:root {
+  --bg:#f5f7f8;
+  --ink:#12232d;
+  --panel:#ffffff;
+  --line:#d8e4e8;
+  --brand:#0f766e;
+  --brand-2:#a16207;
+  --muted:#607080;
+}
+* { box-sizing:border-box; }
+body {
+  margin:0;
+  font-family:"Segoe UI", Tahoma, sans-serif;
+  color:var(--ink);
+  background:linear-gradient(160deg,#f2eee7 0%,#f2f7f8 55%,#edf6f4 100%);
+}
+.layout {
+  display:grid;
+  grid-template-columns:300px 1fr;
+  min-height:100vh;
+}
+aside {
+  position:sticky;
+  top:0;
+  height:100vh;
+  overflow:auto;
+  background:#0f172a;
+  color:#e5e7eb;
+  border-right:1px solid #1f2937;
+  padding:22px 18px;
+}
+aside h1 {
+  margin:0;
+  font-size:1.05rem;
+}
+aside p {
+  margin:8px 0 14px;
+  color:#94a3b8;
+  font-size:.85rem;
+}
+aside a {
+  display:block;
+  padding:8px 10px;
+  border-radius:8px;
+  color:#cbd5e1;
+  text-decoration:none;
+  margin:2px 0;
+  font-size:.92rem;
+}
+aside a:hover { background:#1e293b; color:#fff; }
+main { padding:24px; }
+.hero, .card {
+  background:var(--panel);
+  border:1px solid var(--line);
+  border-radius:14px;
+  box-shadow:0 8px 24px rgba(17,36,46,.06);
+}
+.hero { padding:22px; }
+.hero h2 { margin:0; color:#0b4f47; }
+.hero .subtitle { color:#4c6172; margin-top:8px; }
+.badges {
+  margin-top:12px;
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+}
+.badge {
+  background:#ecfdf5;
+  border:1px solid #99f6e4;
+  color:#0f766e;
+  font-weight:600;
+  padding:6px 10px;
+  border-radius:999px;
+  font-size:.82rem;
+}
+.grid {
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+  gap:10px;
+  margin-top:12px;
+}
+.kpi {
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:12px;
+  padding:12px;
+}
+.kpi .l { color:#64748b; font-size:.76rem; text-transform:uppercase; letter-spacing:.05em; }
+.kpi .v { margin-top:6px; font-size:1.45rem; font-weight:700; }
+section { margin-top:14px; }
+.card { padding:16px; }
+.card h3 { margin-top:0; color:#0f172a; }
+.table-wrap { overflow:auto; border:1px solid #e5e7eb; border-radius:10px; }
+table { width:100%; border-collapse:collapse; font-size:.9rem; background:#fff; }
+th, td { border:1px solid #e5e7eb; padding:8px; text-align:left; vertical-align:top; }
+th { background:#f8fafc; }
+.small { color:#6b7280; font-size:.85rem; }
+.two-col {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+}
+@media (max-width:1050px) {
+  .layout { grid-template-columns:1fr; }
+  aside { position:relative; height:auto; }
+  .two-col { grid-template-columns:1fr; }
+}
+.figure-grid {
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:10px;
+}
+.figure {
+  border:1px solid #e5e7eb;
+  border-radius:10px;
+  overflow:hidden;
+  background:#fff;
+}
+.figure img {
+  width:100%;
+  height:180px;
+  object-fit:cover;
+  display:block;
+}
+.figure figcaption {
+  padding:8px;
+  font-size:.8rem;
+  color:#64748b;
+}
+.heat {
+  width:100%;
+  border-collapse:collapse;
+}
+.heat td, .heat th {
+  border:1px solid #d7dee2;
+  padding:8px;
+  text-align:center;
+}
+.hm-low { background:#fee2e2; }
+.hm-mid { background:#fef3c7; }
+.hm-high { background:#dcfce7; }
+.mermaid {
+  background:#f8fafc;
+  border:1px solid #e5e7eb;
+  border-radius:10px;
+  padding:8px;
+}
+</style>
+</head>
+<body>
+<div class="layout">
+  <aside>
+    <h1>Evaluacion Tecnologica IAR</h1>
+    <p>Recomendacion de Ingenieria CTO para INGECART</p>
+    <a href="#exec">Resumen Ejecutivo</a>
+    <a href="#state">Estado Tecnologico RTLS</a>
+    <a href="#suppliers">Capitulos de Proveedores</a>
+    <a href="#comparison">Analisis Comparativo</a>
+    <a href="#claims">Claims vs Realidad</a>
+    <a href="#architecture">Analisis de Arquitectura</a>
+    <a href="#decision">Decision de Ingenieria</a>
+    <a href="#roadmap">Hoja de Ruta de Producto</a>
+    <a href="#conclusions">Conclusiones</a>
+  </aside>
+
+  <main>
+    <div id="exec" class="hero">
+      <h2>Informe de Evaluacion Tecnologica de Ingenieria IAR</h2>
+      <div class="subtitle">Recomendacion tecnica definitiva para la seleccion de base RTLS en la futura plataforma IAR de INGECART.</div>
+      <div class="badges">
+        <span class="badge">Tecnologia Recomendada: UWB-first</span>
+        <span class="badge">Arquitectura Recomendada: E - Faseada Twin-Centric</span>
+        <span class="badge">Puntuacion de Arquitectura: 89.96</span>
+        <span class="badge">Confianza de Evidencia Normalizada: 49.7/100</span>
+      </div>
+    </div>
+
+    <div class="grid">
+      <div class="kpi"><div class="l">Documentos</div><div class="v">7</div></div>
+      <div class="kpi"><div class="l">Claims Analizados</div><div class="v">253</div></div>
+      <div class="kpi"><div class="l">Verificados</div><div class="v">50</div></div>
+      <div class="kpi"><div class="l">Parcialmente Verificados</div><div class="v">156</div></div>
+      <div class="kpi"><div class="l">No Verificados</div><div class="v">44</div></div>
+      <div class="kpi"><div class="l">Contradichos</div><div class="v">3</div></div>
+    </div>
+
+    <section id="state" class="card">
+      <h3>2. Estado Actual de las Tecnologias RTLS</h3>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Tecnologia</th>
+              <th>Principio de Operacion</th>
+              <th>Madurez / Adopcion</th>
+              <th>Fortalezas</th>
+              <th>Limitaciones</th>
+              <th>Evolucion Esperada</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>UWB</td><td>Ranging basado en tiempo (TDoA/TWR)</td><td>Alta / Alta</td><td>Alto potencial de precision indoor, ajuste a tiempo real</td><td>Sensibilidad a calibracion y geometria</td><td>Inteligencia edge y optimizacion energetica mas robusta</td></tr>
+            <tr><td>Chirp</td><td>Ranging estilo chirp spread-spectrum</td><td>Media / Selectiva</td><td>Potencial robustez al ruido</td><td>Evidencia directa limitada en el corpus actual</td><td>Rol hibrido de nicho</td></tr>
+            <tr><td>BLE AoA</td><td>Triangulacion por angulo de llegada</td><td>Media-Alta / Amplia</td><td>Menor costo de entrada, ecosistema amplio</td><td>Menor estabilidad de precision en layouts densos</td><td>Mejora en antenas y capas de filtrado</td></tr>
+            <tr><td>RFID</td><td>Captura de identidad/evento por lector-tag</td><td>Muy Alta / Muy Alta</td><td>Fuerte para checkpoints de trazabilidad, IDs de bajo costo</td><td>No ofrece posicionamiento continuo de alta precision</td><td>Capa complementaria en modelos hibridos</td></tr>
+            <tr><td>GPS RTK</td><td>Correccion diferencial satelital</td><td>Muy Alta exterior / Baja interior</td><td>Excelente precision en exterior</td><td>No apto para almacen indoor</td><td>Complemento para handover indoor-outdoor</td></tr>
+            <tr><td>Basada en vision</td><td>Interpretacion de escena por camara/LiDAR</td><td>Media-Alta / En crecimiento</td><td>Semantica rica para automatizacion</td><td>Oclusion e intensidad de mantenimiento</td><td>Fusion con UWB y localizacion AMR</td></tr>
+            <tr><td>RTLS Hibrido</td><td>Fusion de sensores y protocolos</td><td>Alta / En aumento</td><td>Resiliencia, opcionalidad, robustez</td><td>Mayor complejidad de integracion</td><td>Patron enterprise por defecto</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="suppliers" class="card">
+      <h3>3. Analisis Tecnico de Cada Proveedor</h3>
+      <div class="two-col">
+        <div>
+          <h4>Eliko</h4>
+          <p>Las estructuras comerciales y de servicio estan bien detalladas, pero la profundidad de benchmark tecnico validado de forma independiente es desigual en la matriz normalizada. Postura de ingenieria: apto para participar en piloto, no para lock directo sin evidencia verificada mas fuerte bajo criterios de aceptacion INGECART.</p>
+          <h4>Sewio</h4>
+          <p>Enfoque de ingenieria UWB maduro y referencias arquitectonicas con solida orientacion de integracion. Postura de ingenieria: candidato fuerte en shortlist; la seleccion final requiere validacion KPI armonizada contra pares.</p>
+          <h4>GrowSpace</h4>
+          <p>Perfil orientado a desarrollador e integracion, util para experimentacion rapida y prototipos 3D. Postura de ingenieria: prometedor para velocidad en PoC; la confianza productiva sigue limitada hasta validar robustez.</p>
+          <h4>Pozyx</h4>
+          <p>Stack RTLS reconocido con huella documental amplia y via de integracion viable. Postura de ingenieria: contendiente de nivel benchmark; aun requiere validacion normalizada en mismo sitio antes de adjudicar.</p>
+        </div>
+        <div>
+          <div id="supplierScores" style="height:360px;"></div>
+          <p class="small">El tablero de puntuacion de proveedores refleja salidas del modelo de scoring verified-only sobre artefactos existentes de mision.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="comparison" class="card">
+      <h3>4. Analisis Comparativo de Tecnologias</h3>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Criterio</th>
+              <th>UWB</th>
+              <th>BLE AoA</th>
+              <th>RFID</th>
+              <th>Vision</th>
+              <th>RTLS Hibrido</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Precision</td><td>Alta</td><td>Media</td><td>Baja-Media</td><td>Media-Alta</td><td>Alta</td></tr>
+            <tr><td>Latencia</td><td>Alta</td><td>Media</td><td>Baja-Media</td><td>Media</td><td>Alta</td></tr>
+            <tr><td>Escalabilidad</td><td>Alta</td><td>Alta</td><td>Alta</td><td>Media</td><td>Alta</td></tr>
+            <tr><td>Esfuerzo de instalacion</td><td>Medio-Alto</td><td>Medio</td><td>Medio</td><td>Alto</td><td>Alto</td></tr>
+            <tr><td>Mantenimiento</td><td>Medio</td><td>Medio</td><td>Bajo-Medio</td><td>Alto</td><td>Medio-Alto</td></tr>
+            <tr><td>Costo de infraestructura</td><td>Medio-Alto</td><td>Medio</td><td>Bajo-Medio</td><td>Alto</td><td>Alto</td></tr>
+            <tr><td>Costo de ciclo de vida</td><td>Medio</td><td>Medio</td><td>Medio</td><td>Alto</td><td>Medio-Alto</td></tr>
+            <tr><td>Dependencia de proveedor</td><td>Media</td><td>Media</td><td>Baja-Media</td><td>Media</td><td>Baja-Media</td></tr>
+            <tr><td>Evolucion futura</td><td>Fuerte</td><td>Incremental</td><td>Complementaria</td><td>Orientada a fusion</td><td>Fuerte</td></tr>
+            <tr><td>Madurez industrial</td><td>Alta</td><td>Media-Alta</td><td>Muy Alta</td><td>Media-Alta</td><td>Alta</td></tr>
+            <tr><td>Confiabilidad</td><td>Alta (calibrada)</td><td>Media</td><td>Media</td><td>Media</td><td>Alta</td></tr>
+            <tr><td>Complejidad de integracion</td><td>Media</td><td>Media</td><td>Media</td><td>Alta</td><td>Alta</td></tr>
+            <tr><td>Ciberseguridad</td><td>Media</td><td>Media</td><td>Media</td><td>Alta</td><td>Alta</td></tr>
+            <tr><td>Preparacion para Gemelo Digital</td><td>Alta</td><td>Media</td><td>Media</td><td>Alta</td><td>Alta</td></tr>
+            <tr><td>Integracion IA</td><td>Alta</td><td>Media</td><td>Media</td><td>Alta</td><td>Alta</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="claims" class="card">
+      <h3>5. Claims de Marketing versus Realidad de Ingenieria</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Claim</th><th>Evidencia</th><th>Realidad</th><th>Confianza</th><th>Conclusion de Ingenieria</th></tr></thead>
+          <tbody>
+            <tr>
+              <td>Posicionamiento industrial sub-30 cm</td>
+              <td>Las cifras entre proveedores incluyen 15 cm, 20 cm y 30 cm bajo condiciones no homogeneas</td>
+              <td>Hay contradiccion; los valores no son comparables directamente</td>
+              <td>Media-Baja</td>
+              <td>Requiere protocolo de benchmark normalizado en mismo sitio antes de adjudicar</td>
+            </tr>
+            <tr>
+              <td>Confiabilidad 3D de estibas por defecto</td>
+              <td>Afirmaciones parcialmente validadas; alta dependencia de topologia de anchors y oclusion</td>
+              <td>Factible pero sensible a configuracion</td>
+              <td>Media</td>
+              <td>Validacion de campo obligatoria en estibas multi-altura de bobinas</td>
+            </tr>
+            <tr>
+              <td>Integracion MES/ERP fluida out-of-box</td>
+              <td>Existen referencias de integracion; la profundidad y robustez varian</td>
+              <td>Concepto verificado, calidad de implementacion incierta</td>
+              <td>Media</td>
+              <td>Validar semantica API, throughput y comportamiento ante fallos</td>
+            </tr>
+            <tr>
+              <td>Menor costo de ciclo de vida con precision enterprise</td>
+              <td>Las cifras comerciales son incompletas y con estructura heterogenea</td>
+              <td>No verificado para comparabilidad integral de TCO a 5 anos</td>
+              <td>Baja</td>
+              <td>Ejecutar modelo estandarizado de costo de ciclo de vida bajo mismos supuestos</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="small">Los claims no soportados se marcan explicitamente en el corpus validado y se excluyen de la ponderacion de recomendacion salvo verificacion independiente.</p>
+    </section>
+
+    <section id="architecture" class="card">
+      <h3>6. Analisis de Arquitectura para INGECART IAR</h3>
+      <div class="two-col">
+        <div>
+          <div id="archScores" style="height:360px;"></div>
+        </div>
+        <div>
+          <table>
+            <thead><tr><th>Arquitectura</th><th>Puntuacion Global</th><th>Tradeoff de Ingenieria</th></tr></thead>
+            <tbody>
+              <tr><td>A Single-vendor</td><td>75.92</td><td>Despliegue rapido, alto riesgo de lock-in</td></tr>
+              <tr><td>B Abstraccion multi-vendor</td><td>85.97</td><td>Mayor flexibilidad, sobrecarga de integracion</td></tr>
+              <tr><td>C RTLS hibrido</td><td>87.20</td><td>Mayor resiliencia, aumento de complejidad</td></tr>
+              <tr><td>D Framework modular</td><td>88.44</td><td>Escalabilidad fuerte, requiere disciplina de gobernanza</td></tr>
+              <tr><td>E Faseada twin-centric</td><td>89.96</td><td>Mejor balance estrategico entre robustez, escala, IA y DT</td></tr>
+            </tbody>
+          </table>
+          <p><strong>Recomendada:</strong> E, faseada twin-centric, con abstraccion explicita de posicionamiento y adapters de proveedor.</p>
+        </div>
+      </div>
+
+      <h4>Arquitectura de Ingenieria Recomendada</h4>
+      <div class="mermaid">
+flowchart LR
+  A[Nucleo de Posicionamiento UWB] --> B[Capa de Abstraccion de Posicionamiento]
+  B --> C[Integracion INGEPRO]
+  B --> D[Integracion MES]
+  B --> E[Servicio de Estado de Gemelo Digital]
+  E --> F[Simulacion y Replay]
+  E --> G[Mission Manager y AI Coordinator]
+  B --> H[Adapter AMR Futuro]
+  B --> I[Extensiones Hibridas: RFID, Vision, BLE]
+      </div>
+      <p class="small">El diagrama expresa la recomendacion de arquitectura de producto, no un lock de implementacion por proveedor.</p>
+    </section>
+
+    <section id="decision" class="card">
+      <h3>7. Decision de Ingenieria</h3>
+      <p><strong>Tecnologia a adoptar:</strong> UWB como base primaria de posicionamiento indoor para IAR.</p>
+      <p><strong>Por que:</strong> mejor ajuste de ingenieria para localizacion continua de bobinas, sincronizacion con Gemelo Digital y orquestacion futura AMR/IA.</p>
+      <p><strong>Por que no alternativas como core:</strong> BLE AoA no alcanza la misma confiabilidad de precision en estibas densas; RFID esta orientado a identidad y no a posicionamiento continuo; vision-only muestra mayor fragilidad operativa; GPS RTK es estructuralmente no apto para localizacion primaria indoor.</p>
+      <p><strong>Riesgos tecnicos restantes:</strong> inconsistencia KPI entre proveedores, confiabilidad 3D bajo oclusion metalica, resiliencia de integracion bajo carga pico.</p>
+      <p><strong>Validacion requerida antes de adjudicacion final:</strong> benchmark multi-vendor normalizado en mismo sitio, validacion de estres end-to-end INGEPRO/MES y pruebas extendidas de estabilidad y comportamiento de bateria.</p>
+      <p><strong>Perspectiva a cinco anos:</strong> UWB permanece central; hibridacion y abstraccion se vuelven requisitos estrategicos; la optimizacion operacional guiada por IA pasa a expectativa competitiva base.</p>
+    </section>
+
+    <section id="roadmap" class="card">
+      <h3>8. Hoja de Ruta de Producto Recomendada</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Capa</th><th>Modulo Recomendado</th><th>Proposito</th></tr></thead>
+          <tbody>
+            <tr><td>Core</td><td>Motor RTLS (UWB-first)</td><td>Backbone de posicionamiento en tiempo real</td></tr>
+            <tr><td>Comunicaciones</td><td>Event bus + API gateway</td><td>Telemetria confiable y contratos de integracion</td></tr>
+            <tr><td>Abstraccion</td><td>Capa de adapters de proveedor</td><td>Desacoplamiento y portabilidad entre vendors</td></tr>
+            <tr><td>Integracion</td><td>Adapter INGEPRO</td><td>Continuidad de flujos de negocio</td></tr>
+            <tr><td>Integracion</td><td>Adapter MES</td><td>Sincronizacion operacional</td></tr>
+            <tr><td>Gemelo</td><td>Servicio de estado de Gemelo Digital</td><td>Modelo operacional unificado en tiempo real</td></tr>
+            <tr><td>IA</td><td>Puente Mission Manager + AI Coordinator</td><td>Soporte de decision y gobernanza de optimizacion</td></tr>
+            <tr><td>Conocimiento</td><td>Conector Knowledge Hub</td><td>Reuso de evidencia y modelos</td></tr>
+            <tr><td>Simulacion</td><td>Modulo de replay y what-if</td><td>Planeacion y ensayo de riesgos</td></tr>
+            <tr><td>Expansion</td><td>Adapter de orquestacion AMR</td><td>Integracion logistica autonoma futura</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p><strong>Secuencia de roadmap:</strong> base piloto, escalado operacional y automatizacion inteligente.</p>
+    </section>
+
+    <section id="conclusions" class="card">
+      <h3>9. Conclusiones</h3>
+      <p>La recomendacion esta tecnicamente justificada porque maximiza la utilidad de posicionamiento preservando control arquitectonico de largo plazo. UWB-first bajo diseno faseado twin-centric es la opcion de ingenieria mas robusta para IAR.</p>
+      <p>La confianza esta diferenciada: alta para direccion tecnologica estrategica, moderada para adjudicacion inmediata de proveedor hasta cerrar validacion de campo armonizada.</p>
+      <p>El impacto esperado en ROI es material por reduccion de tiempos de busqueda de bobinas, menor error de proceso, mayor trazabilidad y mejor calidad de planificacion habilitada por observabilidad del gemelo digital.</p>
+      <p>Estrategicamente, esta seleccion posiciona a INGECART para evolucionar IAR hacia una plataforma industrial con diferenciacion durable en calidad de integracion, preparacion para automatizacion e inteligencia operacional habilitada por IA.</p>
+
+      <h4>Mapa de Calor de Riesgos</h4>
+      <table class="heat">
+        <thead><tr><th>Riesgo</th><th>Probabilidad</th><th>Impacto</th><th>Clase de Riesgo</th></tr></thead>
+        <tbody>
+          <tr><td>Inconsistencia KPI entre proveedores</td><td class="hm-high">Alta</td><td class="hm-high">Alta</td><td class="hm-high">Critico</td></tr>
+          <tr><td>Precision 3D bajo oclusion metalica</td><td class="hm-mid">Media</td><td class="hm-high">Alta</td><td class="hm-high">Alta</td></tr>
+          <tr><td>Confiabilidad de integracion a carga pico</td><td class="hm-mid">Media</td><td class="hm-mid">Media</td><td class="hm-mid">Media</td></tr>
+          <tr><td>Variacion de costo de ciclo de vida por modelo de licencias</td><td class="hm-mid">Media</td><td class="hm-mid">Media</td><td class="hm-mid">Media</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="card">
+      <h3>Figuras de Ingenieria</h3>
+      <div class="figure-grid">
+        <figure class="figure">
+          <img src="../../../../knowledge_hub/iar_assessment/20260724_103702/assets/images/Precios_Eliko_p1.png" alt="Figura extraida de proveedor" />
+          <figcaption>Figura de evidencia extraida: referencias de precio y paquetes.</figcaption>
+        </figure>
+        <figure class="figure">
+          <img src="../../../../knowledge_hub/iar_assessment/20260724_103702/assets/images/RTLS-UWD Documento tecnico_v2_p7.png" alt="Figura tecnica extraida" />
+          <figcaption>Figura de evidencia extraida: seccion tecnica del documento RTLS.</figcaption>
+        </figure>
+      </div>
+      <p class="small">Todas las conclusiones estan alineadas con artefactos de mision previamente procesados y catalogos de evidencia validados.</p>
+    </section>
+
+  </main>
+</div>
+
+<script>
+const supplierData = {
+  x: ["Eliko", "Sewio", "GrowSpace", "Pozyx"],
+  y: [70.75, 56.90, 53.93, 52.35]
+};
+Plotly.newPlot("supplierScores", [{
+  x: supplierData.x,
+  y: supplierData.y,
+  type: "bar",
+  marker: { color: ["#0f766e", "#1d4ed8", "#b45309", "#7c3aed"] }
+}], {
+  title: "Puntuacion Global de Recomendacion por Proveedor",
+  yaxis: { title: "Puntuacion / 100", range: [0, 100] },
+  margin: { t: 45, r: 10, l: 45, b: 45 }
+}, {displayModeBar:false, responsive:true});
+
+const arch = ["A", "B", "C", "D", "E"];
+const archScores = [75.92, 85.97, 87.20, 88.44, 89.96];
+Plotly.newPlot("archScores", [{
+  x: arch,
+  y: archScores,
+  type: "scatter",
+  mode: "lines+markers",
+  line: { color: "#0f766e", width: 3 },
+  marker: { size: 9 }
+}], {
+  title: "Matriz de Decision de Arquitectura",
+  yaxis: { title: "Puntuacion / 100", range: [70, 92] },
+  xaxis: { title: "Opcion de Arquitectura" },
+  margin: { t: 45, r: 10, l: 45, b: 45 }
+}, {displayModeBar:false, responsive:true});
+</script>
+<script type="module">
+  import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+  mermaid.initialize({ startOnLoad: true, theme: 'default' });
+</script>
+</body>
+</html>

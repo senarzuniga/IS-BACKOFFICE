@@ -1,0 +1,11 @@
+{
+  "open_debt": [
+    "Deprecated method run_first_mission remains for compatibility",
+    "UI still retains overlay helpers that should progressively move to service endpoints"
+  ],
+  "resolved_debt": [
+    "Stable facade API wrappers restored",
+    "Repository and service layers introduced",
+    "UI access to mission history/upload/json and preview rendering routed through engine APIs"
+  ]
+}

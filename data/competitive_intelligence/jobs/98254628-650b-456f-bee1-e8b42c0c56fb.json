@@ -1,0 +1,12 @@
+{
+  "id": "98254628-650b-456f-bee1-e8b42c0c56fb",
+  "company": "TEST_COMPANY",
+  "started_at": "2026-08-04T08:12:48.461640Z",
+  "status": "running",
+  "steps": [
+    {
+      "step": "market_intelligence",
+      "status": "running"
+    }
+  ]
+}

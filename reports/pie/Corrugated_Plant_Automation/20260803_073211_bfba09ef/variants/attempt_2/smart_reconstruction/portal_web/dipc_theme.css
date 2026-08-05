@@ -1,0 +1,53 @@
+:root {
+  --bg-primary: #0D0F13;
+  --bg-surface: #161920;
+  --bg-card: #1C1F28;
+  --bg-sidebar: #111318;
+  --bg-header: #0D0F13;
+  --bg-elevated: #20232C;
+  --bg-input: #1C1F28;
+  --bg-table-row: #191C23;
+  --bg-hover: #23273200;
+  --border-subtle: #1E2128;
+  --border-default: #2A2D38;
+  --border-strong: #40455A;
+  --border-focus: #FF6A00;
+  --text-primary: #F2F3F5;
+  --text-secondary: #8D929F;
+  --text-disabled: #4A4E58;
+  --text-inverse: #0D0F13;
+  --accent: #FF6A00;
+  --accent-hover: #FF8330;
+  --accent-dark: #CC5500;
+  --accent-muted: rgba(255,106,0,0.12);
+  --success: #22C55E;
+  --success-muted: rgba(34,197,94,0.12);
+  --warning: #F59E0B;
+  --warning-muted: rgba(245,158,11,0.12);
+  --error: #EF4444;
+  --error-muted: rgba(239,68,68,0.12);
+  --info: #60A5FA;
+  --info-muted: rgba(96,165,250,0.12);
+  --link: #FF8330;
+  --shadow: rgba(0,0,0,0.6);
+  --chart-grid: #262A33;
+  --chart-axis: #4A4E58;
+  --metric-value: #FF6A00;
+  --btn-primary-bg: #FF6A00;
+  --btn-primary-text: #0D0F13;
+  --btn-secondary-bg: #1C1F28;
+  --btn-secondary-text: #F2F3F5;
+  --badge-bg: rgba(255,106,0,0.15);
+  --badge-text: #FF8330;
+}
+
+body { margin: 0; background: var(--bg-primary); color: var(--text-primary); font-family: Segoe UI, Arial, sans-serif; }
+.dipc-shell { display: grid; grid-template-columns: 280px 1fr; min-height: 100vh; }
+.dipc-sidebar { background: var(--bg-sidebar); color: var(--text-primary); padding: 18px; border-right: 1px solid var(--border-default); }
+.dipc-main { padding: 18px 24px; background: var(--bg-primary); }
+.dipc-hero, .dipc-section, .dipc-component { background: var(--bg-surface); border: 1px solid var(--border-default); border-radius: 12px; padding: 14px; margin-bottom: 14px; }
+.dipc-lang-switch { position: sticky; top: 0; z-index: 12; display: flex; gap: 8px; align-items: center; padding: 8px 12px; border-bottom: 1px solid var(--border-default); background: var(--bg-elevated); }
+.dipc-lang-switch button { background: var(--btn-secondary-bg); color: var(--btn-secondary-text); border: 1px solid var(--border-default); border-radius: 999px; padding: 4px 10px; }
+@media (max-width: 1024px) { .dipc-shell { grid-template-columns: 1fr; } }
+@media print { body { background: #fff; color: #111; } }
+@media (prefers-color-scheme: dark) { body { background: var(--bg-primary); color: var(--text-primary); } }

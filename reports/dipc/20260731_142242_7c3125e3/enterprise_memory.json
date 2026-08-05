@@ -1,0 +1,71 @@
+{
+  "document_id": "26ccfa128f16472bba5d959207db83fb",
+  "source_path": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\MARKETING\\CONTENT\\Corrugated Plant Automation Solutions v2.pptx",
+  "document_type": "smart_html_v2",
+  "missions": [
+    {
+      "mission_id": "20260731_142242_7c3125e3",
+      "objective": "Initial DIPC reconstruction from PowerPoint",
+      "command": null,
+      "status": "completed"
+    }
+  ],
+  "versions": [
+    {
+      "version_id": "873909ffd052468a836dd944fb6bdc06",
+      "version_number": 1,
+      "author": "Mission Manager",
+      "objective": "Initial DIPC reconstruction from PowerPoint",
+      "result": "created",
+      "mission_id": "20260731_142242_7c3125e3",
+      "created_at": "2026-07-31T14:22:45.669415Z",
+      "diff": {
+        "structural_diff": {
+          "initial": true,
+          "sections": 29,
+          "components": 50
+        },
+        "visual_diff": {
+          "theme": "industrial",
+          "palette": [
+            "#FF6A00",
+            "#F4F5F7",
+            "#151515",
+            "#FFFFFF",
+            "#6F7378"
+          ]
+        },
+        "html_diff": [],
+        "component_diff": {
+          "current": {
+            "hero": 1,
+            "industrial_kpi": 19,
+            "amr_fleet_panel": 2,
+            "text": 14,
+            "process_flow": 7,
+            "ingetrans_panel": 1,
+            "pyramid": 3,
+            "executive_summary": 1,
+            "contact_block": 1,
+            "footer": 1
+          }
+        }
+      },
+      "output_files": {
+        "html": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\dipc\\20260731_142242_7c3125e3\\published\\index.html",
+        "markdown": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\dipc\\20260731_142242_7c3125e3\\published\\document.md",
+        "docx": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\dipc\\20260731_142242_7c3125e3\\published\\document.docx",
+        "pdf": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\dipc\\20260731_142242_7c3125e3\\published\\document.pdf",
+        "odt": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\dipc\\20260731_142242_7c3125e3\\published\\document.odt",
+        "presentation_html": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\dipc\\20260731_142242_7c3125e3\\published\\presentation.html",
+        "portal_web": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\dipc\\20260731_142242_7c3125e3\\published\\portal_web\\index.html",
+        "microsite": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\dipc\\20260731_142242_7c3125e3\\published\\microsite\\index.html",
+        "document_json": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\dipc\\20260731_142242_7c3125e3\\published\\document_model.json",
+        "theme_css": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\dipc\\20260731_142242_7c3125e3\\published\\dipc_theme.css"
+      }
+    }
+  ],
+  "evidence_count": 46,
+  "knowledge_link_count": 28,
+  "timestamp": "2026-07-31T14:22:45.746962+00:00"
+}

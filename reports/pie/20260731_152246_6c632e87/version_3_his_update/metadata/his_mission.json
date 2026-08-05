@@ -1,0 +1,35 @@
+{
+  "mission_id": "20260803_063729_acf46a9b",
+  "timestamp": "2026-08-03T06:37:29.695377+00:00",
+  "author": "Mission Manager",
+  "html_source": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\pie\\20260731_152246_6c632e87\\version_2_smart_reconstruction\\index.html",
+  "html_output": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\pie\\20260731_152246_6c632e87\\version_3_his_update\\index.html",
+  "image_source": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\MARKETING\\CONTENT\\Corrugated Plant Automation Solutions v2 IMAGEN GENERAL.jpg",
+  "image_output": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\pie\\20260731_152246_6c632e87\\version_3_his_update\\assets\\images\\Corrugated Plant Automation Solutions v2 IMAGEN GENERAL.jpg",
+  "section_path": [
+    "Home",
+    "Chapter 1",
+    "TAILORED AUTOMATION"
+  ],
+  "action": "insert_image_under_heading",
+  "heading": "TAILORED AUTOMATION",
+  "validation": {
+    "html_valid": true,
+    "responsive": true,
+    "desktop": true,
+    "tablet": true,
+    "mobile": true,
+    "dark_mode": true,
+    "print_mode": true,
+    "accessibility": 1.0,
+    "seo": {
+      "title": true,
+      "meta_description": true
+    },
+    "performance": "ok",
+    "assets_integrity": true,
+    "broken_assets": [],
+    "links_integrity": true,
+    "graphic_consistency": true
+  }
+}

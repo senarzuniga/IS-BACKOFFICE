@@ -1,0 +1,131 @@
+{
+  "generated_at": "2026-08-04T07:33:59.005801+00:00",
+  "mission": "HIS Runtime Module Resolution Audit",
+  "requirements": {
+    "studio_py_imported_absolute": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\backoffice\\his\\studio.py",
+    "ui_file_absolute": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\pages\\html_intelligence_studio.py",
+    "concrete_instantiated_class": "backoffice.his.studio.HtmlIntelligenceStudio",
+    "runtime_introspection": {
+      "type_studio": "<class 'backoffice.his.studio.HtmlIntelligenceStudio'>",
+      "studio_class_module": "backoffice.his.studio",
+      "inspect_getfile_html_intelligence_studio": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\backoffice\\his\\studio.py"
+    },
+    "public_methods_inventory": [
+      "build_inline_preview_html",
+      "change_language",
+      "corporate_model_path",
+      "create_document",
+      "delete_document",
+      "dipc",
+      "duplicate_document",
+      "export_release_bundle",
+      "generate_html",
+      "get_document",
+      "insert_image_under_heading",
+      "list_documents",
+      "list_versions",
+      "open_document",
+      "pipeline_v3",
+      "preview_document",
+      "preview_engine",
+      "publish_document",
+      "publisher",
+      "quality_report",
+      "read_json",
+      "read_mission_history",
+      "repository",
+      "restore_version",
+      "run_ai_command",
+      "run_first_mission",
+      "save_document",
+      "save_uploaded_sources",
+      "search",
+      "service",
+      "statistics",
+      "validate_html"
+    ],
+    "list_documents_exists": true,
+    "list_documents_invocation_ok": true,
+    "list_documents_error": "",
+    "duplicate_scan": {
+      "studio_py_files": [
+        "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\backoffice\\his\\studio.py"
+      ],
+      "html_intelligence_studio_classes": [
+        {
+          "file": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\html_intelligence_studio\\_run_his_runtime_import_audit.py",
+          "symbol": "class HtmlIntelligenceStudio"
+        },
+        {
+          "file": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\backoffice\\his\\studio.py",
+          "symbol": "class HtmlIntelligenceStudio"
+        }
+      ]
+    },
+    "pythonpath_pycache_conflicts": {
+      "path": {
+        "pythonpath_env": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE",
+        "sys_path_head": [
+          "",
+          "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE",
+          "C:\\Users\\Inaki Senar\\AppData\\Local\\Programs\\Python\\Python314\\python314.zip",
+          "C:\\Users\\Inaki Senar\\AppData\\Local\\Programs\\Python\\Python314\\DLLs",
+          "C:\\Users\\Inaki Senar\\AppData\\Local\\Programs\\Python\\Python314\\Lib",
+          "C:\\Users\\Inaki Senar\\AppData\\Local\\Programs\\Python\\Python314",
+          "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\.venv",
+          "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\.venv\\Lib\\site-packages",
+          "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\.venv\\Lib\\site-packages\\win32",
+          "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\.venv\\Lib\\site-packages\\win32\\lib",
+          "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\.venv\\Lib\\site-packages\\pythonwin",
+          "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\.venv\\Lib\\site-packages\\odf",
+          "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\.venv\\Lib\\site-packages\\odf",
+          "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\.venv\\Lib\\site-packages\\odf",
+          "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\.venv\\Lib\\site-packages\\odf"
+        ],
+        "backoffice_candidates_in_sys_path": [
+          "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE"
+        ],
+        "conflict_detected": false
+      },
+      "pycache": {
+        "total_pycache_dirs": 1815,
+        "his_related_pycache_dirs": [
+          "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\backoffice\\his\\__pycache__",
+          "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\.venv\\Lib\\site-packages\\speech_recognition\\recognizers\\whisper_api\\__pycache__",
+          "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\.venv\\Lib\\site-packages\\speech_recognition\\recognizers\\whisper_local\\__pycache__",
+          "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\.venv\\Lib\\site-packages\\sklearn\\ensemble\\_hist_gradient_boosting\\__pycache__",
+          "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\.venv\\Lib\\site-packages\\sklearn\\ensemble\\_hist_gradient_boosting\\tests\\__pycache__",
+          "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\.venv\\Lib\\site-packages\\plotly\\graph_objs\\histogram\\__pycache__",
+          "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\.venv\\Lib\\site-packages\\plotly\\graph_objs\\histogram2d\\__pycache__",
+          "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\.venv\\Lib\\site-packages\\plotly\\graph_objs\\histogram2dcontour\\__pycache__",
+          "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\.venv\\Lib\\site-packages\\plotly\\graph_objs\\histogram2dcontour\\colorbar\\__pycache__",
+          "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\.venv\\Lib\\site-packages\\plotly\\graph_objs\\histogram2dcontour\\contours\\__pycache__",
+          "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\.venv\\Lib\\site-packages\\plotly\\graph_objs\\histogram2dcontour\\hoverlabel\\__pycache__",
+          "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\.venv\\Lib\\site-packages\\plotly\\graph_objs\\histogram2dcontour\\legendgrouptitle\\__pycache__",
+          "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\.venv\\Lib\\site-packages\\plotly\\graph_objs\\histogram2dcontour\\colorbar\\title\\__pycache__",
+          "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\.venv\\Lib\\site-packages\\plotly\\graph_objs\\histogram2d\\colorbar\\__pycache__",
+          "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\.venv\\Lib\\site-packages\\plotly\\graph_objs\\histogram2d\\hoverlabel\\__pycache__",
+          "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\.venv\\Lib\\site-packages\\plotly\\graph_objs\\histogram2d\\legendgrouptitle\\__pycache__",
+          "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\.venv\\Lib\\site-packages\\plotly\\graph_objs\\histogram2d\\colorbar\\title\\__pycache__",
+          "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\.venv\\Lib\\site-packages\\plotly\\graph_objs\\histogram\\hoverlabel\\__pycache__",
+          "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\.venv\\Lib\\site-packages\\plotly\\graph_objs\\histogram\\legendgrouptitle\\__pycache__",
+          "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\.venv\\Lib\\site-packages\\plotly\\graph_objs\\histogram\\marker\\__pycache__",
+          "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\.venv\\Lib\\site-packages\\plotly\\graph_objs\\histogram\\selected\\__pycache__",
+          "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\.venv\\Lib\\site-packages\\plotly\\graph_objs\\histogram\\unselected\\__pycache__",
+          "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\.venv\\Lib\\site-packages\\plotly\\graph_objs\\histogram\\marker\\colorbar\\__pycache__",
+          "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\.venv\\Lib\\site-packages\\plotly\\graph_objs\\histogram\\marker\\colorbar\\title\\__pycache__"
+        ]
+      }
+    }
+  },
+  "ui_import_resolution": {
+    "ui_import_line": "from backoffice.his import HtmlIntelligenceStudio",
+    "expected_import_line": "from backoffice.his import HtmlIntelligenceStudio",
+    "using_official_v3_import": true
+  },
+  "corrective_actions": [],
+  "final_assertion": {
+    "ui_invokes_list_documents_without_error": true,
+    "ready": true
+  }
+}

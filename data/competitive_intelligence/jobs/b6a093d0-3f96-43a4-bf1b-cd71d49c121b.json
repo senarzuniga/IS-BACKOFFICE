@@ -1,0 +1,22 @@
+{
+  "id": "b6a093d0-3f96-43a4-bf1b-cd71d49c121b",
+  "company": "TEST_COMPANY",
+  "started_at": "2026-08-04T08:18:20.671071Z",
+  "status": "finished",
+  "steps": [
+    {
+      "step": "market_intelligence",
+      "status": "done"
+    },
+    {
+      "step": "benchmark",
+      "status": "done"
+    },
+    {
+      "step": "synthesis",
+      "status": "done"
+    }
+  ],
+  "finished_at": "2026-08-04T08:18:28.707795Z",
+  "report": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\data\\competitive_intelligence\\reports\\TEST_COMPANY_20260804T081828Z.md"
+}

@@ -1,0 +1,23 @@
+{
+  "generated_at": "2026-08-04T08:16:51.614279+00:00",
+  "selected_variant": "slide_flow",
+  "nodes": [
+    {
+      "id": "doc:89a053ca8be24081adcacc578a72fe1b",
+      "type": "document",
+      "label": "HIS PROD 001 Certification"
+    },
+    {
+      "id": "sec:31f0cbf3667b4e43a17b5f656a3926d2",
+      "type": "section",
+      "label": "OFF-2026-S134_20260804_061032"
+    }
+  ],
+  "edges": [
+    {
+      "source": "doc:89a053ca8be24081adcacc578a72fe1b",
+      "target": "sec:31f0cbf3667b4e43a17b5f656a3926d2",
+      "relation": "has_section"
+    }
+  ]
+}

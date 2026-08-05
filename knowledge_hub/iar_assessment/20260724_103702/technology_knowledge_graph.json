@@ -1,0 +1,301 @@
+{
+  "generated_at": "2026-07-24T08:37:47.175881+00:00",
+  "nodes": [
+    {
+      "id": "doc::Eliko_Evaluacion_RTLS.pdf",
+      "type": "Document",
+      "label": "Eliko_Evaluacion_RTLS.pdf"
+    },
+    {
+      "id": "supplier::Eliko",
+      "type": "Supplier",
+      "label": "Eliko"
+    },
+    {
+      "id": "tech::UWB",
+      "type": "Technology",
+      "label": "UWB"
+    },
+    {
+      "id": "tech::BLE",
+      "type": "Technology",
+      "label": "BLE"
+    },
+    {
+      "id": "doc::Eliko_Kit_Alquiler.pdf",
+      "type": "Document",
+      "label": "Eliko_Kit_Alquiler.pdf"
+    },
+    {
+      "id": "doc::GrowSpace_Evaluacion_RTLS.pdf",
+      "type": "Document",
+      "label": "GrowSpace_Evaluacion_RTLS.pdf"
+    },
+    {
+      "id": "supplier::GrowSpace",
+      "type": "Supplier",
+      "label": "GrowSpace"
+    },
+    {
+      "id": "tech::Vision",
+      "type": "Technology",
+      "label": "Vision"
+    },
+    {
+      "id": "doc::Pozyx_Evaluacion_RTLS.pdf",
+      "type": "Document",
+      "label": "Pozyx_Evaluacion_RTLS.pdf"
+    },
+    {
+      "id": "supplier::Pozyx",
+      "type": "Supplier",
+      "label": "Pozyx"
+    },
+    {
+      "id": "doc::Precios_Eliko.pdf",
+      "type": "Document",
+      "label": "Precios_Eliko.pdf"
+    },
+    {
+      "id": "doc::RTLS-UWD Documento tecnico_v2.pdf",
+      "type": "Document",
+      "label": "RTLS-UWD Documento tecnico_v2.pdf"
+    },
+    {
+      "id": "tech::RFID",
+      "type": "Technology",
+      "label": "RFID"
+    },
+    {
+      "id": "doc::Sewio_Evaluacion_RTLS.pdf",
+      "type": "Document",
+      "label": "Sewio_Evaluacion_RTLS.pdf"
+    },
+    {
+      "id": "supplier::Sewio",
+      "type": "Supplier",
+      "label": "Sewio"
+    },
+    {
+      "id": "score::Eliko",
+      "type": "Scorecard",
+      "label": "Eliko score",
+      "scores": {
+        "technology": 72.5,
+        "engineering": 62.0,
+        "business": 52.0,
+        "confidence": 100.0,
+        "overall": 70.75
+      }
+    },
+    {
+      "id": "score::Sewio",
+      "type": "Scorecard",
+      "label": "Sewio score",
+      "scores": {
+        "technology": 55.65,
+        "engineering": 63.0,
+        "business": 52.0,
+        "confidence": 54.55,
+        "overall": 56.9
+      }
+    },
+    {
+      "id": "score::GrowSpace",
+      "type": "Scorecard",
+      "label": "GrowSpace score",
+      "scores": {
+        "technology": 53.53,
+        "engineering": 63.0,
+        "business": 52.0,
+        "confidence": 42.86,
+        "overall": 53.93
+      }
+    },
+    {
+      "id": "score::Pozyx",
+      "type": "Scorecard",
+      "label": "Pozyx score",
+      "scores": {
+        "technology": 52.59,
+        "engineering": 63.0,
+        "business": 52.0,
+        "confidence": 36.36,
+        "overall": 52.35
+      }
+    },
+    {
+      "id": "architecture::E",
+      "type": "Architecture",
+      "label": "Phased twin-centric architecture",
+      "score": 89.96
+    }
+  ],
+  "edges": [
+    {
+      "from": "doc::Eliko_Evaluacion_RTLS.pdf",
+      "to": "supplier::Eliko",
+      "relation": "describes"
+    },
+    {
+      "from": "supplier::Eliko",
+      "to": "tech::UWB",
+      "relation": "uses"
+    },
+    {
+      "from": "supplier::Eliko",
+      "to": "tech::BLE",
+      "relation": "uses"
+    },
+    {
+      "from": "doc::Eliko_Kit_Alquiler.pdf",
+      "to": "supplier::Eliko",
+      "relation": "describes"
+    },
+    {
+      "from": "supplier::Eliko",
+      "to": "tech::BLE",
+      "relation": "uses"
+    },
+    {
+      "from": "doc::GrowSpace_Evaluacion_RTLS.pdf",
+      "to": "supplier::GrowSpace",
+      "relation": "describes"
+    },
+    {
+      "from": "supplier::GrowSpace",
+      "to": "tech::UWB",
+      "relation": "uses"
+    },
+    {
+      "from": "supplier::GrowSpace",
+      "to": "tech::BLE",
+      "relation": "uses"
+    },
+    {
+      "from": "supplier::GrowSpace",
+      "to": "tech::Vision",
+      "relation": "uses"
+    },
+    {
+      "from": "doc::Pozyx_Evaluacion_RTLS.pdf",
+      "to": "supplier::Pozyx",
+      "relation": "describes"
+    },
+    {
+      "from": "supplier::Pozyx",
+      "to": "tech::UWB",
+      "relation": "uses"
+    },
+    {
+      "from": "supplier::Pozyx",
+      "to": "tech::BLE",
+      "relation": "uses"
+    },
+    {
+      "from": "supplier::Pozyx",
+      "to": "tech::Vision",
+      "relation": "uses"
+    },
+    {
+      "from": "doc::Precios_Eliko.pdf",
+      "to": "supplier::Eliko",
+      "relation": "describes"
+    },
+    {
+      "from": "supplier::Eliko",
+      "to": "tech::UWB",
+      "relation": "uses"
+    },
+    {
+      "from": "supplier::Eliko",
+      "to": "tech::BLE",
+      "relation": "uses"
+    },
+    {
+      "from": "doc::RTLS-UWD Documento tecnico_v2.pdf",
+      "to": "supplier::Eliko",
+      "relation": "describes"
+    },
+    {
+      "from": "supplier::Eliko",
+      "to": "tech::UWB",
+      "relation": "uses"
+    },
+    {
+      "from": "supplier::Eliko",
+      "to": "tech::BLE",
+      "relation": "uses"
+    },
+    {
+      "from": "supplier::Eliko",
+      "to": "tech::RFID",
+      "relation": "uses"
+    },
+    {
+      "from": "supplier::Eliko",
+      "to": "tech::Vision",
+      "relation": "uses"
+    },
+    {
+      "from": "doc::Sewio_Evaluacion_RTLS.pdf",
+      "to": "supplier::Sewio",
+      "relation": "describes"
+    },
+    {
+      "from": "supplier::Sewio",
+      "to": "tech::UWB",
+      "relation": "uses"
+    },
+    {
+      "from": "supplier::Sewio",
+      "to": "tech::BLE",
+      "relation": "uses"
+    },
+    {
+      "from": "supplier::Sewio",
+      "to": "tech::Vision",
+      "relation": "uses"
+    },
+    {
+      "from": "supplier::Eliko",
+      "to": "score::Eliko",
+      "relation": "scored_as"
+    },
+    {
+      "from": "supplier::Sewio",
+      "to": "score::Sewio",
+      "relation": "scored_as"
+    },
+    {
+      "from": "supplier::GrowSpace",
+      "to": "score::GrowSpace",
+      "relation": "scored_as"
+    },
+    {
+      "from": "supplier::Pozyx",
+      "to": "score::Pozyx",
+      "relation": "scored_as"
+    },
+    {
+      "from": "architecture::E",
+      "to": "supplier::Eliko",
+      "relation": "evaluates"
+    },
+    {
+      "from": "architecture::E",
+      "to": "supplier::Sewio",
+      "relation": "evaluates"
+    },
+    {
+      "from": "architecture::E",
+      "to": "supplier::GrowSpace",
+      "relation": "evaluates"
+    },
+    {
+      "from": "architecture::E",
+      "to": "supplier::Pozyx",
+      "relation": "evaluates"
+    }
+  ]
+}

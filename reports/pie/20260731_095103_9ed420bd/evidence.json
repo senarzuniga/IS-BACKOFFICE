@@ -1,0 +1,41 @@
+{
+  "source": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\MARKETING\\CONTENT\\Corrugated Plant Automation Solutions v2.pptx",
+  "slide_count": 28,
+  "total_elements": 102,
+  "element_counts": {
+    "shape": 56,
+    "heading": 21,
+    "text": 16,
+    "title": 9
+  },
+  "palette": [
+    "#FF6A00",
+    "#FFFFFF",
+    "#151515",
+    "#6F7378",
+    "#F4F5F7"
+  ],
+  "typography": {
+    "font_usage": {
+      "Montserrat": 27,
+      "Universalis ADF Std Regular": 1,
+      "Arial": 4,
+      "Inter": 3,
+      "Aptos": 2
+    },
+    "size_usage": {
+      "24.0": 5,
+      "32.0": 1,
+      "7.0": 1,
+      "18.0": 4,
+      "12.0": 2,
+      "16.0": 3,
+      "20.0": 5,
+      "30.0": 2,
+      "14.0": 4,
+      "28.0": 11,
+      "44.0": 1,
+      "36.0": 1
+    }
+  }
+}

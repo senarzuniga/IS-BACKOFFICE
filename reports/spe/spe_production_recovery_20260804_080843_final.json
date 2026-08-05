@@ -1,0 +1,23 @@
+{
+  "audit_report": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\spe\\spe_production_recovery_20260804_080843_audit.json",
+  "architecture_report": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\spe\\spe_production_recovery_20260804_080843_architecture.json",
+  "database_report": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\spe\\spe_production_recovery_20260804_080843_database.json",
+  "html_validation_report": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\spe\\spe_production_recovery_20260804_080843_html_validation.json",
+  "quality_report": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\spe\\spe_production_recovery_20260804_080843_quality.json",
+  "acceptance_report": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\spe\\spe_production_recovery_20260804_080843_acceptance.json",
+  "removed_components": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\spe\\spe_production_recovery_20260804_080843_removed_components.json",
+  "improvements": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\spe\\spe_production_recovery_20260804_080843_improvements.json",
+  "pending_risks": [
+    "Acceptance tests failed",
+    "Responsive viewport meta missing",
+    "Corporate header missing",
+    "Official logo missing",
+    "TOC section missing"
+  ],
+  "executive_readiness_score": 2561.75,
+  "architecture_score": 98.0,
+  "maintainability_score": 96.0,
+  "final_status": "NO GO",
+  "backup_path": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\spe\\backups\\spe_proposals_20260804_080813.db",
+  "single_engine_official": true
+}

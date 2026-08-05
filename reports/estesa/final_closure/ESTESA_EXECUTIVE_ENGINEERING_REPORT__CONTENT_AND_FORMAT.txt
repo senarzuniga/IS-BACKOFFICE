@@ -1,0 +1,694 @@
+﻿ESTESA EXECUTIVE ENGINEERING REPORT
+CONTENIDO + FORMATO HTML (fuente completa)
+
+Uso recomendado para análisis por agente:
+- Este archivo contiene el HTML completo original.
+- Incluye texto bilingüe (EN/ES), estilos CSS, estructura del layout y comportamiento JavaScript.
+- Si necesitas analizar solo contenido narrativo, filtra por etiquetas de secciones y bloques .lang.
+- Si necesitas analizar formato visual, revisa <style>, variables :root y reglas responsive/print.
+
+===== BEGIN_HTML_SOURCE =====<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ESTESA Executive Engineering Report</title>
+<style>
+:root {
+  --bg:#05070B;
+  --panel:#1A1D24;
+  --panel-2:#11141A;
+  --line:#2A2E37;
+  --accent:#FF6A00;
+  --accent-soft:#FF8A3D;
+  --text:#F4F5F7;
+  --muted:#7E848E;
+  --heading:"Montserrat", "Arial Black", sans-serif;
+  --body:"Inter", "Roboto", "IBM Plex Sans", "Segoe UI", sans-serif;
+}
+* { box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body {
+  margin:0;
+  background:
+    radial-gradient(circle at top left, rgba(255,106,0,.14), transparent 28%),
+    radial-gradient(circle at 80% 0%, rgba(255,138,61,.10), transparent 22%),
+    linear-gradient(180deg, #05070B 0%, #070A10 100%);
+  color:var(--text);
+  font-family:var(--body);
+}
+.layout {
+  display:grid;
+  grid-template-columns:320px 1fr;
+  min-height:100vh;
+}
+aside {
+  position:sticky;
+  top:0;
+  height:100vh;
+  overflow:auto;
+  background:linear-gradient(180deg, #0B0E14 0%, #080A0F 100%);
+  border-right:1px solid var(--line);
+  padding:22px 18px;
+}
+.brand {
+  display:flex;
+  align-items:center;
+  gap:12px;
+  margin-bottom:18px;
+}
+.brand img {
+  width:140px;
+  max-height:40px;
+  object-fit:contain;
+  display:block;
+}
+.brandmark {
+  display:none;
+  padding:8px 12px;
+  border:1px solid rgba(255,106,0,.45);
+  border-radius:12px;
+  color:var(--accent);
+  font-family:var(--heading);
+  font-weight:800;
+  letter-spacing:.08em;
+}
+aside h1 {
+  margin:0;
+  font-family:var(--heading);
+  font-size:1.12rem;
+  line-height:1.15;
+}
+aside .sub {
+  margin:8px 0 14px;
+  color:var(--muted);
+  font-size:.88rem;
+}
+details {
+  border:1px solid var(--line);
+  border-radius:14px;
+  background:rgba(255,255,255,.02);
+  padding:8px 10px;
+}
+summary {
+  cursor:pointer;
+  list-style:none;
+  font-weight:700;
+  color:#fff;
+  font-size:.92rem;
+}
+summary::-webkit-details-marker { display:none; }
+.toc {
+  margin-top:10px;
+  display:flex;
+  flex-direction:column;
+  gap:4px;
+}
+.toc a {
+  color:#C9CED7;
+  text-decoration:none;
+  padding:9px 10px;
+  border-radius:10px;
+  border:1px solid transparent;
+  font-size:.92rem;
+}
+.toc a:hover,
+.toc a.active {
+  background:rgba(255,106,0,.10);
+  border-color:rgba(255,106,0,.30);
+  color:#fff;
+}
+main {
+  padding:22px;
+}
+.hero,
+.card,
+.metrics,
+.lang-switch {
+  background:linear-gradient(180deg, rgba(26,29,36,.98), rgba(17,20,26,.98));
+  border:1px solid var(--line);
+  border-radius:18px;
+  box-shadow:0 18px 44px rgba(0,0,0,.28);
+}
+.hero {
+  padding:22px;
+  position:relative;
+  overflow:hidden;
+}
+.hero::after {
+  content:"";
+  position:absolute;
+  inset:auto -12% -60% auto;
+  width:280px;
+  height:280px;
+  border-radius:50%;
+  background:radial-gradient(circle, rgba(255,106,0,.18) 0%, rgba(255,106,0,.04) 55%, transparent 70%);
+  pointer-events:none;
+}
+.hero-top {
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:18px;
+}
+.hero h2 {
+  margin:0;
+  font-family:var(--heading);
+  font-size:clamp(2rem, 4vw, 3.6rem);
+  line-height:1;
+  letter-spacing:-.03em;
+}
+.hero p {
+  margin:12px 0 0;
+  max-width:980px;
+  color:#D5D9E0;
+  font-size:1.02rem;
+  line-height:1.65;
+}
+.hero-meta {
+  margin-top:18px;
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+}
+.pill {
+  padding:7px 12px;
+  border-radius:999px;
+  border:1px solid rgba(255,106,0,.28);
+  background:rgba(255,106,0,.08);
+  color:#FFF4EC;
+  font-size:.84rem;
+  font-weight:700;
+}
+.lang-switch {
+  display:inline-flex;
+  gap:8px;
+  padding:8px;
+  margin-top:16px;
+}
+.lang-switch button {
+  border:1px solid transparent;
+  background:transparent;
+  color:var(--muted);
+  border-radius:999px;
+  padding:8px 14px;
+  cursor:pointer;
+  font-weight:700;
+}
+.lang-switch button.active {
+  background:var(--accent);
+  color:#111;
+}
+.metrics {
+  margin-top:14px;
+  padding:14px;
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:12px;
+}
+.metric {
+  padding:14px;
+  border-radius:14px;
+  background:rgba(255,255,255,.03);
+  border:1px solid rgba(255,255,255,.06);
+}
+.metric .label {
+  color:var(--muted);
+  font-size:.76rem;
+  text-transform:uppercase;
+  letter-spacing:.10em;
+}
+.metric .value {
+  margin-top:8px;
+  font-size:1.55rem;
+  font-family:var(--heading);
+  font-weight:800;
+}
+.metric .desc {
+  margin-top:6px;
+  color:#C9CED7;
+  font-size:.86rem;
+  line-height:1.45;
+}
+.card {
+  margin-top:14px;
+  padding:18px;
+}
+.card h3 {
+  margin:0 0 10px;
+  font-family:var(--heading);
+  font-size:1.35rem;
+}
+.lang { display:none; }
+.lang.active { display:block; }
+p, li {
+  color:#D7DBE2;
+  line-height:1.7;
+}
+ul, ol { padding-left:20px; }
+.table-wrap {
+  overflow:auto;
+  border:1px solid var(--line);
+  border-radius:14px;
+  margin-top:10px;
+}
+table {
+  width:100%;
+  border-collapse:collapse;
+  min-width:860px;
+  background:#0F1218;
+}
+th, td {
+  border-bottom:1px solid #232833;
+  padding:12px 10px;
+  text-align:left;
+  vertical-align:top;
+  color:#DDE2EA;
+}
+th {
+  background:#121720;
+  color:#FFF;
+  font-weight:800;
+}
+.ref-list {
+  display:grid;
+  gap:10px;
+}
+.ref-item {
+  padding:12px 14px;
+  border-radius:14px;
+  border:1px solid rgba(255,255,255,.06);
+  background:rgba(255,255,255,.03);
+}
+.ref-item strong {
+  display:block;
+  margin-bottom:5px;
+  color:#fff;
+}
+.small {
+  color:var(--muted);
+  font-size:.88rem;
+}
+@media (max-width: 1080px) {
+  .layout { grid-template-columns:1fr; }
+  aside {
+    position:relative;
+    height:auto;
+    border-right:none;
+    border-bottom:1px solid var(--line);
+  }
+  .metrics { grid-template-columns:repeat(2,minmax(0,1fr)); }
+  .hero-top { flex-direction:column; }
+}
+@media (max-width: 720px) {
+  main { padding:14px; }
+  .metrics { grid-template-columns:1fr; }
+  .hero h2 { font-size:2rem; }
+}
+@media print {
+  body { background:#fff; color:#000; }
+  aside, .lang-switch { display:none !important; }
+  .layout { grid-template-columns:1fr; }
+  .hero, .card, .metrics { box-shadow:none; border-color:#ccc; background:#fff; color:#000; }
+  .lang { display:block !important; }
+  .lang:not(.print-selected) { display:none !important; }
+}
+</style>
+</head>
+<body data-lang="en">
+<div class="layout">
+  <aside>
+    <div class="brand">
+      <img id="brand-img" src="../../../informes/ingecart-marketing-kit/Assets/ingecart_assets_v2/logo%20ingecart%20blanco.png" alt="INGECART logo" onerror="this.style.display='none';document.getElementById('brand-fallback').style.display='inline-flex';" />
+      <div id="brand-fallback" class="brandmark">INGECART</div>
+    </div>
+    <h1>ESTESA Executive Engineering Report</h1>
+    <div class="sub">Bilingual executive report for joint customer development</div>
+    <details open>
+      <summary>Table of Contents / Ãndice</summary>
+      <nav class="toc" aria-label="Table of contents">
+        <a href="#ch1">1. Executive Summary</a>
+        <a href="#ch2">2. Personalized Introduction</a>
+        <a href="#ch3">3. ESTESA Market Position</a>
+        <a href="#ch4">4. INGECART Portfolio Fit</a>
+        <a href="#ch5">5. KUKA Partnership Value</a>
+        <a href="#ch6">6. Customer and Sector Synergy</a>
+        <a href="#ch7">7. OEM Representation Model</a>
+        <a href="#ch8">8. Technical-Economic Logic</a>
+        <a href="#ch9">9. Joint Customer Development</a>
+        <a href="#ch10">10. Roadmap</a>
+        <a href="#ch11">11. Risks and Mitigation</a>
+        <a href="#ch12">12. Governance and Service</a>
+        <a href="#ch13">13. Strategic Recommendation</a>
+        <a href="#ch14">14. References and Closing</a>
+      </nav>
+    </details>
+  </aside>
+
+  <main>
+    <section class="hero">
+      <div class="hero-top">
+        <div>
+          <h2>ESTESA x INGECART</h2>
+          <p class="lang active" data-lang="en">Executive engineering report for a premium industrial partnership in Spain and Portugal, combining market access, OEM confidence, independent engineering, and turnkey execution.</p>
+          <p class="lang" data-lang="es">Informe ejecutivo de ingenierÃ­a para una alianza industrial premium en EspaÃ±a y Portugal, combinando acceso a mercado, confianza OEM, ingenierÃ­a independiente y ejecuciÃ³n turnkey.</p>
+        </div>
+      </div>
+      <div class="hero-meta">
+        <span class="pill">ESTESA: founded 1979</span>
+        <span class="pill">150+ companies served</span>
+        <span class="pill">INGECART: 28 years, 1,268 projects</span>
+        <span class="pill">Focus: corrugated, packaging, robotics, intralogistics</span>
+      </div>
+      <div class="lang-switch" role="tablist" aria-label="Language switch">
+        <button id="btn-en" class="active" onclick="setLang('en')">English</button>
+        <button id="btn-es" onclick="setLang('es')">Castellano</button>
+      </div>
+    </section>
+
+    <section class="metrics">
+      <div class="metric">
+        <div class="label">ESTESA market role</div>
+        <div class="value">OEM Partner</div>
+        <div class="desc">Exclusive representation, service, and technical support for Spain and Portugal.</div>
+      </div>
+      <div class="metric">
+        <div class="label">INGECART technical role</div>
+        <div class="value">Engineer</div>
+        <div class="desc">Independent diagnosis, integration, commissioning, and project ownership.</div>
+      </div>
+      <div class="metric">
+        <div class="label">Commercial outcome</div>
+        <div class="value">Joint Account</div>
+        <div class="desc">Shared funnel, stronger trust, higher conversion, better lifecycle support.</div>
+      </div>
+      <div class="metric">
+        <div class="label">Delivery logic</div>
+        <div class="value">TCO-led</div>
+        <div class="desc">CAPEX, OPEX, payback, and lifecycle visibility instead of price-only selling.</div>
+      </div>
+    </section>
+
+    <section id="ch1" class="card">
+      <div class="lang active" data-lang="en">
+        <h3>1. Executive Summary</h3>
+        <p>ESTESA is a family-owned industrial representative and service company founded in 1979, with a strong position in Spain and Portugal and more than 150 companies trusting its advice and technical service. INGECART is an independent industrial engineering specialist with 28 years of experience, 1,268 executed projects, 26 international agreements, and 194 active installations.</p>
+        <p>The combination creates a credible executive platform for joint customer development in corrugated, packaging, intralogistics, automation, and robotization. ESTESA contributes market access, trust, and OEM representation logic. INGECART contributes engineering independence, plant diagnosis, turnkey execution, and performance accountability.</p>
+      </div>
+      <div class="lang" data-lang="es">
+        <h3>1. Resumen Ejecutivo</h3>
+        <p>ESTESA es una empresa familiar de representaciÃ³n industrial y servicio, fundada en 1979, con una posiciÃ³n sÃ³lida en EspaÃ±a y Portugal y mÃ¡s de 150 compaÃ±Ã­as confiando en su asesoramiento y servicio tÃ©cnico. INGECART es un especialista independiente en ingenierÃ­a industrial con 28 aÃ±os de experiencia, 1.268 proyectos ejecutados, 26 acuerdos internacionales y 194 instalaciones activas.</p>
+        <p>La combinaciÃ³n crea una plataforma ejecutiva creÃ­ble para el desarrollo conjunto de clientes en corrugado, packaging, intralogÃ­stica, automatizaciÃ³n y robotizaciÃ³n. ESTESA aporta acceso al mercado, confianza y lÃ³gica de representaciÃ³n OEM. INGECART aporta independencia de ingenierÃ­a, diagnÃ³stico de planta, ejecuciÃ³n turnkey y responsabilidad sobre el resultado.</p>
+      </div>
+    </section>
+
+    <section id="ch2" class="card">
+      <div class="lang active" data-lang="en">
+        <h3>2. Personalized Introduction</h3>
+        <p>Dear ESTESA team,</p>
+        <p>This report has been prepared for a practical purpose: to identify how ESTESA and INGECART can jointly serve industrial customers with a stronger technical proposition, faster response, and better commercial conversion. The fit is not theoretical. ESTESA already operates in a representation-led model with service, parts, and specialized technical support. INGECART already operates in a project-led model with engineering, audits, installation, and performance-oriented execution.</p>
+        <p>The strategic message is simple: ESTESA can become the front-line commercial and relationship platform, while INGECART can be the engineering execution engine behind the offer.</p>
+      </div>
+      <div class="lang" data-lang="es">
+        <h3>2. IntroducciÃ³n Personalizada</h3>
+        <p>Estimado equipo de ESTESA,</p>
+        <p>Este informe se ha preparado con un objetivo prÃ¡ctico: identificar cÃ³mo ESTESA e INGECART pueden servir juntos a clientes industriales con una propuesta tÃ©cnica mÃ¡s sÃ³lida, una respuesta mÃ¡s rÃ¡pida y una mejor conversiÃ³n comercial. ESTESA ya opera con un modelo basado en representaciÃ³n, servicio, recambios y soporte tÃ©cnico especializado. INGECART ya opera con un modelo basado en proyectos, ingenierÃ­a, auditorÃ­as, instalaciÃ³n y ejecuciÃ³n orientada a resultados.</p>
+        <p>El mensaje estratÃ©gico es simple: ESTESA puede convertirse en la plataforma comercial y relacional de primera lÃ­nea, mientras INGECART actÃºa como el motor de ejecuciÃ³n de ingenierÃ­a detrÃ¡s de la oferta.</p>
+      </div>
+    </section>
+
+    <section id="ch3" class="card">
+      <div class="lang active" data-lang="en">
+        <h3>3. ESTESA Market Position</h3>
+        <p>ESTESA's public positioning is aligned with exclusive representation of major machinery manufacturers for Spain and Portugal, effective and personalized service, spare parts, and highly specialized technical support. That profile is valuable because many industrial buyers do not want generic distributors; they want a trusted local counterpart who can translate technical complexity into operational certainty.</p>
+        <p>For INGECART, this is relevant because the company complements the representation model rather than competing with it. INGECART adds diagnostic depth, integration capability, and project ownership.</p>
+      </div>
+      <div class="lang" data-lang="es">
+        <h3>3. Posicionamiento de ESTESA</h3>
+        <p>El posicionamiento pÃºblico de ESTESA estÃ¡ alineado con la representaciÃ³n exclusiva de fabricantes de maquinaria para EspaÃ±a y Portugal, con servicio efectivo y personalizado, recambios y soporte tÃ©cnico altamente especializado. Ese perfil es valioso porque muchos compradores industriales no quieren distribuidores genÃ©ricos; quieren un contraparte local de confianza capaz de traducir la complejidad tÃ©cnica en certeza operativa.</p>
+        <p>Para INGECART, esto es relevante porque complementa el modelo de representaciÃ³n en lugar de competir con Ã©l. INGECART aporta profundidad de diagnÃ³stico, capacidad de integraciÃ³n y ownership del proyecto.</p>
+      </div>
+    </section>
+
+    <section id="ch4" class="card">
+      <div class="lang active" data-lang="en">
+        <h3>4. INGECART Portfolio Fit</h3>
+        <ul>
+          <li>Ingetrans 2800 for automated reel feeding and movement.</li>
+          <li>SR1400 for scrap collection and energy reduction.</li>
+          <li>IIM Rollstand for intelligent reel handling and changeover support.</li>
+          <li>Technical audits for independent investment decisions.</li>
+          <li>KUKA-based robotics for palletizing and handling.</li>
+          <li>360 turnkey projects for complete plant responsibility.</li>
+          <li>Ing_PRO and IAR concepts for industrial intelligence and AI-enabled operation.</li>
+        </ul>
+      </div>
+      <div class="lang" data-lang="es">
+        <h3>4. Encaje del Portfolio de INGECART</h3>
+        <ul>
+          <li>Ingetrans 2800 para alimentaciÃ³n y movimiento automatizado de bobinas.</li>
+          <li>SR1400 para recogida de retal y reducciÃ³n energÃ©tica.</li>
+          <li>IIM Rollstand para gestiÃ³n inteligente de bobinas y apoyo al cambio.</li>
+          <li>AuditorÃ­as tÃ©cnicas para decisiones de inversiÃ³n independientes.</li>
+          <li>RobÃ³tica basada en KUKA para paletizado y manipulaciÃ³n.</li>
+          <li>Proyectos turnkey 360 para responsabilidad completa de planta.</li>
+          <li>Conceptos Ing_PRO e IAR para inteligencia industrial y operaciÃ³n asistida por IA.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="ch5" class="card">
+      <div class="lang active" data-lang="en">
+        <h3>5. KUKA Partnership Value</h3>
+        <p>KUKA is not just a robot brand. In the joint proposition, KUKA becomes the industrial execution layer for repeatable, safe, high-cadence automation. The value is strongest where ESTESA already speaks with decision-makers about machine performance, while INGECART can specify the integration architecture and commissioning plan.</p>
+        <p>The commercial message is attractive: better cycle consistency, lower human variability, safer handling, easier standardization across plants, and clearer serviceable lifecycle support.</p>
+      </div>
+      <div class="lang" data-lang="es">
+        <h3>5. Valor de la Alianza con KUKA</h3>
+        <p>KUKA no es solo una marca de robots. En la propuesta conjunta, KUKA se convierte en la capa de ejecuciÃ³n industrial para automatizaciÃ³n repetible, segura y de alta cadencia. El valor es mÃ¡ximo cuando ESTESA ya conversa con decisores sobre rendimiento de maquinaria y INGECART puede especificar la arquitectura de integraciÃ³n y el plan de puesta en marcha.</p>
+        <p>El mensaje comercial es muy atractivo: mayor consistencia de ciclo, menos variabilidad humana, manipulaciÃ³n mÃ¡s segura, estandarizaciÃ³n mÃ¡s fÃ¡cil entre plantas y un soporte de ciclo de vida mÃ¡s claro.</p>
+      </div>
+    </section>
+
+    <section id="ch6" class="card">
+      <div class="lang active" data-lang="en">
+        <h3>6. Customer and Sector Synergy</h3>
+        <p>The strongest shared customer groups are corrugated converters, packaging plants, technical maintenance organizations, and industrial groups seeking modernization without full plant replacement.</p>
+        <p>Joint value is highest when the customer needs to expand capacity without disrupting production, when labor cost or safety risk is creating a hidden OPEX problem, when a plant requires both OEM-level equipment knowledge and independent engineering judgment, and when the project needs both commercial trust and engineering precision.</p>
+      </div>
+      <div class="lang" data-lang="es">
+        <h3>6. Sinergia por Cliente y Sector</h3>
+        <p>Los grupos de clientes compartidos mÃ¡s fuertes son convertidores de corrugado, plantas de packaging, organizaciones de mantenimiento tÃ©cnico y grupos industriales que buscan modernizaciÃ³n sin reemplazar toda la planta.</p>
+        <p>El valor conjunto es mayor cuando el cliente necesita ampliar capacidad sin interrumpir producciÃ³n, el coste laboral o el riesgo de seguridad estÃ¡ creando un problema oculto de OPEX, la planta requiere conocimiento de maquinaria OEM y juicio de ingenierÃ­a independiente, y el proyecto necesita confianza comercial y precisiÃ³n tÃ©cnica al mismo tiempo.</p>
+      </div>
+    </section>
+
+    <section id="ch7" class="card">
+      <div class="lang active" data-lang="en">
+        <h3>7. OEM Representation Model</h3>
+        <p>ESTESA's OEM-centric representation model and INGECART's independent engineering model are compatible if the roles are cleanly separated. ESTESA should lead on brand access, territory coverage, and manufacturer relationships. INGECART should lead on application engineering, process diagnosis, multi-vendor integration, and turnkey execution.</p>
+        <p>This division reduces channel conflict and increases customer confidence. It also protects the customer from a common market weakness: technology sold without enough plant-specific engineering.</p>
+      </div>
+      <div class="lang" data-lang="es">
+        <h3>7. Modelo de RepresentaciÃ³n OEM</h3>
+        <p>El modelo de representaciÃ³n centrado en OEM de ESTESA y el modelo de ingenierÃ­a independiente de INGECART son compatibles si los roles se separan con claridad. ESTESA debe liderar el acceso a marca, la cobertura territorial y la relaciÃ³n con fabricantes. INGECART debe liderar la ingenierÃ­a de aplicaciÃ³n, el diagnÃ³stico de proceso, la integraciÃ³n multivendor y la ejecuciÃ³n turnkey.</p>
+        <p>Esta divisiÃ³n reduce el conflicto de canal y aumenta la confianza del cliente. TambiÃ©n protege al cliente de una debilidad habitual del mercado: tecnologÃ­a vendida sin suficiente ingenierÃ­a adaptada a la planta.</p>
+      </div>
+    </section>
+
+    <section id="ch8" class="card">
+      <div class="lang active" data-lang="en">
+        <h3>8. Technical-Economic Logic</h3>
+        <p>The economic case should not be presented as machine price alone. The decision basis must include CAPEX, OPEX, installation risk, downtime exposure, maintenance burden, and lifecycle visibility.</p>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Metric</th>
+                <th>What it covers</th>
+                <th>Why it matters</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>CAPEX</td><td>Equipment and integration cost</td><td>Entry affordability and project scope</td></tr>
+              <tr><td>OPEX</td><td>Labor, energy, maintenance, spares, support</td><td>Real operational burden</td></tr>
+              <tr><td>TCO</td><td>3- to 5-year normalized ownership cost</td><td>Comparable economic decision basis</td></tr>
+              <tr><td>Payback</td><td>Production gain and risk reduction</td><td>Board-level investment justification</td></tr>
+              <tr><td>Lifecycle visibility</td><td>Serviceability, update path, expansion readiness</td><td>Future proofing and continuity</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="lang" data-lang="es">
+        <h3>8. LÃ³gica TÃ©cnico-EconÃ³mica</h3>
+        <p>La decisiÃ³n debe incluir CAPEX, OPEX, riesgo de instalaciÃ³n, exposiciÃ³n a paradas, carga de mantenimiento y visibilidad de ciclo de vida.</p>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>MÃ©trica</th>
+                <th>QuÃ© cubre</th>
+                <th>Por quÃ© importa</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>CAPEX</td><td>Coste de equipo e integraciÃ³n</td><td>Asequibilidad de entrada y alcance del proyecto</td></tr>
+              <tr><td>OPEX</td><td>Mano de obra, energÃ­a, mantenimiento, recambios, soporte</td><td>Carga operativa real</td></tr>
+              <tr><td>TCO</td><td>Coste total normalizado a 3-5 aÃ±os</td><td>Base econÃ³mica comparable</td></tr>
+              <tr><td>Payback</td><td>Ganancia productiva y reducciÃ³n de riesgo</td><td>JustificaciÃ³n de inversiÃ³n a nivel directivo</td></tr>
+              <tr><td>Visibilidad de ciclo de vida</td><td>Mantenibilidad, actualizaciÃ³n, capacidad de expansiÃ³n</td><td>Continuidad y preparaciÃ³n futura</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section id="ch9" class="card">
+      <div class="lang active" data-lang="en">
+        <h3>9. Joint Customer Development</h3>
+        <ol>
+          <li>ESTESA opens the account and qualifies the opportunity.</li>
+          <li>INGECART performs the technical discovery and plant diagnosis.</li>
+          <li>A combined concept is prepared with scope, ROI logic, and phased implementation.</li>
+          <li>ESTESA supports negotiation, manufacturer alignment, and channel confidence.</li>
+          <li>INGECART executes installation, commissioning, and performance closure.</li>
+        </ol>
+      </div>
+      <div class="lang" data-lang="es">
+        <h3>9. Desarrollo Conjunto de Clientes</h3>
+        <ol>
+          <li>ESTESA abre la cuenta y califica la oportunidad.</li>
+          <li>INGECART realiza el discovery tÃ©cnico y el diagnÃ³stico de planta.</li>
+          <li>Se prepara un concepto conjunto con alcance, lÃ³gica de ROI y despliegue por fases.</li>
+          <li>ESTESA apoya negociaciÃ³n, alineaciÃ³n con fabricante y confianza de canal.</li>
+          <li>INGECART ejecuta instalaciÃ³n, puesta en marcha y cierre de prestaciones.</li>
+        </ol>
+      </div>
+    </section>
+
+    <section id="ch10" class="card">
+      <div class="lang active" data-lang="en">
+        <h3>10. Roadmap</h3>
+        <ol>
+          <li>Define the commercial scope, vertical focus, and partner roles.</li>
+          <li>Select 3 to 5 joint target accounts in Spain and Portugal.</li>
+          <li>Prepare one joint executive deck and one joint technical sheet.</li>
+          <li>Run two pilot customer discovery meetings.</li>
+          <li>Convert one opportunity into a full engineering proposal.</li>
+          <li>Validate delivery, references, and service model.</li>
+        </ol>
+      </div>
+      <div class="lang" data-lang="es">
+        <h3>10. Hoja de Ruta</h3>
+        <ol>
+          <li>Definir alcance comercial, vertical objetivo y roles del partner.</li>
+          <li>Seleccionar 3 a 5 cuentas objetivo conjuntas en EspaÃ±a y Portugal.</li>
+          <li>Preparar un deck ejecutivo conjunto y una ficha tÃ©cnica conjunta.</li>
+          <li>Realizar dos reuniones piloto de discovery con clientes.</li>
+          <li>Convertir una oportunidad en propuesta completa de ingenierÃ­a.</li>
+          <li>Validar entrega, referencias y modelo de servicio.</li>
+        </ol>
+      </div>
+    </section>
+
+    <section id="ch11" class="card">
+      <div class="lang active" data-lang="en">
+        <h3>11. Risks and Mitigation</h3>
+        <ul>
+          <li>Role confusion between representation and engineering execution.</li>
+          <li>Overlapping customer ownership.</li>
+          <li>Brand mismatch if messaging is not aligned.</li>
+          <li>Technical overpromising without site-specific validation.</li>
+          <li>Service responsibility ambiguity after sale.</li>
+        </ul>
+      </div>
+      <div class="lang" data-lang="es">
+        <h3>11. Riesgos y MitigaciÃ³n</h3>
+        <ul>
+          <li>ConfusiÃ³n de roles entre representaciÃ³n y ejecuciÃ³n de ingenierÃ­a.</li>
+          <li>Solapamiento en la propiedad de cuentas.</li>
+          <li>DesalineaciÃ³n de marca si el mensaje no estÃ¡ coordinado.</li>
+          <li>Promesa tÃ©cnica excesiva sin validaciÃ³n especÃ­fica de planta.</li>
+          <li>AmbigÃ¼edad de responsabilidad de servicio tras la venta.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="ch12" class="card">
+      <div class="lang active" data-lang="en">
+        <h3>12. Governance and Service Model</h3>
+        <p>For premium industrial accounts, the service model is a differentiator. ESTESA's service culture and INGECART's project accountability can be combined into a stronger after-sales promise with named technical owners, response SLAs, spare parts logic, documentation standards, and performance review meetings after commissioning.</p>
+      </div>
+      <div class="lang" data-lang="es">
+        <h3>12. Gobierno y Modelo de Servicio</h3>
+        <p>En cuentas industriales premium, el modelo de servicio es un diferenciador. La cultura de servicio de ESTESA y la responsabilidad de proyecto de INGECART pueden combinarse en una promesa postventa mÃ¡s fuerte con responsables tÃ©cnicos identificados, SLAs de respuesta, lÃ³gica de recambios, estÃ¡ndares de documentaciÃ³n y reuniones de revisiÃ³n de prestaciones tras la puesta en marcha.</p>
+      </div>
+    </section>
+
+    <section id="ch13" class="card">
+      <div class="lang active" data-lang="en">
+        <h3>13. Strategic Recommendation</h3>
+        <p>The best strategy is not to merge identities. It is to build a complementary partnership: ESTESA as the market-facing representative, trusted service provider, and manufacturer interface; INGECART as the independent engineering and delivery partner for plant-specific solutions.</p>
+      </div>
+      <div class="lang" data-lang="es">
+        <h3>13. RecomendaciÃ³n EstratÃ©gica</h3>
+        <p>La mejor estrategia no es fusionar identidades. Es construir una alianza complementaria: ESTESA como representante visible en mercado, proveedor de servicio de confianza e interfaz con fabricantes; INGECART como partner independiente de ingenierÃ­a y entrega para soluciones especÃ­ficas de planta.</p>
+      </div>
+    </section>
+
+    <section id="ch14" class="card">
+      <div class="lang active" data-lang="en">
+        <h3>14. References and Closing</h3>
+        <div class="ref-list">
+          <div class="ref-item"><strong>ESTESA public company profile</strong>Founded in 1979; exclusive representation for Spain and Portugal; more than 150 companies served.</div>
+          <div class="ref-item"><strong>INGECART corporate profile</strong>28 years; 1,268 projects; 26 international agreements; 194 installations.</div>
+          <div class="ref-item"><strong>INGECART solution pillars</strong>Ingetrans 2800, SR1400, IIM Rollstand, technical audits, KUKA robotics, turnkey 360, Ing_PRO, IAR.</div>
+        </div>
+        <p class="small" style="margin-top:12px;">Closing statement: ESTESA and INGECART have a credible opportunity to create a premium industrial partnership for Spain and Portugal, combining commercial access, OEM confidence, and engineering execution.</p>
+      </div>
+      <div class="lang" data-lang="es">
+        <h3>14. Referencias y Cierre</h3>
+        <div class="ref-list">
+          <div class="ref-item"><strong>Perfil pÃºblico de ESTESA</strong>Fundada en 1979; representaciÃ³n exclusiva para EspaÃ±a y Portugal; mÃ¡s de 150 compaÃ±Ã­as atendidas.</div>
+          <div class="ref-item"><strong>Perfil corporativo de INGECART</strong>28 aÃ±os; 1.268 proyectos; 26 acuerdos internacionales; 194 instalaciones.</div>
+          <div class="ref-item"><strong>Pilares de soluciÃ³n INGECART</strong>Ingetrans 2800, SR1400, IIM Rollstand, auditorÃ­as tÃ©cnicas, robÃ³tica KUKA, turnkey 360, Ing_PRO, IAR.</div>
+        </div>
+        <p class="small" style="margin-top:12px;">DeclaraciÃ³n de cierre: ESTESA e INGECART tienen una oportunidad creÃ­ble para crear una alianza industrial premium para EspaÃ±a y Portugal, combinando acceso comercial, confianza OEM y ejecuciÃ³n de ingenierÃ­a.</p>
+      </div>
+    </section>
+  </main>
+</div>
+
+<script>
+function setLang(lang) {
+  document.body.dataset.lang = lang;
+  localStorage.setItem('estesa-report-lang', lang);
+  document.querySelectorAll('.lang').forEach(el => {
+    el.classList.toggle('active', el.dataset.lang === lang);
+  });
+  document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+  document.getElementById('btn-es').classList.toggle('active', lang === 'es');
+  document.querySelectorAll('main .card').forEach(card => {
+    card.querySelectorAll('.lang').forEach(el => {
+      if (el.dataset.lang === lang) el.classList.add('print-selected'); else el.classList.remove('print-selected');
+    });
+  });
+}
+
+const savedLang = localStorage.getItem('estesa-report-lang');
+if (savedLang === 'es' || savedLang === 'en') setLang(savedLang);
+
+const navLinks = Array.from(document.querySelectorAll('.toc a'));
+const sections = navLinks.map(link => document.querySelector(link.getAttribute('href'))).filter(Boolean);
+const observer = new IntersectionObserver(entries => {
+  const visible = entries.filter(entry => entry.isIntersecting).sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+  if (!visible) return;
+  const id = '#' + visible.target.id;
+  navLinks.forEach(link => link.classList.toggle('active', link.getAttribute('href') === id));
+}, { rootMargin: '-35% 0px -55% 0px', threshold: [0.12, 0.2, 0.35] });
+sections.forEach(section => observer.observe(section));
+</script>
+</body>
+</html>
+===== END_HTML_SOURCE =====
+

@@ -1,0 +1,356 @@
+{
+  "run_id": "20260804_061032_b4520290",
+  "source": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\spe\\runs\\20260804_061032_b4520290\\source\\OFF-2026-S134_20260804_061032.md",
+  "generated_at": "2026-08-04T06:10:34.192352+00:00",
+  "pipeline_executed": "HIS V3 Production Ready",
+  "phases": [
+    {
+      "name": "phase_1_document_discovery_attempt_1",
+      "elapsed_s": 0.003
+    },
+    {
+      "name": "phase_2_object_extraction_attempt_1",
+      "elapsed_s": 0.003
+    },
+    {
+      "name": "phase_3_image_extraction_attempt_1",
+      "elapsed_s": 0.0
+    },
+    {
+      "name": "phase_4_semantic_classification_attempt_1",
+      "elapsed_s": 0.001
+    },
+    {
+      "name": "phase_5_dom_reconstruction_attempt_1",
+      "elapsed_s": 0.001
+    },
+    {
+      "name": "phase_6_theme_application_attempt_1",
+      "elapsed_s": 0.001
+    },
+    {
+      "name": "phase_7_validation_publication_attempt_1",
+      "elapsed_s": 1.188
+    }
+  ],
+  "hypotheses_generated": [
+    {
+      "id": "H1",
+      "name": "Strict structure-first reconstruction",
+      "engineering": 8.9,
+      "business": 8.3,
+      "quality": 9.2,
+      "risk": 2.0,
+      "executive_score": 8.47
+    },
+    {
+      "id": "H2",
+      "name": "Balanced semantic-first reconstruction",
+      "engineering": 8.4,
+      "business": 8.9,
+      "quality": 8.7,
+      "risk": 2.4,
+      "executive_score": 8.16
+    },
+    {
+      "id": "H3",
+      "name": "Visual-priority reconstruction",
+      "engineering": 8.0,
+      "business": 8.2,
+      "quality": 8.4,
+      "risk": 2.9,
+      "executive_score": 7.63
+    }
+  ],
+  "selected_hypothesis": {
+    "id": "H1",
+    "name": "Strict structure-first reconstruction",
+    "engineering": 8.9,
+    "business": 8.3,
+    "quality": 9.2,
+    "risk": 2.0,
+    "executive_score": 8.47
+  },
+  "hypotheses_discarded": [
+    {
+      "id": "H2",
+      "name": "Balanced semantic-first reconstruction",
+      "engineering": 8.4,
+      "business": 8.9,
+      "quality": 8.7,
+      "risk": 2.4,
+      "executive_score": 8.16
+    },
+    {
+      "id": "H3",
+      "name": "Visual-priority reconstruction",
+      "engineering": 8.0,
+      "business": 8.2,
+      "quality": 8.4,
+      "risk": 2.9,
+      "executive_score": 7.63
+    }
+  ],
+  "quality_thresholds": {
+    "text_coverage": 95.0,
+    "image_coverage": 95.0,
+    "diagram_coverage": 80.0,
+    "smartart_coverage": 80.0,
+    "theme_compliance": 100.0,
+    "accessibility": 90.0,
+    "responsive": 100.0,
+    "typography": 85.0,
+    "layout_quality": 90.0,
+    "visual_similarity": 85.0
+  },
+  "quality_attempts": [
+    {
+      "attempt": 1,
+      "selected_variant": "slide_flow",
+      "passed": true,
+      "quality": {
+        "slide_flow": {
+          "passed": true,
+          "coverage": {
+            "text_coverage": 1.0,
+            "image_coverage": 1.0,
+            "diagram_coverage": 1.0,
+            "smartart_coverage": 1.0,
+            "table_coverage": 1.0,
+            "layout_quality": 1.0
+          },
+          "metrics": {
+            "text_coverage": 100.0,
+            "image_coverage": 100.0,
+            "diagram_coverage": 100.0,
+            "smartart_coverage": 100.0,
+            "theme_compliance": 100.0,
+            "accessibility": 100.0,
+            "responsive": 100.0,
+            "typography": 100.0,
+            "layout_quality": 100.0,
+            "visual_similarity": 100.0
+          },
+          "components_reconstructed": 1,
+          "source_counts": {
+            "text": 20,
+            "images": 0,
+            "tables": 0,
+            "smartart": 0,
+            "diagrams": 1
+          },
+          "reconstructed_counts": {
+            "text": 20,
+            "images": 0,
+            "tables": 0,
+            "smartart": 1,
+            "diagrams": 1
+          }
+        },
+        "smart_reconstruction": {
+          "passed": true,
+          "coverage": {
+            "text_coverage": 1.0,
+            "image_coverage": 1.0,
+            "diagram_coverage": 1.0,
+            "smartart_coverage": 1.0,
+            "table_coverage": 1.0,
+            "layout_quality": 1.0
+          },
+          "metrics": {
+            "text_coverage": 100.0,
+            "image_coverage": 100.0,
+            "diagram_coverage": 100.0,
+            "smartart_coverage": 100.0,
+            "theme_compliance": 100.0,
+            "accessibility": 100.0,
+            "responsive": 100.0,
+            "typography": 100.0,
+            "layout_quality": 100.0,
+            "visual_similarity": 100.0
+          },
+          "components_reconstructed": 1,
+          "source_counts": {
+            "text": 20,
+            "images": 0,
+            "tables": 0,
+            "smartart": 0,
+            "diagrams": 1
+          },
+          "reconstructed_counts": {
+            "text": 20,
+            "images": 0,
+            "tables": 0,
+            "smartart": 1,
+            "diagrams": 1
+          }
+        }
+      },
+      "scores": {
+        "slide_flow": {
+          "visual_similarity_score": 100.0,
+          "structure_score": 100.0,
+          "theme_score": 100.0,
+          "typography_score": 100.0,
+          "layout_score": 100.0,
+          "image_score": 100.0,
+          "corporate_identity_score": 100.0,
+          "executive_quality_score": 100.0
+        },
+        "smart_reconstruction": {
+          "visual_similarity_score": 100.0,
+          "structure_score": 100.0,
+          "theme_score": 100.0,
+          "typography_score": 100.0,
+          "layout_score": 100.0,
+          "image_score": 100.0,
+          "corporate_identity_score": 100.0,
+          "executive_quality_score": 100.0
+        }
+      }
+    }
+  ],
+  "selected_variant": "slide_flow",
+  "scores": {
+    "slide_flow": {
+      "visual_similarity_score": 100.0,
+      "structure_score": 100.0,
+      "theme_score": 100.0,
+      "typography_score": 100.0,
+      "layout_score": 100.0,
+      "image_score": 100.0,
+      "corporate_identity_score": 100.0,
+      "executive_quality_score": 100.0
+    },
+    "smart_reconstruction": {
+      "visual_similarity_score": 100.0,
+      "structure_score": 100.0,
+      "theme_score": 100.0,
+      "typography_score": 100.0,
+      "layout_score": 100.0,
+      "image_score": 100.0,
+      "corporate_identity_score": 100.0,
+      "executive_quality_score": 100.0
+    }
+  },
+  "quality": {
+    "slide_flow": {
+      "passed": true,
+      "coverage": {
+        "text_coverage": 1.0,
+        "image_coverage": 1.0,
+        "diagram_coverage": 1.0,
+        "smartart_coverage": 1.0,
+        "table_coverage": 1.0,
+        "layout_quality": 1.0
+      },
+      "metrics": {
+        "text_coverage": 100.0,
+        "image_coverage": 100.0,
+        "diagram_coverage": 100.0,
+        "smartart_coverage": 100.0,
+        "theme_compliance": 100.0,
+        "accessibility": 100.0,
+        "responsive": 100.0,
+        "typography": 100.0,
+        "layout_quality": 100.0,
+        "visual_similarity": 100.0
+      },
+      "components_reconstructed": 1,
+      "source_counts": {
+        "text": 20,
+        "images": 0,
+        "tables": 0,
+        "smartart": 0,
+        "diagrams": 1
+      },
+      "reconstructed_counts": {
+        "text": 20,
+        "images": 0,
+        "tables": 0,
+        "smartart": 1,
+        "diagrams": 1
+      }
+    },
+    "smart_reconstruction": {
+      "passed": true,
+      "coverage": {
+        "text_coverage": 1.0,
+        "image_coverage": 1.0,
+        "diagram_coverage": 1.0,
+        "smartart_coverage": 1.0,
+        "table_coverage": 1.0,
+        "layout_quality": 1.0
+      },
+      "metrics": {
+        "text_coverage": 100.0,
+        "image_coverage": 100.0,
+        "diagram_coverage": 100.0,
+        "smartart_coverage": 100.0,
+        "theme_compliance": 100.0,
+        "accessibility": 100.0,
+        "responsive": 100.0,
+        "typography": 100.0,
+        "layout_quality": 100.0,
+        "visual_similarity": 100.0
+      },
+      "components_reconstructed": 1,
+      "source_counts": {
+        "text": 20,
+        "images": 0,
+        "tables": 0,
+        "smartart": 0,
+        "diagrams": 1
+      },
+      "reconstructed_counts": {
+        "text": 20,
+        "images": 0,
+        "tables": 0,
+        "smartart": 1,
+        "diagrams": 1
+      }
+    }
+  },
+  "discovery": {
+    "source": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\spe\\runs\\20260804_061032_b4520290\\source\\OFF-2026-S134_20260804_061032.md",
+    "source_type": "md",
+    "slide_count": 1,
+    "master_slides": 0,
+    "layouts": 1,
+    "author": "unknown",
+    "metadata": {
+      "title": "OFF-2026-S134_20260804_061032",
+      "language": "unknown",
+      "keywords": ""
+    },
+    "hyperlinks": 0,
+    "comments": 0,
+    "notes_slides": 0,
+    "hidden_slides": 0
+  },
+  "object_inventory": {
+    "slides": 1,
+    "total_objects": 20,
+    "by_kind": {
+      "title": 1,
+      "text": 19
+    }
+  },
+  "image_inventory": {
+    "total_images": 0,
+    "deduplicated_images": 0,
+    "items": []
+  },
+  "components_reconstructed": {
+    "slide_flow": 1,
+    "smart_reconstruction": 1
+  },
+  "executive_quality_score": 100.0,
+  "visual_similarity_score": 100.0,
+  "risks_detected": [
+    "No images detected in source; visual fidelity relies on text/layout only."
+  ],
+  "suggested_improvements": [
+    "Enable OCR/vision fallback to recover embedded rasterized visuals."
+  ]
+}

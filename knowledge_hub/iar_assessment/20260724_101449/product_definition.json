@@ -1,0 +1,69 @@
+{
+  "product": "IAR - Intelligent Automatic Reel Warehouse",
+  "vision": "Real-time, high-accuracy, industrial-grade reel warehouse management with native digital twin and mission-driven optimization.",
+  "selected_architecture": {
+    "key": "H5",
+    "name": "Phased architecture with digital twin core",
+    "description": "Phase 1 UWB pilot, phase 2 hybrid expansion, phase 3 autonomous logistics integration.",
+    "global_technology_score": 89.71,
+    "criteria": {
+      "Industrial suitability": 9.0,
+      "Technical maturity": 8.9,
+      "Accuracy": 8.9,
+      "Reliability": 9.0,
+      "Maintainability": 8.7,
+      "Integration": 9.2,
+      "Scalability": 9.3,
+      "Future-proofing": 9.4,
+      "Business potential": 9.3,
+      "Competitive advantage": 9.2,
+      "Engineering complexity": 7.8,
+      "CAPEX": 7.6,
+      "OPEX": 8.1,
+      "Technology risk": 8.8,
+      "Supplier dependency": 8.0,
+      "Expected ROI": 9.0,
+      "Knowledge reuse": 9.4,
+      "Compatibility with INGEPRO": 9.5,
+      "Compatibility with future Digital Twin": 9.6,
+      "Compatibility with Mission Manager": 9.5,
+      "Compatibility with AI Coordinator": 9.5
+    }
+  },
+  "hardware": [
+    "UWB anchors with industrial enclosure",
+    "Hybrid tags (UWB + optional QR/RFID identity)",
+    "Industrial gateways and edge collector",
+    "Optional AGV/AMR interface nodes"
+  ],
+  "software": [
+    "RTLS positioning engine",
+    "Warehouse twin service",
+    "INGEPRO integration adapter",
+    "MES event integration adapter",
+    "Mission Manager and AI Coordinator connectors"
+  ],
+  "integration": {
+    "INGEPRO": "Bidirectional REST/event integration for reel lifecycle and location state.",
+    "MES": "Event bridge for production orders, reel consumption, and track assignments.",
+    "digital_twin": "Unified graph/twin model for live location, history, and simulation replay."
+  },
+  "future_ai_capabilities": [
+    "Predictive congestion and routing suggestions",
+    "Autonomous mission recommendations",
+    "Anomaly detection for traceability gaps"
+  ],
+  "roadmap": [
+    "Phase 1 (0-3 months): Site survey, UWB pilot zone, INGEPRO read integration.",
+    "Phase 2 (4-8 months): Full warehouse rollout, MES write-back, dashboard hardening.",
+    "Phase 3 (9-14 months): Hybrid redundancy layer, autonomous logistics integration API.",
+    "Phase 4 (15-18 months): AI optimization loop and cross-plant scaling blueprint."
+  ],
+  "estimated_effort_person_months": 42,
+  "expected_competitive_advantages": [
+    "High-accuracy RTLS tuned for corrugated reel flow",
+    "Native INGEPRO/MES interoperability",
+    "Digital twin continuity from operations to planning",
+    "Mission-oriented architecture ready for AI Coordinator governance"
+  ]
+}

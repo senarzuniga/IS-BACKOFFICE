@@ -1,0 +1,303 @@
+{
+  "generated_at": "2026-08-03T09:18:28.738282+00:00",
+  "selected_variant": "slide_flow",
+  "nodes": [
+    {
+      "id": "doc:7654bbe1a7704fed9a85b7e97f19b263",
+      "type": "document",
+      "label": "Corrugated Plant Automation Solutions"
+    },
+    {
+      "id": "sec:b72b3279681e4cbb8bde71ecbc29464f",
+      "type": "section",
+      "label": "TAILORED AUTOMATION"
+    },
+    {
+      "id": "sec:4b09865db775453498f504e0358c23b3",
+      "type": "section",
+      "label": "Automated Corrugator Paper Reel Feeding System"
+    },
+    {
+      "id": "sec:96425b6e95024a7bb52bbf6e89a23f07",
+      "type": "section",
+      "label": "1.268\t28\t\t26\t\t194"
+    },
+    {
+      "id": "sec:5fe25c2c3c4f4f6781a848b852115559",
+      "type": "section",
+      "label": "Slide 4"
+    },
+    {
+      "id": "sec:73f8f1d37af443f8b12b5ad6fcefda55",
+      "type": "section",
+      "label": "Industrial machinery\t\t\tOperational efficiency and reduced manual handling"
+    },
+    {
+      "id": "sec:52f6ff23b04f45529c14b82f595a65f3",
+      "type": "section",
+      "label": "Slide 6"
+    },
+    {
+      "id": "sec:2787287122cd4fa38dfaaf5ff6c11bd5",
+      "type": "section",
+      "label": "Automated Corrugator Paper Reel Feeding System"
+    },
+    {
+      "id": "sec:994d3d8d4248432db104bf8fcc25e881",
+      "type": "section",
+      "label": "Slide 8"
+    },
+    {
+      "id": "sec:5331d41761a643ebb803b53a86d39e26",
+      "type": "section",
+      "label": "TECHNICAL SPECIFICATIONS"
+    },
+    {
+      "id": "sec:0b7e5d63eef241cdafeba25187a8b715",
+      "type": "section",
+      "label": "More meters per minute."
+    },
+    {
+      "id": "sec:2124b84dce774d4f8621e3cc8fa4fb12",
+      "type": "section",
+      "label": "Plug&Play Palletizer + Easypack"
+    },
+    {
+      "id": "sec:964a943667c54ba29aae29008257e5bc",
+      "type": "section",
+      "label": "12 stable production rate with interlayers, automatic pallet exit"
+    },
+    {
+      "id": "sec:109c908a3474497e9fb84f0917b0d891",
+      "type": "section",
+      "label": "13,2 stable production rate with interlayers, automatic pallet exit"
+    },
+    {
+      "id": "sec:f61072d4f33f4241820ca78c93f1976a",
+      "type": "section",
+      "label": "High-speed converting machines producing more than 400 bundle per minute or operating with multiple output lines require"
+    },
+    {
+      "id": "sec:93fffc8893944f2083fafba880b284c6",
+      "type": "section",
+      "label": "INTRALOGISTICS"
+    },
+    {
+      "id": "sec:39711071a9e84e7597e6a8711396b246",
+      "type": "section",
+      "label": "Ingecart Intralogistics Management System – AMR-Based Solution"
+    },
+    {
+      "id": "sec:b6413e907ede4dfe9fd2b3dffaff718d",
+      "type": "section",
+      "label": "Intelligent Internal Logistics for the Entire Corrugated Plant"
+    },
+    {
+      "id": "sec:2668170fb491490a88770441656ec090",
+      "type": "section",
+      "label": "Slide 18"
+    },
+    {
+      "id": "sec:7808e22c0f2d475590add153da816030",
+      "type": "section",
+      "label": "Slide 19"
+    },
+    {
+      "id": "sec:9fd0a456a1dc427dbef9de725cb5b55d",
+      "type": "section",
+      "label": "Slide 20"
+    },
+    {
+      "id": "sec:cf0c9d6e13f944488b54c4b69c15c673",
+      "type": "section",
+      "label": "Slide 21"
+    },
+    {
+      "id": "sec:b94b29cb1175485db491af0a53435f54",
+      "type": "section",
+      "label": "WHAT IT HANDLES"
+    },
+    {
+      "id": "sec:8403f0b40c7944f0952d0e21248edb5c",
+      "type": "section",
+      "label": "Auto-lubrication system"
+    },
+    {
+      "id": "sec:83a4c0eb23474cf0b7ba143a7b4787b7",
+      "type": "section",
+      "label": "RFID"
+    },
+    {
+      "id": "sec:d297c8edffd14fbe8fac9027c564c870",
+      "type": "section",
+      "label": "Slide 25"
+    },
+    {
+      "id": "sec:853de2763b0c4243a8cb1dba111b65cb",
+      "type": "section",
+      "label": "AUTOMATIC "
+    },
+    {
+      "id": "sec:121e2ac8ce8f411f811d4ecd09b4b74e",
+      "type": "section",
+      "label": "Real case "
+    },
+    {
+      "id": "sec:cfafa896d1c4495da06a94fdb89ab922",
+      "type": "section",
+      "label": "Slide 28"
+    },
+    {
+      "id": "sec:2dd5cd7c79d54969aa2af66ccc946050",
+      "type": "section",
+      "label": "Slide 29"
+    }
+  ],
+  "edges": [
+    {
+      "source": "doc:7654bbe1a7704fed9a85b7e97f19b263",
+      "target": "sec:b72b3279681e4cbb8bde71ecbc29464f",
+      "relation": "has_section"
+    },
+    {
+      "source": "doc:7654bbe1a7704fed9a85b7e97f19b263",
+      "target": "sec:4b09865db775453498f504e0358c23b3",
+      "relation": "has_section"
+    },
+    {
+      "source": "doc:7654bbe1a7704fed9a85b7e97f19b263",
+      "target": "sec:96425b6e95024a7bb52bbf6e89a23f07",
+      "relation": "has_section"
+    },
+    {
+      "source": "doc:7654bbe1a7704fed9a85b7e97f19b263",
+      "target": "sec:5fe25c2c3c4f4f6781a848b852115559",
+      "relation": "has_section"
+    },
+    {
+      "source": "doc:7654bbe1a7704fed9a85b7e97f19b263",
+      "target": "sec:73f8f1d37af443f8b12b5ad6fcefda55",
+      "relation": "has_section"
+    },
+    {
+      "source": "doc:7654bbe1a7704fed9a85b7e97f19b263",
+      "target": "sec:52f6ff23b04f45529c14b82f595a65f3",
+      "relation": "has_section"
+    },
+    {
+      "source": "doc:7654bbe1a7704fed9a85b7e97f19b263",
+      "target": "sec:2787287122cd4fa38dfaaf5ff6c11bd5",
+      "relation": "has_section"
+    },
+    {
+      "source": "doc:7654bbe1a7704fed9a85b7e97f19b263",
+      "target": "sec:994d3d8d4248432db104bf8fcc25e881",
+      "relation": "has_section"
+    },
+    {
+      "source": "doc:7654bbe1a7704fed9a85b7e97f19b263",
+      "target": "sec:5331d41761a643ebb803b53a86d39e26",
+      "relation": "has_section"
+    },
+    {
+      "source": "doc:7654bbe1a7704fed9a85b7e97f19b263",
+      "target": "sec:0b7e5d63eef241cdafeba25187a8b715",
+      "relation": "has_section"
+    },
+    {
+      "source": "doc:7654bbe1a7704fed9a85b7e97f19b263",
+      "target": "sec:2124b84dce774d4f8621e3cc8fa4fb12",
+      "relation": "has_section"
+    },
+    {
+      "source": "doc:7654bbe1a7704fed9a85b7e97f19b263",
+      "target": "sec:964a943667c54ba29aae29008257e5bc",
+      "relation": "has_section"
+    },
+    {
+      "source": "doc:7654bbe1a7704fed9a85b7e97f19b263",
+      "target": "sec:109c908a3474497e9fb84f0917b0d891",
+      "relation": "has_section"
+    },
+    {
+      "source": "doc:7654bbe1a7704fed9a85b7e97f19b263",
+      "target": "sec:f61072d4f33f4241820ca78c93f1976a",
+      "relation": "has_section"
+    },
+    {
+      "source": "doc:7654bbe1a7704fed9a85b7e97f19b263",
+      "target": "sec:93fffc8893944f2083fafba880b284c6",
+      "relation": "has_section"
+    },
+    {
+      "source": "doc:7654bbe1a7704fed9a85b7e97f19b263",
+      "target": "sec:39711071a9e84e7597e6a8711396b246",
+      "relation": "has_section"
+    },
+    {
+      "source": "doc:7654bbe1a7704fed9a85b7e97f19b263",
+      "target": "sec:b6413e907ede4dfe9fd2b3dffaff718d",
+      "relation": "has_section"
+    },
+    {
+      "source": "doc:7654bbe1a7704fed9a85b7e97f19b263",
+      "target": "sec:2668170fb491490a88770441656ec090",
+      "relation": "has_section"
+    },
+    {
+      "source": "doc:7654bbe1a7704fed9a85b7e97f19b263",
+      "target": "sec:7808e22c0f2d475590add153da816030",
+      "relation": "has_section"
+    },
+    {
+      "source": "doc:7654bbe1a7704fed9a85b7e97f19b263",
+      "target": "sec:9fd0a456a1dc427dbef9de725cb5b55d",
+      "relation": "has_section"
+    },
+    {
+      "source": "doc:7654bbe1a7704fed9a85b7e97f19b263",
+      "target": "sec:cf0c9d6e13f944488b54c4b69c15c673",
+      "relation": "has_section"
+    },
+    {
+      "source": "doc:7654bbe1a7704fed9a85b7e97f19b263",
+      "target": "sec:b94b29cb1175485db491af0a53435f54",
+      "relation": "has_section"
+    },
+    {
+      "source": "doc:7654bbe1a7704fed9a85b7e97f19b263",
+      "target": "sec:8403f0b40c7944f0952d0e21248edb5c",
+      "relation": "has_section"
+    },
+    {
+      "source": "doc:7654bbe1a7704fed9a85b7e97f19b263",
+      "target": "sec:83a4c0eb23474cf0b7ba143a7b4787b7",
+      "relation": "has_section"
+    },
+    {
+      "source": "doc:7654bbe1a7704fed9a85b7e97f19b263",
+      "target": "sec:d297c8edffd14fbe8fac9027c564c870",
+      "relation": "has_section"
+    },
+    {
+      "source": "doc:7654bbe1a7704fed9a85b7e97f19b263",
+      "target": "sec:853de2763b0c4243a8cb1dba111b65cb",
+      "relation": "has_section"
+    },
+    {
+      "source": "doc:7654bbe1a7704fed9a85b7e97f19b263",
+      "target": "sec:121e2ac8ce8f411f811d4ecd09b4b74e",
+      "relation": "has_section"
+    },
+    {
+      "source": "doc:7654bbe1a7704fed9a85b7e97f19b263",
+      "target": "sec:cfafa896d1c4495da06a94fdb89ab922",
+      "relation": "has_section"
+    },
+    {
+      "source": "doc:7654bbe1a7704fed9a85b7e97f19b263",
+      "target": "sec:2dd5cd7c79d54969aa2af66ccc946050",
+      "relation": "has_section"
+    }
+  ]
+}

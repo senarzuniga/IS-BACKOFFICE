@@ -1,0 +1,195 @@
+[
+  {
+    "ts": "2026-07-31T09:51:03.741368+00:00",
+    "agent": "Mission Manager",
+    "action": "Mission started",
+    "payload": {
+      "source": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\MARKETING\\CONTENT\\Corrugated Plant Automation Solutions v2.pptx",
+      "run_id": "20260731_095103_9ed420bd"
+    }
+  },
+  {
+    "ts": "2026-07-31T09:51:03.741501+00:00",
+    "agent": "Mission Manager",
+    "action": "Registered in mission graph",
+    "payload": {}
+  },
+  {
+    "ts": "2026-07-31T09:51:03.741527+00:00",
+    "agent": "AI Coordinator",
+    "action": "Registered in mission graph",
+    "payload": {}
+  },
+  {
+    "ts": "2026-07-31T09:51:03.741541+00:00",
+    "agent": "Knowledge Hub",
+    "action": "Registered in mission graph",
+    "payload": {}
+  },
+  {
+    "ts": "2026-07-31T09:51:03.741554+00:00",
+    "agent": "Enterprise Memory",
+    "action": "Registered in mission graph",
+    "payload": {}
+  },
+  {
+    "ts": "2026-07-31T09:51:03.741567+00:00",
+    "agent": "Executive Reports",
+    "action": "Registered in mission graph",
+    "payload": {}
+  },
+  {
+    "ts": "2026-07-31T09:51:03.741577+00:00",
+    "agent": "Context Manager",
+    "action": "Registered in mission graph",
+    "payload": {}
+  },
+  {
+    "ts": "2026-07-31T09:51:03.741588+00:00",
+    "agent": "Evidence Engine",
+    "action": "Registered in mission graph",
+    "payload": {}
+  },
+  {
+    "ts": "2026-07-31T09:51:03.741599+00:00",
+    "agent": "HTML Generator",
+    "action": "Registered in mission graph",
+    "payload": {}
+  },
+  {
+    "ts": "2026-07-31T09:51:03.741611+00:00",
+    "agent": "Document Parser",
+    "action": "Registered in mission graph",
+    "payload": {}
+  },
+  {
+    "ts": "2026-07-31T09:51:03.741621+00:00",
+    "agent": "PowerPoint Parser",
+    "action": "Registered in mission graph",
+    "payload": {}
+  },
+  {
+    "ts": "2026-07-31T09:51:03.741632+00:00",
+    "agent": "Image Processor",
+    "action": "Registered in mission graph",
+    "payload": {}
+  },
+  {
+    "ts": "2026-07-31T09:51:03.741642+00:00",
+    "agent": "Vision Analysis",
+    "action": "Registered in mission graph",
+    "payload": {}
+  },
+  {
+    "ts": "2026-07-31T09:51:03.741652+00:00",
+    "agent": "Layout Analysis",
+    "action": "Registered in mission graph",
+    "payload": {}
+  },
+  {
+    "ts": "2026-07-31T09:51:03.741663+00:00",
+    "agent": "Theme Manager",
+    "action": "Registered in mission graph",
+    "payload": {}
+  },
+  {
+    "ts": "2026-07-31T09:51:03.741672+00:00",
+    "agent": "Template Engine",
+    "action": "Registered in mission graph",
+    "payload": {}
+  },
+  {
+    "ts": "2026-07-31T09:51:03.741682+00:00",
+    "agent": "Report Generator",
+    "action": "Registered in mission graph",
+    "payload": {}
+  },
+  {
+    "ts": "2026-07-31T09:51:03.741694+00:00",
+    "agent": "Asset Manager",
+    "action": "Registered in mission graph",
+    "payload": {}
+  },
+  {
+    "ts": "2026-07-31T09:51:03.741704+00:00",
+    "agent": "Translation Engine",
+    "action": "Registered in mission graph",
+    "payload": {}
+  },
+  {
+    "ts": "2026-07-31T09:51:03.741714+00:00",
+    "agent": "Factory Graph",
+    "action": "Registered in mission graph",
+    "payload": {}
+  },
+  {
+    "ts": "2026-07-31T09:51:03.741740+00:00",
+    "agent": "PowerPoint Parser",
+    "action": "Parse presentation structure, content, visual assets, and element metadata",
+    "payload": {}
+  },
+  {
+    "ts": "2026-07-31T09:51:04.516977+00:00",
+    "agent": "PowerPoint Parser",
+    "action": "Completed",
+    "payload": {
+      "result_type": "PresentationAnalysis"
+    }
+  },
+  {
+    "ts": "2026-07-31T09:51:04.517047+00:00",
+    "agent": "Theme Manager",
+    "action": "Generate design tokens and theme profile",
+    "payload": {}
+  },
+  {
+    "ts": "2026-07-31T09:51:04.519207+00:00",
+    "agent": "Theme Manager",
+    "action": "Completed",
+    "payload": {
+      "result_type": "dict"
+    }
+  },
+  {
+    "ts": "2026-07-31T09:51:04.519227+00:00",
+    "agent": "Template Engine",
+    "action": "Build corporate CSS from tokens",
+    "payload": {}
+  },
+  {
+    "ts": "2026-07-31T09:51:04.519248+00:00",
+    "agent": "Template Engine",
+    "action": "Completed",
+    "payload": {
+      "result_type": "str"
+    }
+  },
+  {
+    "ts": "2026-07-31T09:51:05.074051+00:00",
+    "agent": "HTML Generator",
+    "action": "Create Slide Flow HTML with continuous vertical navigation",
+    "payload": {}
+  },
+  {
+    "ts": "2026-07-31T09:51:05.075504+00:00",
+    "agent": "HTML Generator",
+    "action": "Completed",
+    "payload": {
+      "result_type": "str"
+    }
+  },
+  {
+    "ts": "2026-07-31T09:51:05.075536+00:00",
+    "agent": "HTML Generator",
+    "action": "Create Smart HTML Reconstruction from semantic components",
+    "payload": {}
+  },
+  {
+    "ts": "2026-07-31T09:51:05.076611+00:00",
+    "agent": "HTML Generator",
+    "action": "Completed",
+    "payload": {
+      "result_type": "str"
+    }
+  }
+]

@@ -22,6 +22,7 @@ from api.routes.scraping import router as scraping_router
 from api.routes.market_intelligence import router as intelligence_router
 from api.routes.simulation import router as simulation_router
 from api.routes.transcription import router as transcription_router
+from api.routes.ing_dighub import router as ing_dighub_router
 
 app = FastAPI(
     title="IS-BACKOFFICE – AI Commercial Intelligence Platform",
@@ -48,6 +49,7 @@ app.include_router(scraping_router, dependencies=[Depends(optional_oauth_token)]
 app.include_router(intelligence_router, dependencies=[Depends(optional_oauth_token)])
 app.include_router(simulation_router, dependencies=[Depends(optional_oauth_token)])
 app.include_router(transcription_router, dependencies=[Depends(optional_oauth_token)])
+app.include_router(ing_dighub_router, dependencies=[Depends(optional_oauth_token)])
 
 
 @app.get("/")

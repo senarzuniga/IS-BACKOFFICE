@@ -1,0 +1,5 @@
+Supplier,Technology,Positioning principle,2D / 3D capability,Accuracy,Latency,Refresh rate,Maximum tags,Maximum anchors,Coverage,Scalability,API,SDK,Technology Score,Engineering Score,Confidence Score
+Eliko,BLE,not_verified,2D/unknown,not_verified,not_verified,not_verified,not_verified,not_verified,not_verified,not_verified,not_verified,not_verified,72.5,62.0,100.0
+Sewio,"UWB, BLE, Vision",TDoA,2D/unknown,not_verified,not_verified,not_verified,4 tags,not_verified,not_verified,not_verified,yes,not_verified,55.65,63.0,54.55
+GrowSpace,"UWB, BLE, Vision","TDoA, Trilateration",3D,not_verified,not_verified,not_verified,not_verified,not_verified,not_verified,verified,yes,not_verified,53.53,63.0,42.86
+Pozyx,"UWB, BLE, Vision",TDoA,2D/unknown,not_verified,not_verified,not_verified,not_verified,not_verified,not_verified,not_verified,yes,not_verified,52.59,63.0,36.36

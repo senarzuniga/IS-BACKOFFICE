@@ -2,7 +2,7 @@
 
 Generated from: platform_registry\platform_registry.json
 
-## Document Intelligence (338)
+## Document Intelligence (390)
 
 - # ESPECIFICACIÓN TÉCNICA PARA DESAR.txt — `# ESPECIFICACIÓN TÉCNICA PARA DESAR.txt`
 - ARCHITECTURE_DECISIONS.md — `ARCHITECTURE_DECISIONS.md`
@@ -16,6 +16,7 @@ Generated from: platform_registry\platform_registry.json
 - informe_configuradores_planta_reel_load.txt — `informe_configuradores_planta_reel_load.txt`
 - instrucciones para infomes Ingecart HTML.txt — `instrucciones para infomes Ingecart HTML.txt`
 - IS Backoffice Menu.txt — `IS Backoffice Menu.txt`
+- IS_BACKOFFICE  ING_DIGHUB.txt — `IS_BACKOFFICE  ING_DIGHUB.txt`
 - launcher.log — `launcher.log`
 - PERFORMANCE_BASELINE.md — `PERFORMANCE_BASELINE.md`
 - plan_analisis_leads_fespa2026.md — `plan_analisis_leads_fespa2026.md`
@@ -88,7 +89,11 @@ Generated from: platform_registry\platform_registry.json
 - 0005-reporting-strategy.md — `Architecture/ADRs/0005-reporting-strategy.md`
 - 0006-ui-architecture.md — `Architecture/ADRs/0006-ui-architecture.md`
 - 0007-repository-organization.md — `Architecture/ADRs/0007-repository-organization.md`
+- 0008-spoe-workbench-integration.md — `Architecture/ADRs/0008-spoe-workbench-integration.md`
+- 0009-ame-mission-manager-governance.md — `Architecture/ADRs/0009-ame-mission-manager-governance.md`
 - document.py — `backoffice/models/document.py`
+- documents.py — `backoffice/spoe/documents.py`
+- README.md — `backoffice/spoe/templates/README.md`
 - media_upload_panel.py — `backoffice/ui/media_upload_panel.py`
 - document_analysis.py — `backups/doc_analysis_20260606_091647/document_analysis.py`
 - MACHINE_TRADING_SCHEMA.md — `config/MACHINE_TRADING_SCHEMA.md`
@@ -99,13 +104,111 @@ Generated from: platform_registry\platform_registry.json
 - TEST_COMPANY_20260622T123237Z.md — `data/competitive_intelligence/reports/TEST_COMPANY_20260622T123237Z.md`
 - TEST_COMPANY_20260622T124041Z.md — `data/competitive_intelligence/reports/TEST_COMPANY_20260622T124041Z.md`
 - TEST_COMPANY_20260622T124157Z.md — `data/competitive_intelligence/reports/TEST_COMPANY_20260622T124157Z.md`
-- TEST_COMPANY_20260622T125854Z.md — `data/competitive_intelligence/reports/TEST_COMPANY_20260622T125854Z.md`
-- TEST_COMPANY_20260624T200143Z.md — `data/competitive_intelligence/reports/TEST_COMPANY_20260624T200143Z.md`
-- TEST_COMPANY_20260624T210209Z.md — `data/competitive_intelligence/reports/TEST_COMPANY_20260624T210209Z.md`
-- TEST_COMPANY_20260624T210649Z.md — `data/competitive_intelligence/reports/TEST_COMPANY_20260624T210649Z.md`
-- TEST_COMPANY_20260624T213358Z.md — `data/competitive_intelligence/reports/TEST_COMPANY_20260624T213358Z.md`
 
-## Documentation (280)
+## Other (364)
+
+- .coverage — `.coverage`
+- .env.example — `.env.example`
+- .gitattributes — `.gitattributes`
+- Book1.xlsx — `Book1.xlsx`
+- caamp_diagnostic.json — `caamp_diagnostic.json`
+- clean_secrets.sh — `clean_secrets.sh`
+- docker-compose.yml — `docker-compose.yml`
+- fespa_generation.log — `fespa_generation.log`
+- generar_docs_psc.sh — `generar_docs_psc.sh`
+- intelligence.db — `intelligence.db`
+- IS-BACKOFFICE ERP.lnk — `IS-BACKOFFICE ERP.lnk`
+- IS-BACKOFFICE Menu General.lnk — `IS-BACKOFFICE Menu General.lnk`
+- launcher.log — `launcher.log`
+- machine_trading_run.log — `machine_trading_run.log`
+- master_presentation_v2.ps1 — `master_presentation_v2.ps1`
+- nul — `nul`
+- nul.terabox.uploading.cfg — `nul.terabox.uploading.cfg`
+- test_outputTEMP_MPY_wvf_snd.mp3 — `test_outputTEMP_MPY_wvf_snd.mp3`
+- ~$GECART_TradeShows_Executive_Report.docx — `~$GECART_TradeShows_Executive_Report.docx`
+- enterprise_memory.db — `.data/enterprise_memory.db`
+- project.json — `.forge/project.json`
+- skill_registry.json — `.forge/skill_registry.json`
+- vision.json — `.forge/vision.json`
+- features.schema.json — `.forge/schemas/features.schema.json`
+- project.schema.json — `.forge/schemas/project.schema.json`
+- vision.schema.json — `.forge/schemas/vision.schema.json`
+- architecture-assistant.yml — `.github/workflows/architecture-assistant.yml`
+- .gitignore — `.pytest_cache/.gitignore`
+- CACHEDIR.TAG — `.pytest_cache/CACHEDIR.TAG`
+- config.toml — `.streamlit/config.toml`
+- settings.json — `.vscode/settings.json`
+- tasks.json — `.vscode/tasks.json`
+- layout_common.json — `assets/layout_common.json`
+- layout_forklift.json — `assets/layout_forklift.json`
+- layout_ingetrans.json — `assets/layout_ingetrans.json`
+- overview.mp4 — `assets/videos/general/overview.mp4`
+- demo.mp4 — `assets/videos/hotspots/amr/demo.mp4`
+- demo.mp4 — `assets/videos/hotspots/easypack/demo.mp4`
+- demo.mp4 — `assets/videos/hotspots/ingetrans/demo.mp4`
+- demo.mp4 — `assets/videos/hotspots/palletizing/demo.mp4`
+- demo.mp4 — `assets/videos/hotspots/sr1400/demo.mp4`
+- demo.mp4 — `assets/videos/hotspots/truck_loading/demo.mp4`
+- Dockerfile — `backend/Dockerfile`
+- sr1400_formulas.json — `backoffice/spoe/formulas/sr1400_formulas.json`
+- amr_intralogistics_template.json — `backoffice/spoe/templates/amr_intralogistics_template.json`
+- amr_wip_template.json — `backoffice/spoe/templates/amr_wip_template.json`
+- heavy_duty_palletizer_template.json — `backoffice/spoe/templates/heavy_duty_palletizer_template.json`
+- ingetrans_template.json — `backoffice/spoe/templates/ingetrans_template.json`
+- plug_play_palletizer_template.json — `backoffice/spoe/templates/plug_play_palletizer_template.json`
+- sr1400_template.json — `backoffice/spoe/templates/sr1400_template.json`
+- ingecart_dark_brand.css — `BrandGuidelines/ingecart_dark_brand.css`
+- machine_trading_cascade.yaml — `config/machine_trading_cascade.yaml`
+- scraping_config.yaml — `config/scraping_config.yaml`
+- sim_presets.json — `config/sim_presets.json`
+- sources.yaml — `config/sources.yaml`
+- config_default.json — `data/config_default.json`
+- smart_plant_config.json — `data/smart_plant_config.json`
+- bottleneck_experiments.json — `data/benchmarks/bottleneck_experiments.json`
+- reel_sim_benchmark_1782378986.json — `data/benchmarks/reel_sim_benchmark_1782378986.json`
+- weekly_compare_1782393144.json — `data/benchmarks/weekly_compare_1782393144.json`
+- ingecart_baseline.json — `data/competitive_intelligence/ingecart_baseline.json`
+- 0b097ad2-3d5e-4dea-b2b8-5b1cf67dc403.json — `data/competitive_intelligence/jobs/0b097ad2-3d5e-4dea-b2b8-5b1cf67dc403.json`
+- 0cb5ecca-e52b-42cd-97cd-61d7cbd04251.json — `data/competitive_intelligence/jobs/0cb5ecca-e52b-42cd-97cd-61d7cbd04251.json`
+- 0f45027e-755d-4bf4-92d1-202769ecab3d.json — `data/competitive_intelligence/jobs/0f45027e-755d-4bf4-92d1-202769ecab3d.json`
+- 105117f1-be5e-4911-b442-25543b67c465.json — `data/competitive_intelligence/jobs/105117f1-be5e-4911-b442-25543b67c465.json`
+- 26f2dd34-431f-4cc1-aaa8-418da07a199b.json — `data/competitive_intelligence/jobs/26f2dd34-431f-4cc1-aaa8-418da07a199b.json`
+- 2e19117d-4a22-4990-8853-836bf467704b.json — `data/competitive_intelligence/jobs/2e19117d-4a22-4990-8853-836bf467704b.json`
+- 346da9bb-977a-4f1f-8d09-55e8b285c57c.json — `data/competitive_intelligence/jobs/346da9bb-977a-4f1f-8d09-55e8b285c57c.json`
+- 3c808d63-c319-4004-b580-83bf10925ea9.json — `data/competitive_intelligence/jobs/3c808d63-c319-4004-b580-83bf10925ea9.json`
+- 3f8b69b4-9404-4de5-b2b9-dc6f6998cbee.json — `data/competitive_intelligence/jobs/3f8b69b4-9404-4de5-b2b9-dc6f6998cbee.json`
+- 3fd1a7d0-6118-4737-a3bd-81a7b65d9692.json — `data/competitive_intelligence/jobs/3fd1a7d0-6118-4737-a3bd-81a7b65d9692.json`
+- 44a415dc-9709-4bbd-a457-a7ad5172593f.json — `data/competitive_intelligence/jobs/44a415dc-9709-4bbd-a457-a7ad5172593f.json`
+- 4a0b4ec3-4ce2-477f-b0fd-a908ce1ac186.json — `data/competitive_intelligence/jobs/4a0b4ec3-4ce2-477f-b0fd-a908ce1ac186.json`
+- 579e9ce0-ac80-4812-b62f-0055699a0737.json — `data/competitive_intelligence/jobs/579e9ce0-ac80-4812-b62f-0055699a0737.json`
+- 5ee03863-afa8-45ae-bfa2-a7d1d0c6a11d.json — `data/competitive_intelligence/jobs/5ee03863-afa8-45ae-bfa2-a7d1d0c6a11d.json`
+- 645137c1-4027-43a1-b3ae-c1c75c814d92.json — `data/competitive_intelligence/jobs/645137c1-4027-43a1-b3ae-c1c75c814d92.json`
+- 662a07b5-cb49-45a4-808f-c5a3ddd093f9.json — `data/competitive_intelligence/jobs/662a07b5-cb49-45a4-808f-c5a3ddd093f9.json`
+- 8367d318-b4d4-447e-b682-d2f4a995a41a.json — `data/competitive_intelligence/jobs/8367d318-b4d4-447e-b682-d2f4a995a41a.json`
+- 8e5f2d7c-cb80-476c-a8fb-d01e0bb98c8a.json — `data/competitive_intelligence/jobs/8e5f2d7c-cb80-476c-a8fb-d01e0bb98c8a.json`
+- a5e79c8a-5c61-4196-bd4b-c82363f56c2f.json — `data/competitive_intelligence/jobs/a5e79c8a-5c61-4196-bd4b-c82363f56c2f.json`
+- ac165b49-5176-441e-bec2-7f521390cfa7.json — `data/competitive_intelligence/jobs/ac165b49-5176-441e-bec2-7f521390cfa7.json`
+- b067c949-8756-4cf1-b693-131ab8610f8e.json — `data/competitive_intelligence/jobs/b067c949-8756-4cf1-b693-131ab8610f8e.json`
+- b7c4eedd-914b-497b-90e1-b180105ef090.json — `data/competitive_intelligence/jobs/b7c4eedd-914b-497b-90e1-b180105ef090.json`
+- c596f85c-73f9-4ac1-9c0a-68fdc96a2525.json — `data/competitive_intelligence/jobs/c596f85c-73f9-4ac1-9c0a-68fdc96a2525.json`
+- f4df30bd-7d8f-4d19-ac01-d2d64eee6c94.json — `data/competitive_intelligence/jobs/f4df30bd-7d8f-4d19-ac01-d2d64eee6c94.json`
+- f9fbb48d-a1d9-4d16-8ebe-f92e58941adc.json — `data/competitive_intelligence/jobs/f9fbb48d-a1d9-4d16-8ebe-f92e58941adc.json`
+- fc9dc22d-03a9-4e9f-89a8-38657e2ec51d.json — `data/competitive_intelligence/jobs/fc9dc22d-03a9-4e9f-89a8-38657e2ec51d.json`
+- closeout.db — `data/project_closeout/closeout.db`
+- demo_punchlist.csv — `data/project_closeout/demo/demo_punchlist.csv`
+- project_DEMO-002.html — `data/project_closeout/reports/project_DEMO-002.html`
+- project_DEMO-002.json — `data/project_closeout/reports/project_DEMO-002.json`
+- config_default.json — `data/Reel_load_simulator/config_default.json`
+- run_20260626T200617Z_event_log.csv — `data/sim_runs/raw_archives/run_20260626T200617Z_event_log.csv`
+- database.db — `erp_facturacion/database.db`
+- database_backup_20260602_143825.db — `erp_facturacion/database_backup_20260602_143825.db`
+- REF-2026-001.pdf — `erp_facturacion/invoices/REF-2026-001.pdf`
+- REF-2026-002.pdf — `erp_facturacion/invoices/REF-2026-002.pdf`
+- AGILPACK_BUSINESSCASE.HTML — `informes/AGILPACK_BUSINESSCASE.HTML`
+- AGILPACK_BUSINESS_ENG.HTML — `informes/AGILPACK_BUSINESS_ENG.HTML`
+- cascades_amr_migration_report.html — `informes/cascades_amr_migration_report.html`
+
+## Documentation (328)
 
 - ARCHITECTURE_DECISIONS.md — `ARCHITECTURE_DECISIONS.md`
 - ARCHITECTURE_VALIDATION_REPORT.md — `ARCHITECTURE_VALIDATION_REPORT.md`
@@ -178,6 +281,9 @@ Generated from: platform_registry\platform_registry.json
 - 0005-reporting-strategy.md — `Architecture/ADRs/0005-reporting-strategy.md`
 - 0006-ui-architecture.md — `Architecture/ADRs/0006-ui-architecture.md`
 - 0007-repository-organization.md — `Architecture/ADRs/0007-repository-organization.md`
+- 0008-spoe-workbench-integration.md — `Architecture/ADRs/0008-spoe-workbench-integration.md`
+- 0009-ame-mission-manager-governance.md — `Architecture/ADRs/0009-ame-mission-manager-governance.md`
+- README.md — `backoffice/spoe/templates/README.md`
 - MACHINE_TRADING_SCHEMA.md — `config/MACHINE_TRADING_SCHEMA.md`
 - PARA SRL_20260623T092700Z.md — `data/competitive_intelligence/reports/PARA SRL_20260623T092700Z.md`
 - TEST_COMPANY_20260622T113131Z.md — `data/competitive_intelligence/reports/TEST_COMPANY_20260622T113131Z.md`
@@ -204,114 +310,8 @@ Generated from: platform_registry\platform_registry.json
 - TEST_COMPANY_20260703T115608Z.md — `data/competitive_intelligence/reports/TEST_COMPANY_20260703T115608Z.md`
 - TEST_COMPANY_20260703T115805Z.md — `data/competitive_intelligence/reports/TEST_COMPANY_20260703T115805Z.md`
 - TEST_COMPANY_20260719T100419Z.md — `data/competitive_intelligence/reports/TEST_COMPANY_20260719T100419Z.md`
-- report_PARA SRL_20260623_1455.md — `data/knowledge_intelligence/reports/report_PARA SRL_20260623_1455.md`
-- README.md — `db/README.md`
-- transcription.md — `docs/transcription.md`
 
-## Other (272)
-
-- .coverage — `.coverage`
-- .env.example — `.env.example`
-- .gitattributes — `.gitattributes`
-- Book1.xlsx — `Book1.xlsx`
-- caamp_diagnostic.json — `caamp_diagnostic.json`
-- clean_secrets.sh — `clean_secrets.sh`
-- docker-compose.yml — `docker-compose.yml`
-- fespa_generation.log — `fespa_generation.log`
-- generar_docs_psc.sh — `generar_docs_psc.sh`
-- intelligence.db — `intelligence.db`
-- IS-BACKOFFICE ERP.lnk — `IS-BACKOFFICE ERP.lnk`
-- IS-BACKOFFICE Menu General.lnk — `IS-BACKOFFICE Menu General.lnk`
-- launcher.log — `launcher.log`
-- machine_trading_run.log — `machine_trading_run.log`
-- master_presentation_v2.ps1 — `master_presentation_v2.ps1`
-- nul — `nul`
-- test_outputTEMP_MPY_wvf_snd.mp3 — `test_outputTEMP_MPY_wvf_snd.mp3`
-- ~$GECART_TradeShows_Executive_Report.docx — `~$GECART_TradeShows_Executive_Report.docx`
-- enterprise_memory.db — `.data/enterprise_memory.db`
-- project.json — `.forge/project.json`
-- skill_registry.json — `.forge/skill_registry.json`
-- vision.json — `.forge/vision.json`
-- features.schema.json — `.forge/schemas/features.schema.json`
-- project.schema.json — `.forge/schemas/project.schema.json`
-- vision.schema.json — `.forge/schemas/vision.schema.json`
-- architecture-assistant.yml — `.github/workflows/architecture-assistant.yml`
-- .gitignore — `.pytest_cache/.gitignore`
-- CACHEDIR.TAG — `.pytest_cache/CACHEDIR.TAG`
-- config.toml — `.streamlit/config.toml`
-- settings.json — `.vscode/settings.json`
-- tasks.json — `.vscode/tasks.json`
-- layout_common.json — `assets/layout_common.json`
-- layout_forklift.json — `assets/layout_forklift.json`
-- layout_ingetrans.json — `assets/layout_ingetrans.json`
-- overview.mp4 — `assets/videos/general/overview.mp4`
-- demo.mp4 — `assets/videos/hotspots/amr/demo.mp4`
-- demo.mp4 — `assets/videos/hotspots/easypack/demo.mp4`
-- demo.mp4 — `assets/videos/hotspots/ingetrans/demo.mp4`
-- demo.mp4 — `assets/videos/hotspots/palletizing/demo.mp4`
-- demo.mp4 — `assets/videos/hotspots/sr1400/demo.mp4`
-- demo.mp4 — `assets/videos/hotspots/truck_loading/demo.mp4`
-- Dockerfile — `backend/Dockerfile`
-- ingecart_dark_brand.css — `BrandGuidelines/ingecart_dark_brand.css`
-- machine_trading_cascade.yaml — `config/machine_trading_cascade.yaml`
-- scraping_config.yaml — `config/scraping_config.yaml`
-- sim_presets.json — `config/sim_presets.json`
-- sources.yaml — `config/sources.yaml`
-- config_default.json — `data/config_default.json`
-- smart_plant_config.json — `data/smart_plant_config.json`
-- bottleneck_experiments.json — `data/benchmarks/bottleneck_experiments.json`
-- reel_sim_benchmark_1782378986.json — `data/benchmarks/reel_sim_benchmark_1782378986.json`
-- weekly_compare_1782393144.json — `data/benchmarks/weekly_compare_1782393144.json`
-- ingecart_baseline.json — `data/competitive_intelligence/ingecart_baseline.json`
-- 0b097ad2-3d5e-4dea-b2b8-5b1cf67dc403.json — `data/competitive_intelligence/jobs/0b097ad2-3d5e-4dea-b2b8-5b1cf67dc403.json`
-- 0cb5ecca-e52b-42cd-97cd-61d7cbd04251.json — `data/competitive_intelligence/jobs/0cb5ecca-e52b-42cd-97cd-61d7cbd04251.json`
-- 0f45027e-755d-4bf4-92d1-202769ecab3d.json — `data/competitive_intelligence/jobs/0f45027e-755d-4bf4-92d1-202769ecab3d.json`
-- 105117f1-be5e-4911-b442-25543b67c465.json — `data/competitive_intelligence/jobs/105117f1-be5e-4911-b442-25543b67c465.json`
-- 26f2dd34-431f-4cc1-aaa8-418da07a199b.json — `data/competitive_intelligence/jobs/26f2dd34-431f-4cc1-aaa8-418da07a199b.json`
-- 2e19117d-4a22-4990-8853-836bf467704b.json — `data/competitive_intelligence/jobs/2e19117d-4a22-4990-8853-836bf467704b.json`
-- 346da9bb-977a-4f1f-8d09-55e8b285c57c.json — `data/competitive_intelligence/jobs/346da9bb-977a-4f1f-8d09-55e8b285c57c.json`
-- 3c808d63-c319-4004-b580-83bf10925ea9.json — `data/competitive_intelligence/jobs/3c808d63-c319-4004-b580-83bf10925ea9.json`
-- 3f8b69b4-9404-4de5-b2b9-dc6f6998cbee.json — `data/competitive_intelligence/jobs/3f8b69b4-9404-4de5-b2b9-dc6f6998cbee.json`
-- 3fd1a7d0-6118-4737-a3bd-81a7b65d9692.json — `data/competitive_intelligence/jobs/3fd1a7d0-6118-4737-a3bd-81a7b65d9692.json`
-- 44a415dc-9709-4bbd-a457-a7ad5172593f.json — `data/competitive_intelligence/jobs/44a415dc-9709-4bbd-a457-a7ad5172593f.json`
-- 4a0b4ec3-4ce2-477f-b0fd-a908ce1ac186.json — `data/competitive_intelligence/jobs/4a0b4ec3-4ce2-477f-b0fd-a908ce1ac186.json`
-- 579e9ce0-ac80-4812-b62f-0055699a0737.json — `data/competitive_intelligence/jobs/579e9ce0-ac80-4812-b62f-0055699a0737.json`
-- 5ee03863-afa8-45ae-bfa2-a7d1d0c6a11d.json — `data/competitive_intelligence/jobs/5ee03863-afa8-45ae-bfa2-a7d1d0c6a11d.json`
-- 645137c1-4027-43a1-b3ae-c1c75c814d92.json — `data/competitive_intelligence/jobs/645137c1-4027-43a1-b3ae-c1c75c814d92.json`
-- 662a07b5-cb49-45a4-808f-c5a3ddd093f9.json — `data/competitive_intelligence/jobs/662a07b5-cb49-45a4-808f-c5a3ddd093f9.json`
-- 8367d318-b4d4-447e-b682-d2f4a995a41a.json — `data/competitive_intelligence/jobs/8367d318-b4d4-447e-b682-d2f4a995a41a.json`
-- 8e5f2d7c-cb80-476c-a8fb-d01e0bb98c8a.json — `data/competitive_intelligence/jobs/8e5f2d7c-cb80-476c-a8fb-d01e0bb98c8a.json`
-- a5e79c8a-5c61-4196-bd4b-c82363f56c2f.json — `data/competitive_intelligence/jobs/a5e79c8a-5c61-4196-bd4b-c82363f56c2f.json`
-- ac165b49-5176-441e-bec2-7f521390cfa7.json — `data/competitive_intelligence/jobs/ac165b49-5176-441e-bec2-7f521390cfa7.json`
-- b067c949-8756-4cf1-b693-131ab8610f8e.json — `data/competitive_intelligence/jobs/b067c949-8756-4cf1-b693-131ab8610f8e.json`
-- b7c4eedd-914b-497b-90e1-b180105ef090.json — `data/competitive_intelligence/jobs/b7c4eedd-914b-497b-90e1-b180105ef090.json`
-- c596f85c-73f9-4ac1-9c0a-68fdc96a2525.json — `data/competitive_intelligence/jobs/c596f85c-73f9-4ac1-9c0a-68fdc96a2525.json`
-- f4df30bd-7d8f-4d19-ac01-d2d64eee6c94.json — `data/competitive_intelligence/jobs/f4df30bd-7d8f-4d19-ac01-d2d64eee6c94.json`
-- f9fbb48d-a1d9-4d16-8ebe-f92e58941adc.json — `data/competitive_intelligence/jobs/f9fbb48d-a1d9-4d16-8ebe-f92e58941adc.json`
-- fc9dc22d-03a9-4e9f-89a8-38657e2ec51d.json — `data/competitive_intelligence/jobs/fc9dc22d-03a9-4e9f-89a8-38657e2ec51d.json`
-- closeout.db — `data/project_closeout/closeout.db`
-- demo_punchlist.csv — `data/project_closeout/demo/demo_punchlist.csv`
-- project_DEMO-002.html — `data/project_closeout/reports/project_DEMO-002.html`
-- project_DEMO-002.json — `data/project_closeout/reports/project_DEMO-002.json`
-- config_default.json — `data/Reel_load_simulator/config_default.json`
-- run_20260626T200617Z_event_log.csv — `data/sim_runs/raw_archives/run_20260626T200617Z_event_log.csv`
-- database.db — `erp_facturacion/database.db`
-- database_backup_20260602_143825.db — `erp_facturacion/database_backup_20260602_143825.db`
-- REF-2026-001.pdf — `erp_facturacion/invoices/REF-2026-001.pdf`
-- REF-2026-002.pdf — `erp_facturacion/invoices/REF-2026-002.pdf`
-- cascades_amr_migration_report.html — `informes/cascades_amr_migration_report.html`
-- ESTUDIO_FERIAS_CORRUGADO_INGECART_2026_2027.html — `informes/ESTUDIO_FERIAS_CORRUGADO_INGECART_2026_2027.html`
-- ESTUDIO_FERIAS_CORRUGADO_INGECART_DEEP_2026_2028.html — `informes/ESTUDIO_FERIAS_CORRUGADO_INGECART_DEEP_2026_2028.html`
-- informe_ejecutivo_IAR_FESPA_2026.txt — `informes/informe_ejecutivo_IAR_FESPA_2026.txt`
-- PSC_VISALIA_EXECUTIVE_PRESENTATION_2026-05-11.pptx — `informes/PSC_VISALIA_EXECUTIVE_PRESENTATION_2026-05-11.pptx`
-- curriculum_map.json — `informes/1 ESO/curriculum_map.json`
-- REPASO_COMPLETO_IMPRIMIBLE.docx — `informes/1 ESO/REPASO_COMPLETO_IMPRIMIBLE.docx`
-- REPASO_EJERCICIOS_PRESENTACION.pptx — `informes/1 ESO/REPASO_EJERCICIOS_PRESENTACION.pptx`
-- icon_maintenance.svg — `informes/cascades_amr_migration_report_assets/icon_maintenance.svg`
-- icon_quality.svg — `informes/cascades_amr_migration_report_assets/icon_quality.svg`
-- icon_resilience.svg — `informes/cascades_amr_migration_report_assets/icon_resilience.svg`
-
-## Module (197)
+## Module (218)
 
 - extract_palletizer_pdfs.py — `extract_palletizer_pdfs.py`
 - gantt_payments.py — `gantt_payments.py`
@@ -385,6 +385,7 @@ Generated from: platform_registry\platform_registry.json
 - raw_storage.py — `backoffice/ingestion/intelligence/storage/raw_storage.py`
 - structured_db.py — `backoffice/ingestion/intelligence/storage/structured_db.py`
 - __init__.py — `backoffice/ingestion/intelligence/storage/__init__.py`
+- ai_factory_client.py — `backoffice/integrations/ai_factory_client.py`
 - google_integration.py — `backoffice/integrations/google_integration.py`
 - __init__.py — `backoffice/integrations/__init__.py`
 - extractors.py — `backoffice/intelligence/extractors.py`
@@ -403,18 +404,17 @@ Generated from: platform_registry\platform_registry.json
 - __init__.py — `backoffice/reporting/__init__.py`
 - high_quality_scraper.py — `backoffice/scraping/high_quality_scraper.py`
 - __init__.py — `backoffice/scraping/__init__.py`
+- calculator.py — `backoffice/spoe/calculator.py`
+- catalog.py — `backoffice/spoe/catalog.py`
+- coordinator.py — `backoffice/spoe/coordinator.py`
+- models.py — `backoffice/spoe/models.py`
+- scoring.py — `backoffice/ui/workbench_framework/scoring.py`
 - consumption_model.py — `core/consumption_model.py`
 - human_factors.py — `core/human_factors.py`
 - kpi_calculator.py — `core/kpi_calculator.py`
 - materials_flow.py — `core/materials_flow.py`
-- predictive_logic.py — `core/predictive_logic.py`
-- roll_stand.py — `core/roll_stand.py`
-- starvation_detector.py — `core/starvation_detector.py`
-- track_state.py — `core/track_state.py`
-- client.py — `db/client.py`
-- __init__.py — `db/__init__.py`
 
-## Workbench (153)
+## Workbench (188)
 
 - # ESPECIFICACIÓN TÉCNICA PARA DESAR.txt — `# ESPECIFICACIÓN TÉCNICA PARA DESAR.txt`
 - ARCHITECTURE_VALIDATION_REPORT.md — `ARCHITECTURE_VALIDATION_REPORT.md`
@@ -431,6 +431,7 @@ Generated from: platform_registry\platform_registry.json
 - IS-Backoffice.cmd — `IS-Backoffice.cmd`
 - IS-BACKOFFICE_ERP.cmd — `IS-BACKOFFICE_ERP.cmd`
 - IS-BACKOFFICE_Menu_General.cmd — `IS-BACKOFFICE_Menu_General.cmd`
+- IS_BACKOFFICE  ING_DIGHUB.txt — `IS_BACKOFFICE  ING_DIGHUB.txt`
 - README.md — `README.md`
 - README_COMPETITIVE_INTELLIGENCE.md — `README_COMPETITIVE_INTELLIGENCE.md`
 - README_Reel_load_simulator.md — `README_Reel_load_simulator.md`
@@ -454,9 +455,18 @@ Generated from: platform_registry\platform_registry.json
 - launch.json — `.vscode/launch.json`
 - AS-IS-ARCHITECTURE-REPORT.md — `Architecture/AS-IS-ARCHITECTURE-REPORT.md`
 - TO-BE-ARCHITECTURE.md — `Architecture/TO-BE-ARCHITECTURE.md`
+- 0008-spoe-workbench-integration.md — `Architecture/ADRs/0008-spoe-workbench-integration.md`
+- 0009-ame-mission-manager-governance.md — `Architecture/ADRs/0009-ame-mission-manager-governance.md`
+- ing_dighub_audit.py — `backoffice/ing_dighub_audit.py`
+- ing_dighub_platform.py — `backoffice/ing_dighub_platform.py`
 - scraper_agent.py — `backoffice/ingestion/intelligence/agents/scraper_agent.py`
 - crawler.py — `backoffice/intelligence/crawler.py`
 - pipeline.py — `backoffice/intelligence/pipeline.py`
+- architecture.py — `backoffice/spoe/architecture.py`
+- governance.py — `backoffice/spoe/governance.py`
+- hypothesis_engine.py — `backoffice/spoe/hypothesis_engine.py`
+- mission_manager.py — `backoffice/spoe/mission_manager.py`
+- platform_maturity.py — `backoffice/spoe/platform_maturity.py`
 - app.py — `backoffice/ui/app.py`
 - audio_transcription_panel.py — `backoffice/ui/audio_transcription_panel.py`
 - command_center.py — `backoffice/ui/command_center.py`
@@ -470,6 +480,10 @@ Generated from: platform_registry\platform_registry.json
 - sidebar.py — `backoffice/ui/components/sidebar.py`
 - __init__.py — `backoffice/ui/components/__init__.py`
 - 01_Home.py — `backoffice/ui/pages/01_Home.py`
+- models.py — `backoffice/ui/workbench_framework/models.py`
+- services.py — `backoffice/ui/workbench_framework/services.py`
+- state.py — `backoffice/ui/workbench_framework/state.py`
+- __init__.py — `backoffice/ui/workbench_framework/__init__.py`
 - document_analysis.py — `backups/doc_analysis_20260606_091647/document_analysis.py`
 - threejs_plant.py — `components/threejs_plant.py`
 - base_simulation_engine.py — `core/base_simulation_engine.py`
@@ -479,6 +493,9 @@ Generated from: platform_registry\platform_registry.json
 - __init__.py — `core/__init__.py`
 - transcription.md — `docs/transcription.md`
 - pdf_report_builder.py — `document_analysis/pdf_report_builder.py`
+- capability_graph_spoe.json — `enterprise_digital_twin/capability_graph_spoe.json`
+- mission_graph_spoe.json — `enterprise_digital_twin/mission_graph_spoe.json`
+- spoe_twin_extension.json — `enterprise_digital_twin/spoe_twin_extension.json`
 - app.py — `frontend/app.py`
 - Dockerfile — `frontend/Dockerfile`
 - Ingecart_Deep_Report.html — `informes/ingecart-marketing-kit/Analysis/Ingecart_Deep_Report.html`
@@ -499,25 +516,8 @@ Generated from: platform_registry\platform_registry.json
 - canvas_builder.py — `informes/ingecart-marketing-kit/ingecart-marketing-kit/plant_simulator/canvas_builder.py`
 - config_agent.py — `informes/ingecart-marketing-kit/ingecart-marketing-kit/plant_simulator/config_agent.py`
 - INGECART_IAR_FESPA_STRATEGIC_REPORT_2026-05-08.md — `informes/ingecart-marketing-kit/Research/ingecart/INGECART_IAR_FESPA_STRATEGIC_REPORT_2026-05-08.md`
-- generate_deep_report.py — `informes/ingecart-marketing-kit/Scripts/generate_deep_report.py`
-- ingecart_report_base.html — `informes/ingecart-marketing-kit/Templates/ingecart_report_base.html`
-- 08_dashboard.md — `ingetrans-reel-simulator/07_SOFTWARE_ARCHITECTURE/08_dashboard.md`
-- 10_day_sales_action_pool.csv — `Ing_TRADE COMM Actions/10_day_sales_action_pool.csv`
-- streamlit_ci_panel.py — `knowledge_hub/competitive_intel/streamlit_ci_panel.py`
-- install_20260606_091647.log — `logs/doc_analysis_install/install_20260606_091647.log`
-- bobina_load_simulator.py — `pages/bobina_load_simulator.py`
-- competitive_intelligence.py — `pages/competitive_intelligence.py`
-- document_analysis.py — `pages/document_analysis.py`
-- email_sender.py — `pages/email_sender.py`
-- facturacion.py — `pages/facturacion.py`
-- ingecart_artwork.py — `pages/ingecart_artwork.py`
-- ingecart_video_editor.py — `pages/ingecart_video_editor.py`
-- instruction_panel.py — `pages/instruction_panel.py`
-- knowledge_intelligence.py — `pages/knowledge_intelligence.py`
-- plant_simulator.py — `pages/plant_simulator.py`
-- project_closeout.py — `pages/project_closeout.py`
 
-## Simulation (130)
+## Simulation (174)
 
 - # ESPECIFICACIÓN TÉCNICA PARA DESAR.txt — `# ESPECIFICACIÓN TÉCNICA PARA DESAR.txt`
 - .gitignore — `.gitignore`
@@ -526,6 +526,7 @@ Generated from: platform_registry\platform_registry.json
 - ENTREGABLE GRÁFICOS COMPARATIV.txt — `ENTREGABLE GRÁFICOS COMPARATIV.txt`
 - informe_configuradores_planta_reel_load.txt — `informe_configuradores_planta_reel_load.txt`
 - IS Backoffice Menu.txt — `IS Backoffice Menu.txt`
+- IS_BACKOFFICE  ING_DIGHUB.txt — `IS_BACKOFFICE  ING_DIGHUB.txt`
 - main.py — `main.py`
 - README_Reel_load_simulator.md — `README_Reel_load_simulator.md`
 - README_SIMULATOR.md — `README_SIMULATOR.md`
@@ -550,6 +551,11 @@ Generated from: platform_registry\platform_registry.json
 - DATA_MODEL.md — `Architecture/DATA_MODEL.md`
 - 0001-modular-architecture.md — `Architecture/ADRs/0001-modular-architecture.md`
 - architecture_report.json — `Architecture/AI/architecture_report.json`
+- ing_dighub_audit.py — `backoffice/ing_dighub_audit.py`
+- ing_dighub_platform.py — `backoffice/ing_dighub_platform.py`
+- governance.py — `backoffice/spoe/governance.py`
+- services.py — `backoffice/ui/workbench_framework/services.py`
+- __init__.py — `backoffice/ui/workbench_framework/__init__.py`
 - base_simulation_engine.py — `core/base_simulation_engine.py`
 - commercial_simulator.py — `core/commercial_simulator.py`
 - consumption_engine.py — `core/consumption_engine.py`
@@ -560,6 +566,7 @@ Generated from: platform_registry\platform_registry.json
 - __init__.py — `core/__init__.py`
 - run_20260626T125027Z.full.json — `data/sim_runs/run_20260626T125027Z.full.json`
 - superbase.db — `data/sim_runs/superbase.db`
+- edt.json — `enterprise_digital_twin/edt.json`
 - cascades_amr_migration_report.md — `informes/cascades_amr_migration_report.md`
 - canvas_builder.py — `informes/ingecart-marketing-kit/ingecart-marketing-kit/plant_simulator/canvas_builder.py`
 - config_agent.py — `informes/ingecart-marketing-kit/ingecart-marketing-kit/plant_simulator/config_agent.py`
@@ -596,36 +603,30 @@ Generated from: platform_registry\platform_registry.json
 - run_simulator.py — `ingetrans-reel-simulator/scripts/run_simulator.py`
 - validate_yaml.py — `ingetrans-reel-simulator/scripts/validate_yaml.py`
 - verify_ingetrans_project.py — `ingetrans-reel-simulator/scripts/verify_ingetrans_project.py`
+- product_definition.json — `knowledge_hub/iar_assessment/20260724_101336/product_definition.json`
+- product_definition.json — `knowledge_hub/iar_assessment/20260724_101449/product_definition.json`
+- iar_due_diligence_report_v2.html — `knowledge_hub/iar_assessment/20260724_103702/iar_due_diligence_report_v2.html`
+- run_summary.json — `knowledge_hub/iar_assessment/20260724_103702/run_summary.json`
+- IAR_FINAL_ENGINEERING_CLOSURE_REPORT.html — `knowledge_hub/iar_assessment/20260724_103702/final_closure/IAR_FINAL_ENGINEERING_CLOSURE_REPORT.html`
+- IAR_FINAL_ENGINEERING_CLOSURE_REPORT.md — `knowledge_hub/iar_assessment/20260724_103702/final_closure/IAR_FINAL_ENGINEERING_CLOSURE_REPORT.md`
+- traceability_matrix.csv — `knowledge_hub/iar_assessment/20260724_103702/final_closure/traceability_matrix.csv`
 - plant_simulator.log — `logs/plant_simulator.log`
 - bobina_load_simulator.py — `pages/bobina_load_simulator.py`
+- ing_dighub_digital_twin.py — `pages/ing_dighub_digital_twin.py`
+- ing_dighub_home.py — `pages/ing_dighub_home.py`
 - plant_simulator.py — `pages/plant_simulator.py`
 - reel_load_simulator_fixed.py — `pages/reel_load_simulator_fixed.py`
 - reel_load_simulator_v4.py — `pages/reel_load_simulator_v4.py`
 - reel_load_simulator_workbench.py — `pages/reel_load_simulator_workbench.py`
 - reloading_commercial_demo_v2.py — `pages/reloading_commercial_demo_v2.py`
-- reloading_commercial_demo_v3.py — `pages/reloading_commercial_demo_v3.py`
-- simulation_engine.py — `plant_simulator/simulation_engine.py`
-- __init__.py — `plant_simulator/__init__.py`
-- CHANGELOG.md — `releases/CHANGELOG.md`
-- RC1_CHECKLIST.md — `releases/RC1_CHECKLIST.md`
-- RC1_RELEASE_NOTES.md — `releases/RC1_RELEASE_NOTES.md`
-- reel_simulator_rc1_20260629T214420Z.zip — `releases/reel_simulator_rc1_20260629T214420Z.zip`
-- console_run_output.txt — `releases/rc1_evidence/console_run_output.txt`
-- event_log.csv — `releases/rc1_evidence/event_log.csv`
-- RC1_VALIDATION_REPORT.md — `releases/rc1_evidence/RC1_VALIDATION_REPORT.md`
-- AI_AGENT_CATALOG.md — `reports/AI_AGENT_CATALOG.md`
-- AI_ARCHITECTURE_MASTER.md — `reports/AI_ARCHITECTURE_MASTER.md`
-- AI_COORDINATOR_SPECIFICATION.md — `reports/AI_COORDINATOR_SPECIFICATION.md`
-- COGNITIVE_ARCHITECTURE.md — `reports/COGNITIVE_ARCHITECTURE.md`
-- ENTERPRISE_OBJECT_MODEL.md — `reports/ENTERPRISE_OBJECT_MODEL.md`
-- EXECUTIVE_REASONING_STANDARD.md — `reports/EXECUTIVE_REASONING_STANDARD.md`
 
-## Knowledge (99)
+## Knowledge (156)
 
 - ARCHITECTURE_VALIDATION_REPORT.md — `ARCHITECTURE_VALIDATION_REPORT.md`
 - informe_configuradores_planta_reel_load.txt — `informe_configuradores_planta_reel_load.txt`
 - install_doc_analysis.sh — `install_doc_analysis.sh`
 - IS Backoffice Menu.txt — `IS Backoffice Menu.txt`
+- IS_BACKOFFICE  ING_DIGHUB.txt — `IS_BACKOFFICE  ING_DIGHUB.txt`
 - README.md — `README.md`
 - soc_app.py — `soc_app.py`
 - streamlit_app.py — `streamlit_app.py`
@@ -656,12 +657,24 @@ Generated from: platform_registry\platform_registry.json
 - DATA_MODEL.md — `Architecture/DATA_MODEL.md`
 - TO-BE-ARCHITECTURE.md — `Architecture/TO-BE-ARCHITECTURE.md`
 - 0002-ai-agent-framework.md — `Architecture/ADRs/0002-ai-agent-framework.md`
+- 0008-spoe-workbench-integration.md — `Architecture/ADRs/0008-spoe-workbench-integration.md`
 - architecture_report.json — `Architecture/AI/architecture_report.json`
+- ing_dighub_audit.py — `backoffice/ing_dighub_audit.py`
+- ing_dighub_platform.py — `backoffice/ing_dighub_platform.py`
+- ing_dighub_ui_support.py — `backoffice/ing_dighub_ui_support.py`
 - knowledge_graph.py — `backoffice/knowledge_graph.py`
 - orchestration.py — `backoffice/orchestration.py`
 - runtime_components.py — `backoffice/runtime_components.py`
 - orchestrator.py — `backoffice/agents/orchestrator.py`
 - store.py — `backoffice/graph/store.py`
+- architecture.py — `backoffice/spoe/architecture.py`
+- documents.py — `backoffice/spoe/documents.py`
+- governance.py — `backoffice/spoe/governance.py`
+- hypothesis_engine.py — `backoffice/spoe/hypothesis_engine.py`
+- knowledge.py — `backoffice/spoe/knowledge.py`
+- knowledge_hub_store.py — `backoffice/spoe/knowledge_hub_store.py`
+- mission_manager.py — `backoffice/spoe/mission_manager.py`
+- __init__.py — `backoffice/spoe/__init__.py`
 - sidebar.py — `backoffice/ui/components/sidebar.py`
 - document_analysis.py — `backups/doc_analysis_20260606_091647/document_analysis.py`
 - knowledge.db — `data/knowledge_memory/knowledge.db`
@@ -669,6 +682,10 @@ Generated from: platform_registry\platform_registry.json
 - ai_enhancer.py — `document_analysis/ai_enhancer.py`
 - models.py — `document_analysis/models.py`
 - output_generator.py — `document_analysis/output_generator.py`
+- capability_graph_spoe.json — `enterprise_digital_twin/capability_graph_spoe.json`
+- edt.json — `enterprise_digital_twin/edt.json`
+- mission_graph_spoe.json — `enterprise_digital_twin/mission_graph_spoe.json`
+- model.py — `enterprise_digital_twin/model.py`
 - Ingecart_Deep_Report.html — `informes/ingecart-marketing-kit/Analysis/Ingecart_Deep_Report.html`
 - PARA_Deep_Report.html — `informes/ingecart-marketing-kit/Analysis/PARA_Deep_Report.html`
 - ingecart_deep_db.json — `informes/ingecart-marketing-kit/Data/ingecart_deep_db.json`
@@ -684,43 +701,27 @@ Generated from: platform_registry\platform_registry.json
 - README_OFFERS_EXTRACTOR.md — `knowledge_hub/competitive_intel/README_OFFERS_EXTRACTOR.md`
 - streamlit_ci_panel.py — `knowledge_hub/competitive_intel/streamlit_ci_panel.py`
 - __init__.py — `knowledge_hub/competitive_intel/__init__.py`
+- latest_run.json — `knowledge_hub/iar_assessment/latest_run.json`
+- hypotheses_scores.json — `knowledge_hub/iar_assessment/20260724_101336/hypotheses_scores.json`
+- iar_executive_report.md — `knowledge_hub/iar_assessment/20260724_101336/iar_executive_report.md`
+- product_definition.json — `knowledge_hub/iar_assessment/20260724_101336/product_definition.json`
+- run_summary.json — `knowledge_hub/iar_assessment/20260724_101336/run_summary.json`
+- hypotheses_scores.json — `knowledge_hub/iar_assessment/20260724_101449/hypotheses_scores.json`
+- iar_executive_report.md — `knowledge_hub/iar_assessment/20260724_101449/iar_executive_report.md`
+- product_definition.json — `knowledge_hub/iar_assessment/20260724_101449/product_definition.json`
+- run_summary.json — `knowledge_hub/iar_assessment/20260724_101449/run_summary.json`
+- product_definition.json — `knowledge_hub/iar_assessment/20260724_102600/product_definition.json`
+- run_summary.json — `knowledge_hub/iar_assessment/20260724_102600/run_summary.json`
+- run_summary.json — `knowledge_hub/iar_assessment/20260724_103702/run_summary.json`
+- doc_05.json — `knowledge_hub/iar_assessment/20260724_103702/documents/doc_05.json`
+- IAR_FINAL_ENGINEERING_CLOSURE_REPORT.html — `knowledge_hub/iar_assessment/20260724_103702/final_closure/IAR_FINAL_ENGINEERING_CLOSURE_REPORT.html`
+- IAR_FINAL_ENGINEERING_CLOSURE_REPORT.md — `knowledge_hub/iar_assessment/20260724_103702/final_closure/IAR_FINAL_ENGINEERING_CLOSURE_REPORT.md`
+- publication_manifest.json — `knowledge_hub/iar_assessment/20260724_103702/final_closure/publication_manifest.json`
+- hypotheses_log.jsonl — `knowledge_hub/spoe/hypotheses_log.jsonl`
 - install_20260606_091647.log — `logs/doc_analysis_install/install_20260606_091647.log`
-- knowledge_intelligence.py — `pages/knowledge_intelligence.py`
-- folder_tree.txt — `releases/rc1_evidence/folder_tree.txt`
-- AI_AGENT_CATALOG.md — `reports/AI_AGENT_CATALOG.md`
-- AI_ARCHITECTURE_MASTER.md — `reports/AI_ARCHITECTURE_MASTER.md`
-- AI_COORDINATOR_SPECIFICATION.md — `reports/AI_COORDINATOR_SPECIFICATION.md`
-- COGNITIVE_ARCHITECTURE.md — `reports/COGNITIVE_ARCHITECTURE.md`
-- DATA_GOVERNANCE_STANDARD.md — `reports/DATA_GOVERNANCE_STANDARD.md`
-- DOCUMENT_PROCESSING_STANDARD.md — `reports/DOCUMENT_PROCESSING_STANDARD.md`
-- ENTERPRISE_LEARNING_STANDARD.md — `reports/ENTERPRISE_LEARNING_STANDARD.md`
-- ENTERPRISE_OBJECT_MODEL.md — `reports/ENTERPRISE_OBJECT_MODEL.md`
-- ENTERPRISE_RELATIONSHIP_MODEL.md — `reports/ENTERPRISE_RELATIONSHIP_MODEL.md`
-- EXECUTIVE_QUALITY_STANDARD.md — `reports/EXECUTIVE_QUALITY_STANDARD.md`
-- EXECUTIVE_REASONING_STANDARD.md — `reports/EXECUTIVE_REASONING_STANDARD.md`
-- IMPLEMENTATION_READINESS_REVIEW.md — `reports/IMPLEMENTATION_READINESS_REVIEW.md`
-- PROJECT_DATABASE_SCHEMA_V2.md — `reports/PROJECT_DATABASE_SCHEMA_V2.md`
-- PROJECT_DATA_MODEL_V2.md — `reports/PROJECT_DATA_MODEL_V2.md`
-- PROJECT_IMPLEMENTATION_PLAN_V2.md — `reports/PROJECT_IMPLEMENTATION_PLAN_V2.md`
-- PROJECT_MANAGEMENT_ARCHITECTURE.md — `reports/PROJECT_MANAGEMENT_ARCHITECTURE.md`
-- PROJECT_MANAGEMENT_AUDIT.md — `reports/PROJECT_MANAGEMENT_AUDIT.md`
-- PROJECT_MANAGEMENT_GAP_ANALYSIS.md — `reports/PROJECT_MANAGEMENT_GAP_ANALYSIS.md`
-- PROJECT_MANAGEMENT_IMPLEMENTATION_PLAN.md — `reports/PROJECT_MANAGEMENT_IMPLEMENTATION_PLAN.md`
-- PROJECT_MANAGEMENT_ROADMAP.md — `reports/PROJECT_MANAGEMENT_ROADMAP.md`
-- PROJECT_REGISTRY_ARCHITECTURE_V2.md — `reports/PROJECT_REGISTRY_ARCHITECTURE_V2.md`
-- PROJECT_UI_WIREFRAMES_V2.md — `reports/PROJECT_UI_WIREFRAMES_V2.md`
-- REPORT_GENERATION_STANDARD.md — `reports/REPORT_GENERATION_STANDARD.md`
-- SELF_IMPROVEMENT_ENGINE.md — `reports/SELF_IMPROVEMENT_ENGINE.md`
-- modules_summary.md — `reports/reconciliation/modules_summary.md`
-- README.md — `reports/reconciliation/README.md`
-- knowledge_hub.txt — `reports/reconciliation/file_lists/knowledge_hub.txt`
-- pages.txt — `reports/reconciliation/file_lists/pages.txt`
-- test_competitive_intel.py — `tests/test_competitive_intel.py`
-- test_doc_analysis.py — `tests/test_doc_analysis.py`
-- discover_platform.py — `tools/discovery/discover_platform.py`
-- doc_agents.py — `utils/doc_agents.py`
-- doc_memory.py — `utils/doc_memory.py`
-- doc_orchestrator.py — `utils/doc_orchestrator.py`
+- ing_dighub_home.py — `pages/ing_dighub_home.py`
+- ing_dighub_knowledge_hub.py — `pages/ing_dighub_knowledge_hub.py`
+- ing_dighub_mission_manager.py — `pages/ing_dighub_mission_manager.py`
 
 ## Agent (62)
 
@@ -787,7 +788,7 @@ Generated from: platform_registry\platform_registry.json
 - doc_agents.py — `utils/doc_agents.py`
 - doc_orchestrator.py — `utils/doc_orchestrator.py`
 
-## Test (45)
+## Test (49)
 
 - TEST_COMPANY_20260622T113131Z.md — `data/competitive_intelligence/reports/TEST_COMPANY_20260622T113131Z.md`
 - TEST_COMPANY_20260622T113151Z.md — `data/competitive_intelligence/reports/TEST_COMPANY_20260622T113151Z.md`
@@ -825,6 +826,8 @@ Generated from: platform_registry\platform_registry.json
 - test_corrugator_v3.py — `tests/test_corrugator_v3.py`
 - test_doc_analysis.py — `tests/test_doc_analysis.py`
 - test_evidence_fact_checker.py — `tests/test_evidence_fact_checker.py`
+- test_ing_dighub_api.py — `tests/test_ing_dighub_api.py`
+- test_ing_dighub_platform.py — `tests/test_ing_dighub_platform.py`
 - test_integration_pipeline.py — `tests/test_integration_pipeline.py`
 - test_local_search.py — `tests/test_local_search.py`
 - test_memory_store.py — `tests/test_memory_store.py`
@@ -833,6 +836,8 @@ Generated from: platform_registry\platform_registry.json
 - test_performance_baseline.py — `tests/test_performance_baseline.py`
 - test_scraper.py — `tests/test_scraper.py`
 - test_simulation.py — `tests/test_simulation.py`
+- test_spoe.py — `tests/test_spoe.py`
+- test_spoe_mission_manager.py — `tests/test_spoe_mission_manager.py`
 - test_transcription_api.py — `tests/test_transcription_api.py`
 
 ## Engine (37)
@@ -875,7 +880,7 @@ Generated from: platform_registry\platform_registry.json
 - doc_intelligence.py — `utils/doc_intelligence.py`
 - doc_orchestrator.py — `utils/doc_orchestrator.py`
 
-## Factory Layout Analysis (29)
+## Factory Layout Analysis (30)
 
 - implementar_smart_plant_v2.py — `implementar_smart_plant_v2.py`
 - informe_configuradores_planta_reel_load.txt — `informe_configuradores_planta_reel_load.txt`
@@ -884,6 +889,7 @@ Generated from: platform_registry\platform_registry.json
 - layout_common.json — `assets/layout_common.json`
 - layout_forklift.json — `assets/layout_forklift.json`
 - layout_ingetrans.json — `assets/layout_ingetrans.json`
+- ai_factory_client.py — `backoffice/integrations/ai_factory_client.py`
 - threejs_plant.py — `components/threejs_plant.py`
 - smart_plant_config.json — `data/smart_plant_config.json`
 - prospect_pipeline.csv — `informes/ingecart-marketing-kit/ingecart-marketing-kit/machine-trading-boost-plan/templates/prospect_pipeline.csv`
@@ -907,13 +913,14 @@ Generated from: platform_registry\platform_registry.json
 - canvas_renderer.py — `utils/canvas_renderer.py`
 - load_external_env.py — `utils/load_external_env.py`
 
-## API (15)
+## API (16)
 
 - main.py — `main.py`
 - analytics.py — `api/routes/analytics.py`
 - backoffice.py — `api/routes/backoffice.py`
 - graph.py — `api/routes/graph.py`
 - ingestion.py — `api/routes/ingestion.py`
+- ing_dighub.py — `api/routes/ing_dighub.py`
 - intelligence_ingestion.py — `api/routes/intelligence_ingestion.py`
 - market_intelligence.py — `api/routes/market_intelligence.py`
 - orchestration.py — `api/routes/orchestration.py`
@@ -925,10 +932,12 @@ Generated from: platform_registry\platform_registry.json
 - test_transcription_api.py — `tests/test_transcription_api.py`
 - __init__.py — `tests/__init__.py`
 
-## AMR Fleet Optimization (5)
+## AMR Fleet Optimization (7)
 
 - smart_scraper.py — `agents/knowledge_intelligence/utils/smart_scraper.py`
 - crawler.py — `backoffice/intelligence/crawler.py`
+- amr_intralogistics_template.json — `backoffice/spoe/templates/amr_intralogistics_template.json`
+- amr_wip_template.json — `backoffice/spoe/templates/amr_wip_template.json`
 - cascades_amr_migration_report.html — `informes/cascades_amr_migration_report.html`
 - cascades_amr_migration_report.md — `informes/cascades_amr_migration_report.md`
 - scenario_04_agv_fleet.yaml — `ingetrans-reel-simulator/06_SCENARIOS/scenario_04_agv_fleet.yaml`

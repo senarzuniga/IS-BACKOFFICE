@@ -1,0 +1,343 @@
+Service engine
+
+####################################################################################################
+PRODUCTION READINESS & OPERATIONAL CERTIFICATION
+####################################################################################################
+
+The mission SHALL NOT finish after implementation.
+
+Implementation alone is NOT considered mission success.
+
+The mission is only complete when the application is fully operational, validated, production-ready and immediately usable by end users.
+
+Mission Manager shall continue autonomously until every certification has been successfully completed.
+
+####################################################################################################
+APPLICATION HARDENING
+####################################################################################################
+
+Before declaring the mission complete, perform a complete hardening process.
+
+Automatically
+
+• resolve pending errors
+• resolve runtime exceptions
+• eliminate dead code
+• remove duplicated components
+• repair broken imports
+• repair dependency conflicts
+• optimise performance
+• optimise memory consumption
+• optimise loading times
+• optimise rendering
+• validate repository integrity
+
+Repeat until no blocking issues remain.
+
+####################################################################################################
+FUNCTIONAL TESTING
+####################################################################################################
+
+Execute exhaustive functional testing.
+
+Validate every workflow.
+
+Validate every button.
+
+Validate every menu.
+
+Validate every panel.
+
+Validate every form.
+
+Validate every calculation.
+
+Validate every report.
+
+Validate every export.
+
+Validate every import.
+
+Validate every interaction.
+
+Validate every AI workflow.
+
+Validate every Mission Manager workflow.
+
+Validate every Assistant workflow.
+
+Validate every document generation workflow.
+
+Validate every HTML generation workflow.
+
+Validate every publication workflow.
+
+No functionality may remain untested.
+
+####################################################################################################
+END-TO-END TESTING
+####################################################################################################
+
+Execute complete end-to-end scenarios.
+
+Examples
+
+Create Project
+
+↓
+
+Generate Documents
+
+↓
+
+Generate HTML
+
+↓
+
+Generate Reports
+
+↓
+
+Knowledge Hub Update
+
+↓
+
+Enterprise Memory Update
+
+↓
+
+Publish
+
+↓
+
+Validate Outputs
+
+Every complete workflow must execute successfully without manual intervention.
+
+####################################################################################################
+STRESS TESTING
+####################################################################################################
+
+Execute production-like workloads.
+
+Simulate
+
+large projects
+
+multiple concurrent missions
+
+large document imports
+
+multiple HTML generations
+
+parallel AI requests
+
+large repositories
+
+long-running autonomous missions
+
+Measure
+
+execution time
+
+memory usage
+
+CPU usage
+
+stability
+
+resource leaks
+
+thread stability
+
+Mission Manager stability
+
+Assistant stability
+
+####################################################################################################
+SELF-HEALING
+####################################################################################################
+
+Whenever an issue is detected
+
+Mission Manager shall
+
+analyse
+
+generate hypotheses
+
+simulate solutions
+
+select the best solution
+
+apply the correction
+
+repeat validation
+
+continue automatically
+
+Never stop because of detected defects.
+
+Continue until every critical issue has been eliminated.
+
+####################################################################################################
+BENCHMARK AGAINST MARKET STANDARDS
+####################################################################################################
+
+Perform a comparative assessment against current enterprise-class applications in the following domains.
+
+Industrial Automation Platforms
+
+Engineering Document Management
+
+AI Knowledge Management
+
+Enterprise Content Management
+
+Document Processing
+
+Workflow Automation
+
+Digital Engineering Platforms
+
+Evaluate
+
+User Experience
+
+Performance
+
+Navigation
+
+Usability
+
+Information Architecture
+
+Automation Level
+
+Knowledge Reuse
+
+Document Intelligence
+
+Search Capabilities
+
+AI Assistance
+
+Scalability
+
+Maintainability
+
+Executive Reporting
+
+Identify every significant gap.
+
+Generate recommendations.
+
+Whenever technically feasible, implement improvements automatically before closing the mission.
+
+####################################################################################################
+QUALITY CERTIFICATION
+####################################################################################################
+
+The application must achieve
+
+Production Ready
+
+Operational Ready
+
+Repository Ready
+
+Mission Ready
+
+User Ready
+
+Maintainability Ready
+
+Performance Ready
+
+Scalability Ready
+
+Accessibility Ready
+
+Security Ready
+
+Every category shall receive
+
+PASS
+
+WARNING
+
+FAIL
+
+The mission cannot finish while any critical category remains in FAIL.
+
+####################################################################################################
+USER ACCEPTANCE SIMULATION
+####################################################################################################
+
+Simulate real users performing representative tasks.
+
+Examples
+
+Engineering
+
+Sales
+
+Project Management
+
+Marketing
+
+Service
+
+Management
+
+Validate
+
+workflow simplicity
+
+navigation
+
+discoverability
+
+response time
+
+clarity
+
+consistency
+
+Resolve usability issues automatically whenever possible.
+
+####################################################################################################
+FINAL CERTIFICATION
+####################################################################################################
+
+Mission completion is ONLY authorised when
+
+✓ The application launches successfully.
+
+✓ No runtime exceptions remain.
+
+✓ All workflows execute correctly.
+
+✓ All functional tests PASS.
+
+✓ All integration tests PASS.
+
+✓ End-to-end scenarios PASS.
+
+✓ Performance is acceptable.
+
+✓ Repository integrity is PASS.
+
+✓ Knowledge Hub is updated.
+
+✓ Enterprise Memory is updated.
+
+✓ Documentation is generated.
+
+✓ The application is immediately usable without additional development.
+
+Mission Manager SHALL NOT terminate the mission until every mandatory certification has passed.
+
+####################################################################################################
+MISSION COMPLETE
+####################################################################################################

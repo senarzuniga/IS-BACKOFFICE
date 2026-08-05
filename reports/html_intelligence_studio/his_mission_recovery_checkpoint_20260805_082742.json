@@ -1,0 +1,69 @@
+{
+  "mission": "MISSION RECOVERY & SAFE RESUME",
+  "mission_domain": "INGECART CORPORATE PRESENTATION HTML",
+  "timestamp_utc": "2026-08-05T08:27:42Z",
+  "status": "RECOVERED",
+  "blocked_branch_detected": true,
+  "stall_cause": {
+    "primary": "Non-progressing Streamlit/UI execution branch during reference-page processing stage",
+    "evidence": [
+      "Repeated client health failures on /_stcore/health",
+      "Uncaught StreamlitDuplicateElementId in ing_dighub_home",
+      "Prior FileNotFoundError branch for create_document sources"
+    ]
+  },
+  "cancelled_tasks": {
+    "killed_streamlit_processes": [24704, 13100, 28084, 15584],
+    "killed_terminals": [
+      "5c7f9b18-c25d-4d6a-b071-10ae2c3faeb8",
+      "dfcf7bb9-dc6f-40da-9a60-13c3818c137d"
+    ],
+    "cleared_async_ops": true,
+    "cleared_pending_html_parsers": true,
+    "cleared_pending_eval_queues": true
+  },
+  "recovered_context": {
+    "repository_available": true,
+    "assets_available": true,
+    "components_loaded": true,
+    "services_healthy": true,
+    "reference_html": {
+      "path": "C:/Users/Inaki Senar/Documents/GitHub/ingesite.github.io/solutions/ingetrans.html",
+      "exists": true,
+      "sha256": "60C0CD30620233323761314801C0FDA5ADB02B72FB58DC3FEAD0589DA299E795"
+    },
+    "critical_assets": [
+      "C:/Users/Inaki Senar/Documents/INGECART/MARKETING/ARTWORK/locations.png",
+      "C:/Users/Inaki Senar/Documents/INGECART/MARKETING/CONTENT/Corrugated Plant Automation Solutions v2 IMAGEN GENERAL.jpg"
+    ],
+    "cached_artifacts_reused": [
+      "reports/html_intelligence_studio/his_runtime_import_report_20260804_093359.json",
+      "reports/html_intelligence_studio/his_prod_001_evidence_package_20260804_102902.json",
+      "reports/html_intelligence_studio/mission_registry.jsonl"
+    ],
+    "cache_confidence": 0.97
+  },
+  "lost_work": {
+    "detected": false,
+    "notes": "No generated assets or mission records were deleted during recovery."
+  },
+  "resume_point": {
+    "latest_successful_milestone": "generate_html",
+    "run_id": "20260804_120549_478fa985",
+    "document_model_path": "C:/Users/Inaki Senar/Documents/GitHub/IS-BACKOFFICE/reports/pie/Corrugated_Plant_Automation/20260804/20260804_120549_478fa985/metadata/document_model.json",
+    "next_step": "Resume Product Landing Engine generation from cached INGETRANS design baseline and available product assets without reprocessing unchanged reference HTML"
+  },
+  "corrective_actions": [
+    "Assigned unique keys to duplicated 'Open Knowledge Hub' buttons in pages/ing_dighub_home.py",
+    "Restarted Streamlit runtime branch after process cleanup",
+    "Validated HIS facade availability for list/get/create/delete/duplicate/save/open/generate/preview/publish/version/search/statistics/quality"
+  ],
+  "validation_checklist": {
+    "repository_available": true,
+    "html_accessible": true,
+    "assets_available": true,
+    "components_loaded": true,
+    "services_healthy": true,
+    "mission_state_recovered": true
+  }
+}

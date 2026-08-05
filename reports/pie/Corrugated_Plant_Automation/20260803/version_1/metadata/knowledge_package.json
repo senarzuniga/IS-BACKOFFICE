@@ -1,0 +1,81 @@
+{
+  "document_id": "7ae01f5f78a6403397c2357f7ad1da71",
+  "title": "HIS Corporate Document",
+  "sections": [
+    "Executive Overview"
+  ],
+  "components": 1,
+  "metadata": {
+    "his_module": "HTML Intelligence Studio",
+    "project": "Corrugated_Plant_Automation",
+    "client": "INGECART",
+    "category": "pie",
+    "language": "Bilingual",
+    "source_format": "HTML",
+    "sources": [
+      "\"C:\\Users\\Inaki Senar\\Documents\\INGECART\\MARKETING\\CONTENT\\Corrugated Plant Automation Solutions v2.pptx\""
+    ],
+    "comments": "Nombre del HTML nuevo: \"Ingecart, what we do\"",
+    "objective": "Generate a Ingecart Product Catalog",
+    "target_audience": "Executive Board",
+    "instruction_text": "Genera un documento para presentar a Ingecart ante altos directivos. El documento de origen es un powerpoint que esta bien ordenado, portada, slides generales y luego presentacion de productos y sus explicaciones.  Las diapositivas que introducen los productos, son, 6,11,14,15,21,24,26. Salvo el producto de la slide 14, que solo tiene el contenido de la slide 14, el resto tienen contenido adicional a la slide de producto, que se extiende hasta la siguiente slide de producto.",
+    "corporate_model": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\ingesite.github.io\\Modelo_HTML.txt",
+    "palette": [
+      "#0B1F3A",
+      "#005F8C",
+      "#F2A900",
+      "#F4F6F8"
+    ],
+    "typography": {
+      "headline": "Montserrat, Segoe UI, Arial, sans-serif",
+      "body": "Inter, Segoe UI, Arial, sans-serif"
+    },
+    "strategy": {
+      "strategy": "hybrid_fusion",
+      "executive_score": 8.05,
+      "hypotheses": [
+        {
+          "id": "H1",
+          "name": "Structured source-first pipeline",
+          "assumption": "Use PPT/Word/PDF if available as primary source for high structural fidelity.",
+          "engineering": 8.8,
+          "business": 8.4,
+          "knowledge": 8.6,
+          "risk": 2.3,
+          "executive_score": 8.04
+        },
+        {
+          "id": "H2",
+          "name": "Prompt-driven generative reconstruction",
+          "assumption": "Build directly from instruction text when source quality is low or mixed.",
+          "engineering": 7.6,
+          "business": 8.9,
+          "knowledge": 7.4,
+          "risk": 3.5,
+          "executive_score": 7.13
+        },
+        {
+          "id": "H3",
+          "name": "Hybrid fusion pipeline",
+          "assumption": "Fuse multi-source artifacts and instructions with componentized assembly.",
+          "engineering": 8.5,
+          "business": 8.8,
+          "knowledge": 9.0,
+          "risk": 2.7,
+          "executive_score": 8.05
+        }
+      ],
+      "selected_hypothesis": "H3"
+    },
+    "translations": {
+      "en": {
+        "title": "HIS Corporate Document",
+        "subtitle": "Autonomous mission-driven reconstruction"
+      },
+      "es": {
+        "title": "HIS Corporate Document",
+        "subtitle": "Autonomous mission-driven reconstruction"
+      }
+    }
+  }
+}

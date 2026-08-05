@@ -1,0 +1,57 @@
+[
+  {
+    "version_id": "2ff330ad0cfa4f13b4ce8f4782c6a3b2",
+    "version_number": 1,
+    "author": "Mission Manager",
+    "objective": "Initial DIPC reconstruction from PowerPoint",
+    "result": "created",
+    "mission_id": "20260731_152514_80e90ea2",
+    "created_at": "2026-07-31T15:25:34.594329Z",
+    "diff": {
+      "structural_diff": {
+        "initial": true,
+        "sections": 29,
+        "components": 50
+      },
+      "visual_diff": {
+        "theme": "industrial",
+        "palette": [
+          "#FF6A00",
+          "#F4F5F7",
+          "#151515",
+          "#FFFFFF",
+          "#6F7378"
+        ]
+      },
+      "semantic_diff": {},
+      "html_diff": [],
+      "component_diff": {
+        "current": {
+          "hero": 1,
+          "industrial_kpi": 19,
+          "amr_fleet_panel": 2,
+          "text": 14,
+          "process_flow": 7,
+          "ingetrans_panel": 1,
+          "pyramid": 3,
+          "executive_summary": 1,
+          "contact_block": 1,
+          "footer": 1
+        }
+      },
+      "change_log": []
+    },
+    "output_files": {
+      "html": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\dipc\\20260731_152514_80e90ea2\\published\\index.html",
+      "markdown": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\dipc\\20260731_152514_80e90ea2\\published\\document.md",
+      "docx": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\dipc\\20260731_152514_80e90ea2\\published\\document.docx",
+      "pdf": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\dipc\\20260731_152514_80e90ea2\\published\\document.pdf",
+      "odt": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\dipc\\20260731_152514_80e90ea2\\published\\document.odt",
+      "presentation_html": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\dipc\\20260731_152514_80e90ea2\\published\\presentation.html",
+      "portal_web": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\dipc\\20260731_152514_80e90ea2\\published\\portal_web\\index.html",
+      "microsite": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\dipc\\20260731_152514_80e90ea2\\published\\microsite\\index.html",
+      "document_json": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\dipc\\20260731_152514_80e90ea2\\published\\document_model.json",
+      "theme_css": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\dipc\\20260731_152514_80e90ea2\\published\\dipc_theme.css"
+    }
+  }
+]

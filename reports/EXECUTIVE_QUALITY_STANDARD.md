@@ -40,6 +40,12 @@ Human-in-the-loop
 Storage & audit
 - Save draft versions, evaluation logs and final published artifacts in `report_versions` table (see services/project_closeout_reporter.py pattern).
 
+Output Control Policy
+- All non-publisher agents must write only to isolated workspaces.
+- Final publication directory `reports/<project>/final/` is reserved for `report_publisher_agent`.
+- Publication flow must enforce lock acquisition, checksum verification, atomic replace, and lock release.
+- Lock retry policy: every 500 ms, maximum 20 retries, warning on exhaustion, continue remaining tasks.
+
 Integration points in repo
 - Report generator: [backoffice/reporting/generator.py](backoffice/reporting/generator.py)
 - Closeout report versions: [services/project_closeout_reporter.py](services/project_closeout_reporter.py)
@@ -48,3 +54,4 @@ Integration points in repo
 Acceptance criteria
 - All auto-generated executive reports must include evidence and a computed `Executive Quality Score`.
 - System must prevent publishing reports with score < 0.9 unless explicit override with audit trail.
+- System must prevent non-publisher writes into `reports/<project>/final/`.

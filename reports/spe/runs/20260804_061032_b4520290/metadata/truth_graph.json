@@ -1,0 +1,23 @@
+{
+  "generated_at": "2026-08-04T06:10:34.150148+00:00",
+  "selected_variant": "slide_flow",
+  "nodes": [
+    {
+      "id": "doc:553387a67fea4661ba087f523316a136",
+      "type": "document",
+      "label": "Customer Support & Lifecycle Services — Production Recovery"
+    },
+    {
+      "id": "sec:247ea5a4bf9f4629aa39a5ffc6dcd787",
+      "type": "section",
+      "label": "OFF-2026-S134_20260804_061032"
+    }
+  ],
+  "edges": [
+    {
+      "source": "doc:553387a67fea4661ba087f523316a136",
+      "target": "sec:247ea5a4bf9f4629aa39a5ffc6dcd787",
+      "relation": "has_section"
+    }
+  ]
+}

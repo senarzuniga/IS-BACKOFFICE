@@ -1,0 +1,444 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>IAR Executive Technical Assessment Report</title>
+<style>
+:root {
+  --bg:#f4f7f8;
+  --ink:#11222c;
+  --panel:#ffffff;
+  --line:#d8e3e8;
+  --brand:#0f766e;
+  --brand2:#1d4ed8;
+  --muted:#607080;
+}
+* { box-sizing:border-box; }
+body {
+  margin:0;
+  font-family:"Segoe UI", Tahoma, sans-serif;
+  color:var(--ink);
+  background:linear-gradient(160deg,#f4eee6 0%,#eef6f6 55%,#eaf3ef 100%);
+}
+.layout {
+  display:grid;
+  grid-template-columns:300px 1fr;
+  min-height:100vh;
+}
+aside {
+  position:sticky;
+  top:0;
+  height:100vh;
+  overflow:auto;
+  background:#0f172a;
+  color:#e2e8f0;
+  border-right:1px solid #1e293b;
+  padding:20px 16px;
+}
+aside h1 { margin:0; font-size:1.04rem; }
+aside p { margin:8px 0 12px; font-size:.84rem; color:#94a3b8; }
+aside a {
+  display:block;
+  color:#cbd5e1;
+  text-decoration:none;
+  padding:8px 10px;
+  border-radius:8px;
+  margin:2px 0;
+  font-size:.9rem;
+}
+aside a:hover { background:#1e293b; color:#fff; }
+main { padding:22px; }
+.hero, .card {
+  background:var(--panel);
+  border:1px solid var(--line);
+  border-radius:14px;
+  box-shadow:0 8px 24px rgba(15,23,42,.06);
+}
+.hero { padding:18px; }
+.hero h2 { margin:0; color:#0b4f47; }
+.hero p { margin:8px 0 0; color:#4a6172; }
+.badges {
+  margin-top:12px;
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+}
+.badge {
+  border:1px solid #99f6e4;
+  background:#ecfdf5;
+  color:#0f766e;
+  border-radius:999px;
+  padding:5px 10px;
+  font-size:.82rem;
+  font-weight:600;
+}
+.switch {
+  margin-top:12px;
+  display:flex;
+  gap:8px;
+}
+.switch button {
+  border:1px solid #c8d6df;
+  background:#fff;
+  border-radius:999px;
+  padding:6px 12px;
+  font-weight:600;
+  cursor:pointer;
+}
+.switch button.active {
+  background:#0f766e;
+  color:#fff;
+  border-color:#0f766e;
+}
+.kpis {
+  margin-top:10px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(170px,1fr));
+  gap:10px;
+}
+.kpi {
+  border:1px solid var(--line);
+  border-radius:10px;
+  padding:10px;
+  background:#fff;
+}
+.kpi .l { color:#64748b; font-size:.75rem; text-transform:uppercase; letter-spacing:.05em; }
+.kpi .v { margin-top:5px; font-size:1.35rem; font-weight:700; }
+.card { margin-top:12px; padding:14px; }
+.card h3 { margin:0 0 10px; }
+.table-wrap { overflow:auto; border:1px solid #e2e8f0; border-radius:10px; }
+table { width:100%; border-collapse:collapse; font-size:.88rem; background:#fff; }
+th, td { border:1px solid #e2e8f0; padding:8px; text-align:left; vertical-align:top; }
+th { background:#f8fafc; }
+ul { margin-top:6px; }
+.small { color:#64748b; font-size:.84rem; }
+.lang { display:none; }
+.lang.active { display:block; }
+.two-col { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+.score-grid {
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:10px;
+  margin-top:12px;
+}
+.score-card {
+  border:1px solid var(--line);
+  border-radius:12px;
+  background:#fff;
+  padding:12px;
+}
+.score-card h4 { margin:0 0 6px; }
+.score-pill {
+  display:inline-block;
+  padding:4px 10px;
+  border-radius:999px;
+  background:#ecfdf5;
+  border:1px solid #99f6e4;
+  color:#0f766e;
+  font-weight:700;
+  font-size:.82rem;
+}
+@media (max-width:1100px) {
+  .layout { grid-template-columns:1fr; }
+  aside { position:relative; height:auto; }
+  .two-col { grid-template-columns:1fr; }
+}
+</style>
+</head>
+<body>
+<div class="layout">
+  <aside>
+    <h1>IAR Executive Technical Assessment</h1>
+    <p>Bilingual report for management decision</p>
+    <a href="#s1">1. Executive Summary</a>
+    <a href="#s2">2. Operational Requirements</a>
+    <a href="#s3">3. Positioning Technologies</a>
+    <a href="#s4">4. Supplier Technical Assessment</a>
+    <a href="#s5">5. Comparative Analysis</a>
+    <a href="#s6">6. Trade-Offs</a>
+    <a href="#s7">7. Recommended Architecture</a>
+    <a href="#s8">8. Technology Selection</a>
+    <a href="#s9">9. Conclusions</a>
+  </aside>
+
+  <main>
+    <section class="hero">
+      <h2>IAR - Real Time Paper Roll Location System</h2>
+      <p>Executive technical assessment for technology selection and product architecture definition.</p>
+      <div class="badges">
+        <span class="badge">Primary technology: UWB</span>
+        <span class="badge">Companion layer: RFID</span>
+        <span class="badge">Strategy: Hybrid and scalable</span>
+        <span class="badge">Economic lens: CAPEX/OPEX/TCO included</span>
+      </div>
+      <div class="switch">
+        <button id="btn-en" class="active" onclick="setLang('en')">English</button>
+        <button id="btn-es" onclick="setLang('es')">Castellano</button>
+      </div>
+    </section>
+
+    <section class="kpis">
+      <div class="kpi"><div class="l">Selected core</div><div class="v">UWB</div></div>
+      <div class="kpi"><div class="l">Companion layer</div><div class="v">RFID</div></div>
+      <div class="kpi"><div class="l">Target strategy</div><div class="v">Hybrid</div></div>
+      <div class="kpi"><div class="l">Decision confidence</div><div class="v">High / Moderate</div></div>
+    </section>
+
+    <section id="s1" class="card">
+      <div class="lang active" data-lang="en">
+        <h3>1. Executive Summary</h3>
+        <p>The most suitable technical basis for the future IAR product is a UWB-first architecture, reinforced by RFID identity checkpoints and prepared for controlled hybrid expansion. This direction best satisfies precision, latency, robustness, and scalability requirements in corrugated paper roll warehouses.</p>
+        <p>Economic evidence shows meaningful differences in entry CAPEX and recurring OPEX models across suppliers, making 5-year TCO normalization mandatory before final award.</p>
+      </div>
+      <div class="lang" data-lang="es">
+        <h3>1. Resumen Ejecutivo</h3>
+        <p>La base tecnica mas adecuada para el futuro producto IAR es una arquitectura UWB-first, reforzada con checkpoints RFID de identidad y preparada para expansion hibrida controlada. Esta direccion satisface mejor precision, latencia, robustez y escalabilidad en almacenes de bobinas de carton corrugado.</p>
+        <p>La evidencia economica muestra diferencias relevantes en CAPEX de entrada y modelos de OPEX recurrente entre proveedores, por lo que es obligatoria la normalizacion TCO a 5 anos antes de adjudicar.</p>
+      </div>
+    </section>
+
+    <section id="s2" class="card">
+      <div class="lang active" data-lang="en">
+        <h3>2. Operational Requirements</h3>
+        <ul>
+          <li>Slot-level location confidence under dense stacking.</li>
+          <li>Near-real-time updates for forklift operations and search-time reduction.</li>
+          <li>Reliable behavior under metallic multipath and intermittent occlusion.</li>
+          <li>Valid Z-axis performance for stacked rolls at different heights.</li>
+          <li>Manageable calibration and maintenance effort for industrial continuity.</li>
+          <li>Scalable architecture for growth in tags, zones, and process complexity.</li>
+          <li>Industrial integration capability for MES transaction consistency.</li>
+          <li>Readiness for future digital twin and AI-enabled evolution.</li>
+        </ul>
+      </div>
+      <div class="lang" data-lang="es">
+        <h3>2. Requisitos Operacionales</h3>
+        <ul>
+          <li>Confianza de posicion a nivel hueco bajo estiba densa.</li>
+          <li>Actualizacion cuasi en tiempo real para operaciones de carretilla y reduccion del tiempo de busqueda.</li>
+          <li>Comportamiento fiable bajo multipath metalico y oclusion intermitente.</li>
+          <li>Rendimiento valido del eje Z con bobinas apiladas a distintas alturas.</li>
+          <li>Carga de calibracion y mantenimiento gestionable para continuidad industrial.</li>
+          <li>Arquitectura escalable para crecimiento de tags, zonas y complejidad de proceso.</li>
+          <li>Capacidad de integracion industrial con consistencia transaccional MES.</li>
+          <li>Preparacion para evolucion futura a gemelo digital e IA aplicada.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="s3" class="card">
+      <div class="lang active" data-lang="en"><h3>3. Analysis of Positioning Technologies</h3></div>
+      <div class="lang" data-lang="es"><h3>3. Analisis de Tecnologias de Posicionamiento</h3></div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Technology</th>
+              <th>Maturity</th>
+              <th>Advantages</th>
+              <th>Limitations</th>
+              <th>Warehouse suitability</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>UWB</td><td>High</td><td>High precision potential, low latency</td><td>Anchor geometry and calibration are critical</td><td>Very High</td></tr>
+            <tr><td>BLE AoA</td><td>Medium-High</td><td>Broad ecosystem, medium precision</td><td>Sensitive to reflections and occlusion</td><td>Medium</td></tr>
+            <tr><td>BLE RSSI</td><td>High (coarse)</td><td>Low cost and simple deployment</td><td>High positional variance</td><td>Low for exact location</td></tr>
+            <tr><td>Chirp</td><td>Medium</td><td>Potential noise robustness</td><td>Niche ecosystem in this context</td><td>Medium-Low</td></tr>
+            <tr><td>RFID</td><td>Very High</td><td>Very strong identity continuity</td><td>Not continuous location by itself</td><td>High as companion</td></tr>
+            <tr><td>GPS RTK</td><td>Very High outdoor</td><td>Excellent outdoor precision</td><td>Not suitable as indoor core</td><td>Low indoors</td></tr>
+            <tr><td>Vision</td><td>Medium-High</td><td>Semantic context and observability</td><td>Occlusion, dust, and maintenance burden</td><td>Medium as augmentation</td></tr>
+            <tr><td>Hybrid</td><td>High architecture-level</td><td>Resilience and controlled degradation</td><td>Higher integration complexity</td><td>Very High long-term</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="s4" class="card">
+      <div class="lang active" data-lang="en"><h3>4. Supplier Technical Assessment</h3></div>
+      <div class="lang" data-lang="es"><h3>4. Evaluacion Tecnica de Proveedores</h3></div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Supplier</th>
+              <th>Technical profile</th>
+              <th>Integration profile</th>
+              <th>Limitations</th>
+              <th>Engineering observation</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Eliko</td><td>UWB/BLE RTLS with structured service model</td><td>API and MES documented</td><td>License floor and recurring OPEX sensitive to scale</td><td>Valid for pilot; final lock requires controlled same-site proof</td></tr>
+            <tr><td>Sewio</td><td>Mature UWB-centered enterprise profile</td><td>Robust integration posture</td><td>Public economic detail insufficient in the reviewed set</td><td>Strong technical shortlist candidate</td></tr>
+            <tr><td>GrowSpace</td><td>UWB development stack with open MQTT JSON</td><td>Adaptable integration path</td><td>Some economic claims partially verified; scaling quote pending</td><td>Strong for low-entry PoC acceleration</td></tr>
+            <tr><td>Pozyx</td><td>UWB RTLS with licensed platform</td><td>Suitable MQTT/API baseline</td><td>Mandatory platform license and tag scaling costs</td><td>Reference candidate; award subject to harmonized validation</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="s5" class="card">
+      <div class="lang active" data-lang="en"><h3>5. Comparative Engineering Analysis</h3></div>
+      <div class="lang" data-lang="es"><h3>5. Analisis Comparativo de Ingenieria</h3></div>
+
+      <div class="lang active" data-lang="en">
+        <p><strong>Technical conclusion:</strong> UWB offers the best precision-latency-robustness balance for continuous roll localization. RFID is the strongest identity companion layer. Hybrid architecture is the strongest long-term resilience strategy.</p>
+      </div>
+      <div class="lang" data-lang="es">
+        <p><strong>Conclusion tecnica:</strong> UWB ofrece el mejor balance precision-latencia-robustez para localizacion continua de bobinas. RFID es la mejor capa companera de identidad. La arquitectura hibrida es la estrategia mas robusta a largo plazo.</p>
+      </div>
+
+      <h4>Technical-Economic Scoring Panel</h4>
+      <p class="small">Scoring method: Technical fit 40%, Industrial maturity 20%, Economic attractiveness 25%, Lifecycle visibility 10%, Integration readiness 5%.</p>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Supplier</th>
+              <th>Technical fit</th>
+              <th>Industrial maturity</th>
+              <th>Economic attractiveness</th>
+              <th>Lifecycle visibility</th>
+              <th>Integration readiness</th>
+              <th>Weighted score</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Pozyx</td><td>88</td><td>86</td><td>77</td><td>78</td><td>84</td><td>84.0</td></tr>
+            <tr><td>GrowSpace</td><td>81</td><td>72</td><td>92</td><td>70</td><td>82</td><td>80.8</td></tr>
+            <tr><td>Sewio</td><td>87</td><td>88</td><td>56</td><td>54</td><td>85</td><td>76.3</td></tr>
+            <tr><td>Eliko</td><td>79</td><td>74</td><td>60</td><td>62</td><td>78</td><td>72.8</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="score-grid">
+        <div class="score-card">
+          <h4>Lead balance option</h4>
+          <div class="score-pill">Pozyx - 84.0</div>
+          <p class="small">Best compromise between technical maturity and acceptable economic structure.</p>
+        </div>
+        <div class="score-card">
+          <h4>Best entry economics</h4>
+          <div class="score-pill">GrowSpace - 80.8</div>
+          <p class="small">Strongest low-entry option, but requires more industrial hardening before final product lock.</p>
+        </div>
+        <div class="score-card">
+          <h4>Technical strength with weaker economics</h4>
+          <div class="score-pill">Sewio - 76.3</div>
+          <p class="small">Technically solid, but economic visibility is weaker in the reviewed material.</p>
+        </div>
+        <div class="score-card">
+          <h4>Stable but recurrent-cost sensitive</h4>
+          <div class="score-pill">Eliko - 72.8</div>
+          <p class="small">Reliable service model, but recurring cost sensitivity reduces the total score.</p>
+        </div>
+      </div>
+
+      <div class="lang active" data-lang="en">
+        <p><strong>Sensitivity note:</strong> if the decision prioritizes PoC entry cost, GrowSpace rises. If the decision prioritizes industrial readiness and lifecycle balance, Pozyx remains the lead option.</p>
+      </div>
+      <div class="lang" data-lang="es">
+        <p><strong>Nota de sensibilidad:</strong> si la decision prioriza el coste de entrada del PoC, GrowSpace sube. Si la decision prioriza la preparacion industrial y el equilibrio de ciclo de vida, Pozyx sigue liderando.</p>
+      </div>
+
+      <h4>Technical comparison matrix</h4>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Criterion</th>
+              <th>UWB</th>
+              <th>BLE AoA</th>
+              <th>BLE RSSI</th>
+              <th>Chirp</th>
+              <th>RFID</th>
+              <th>GPS RTK</th>
+              <th>Vision</th>
+              <th>Hybrid</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Accuracy</td><td>High</td><td>Medium</td><td>Low</td><td>Medium</td><td>Low-Medium</td><td>High outdoor / Low indoor</td><td>Medium-High</td><td>High</td></tr>
+            <tr><td>Latency</td><td>High</td><td>Medium</td><td>Medium</td><td>Medium</td><td>Medium</td><td>Medium</td><td>Medium</td><td>High</td></tr>
+            <tr><td>Robustness</td><td>High</td><td>Medium</td><td>Low</td><td>Medium</td><td>High for ID events</td><td>Low indoor</td><td>Medium</td><td>High</td></tr>
+            <tr><td>MES integration readiness</td><td>High</td><td>Medium</td><td>Medium</td><td>Medium</td><td>High</td><td>Low-Medium</td><td>Medium</td><td>High</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="s6" class="card">
+      <div class="lang active" data-lang="en"><h3>6. Engineering Trade-Off Analysis</h3></div>
+      <div class="lang" data-lang="es"><h3>6. Analisis de Trade-Offs de Ingenieria</h3></div>
+      <ul>
+        <li>Centralized vs distributed: centralized simplifies governance; distributed improves latency and fault containment. Recommended: distributed acquisition with centralized reconciliation.</li>
+        <li>Single-vendor vs abstraction layer: single-vendor accelerates the initial deployment, but abstraction protects the roadmap. Recommended: abstraction from phase 1.</li>
+        <li>Active vs passive tags: active tags provide continuous location; passive tags only optimize identity cost.</li>
+        <li>Hybrid technologies: increase integration complexity, but improve resilience and evolution.</li>
+        <li>Fixed anchors vs mobile infrastructure: fixed anchors provide repeatability; mobile infrastructure adds flexibility with more uncertainty.</li>
+        <li>Cloud vs edge: edge for deterministic latency; cloud for analytics and history.</li>
+      </ul>
+    </section>
+
+    <section id="s7" class="card">
+      <div class="lang active" data-lang="en"><h3>7. Recommended Architecture for INGECART IAR</h3></div>
+      <div class="lang" data-lang="es"><h3>7. Arquitectura Recomendada para INGECART IAR</h3></div>
+      <ul>
+        <li>Hardware: fixed UWB anchors and active tags as the positioning backbone; RFID for checkpoints; optional vision in critical zones.</li>
+        <li>Communications: deterministic local telemetry network and event backbone for movement, inventory, and exceptions.</li>
+        <li>Positioning: real-time engine with confidence scoring, outlier filtering, and health diagnostics.</li>
+        <li>Middleware: vendor abstraction API and unified roll-state model.</li>
+        <li>MES interface: bidirectional inventory, movement, and reconciliation contracts.</li>
+        <li>Future digital twin interface: timestamped state stream and replay-ready history.</li>
+        <li>Future AI modules: search optimization, forklift flow optimization, congestion prediction, predictive maintenance.</li>
+      </ul>
+    </section>
+
+    <section id="s8" class="card">
+      <div class="lang active" data-lang="en">
+        <h3>8. Technology Selection</h3>
+        <p><strong>Selected technology:</strong> UWB as the primary indoor positioning technology, under a hybrid-ready architecture.</p>
+        <p><strong>Why:</strong> best overall balance of precision, latency, industrial robustness, and operational utility.</p>
+        <p><strong>Expected risks:</strong> site-specific multipath, calibration drift, and cost escalation if licenses/support are not normalized early.</p>
+        <p><strong>Validation required:</strong> same-site multi-vendor benchmark, full-shift tests, Z-axis reliability, MES consistency, and 5-year TCO scenarios.</p>
+      </div>
+      <div class="lang" data-lang="es">
+        <h3>8. Seleccion Tecnologica</h3>
+        <p><strong>Tecnologia seleccionada:</strong> UWB como tecnologia primaria de posicionamiento indoor, sobre una arquitectura preparada para hibridacion.</p>
+        <p><strong>Por que:</strong> mejor balance global entre precision, latencia, robustez industrial y utilidad operativa.</p>
+        <p><strong>Riesgos esperados:</strong> multipath especifico de sitio, deriva de calibracion y escalada de costos si licencias/soporte no se normalizan desde el inicio.</p>
+        <p><strong>Validacion requerida:</strong> benchmark multi-vendor en mismo sitio, pruebas de turno completo, fiabilidad del eje Z, consistencia MES y escenarios TCO a 5 anos.</p>
+      </div>
+    </section>
+
+    <section id="s9" class="card">
+      <div class="lang active" data-lang="en">
+        <h3>9. Conclusions</h3>
+        <p>UWB-first is the strongest technical path for the future IAR product. A hybrid-ready architecture with technology abstraction provides the best long-term balance of robustness, scalability, and flexibility. Final supplier award should be made only after harmonized technical validation and normalized 5-year economic comparison.</p>
+      </div>
+      <div class="lang" data-lang="es">
+        <h3>9. Conclusiones</h3>
+        <p>UWB-first es la via tecnica mas robusta para el futuro IAR. La arquitectura hibrida con abstraccion tecnologica ofrece el mejor balance de robustez, escalabilidad y flexibilidad a largo plazo. La adjudicacion final de proveedor debe realizarse solo tras validacion tecnica armonizada y normalizacion economica completa.</p>
+      </div>
+    </section>
+  </main>
+</div>
+
+<script>
+function setLang(lang) {
+  const nodes = document.querySelectorAll('.lang');
+  const btnEn = document.getElementById('btn-en');
+  const btnEs = document.getElementById('btn-es');
+  nodes.forEach((node) => {
+    node.classList.toggle('active', node.getAttribute('data-lang') === lang);
+  });
+  btnEn.classList.toggle('active', lang === 'en');
+  btnEs.classList.toggle('active', lang === 'es');
+  document.documentElement.lang = lang === 'es' ? 'es' : 'en';
+}
+</script>
+</body>
+</html>

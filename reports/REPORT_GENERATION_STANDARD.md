@@ -77,6 +77,26 @@ Release Policy
 - Minimum release EQA: 90. Reports below threshold are not published to the executive distribution list.
 - Exceptions: in emergencies a human Executive Reviewer may approve lower-EQA reports; this is logged and requires explicit justification.
 
+Output Publication Policy
+-------------------------
+- Agents must never write directly into `reports/<project>/final/`.
+- Each agent writes into its own isolated workspace, e.g. `reports/<project>/workspaces/<agent_name>/`.
+- Only the `report_publisher_agent` can write into `reports/<project>/final/`.
+- Publisher requirements per target file:
+   - Acquire lock file.
+   - Retry lock acquisition every 500 ms.
+   - Maximum 20 retries.
+   - If still locked, generate warning and continue remaining publish tasks.
+   - Verify source checksum (and expected checksum when provided).
+   - Replace target atomically.
+   - Release lock.
+
+Reference implementation
+------------------------
+- `tools/report_publication_guard.py`
+- `tools/report_publisher_agent.py`
+- `tools/report_publish_manifest.example.json`
+
 Automation & Jobs
 -----------------
 - Long-running reasoning and simulation tasks run as async jobs with job_ids. Partial results can be returned with transparency about completeness.

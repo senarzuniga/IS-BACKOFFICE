@@ -1,0 +1,64 @@
+{
+  "source_file": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\PRODUCTO\\ALMACEN INTELIGENTE\\IAR\\Eliko_Evaluacion_RTLS.pdf",
+  "supplier": "Eliko",
+  "document_type": "technology_evaluation",
+  "technologies": [
+    "UWB",
+    "BLE"
+  ],
+  "positioning_methods": [
+    "TDoA"
+  ],
+  "metadata": {
+    "processed_at": "2026-07-24T08:13:40.371966+00:00",
+    "chars": 13562,
+    "facts_count": 10,
+    "vendor_statements_count": 5,
+    "assumptions_count": 0
+  },
+  "summary": [
+    "ELIKO · KIO RTLS (UWB) Ficha de proveedor y checklist — revisada",
+    "KIO RTLS — sistema UWB con protocolo propio AP-TWR",
+    "de 10 años específicamente en UWB. Su producto KIO RTLS utiliza un protocolo propio",
+    "Partner del ecosistema Flowcate (DeepHub Alliance) para integración con MES, ERP y",
+    "ELIKO · KIO RTLS (UWB) Ficha de proveedor y checklist — revisada",
+    "Comunicaciones. Desde 2014 se centra de forma específica en posicionamiento UWB"
+  ],
+  "facts": [
+    "Precisión publicada de 30 cm ± 20 cm en condiciones normales; hasta 3 cm en condiciones",
+    "óptimas. Update rate hasta 75 Hz.",
+    "En el caso Krah Pipes, Eliko documenta haber alcanzado ~30 cm de precisión repetible",
+    "Cobertura por 4 anclajes ~2.500 m² (≈ 50 × 50 m) en espacio abierto",
+    "• Configurable entre 1 vez por minuto y hasta 75 Hz (cifra publicada en la ficha de",
+    "RTLS) — algunas fuentes mencionan hasta 100 Hz; en cualquier caso es suficiente",
+    "Precisión de referencia 30 cm ± 20 cm en condiciones normales",
+    "Precisión configurable Desde 10 cm hasta proximidad a nivel de sala",
+    "Precisión en condiciones Hasta 3 cm (según ficha del producto en Qorvo)",
+    "Latencia Hasta 10 ms"
+  ],
+  "vendor_statements": [
+    "El sistema obtiene hasta 8× más mediciones de distancia por cada localización (cifra del",
+    "Alcance operativo Hasta 70 metros",
+    "Personal Hasta 5 meses IP52 (IP67 bajo Acelerómetro, botón,",
+    "Activo (asset) Hasta 5 años IP67 IMU de 6 ejes opcional,",
+    "(IP67, hasta 5 años de batería)."
+  ],
+  "engineering_assumptions": [],
+  "technical_limitations": [
+    "metal"
+  ],
+  "commercial_limitations": [
+    "support"
+  ],
+  "installation_constraints": [
+    "cable"
+  ],
+  "integration_possibilities": [
+    "api",
+    "erp",
+    "mes",
+    "mqtt",
+    "opc",
+    "rest"
+  ]
+}

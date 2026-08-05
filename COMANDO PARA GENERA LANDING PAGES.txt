@@ -1,0 +1,510 @@
+COMANDO PARA GENERA LANDING PAGES
+####################################################################################################
+MISSION
+IS_BACKOFFICE · INGESITE CORPORATE PRODUCT LANDING ENGINE
+AUTONOMOUS PRODUCT LANDING GENERATION & REPOSITORY INTEGRATION
+####################################################################################################
+
+MANDATORY EXECUTION MODEL
+
+Apply throughout the complete mission:
+
+AUTONOMOUS HYPOTHESIS DRIVEN EXECUTION (AHDE)
+
+Goal
+↓
+Hypothesis Generation
+↓
+Simulation
+↓
+Executive Scoring
+↓
+Best Candidate Selection
+↓
+Implementation
+↓
+Validation
+↓
+Knowledge Capture
+↓
+Knowledge Hub Update
+↓
+Enterprise Memory Update
+
+The mission SHALL NEVER stop because of uncertainty.
+
+Whenever information is incomplete:
+
+• generate multiple hypotheses
+• evaluate alternatives
+• assign confidence score
+• simulate implementation
+• continue with the highest scoring solution
+
+Only interrupt execution when a critical technical risk could compromise repository integrity.
+
+####################################################################################################
+MISSION OBJECTIVE
+####################################################################################################
+
+Create the official INGECART Product Landing Engine inside IS_BACKOFFICE.
+
+The objective IS NOT simply to generate five HTML pages.
+
+The objective is to design, implement and integrate a reusable corporate engine capable of generating unlimited product landing pages using the corporate design language of INGESITE.
+
+The engine shall become a native subsystem of IS_BACKOFFICE.
+
+All future product pages shall be generated through this engine.
+
+####################################################################################################
+USE THE COMPLETE IS_BACKOFFICE ECOSYSTEM
+####################################################################################################
+
+The mission SHALL actively use every available subsystem whenever applicable.
+
+Mission Manager
+
+Assistant
+
+HTML Intelligence Studio
+
+Knowledge Hub
+
+Enterprise Memory
+
+Industrial Knowledge Base
+
+Marketing Knowledge Base
+
+Technical Writing Engine
+
+Executive Report Engine
+
+Repository Manager
+
+Shared Services
+
+Version Manager
+
+Validation Engine
+
+SEO Engine
+
+Asset Manager
+
+Image Processor
+
+Content Generator
+
+Technical Documentation Engine
+
+Corporate Theme Manager
+
+Design System
+
+Application Engine
+
+Reports Framework
+
+Persistence Layer
+
+Repository Layer
+
+No duplicated logic.
+
+No isolated implementations.
+
+No standalone generators.
+
+Everything shall reuse existing corporate services.
+
+####################################################################################################
+LANDING ENGINE ARCHITECTURE
+####################################################################################################
+
+Create a reusable Product Landing Engine.
+
+Instead of duplicating HTML, automatically extract reusable components.
+
+Examples:
+
+Header
+
+Navigation
+
+Footer
+
+Hero
+
+Buttons
+
+Video Component
+
+Image Component
+
+Technical Specifications
+
+Feature Cards
+
+Benefits
+
+CTA
+
+SEO Metadata
+
+OpenGraph
+
+Twitter Cards
+
+JSON-LD
+
+Structured Data
+
+Corporate Theme
+
+Responsive Layout
+
+Animations
+
+Typography
+
+Spacing System
+
+Color Tokens
+
+Icon Library
+
+Corporate Components
+
+Every landing page shall reuse these components.
+
+####################################################################################################
+REFERENCE LANDING
+####################################################################################################
+
+The corporate reference is
+
+solutions/ingetrans
+
+Perform a complete reverse engineering.
+
+Analyse
+
+HTML
+
+CSS
+
+Responsive behaviour
+
+Component hierarchy
+
+Animations
+
+Spacing
+
+Typography
+
+Cards
+
+Buttons
+
+Hover effects
+
+Transitions
+
+SEO
+
+Accessibility
+
+Visual hierarchy
+
+Design Tokens
+
+Corporate Identity
+
+Extract reusable patterns.
+
+Do NOT redesign.
+
+Maintain visual identity.
+
+####################################################################################################
+CONTENT GENERATION
+####################################################################################################
+
+For every product
+
+Mission Manager shall coordinate all available knowledge sources.
+
+Assistant shall orchestrate content generation.
+
+Technical Writing Engine shall rewrite technical documentation into executive industrial marketing language.
+
+Marketing Engine shall optimise the content.
+
+Industrial Knowledge Base shall validate terminology.
+
+Knowledge Hub shall enrich generated content.
+
+Enterprise Memory shall reuse previous marketing assets whenever relevant.
+
+Generate automatically
+
+Executive Introduction
+
+Industrial Overview
+
+Product Description
+
+Industrial Challenges
+
+Solution Overview
+
+Key Features
+
+Technical Specifications
+
+Applications
+
+Industrial Benefits
+
+Operational Benefits
+
+Automation Benefits
+
+Safety Benefits
+
+Maintenance Benefits
+
+ROI Drivers
+
+Productivity Improvements
+
+Closing CTA
+
+Everything in high-quality Industrial B2B English.
+
+Do not translate literally.
+
+Write original corporate content.
+
+####################################################################################################
+SEO ENGINE
+####################################################################################################
+
+Automatically generate
+
+Meta Title
+
+Meta Description
+
+Keywords
+
+Canonical URL
+
+OpenGraph
+
+Twitter Cards
+
+JSON-LD
+
+Schema.org Product
+
+Breadcrumb
+
+Image ALT
+
+Structured Metadata
+
+Internal Linking
+
+####################################################################################################
+ASSET MANAGEMENT
+####################################################################################################
+
+Automatically process
+
+Images
+
+Videos
+
+Icons
+
+Backgrounds
+
+Responsive Images
+
+Lazy Loading
+
+Asset Optimisation
+
+Generate Asset Manifest.
+
+####################################################################################################
+VALIDATION ENGINE
+####################################################################################################
+
+Before publishing execute
+
+HTML Validation
+
+Responsive Validation
+
+Accessibility AA
+
+Performance
+
+Broken Links
+
+Broken Images
+
+SEO Validation
+
+Corporate Theme Validation
+
+Typography Validation
+
+Spacing Validation
+
+Component Integrity
+
+Visual Similarity against INGETRANS
+
+Cross Browser Compatibility
+
+Repository Integrity
+
+Every validation shall produce PASS / WARNING / FAIL.
+
+####################################################################################################
+REPOSITORY INTEGRATION
+####################################################################################################
+
+Integrate the generated solution into the correct repositories.
+
+IS_BACKOFFICE
+
+• Register Product Landing Engine
+• Register services
+• Register reusable components
+• Register reports
+• Register validations
+• Update Knowledge Hub
+• Update Enterprise Memory
+• Register Design System
+
+INGESITE Repository
+
+Generate and publish
+
+solutions/amr-intralogistics.html
+
+solutions/sr1400.html
+
+solutions/plug-play-palletizer.html
+
+solutions/heavy-duty-palletizer.html
+
+solutions/automatic-truck-loading.html
+
+Automatically update
+
+navigation
+
+routing
+
+internal links
+
+SEO sitemap
+
+robots references
+
+asset manifest
+
+search indexes
+
+where applicable.
+
+####################################################################################################
+REPORT GENERATION
+####################################################################################################
+
+Automatically generate
+
+Product Landing Generation Report
+
+Executive Marketing Report
+
+SEO Report
+
+Corporate Design Report
+
+Content Quality Report
+
+Validation Report
+
+Asset Manifest
+
+Knowledge Hub Update Report
+
+Repository Integration Report
+
+Executive Summary
+
+Store reports inside the official IS_BACKOFFICE reports repository.
+
+####################################################################################################
+LEARNING
+####################################################################################################
+
+Capture every reusable decision.
+
+Update
+
+Knowledge Hub
+
+Enterprise Memory
+
+Marketing Knowledge Base
+
+Design System
+
+Landing Engine Templates
+
+Corporate Components Library
+
+Future landing pages shall improve automatically using accumulated knowledge.
+
+####################################################################################################
+MISSION COMPLETION CRITERIA
+####################################################################################################
+
+The mission shall only be considered COMPLETE when
+
+✓ Product Landing Engine implemented
+
+✓ Five landing pages generated
+
+✓ All pages share identical corporate identity
+
+✓ All pages generated through reusable components
+
+✓ Repository integration completed
+
+✓ Reports generated
+
+✓ Validation PASS
+
+✓ SEO PASS
+
+✓ Knowledge Hub updated
+
+✓ Enterprise Memory updated
+
+✓ Corporate Design System updated
+
+✓ Landing Engine ready to generate future products without additional development.
+
+END OF MISSION
+####################################################################################################

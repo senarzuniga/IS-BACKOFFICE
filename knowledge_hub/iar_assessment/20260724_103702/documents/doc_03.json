@@ -1,0 +1,1414 @@
+{
+  "source_file": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\PRODUCTO\\ALMACEN INTELIGENTE\\IAR\\GrowSpace_Evaluacion_RTLS.pdf",
+  "supplier": "GrowSpace",
+  "technologies": [
+    "UWB",
+    "BLE",
+    "Vision"
+  ],
+  "methods": [
+    "TDoA",
+    "Trilateration"
+  ],
+  "pages": [
+    {
+      "page": 1,
+      "text": "DOCUMENTO TÉCNICO DE PROYECTO\nGrowSpace RTLS UWB\nTodo lo necesario para el sistema de localización de bobinas\nHardware, software, flujo de datos, integración con app Android y plan de implementación\nCaso: seguimiento en tiempo real de bobinas de papel en almacén, con gemelo digital 3D en tablet\nSolución seleccionada: GrowSpace (Freegrow Co., Ltd.)\nMotivo: única opción verificada que entrega coordenadas X, Y, Z sin licencias recurrentes\nDocumento interno — uso confidencial",
+      "images": 0,
+      "tables": 0,
+      "preview": null
+    },
+    {
+      "page": 2,
+      "text": "Índice de contenidos\n1. Resumen ejecutivo y por qué GrowSpace\n2. Qué es GrowSpace (la compañía)\n3. Arquitectura del sistema y flujo de datos completo\n4. Hardware necesario: kits, anclajes y tags\n5. Datos técnicos: precisión, alcance y el eje Z\n6. El dato clave: JSON, MQTT e integración con Android\n7. Modelo de coste: por qué no hay licencias recurrentes\n8. Lista de la compra para nuestro proyecto\n9. Plan de implementación por fases\n10. Riesgos, limitaciones y checklist para el fabricante\nGrowSpace — Documento técnico de proyecto Página 2 / 15",
+      "images": 0,
+      "tables": 1,
+      "preview": null
+    },
+    {
+      "page": 3,
+      "text": "1. Resumen ejecutivo y por qué GrowSpace\nTras evaluar más de diez proveedores de RTLS UWB (Pozyx, Sewio, Eliko, Inpixon, Navigine, Lansitec,\nLocalino, Leantegra, entre otros), GrowSpace es el único que cumple simultáneamente los dos requisitos\ninnegociables de nuestro proyecto:\nLos dos requisitos que solo GrowSpace cumple a la vez\n1. Entrega coordenadas X, Y, Z ya calculadas — el gateway hace la trilateración y devuelve la posición\nfinal en metros. No hay que programar el cálculo de posición.\n2. Sin licencias recurrentes — se paga el hardware una sola vez (kits con precio público desde 359 $).\nNo hay cuota anual por tag ni por anchor. Si se deja de pagar, no se apaga nada, porque no hay nada que\npagar.\nEl resto de proveedores se divide en dos grupos, y ninguno cumple ambas cosas:\nSin licencia\nGrupo Proveedores X, Y, Z resuelto\nrecurrente\nCorporativos Pozyx, Sewio, Eliko, Sí No — licencia anual\nInpixon\nHardware abierto Lansitec, Localino No — solo Sí\ndistancias\nNuestra elección GrowSpace Sí Sí\nAdemás, GrowSpace es la opción de menor coste de entrada de todo el mercado para una prueba de\nconcepto, con kits documentados y precio público, lo que facilita defender el presupuesto inicial ante un comité\nde decisión.\nLo que hay que tener presente\nGrowSpace no es una solución \"enterprise llave en mano\". Es una plataforma orientada a desarrolladores. Esto\nencaja perfectamente con nuestro caso, porque ya vamos a desarrollar nuestra propia app Android — pero\nimplica que el trabajo de integración lo hace nuestro equipo, no el fabricante. Los detalles y limitaciones se\ncubren en las secciones 9 y 10.\nGrowSpace — Documento técnico de proyecto Página 3 / 15",
+      "images": 0,
+      "tables": 2,
+      "preview": null
+    },
+    {
+      "page": 4,
+      "text": "2. Qué es GrowSpace\nGrowSpace es la marca de producto de Freegrow Co., Ltd., empresa surcoreana con sede en Busan,\nespecializada en sistemas de posicionamiento indoor con tecnología UWB. A diferencia de Pozyx o Sewio, se\nposiciona explícitamente como una plataforma de desarrollo dirigida a desarrolladores, investigadores y\nequipos de I+D.\nEmpresa matriz Freegrow Co., Ltd.\nSede Busan, Corea del Sur\nMarca de producto GrowSpace\nTecnología UWB (Ultra-Wideband), método TWR (Two-Way Ranging)\nPerfil Plataforma de desarrollo (developers, investigación, I+D)\nFormato de datos JSON vía MQTT, coordenadas X, Y, Z en metros\nDocumentación Pública en GitBook (FAQ técnico y tópicos MQTT)\nTWR frente a TDoA: por qué importa\nGrowSpace usa TWR (Two-Way Ranging) en lugar del TDoA que emplean Pozyx o Sewio. La ventaja práctica\nes que no requiere sincronización por cable entre anclajes, lo que simplifica mucho la instalación: cada\nanclaje es más independiente. La contrapartida habitual del TWR es una frecuencia de actualización algo menor\na igualdad de anclajes, pero para bobinas que se reubican (no que se mueven a gran velocidad) esto no es un\nproblema.\nCasos de uso donde GrowSpace está probado\n• Logística y manufactura: seguimiento de activos y materiales en planta.\n• Gestión de instalaciones y espacios inteligentes.\n• Eventos y exposiciones (el Mobile Kit está pensado para despliegues temporales).\n• Investigación y formación universitaria (recomiendan el Creator Kit Q1 para laboratorios).\nGrowSpace — Documento técnico de proyecto Página 4 / 15",
+      "images": 0,
+      "tables": 1,
+      "preview": null
+    },
+    {
+      "page": 5,
+      "text": "3. Arquitectura del sistema y flujo de datos completo\nEste es el recorrido exacto desde que una bobina emite su señal hasta que el técnico la ve en la tablet:\nPaso 1 — Tag en la bobina (emisión)\n• Cada bobina lleva un tag UWB que emite pulsos de radio ultracortos (blinks) a intervalos configurables\n(hasta 10 Hz).\n• Cada blink incluye el ID único del tag, que asociamos a una bobina concreta.\nPaso 2 — Anclajes fijos (captura)\n• Los anclajes instalados en la sala (mínimo 4 para 3D, a distintas alturas) reciben la señal del tag mediante\nTWR.\n• Cada comunicación tag–anchor produce una medición de distancia.\n• Los anclajes no necesitan cableado de sincronización entre ellos (ventaja del TWR).\nPaso 3 — Gateway (cálculo de posición)\n• El gateway de GrowSpace recibe las distancias y calcula la posición X, Y, Z en metros mediante\ntrilateración.\n• Este es el punto diferencial: el cálculo lo hace el gateway, no nuestro software. Nosotros recibimos la\ncoordenada ya resuelta.\n• El gateway publica el resultado en formato JSON sobre MQTT.\nPaso 4 — App Android (visualización)\n• La tablet del técnico se conecta al gateway por la red Wi-Fi local.\n• La app se suscribe al tópico MQTT y recibe el JSON con las coordenadas de cada bobina.\n• La app dibuja cada bobina en su posición dentro del modelo 3D del almacén (construido a escala real con\nlas medidas de la sala).\nResumen del flujo en una línea\nTag en bobina → Anclajes (miden distancias) → Gateway (calcula X,Y,Z) → MQTT/JSON → App Android\n(pinta la bobina en 3D)\nGrowSpace — Documento técnico de proyecto Página 5 / 15",
+      "images": 0,
+      "tables": 1,
+      "preview": null
+    },
+    {
+      "page": 6,
+      "text": "4. Hardware necesario: kits, anclajes y tags\nGrowSpace publica precios concretos en su tienda online, algo poco habitual en este sector. Estos son los tres\nkits disponibles:\nGateway / Precio\nKit Anclajes Uso recomendado\nListener (sin IVA)\nCreator Kit Q1 3 anclajes Listener Pruebas básicas, 359 $\nincluido aprendizaje, una sola\nzona\nCreator Expansion Kit 4 anclajes Gateway Espacios más grandes o 570 $\nincluido varias zonas, PoC realista\nMobile Kit N1 3 anclajes Vía Demos, eventos, sin Desde\nmóviles smartphone / instalación fija 390 $\nSDK\nKit recomendado para nuestro proyecto\nEl Creator Expansion Kit (570 $) es el mínimo viable para nuestro caso, porque incluye 4 anclajes (el\nmínimo para 3D) y el gateway (imprescindible para que el cálculo de posición y la publicación MQTT\nfuncionen; el \"Listener\" del kit básico es solo para pruebas por USB conectado a un PC).\nNota importante sobre la oferta actual: la web de GrowSpace muestra también un \"UWB Creator Kit\" con 4 anclajes + 6 tags de\ndesarrollador, que se solapa en nombre con el Creator Kit Q1 (3 anclajes + 1 tag + Listener). Al pedir presupuesto hay que aclarar\nexactamente qué versión corresponde al precio citado y cuántos tags incluye.\nLa diferencia crítica: Listener vs Gateway\nComponente Para qué sirve ¿Nos vale?\nListener Se conecta por USB a un PC. Solo para No para producción\npruebas de laboratorio.\nGateway Se conecta por Wi-Fi/LAN. Calcula la posición y Sí — es el que\npublica JSON por MQTT. necesitamos\nGrowSpace — Documento técnico de proyecto Página 6 / 15",
+      "images": 0,
+      "tables": 3,
+      "preview": null
+    },
+    {
+      "page": 7,
+      "text": "5. Datos técnicos: precisión, alcance y el eje Z\nPrecisión y alcance\nPrecisión media indoor 10–30 cm\nPrecisión Creator Kit Q1 Menos de 10 cm de error en condiciones óptimas\nPrecisión Creator Expansion Kit Dentro de 30 cm\nEspaciado de anclajes recomendado Hasta 15 m indoor\nAlcance máximo con línea de visión 25 m\nFrecuencia de actualización máxima Hasta 10 Hz\nCapacidad del gateway Hasta 150 comunicaciones/segundo (15 tags a 10 Hz, o 150 tags a 1 Hz)\nCobertura típica 400–800 m² según kit\nEl eje Z: el punto más importante para bobinas apiladas\nEl eje vertical (Z) es el reto técnico central de nuestro proyecto, porque las bobinas están de pie, a distintas\nalturas y potencialmente apiladas. Esto no lo resuelve ningún fabricante \"por arte de magia\": depende de cómo\nse distribuyan los anclajes en altura.\nAnclajes mínimos para\nFabricante Observación\n3D\nGrowSpace 4 o más Más anclajes mejoran precisión y\nestabilidad\nPozyx 4 3D fiable solo con buena separación en Z\nEliko 6 Los más bajos sufren obstrucciones\nRegla de oro para el eje Z (válida para cualquier UWB)\nPara que la coordenada Z sea fiable, los anclajes deben estar a alturas claramente distintas —\nidealmente algunos cerca del techo y otros a media altura (en columnas o estanterías). Si todos los\nanclajes están en el techo al mismo nivel, la X y la Y saldrán bien pero la Z será imprecisa. Cuanto mayor\nsea la diferencia de altura entre el anclaje más alto y el más bajo, mejor será la precisión vertical.\nRecomendaciones del fabricante sobre el entorno\n• Evitar metal y cristal cerca de los anclajes: pueden causar reflexión/interferencia multipath. En nuestro\ncaso las bobinas son de papel (bajo riesgo), pero conviene revisar si la sala tiene estructura o estanterías\nmetálicas.\n• Montaje en techo o paredes altas: mejora la estabilidad de la señal y la cobertura.\n• Distribución en cuadrado o rectángulo: disposición recomendada para maximizar cobertura.\nGrowSpace — Documento técnico de proyecto Página 7 / 15",
+      "images": 0,
+      "tables": 3,
+      "preview": null
+    },
+    {
+      "page": 8,
+      "text": "• Al menos 10 cm de separación entre el anclaje y la pared (especificación del bracket).\nGrowSpace — Documento técnico de proyecto Página 8 / 15",
+      "images": 0,
+      "tables": 0,
+      "preview": null
+    },
+    {
+      "page": 9,
+      "text": "6. El dato clave: JSON, MQTT e integración con\nAndroid\nEste es el apartado más importante para el desarrollo, porque define exactamente cómo nuestra app Android\nrecibe las posiciones. GrowSpace entrega los datos en tiempo real por MQTT en formato JSON, con\ncoordenadas X, Y, Z en metros. La estructura es un array de objetos, uno por tag, agrupado bajo un\ngatewayID .\nEjemplo real del JSON recibido\n{\n\"gatewayID\": \"GR209C\",\n\"tags\": [\n{ \"id\": \"GR2eba\", \"panID\": \"0001\", \"x\": -4.45, \"y\": -0.19, \"z\": -2.22 },\n{ \"id\": \"GR2ec1\", \"panID\": \"0001\", \"x\": 1.80, \"y\": 3.42, \"z\": 0.95 }\n]\n}\nCada objeto del array tags es una bobina. Los campos x , y , z vienen ya calculados — nuestra app solo\ntiene que leerlos y pintar.\nCampos del JSON\nCampo Tipo Para qué lo usamos\ngatewayID string Identifica el gateway (útil si hay varios en el almacén)\ntags[] array Lista de todas las bobinas detectadas\nid string ID único del tag → lo asociamos a una bobina concreta\npanID string Identificador de la red UWB\nx / y / z float (metros) Posición 3D → pintar la bobina en el modelo\nTópicos MQTT disponibles\nTipo de dato Formato del tópico\nConfiguración del gateway uwb/gateway/config/{projectId}/{deviceId}\nPosición de tags y anclajes uwb/gateway/devices/{projectId}/{deviceId}\nAviso de arranque del gateway uwb/gateway/Start/{projectId}/{deviceId}\nGrowSpace — Documento técnico de proyecto Página 9 / 15",
+      "images": 0,
+      "tables": 2,
+      "preview": null
+    },
+    {
+      "page": 10,
+      "text": "Integración con la app Android\nAl usar MQTT estándar, GrowSpace es compatible con cualquier cliente MQTT: en Android usaríamos\nuna librería MQTT para Java/Kotlin (por ejemplo Eclipse Paho). El patrón es idéntico al de Pozyx: la app\nse suscribe al tópico devices , deserializa el JSON, itera el array tags y actualiza la posición 3D de\ncada bobina.\nNo existe un SDK específico para Unity/Android por parte de GrowSpace, pero al ser MQTT + JSON\nestándar el desarrollo es directo. Si se usara Unity como motor 3D dentro de la app, se puede adaptar el\nejemplo público de Pozyx-Unity-MQTT cambiando el formato del JSON.\nConsideraciones de desarrollo para la app\n• Conversión de ejes: el eje \"vertical\" en el JSON es z , pero en muchos motores 3D (Unity) el vertical es y .\nHay que mapear los ejes correctamente al pintar.\n• Offset del tag: el sistema posiciona el tag, no el centro de la bobina. Si el tag va pegado en un lateral,\nconviene aplicar un pequeño desplazamiento en la app para que la bobina aparezca centrada en su posición\nreal.\n• Tamaño de bobina: mantener una tabla que relacione cada id de tag con el diámetro/altura real de su\nbobina, para escalar correctamente el cilindro en el modelo 3D.\nGrowSpace — Documento técnico de proyecto Página 10 / 15",
+      "images": 0,
+      "tables": 1,
+      "preview": null
+    },
+    {
+      "page": 11,
+      "text": "7. Modelo de coste: por qué no hay licencias\nrecurrentes\nEste es el argumento económico central que motivó la elección de GrowSpace. El modelo es de hardware\nabierto sin licencia de software recurrente:\nCorporativos (Pozyx/Sewio/\nConcepto GrowSpace\nEliko)\nInversión inicial Baja (solo hardware, desde 359– Alta (hardware + licencia)\n570 $)\nCuota anual por tag Ninguna Habitual (35–50 € por tag/año)\nCuota anual de plataforma Ninguna Sí (% sobre el software o\nsuscripción)\nSi se deja de pagar Sin impacto — el hardware es El sistema puede dejar de\npropio funcionar\nDónde corre el cálculo En el gateway local (comprado) En servidor/plataforma con licencia\nTraducción práctica\nCon GrowSpace, el coste total del proyecto en software recurrente es cero. Se compra el hardware una\nvez y el gateway calcula las posiciones sin cuotas. El coste se traslada al esfuerzo de desarrollo de\nnuestra app — que de todos modos íbamos a construir. Es exactamente el reparto que nos interesa.\nEstimación de coste de hardware (orientativa)\nCantidad\nElemento Notas\nestimada\nCreator Expansion Kit 1 (base) 4 anclajes + gateway + tags de muestra — 570 $\nAnclajes adicionales 2 o más (para Z) Para tener anclajes a distintas alturas; precio a cotizar\nTags adicionales 1 por bobina Precio por tag a cotizar (no público por unidad)\nSwitch de red PoE 1 No lo suministra GrowSpace — cualquier switch\nestándar\nMini-PC / servidor 0–1 Solo si se quiere un broker MQTT propio; a confirmar\n(ver sección 10)\nGrowSpace — Documento técnico de proyecto Página 11 / 15",
+      "images": 0,
+      "tables": 3,
+      "preview": null
+    },
+    {
+      "page": 12,
+      "text": "8. Lista de la compra para nuestro proyecto\nComponentes necesarios para un almacén de menos de 500 m² con seguimiento 3D de bobinas:\nComponente Función Estado\nCreator Expansion Kit Base: 4 anclajes + gateway + tags de muestra Comprar (570 $)\nAnclajes extra (2+) Añadir alturas distintas para resolver el eje Z Cotizar\nTags UWB Uno por cada bobina a rastrear Cotizar según nº de\nbobinas\nSistema de fijación Adhesivo/soporte para pegar el tag a la bobina Definir con pruebas\nde papel\nSwitch PoE Alimentar y conectar los anclajes Compra estándar\nRed Wi-Fi en planta Conectar la tablet al gateway Verificar cobertura\nTablet Android Dispositivo del técnico con la app Ya previsto\nApp Android (desarrollo propio) Cliente MQTT + visor 3D del almacén Desarrollar\nModelo 3D del almacén Sala a escala real con medidas reales Construir en el motor 3D\nGrowSpace — Documento técnico de proyecto Página 12 / 15",
+      "images": 0,
+      "tables": 1,
+      "preview": null
+    },
+    {
+      "page": 13,
+      "text": "9. Plan de implementación por fases\nFase 0 — Preparación (antes de comprar)\n• Medir el almacén (largo, ancho, alto) y fotografiar cómo se almacenan las bobinas.\n• Enviar esas fotos y medidas a GrowSpace para validar la configuración de anclajes.\n• Confirmar con el fabricante los puntos abiertos del checklist (sección 10).\nFase 1 — Prueba de concepto (PoC)\n• Comprar el Creator Expansion Kit (570 $) + anclajes extra para el eje Z.\n• Montar los anclajes a distintas alturas en una zona reducida del almacén.\n• Pegar tags a un pequeño grupo de bobinas de prueba.\n• Verificar que el gateway publica el JSON correcto por MQTT y que las coordenadas X, Y, Z son coherentes\ncon la realidad — especialmente el eje Z con bobinas apiladas.\nFase 2 — Desarrollo de la app\n• Implementar el cliente MQTT en Android (suscripción al tópico devices ).\n• Deserializar el JSON e iterar el array de tags.\n• Construir el modelo 3D del almacén a escala real.\n• Pintar cada bobina en su posición, aplicando conversión de ejes y offset del tag.\nFase 3 — Despliegue completo\n• Escalar el número de anclajes para cubrir todo el almacén (espaciado hasta 15 m).\n• Etiquetar todas las bobinas.\n• Validar precisión en condiciones reales de densidad y apilamiento.\n• Formar al técnico en el uso de la tablet.\nGrowSpace — Documento técnico de proyecto Página 13 / 15",
+      "images": 0,
+      "tables": 0,
+      "preview": null
+    },
+    {
+      "page": 14,
+      "text": "10. Riesgos, limitaciones y checklist para el fabricante\nLimitaciones conocidas de GrowSpace\n• Sin integración ERP/MES/WMS: si el proyecto escala a un sistema de gestión de almacén completo, no\nhay conectores nativos — habría que desarrollarlo sobre el MQTT.\n• Sin actualización de firmware por el usuario: cualquier cambio de firmware requiere contactar con\nGrowSpace.\n• No es solución llave en mano: el desarrollo de la app y la integración son responsabilidad nuestra.\n• Dependencia del gateway: el cálculo de posición ocurre en el gateway; si falla, se cae el posicionamiento\n(punto único de fallo a considerar en salas críticas).\nRiesgos específicos de nuestro caso\n• Oclusión por bobinas apiladas: si el tag queda oculto entre bobinas, puede perderse la línea de visión con\nlos anclajes. Mitigación: buena colocación del tag y suficientes anclajes desde distintos ángulos.\n• Precisión real del eje Z: el mínimo de 4 anclajes es para que el sistema \"funcione\", no garantiza una cifra\nconcreta de error en Z. Hay que validarlo en la PoC.\nChecklist de preguntas para GrowSpace antes de comprar\n1. ¿Qué error real en Z se obtiene con 4 anclajes en una sala pequeña con bobinas apiladas a distintas\nalturas?\n2. ¿El JSON con x, y, z se publica igual en el Creator Expansion Kit (con gateway) que en el modo de\nprueba con Listener?\n3. ¿El gateway publica directamente a un broker MQTT que elijamos nosotros, o hay que pasar por\ninfraestructura/nube de GrowSpace?\n4. ¿Dónde ocurre exactamente el cálculo de posición: en el gateway físico o en un servicio externo?\n5. Precio unitario de tags adicionales y de anclajes sueltos (para el eje Z) por volumen.\n6. ¿El precio público de los kits se mantiene a partir de cierto número de unidades?\n7. Método de fijación recomendado del tag a una bobina de papel y su efecto en la señal.\n8. Autonomía real de batería del tag a la frecuencia de actualización que necesitemos.\n9. ¿Existe una ruta de escalado de kit de desarrollo a despliegue industrial dentro de GrowSpace?\nConclusión\nGrowSpace es la única opción verificada que nos da coordenadas X, Y, Z sin licencias recurrentes,\ncon el coste de entrada más bajo del mercado y datos por MQTT/JSON estándar directamente\ncompatibles con nuestra app Android. Las limitaciones (sin ERP nativo, sin firmware por usuario, no llave\nen mano) encajan con nuestro proyecto porque ya vamos a desarrollar software propio. El único punto a\nvalidar seriamente en la PoC es la precisión real del eje Z con bobinas apiladas — que es un reto de\ntodos los UWB, no exclusivo de GrowSpace.\nGrowSpace — Documento técnico de proyecto Página 14 / 15",
+      "images": 0,
+      "tables": 2,
+      "preview": null
+    },
+    {
+      "page": 15,
+      "text": "Fuentes: sitio web oficial de GrowSpace / Freegrow (grow-space.io), documentación técnica pública del Creator Kit Q1 (FAQ en\nGitBook), tópicos MQTT documentados por el fabricante, y análisis comparativo propio realizado sobre más de diez proveedores RTLS\nUWB. Documento interno — uso confidencial.\nGrowSpace — Documento técnico de proyecto Página 15 / 15",
+      "images": 0,
+      "tables": 0,
+      "preview": null
+    }
+  ],
+  "tables": [
+    {
+      "page": 2,
+      "table_id": "p2_t1",
+      "rows": [
+        [
+          "1. Resumen ejecutivo y por qué GrowSpace"
+        ],
+        [
+          "2. Qué es GrowSpace (la compañía)"
+        ],
+        [
+          "3. Arquitectura del sistema y flujo de datos completo"
+        ],
+        [
+          "4. Hardware necesario: kits, anclajes y tags"
+        ],
+        [
+          "5. Datos técnicos: precisión, alcance y el eje Z"
+        ],
+        [
+          "6. El dato clave: JSON, MQTT e integración con Android"
+        ],
+        [
+          "7. Modelo de coste: por qué no hay licencias recurrentes"
+        ],
+        [
+          "8. Lista de la compra para nuestro proyecto"
+        ],
+        [
+          "9. Plan de implementación por fases"
+        ],
+        [
+          "10. Riesgos, limitaciones y checklist para el fabricante"
+        ]
+      ]
+    },
+    {
+      "page": 3,
+      "table_id": "p3_t1",
+      "rows": [
+        [
+          "",
+          "Los dos requisitos que solo GrowSpace cumple a la vez\n1. Entrega coordenadas X, Y, Z ya calculadas — el gateway hace la trilateración y devuelve la posición\nfinal en metros. No hay que programar el cálculo de posición.\n2. Sin licencias recurrentes — se paga el hardware una sola vez (kits con precio público desde 359 $).\nNo hay cuota anual por tag ni por anchor. Si se deja de pagar, no se apaga nada, porque no hay nada que\npagar."
+        ]
+      ]
+    },
+    {
+      "page": 3,
+      "table_id": "p3_t2",
+      "rows": [
+        [
+          "Grupo",
+          "Proveedores",
+          "X, Y, Z resuelto",
+          "Sin licencia\nrecurrente"
+        ],
+        [
+          "Corporativos",
+          "Pozyx, Sewio, Eliko,\nInpixon",
+          "Sí",
+          "No — licencia anual"
+        ],
+        [
+          "Hardware abierto",
+          "Lansitec, Localino",
+          "No — solo\ndistancias",
+          "Sí"
+        ],
+        [
+          "Nuestra elección",
+          "GrowSpace",
+          "Sí",
+          "Sí"
+        ]
+      ]
+    },
+    {
+      "page": 4,
+      "table_id": "p4_t1",
+      "rows": [
+        [
+          "Empresa matriz",
+          null
+        ],
+        [
+          "Sede",
+          "Busan, Corea del Sur"
+        ],
+        [
+          "Marca de producto",
+          "GrowSpace"
+        ],
+        [
+          "Tecnología",
+          "UWB (Ultra-Wideband), método TWR (Two-Way Ranging)"
+        ],
+        [
+          "Perfil",
+          "Plataforma de desarrollo (developers, investigación, I+D)"
+        ],
+        [
+          "Formato de datos",
+          "JSON vía MQTT, coordenadas X, Y, Z en metros"
+        ],
+        [
+          "Documentación",
+          "Pública en GitBook (FAQ técnico y tópicos MQTT)"
+        ]
+      ]
+    },
+    {
+      "page": 5,
+      "table_id": "p5_t1",
+      "rows": [
+        [
+          "",
+          "Resumen del flujo en una línea\nTag en bobina → Anclajes (miden distancias) → Gateway (calcula X,Y,Z) → MQTT/JSON → App Android\n(pinta la bobina en 3D)"
+        ]
+      ]
+    },
+    {
+      "page": 6,
+      "table_id": "p6_t1",
+      "rows": [
+        [
+          "Kit",
+          "Anclajes",
+          "Gateway /\nListener",
+          "Uso recomendado",
+          "Precio\n(sin IVA)"
+        ],
+        [
+          "Creator Kit Q1",
+          "3 anclajes",
+          "Listener\nincluido",
+          "Pruebas básicas,\naprendizaje, una sola\nzona",
+          "359 $"
+        ],
+        [
+          "Creator Expansion Kit",
+          "4 anclajes",
+          "Gateway\nincluido",
+          "Espacios más grandes o\nvarias zonas, PoC realista",
+          "570 $"
+        ],
+        [
+          "Mobile Kit N1",
+          "3 anclajes\nmóviles",
+          "Vía\nsmartphone /\nSDK",
+          "Demos, eventos, sin\ninstalación fija",
+          "Desde\n390 $"
+        ]
+      ]
+    },
+    {
+      "page": 6,
+      "table_id": "p6_t2",
+      "rows": [
+        [
+          "",
+          "Kit recomendado para nuestro proyecto\nEl Creator Expansion Kit (570 $) es el mínimo viable para nuestro caso, porque incluye 4 anclajes (el\nmínimo para 3D) y el gateway (imprescindible para que el cálculo de posición y la publicación MQTT\nfuncionen; el \"Listener\" del kit básico es solo para pruebas por USB conectado a un PC)."
+        ]
+      ]
+    },
+    {
+      "page": 6,
+      "table_id": "p6_t3",
+      "rows": [
+        [
+          "Componente",
+          "Para qué sirve",
+          "¿Nos vale?"
+        ],
+        [
+          "Listener",
+          "Se conecta por USB a un PC. Solo para\npruebas de laboratorio.",
+          "No para producción"
+        ],
+        [
+          "Gateway",
+          "Se conecta por Wi-Fi/LAN. Calcula la posición y\npublica JSON por MQTT.",
+          "Sí — es el que\nnecesitamos"
+        ]
+      ]
+    },
+    {
+      "page": 7,
+      "table_id": "p7_t1",
+      "rows": [
+        [
+          "Precisión media indoor",
+          null
+        ],
+        [
+          "Precisión Creator Kit Q1",
+          "Menos de 10 cm de error en condiciones óptimas"
+        ],
+        [
+          "Precisión Creator Expansion Kit",
+          "Dentro de 30 cm"
+        ],
+        [
+          "Espaciado de anclajes recomendado",
+          "Hasta 15 m indoor"
+        ],
+        [
+          "Alcance máximo con línea de visión",
+          "25 m"
+        ],
+        [
+          "Frecuencia de actualización máxima",
+          "Hasta 10 Hz"
+        ],
+        [
+          "Capacidad del gateway",
+          "Hasta 150 comunicaciones/segundo (15 tags a 10 Hz, o 150 tags a 1 Hz)"
+        ],
+        [
+          "Cobertura típica",
+          "400–800 m² según kit"
+        ]
+      ]
+    },
+    {
+      "page": 7,
+      "table_id": "p7_t2",
+      "rows": [
+        [
+          "Fabricante",
+          "Anclajes mínimos para\n3D",
+          "Observación"
+        ],
+        [
+          "GrowSpace",
+          "4 o más",
+          "Más anclajes mejoran precisión y\nestabilidad"
+        ],
+        [
+          "Pozyx",
+          "4",
+          "3D fiable solo con buena separación en Z"
+        ],
+        [
+          "Eliko",
+          "6",
+          "Los más bajos sufren obstrucciones"
+        ]
+      ]
+    },
+    {
+      "page": 7,
+      "table_id": "p7_t3",
+      "rows": [
+        [
+          "",
+          "Regla de oro para el eje Z (válida para cualquier UWB)\nPara que la coordenada Z sea fiable, los anclajes deben estar a alturas claramente distintas —\nidealmente algunos cerca del techo y otros a media altura (en columnas o estanterías). Si todos los\nanclajes están en el techo al mismo nivel, la X y la Y saldrán bien pero la Z será imprecisa. Cuanto mayor\nsea la diferencia de altura entre el anclaje más alto y el más bajo, mejor será la precisión vertical."
+        ]
+      ]
+    },
+    {
+      "page": 9,
+      "table_id": "p9_t1",
+      "rows": [
+        [
+          "Campo",
+          "Tipo",
+          "Para qué lo usamos"
+        ],
+        [
+          "gatewayID",
+          "string",
+          "Identifica el gateway (útil si hay varios en el almacén)"
+        ],
+        [
+          "tags[]",
+          "array",
+          "Lista de todas las bobinas detectadas"
+        ],
+        [
+          "id",
+          "string",
+          "ID único del tag → lo asociamos a una bobina concreta"
+        ],
+        [
+          "panID",
+          "string",
+          "Identificador de la red UWB"
+        ],
+        [
+          "x / y / z",
+          "float (metros)",
+          "Posición 3D → pintar la bobina en el modelo"
+        ]
+      ]
+    },
+    {
+      "page": 9,
+      "table_id": "p9_t2",
+      "rows": [
+        [
+          "Tipo de dato",
+          "Formato del tópico"
+        ],
+        [
+          "Configuración del gateway",
+          "uwb/gateway/config/{projectId}/{deviceId}"
+        ],
+        [
+          "Posición de tags y anclajes",
+          "uwb/gateway/devices/{projectId}/{deviceId}"
+        ],
+        [
+          "Aviso de arranque del gateway",
+          "uwb/gateway/Start/{projectId}/{deviceId}"
+        ]
+      ]
+    },
+    {
+      "page": 10,
+      "table_id": "p10_t1",
+      "rows": [
+        [
+          "",
+          "Integración con la app Android\nAl usar MQTT estándar, GrowSpace es compatible con cualquier cliente MQTT: en Android usaríamos\nuna librería MQTT para Java/Kotlin (por ejemplo Eclipse Paho). El patrón es idéntico al de Pozyx: la app\nse suscribe al tópico devices , deserializa el JSON, itera el array tags y actualiza la posición 3D de\ncada bobina.\nNo existe un SDK específico para Unity/Android por parte de GrowSpace, pero al ser MQTT + JSON\nestándar el desarrollo es directo. Si se usara Unity como motor 3D dentro de la app, se puede adaptar el\nejemplo público de Pozyx-Unity-MQTT cambiando el formato del JSON."
+        ]
+      ]
+    },
+    {
+      "page": 11,
+      "table_id": "p11_t1",
+      "rows": [
+        [
+          "Concepto",
+          "GrowSpace",
+          "Corporativos (Pozyx/Sewio/\nEliko)"
+        ],
+        [
+          "Inversión inicial",
+          "Baja (solo hardware, desde 359–\n570 $)",
+          "Alta (hardware + licencia)"
+        ],
+        [
+          "Cuota anual por tag",
+          "Ninguna",
+          "Habitual (35–50 € por tag/año)"
+        ],
+        [
+          "Cuota anual de plataforma",
+          "Ninguna",
+          "Sí (% sobre el software o\nsuscripción)"
+        ],
+        [
+          "Si se deja de pagar",
+          "Sin impacto — el hardware es\npropio",
+          "El sistema puede dejar de\nfuncionar"
+        ],
+        [
+          "Dónde corre el cálculo",
+          "En el gateway local (comprado)",
+          "En servidor/plataforma con licencia"
+        ]
+      ]
+    },
+    {
+      "page": 11,
+      "table_id": "p11_t2",
+      "rows": [
+        [
+          "",
+          "Traducción práctica\nCon GrowSpace, el coste total del proyecto en software recurrente es cero. Se compra el hardware una\nvez y el gateway calcula las posiciones sin cuotas. El coste se traslada al esfuerzo de desarrollo de\nnuestra app — que de todos modos íbamos a construir. Es exactamente el reparto que nos interesa."
+        ]
+      ]
+    },
+    {
+      "page": 11,
+      "table_id": "p11_t3",
+      "rows": [
+        [
+          "Elemento",
+          "Cantidad\nestimada",
+          "Notas"
+        ],
+        [
+          "Creator Expansion Kit",
+          "1 (base)",
+          "4 anclajes + gateway + tags de muestra — 570 $"
+        ],
+        [
+          "Anclajes adicionales",
+          "2 o más (para Z)",
+          "Para tener anclajes a distintas alturas; precio a cotizar"
+        ],
+        [
+          "Tags adicionales",
+          "1 por bobina",
+          "Precio por tag a cotizar (no público por unidad)"
+        ],
+        [
+          "Switch de red PoE",
+          "1",
+          "No lo suministra GrowSpace — cualquier switch\nestándar"
+        ],
+        [
+          "Mini-PC / servidor",
+          "0–1",
+          "Solo si se quiere un broker MQTT propio; a confirmar\n(ver sección 10)"
+        ]
+      ]
+    },
+    {
+      "page": 12,
+      "table_id": "p12_t1",
+      "rows": [
+        [
+          "Componente",
+          "Función",
+          "Estado"
+        ],
+        [
+          "Creator Expansion Kit",
+          "Base: 4 anclajes + gateway + tags de muestra",
+          "Comprar (570 $)"
+        ],
+        [
+          "Anclajes extra (2+)",
+          "Añadir alturas distintas para resolver el eje Z",
+          "Cotizar"
+        ],
+        [
+          "Tags UWB",
+          "Uno por cada bobina a rastrear",
+          "Cotizar según nº de\nbobinas"
+        ],
+        [
+          "Sistema de fijación",
+          "Adhesivo/soporte para pegar el tag a la bobina\nde papel",
+          "Definir con pruebas"
+        ],
+        [
+          "Switch PoE",
+          "Alimentar y conectar los anclajes",
+          "Compra estándar"
+        ],
+        [
+          "Red Wi-Fi en planta",
+          "Conectar la tablet al gateway",
+          "Verificar cobertura"
+        ],
+        [
+          "Tablet Android",
+          "Dispositivo del técnico con la app",
+          "Ya previsto"
+        ],
+        [
+          "App Android (desarrollo propio)",
+          "Cliente MQTT + visor 3D del almacén",
+          "Desarrollar"
+        ],
+        [
+          "Modelo 3D del almacén",
+          "Sala a escala real con medidas reales",
+          "Construir en el motor 3D"
+        ]
+      ]
+    },
+    {
+      "page": 14,
+      "table_id": "p14_t1",
+      "rows": [
+        [
+          "",
+          "Checklist de preguntas para GrowSpace antes de comprar\n1. ¿Qué error real en Z se obtiene con 4 anclajes en una sala pequeña con bobinas apiladas a distintas\nalturas?\n2. ¿El JSON con x, y, z se publica igual en el Creator Expansion Kit (con gateway) que en el modo de\nprueba con Listener?\n3. ¿El gateway publica directamente a un broker MQTT que elijamos nosotros, o hay que pasar por\ninfraestructura/nube de GrowSpace?\n4. ¿Dónde ocurre exactamente el cálculo de posición: en el gateway físico o en un servicio externo?\n5. Precio unitario de tags adicionales y de anclajes sueltos (para el eje Z) por volumen.\n6. ¿El precio público de los kits se mantiene a partir de cierto número de unidades?\n7. Método de fijación recomendado del tag a una bobina de papel y su efecto en la señal.\n8. Autonomía real de batería del tag a la frecuencia de actualización que necesitemos.\n9. ¿Existe una ruta de escalado de kit de desarrollo a despliegue industrial dentro de GrowSpace?"
+        ]
+      ]
+    },
+    {
+      "page": 14,
+      "table_id": "p14_t2",
+      "rows": [
+        [
+          "",
+          "Conclusión\nGrowSpace es la única opción verificada que nos da coordenadas X, Y, Z sin licencias recurrentes,\ncon el coste de entrada más bajo del mercado y datos por MQTT/JSON estándar directamente\ncompatibles con nuestra app Android. Las limitaciones (sin ERP nativo, sin firmware por usuario, no llave\nen mano) encajan con nuestro proyecto porque ya vamos a desarrollar software propio. El único punto a\nvalidar seriamente en la PoC es la precisión real del eje Z con bobinas apiladas — que es un reto de\ntodos los UWB, no exclusivo de GrowSpace."
+        ]
+      ]
+    }
+  ],
+  "images": [],
+  "claims": [
+    {
+      "claim": "DOCUMENTO TÉCNICO DE PROYECTO\nGrowSpace RTLS UWB\nTodo lo necesario para el sistema de localización de bobinas\nHardware, software, flujo de datos, integración con app Android y plan de implementación\nCaso: seguimiento en tiempo real de bobinas de papel en almacén, con gemelo digital 3D en tablet\nSolución seleccionada: GrowSpace (Freegrow Co., Ltd.)\nMotivo: única opción verificada que entrega coordenadas X, Y, Z sin licencias recurrentes\nDocumento interno — uso confidencial",
+      "claim_type": "Verified Technical Fact",
+      "source_file": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\PRODUCTO\\ALMACEN INTELIGENTE\\IAR\\GrowSpace_Evaluacion_RTLS.pdf",
+      "source_page": 1,
+      "supplier": "GrowSpace",
+      "validation_state": "Partially Verified",
+      "independent_evidence": [
+        {
+          "name": "Pozyx Documentation",
+          "url": "https://www.pozyx.io/documentation",
+          "kind": "official_manufacturer_documentation",
+          "hits": 2
+        }
+      ],
+      "confidence": 0.65
+    },
+    {
+      "claim": "Hardware necesario: kits, anclajes y tags\n5.",
+      "claim_type": "Engineering Assumption",
+      "source_file": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\PRODUCTO\\ALMACEN INTELIGENTE\\IAR\\GrowSpace_Evaluacion_RTLS.pdf",
+      "source_page": 2,
+      "supplier": "GrowSpace",
+      "validation_state": "Partially Verified",
+      "independent_evidence": [],
+      "confidence": 0.55
+    },
+    {
+      "claim": "El dato clave: JSON, MQTT e integración con Android\n7.",
+      "claim_type": "Verified Technical Fact",
+      "source_file": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\PRODUCTO\\ALMACEN INTELIGENTE\\IAR\\GrowSpace_Evaluacion_RTLS.pdf",
+      "source_page": 2,
+      "supplier": "GrowSpace",
+      "validation_state": "Partially Verified",
+      "independent_evidence": [
+        {
+          "name": "Pozyx Documentation",
+          "url": "https://www.pozyx.io/documentation",
+          "kind": "official_manufacturer_documentation",
+          "hits": 2
+        }
+      ],
+      "confidence": 0.65
+    },
+    {
+      "claim": "Modelo de coste: por qué no hay licencias recurrentes\n8.",
+      "claim_type": "Engineering Assumption",
+      "source_file": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\PRODUCTO\\ALMACEN INTELIGENTE\\IAR\\GrowSpace_Evaluacion_RTLS.pdf",
+      "source_page": 2,
+      "supplier": "GrowSpace",
+      "validation_state": "Partially Verified",
+      "independent_evidence": [],
+      "confidence": 0.55
+    },
+    {
+      "claim": "No hay cuota anual por tag ni por anchor.",
+      "claim_type": "Engineering Assumption",
+      "source_file": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\PRODUCTO\\ALMACEN INTELIGENTE\\IAR\\GrowSpace_Evaluacion_RTLS.pdf",
+      "source_page": 3,
+      "supplier": "GrowSpace",
+      "validation_state": "Partially Verified",
+      "independent_evidence": [],
+      "confidence": 0.55
+    },
+    {
+      "claim": "El resto de proveedores se divide en dos grupos, y ninguno cumple ambas cosas:\nSin licencia\nGrupo Proveedores X, Y, Z resuelto\nrecurrente\nCorporativos Pozyx, Sewio, Eliko, Sí No — licencia anual\nInpixon\nHardware abierto Lansitec, Localino No — solo Sí\ndistancias\nNuestra elección GrowSpace Sí Sí\nAdemás, GrowSpace es la opción de menor coste de entrada de todo el mercado para una prueba de\nconcepto, con kits documentados y precio público, lo que facilita defender el presupuesto inicial ante un comité\nde decisión.",
+      "claim_type": "Verified Technical Fact",
+      "source_file": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\PRODUCTO\\ALMACEN INTELIGENTE\\IAR\\GrowSpace_Evaluacion_RTLS.pdf",
+      "source_page": 3,
+      "supplier": "GrowSpace",
+      "validation_state": "Not Verified",
+      "independent_evidence": [],
+      "confidence": 0.25
+    },
+    {
+      "claim": "Sede Busan, Corea del Sur\nMarca de producto GrowSpace\nTecnología UWB (Ultra-Wideband), método TWR (Two-Way Ranging)\nPerfil Plataforma de desarrollo (developers, investigación, I+D)\nFormato de datos JSON vía MQTT, coordenadas X, Y, Z en metros\nDocumentación Pública en GitBook (FAQ técnico y tópicos MQTT)\nTWR frente a TDoA: por qué importa\nGrowSpace usa TWR (Two-Way Ranging) en lugar del TDoA que emplean Pozyx o Sewio.",
+      "claim_type": "Verified Technical Fact",
+      "source_file": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\PRODUCTO\\ALMACEN INTELIGENTE\\IAR\\GrowSpace_Evaluacion_RTLS.pdf",
+      "source_page": 4,
+      "supplier": "GrowSpace",
+      "validation_state": "Partially Verified",
+      "independent_evidence": [
+        {
+          "name": "Eliko Official",
+          "url": "https://eliko.tech/",
+          "kind": "official_manufacturer_documentation",
+          "hits": 2
+        }
+      ],
+      "confidence": 0.65
+    },
+    {
+      "claim": "Arquitectura del sistema y flujo de datos completo\nEste es el recorrido exacto desde que una bobina emite su señal hasta que el técnico la ve en la tablet:\nPaso 1 — Tag en la bobina (emisión)\n• Cada bobina lleva un tag UWB que emite pulsos de radio ultracortos (blinks) a intervalos configurables\n(hasta 10 Hz).",
+      "claim_type": "Unsupported Claim",
+      "source_file": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\PRODUCTO\\ALMACEN INTELIGENTE\\IAR\\GrowSpace_Evaluacion_RTLS.pdf",
+      "source_page": 5,
+      "supplier": "GrowSpace",
+      "validation_state": "Not Verified",
+      "independent_evidence": [],
+      "confidence": 0.25
+    },
+    {
+      "claim": "• Cada blink incluye el ID único del tag, que asociamos a una bobina concreta.",
+      "claim_type": "Engineering Assumption",
+      "source_file": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\PRODUCTO\\ALMACEN INTELIGENTE\\IAR\\GrowSpace_Evaluacion_RTLS.pdf",
+      "source_page": 5,
+      "supplier": "GrowSpace",
+      "validation_state": "Partially Verified",
+      "independent_evidence": [],
+      "confidence": 0.55
+    },
+    {
+      "claim": "Paso 2 — Anclajes fijos (captura)\n• Los anclajes instalados en la sala (mínimo 4 para 3D, a distintas alturas) reciben la señal del tag mediante\nTWR.",
+      "claim_type": "Engineering Assumption",
+      "source_file": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\PRODUCTO\\ALMACEN INTELIGENTE\\IAR\\GrowSpace_Evaluacion_RTLS.pdf",
+      "source_page": 5,
+      "supplier": "GrowSpace",
+      "validation_state": "Partially Verified",
+      "independent_evidence": [],
+      "confidence": 0.55
+    },
+    {
+      "claim": "• Cada comunicación tag–anchor produce una medición de distancia.",
+      "claim_type": "Engineering Assumption",
+      "source_file": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\PRODUCTO\\ALMACEN INTELIGENTE\\IAR\\GrowSpace_Evaluacion_RTLS.pdf",
+      "source_page": 5,
+      "supplier": "GrowSpace",
+      "validation_state": "Partially Verified",
+      "independent_evidence": [],
+      "confidence": 0.55
+    },
+    {
+      "claim": "• El gateway publica el resultado en formato JSON sobre MQTT.",
+      "claim_type": "Verified Technical Fact",
+      "source_file": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\PRODUCTO\\ALMACEN INTELIGENTE\\IAR\\GrowSpace_Evaluacion_RTLS.pdf",
+      "source_page": 5,
+      "supplier": "GrowSpace",
+      "validation_state": "Verified",
+      "independent_evidence": [
+        {
+          "name": "Pozyx Documentation",
+          "url": "https://www.pozyx.io/documentation",
+          "kind": "official_manufacturer_documentation",
+          "hits": 2
+        },
+        {
+          "name": "NIST UWB Search",
+          "url": "https://www.nist.gov/search?query=UWB+indoor+positioning",
+          "kind": "independent_engineering_reference",
+          "hits": 2
+        }
+      ],
+      "confidence": 0.89
+    },
+    {
+      "claim": "• La app se suscribe al tópico MQTT y recibe el JSON con las coordenadas de cada bobina.",
+      "claim_type": "Verified Technical Fact",
+      "source_file": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\PRODUCTO\\ALMACEN INTELIGENTE\\IAR\\GrowSpace_Evaluacion_RTLS.pdf",
+      "source_page": 5,
+      "supplier": "GrowSpace",
+      "validation_state": "Partially Verified",
+      "independent_evidence": [
+        {
+          "name": "Pozyx Documentation",
+          "url": "https://www.pozyx.io/documentation",
+          "kind": "official_manufacturer_documentation",
+          "hits": 2
+        }
+      ],
+      "confidence": 0.65
+    },
+    {
+      "claim": "• La app dibuja cada bobina en su posición dentro del modelo 3D del almacén (construido a escala real con\nlas medidas de la sala).",
+      "claim_type": "Engineering Assumption",
+      "source_file": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\PRODUCTO\\ALMACEN INTELIGENTE\\IAR\\GrowSpace_Evaluacion_RTLS.pdf",
+      "source_page": 5,
+      "supplier": "GrowSpace",
+      "validation_state": "Partially Verified",
+      "independent_evidence": [],
+      "confidence": 0.55
+    },
+    {
+      "claim": "Resumen del flujo en una línea\nTag en bobina → Anclajes (miden distancias) → Gateway (calcula X,Y,Z) → MQTT/JSON → App Android\n(pinta la bobina en 3D)\nGrowSpace — Documento técnico de proyecto Página 5 / 15",
+      "claim_type": "Verified Technical Fact",
+      "source_file": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\PRODUCTO\\ALMACEN INTELIGENTE\\IAR\\GrowSpace_Evaluacion_RTLS.pdf",
+      "source_page": 5,
+      "supplier": "GrowSpace",
+      "validation_state": "Partially Verified",
+      "independent_evidence": [
+        {
+          "name": "Pozyx Documentation",
+          "url": "https://www.pozyx.io/documentation",
+          "kind": "official_manufacturer_documentation",
+          "hits": 2
+        }
+      ],
+      "confidence": 0.65
+    },
+    {
+      "claim": "Hardware necesario: kits, anclajes y tags\nGrowSpace publica precios concretos en su tienda online, algo poco habitual en este sector.",
+      "claim_type": "Engineering Assumption",
+      "source_file": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\PRODUCTO\\ALMACEN INTELIGENTE\\IAR\\GrowSpace_Evaluacion_RTLS.pdf",
+      "source_page": 6,
+      "supplier": "GrowSpace",
+      "validation_state": "Partially Verified",
+      "independent_evidence": [],
+      "confidence": 0.55
+    },
+    {
+      "claim": "Estos son los tres\nkits disponibles:\nGateway / Precio\nKit Anclajes Uso recomendado\nListener (sin IVA)\nCreator Kit Q1 3 anclajes Listener Pruebas básicas, 359 $\nincluido aprendizaje, una sola\nzona\nCreator Expansion Kit 4 anclajes Gateway Espacios más grandes o 570 $\nincluido varias zonas, PoC realista\nMobile Kit N1 3 anclajes Vía Demos, eventos, sin Desde\nmóviles smartphone / instalación fija 390 $\nSDK\nKit recomendado para nuestro proyecto\nEl Creator Expansion Kit (570 $) es el mínimo viable para nuestro caso, porque incluye 4 anclajes (el\nmínimo para 3D) y el gateway (imprescindible para que el cálculo de posición y la publicación MQTT\nfuncionen; el \"Listener\" del kit básico es solo para pruebas por USB conectado a un PC).",
+      "claim_type": "Verified Technical Fact",
+      "source_file": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\PRODUCTO\\ALMACEN INTELIGENTE\\IAR\\GrowSpace_Evaluacion_RTLS.pdf",
+      "source_page": 6,
+      "supplier": "GrowSpace",
+      "validation_state": "Partially Verified",
+      "independent_evidence": [
+        {
+          "name": "Pozyx Documentation",
+          "url": "https://www.pozyx.io/documentation",
+          "kind": "official_manufacturer_documentation",
+          "hits": 2
+        }
+      ],
+      "confidence": 0.65
+    },
+    {
+      "claim": "Nota importante sobre la oferta actual: la web de GrowSpace muestra también un \"UWB Creator Kit\" con 4 anclajes + 6 tags de\ndesarrollador, que se solapa en nombre con el Creator Kit Q1 (3 anclajes + 1 tag + Listener).",
+      "claim_type": "Unsupported Claim",
+      "source_file": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\PRODUCTO\\ALMACEN INTELIGENTE\\IAR\\GrowSpace_Evaluacion_RTLS.pdf",
+      "source_page": 6,
+      "supplier": "GrowSpace",
+      "validation_state": "Not Verified",
+      "independent_evidence": [],
+      "confidence": 0.25
+    },
+    {
+      "claim": "Al pedir presupuesto hay que aclarar\nexactamente qué versión corresponde al precio citado y cuántos tags incluye.",
+      "claim_type": "Engineering Assumption",
+      "source_file": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\PRODUCTO\\ALMACEN INTELIGENTE\\IAR\\GrowSpace_Evaluacion_RTLS.pdf",
+      "source_page": 6,
+      "supplier": "GrowSpace",
+      "validation_state": "Partially Verified",
+      "independent_evidence": [],
+      "confidence": 0.55
+    },
+    {
+      "claim": "Calcula la posición y Sí — es el que\npublica JSON por MQTT.",
+      "claim_type": "Verified Technical Fact",
+      "source_file": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\PRODUCTO\\ALMACEN INTELIGENTE\\IAR\\GrowSpace_Evaluacion_RTLS.pdf",
+      "source_page": 6,
+      "supplier": "GrowSpace",
+      "validation_state": "Verified",
+      "independent_evidence": [
+        {
+          "name": "Pozyx Documentation",
+          "url": "https://www.pozyx.io/documentation",
+          "kind": "official_manufacturer_documentation",
+          "hits": 2
+        },
+        {
+          "name": "NIST UWB Search",
+          "url": "https://www.nist.gov/search?query=UWB+indoor+positioning",
+          "kind": "independent_engineering_reference",
+          "hits": 2
+        }
+      ],
+      "confidence": 0.89
+    },
+    {
+      "claim": "Datos técnicos: precisión, alcance y el eje Z\nPrecisión y alcance\nPrecisión media indoor 10–30 cm\nPrecisión Creator Kit Q1 Menos de 10 cm de error en condiciones óptimas\nPrecisión Creator Expansion Kit Dentro de 30 cm\nEspaciado de anclajes recomendado Hasta 15 m indoor\nAlcance máximo con línea de visión 25 m\nFrecuencia de actualización máxima Hasta 10 Hz\nCapacidad del gateway Hasta 150 comunicaciones/segundo (15 tags a 10 Hz, o 150 tags a 1 Hz)\nCobertura típica 400–800 m² según kit\nEl eje Z: el punto más importante para bobinas apiladas\nEl eje vertical (Z) es el reto técnico central de nuestro proyecto, porque las bobinas están de pie, a distintas\nalturas y potencialmente apiladas.",
+      "claim_type": "Performance Specification",
+      "source_file": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\PRODUCTO\\ALMACEN INTELIGENTE\\IAR\\GrowSpace_Evaluacion_RTLS.pdf",
+      "source_page": 7,
+      "supplier": "GrowSpace",
+      "validation_state": "Contradicted",
+      "independent_evidence": [
+        {
+          "name": "Pozyx Documentation",
+          "url": "https://www.pozyx.io/documentation",
+          "kind": "official_manufacturer_documentation",
+          "hits": 2
+        },
+        {
+          "name": "Eliko Official",
+          "url": "https://eliko.tech/",
+          "kind": "official_manufacturer_documentation",
+          "hits": 2
+        },
+        {
+          "name": "NIST UWB Search",
+          "url": "https://www.nist.gov/search?query=UWB+indoor+positioning",
+          "kind": "independent_engineering_reference",
+          "hits": 2
+        }
+      ],
+      "confidence": 0.15
+    },
+    {
+      "claim": "Anclajes mínimos para\nFabricante Observación\n3D\nGrowSpace 4 o más Más anclajes mejoran precisión y\nestabilidad\nPozyx 4 3D fiable solo con buena separación en Z\nEliko 6 Los más bajos sufren obstrucciones\nRegla de oro para el eje Z (válida para cualquier UWB)\nPara que la coordenada Z sea fiable, los anclajes deben estar a alturas claramente distintas —\nidealmente algunos cerca del techo y otros a media altura (en columnas o estanterías).",
+      "claim_type": "Engineering Assumption",
+      "source_file": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\PRODUCTO\\ALMACEN INTELIGENTE\\IAR\\GrowSpace_Evaluacion_RTLS.pdf",
+      "source_page": 7,
+      "supplier": "GrowSpace",
+      "validation_state": "Partially Verified",
+      "independent_evidence": [],
+      "confidence": 0.55
+    },
+    {
+      "claim": "El dato clave: JSON, MQTT e integración con\nAndroid\nEste es el apartado más importante para el desarrollo, porque define exactamente cómo nuestra app Android\nrecibe las posiciones.",
+      "claim_type": "Verified Technical Fact",
+      "source_file": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\PRODUCTO\\ALMACEN INTELIGENTE\\IAR\\GrowSpace_Evaluacion_RTLS.pdf",
+      "source_page": 9,
+      "supplier": "GrowSpace",
+      "validation_state": "Verified",
+      "independent_evidence": [
+        {
+          "name": "Pozyx Documentation",
+          "url": "https://www.pozyx.io/documentation",
+          "kind": "official_manufacturer_documentation",
+          "hits": 3
+        },
+        {
+          "name": "NIST UWB Search",
+          "url": "https://www.nist.gov/search?query=UWB+indoor+positioning",
+          "kind": "independent_engineering_reference",
+          "hits": 3
+        },
+        {
+          "name": "Google Patents UWB",
+          "url": "https://patents.google.com/?q=UWB+indoor+positioning",
+          "kind": "patent",
+          "hits": 2
+        }
+      ],
+      "confidence": 0.96
+    },
+    {
+      "claim": "GrowSpace entrega los datos en tiempo real por MQTT en formato JSON, con\ncoordenadas X, Y, Z en metros.",
+      "claim_type": "Verified Technical Fact",
+      "source_file": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\PRODUCTO\\ALMACEN INTELIGENTE\\IAR\\GrowSpace_Evaluacion_RTLS.pdf",
+      "source_page": 9,
+      "supplier": "GrowSpace",
+      "validation_state": "Verified",
+      "independent_evidence": [
+        {
+          "name": "Pozyx Documentation",
+          "url": "https://www.pozyx.io/documentation",
+          "kind": "official_manufacturer_documentation",
+          "hits": 3
+        },
+        {
+          "name": "Eliko Official",
+          "url": "https://eliko.tech/",
+          "kind": "official_manufacturer_documentation",
+          "hits": 2
+        }
+      ],
+      "confidence": 0.89
+    },
+    {
+      "claim": "La estructura es un array de objetos, uno por tag, agrupado bajo un\ngatewayID .",
+      "claim_type": "Engineering Assumption",
+      "source_file": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\PRODUCTO\\ALMACEN INTELIGENTE\\IAR\\GrowSpace_Evaluacion_RTLS.pdf",
+      "source_page": 9,
+      "supplier": "GrowSpace",
+      "validation_state": "Partially Verified",
+      "independent_evidence": [],
+      "confidence": 0.55
+    },
+    {
+      "claim": "Ejemplo real del JSON recibido\n{\n\"gatewayID\": \"GR209C\",\n\"tags\": [\n{ \"id\": \"GR2eba\", \"panID\": \"0001\", \"x\": -4.45, \"y\": -0.19, \"z\": -2.22 },\n{ \"id\": \"GR2ec1\", \"panID\": \"0001\", \"x\": 1.80, \"y\": 3.42, \"z\": 0.95 }\n]\n}\nCada objeto del array tags es una bobina.",
+      "claim_type": "Engineering Assumption",
+      "source_file": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\PRODUCTO\\ALMACEN INTELIGENTE\\IAR\\GrowSpace_Evaluacion_RTLS.pdf",
+      "source_page": 9,
+      "supplier": "GrowSpace",
+      "validation_state": "Partially Verified",
+      "independent_evidence": [],
+      "confidence": 0.55
+    },
+    {
+      "claim": "Campos del JSON\nCampo Tipo Para qué lo usamos\ngatewayID string Identifica el gateway (útil si hay varios en el almacén)\ntags[] array Lista de todas las bobinas detectadas\nid string ID único del tag → lo asociamos a una bobina concreta\npanID string Identificador de la red UWB\nx / y / z float (metros) Posición 3D → pintar la bobina en el modelo\nTópicos MQTT disponibles\nTipo de dato Formato del tópico\nConfiguración del gateway uwb/gateway/config/{projectId}/{deviceId}\nPosición de tags y anclajes uwb/gateway/devices/{projectId}/{deviceId}\nAviso de arranque del gateway uwb/gateway/Start/{projectId}/{deviceId}\nGrowSpace — Documento técnico de proyecto Página 9 / 15",
+      "claim_type": "Verified Technical Fact",
+      "source_file": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\PRODUCTO\\ALMACEN INTELIGENTE\\IAR\\GrowSpace_Evaluacion_RTLS.pdf",
+      "source_page": 9,
+      "supplier": "GrowSpace",
+      "validation_state": "Verified",
+      "independent_evidence": [
+        {
+          "name": "Pozyx Documentation",
+          "url": "https://www.pozyx.io/documentation",
+          "kind": "official_manufacturer_documentation",
+          "hits": 3
+        },
+        {
+          "name": "Eliko Official",
+          "url": "https://eliko.tech/",
+          "kind": "official_manufacturer_documentation",
+          "hits": 2
+        },
+        {
+          "name": "NIST UWB Search",
+          "url": "https://www.nist.gov/search?query=UWB+indoor+positioning",
+          "kind": "independent_engineering_reference",
+          "hits": 3
+        }
+      ],
+      "confidence": 0.96
+    },
+    {
+      "claim": "Integración con la app Android\nAl usar MQTT estándar, GrowSpace es compatible con cualquier cliente MQTT: en Android usaríamos\nuna librería MQTT para Java/Kotlin (por ejemplo Eclipse Paho).",
+      "claim_type": "Verified Technical Fact",
+      "source_file": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\PRODUCTO\\ALMACEN INTELIGENTE\\IAR\\GrowSpace_Evaluacion_RTLS.pdf",
+      "source_page": 10,
+      "supplier": "GrowSpace",
+      "validation_state": "Verified",
+      "independent_evidence": [
+        {
+          "name": "Pozyx Documentation",
+          "url": "https://www.pozyx.io/documentation",
+          "kind": "official_manufacturer_documentation",
+          "hits": 3
+        },
+        {
+          "name": "Eliko Official",
+          "url": "https://eliko.tech/",
+          "kind": "official_manufacturer_documentation",
+          "hits": 2
+        }
+      ],
+      "confidence": 0.89
+    },
+    {
+      "claim": "El patrón es idéntico al de Pozyx: la app\nse suscribe al tópico devices , deserializa el JSON, itera el array tags y actualiza la posición 3D de\ncada bobina.",
+      "claim_type": "Engineering Assumption",
+      "source_file": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\PRODUCTO\\ALMACEN INTELIGENTE\\IAR\\GrowSpace_Evaluacion_RTLS.pdf",
+      "source_page": 10,
+      "supplier": "GrowSpace",
+      "validation_state": "Partially Verified",
+      "independent_evidence": [],
+      "confidence": 0.55
+    },
+    {
+      "claim": "No existe un SDK específico para Unity/Android por parte de GrowSpace, pero al ser MQTT + JSON\nestándar el desarrollo es directo.",
+      "claim_type": "Verified Technical Fact",
+      "source_file": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\PRODUCTO\\ALMACEN INTELIGENTE\\IAR\\GrowSpace_Evaluacion_RTLS.pdf",
+      "source_page": 10,
+      "supplier": "GrowSpace",
+      "validation_state": "Partially Verified",
+      "independent_evidence": [
+        {
+          "name": "Pozyx Documentation",
+          "url": "https://www.pozyx.io/documentation",
+          "kind": "official_manufacturer_documentation",
+          "hits": 2
+        }
+      ],
+      "confidence": 0.65
+    },
+    {
+      "claim": "Si se usara Unity como motor 3D dentro de la app, se puede adaptar el\nejemplo público de Pozyx-Unity-MQTT cambiando el formato del JSON.",
+      "claim_type": "Verified Technical Fact",
+      "source_file": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\PRODUCTO\\ALMACEN INTELIGENTE\\IAR\\GrowSpace_Evaluacion_RTLS.pdf",
+      "source_page": 10,
+      "supplier": "GrowSpace",
+      "validation_state": "Not Verified",
+      "independent_evidence": [],
+      "confidence": 0.25
+    },
+    {
+      "claim": "Consideraciones de desarrollo para la app\n• Conversión de ejes: el eje \"vertical\" en el JSON es z , pero en muchos motores 3D (Unity) el vertical es y .",
+      "claim_type": "Engineering Assumption",
+      "source_file": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\PRODUCTO\\ALMACEN INTELIGENTE\\IAR\\GrowSpace_Evaluacion_RTLS.pdf",
+      "source_page": 10,
+      "supplier": "GrowSpace",
+      "validation_state": "Partially Verified",
+      "independent_evidence": [],
+      "confidence": 0.55
+    },
+    {
+      "claim": "• Offset del tag: el sistema posiciona el tag, no el centro de la bobina.",
+      "claim_type": "Engineering Assumption",
+      "source_file": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\PRODUCTO\\ALMACEN INTELIGENTE\\IAR\\GrowSpace_Evaluacion_RTLS.pdf",
+      "source_page": 10,
+      "supplier": "GrowSpace",
+      "validation_state": "Partially Verified",
+      "independent_evidence": [],
+      "confidence": 0.55
+    },
+    {
+      "claim": "Si el tag va pegado en un lateral,\nconviene aplicar un pequeño desplazamiento en la app para que la bobina aparezca centrada en su posición\nreal.",
+      "claim_type": "Engineering Assumption",
+      "source_file": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\PRODUCTO\\ALMACEN INTELIGENTE\\IAR\\GrowSpace_Evaluacion_RTLS.pdf",
+      "source_page": 10,
+      "supplier": "GrowSpace",
+      "validation_state": "Partially Verified",
+      "independent_evidence": [],
+      "confidence": 0.55
+    },
+    {
+      "claim": "• Tamaño de bobina: mantener una tabla que relacione cada id de tag con el diámetro/altura real de su\nbobina, para escalar correctamente el cilindro en el modelo 3D.",
+      "claim_type": "Engineering Assumption",
+      "source_file": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\PRODUCTO\\ALMACEN INTELIGENTE\\IAR\\GrowSpace_Evaluacion_RTLS.pdf",
+      "source_page": 10,
+      "supplier": "GrowSpace",
+      "validation_state": "Partially Verified",
+      "independent_evidence": [],
+      "confidence": 0.55
+    },
+    {
+      "claim": "Modelo de coste: por qué no hay licencias\nrecurrentes\nEste es el argumento económico central que motivó la elección de GrowSpace.",
+      "claim_type": "Engineering Assumption",
+      "source_file": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\PRODUCTO\\ALMACEN INTELIGENTE\\IAR\\GrowSpace_Evaluacion_RTLS.pdf",
+      "source_page": 11,
+      "supplier": "GrowSpace",
+      "validation_state": "Partially Verified",
+      "independent_evidence": [],
+      "confidence": 0.55
+    },
+    {
+      "claim": "El modelo es de hardware\nabierto sin licencia de software recurrente:\nCorporativos (Pozyx/Sewio/\nConcepto GrowSpace\nEliko)\nInversión inicial Baja (solo hardware, desde 359– Alta (hardware + licencia)\n570 $)\nCuota anual por tag Ninguna Habitual (35–50 € por tag/año)\nCuota anual de plataforma Ninguna Sí (% sobre el software o\nsuscripción)\nSi se deja de pagar Sin impacto — el hardware es El sistema puede dejar de\npropio funcionar\nDónde corre el cálculo En el gateway local (comprado) En servidor/plataforma con licencia\nTraducción práctica\nCon GrowSpace, el coste total del proyecto en software recurrente es cero.",
+      "claim_type": "Engineering Assumption",
+      "source_file": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\PRODUCTO\\ALMACEN INTELIGENTE\\IAR\\GrowSpace_Evaluacion_RTLS.pdf",
+      "source_page": 11,
+      "supplier": "GrowSpace",
+      "validation_state": "Partially Verified",
+      "independent_evidence": [],
+      "confidence": 0.55
+    },
+    {
+      "claim": "El coste se traslada al esfuerzo de desarrollo de\nnuestra app — que de todos modos íbamos a construir.",
+      "claim_type": "Engineering Assumption",
+      "source_file": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\PRODUCTO\\ALMACEN INTELIGENTE\\IAR\\GrowSpace_Evaluacion_RTLS.pdf",
+      "source_page": 11,
+      "supplier": "GrowSpace",
+      "validation_state": "Partially Verified",
+      "independent_evidence": [],
+      "confidence": 0.55
+    },
+    {
+      "claim": "Estimación de coste de hardware (orientativa)\nCantidad\nElemento Notas\nestimada\nCreator Expansion Kit 1 (base) 4 anclajes + gateway + tags de muestra — 570 $\nAnclajes adicionales 2 o más (para Z) Para tener anclajes a distintas alturas; precio a cotizar\nTags adicionales 1 por bobina Precio por tag a cotizar (no público por unidad)\nSwitch de red PoE 1 No lo suministra GrowSpace — cualquier switch\nestándar\nMini-PC / servidor 0–1 Solo si se quiere un broker MQTT propio; a confirmar\n(ver sección 10)\nGrowSpace — Documento técnico de proyecto Página 11 / 15",
+      "claim_type": "Verified Technical Fact",
+      "source_file": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\PRODUCTO\\ALMACEN INTELIGENTE\\IAR\\GrowSpace_Evaluacion_RTLS.pdf",
+      "source_page": 11,
+      "supplier": "GrowSpace",
+      "validation_state": "Not Verified",
+      "independent_evidence": [],
+      "confidence": 0.25
+    },
+    {
+      "claim": "Lista de la compra para nuestro proyecto\nComponentes necesarios para un almacén de menos de 500 m² con seguimiento 3D de bobinas:\nComponente Función Estado\nCreator Expansion Kit Base: 4 anclajes + gateway + tags de muestra Comprar (570 $)\nAnclajes extra (2+) Añadir alturas distintas para resolver el eje Z Cotizar\nTags UWB Uno por cada bobina a rastrear Cotizar según nº de\nbobinas\nSistema de fijación Adhesivo/soporte para pegar el tag a la bobina Definir con pruebas\nde papel\nSwitch PoE Alimentar y conectar los anclajes Compra estándar\nRed Wi-Fi en planta Conectar la tablet al gateway Verificar cobertura\nTablet Android Dispositivo del técnico con la app Ya previsto\nApp Android (desarrollo propio) Cliente MQTT + visor 3D del almacén Desarrollar\nModelo 3D del almacén Sala a escala real con medidas reales Construir en el motor 3D\nGrowSpace — Documento técnico de proyecto Página 12 / 15",
+      "claim_type": "Verified Technical Fact",
+      "source_file": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\PRODUCTO\\ALMACEN INTELIGENTE\\IAR\\GrowSpace_Evaluacion_RTLS.pdf",
+      "source_page": 12,
+      "supplier": "GrowSpace",
+      "validation_state": "Verified",
+      "independent_evidence": [
+        {
+          "name": "Pozyx Documentation",
+          "url": "https://www.pozyx.io/documentation",
+          "kind": "official_manufacturer_documentation",
+          "hits": 2
+        },
+        {
+          "name": "NIST UWB Search",
+          "url": "https://www.nist.gov/search?query=UWB+indoor+positioning",
+          "kind": "independent_engineering_reference",
+          "hits": 2
+        },
+        {
+          "name": "Google Patents UWB",
+          "url": "https://patents.google.com/?q=UWB+indoor+positioning",
+          "kind": "patent",
+          "hits": 2
+        }
+      ],
+      "confidence": 0.96
+    },
+    {
+      "claim": "• Pegar tags a un pequeño grupo de bobinas de prueba.",
+      "claim_type": "Engineering Assumption",
+      "source_file": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\PRODUCTO\\ALMACEN INTELIGENTE\\IAR\\GrowSpace_Evaluacion_RTLS.pdf",
+      "source_page": 13,
+      "supplier": "GrowSpace",
+      "validation_state": "Partially Verified",
+      "independent_evidence": [],
+      "confidence": 0.55
+    },
+    {
+      "claim": "• Verificar que el gateway publica el JSON correcto por MQTT y que las coordenadas X, Y, Z son coherentes\ncon la realidad — especialmente el eje Z con bobinas apiladas.",
+      "claim_type": "Verified Technical Fact",
+      "source_file": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\PRODUCTO\\ALMACEN INTELIGENTE\\IAR\\GrowSpace_Evaluacion_RTLS.pdf",
+      "source_page": 13,
+      "supplier": "GrowSpace",
+      "validation_state": "Verified",
+      "independent_evidence": [
+        {
+          "name": "Pozyx Documentation",
+          "url": "https://www.pozyx.io/documentation",
+          "kind": "official_manufacturer_documentation",
+          "hits": 2
+        },
+        {
+          "name": "NIST UWB Search",
+          "url": "https://www.nist.gov/search?query=UWB+indoor+positioning",
+          "kind": "independent_engineering_reference",
+          "hits": 2
+        }
+      ],
+      "confidence": 0.89
+    },
+    {
+      "claim": "Fase 2 — Desarrollo de la app\n• Implementar el cliente MQTT en Android (suscripción al tópico devices ).",
+      "claim_type": "Verified Technical Fact",
+      "source_file": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\PRODUCTO\\ALMACEN INTELIGENTE\\IAR\\GrowSpace_Evaluacion_RTLS.pdf",
+      "source_page": 13,
+      "supplier": "GrowSpace",
+      "validation_state": "Not Verified",
+      "independent_evidence": [],
+      "confidence": 0.25
+    },
+    {
+      "claim": "• Deserializar el JSON e iterar el array de tags.",
+      "claim_type": "Engineering Assumption",
+      "source_file": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\PRODUCTO\\ALMACEN INTELIGENTE\\IAR\\GrowSpace_Evaluacion_RTLS.pdf",
+      "source_page": 13,
+      "supplier": "GrowSpace",
+      "validation_state": "Partially Verified",
+      "independent_evidence": [],
+      "confidence": 0.55
+    },
+    {
+      "claim": "• Construir el modelo 3D del almacén a escala real.",
+      "claim_type": "Engineering Assumption",
+      "source_file": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\PRODUCTO\\ALMACEN INTELIGENTE\\IAR\\GrowSpace_Evaluacion_RTLS.pdf",
+      "source_page": 13,
+      "supplier": "GrowSpace",
+      "validation_state": "Partially Verified",
+      "independent_evidence": [],
+      "confidence": 0.55
+    },
+    {
+      "claim": "• Pintar cada bobina en su posición, aplicando conversión de ejes y offset del tag.",
+      "claim_type": "Engineering Assumption",
+      "source_file": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\PRODUCTO\\ALMACEN INTELIGENTE\\IAR\\GrowSpace_Evaluacion_RTLS.pdf",
+      "source_page": 13,
+      "supplier": "GrowSpace",
+      "validation_state": "Partially Verified",
+      "independent_evidence": [],
+      "confidence": 0.55
+    },
+    {
+      "claim": "• Validar precisión en condiciones reales de densidad y apilamiento.",
+      "claim_type": "Verified Technical Fact",
+      "source_file": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\PRODUCTO\\ALMACEN INTELIGENTE\\IAR\\GrowSpace_Evaluacion_RTLS.pdf",
+      "source_page": 13,
+      "supplier": "GrowSpace",
+      "validation_state": "Not Verified",
+      "independent_evidence": [],
+      "confidence": 0.25
+    },
+    {
+      "claim": "Riesgos, limitaciones y checklist para el fabricante\nLimitaciones conocidas de GrowSpace\n• Sin integración ERP/MES/WMS: si el proyecto escala a un sistema de gestión de almacén completo, no\nhay conectores nativos — habría que desarrollarlo sobre el MQTT.",
+      "claim_type": "Verified Technical Fact",
+      "source_file": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\PRODUCTO\\ALMACEN INTELIGENTE\\IAR\\GrowSpace_Evaluacion_RTLS.pdf",
+      "source_page": 14,
+      "supplier": "GrowSpace",
+      "validation_state": "Not Verified",
+      "independent_evidence": [],
+      "confidence": 0.25
+    },
+    {
+      "claim": "Riesgos específicos de nuestro caso\n• Oclusión por bobinas apiladas: si el tag queda oculto entre bobinas, puede perderse la línea de visión con\nlos anclajes.",
+      "claim_type": "Verified Technical Fact",
+      "source_file": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\PRODUCTO\\ALMACEN INTELIGENTE\\IAR\\GrowSpace_Evaluacion_RTLS.pdf",
+      "source_page": 14,
+      "supplier": "GrowSpace",
+      "validation_state": "Not Verified",
+      "independent_evidence": [],
+      "confidence": 0.25
+    },
+    {
+      "claim": "Mitigación: buena colocación del tag y suficientes anclajes desde distintos ángulos.",
+      "claim_type": "Engineering Assumption",
+      "source_file": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\PRODUCTO\\ALMACEN INTELIGENTE\\IAR\\GrowSpace_Evaluacion_RTLS.pdf",
+      "source_page": 14,
+      "supplier": "GrowSpace",
+      "validation_state": "Partially Verified",
+      "independent_evidence": [],
+      "confidence": 0.55
+    },
+    {
+      "claim": "¿Qué error real en Z se obtiene con 4 anclajes en una sala pequeña con bobinas apiladas a distintas\nalturas?",
+      "claim_type": "Verified Technical Fact",
+      "source_file": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\PRODUCTO\\ALMACEN INTELIGENTE\\IAR\\GrowSpace_Evaluacion_RTLS.pdf",
+      "source_page": 14,
+      "supplier": "GrowSpace",
+      "validation_state": "Verified",
+      "independent_evidence": [
+        {
+          "name": "Pozyx Documentation",
+          "url": "https://www.pozyx.io/documentation",
+          "kind": "official_manufacturer_documentation",
+          "hits": 2
+        },
+        {
+          "name": "Eliko Official",
+          "url": "https://eliko.tech/",
+          "kind": "official_manufacturer_documentation",
+          "hits": 2
+        }
+      ],
+      "confidence": 0.89
+    },
+    {
+      "claim": "¿El gateway publica directamente a un broker MQTT que elijamos nosotros, o hay que pasar por\ninfraestructura/nube de GrowSpace?",
+      "claim_type": "Verified Technical Fact",
+      "source_file": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\PRODUCTO\\ALMACEN INTELIGENTE\\IAR\\GrowSpace_Evaluacion_RTLS.pdf",
+      "source_page": 14,
+      "supplier": "GrowSpace",
+      "validation_state": "Not Verified",
+      "independent_evidence": [],
+      "confidence": 0.25
+    },
+    {
+      "claim": "Precio unitario de tags adicionales y de anclajes sueltos (para el eje Z) por volumen.",
+      "claim_type": "Engineering Assumption",
+      "source_file": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\PRODUCTO\\ALMACEN INTELIGENTE\\IAR\\GrowSpace_Evaluacion_RTLS.pdf",
+      "source_page": 14,
+      "supplier": "GrowSpace",
+      "validation_state": "Partially Verified",
+      "independent_evidence": [],
+      "confidence": 0.55
+    },
+    {
+      "claim": "Método de fijación recomendado del tag a una bobina de papel y su efecto en la señal.",
+      "claim_type": "Engineering Assumption",
+      "source_file": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\PRODUCTO\\ALMACEN INTELIGENTE\\IAR\\GrowSpace_Evaluacion_RTLS.pdf",
+      "source_page": 14,
+      "supplier": "GrowSpace",
+      "validation_state": "Partially Verified",
+      "independent_evidence": [],
+      "confidence": 0.55
+    },
+    {
+      "claim": "Autonomía real de batería del tag a la frecuencia de actualización que necesitemos.",
+      "claim_type": "Engineering Assumption",
+      "source_file": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\PRODUCTO\\ALMACEN INTELIGENTE\\IAR\\GrowSpace_Evaluacion_RTLS.pdf",
+      "source_page": 14,
+      "supplier": "GrowSpace",
+      "validation_state": "Partially Verified",
+      "independent_evidence": [],
+      "confidence": 0.55
+    },
+    {
+      "claim": "Conclusión\nGrowSpace es la única opción verificada que nos da coordenadas X, Y, Z sin licencias recurrentes,\ncon el coste de entrada más bajo del mercado y datos por MQTT/JSON estándar directamente\ncompatibles con nuestra app Android.",
+      "claim_type": "Verified Technical Fact",
+      "source_file": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\PRODUCTO\\ALMACEN INTELIGENTE\\IAR\\GrowSpace_Evaluacion_RTLS.pdf",
+      "source_page": 14,
+      "supplier": "GrowSpace",
+      "validation_state": "Not Verified",
+      "independent_evidence": [],
+      "confidence": 0.25
+    },
+    {
+      "claim": "El único punto a\nvalidar seriamente en la PoC es la precisión real del eje Z con bobinas apiladas — que es un reto de\ntodos los UWB, no exclusivo de GrowSpace.",
+      "claim_type": "Verified Technical Fact",
+      "source_file": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\PRODUCTO\\ALMACEN INTELIGENTE\\IAR\\GrowSpace_Evaluacion_RTLS.pdf",
+      "source_page": 14,
+      "supplier": "GrowSpace",
+      "validation_state": "Partially Verified",
+      "independent_evidence": [
+        {
+          "name": "Eliko Official",
+          "url": "https://eliko.tech/",
+          "kind": "official_manufacturer_documentation",
+          "hits": 2
+        }
+      ],
+      "confidence": 0.65
+    },
+    {
+      "claim": "Fuentes: sitio web oficial de GrowSpace / Freegrow (grow-space.io), documentación técnica pública del Creator Kit Q1 (FAQ en\nGitBook), tópicos MQTT documentados por el fabricante, y análisis comparativo propio realizado sobre más de diez proveedores RTLS\nUWB.",
+      "claim_type": "Verified Technical Fact",
+      "source_file": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\PRODUCTO\\ALMACEN INTELIGENTE\\IAR\\GrowSpace_Evaluacion_RTLS.pdf",
+      "source_page": 15,
+      "supplier": "GrowSpace",
+      "validation_state": "Partially Verified",
+      "independent_evidence": [
+        {
+          "name": "NIST UWB Search",
+          "url": "https://www.nist.gov/search?query=UWB+indoor+positioning",
+          "kind": "independent_engineering_reference",
+          "hits": 2
+        }
+      ],
+      "confidence": 0.65
+    }
+  ],
+  "metadata": {
+    "processed_at": "2026-07-24T08:37:20.865912+00:00",
+    "pages": 15,
+    "tables": 20,
+    "images": 0,
+    "claims": 58
+  }
+}

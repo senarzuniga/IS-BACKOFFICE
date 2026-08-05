@@ -1,0 +1,258 @@
+[
+  {
+    "ts": "2026-08-04T06:05:55.207115+00:00",
+    "mission_id": "20260804_060555_new_offer",
+    "action": "new_offer",
+    "objective": "Create offer",
+    "proposal_id": "ee492df2-a3e8-4a1e-8a84-01b50753494e",
+    "proposal_number": "OFF-2026-S132",
+    "payload": {}
+  },
+  {
+    "ts": "2026-08-04T06:07:04.650802+00:00",
+    "mission_id": "20260804_060704_new_offer",
+    "action": "new_offer",
+    "objective": "Create offer",
+    "proposal_id": "078d3ce5-7b9d-42a8-9ba0-1558c42ae7b1",
+    "proposal_number": "OFF-2026-S131",
+    "payload": {}
+  },
+  {
+    "ts": "2026-08-04T06:08:15.421533+00:00",
+    "mission_id": "20260804_060815_new_offer",
+    "action": "new_offer",
+    "objective": "Create offer",
+    "proposal_id": "5b8a5e48-3fb1-4c3d-9717-2d35e9f9ad1b",
+    "proposal_number": "OFF-2026-S132",
+    "payload": {}
+  },
+  {
+    "ts": "2026-08-04T06:08:25.954517+00:00",
+    "mission_id": "20260804_060825_edit",
+    "action": "edit",
+    "objective": "Edit proposal",
+    "proposal_id": "5b8a5e48-3fb1-4c3d-9717-2d35e9f9ad1b",
+    "proposal_number": "OFF-2026-S132",
+    "payload": {}
+  },
+  {
+    "ts": "2026-08-04T06:08:28.749061+00:00",
+    "mission_id": "20260804_060828_duplicate",
+    "action": "duplicate",
+    "objective": "Duplicate proposal with automatic collision-free number",
+    "proposal_id": "07ba588b-4a3c-4df8-b79b-f8b3db3e5a01",
+    "proposal_number": "OFF-2026-S133",
+    "payload": {}
+  },
+  {
+    "ts": "2026-08-04T06:08:32.764628+00:00",
+    "mission_id": "20260804_060832_add_image",
+    "action": "add_image",
+    "objective": "Attach official logo",
+    "proposal_id": "5b8a5e48-3fb1-4c3d-9717-2d35e9f9ad1b",
+    "proposal_number": "OFF-2026-S132",
+    "payload": {
+      "path": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\MARKETING\\LOGOS\\ingeeniering.png",
+      "exists": true
+    }
+  },
+  {
+    "ts": "2026-08-04T06:08:32.862948+00:00",
+    "mission_id": "20260804_060832_add_pdf",
+    "action": "add_pdf",
+    "objective": "Attach PDF",
+    "proposal_id": "5b8a5e48-3fb1-4c3d-9717-2d35e9f9ad1b",
+    "proposal_number": "OFF-2026-S132",
+    "payload": {
+      "path": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\spe\\sample_attachment.pdf"
+    }
+  },
+  {
+    "ts": "2026-08-04T06:08:32.947372+00:00",
+    "mission_id": "20260804_060832_add_annex",
+    "action": "add_annex",
+    "objective": "Attach annex",
+    "proposal_id": "5b8a5e48-3fb1-4c3d-9717-2d35e9f9ad1b",
+    "proposal_number": "OFF-2026-S132",
+    "payload": {
+      "path": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\spe\\sample_annex.txt"
+    }
+  },
+  {
+    "ts": "2026-08-04T06:08:33.039950+00:00",
+    "mission_id": "20260804_060833_translate_en",
+    "action": "translate_en",
+    "objective": "Translate to English",
+    "proposal_id": "5b8a5e48-3fb1-4c3d-9717-2d35e9f9ad1b",
+    "proposal_number": "OFF-2026-S132",
+    "payload": {}
+  },
+  {
+    "ts": "2026-08-04T06:08:33.120891+00:00",
+    "mission_id": "20260804_060833_translate_es",
+    "action": "translate_es",
+    "objective": "Translate to Spanish",
+    "proposal_id": "5b8a5e48-3fb1-4c3d-9717-2d35e9f9ad1b",
+    "proposal_number": "OFF-2026-S132",
+    "payload": {}
+  },
+  {
+    "ts": "2026-08-04T06:08:33.297761+00:00",
+    "mission_id": "20260804_060833_currency_usd",
+    "action": "currency_usd",
+    "objective": "Change currency to USD",
+    "proposal_id": "5b8a5e48-3fb1-4c3d-9717-2d35e9f9ad1b",
+    "proposal_number": "OFF-2026-S132",
+    "payload": {}
+  },
+  {
+    "ts": "2026-08-04T06:08:33.431583+00:00",
+    "mission_id": "20260804_060833_currency_eur",
+    "action": "currency_eur",
+    "objective": "Change currency to EUR",
+    "proposal_id": "5b8a5e48-3fb1-4c3d-9717-2d35e9f9ad1b",
+    "proposal_number": "OFF-2026-S132",
+    "payload": {}
+  },
+  {
+    "ts": "2026-08-04T06:08:37.064400+00:00",
+    "mission_id": "20260804_060837_save_and_version",
+    "action": "save_and_version",
+    "objective": "Save and version",
+    "proposal_id": "5b8a5e48-3fb1-4c3d-9717-2d35e9f9ad1b",
+    "proposal_number": "OFF-2026-S132",
+    "payload": {
+      "version": 1
+    }
+  },
+  {
+    "ts": "2026-08-04T06:10:17.158308+00:00",
+    "mission_id": "20260804_061017_new_offer",
+    "action": "new_offer",
+    "objective": "Create offer",
+    "proposal_id": "5fa6c659-85bb-4fd0-bed6-930f4038cbfb",
+    "proposal_number": "OFF-2026-S134",
+    "payload": {}
+  },
+  {
+    "ts": "2026-08-04T06:10:26.613022+00:00",
+    "mission_id": "20260804_061026_edit",
+    "action": "edit",
+    "objective": "Edit proposal",
+    "proposal_id": "5fa6c659-85bb-4fd0-bed6-930f4038cbfb",
+    "proposal_number": "OFF-2026-S134",
+    "payload": {}
+  },
+  {
+    "ts": "2026-08-04T06:10:26.697573+00:00",
+    "mission_id": "20260804_061026_duplicate",
+    "action": "duplicate",
+    "objective": "Duplicate proposal with automatic collision-free number",
+    "proposal_id": "5ade7a11-baf6-4570-a378-a57de0c2f1d2",
+    "proposal_number": "OFF-2026-S135",
+    "payload": {}
+  },
+  {
+    "ts": "2026-08-04T06:10:26.769391+00:00",
+    "mission_id": "20260804_061026_add_image",
+    "action": "add_image",
+    "objective": "Attach official logo",
+    "proposal_id": "5fa6c659-85bb-4fd0-bed6-930f4038cbfb",
+    "proposal_number": "OFF-2026-S134",
+    "payload": {
+      "path": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\MARKETING\\LOGOS\\ingeeniering.png",
+      "exists": true
+    }
+  },
+  {
+    "ts": "2026-08-04T06:10:26.818530+00:00",
+    "mission_id": "20260804_061026_add_pdf",
+    "action": "add_pdf",
+    "objective": "Attach PDF",
+    "proposal_id": "5fa6c659-85bb-4fd0-bed6-930f4038cbfb",
+    "proposal_number": "OFF-2026-S134",
+    "payload": {
+      "path": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\spe\\sample_attachment.pdf"
+    }
+  },
+  {
+    "ts": "2026-08-04T06:10:26.871999+00:00",
+    "mission_id": "20260804_061026_add_annex",
+    "action": "add_annex",
+    "objective": "Attach annex",
+    "proposal_id": "5fa6c659-85bb-4fd0-bed6-930f4038cbfb",
+    "proposal_number": "OFF-2026-S134",
+    "payload": {
+      "path": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\spe\\sample_annex.txt"
+    }
+  },
+  {
+    "ts": "2026-08-04T06:10:26.928815+00:00",
+    "mission_id": "20260804_061026_translate_en",
+    "action": "translate_en",
+    "objective": "Translate to English",
+    "proposal_id": "5fa6c659-85bb-4fd0-bed6-930f4038cbfb",
+    "proposal_number": "OFF-2026-S134",
+    "payload": {}
+  },
+  {
+    "ts": "2026-08-04T06:10:26.985379+00:00",
+    "mission_id": "20260804_061026_translate_es",
+    "action": "translate_es",
+    "objective": "Translate to Spanish",
+    "proposal_id": "5fa6c659-85bb-4fd0-bed6-930f4038cbfb",
+    "proposal_number": "OFF-2026-S134",
+    "payload": {}
+  },
+  {
+    "ts": "2026-08-04T06:10:27.192474+00:00",
+    "mission_id": "20260804_061027_currency_usd",
+    "action": "currency_usd",
+    "objective": "Change currency to USD",
+    "proposal_id": "5fa6c659-85bb-4fd0-bed6-930f4038cbfb",
+    "proposal_number": "OFF-2026-S134",
+    "payload": {}
+  },
+  {
+    "ts": "2026-08-04T06:10:27.488840+00:00",
+    "mission_id": "20260804_061027_currency_eur",
+    "action": "currency_eur",
+    "objective": "Change currency to EUR",
+    "proposal_id": "5fa6c659-85bb-4fd0-bed6-930f4038cbfb",
+    "proposal_number": "OFF-2026-S134",
+    "payload": {}
+  },
+  {
+    "ts": "2026-08-04T06:10:32.752686+00:00",
+    "mission_id": "20260804_061032_save_and_version",
+    "action": "save_and_version",
+    "objective": "Save and version",
+    "proposal_id": "5fa6c659-85bb-4fd0-bed6-930f4038cbfb",
+    "proposal_number": "OFF-2026-S134",
+    "payload": {
+      "version": 1
+    }
+  },
+  {
+    "ts": "2026-08-04T06:10:37.677920+00:00",
+    "mission_id": "20260804_061037_publish",
+    "action": "publish",
+    "objective": "Publish proposal after validator gates",
+    "proposal_id": "5fa6c659-85bb-4fd0-bed6-930f4038cbfb",
+    "proposal_number": "OFF-2026-S134",
+    "payload": {
+      "publication_state": "Published"
+    }
+  },
+  {
+    "ts": "2026-08-04T06:10:38.703209+00:00",
+    "mission_id": "20260804_061038_export_bundle",
+    "action": "export_bundle",
+    "objective": "Export release bundle",
+    "proposal_id": "5fa6c659-85bb-4fd0-bed6-930f4038cbfb",
+    "proposal_number": "OFF-2026-S134",
+    "payload": {
+      "zip_path": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\spe\\runs\\20260804_061032_b4520290\\exports\\his_v3_release_bundle_20260804_061038.zip"
+    }
+  }
+]

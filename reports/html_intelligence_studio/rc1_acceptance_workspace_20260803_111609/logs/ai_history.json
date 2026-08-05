@@ -1,0 +1,29 @@
+{
+  "commands": [
+    {
+      "ts": "2026-08-03T09:16:13.377986+00:00",
+      "command": "crear capítulo y añadir kpi",
+      "changes": [
+        "Added Chapter 30",
+        "Added KPI block"
+      ],
+      "mission_id": "20260803_091613_758fc881"
+    },
+    {
+      "ts": "2026-08-03T09:16:16.566415+00:00",
+      "command": "add image \"C:\\Users\\Inaki Senar\\Documents\\INGECART\\MARKETING\\CONTENT\\Corrugated Plant Automation Solutions v2 IMAGEN GENERAL.jpg\" under heading \"TAILORED AUTOMATION\"",
+      "changes": [
+        "Added image asset: Corrugated Plant Automation Solutions v2 IMAGEN GENERAL.jpg"
+      ],
+      "mission_id": "20260803_091616_2f14389c"
+    },
+    {
+      "ts": "2026-08-03T09:16:20.382426+00:00",
+      "command": "translate document to Español",
+      "changes": [
+        "Updated bilingual translation metadata"
+      ],
+      "mission_id": "20260803_091620_e16a8233"
+    }
+  ]
+}

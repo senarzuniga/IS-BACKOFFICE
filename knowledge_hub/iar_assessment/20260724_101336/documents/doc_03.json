@@ -1,0 +1,65 @@
+{
+  "source_file": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\PRODUCTO\\ALMACEN INTELIGENTE\\IAR\\GrowSpace_Evaluacion_RTLS.pdf",
+  "supplier": "Eliko",
+  "document_type": "technology_evaluation",
+  "technologies": [
+    "UWB",
+    "BLE",
+    "Vision"
+  ],
+  "positioning_methods": [
+    "TDoA",
+    "Trilateration"
+  ],
+  "metadata": {
+    "processed_at": "2026-07-24T08:13:53.680859+00:00",
+    "chars": 18852,
+    "facts_count": 11,
+    "vendor_statements_count": 2,
+    "assumptions_count": 0
+  },
+  "summary": [
+    "No hay cuota anual por tag ni por anchor. Si se deja de pagar, no se apaga nada, porque no hay nada que",
+    "• Cada bobina lleva un tag UWB que emite pulsos de radio ultracortos (blinks) a intervalos configurables",
+    "• Cada comunicación tag–anchor produce una medición de distancia.",
+    "Nota importante sobre la oferta actual: la web de GrowSpace muestra también un \"UWB Creator Kit\" con 4 anclajes + 6 tags de",
+    "Posición de tags y anclajes uwb/gateway/devices/{projectId}/{deviceId}",
+    "Tags UWB Uno por cada bobina a rastrear Cotizar según nº de"
+  ],
+  "facts": [
+    "(hasta 10 Hz).",
+    "Nota importante sobre la oferta actual: la web de GrowSpace muestra también un \"UWB Creator Kit\" con 4 anclajes + 6 tags de",
+    "Precisión media indoor 10–30 cm",
+    "Precisión Creator Kit Q1 Menos de 10 cm de error en condiciones óptimas",
+    "Precisión Creator Expansion Kit Dentro de 30 cm",
+    "Espaciado de anclajes recomendado Hasta 15 m indoor",
+    "Alcance máximo con línea de visión 25 m",
+    "Frecuencia de actualización máxima Hasta 10 Hz",
+    "Capacidad del gateway Hasta 150 comunicaciones/segundo (15 tags a 10 Hz, o 150 tags a 1 Hz)",
+    "• Al menos 10 cm de separación entre el anclaje y la pared (especificación del bracket).",
+    "• Escalar el número de anclajes para cubrir todo el almacén (espaciado hasta 15 m)."
+  ],
+  "vendor_statements": [
+    "Este es el recorrido exacto desde que una bobina emite su señal hasta que el técnico la ve en la tablet:",
+    "idealmente algunos cerca del techo y otros a media altura (en columnas o estanterías). Si todos los"
+  ],
+  "engineering_assumptions": [],
+  "technical_limitations": [
+    "metal",
+    "multipath"
+  ],
+  "commercial_limitations": [],
+  "installation_constraints": [
+    "anchor",
+    "cable"
+  ],
+  "integration_possibilities": [
+    "api",
+    "erp",
+    "mes",
+    "mqtt",
+    "opc",
+    "rest",
+    "sdk"
+  ]
+}

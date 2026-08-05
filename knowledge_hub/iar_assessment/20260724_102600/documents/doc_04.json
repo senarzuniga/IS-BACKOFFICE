@@ -1,0 +1,528 @@
+{
+  "source_file": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\PRODUCTO\\ALMACEN INTELIGENTE\\IAR\\Pozyx_Evaluacion_RTLS.pdf",
+  "supplier": "Pozyx",
+  "document_type": "technology_evaluation",
+  "technologies": [
+    "UWB",
+    "BLE",
+    "Vision"
+  ],
+  "positioning_methods": [
+    "TDoA"
+  ],
+  "metadata": {
+    "processed_at": "2026-07-24T08:26:27.512148+00:00",
+    "chars": 12762,
+    "pages": 8,
+    "tables": 6,
+    "images": 0,
+    "claims": 20
+  },
+  "summary": [
+    "• Red de anclajes (anchors): puntos fijos distribuidos por la planta que reciben las\nseñales UWB.",
+    "• Pozyx Platform: capa de software con mapas, zonas, configuración de tags y\ndashboards.",
+    "· Mejor manejo de tags estáticos (palets, contenedores) en entornos con vibraciones e\ninterferencias metálicas.",
+    "Precisión, anclajes y eje Z\nParámetro Valor\nPrecisión típica anunciada 10–30 cm en UWB (la cifra de 10 cm aplica a condiciones\nóptimas, no a entornos reales)\nPrecisión BLE ≈ 5 metros\ncomplementaria\nLatencia Baja (no publicada como cifra exacta, pero compatible con\ntiempo real)\nMínimo de anclajes 4 anclajes (por su documentación oficial)\nDistancia entre anclajes Entre 2 y 20 metros para configuración UWB por defecto\nFrecuencia de actualización Configurable por tag, optimizada con activación por\nmovimiento\nVida útil de batería 5+ años en tags con detección de movimiento + Aloha\nModos de posicionamiento: 2.5D vs 3D\nEste es el punto más relevante para el caso de las bobinas apiladas.",
+    "Pozyx distingue dos\nmodos en su documentación oficial:\n• 2.5D (por defecto): devuelve (X, Y) y la Z se fija a una altura configurable por tag.",
+    "• 3D real: devuelve (X, Y, Z) calculados, pero el propio fabricante recomienda usarlo\nsolo en entornos abiertos con suficiente distancia entre anclajes en la dirección Z.",
+    "Implicación para bobinas apiladas\nSi las bobinas están a alturas distintas y el cliente necesita saber a qué altura está cada\nuna, hay que ir a 3D real, no a 2.5D.",
+    "Las \"reglas de oro\" que publica\nPozyx (anclajes altos, en línea de visión del tag, separados 2–20 m, nunca alineados,\nantena alejada al menos 20 cm del metal) condicionan la configuración."
+  ],
+  "claims": [
+    {
+      "claim": "• Red de anclajes (anchors): puntos fijos distribuidos por la planta que reciben las\nseñales UWB.",
+      "claim_type": "Engineering Assumption",
+      "source_file": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\PRODUCTO\\ALMACEN INTELIGENTE\\IAR\\Pozyx_Evaluacion_RTLS.pdf",
+      "source_page": 3,
+      "supplier": "Pozyx",
+      "external_validation": "NOT_APPLICABLE",
+      "external_references": [],
+      "confidence": 0.45
+    },
+    {
+      "claim": "• Pozyx Platform: capa de software con mapas, zonas, configuración de tags y\ndashboards.",
+      "claim_type": "Engineering Assumption",
+      "source_file": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\PRODUCTO\\ALMACEN INTELIGENTE\\IAR\\Pozyx_Evaluacion_RTLS.pdf",
+      "source_page": 3,
+      "supplier": "Pozyx",
+      "external_validation": "NOT_APPLICABLE",
+      "external_references": [],
+      "confidence": 0.45
+    },
+    {
+      "claim": "· Mejor manejo de tags estáticos (palets, contenedores) en entornos con vibraciones e\ninterferencias metálicas.",
+      "claim_type": "Engineering Assumption",
+      "source_file": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\PRODUCTO\\ALMACEN INTELIGENTE\\IAR\\Pozyx_Evaluacion_RTLS.pdf",
+      "source_page": 3,
+      "supplier": "Pozyx",
+      "external_validation": "NOT_APPLICABLE",
+      "external_references": [],
+      "confidence": 0.45
+    },
+    {
+      "claim": "Precisión, anclajes y eje Z\nParámetro Valor\nPrecisión típica anunciada 10–30 cm en UWB (la cifra de 10 cm aplica a condiciones\nóptimas, no a entornos reales)\nPrecisión BLE ≈ 5 metros\ncomplementaria\nLatencia Baja (no publicada como cifra exacta, pero compatible con\ntiempo real)\nMínimo de anclajes 4 anclajes (por su documentación oficial)\nDistancia entre anclajes Entre 2 y 20 metros para configuración UWB por defecto\nFrecuencia de actualización Configurable por tag, optimizada con activación por\nmovimiento\nVida útil de batería 5+ años en tags con detección de movimiento + Aloha\nModos de posicionamiento: 2.5D vs 3D\nEste es el punto más relevante para el caso de las bobinas apiladas.",
+      "claim_type": "Unsupported Claim",
+      "source_file": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\PRODUCTO\\ALMACEN INTELIGENTE\\IAR\\Pozyx_Evaluacion_RTLS.pdf",
+      "source_page": 4,
+      "supplier": "Pozyx",
+      "external_validation": "NOT VERIFIED",
+      "external_references": [],
+      "confidence": 0.3
+    },
+    {
+      "claim": "Pozyx distingue dos\nmodos en su documentación oficial:\n• 2.5D (por defecto): devuelve (X, Y) y la Z se fija a una altura configurable por tag.",
+      "claim_type": "Engineering Assumption",
+      "source_file": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\PRODUCTO\\ALMACEN INTELIGENTE\\IAR\\Pozyx_Evaluacion_RTLS.pdf",
+      "source_page": 4,
+      "supplier": "Pozyx",
+      "external_validation": "NOT_APPLICABLE",
+      "external_references": [],
+      "confidence": 0.45
+    },
+    {
+      "claim": "• 3D real: devuelve (X, Y, Z) calculados, pero el propio fabricante recomienda usarlo\nsolo en entornos abiertos con suficiente distancia entre anclajes en la dirección Z.",
+      "claim_type": "Engineering Assumption",
+      "source_file": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\PRODUCTO\\ALMACEN INTELIGENTE\\IAR\\Pozyx_Evaluacion_RTLS.pdf",
+      "source_page": 4,
+      "supplier": "Pozyx",
+      "external_validation": "NOT_APPLICABLE",
+      "external_references": [],
+      "confidence": 0.45
+    },
+    {
+      "claim": "Implicación para bobinas apiladas\nSi las bobinas están a alturas distintas y el cliente necesita saber a qué altura está cada\nuna, hay que ir a 3D real, no a 2.5D.",
+      "claim_type": "Verified Technical Fact",
+      "source_file": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\PRODUCTO\\ALMACEN INTELIGENTE\\IAR\\Pozyx_Evaluacion_RTLS.pdf",
+      "source_page": 4,
+      "supplier": "Pozyx",
+      "external_validation": "NOT VERIFIED",
+      "external_references": [],
+      "confidence": 0.3
+    },
+    {
+      "claim": "Las \"reglas de oro\" que publica\nPozyx (anclajes altos, en línea de visión del tag, separados 2–20 m, nunca alineados,\nantena alejada al menos 20 cm del metal) condicionan la configuración.",
+      "claim_type": "Performance Specification",
+      "source_file": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\PRODUCTO\\ALMACEN INTELIGENTE\\IAR\\Pozyx_Evaluacion_RTLS.pdf",
+      "source_page": 4,
+      "supplier": "Pozyx",
+      "external_validation": "VERIFIED",
+      "external_references": [
+        {
+          "name": "NIST UWB indoor positioning",
+          "url": "https://www.nist.gov/search?query=UWB+indoor+positioning",
+          "kind": "independent_engineering_reference",
+          "token_hits": 2
+        },
+        {
+          "name": "Pozyx documentation",
+          "url": "https://docs.pozyx.io/",
+          "kind": "official_manufacturer_documentation",
+          "token_hits": 2
+        }
+      ],
+      "confidence": 0.7100000000000001
+    },
+    {
+      "claim": "Integración MQTT — y un ejemplo oficial para Unity\nPara alimentar un gemelo digital en Unity, Pozyx recomienda explícitamente su API MQTT.",
+      "claim_type": "Verified Technical Fact",
+      "source_file": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\PRODUCTO\\ALMACEN INTELIGENTE\\IAR\\Pozyx_Evaluacion_RTLS.pdf",
+      "source_page": 5,
+      "supplier": "Pozyx",
+      "external_validation": "VERIFIED",
+      "external_references": [
+        {
+          "name": "NIST UWB indoor positioning",
+          "url": "https://www.nist.gov/search?query=UWB+indoor+positioning",
+          "kind": "independent_engineering_reference",
+          "token_hits": 2
+        },
+        {
+          "name": "Pozyx documentation",
+          "url": "https://docs.pozyx.io/",
+          "kind": "official_manufacturer_documentation",
+          "token_hits": 3
+        },
+        {
+          "name": "UWB patents search",
+          "url": "https://patents.google.com/?q=UWB+positioning+warehouse",
+          "kind": "patent",
+          "token_hits": 2
+        }
+      ],
+      "confidence": 0.79
+    },
+    {
+      "claim": "Parámetro Valor\nAPI recomendada MQTT (streaming continuo, baja latencia)\nBroker Pozyx Gateway (servidor local on-premise)\nPuerto estándar 1883 (TCP, conexión local)\nTópico principal tags\nTópico por etiqueta tags/<tagID> (filtra a un solo tag)\nTópico de eventos/zonas triggers/trigger/+ (reemplaza el antiguo array de zonas\ndentro del paquete)\nFormato de datos JSON — array de objetos, uno por tag y blink\nCoordenadas X, Y, Z expresadas en milímetros\nAcceso cloud opcional WebSocket sobre wss en mqtt.cloud.pozyxlabs.com:443\nDatos verificables sobre el paquete MQTT\n• Cada paquete incluye: tagId, timestamp epoch, coordenadas (X, Y, Z en mm), tasa\nde actualización real, anclajes usados con su RSS y datos de sensores\n(acelerómetro, opcionalmente otros).",
+      "claim_type": "Verified Technical Fact",
+      "source_file": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\PRODUCTO\\ALMACEN INTELIGENTE\\IAR\\Pozyx_Evaluacion_RTLS.pdf",
+      "source_page": 5,
+      "supplier": "Pozyx",
+      "external_validation": "NOT VERIFIED",
+      "external_references": [],
+      "confidence": 0.3
+    },
+    {
+      "claim": "Ejemplo oficial Unity-MQTT en GitHub\nEl propio equipo de Pozyx (laurentva) mantiene un proyecto público \"Pozyx-Unity-MQTT\"\nen GitHub: un proyecto Unity 2019.1+ que se conecta directamente al broker MQTT local\n(127.0.0.1:1883), se suscribe al tópico tags y deserializa cada paquete JSON a un objeto\nPositionData.cs.",
+      "claim_type": "Verified Technical Fact",
+      "source_file": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\PRODUCTO\\ALMACEN INTELIGENTE\\IAR\\Pozyx_Evaluacion_RTLS.pdf",
+      "source_page": 5,
+      "supplier": "Pozyx",
+      "external_validation": "NOT VERIFIED",
+      "external_references": [],
+      "confidence": 0.3
+    },
+    {
+      "claim": "Usa la librería JSON .NET de Unity para parseo y un Prefab que se instancia por tag\ndetectado.",
+      "claim_type": "Engineering Assumption",
+      "source_file": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\PRODUCTO\\ALMACEN INTELIGENTE\\IAR\\Pozyx_Evaluacion_RTLS.pdf",
+      "source_page": 5,
+      "supplier": "Pozyx",
+      "external_validation": "NOT_APPLICABLE",
+      "external_references": [],
+      "confidence": 0.45
+    },
+    {
+      "claim": "Catálogo de hardware\nAnclajes (anchors)\nDos familias compartiendo la misma red:\n• Anclaje estándar (IP20): pensado para entornos limpios (oficinas, almacenes\nsecos, instalaciones controladas).",
+      "claim_type": "Engineering Assumption",
+      "source_file": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\PRODUCTO\\ALMACEN INTELIGENTE\\IAR\\Pozyx_Evaluacion_RTLS.pdf",
+      "source_page": 6,
+      "supplier": "Pozyx",
+      "external_validation": "NOT_APPLICABLE",
+      "external_references": [],
+      "confidence": 0.45
+    },
+    {
+      "claim": "Etiquetas (tags)\nModelo Carcasa Uso recomendado Extras\nUWB industrial IP66/67 Activos en planta, palets, Diseñado para soportar\ncontenedores impactos\nUWB wearable Sin IP Personas, identificación, Variante con botón +\nespecífico asistencia LED para interacción\nAmbos modelos comparten infraestructura y protocolo, por lo que se pueden combinar en el\nmismo despliegue.",
+      "claim_type": "Engineering Assumption",
+      "source_file": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\PRODUCTO\\ALMACEN INTELIGENTE\\IAR\\Pozyx_Evaluacion_RTLS.pdf",
+      "source_page": 6,
+      "supplier": "Pozyx",
+      "external_validation": "NOT_APPLICABLE",
+      "external_references": [],
+      "confidence": 0.45
+    },
+    {
+      "claim": "Hardware\nKit Contenido Precio\nRTLS/UWB Kit — 4 anclajes + 1 Pozyx Gateway + tags de 5.320,35 €\nProductive muestra (industrial y wearable)\nRTLS/UWB Kit — Non- Mismo hardware, orientado a PoC y 3.883,85 €\nProductive desarrollo\nLicencias de Pozyx Platform\nLicencia Uso Precio\nPlatform License — Entornos productivos, visualización de 1.046,33 €\nProduction mapas, zonificación, tiempo real\nPlatform License — Non- PoC, demos, desarrollo 523,17 €\nProduction\nImportante: la licencia de Pozyx Platform es obligatoria con el hardware.",
+      "claim_type": "Engineering Assumption",
+      "source_file": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\PRODUCTO\\ALMACEN INTELIGENTE\\IAR\\Pozyx_Evaluacion_RTLS.pdf",
+      "source_page": 7,
+      "supplier": "Pozyx",
+      "external_validation": "NOT_APPLICABLE",
+      "external_references": [],
+      "confidence": 0.45
+    },
+    {
+      "claim": "Las cifras anteriores se\nsumarían: por ejemplo, un PoC completo no productivo arrancaría sobre los 4.407 € (kit Non-\nProductive 3.883,85 € + licencia Non-Production 523,17 €), antes de IVA y antes de añadir tags\nadicionales si necesitáis un tag por bobina.",
+      "claim_type": "Engineering Assumption",
+      "source_file": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\PRODUCTO\\ALMACEN INTELIGENTE\\IAR\\Pozyx_Evaluacion_RTLS.pdf",
+      "source_page": 7,
+      "supplier": "Pozyx",
+      "external_validation": "NOT_APPLICABLE",
+      "external_references": [],
+      "confidence": 0.45
+    },
+    {
+      "claim": "Checklist: lo que conviene confirmar antes de comprar\nSobre el eje Z y la sala real\n• Enviar a Pozyx el plano de la sala, alturas máximas de apilamiento y dimensiones\nreales para que dimensionen el número de anclajes y propongan un layout 3D (no\n2.5D).",
+      "claim_type": "Verified Technical Fact",
+      "source_file": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\PRODUCTO\\ALMACEN INTELIGENTE\\IAR\\Pozyx_Evaluacion_RTLS.pdf",
+      "source_page": 8,
+      "supplier": "Pozyx",
+      "external_validation": "NOT VERIFIED",
+      "external_references": [],
+      "confidence": 0.3
+    },
+    {
+      "claim": "• Confirmar si el caso \"bobinas apiladas con bobina encima bloqueando línea de\nvisión\" se ha resuelto en algún otro despliegue de Pozyx.",
+      "claim_type": "Verified Technical Fact",
+      "source_file": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\PRODUCTO\\ALMACEN INTELIGENTE\\IAR\\Pozyx_Evaluacion_RTLS.pdf",
+      "source_page": 8,
+      "supplier": "Pozyx",
+      "external_validation": "NOT VERIFIED",
+      "external_references": [],
+      "confidence": 0.3
+    },
+    {
+      "claim": "Sobre el flujo MQTT y Unity\n• Validar la estructura exacta del JSON recibido en el tópico \"tags\" en la versión actual\ndel firmware (porque el campo zones está deprecado).",
+      "claim_type": "Verified Technical Fact",
+      "source_file": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\PRODUCTO\\ALMACEN INTELIGENTE\\IAR\\Pozyx_Evaluacion_RTLS.pdf",
+      "source_page": 8,
+      "supplier": "Pozyx",
+      "external_validation": "VERIFIED",
+      "external_references": [
+        {
+          "name": "Pozyx documentation",
+          "url": "https://docs.pozyx.io/",
+          "kind": "official_manufacturer_documentation",
+          "token_hits": 2
+        }
+      ],
+      "confidence": 0.63
+    },
+    {
+      "claim": "Sobre el modelo comercial\n• Cotización formal de tags adicionales según volumen (uno por bobina) — el precio\nno aparece publicado.",
+      "claim_type": "Engineering Assumption",
+      "source_file": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\PRODUCTO\\ALMACEN INTELIGENTE\\IAR\\Pozyx_Evaluacion_RTLS.pdf",
+      "source_page": 8,
+      "supplier": "Pozyx",
+      "external_validation": "NOT_APPLICABLE",
+      "external_references": [],
+      "confidence": 0.45
+    }
+  ],
+  "specs": {
+    "Accuracy": "30 cm",
+    "Repeatability": "30 cm",
+    "Latency": "not_stated",
+    "Refresh rate": "not_stated",
+    "Maximum tags": "not_stated",
+    "Maximum anchors": "not_stated",
+    "Coverage": "not_stated",
+    "Battery life": "not_stated",
+    "Expected CAPEX": "not_stated"
+  },
+  "tables": [
+    {
+      "page": 2,
+      "table_id": "p2_t1",
+      "rows": [
+        [
+          "Parámetro",
+          "Valor"
+        ],
+        [
+          "Sede",
+          "Gante, Bélgica"
+        ],
+        [
+          "Tecnología principal",
+          "UWB (10–30 cm) + BLE (≈ 5 m) como capa\ncomplementaria"
+        ],
+        [
+          "Método de cálculo",
+          "TDoA (Time Difference of Arrival), con Aloha para\nminimizar consumo"
+        ],
+        [
+          "Trackers activos",
+          "Más de 150.000 en campo (dato verificable, enero 2026)"
+        ],
+        [
+          "Clientes de referencia",
+          "ArcelorMittal y otros casos en manufactura, intralogística y\nagricultura"
+        ],
+        [
+          "Modelo comercial",
+          "Llave en mano · hardware + licencia de plataforma · precio\nbajo petición salvo Starter Kit"
+        ]
+      ]
+    },
+    {
+      "page": 4,
+      "table_id": "p4_t1",
+      "rows": [
+        [
+          "Parámetro",
+          "Valor"
+        ],
+        [
+          "Precisión típica anunciada",
+          "10–30 cm en UWB (la cifra de 10 cm aplica a condiciones\nóptimas, no a entornos reales)"
+        ],
+        [
+          "Precisión BLE\ncomplementaria",
+          "≈ 5 metros"
+        ],
+        [
+          "Latencia",
+          "Baja (no publicada como cifra exacta, pero compatible con\ntiempo real)"
+        ],
+        [
+          "Mínimo de anclajes",
+          "4 anclajes (por su documentación oficial)"
+        ],
+        [
+          "Distancia entre anclajes",
+          "Entre 2 y 20 metros para configuración UWB por defecto"
+        ],
+        [
+          "Frecuencia de actualización",
+          "Configurable por tag, optimizada con activación por\nmovimiento"
+        ],
+        [
+          "Vida útil de batería",
+          "5+ años en tags con detección de movimiento + Aloha"
+        ]
+      ]
+    },
+    {
+      "page": 5,
+      "table_id": "p5_t1",
+      "rows": [
+        [
+          "Parámetro",
+          "Valor"
+        ],
+        [
+          "API recomendada",
+          "MQTT (streaming continuo, baja latencia)"
+        ],
+        [
+          "Broker",
+          "Pozyx Gateway (servidor local on-premise)"
+        ],
+        [
+          "Puerto estándar",
+          "1883 (TCP, conexión local)"
+        ],
+        [
+          "Tópico principal",
+          "tags"
+        ],
+        [
+          "Tópico por etiqueta",
+          "tags/<tagID> (filtra a un solo tag)"
+        ],
+        [
+          "Tópico de eventos/zonas",
+          "triggers/trigger/+ (reemplaza el antiguo array de zonas\ndentro del paquete)"
+        ],
+        [
+          "Formato de datos",
+          "JSON — array de objetos, uno por tag y blink"
+        ],
+        [
+          "Coordenadas",
+          "X, Y, Z expresadas en milímetros"
+        ],
+        [
+          "Acceso cloud opcional",
+          "WebSocket sobre wss en mqtt.cloud.pozyxlabs.com:443"
+        ]
+      ]
+    },
+    {
+      "page": 6,
+      "table_id": "p6_t1",
+      "rows": [
+        [
+          "Modelo",
+          "Carcasa",
+          "Uso recomendado",
+          "Extras"
+        ],
+        [
+          "UWB industrial",
+          "IP66/67",
+          "Activos en planta, palets,\ncontenedores",
+          "Diseñado para soportar\nimpactos"
+        ],
+        [
+          "UWB wearable",
+          "Sin IP\nespecífico",
+          "Personas, identificación,\nasistencia",
+          "Variante con botón +\nLED para interacción"
+        ]
+      ]
+    },
+    {
+      "page": 7,
+      "table_id": "p7_t1",
+      "rows": [
+        [
+          "Kit",
+          "Contenido",
+          "Precio"
+        ],
+        [
+          "RTLS/UWB Kit —\nProductive",
+          "4 anclajes + 1 Pozyx Gateway + tags de\nmuestra (industrial y wearable)",
+          "5.320,35 €"
+        ],
+        [
+          "RTLS/UWB Kit — Non-\nProductive",
+          "Mismo hardware, orientado a PoC y\ndesarrollo",
+          "3.883,85 €"
+        ]
+      ]
+    },
+    {
+      "page": 7,
+      "table_id": "p7_t2",
+      "rows": [
+        [
+          "Licencia",
+          "Uso",
+          "Precio"
+        ],
+        [
+          "Platform License —\nProduction",
+          "Entornos productivos, visualización de\nmapas, zonificación, tiempo real",
+          "1.046,33 €"
+        ],
+        [
+          "Platform License — Non-\nProduction",
+          "PoC, demos, desarrollo",
+          "523,17 €"
+        ]
+      ]
+    }
+  ],
+  "pages": [
+    {
+      "page": 1,
+      "text": "POZYX · Sistema RTLS Evaluación técnica y comercial — revisada\nPOZYX\nSistema de posicionamiento en tiempo real (RTLS) sobre UWB\nFicha de proveedor y checklist de evaluación\nResumen ejecutivo\nPozyx es un fabricante belga (Gante) con una de las plataformas RTLS UWB más maduras\ndel mercado, especializada en entornos industriales exigentes.\nPrecisión real anunciada de 10–30 cm (la cifra de 10 cm que veíamos en versiones\nanteriores corresponde a condiciones óptimas; el rango operativo publicado actualmente es\nde 10–30 cm).\nServidor de posicionamiento on-premise, datos en tiempo real vía MQTT local en el puerto\n1883 — y existe un ejemplo oficial de cliente Unity-MQTT publicado en GitHub por el propio\nequipo.\nRelease v2025.2 (diciembre 2025) introduce conector nativo omlox Hub y tres niveles de\nprecisión configurables por zona (10–30 cm / ~5 m / presencia).\nMás de 150.000 trackers activos en campo; clientes industriales de referencia como\nArcelorMittal.\nDocumento interno — uso confidencial Página 1 de 8",
+      "tables_count": 0,
+      "images_count": 0,
+      "image_preview": null
+    },
+    {
+      "page": 2,
+      "text": "POZYX · Sistema RTLS Evaluación técnica y comercial — revisada\n1. Quién es Pozyx\nPozyx es un fabricante belga con sede en Gante, especializado en sistemas RTLS basados\nen UWB y BLE para entornos industriales. La compañía combina hardware propio (anclajes\ny etiquetas) con una plataforma de software propia (Pozyx Platform) que se puede\ndesplegar tanto en la nube como en servidor local.\nSu perfil es claramente \"corporativo / llave en mano\": Pozyx vende un sistema completo y\nsoportado, no piezas sueltas. Esto la sitúa en la misma categoría que Sewio y Eliko, y la\ndiferencia de plataformas de desarrollo como GrowSpace.\nParámetro Valor\nSede Gante, Bélgica\nTecnología principal UWB (10–30 cm) + BLE (≈ 5 m) como capa\ncomplementaria\nMétodo de cálculo TDoA (Time Difference of Arrival), con Aloha para\nminimizar consumo\nTrackers activos Más de 150.000 en campo (dato verificable, enero 2026)\nClientes de referencia ArcelorMittal y otros casos en manufactura, intralogística y\nagricultura\nModelo comercial Llave en mano · hardware + licencia de plataforma · precio\nbajo petición salvo Starter Kit\nCasos de uso y sectores típicos\n• Manufactura: trazabilidad de carretillas, WIP (work in progress) y herramientas en\nplanta.\n• Intralogística y almacenes: optimización de flujos, geofencing automático y\nzonificación.\n• Producción \"Just-in-Time\": secuenciación de materiales y visibilidad de proceso.\n• Aplicaciones de seguridad: detección de proximidad y zonas restringidas.\n• Agricultura e investigación animal: tracking de ganado (caso documentado por el\npropio fabricante).\nDocumento interno — uso confidencial Página 2 de 8",
+      "tables_count": 1,
+      "images_count": 0,
+      "image_preview": null
+    },
+    {
+      "page": 3,
+      "text": "POZYX · Sistema RTLS Evaluación técnica y comercial — revisada\n2. Arquitectura del sistema\nEl flujo de datos es lineal y predecible: etiqueta UWB/BLE → red de anclajes → switch PoE\n→ servidor de posicionamiento → destino final (Pozyx Cloud, aplicación del cliente o un\nomlox Hub).\nComponentes principales\n• Etiquetas UWB o BLE: dispositivos portátiles o industriales que emiten la señal a\nlocalizar. Configurables en frecuencia de actualización (motion-based) para optimizar\nbatería.\n• Red de anclajes (anchors): puntos fijos distribuidos por la planta que reciben las\nseñales UWB. Existen versiones IP20 (estándar) e IP66/67 (industrial).\n• Switch PoE: alimenta los anclajes y los conecta al servidor; admite daisy-chain.\n• Servidor de posicionamiento (Gateway): procesa los datos y los distribuye. Se\ninstala localmente, lo que elimina la dependencia crítica de conectividad externa.\n• Pozyx Platform: capa de software con mapas, zonas, configuración de tags y\ndashboards.\nNovedad verificada (release v2025.2, diciembre 2025)\n· Conector nativo omlox Hub: integración directa con cualquier sistema compatible con el\nestándar omlox, sin pasar por un middleware adicional.\n· Tres niveles de precisión configurables por zona: precisión alta (10–30 cm) en zonas\ncríticas, precisión aproximada (≈ 5 m) en zonas con menos anclajes y simple detección de\npresencia con un solo anclaje en alcance.\n· Mejor manejo de tags estáticos (palets, contenedores) en entornos con vibraciones e\ninterferencias metálicas.\nImplicación práctica para vuestro caso: podríais usar precisión alta en la zona de bobinas y\nreducir la densidad de anclajes en pasillos secundarios, ajustando coste de instalación a\nlas necesidades reales por área.\nDocumento interno — uso confidencial Página 3 de 8",
+      "tables_count": 0,
+      "images_count": 0,
+      "image_preview": null
+    },
+    {
+      "page": 4,
+      "text": "POZYX · Sistema RTLS Evaluación técnica y comercial — revisada\n3. Precisión, anclajes y eje Z\nParámetro Valor\nPrecisión típica anunciada 10–30 cm en UWB (la cifra de 10 cm aplica a condiciones\nóptimas, no a entornos reales)\nPrecisión BLE ≈ 5 metros\ncomplementaria\nLatencia Baja (no publicada como cifra exacta, pero compatible con\ntiempo real)\nMínimo de anclajes 4 anclajes (por su documentación oficial)\nDistancia entre anclajes Entre 2 y 20 metros para configuración UWB por defecto\nFrecuencia de actualización Configurable por tag, optimizada con activación por\nmovimiento\nVida útil de batería 5+ años en tags con detección de movimiento + Aloha\nModos de posicionamiento: 2.5D vs 3D\nEste es el punto más relevante para el caso de las bobinas apiladas. Pozyx distingue dos\nmodos en su documentación oficial:\n• 2.5D (por defecto): devuelve (X, Y) y la Z se fija a una altura configurable por tag.\nSalida sigue siendo (X, Y, Z), pero la Z es estática. Los anclajes pueden estar a\ndistintas alturas, pero la Z calculada no es libre.\n• 3D real: devuelve (X, Y, Z) calculados, pero el propio fabricante recomienda usarlo\nsolo en entornos abiertos con suficiente distancia entre anclajes en la dirección Z.\nRequiere claramente más anclajes y a alturas variadas.\nImplicación para bobinas apiladas\nSi las bobinas están a alturas distintas y el cliente necesita saber a qué altura está cada\nuna, hay que ir a 3D real, no a 2.5D.\nEso implica anclajes a distintas alturas, no solo en techo. Las \"reglas de oro\" que publica\nPozyx (anclajes altos, en línea de visión del tag, separados 2–20 m, nunca alineados,\nantena alejada al menos 20 cm del metal) condicionan la configuración.\nConviene pedir a Pozyx una propuesta de planificación de anclajes específica para vuestra\nsala, antes de comprar el kit.\nDocumento interno — uso confidencial Página 4 de 8",
+      "tables_count": 1,
+      "images_count": 0,
+      "image_preview": null
+    },
+    {
+      "page": 5,
+      "text": "POZYX · Sistema RTLS Evaluación técnica y comercial — revisada\n4. Integración MQTT — y un ejemplo oficial para Unity\nPara alimentar un gemelo digital en Unity, Pozyx recomienda explícitamente su API MQTT.\nEl servidor de posicionamiento actúa como broker MQTT local; la aplicación de Unity se\nsuscribe a un tópico y recibe un flujo continuo de datos, sin necesidad de hacer polling.\nParámetro Valor\nAPI recomendada MQTT (streaming continuo, baja latencia)\nBroker Pozyx Gateway (servidor local on-premise)\nPuerto estándar 1883 (TCP, conexión local)\nTópico principal tags\nTópico por etiqueta tags/<tagID> (filtra a un solo tag)\nTópico de eventos/zonas triggers/trigger/+ (reemplaza el antiguo array de zonas\ndentro del paquete)\nFormato de datos JSON — array de objetos, uno por tag y blink\nCoordenadas X, Y, Z expresadas en milímetros\nAcceso cloud opcional WebSocket sobre wss en mqtt.cloud.pozyxlabs.com:443\nDatos verificables sobre el paquete MQTT\n• Cada paquete incluye: tagId, timestamp epoch, coordenadas (X, Y, Z en mm), tasa\nde actualización real, anclajes usados con su RSS y datos de sensores\n(acelerómetro, opcionalmente otros).\n• Modo local: sin batching, cada actualización de posición llega en un paquete MQTT\nindependiente — recomendado para tiempo real.\n• Modo cloud: puede haber batching de varias actualizaciones en un mismo paquete.\n• El campo \"zones\" dentro del paquete está deprecado desde noviembre 2022 y se\nretira definitivamente en RTLS v2025.2.0. Para zonas y geofences usar el nuevo\nsistema de triggers.\nEjemplo oficial Unity-MQTT en GitHub\nEl propio equipo de Pozyx (laurentva) mantiene un proyecto público \"Pozyx-Unity-MQTT\"\nen GitHub: un proyecto Unity 2019.1+ que se conecta directamente al broker MQTT local\n(127.0.0.1:1883), se suscribe al tópico tags y deserializa cada paquete JSON a un objeto\nPositionData.cs.\nUsa la librería JSON .NET de Unity para parseo y un Prefab que se instancia por tag\ndetectado.\nEs la confirmación más directa que existe de que el flujo MQTT → Unity está probado y\nsoportado por el fabricante.\nRepo: https://github.com/laurentva/Pozyx-Unity-MQTT\nDocumento interno — uso confidencial Página 5 de 8",
+      "tables_count": 1,
+      "images_count": 0,
+      "image_preview": null
+    },
+    {
+      "page": 6,
+      "text": "POZYX · Sistema RTLS Evaluación técnica y comercial — revisada\n5. Catálogo de hardware\nAnclajes (anchors)\nDos familias compartiendo la misma red:\n• Anclaje estándar (IP20): pensado para entornos limpios (oficinas, almacenes\nsecos, instalaciones controladas). Diseño compacto, instalación con soportes VESA,\ndaisy-chain PoE.\n• Anclaje industrial (IP66/67): carcasa robusta resistente a agua, productos químicos\ny detergentes de limpieza. Apto para entornos exigentes — automoción,\nalimentación, farmacéutica.\nEtiquetas (tags)\nModelo Carcasa Uso recomendado Extras\nUWB industrial IP66/67 Activos en planta, palets, Diseñado para soportar\ncontenedores impactos\nUWB wearable Sin IP Personas, identificación, Variante con botón +\nespecífico asistencia LED para interacción\nAmbos modelos comparten infraestructura y protocolo, por lo que se pueden combinar en el\nmismo despliegue. Pozyx también mantiene la línea \"Creator\" (kit de prototipado) pero está\nmarcada como End of Life en su web actual, así que para producción no es una vía\nrecomendada.\nDocumento interno — uso confidencial Página 6 de 8",
+      "tables_count": 1,
+      "images_count": 0,
+      "image_preview": null
+    },
+    {
+      "page": 7,
+      "text": "POZYX · Sistema RTLS Evaluación técnica y comercial — revisada\n6. Pozyx Starter Kits: precios verificados\nPozyx es uno de los pocos fabricantes corporativos que publica precios concretos de sus\nkits de inicio en su tienda online. Esto facilita dimensionar la inversión inicial sin pasar por\npresupuesto comercial.\nHardware\nKit Contenido Precio\nRTLS/UWB Kit — 4 anclajes + 1 Pozyx Gateway + tags de 5.320,35 €\nProductive muestra (industrial y wearable)\nRTLS/UWB Kit — Non- Mismo hardware, orientado a PoC y 3.883,85 €\nProductive desarrollo\nLicencias de Pozyx Platform\nLicencia Uso Precio\nPlatform License — Entornos productivos, visualización de 1.046,33 €\nProduction mapas, zonificación, tiempo real\nPlatform License — Non- PoC, demos, desarrollo 523,17 €\nProduction\nImportante: la licencia de Pozyx Platform es obligatoria con el hardware. Las cifras anteriores se\nsumarían: por ejemplo, un PoC completo no productivo arrancaría sobre los 4.407 € (kit Non-\nProductive 3.883,85 € + licencia Non-Production 523,17 €), antes de IVA y antes de añadir tags\nadicionales si necesitáis un tag por bobina.\nDocumento interno — uso confidencial Página 7 de 8",
+      "tables_count": 2,
+      "images_count": 0,
+      "image_preview": null
+    },
+    {
+      "page": 8,
+      "text": "POZYX · Sistema RTLS Evaluación técnica y comercial — revisada\n7. Checklist: lo que conviene confirmar antes de comprar\nSobre el eje Z y la sala real\n• Enviar a Pozyx el plano de la sala, alturas máximas de apilamiento y dimensiones\nreales para que dimensionen el número de anclajes y propongan un layout 3D (no\n2.5D).\n• Pedir una cifra concreta de precisión vertical (Z) esperable con el layout propuesto\n— no solo la precisión XY.\n• Confirmar si el caso \"bobinas apiladas con bobina encima bloqueando línea de\nvisión\" se ha resuelto en algún otro despliegue de Pozyx.\nSobre el flujo MQTT y Unity\n• Validar la estructura exacta del JSON recibido en el tópico \"tags\" en la versión actual\ndel firmware (porque el campo zones está deprecado).\n• Confirmar si el ejemplo Pozyx-Unity-MQTT de GitHub está actualizado para v2025.2\no conviene basarse en el ejemplo Python/Java de la documentación y adaptarlo.\n• Pedir documentación del nuevo conector omlox Hub si en algún momento se\nquisiera mezclar Pozyx con otros sistemas de localización.\nSobre el modelo comercial\n• Cotización formal de tags adicionales según volumen (uno por bobina) — el precio\nno aparece publicado.\n• Confirmar si la licencia Non-Production tiene un plazo límite de uso o se puede\nmantener indefinidamente para entornos de I+D.\n• Aclarar el camino de migración Non-Production → Production: si el hardware se\nconserva y solo se renueva la licencia, o si hay que cambiar componentes.\nSobre soporte y despliegue\n• Tiempos de respuesta de soporte en EU para una empresa de vuestro tamaño\n(Pozyx atiende a clientes grandes como ArcelorMittal; conviene saber el nivel de\nservicio para PoCs más pequeñas).\n• Disponibilidad de partners de integración en España o cercanos a Pamplona, para\nno depender de soporte 100% remoto desde Bélgica.\nFuentes consultadas: pozyx.io (web de producto), docs.pozyx.io (documentación técnica y FAQ),\ngithub.com/laurentva/Pozyx-Unity-MQTT, blog ST sobre componentes Pozyx (enero 2026) y release\nnotes públicas v2025.2 (diciembre 2025). Datos verificados a fecha de junio 2026.\nDocumento interno — uso confidencial Página 8 de 8",
+      "tables_count": 0,
+      "images_count": 0,
+      "image_preview": null
+    }
+  ],
+  "image_files": []
+}

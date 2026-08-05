@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AMR Fleet — Architecture & Engineering Report | ING_DIGHUB</title>
+<style>
+  :root {
+    --primary: #0a1628;
+    --accent: #00d4ff;
+    --accent2: #ff6b35;
+    --accent3: #00ff88;
+    --bg: #050d1a;
+    --card: #0d1f35;
+    --text: #e8f4fd;
+    --muted: #7a9ab5;
+    --border: #1a3a5c;
+    --success: #00ff88;
+    --warning: #ffaa00;
+    --danger: #ff4444;
+    --purple: #a855f7;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:var(--bg); color:var(--text); font-family:'Segoe UI',system-ui,sans-serif; line-height:1.6; }
+  .header {
+    background: linear-gradient(135deg, #0a1628 0%, #1a0a2e 50%, #071020 100%);
+    border-bottom: 2px solid var(--purple);
+    padding: 40px 60px;
+  }
+  .header-badge { display:inline-block; background:rgba(168,85,247,0.1); border:1px solid var(--purple); color:var(--purple); padding:4px 16px; border-radius:20px; font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; margin-bottom:16px; }
+  .header h1 { font-size:2.6rem; font-weight:800; background:linear-gradient(90deg,#fff,var(--purple)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; line-height:1.2; margin-bottom:12px; }
+  .header .subtitle { color:var(--muted); font-size:1.05rem; }
+  main { padding:30px 60px 60px; max-width:1400px; margin:0 auto; }
+  section { margin-bottom:50px; }
+  .section-title { font-size:1.4rem; font-weight:700; color:var(--accent); border-left:4px solid var(--accent); padding-left:16px; margin-bottom:24px; display:flex; align-items:center; gap:10px; }
+  .subsection { font-size:1.1rem; font-weight:600; color:var(--accent2); margin:24px 0 16px; border-bottom:1px solid var(--border); padding-bottom:8px; }
+  .card { background:var(--card); border:1px solid var(--border); border-radius:12px; padding:24px; margin-bottom:20px; }
+  .card h4 { color:var(--accent); margin-bottom:12px; }
+  .card-grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(300px,1fr)); gap:20px; }
+  .diagram { background:var(--card); border:1px solid var(--border); border-radius:12px; padding:24px; font-family:'Cascadia Code','Courier New',monospace; font-size:0.78rem; color:var(--muted); overflow-x:auto; white-space:pre; line-height:1.6; margin:16px 0; }
+  .data-table { width:100%; border-collapse:collapse; margin:16px 0; }
+  .data-table th { background:rgba(168,85,247,0.1); color:var(--purple); padding:12px 16px; text-align:left; font-size:0.85rem; letter-spacing:1px; text-transform:uppercase; border-bottom:2px solid var(--border); }
+  .data-table td { padding:12px 16px; border-bottom:1px solid var(--border); color:var(--text); font-size:0.88rem; vertical-align:top; }
+  .data-table tr:hover td { background:rgba(168,85,247,0.03); }
+  .badge { display:inline-block; padding:3px 10px; border-radius:20px; font-size:0.75rem; font-weight:700; }
+  .badge-green { background:rgba(0,255,136,0.15); color:var(--success); border:1px solid rgba(0,255,136,0.3); }
+  .badge-yellow { background:rgba(255,170,0,0.15); color:var(--warning); border:1px solid rgba(255,170,0,0.3); }
+  .badge-blue { background:rgba(0,212,255,0.15); color:var(--accent); border:1px solid rgba(0,212,255,0.3); }
+  .badge-purple { background:rgba(168,85,247,0.15); color:var(--purple); border:1px solid rgba(168,85,247,0.3); }
+  .highlight { background:linear-gradient(135deg,rgba(168,85,247,0.08),rgba(168,85,247,0.03)); border:1px solid rgba(168,85,247,0.3); border-radius:12px; padding:24px; margin:20px 0; }
+  ul { padding-left:20px; }
+  li { margin-bottom:6px; color:var(--muted); font-size:0.9rem; }
+  p { color:var(--muted); font-size:0.9rem; margin-bottom:12px; }
+  code { background:rgba(0,212,255,0.1); color:var(--accent); padding:2px 8px; border-radius:4px; font-family:monospace; font-size:0.85rem; }
+  footer { background:var(--card); border-top:1px solid var(--border); padding:24px 60px; color:var(--muted); font-size:0.8rem; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; }
+  footer strong { color:var(--purple); }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-badge">🏗️ Engineering Intelligence — Architecture Deep Dive</div>
+  <h1>AMR Fleet Management<br>Architecture &amp; Engineering Report</h1>
+  <p class="subtitle">Reconstrucción completa de la arquitectura software, protocolos, servicios y microservicios de sistemas Fleet Management industriales. Base técnica para ING_DIGHUB FMS.</p>
+</div>
+
+<main>
+
+<!-- ════════════ ARCHITECTURE OVERVIEW ════════════ -->
+<section>
+  <div class="section-title">🏗️ Arquitectura de Referencia — Fleet Management System</div>
+
+  <div class="highlight">
+    <h4 style="color:var(--purple);margin-bottom:12px;">Modelo de Capas — Fleet Management Architecture</h4>
+    <p>Un Fleet Management System moderno se estructura en 5 capas funcionales claramente diferenciadas, desde la capa física de robots hasta la integración empresarial. Cada capa expone interfaces estándar para máxima interoperabilidad.</p>
+  </div>
+
+  <div class="diagram">
+╔═══════════════════════════════════════════════════════════════════════════════════╗
+║                    FLEET MANAGEMENT SYSTEM — REFERENCE ARCHITECTURE              ║
+╠═══════════════════════════════════════════════════════════════════════════════════╣
+║                                                                                   ║
+║  ┌─────────────────────────────────────────────────────────────────────────────┐  ║
+║  │  LAYER 5 — ENTERPRISE & ANALYTICS                                           │  ║
+║  │                                                                             │  ║
+║  │  ┌──────────┐ ┌──────────┐ ┌──────────┐ ┌──────────┐ ┌────────────────┐   │  ║
+║  │  │   WMS    │ │   ERP    │ │   MES    │ │  SCADA   │ │ BI/Analytics   │   │  ║
+║  │  └─────┬────┘ └─────┬────┘ └─────┬────┘ └─────┬────┘ └───────┬────────┘   │  ║
+║  │        └────────────┴────────────┴─────────────┴──────────────┘            │  ║
+║  │                              REST API / Webhooks                             │  ║
+║  └─────────────────────────────────────────────────────────────────────────────┘  ║
+║                                         ▲                                         ║
+║  ┌─────────────────────────────────────────────────────────────────────────────┐  ║
+║  │  LAYER 4 — FLEET INTELLIGENCE (AI)                                          │  ║
+║  │                                                                             │  ║
+║  │  ┌──────────────┐  ┌───────────────┐  ┌──────────────┐  ┌───────────────┐  │  ║
+║  │  │ AI Dispatch  │  │ Priority      │  │  Fleet       │  │  Simulation / │  │  ║
+║  │  │ Engine       │  │ Engine        │  │  Optimizer   │  │  Digital Twin │  │  ║
+║  │  └──────────────┘  └───────────────┘  └──────────────┘  └───────────────┘  │  ║
+║  │  ┌──────────────┐  ┌───────────────┐  ┌──────────────┐  ┌───────────────┐  │  ║
+║  │  │ Charging     │  │ Predictive    │  │  Workload    │  │  Decision     │  │  ║
+║  │  │ Strategist   │  │ Maintenance   │  │  Balancer    │  │  Registry     │  │  ║
+║  │  └──────────────┘  └───────────────┘  └──────────────┘  └───────────────┘  │  ║
+║  └─────────────────────────────────────────────────────────────────────────────┘  ║
+║                                         ▲                                         ║
+║  ┌─────────────────────────────────────────────────────────────────────────────┐  ║
+║  │  LAYER 3 — MISSION & TASK MANAGEMENT                                        │  ║
+║  │                                                                             │  ║
+║  │  ┌──────────────┐  ┌───────────────┐  ┌──────────────┐  ┌───────────────┐  │  ║
+║  │  │ Mission      │  │ Task          │  │  Mission     │  │  Exception    │  │  ║
+║  │  │ Generator    │  │ Scheduler     │  │  Queue       │  │  Handler      │  │  ║
+║  │  └──────────────┘  └───────────────┘  └──────────────┘  └───────────────┘  │  ║
+║  │  ┌──────────────┐  ┌───────────────┐  ┌──────────────┐  ┌───────────────┐  │  ║
+║  │  │ Robot        │  │ Task          │  │  Mission     │  │  Alarm &      │  │  ║
+║  │  │ Assignment   │  │ Allocation    │  │  Validator   │  │  Alert Mgr    │  │  ║
+║  │  └──────────────┘  └───────────────┘  └──────────────┘  └───────────────┘  │  ║
+║  └─────────────────────────────────────────────────────────────────────────────┘  ║
+║                                         ▲                                         ║
+║  ┌─────────────────────────────────────────────────────────────────────────────┐  ║
+║  │  LAYER 2 — TRAFFIC & NAVIGATION CONTROL                                     │  ║
+║  │                                                                             │  ║
+║  │  ┌──────────────┐  ┌───────────────┐  ┌──────────────┐  ┌───────────────┐  │  ║
+║  │  │ Traffic      │  │ Path          │  │  Reservation │  │  Deadlock     │  │  ║
+║  │  │ Controller   │  │ Planner       │  │  System      │  │  Detector     │  │  ║
+║  │  └──────────────┘  └───────────────┘  └──────────────┘  └───────────────┘  │  ║
+║  │  ┌──────────────┐  ┌───────────────┐  ┌──────────────┐  ┌───────────────┐  │  ║
+║  │  │ Zone         │  │ Congestion    │  │  Conflict    │  │  Dynamic      │  │  ║
+║  │  │ Manager      │  │ Manager       │  │  Resolver    │  │  Router       │  │  ║
+║  │  └──────────────┘  └───────────────┘  └──────────────┘  └───────────────┘  │  ║
+║  └─────────────────────────────────────────────────────────────────────────────┘  ║
+║                              VDA5050 v3.0 / MQTT / REST                           ║
+║  ┌─────────────────────────────────────────────────────────────────────────────┐  ║
+║  │  LAYER 1 — VEHICLE ABSTRACTION & HARDWARE                                   │  ║
+║  │                                                                             │  ║
+║  │  AMR_1   AMR_2   AMR_3   AGV_1   AGV_2   AGF_1   Peripheral_1  ...         │  ║
+║  │  [KUKA]  [KUKA]  [3rd]   [3rd]   [3rd]   [KUKA]  [Door/Lift]              │  ║
+║  └─────────────────────────────────────────────────────────────────────────────┘  ║
+╚═══════════════════════════════════════════════════════════════════════════════════╝</div>
+</section>
+
+<!-- ════════════ MICROSERVICES ════════════ -->
+<section>
+  <div class="section-title">🔧 Catálogo de Microservicios</div>
+
+  <table class="data-table">
+    <thead>
+      <tr><th>Servicio</th><th>Responsabilidad</th><th>Inputs</th><th>Outputs</th><th>Protocolo</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>fleet-dispatcher</code></td>
+        <td>Asignación óptima de tareas a robots mediante IA</td>
+        <td>Mission queue, robot states, battery levels, positions</td>
+        <td>Assignment commands per robot</td>
+        <td>Internal event bus</td>
+      </tr>
+      <tr>
+        <td><code>traffic-controller</code></td>
+        <td>Control centralizado de circulación en planta</td>
+        <td>Robot positions, route reservations, zone states</td>
+        <td>Speed commands, halt/go signals, route approvals</td>
+        <td>VDA5050 MQTT</td>
+      </tr>
+      <tr>
+        <td><code>path-planner</code></td>
+        <td>Cálculo de rutas A* / Dijkstra con variantes dinámicas</td>
+        <td>Start/end nodes, map graph, blocked zones</td>
+        <td>Waypoint sequences (VDA5050 nodes/edges)</td>
+        <td>Internal gRPC</td>
+      </tr>
+      <tr>
+        <td><code>reservation-manager</code></td>
+        <td>Reserva de segmentos de ruta (anti-deadlock)</td>
+        <td>Planned routes, current reservations</td>
+        <td>Reservation grants/denials</td>
+        <td>Internal gRPC</td>
+      </tr>
+      <tr>
+        <td><code>mission-queue</code></td>
+        <td>Cola priorizada de misiones pendientes</td>
+        <td>New missions from WMS/MES/operators</td>
+        <td>Prioritized mission stream</td>
+        <td>REST + WebSocket</td>
+      </tr>
+      <tr>
+        <td><code>robot-registry</code></td>
+        <td>Registro y estado de todos los robots de la flota</td>
+        <td>VDA5050 state messages</td>
+        <td>Fleet state snapshots</td>
+        <td>VDA5050 MQTT</td>
+      </tr>
+      <tr>
+        <td><code>charging-strategist</code></td>
+        <td>Gestión inteligente de carga de baterías</td>
+        <td>Battery states, mission queue, charging station availability</td>
+        <td>Charging missions, station assignments</td>
+        <td>Internal event bus</td>
+      </tr>
+      <tr>
+        <td><code>map-manager</code></td>
+        <td>Gestión del grafo del entorno de producción</td>
+        <td>Map updates, zone modifications</td>
+        <td>Current navigation graph</td>
+        <td>REST API</td>
+      </tr>
+      <tr>
+        <td><code>alarm-manager</code></td>
+        <td>Gestión de alarmas, alertas y escalado</td>
+        <td>Robot events, sensor data, system health</td>
+        <td>Alarm events, notifications, escalations</td>
+        <td>WebSocket + webhook</td>
+      </tr>
+      <tr>
+        <td><code>historian</code></td>
+        <td>Almacenamiento de eventos y KPIs históricos</td>
+        <td>All system events</td>
+        <td>Time-series data, reports</td>
+        <td>Internal event bus → TimescaleDB</td>
+      </tr>
+      <tr>
+        <td><code>peripheral-controller</code></td>
+        <td>Control de puertas, ascensores y señales externas</td>
+        <td>AMR approach events, access requests</td>
+        <td>I/O signals to PLCs, door open/close</td>
+        <td>OPC-UA / Modbus</td>
+      </tr>
+      <tr>
+        <td><code>api-gateway</code></td>
+        <td>Punto de entrada unificado para WMS/MES/ERP</td>
+        <td>External HTTP requests</td>
+        <td>Routed internal commands, responses</td>
+        <td>REST over HTTPS</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ════════════ VDA5050 ════════════ -->
+<section>
+  <div class="section-title">📡 Protocolo VDA5050 v3.0 — Análisis Técnico</div>
+
+  <div class="highlight">
+    <h4 style="color:var(--accent);margin-bottom:12px;">VDA5050: El Lenguaje Universal de los AMR</h4>
+    <p>VDA5050 es el estándar de comunicación desarrollado por VDA (Verband der Automobilindustrie) y VDMA con el KIT (Karlsruhe Institute of Technology). Versión 3.0.0 lanzada en 2025. 470 estrellas en GitHub, 145 forks. Es el estándar de facto de la industria para comunicación entre robots móviles y Fleet Management Controller (FMC).</p>
+  </div>
+
+  <div class="subsection">Mensajes Principales VDA5050</div>
+
+  <table class="data-table">
+    <thead>
+      <tr><th>Tópico MQTT</th><th>Dirección</th><th>Contenido</th><th>Frecuencia</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><code>{header}/order</code></td><td>FMC → Robot</td><td>Secuencia de nodos/aristas + acciones. Define la ruta y tareas a ejecutar.</td><td>Por misión</td></tr>
+      <tr><td><code>{header}/state</code></td><td>Robot → FMC</td><td>Posición, velocidad, batería, estado misión, errores, IO state</td><td>1-2 Hz</td></tr>
+      <tr><td><code>{header}/connection</code></td><td>Robot → FMC</td><td>Estado de conexión del robot (online/offline)</td><td>Heartbeat</td></tr>
+      <tr><td><code>{header}/visualization</code></td><td>Robot → FMC</td><td>Posición para display en tiempo real (alta frecuencia)</td><td>10 Hz</td></tr>
+      <tr><td><code>{header}/factsheet</code></td><td>Robot → FMC</td><td>Capacidades, dimensiones, tipos de carga, versión software</td><td>On request</td></tr>
+      <tr><td><code>{header}/instantActions</code></td><td>FMC → Robot</td><td>Acciones inmediatas: stop, resume, startPause, factsheetRequest</td><td>On demand</td></tr>
+    </tbody>
+  </table>
+
+  <div class="diagram">
+VDA5050 Order Structure:
+───────────────────────
+{
+  "orderId": "WIP-CORRUGADORA-001",
+  "orderUpdateId": 1,
+  "nodes": [
+    {
+      "nodeId": "corrugadora-output",
+      "sequenceId": 0,
+      "released": true,
+      "actions": [{"actionType": "pickLoad", "blockingType": "HARD"}]
+    },
+    {
+      "nodeId": "wip-tridente-2-slot-A",
+      "sequenceId": 2,
+      "released": true,
+      "actions": [{"actionType": "dropLoad", "blockingType": "HARD"}]
+    }
+  ],
+  "edges": [
+    {
+      "edgeId": "highway-A-seg-1",
+      "sequenceId": 1,
+      "released": true,
+      "startNodeId": "corrugadora-output",
+      "endNodeId": "wip-tridente-2-slot-A",
+      "maxSpeed": 1.5,
+      "maxHeight": 2.0,
+      "corridor": {"leftWidth": 0.6, "rightWidth": 0.6}
+    }
+  ]
+}</div>
+</section>
+
+<!-- ════════════ TRAFFIC CONTROL ════════════ -->
+<section>
+  <div class="section-title">🚦 Traffic Control — Algoritmos y Mecanismos</div>
+
+  <div class="card-grid">
+    <div class="card">
+      <h4>Deadlock Prevention</h4>
+      <p>El deadlock ocurre cuando dos robots se bloquean mutuamente esperando el segmento que ocupa el otro. Soluciones:</p>
+      <ul>
+        <li><strong>Reservation-based:</strong> robot reserva el segmento siguiente antes de entrar</li>
+        <li><strong>Priority ordering:</strong> prioridades estáticas + dinámicas entre robots</li>
+        <li><strong>Directed graph enforcement:</strong> sentidos únicos en segmentos críticos</li>
+        <li><strong>Wait zones:</strong> áreas de espera designadas para ceder paso</li>
+        <li>VDA5050 v3.0 define: <code>corridor</code> para especificar anchura segura</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>Conflict Resolution</h4>
+      <p>Cuando dos robots quieren el mismo recurso simultáneamente:</p>
+      <ul>
+        <li>Priority scoring: urgencia de misión + robot eficiencia + distancia</li>
+        <li>Token passing: solo 1 robot puede tener el token de una zona</li>
+        <li>Time-slot allocation: para zonas de alta demanda</li>
+        <li>Re-routing automático del robot de menor prioridad</li>
+        <li>Timeout: si no resuelve en N segundos → escalado a operador</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>Congestion Management</h4>
+      <p>Evitar formación de cuellos de botella en el highway:</p>
+      <ul>
+        <li>Traffic density monitoring por segmento</li>
+        <li>Speed harmonization: todos robots a misma velocidad en tramo congestionado</li>
+        <li>Load balancing entre Carril A y Carril B</li>
+        <li>Desvío a rutas alternativas cuando densidad &gt; umbral</li>
+        <li>Predictive pre-routing basado en cola de misiones</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>Dynamic Routing</h4>
+      <p>Actualización de rutas en tiempo real:</p>
+      <ul>
+        <li>Trigger: obstáculo detectado / zona bloqueada / robot parado</li>
+        <li>Replanning en &lt;200ms (SLA crítico de seguridad)</li>
+        <li>Propagación de bloqueos: actualiza todos los robots afectados</li>
+        <li>Prioridad de misiones: urgente puede desplazar a robot en ruta secundaria</li>
+        <li>Histórico de replanning → aprendizaje de zonas problemáticas</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="diagram">
+TRAFFIC CONTROL — Highway INGECART (Carril A+B, 120m):
+═══════════════════════════════════════════════════════
+
+Segments definidos:
+  SEG-A01..A12: Carril A (→) subdividido en 12 segmentos de 10m
+  SEG-B01..B12: Carril B (←) subdividido en 12 segmentos de 10m
+  NODE-T1..T6:  Nodos de tridente (acceso lateral)
+  NODE-COR:     Nodo corrugadora (output)
+  NODE-EXP:     Nodo expedición
+
+Reglas de tráfico:
+  RULE-001: Carril A → sentido único corrugadora→expedición
+  RULE-002: Carril B → sentido único expedición→corrugadora
+  RULE-003: Máx. 1 robot por segmento de 10m (token exclusivo)
+  RULE-004: Acceso a tridente = prioridad sobre highway
+  RULE-005: Corrugadora = prioridad CRÍTICA (no puede esperar)
+  RULE-006: Velocidad máxima en cruce = 0.5 m/s
+  RULE-007: Carga inductiva = reserva estación antes de dirigirse
+
+Cálculo capacidad máxima:
+  Max AMR simultáneos en Carril A: 120m / 10m/seg / (3m AMR + 2m safety) = 24 seg
+  Pero con ciclos: ~8-10 AMR en movimiento simultáneo (realista)
+  Throughput estimado: 15-20 viajes/hora por carril</div>
+</section>
+
+<!-- ════════════ CHARGING STRATEGY ════════════ -->
+<section>
+  <div class="section-title">🔋 Charging Strategy — Battery Management</div>
+
+  <div class="card-grid">
+    <div class="card">
+      <h4>Opportunity Charging (Carga Inductiva)</h4>
+      <ul>
+        <li>El robot se carga mientras espera en zonas con cargador inductivo</li>
+        <li>Sin paradas planificadas para recarga</li>
+        <li>Estaciones de carga integradas en puntos de espera naturales</li>
+        <li>Umbral mínimo: si batería &lt;20% → insertar misión de carga</li>
+        <li>Disponibilidad resultante: 99% uptime confirmado por KUKA</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>Battery State Tracking</h4>
+      <ul>
+        <li>Estado batería en cada mensaje VDA5050 <code>state</code></li>
+        <li>Campo: <code>batteryState.batteryCharge</code> (0-100%)</li>
+        <li>Predicción de autonomía restante: distancia × consumo/m</li>
+        <li>Alerta temprana: &lt;30% → planificar recarga en próxima misión</li>
+        <li>Histórico de ciclos de carga → predictive maintenance</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>Fleet Energy Optimization</h4>
+      <ul>
+        <li>No sobrecargar al mismo tiempo todos los robots (pico eléctrico)</li>
+        <li>Escalonamiento de cargas según demanda de red</li>
+        <li>Robots en idle preferentemente en estaciones de carga</li>
+        <li>Configuración de ventanas de carga por turno</li>
+        <li>KPI: consumo energético por misión completada</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════ NAVIGATION ════════════ -->
+<section>
+  <div class="section-title">🗺️ Navegación AMR — Tecnologías</div>
+
+  <table class="data-table">
+    <thead>
+      <tr><th>Tecnología</th><th>Descripción</th><th>Ventajas</th><th>Limitaciones</th><th>KUKA</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>SLAM</strong><br>(Simultaneous Localization and Mapping)</td>
+        <td>El robot construye y actualiza un mapa del entorno mientras se localiza en él. LiDAR 2D/3D + algoritmos (EKF-SLAM, Graph-SLAM)</td>
+        <td>No necesita infraestructura, adaptable a cambios, mapa dinámico</td>
+        <td>Puede derivar en largos pasillos sin features, requiere CPU</td>
+        <td><span class="badge badge-green">NATIVO</span></td>
+      </tr>
+      <tr>
+        <td><strong>QR/Marker Codes</strong></td>
+        <td>Marcadores fiduciales en el suelo o paredes. El robot los lee con cámara para corrección de posición.</td>
+        <td>Alta precisión ±1mm, rápido y confiable, bajo coste</td>
+        <td>Requiere instalación de marcadores, mantenimiento de limpieza</td>
+        <td><span class="badge badge-green">NATIVO</span></td>
+      </tr>
+      <tr>
+        <td><strong>Hybrid (SLAM+QR)</strong></td>
+        <td>SLAM para navegación libre, QR para corrección en puntos críticos (docks, cargas)</td>
+        <td>Lo mejor de ambos: flexibilidad + precisión donde importa</td>
+        <td>Complejidad mayor de configuración inicial</td>
+        <td><span class="badge badge-green">PREFERIDO</span></td>
+      </tr>
+      <tr>
+        <td><strong>3D Camera Fusion</strong></td>
+        <td>Cámaras 3D (ToF, stereo) para detección de obstáculos y personas en 3D</td>
+        <td>Detección de objetos complejos, personas, alturas</td>
+        <td>Mayor coste, procesamiento intensivo</td>
+        <td><span class="badge badge-green">INTEGRADO</span></td>
+      </tr>
+      <tr>
+        <td><strong>LiDAR 2D Safety</strong></td>
+        <td>Escáneres de seguridad certificados (SICK, Hokuyo) para zona de paro de seguridad</td>
+        <td>Safety-rated, certificado ISO 3691-4</td>
+        <td>Solo 2D (plano horizontal)</td>
+        <td><span class="badge badge-green">REQUERIDO</span></td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ════════════ INTEGRATION APIS ════════════ -->
+<section>
+  <div class="section-title">🔌 Interfaces y APIs — Especificación Técnica</div>
+
+  <div class="card-grid">
+    <div class="card">
+      <h4>REST API — Fleet Management</h4>
+      <ul>
+        <li><code>POST /api/v1/missions</code> — Crear nueva misión</li>
+        <li><code>GET /api/v1/missions/{id}</code> — Estado de misión</li>
+        <li><code>DELETE /api/v1/missions/{id}</code> — Cancelar misión</li>
+        <li><code>GET /api/v1/robots</code> — Estado de toda la flota</li>
+        <li><code>GET /api/v1/robots/{id}</code> — Estado de robot individual</li>
+        <li><code>PUT /api/v1/zones/{id}/blocked</code> — Bloquear zona</li>
+        <li><code>GET /api/v1/kpis</code> — KPIs operacionales</li>
+        <li>Auth: Bearer token / OAuth2</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>VDA5050 MQTT Topics</h4>
+      <ul>
+        <li><code>v3/{manufacturer}/{serialNo}/order</code></li>
+        <li><code>v3/{manufacturer}/{serialNo}/state</code></li>
+        <li><code>v3/{manufacturer}/{serialNo}/connection</code></li>
+        <li><code>v3/{manufacturer}/{serialNo}/visualization</code></li>
+        <li><code>v3/{manufacturer}/{serialNo}/factsheet</code></li>
+        <li><code>v3/{manufacturer}/{serialNo}/instantActions</code></li>
+        <li>QoS: Level 1 para state, Level 2 para orders</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>OPC-UA — PLC Integration</h4>
+      <ul>
+        <li>Namespace fleet management en servidor OPC-UA</li>
+        <li>Nodes: robot states, mission status, zone states</li>
+        <li>Methods: CreateMission, CancelMission, BlockZone</li>
+        <li>Events: MissionCompleted, AlarmRaised, RobotError</li>
+        <li>Security: SignAndEncrypt, certificados X.509</li>
+        <li>Perfil: Companion Specification ISA-95</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>WebSocket — Real-time Dashboard</h4>
+      <ul>
+        <li>Endpoint: <code>ws://fms/ws/fleet</code></li>
+        <li>Push: posiciones AMR cada 500ms</li>
+        <li>Push: cambios de estado de misiones</li>
+        <li>Push: alarmas y alertas instantáneas</li>
+        <li>Sub-topics: <code>positions</code>, <code>missions</code>, <code>alarms</code>, <code>kpis</code></li>
+        <li>Autenticación: JWT en query parameter</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════ SECURITY ════════════ -->
+<section>
+  <div class="section-title">🔒 Cybersecurity — Fleet Management</div>
+
+  <table class="data-table">
+    <thead>
+      <tr><th>Área</th><th>Mecanismo</th><th>Estándar</th><th>Criticidad</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Autenticación API</td><td>OAuth2 + Bearer tokens con expiración</td><td>RFC 6749</td><td><span class="badge badge-purple">CRÍTICA</span></td></tr>
+      <tr><td>Transporte</td><td>TLS 1.3 en todos los canales REST y WebSocket</td><td>RFC 8446</td><td><span class="badge badge-purple">CRÍTICA</span></td></tr>
+      <tr><td>MQTT Security</td><td>TLS + username/password o certificados X.509</td><td>MQTT 5.0</td><td><span class="badge badge-purple">CRÍTICA</span></td></tr>
+      <tr><td>OPC-UA Security</td><td>SignAndEncrypt con certificados por cliente</td><td>IEC 62541</td><td><span class="badge badge-purple">CRÍTICA</span></td></tr>
+      <tr><td>User Management</td><td>RBAC: Admin, Operator, Viewer, Integrator</td><td>NIST</td><td><span class="badge badge-yellow">ALTA</span></td></tr>
+      <tr><td>Audit Trail</td><td>Registro inmutable de todas las acciones (quién, qué, cuándo)</td><td>IEC 62443</td><td><span class="badge badge-yellow">ALTA</span></td></tr>
+      <tr><td>Network Segmentation</td><td>VLAN separada para AMR fleet, no acceso directo a Internet</td><td>IEC 62443-3-3</td><td><span class="badge badge-yellow">ALTA</span></td></tr>
+      <tr><td>Software Updates</td><td>Firmado digital de updates, validación hash SHA-256</td><td>BSI TR-02102</td><td><span class="badge badge-yellow">ALTA</span></td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ════════════ HA & DEPLOYMENT ════════════ -->
+<section>
+  <div class="section-title">🏛️ Alta Disponibilidad y Despliegue</div>
+
+  <div class="card-grid">
+    <div class="card">
+      <h4>On-Premise (Recomendado para Producción)</h4>
+      <ul>
+        <li>Servidor industrial en planta (edge computing)</li>
+        <li>Latencia &lt;10ms para control de tráfico crítico</li>
+        <li>No dependencia de conectividad externa</li>
+        <li>Active/Standby para alta disponibilidad</li>
+        <li>Caso TPV: "IT infrastructure with servers, active backup"</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>Hybrid Cloud</h4>
+      <ul>
+        <li>Core Fleet Manager: on-premise (tiempo real)</li>
+        <li>Analytics, Historian, Digital Twin: cloud</li>
+        <li>Dashboard: cloud-accessible</li>
+        <li>AI model training: cloud (datos de planta)</li>
+        <li>Backup de configuración: cloud</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>High Availability (HA)</h4>
+      <ul>
+        <li>Active/Passive failover en &lt;30s</li>
+        <li>State replication entre nodos (paxos/raft)</li>
+        <li>Robots continúan última misión asignada si FMS cae</li>
+        <li>Reconexión automática de robots al FMS</li>
+        <li>SLA target: 99.9% uptime del Fleet Manager</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>Scalability</h4>
+      <ul>
+        <li>Microservicios → escala horizontal independiente</li>
+        <li>Traffic Controller: vertical scaling (más CPU)</li>
+        <li>Historian: sharding por planta/zona temporal</li>
+        <li>Probado: flotas de 500+ robots en producción</li>
+        <li>Multi-site: un FMS para múltiples plantas</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div><strong>ING_DIGHUB Engineering Intelligence</strong> | AMR Fleet Architecture Report v1.0 | 30 Julio 2026</div>
+  <div><span class="badge badge-purple">Architecture Deep Dive</span></div>
+</footer>
+
+</body>
+</html>

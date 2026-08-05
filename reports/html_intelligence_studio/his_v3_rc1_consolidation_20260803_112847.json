@@ -1,0 +1,424 @@
+{
+  "generated_at": "2026-08-03T09:28:47.749671+00:00",
+  "version": "V3.0-RC1",
+  "status": "PRODUCTION READY",
+  "flow": [
+    {
+      "step": "import_analyze_reconstruct_generate",
+      "ok": true,
+      "run_id": "20260803_092722_a1921ae1"
+    },
+    {
+      "step": "edit_dom",
+      "ok": true,
+      "run_id": "20260803_092804_2c953104"
+    },
+    {
+      "step": "insert_image",
+      "ok": true,
+      "run_id": "20260803_092812_b7df658a"
+    },
+    {
+      "step": "change_language",
+      "ok": true,
+      "run_id": "20260803_092817_4d9d203e"
+    },
+    {
+      "step": "save_and_version",
+      "ok": true,
+      "run_id": "20260803_092825_d5d8c4cc"
+    },
+    {
+      "step": "publish",
+      "ok": true,
+      "run_id": "20260803_092826_3dd72496"
+    },
+    {
+      "step": "export_zip",
+      "ok": true,
+      "zip_path": "C:\\Users\\Inaki Senar\\AppData\\Local\\Temp\\his_rc1_acceptance_p7i0qfpx\\exports\\his_v3_release_bundle_20260803_092826.zip"
+    },
+    {
+      "step": "reopen_integrity",
+      "ok": true
+    }
+  ],
+  "architecture": {
+    "official_engine": "HtmlIntelligenceStudioV3Pipeline",
+    "entrypoint": "backoffice/his/studio.py::HtmlIntelligenceStudio",
+    "ui": "pages/html_intelligence_studio.py",
+    "dom_model": "backoffice/dipc/models.py::DocumentModel",
+    "mission_registry": "reports/html_intelligence_studio/mission_registry.jsonl",
+    "quality_gate": "backoffice/his/quality_pipeline_v3.py::_quality_gate_scores",
+    "publication_workflow": [
+      "Draft",
+      "Editing",
+      "Review",
+      "Validated",
+      "Published",
+      "Archived"
+    ]
+  },
+  "removed_components": [
+    "backoffice/his/quality_pipeline_v2.py",
+    "Direct HTML mutation path in insert_image_under_heading (migrated to DOM command)",
+    "V2 runtime initialization in HtmlIntelligenceStudio.__init__"
+  ],
+  "technical_debt_resolved": [
+    "V3-only runtime unification in HIS core",
+    "DOM-only image insertion and language change missions",
+    "Action mission registry for generate/edit/publish/export",
+    "Published-only export enforcement",
+    "Expanded RC1 UI panels (dashboard, explorer, quality, knowledge, publication, config)"
+  ],
+  "quality_scores": {
+    "Visual Similarity Score": 100.0,
+    "Corporate Theme Score": 100.0,
+    "Accessibility Score": 100.0,
+    "Responsive Score": 100.0,
+    "Executive Quality Score": 100.0,
+    "Knowledge Extraction Score": 100.0,
+    "Reuse Score": 100.0,
+    "Maintainability Score": 92.0,
+    "Architecture Score": 100.0,
+    "Mission Score": 100.0
+  },
+  "executive_readiness_score": 99.2,
+  "functional_coverage_pct": 97.78,
+  "maintainability_score": 92.0,
+  "open_risks": [],
+  "confirmation_single_official_engine": true,
+  "run_artifacts": {
+    "generation_run": {
+      "run_id": "20260803_092722_a1921ae1",
+      "output_dir": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\pie\\Corrugated_Plant_Automation\\20260803_092722_a1921ae1",
+      "document_model_path": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\pie\\Corrugated_Plant_Automation\\20260803_092722_a1921ae1\\metadata\\document_model.json",
+      "theme_css_path": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\pie\\Corrugated_Plant_Automation\\20260803_092722_a1921ae1\\variants\\attempt_1\\slide_flow\\dipc_theme.css",
+      "preview_manifest_path": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\pie\\Corrugated_Plant_Automation\\20260803_092722_a1921ae1\\metadata\\preview_manifest.json",
+      "knowledge_package_path": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\pie\\Corrugated_Plant_Automation\\20260803_092722_a1921ae1\\metadata\\knowledge_package.json",
+      "enterprise_memory_path": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\pie\\Corrugated_Plant_Automation\\20260803_092722_a1921ae1\\metadata\\enterprise_memory.json",
+      "truth_graph_path": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\pie\\Corrugated_Plant_Automation\\20260803_092722_a1921ae1\\metadata\\truth_graph.json",
+      "mission_log_path": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\pie\\Corrugated_Plant_Automation\\20260803_092722_a1921ae1\\logs\\mission_log.json",
+      "technical_report_json": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\pie\\Corrugated_Plant_Automation\\20260803_092722_a1921ae1\\metadata\\technical_report_his_v3.json",
+      "technical_report_md": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\pie\\Corrugated_Plant_Automation\\20260803_092722_a1921ae1\\metadata\\technical_report_his_v3.md",
+      "quality_report_path": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\pie\\Corrugated_Plant_Automation\\20260803_092722_a1921ae1\\metadata\\quality_report.json",
+      "asset_registry_path": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\pie\\Corrugated_Plant_Automation\\20260803_092722_a1921ae1\\metadata\\asset_registry.json",
+      "evidence_zip_path": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\pie\\Corrugated_Plant_Automation\\20260803_092722_a1921ae1\\his_v3_evidence_20260803_092722_a1921ae1.zip",
+      "publication_state": "Published",
+      "publication_state_history": [
+        {
+          "state": "Draft",
+          "ts": "2026-08-03T09:27:53.645240+00:00"
+        },
+        {
+          "state": "Editing",
+          "ts": "2026-08-03T09:27:53.645240+00:00"
+        },
+        {
+          "state": "Review",
+          "ts": "2026-08-03T09:27:53.645240+00:00"
+        },
+        {
+          "state": "Validated",
+          "ts": "2026-08-03T09:27:53.645240+00:00"
+        },
+        {
+          "state": "Published",
+          "ts": "2026-08-03T09:27:53.645240+00:00"
+        }
+      ],
+      "publication_outputs": {
+        "selected": {
+          "html": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\pie\\Corrugated_Plant_Automation\\20260803_092722_a1921ae1\\variants\\attempt_1\\slide_flow\\index.html",
+          "markdown": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\pie\\Corrugated_Plant_Automation\\20260803_092722_a1921ae1\\variants\\attempt_1\\slide_flow\\document.md",
+          "docx": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\pie\\Corrugated_Plant_Automation\\20260803_092722_a1921ae1\\variants\\attempt_1\\slide_flow\\document.docx",
+          "pdf": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\pie\\Corrugated_Plant_Automation\\20260803_092722_a1921ae1\\variants\\attempt_1\\slide_flow\\document.pdf",
+          "odt": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\pie\\Corrugated_Plant_Automation\\20260803_092722_a1921ae1\\variants\\attempt_1\\slide_flow\\document.odt",
+          "presentation_html": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\pie\\Corrugated_Plant_Automation\\20260803_092722_a1921ae1\\variants\\attempt_1\\slide_flow\\presentation.html",
+          "portal_web": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\pie\\Corrugated_Plant_Automation\\20260803_092722_a1921ae1\\variants\\attempt_1\\slide_flow\\portal_web\\index.html",
+          "microsite": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\pie\\Corrugated_Plant_Automation\\20260803_092722_a1921ae1\\variants\\attempt_1\\slide_flow\\microsite\\index.html",
+          "document_json": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\pie\\Corrugated_Plant_Automation\\20260803_092722_a1921ae1\\variants\\attempt_1\\slide_flow\\document_model.json",
+          "theme_css": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\pie\\Corrugated_Plant_Automation\\20260803_092722_a1921ae1\\variants\\attempt_1\\slide_flow\\dipc_theme.css"
+        },
+        "slide_flow": {
+          "html": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\pie\\Corrugated_Plant_Automation\\20260803_092722_a1921ae1\\variants\\attempt_1\\slide_flow\\index.html",
+          "markdown": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\pie\\Corrugated_Plant_Automation\\20260803_092722_a1921ae1\\variants\\attempt_1\\slide_flow\\document.md",
+          "docx": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\pie\\Corrugated_Plant_Automation\\20260803_092722_a1921ae1\\variants\\attempt_1\\slide_flow\\document.docx",
+          "pdf": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\pie\\Corrugated_Plant_Automation\\20260803_092722_a1921ae1\\variants\\attempt_1\\slide_flow\\document.pdf",
+          "odt": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\pie\\Corrugated_Plant_Automation\\20260803_092722_a1921ae1\\variants\\attempt_1\\slide_flow\\document.odt",
+          "presentation_html": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\pie\\Corrugated_Plant_Automation\\20260803_092722_a1921ae1\\variants\\attempt_1\\slide_flow\\presentation.html",
+          "portal_web": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\pie\\Corrugated_Plant_Automation\\20260803_092722_a1921ae1\\variants\\attempt_1\\slide_flow\\portal_web\\index.html",
+          "microsite": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\pie\\Corrugated_Plant_Automation\\20260803_092722_a1921ae1\\variants\\attempt_1\\slide_flow\\microsite\\index.html",
+          "document_json": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\pie\\Corrugated_Plant_Automation\\20260803_092722_a1921ae1\\variants\\attempt_1\\slide_flow\\document_model.json",
+          "theme_css": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\pie\\Corrugated_Plant_Automation\\20260803_092722_a1921ae1\\variants\\attempt_1\\slide_flow\\dipc_theme.css"
+        },
+        "smart_reconstruction": {
+          "html": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\pie\\Corrugated_Plant_Automation\\20260803_092722_a1921ae1\\variants\\attempt_1\\smart_reconstruction\\index.html",
+          "markdown": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\pie\\Corrugated_Plant_Automation\\20260803_092722_a1921ae1\\variants\\attempt_1\\smart_reconstruction\\document.md",
+          "docx": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\pie\\Corrugated_Plant_Automation\\20260803_092722_a1921ae1\\variants\\attempt_1\\smart_reconstruction\\document.docx",
+          "pdf": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\pie\\Corrugated_Plant_Automation\\20260803_092722_a1921ae1\\variants\\attempt_1\\smart_reconstruction\\document.pdf",
+          "odt": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\pie\\Corrugated_Plant_Automation\\20260803_092722_a1921ae1\\variants\\attempt_1\\smart_reconstruction\\document.odt",
+          "presentation_html": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\pie\\Corrugated_Plant_Automation\\20260803_092722_a1921ae1\\variants\\attempt_1\\smart_reconstruction\\presentation.html",
+          "portal_web": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\pie\\Corrugated_Plant_Automation\\20260803_092722_a1921ae1\\variants\\attempt_1\\smart_reconstruction\\portal_web\\index.html",
+          "microsite": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\pie\\Corrugated_Plant_Automation\\20260803_092722_a1921ae1\\variants\\attempt_1\\smart_reconstruction\\microsite\\index.html",
+          "document_json": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\pie\\Corrugated_Plant_Automation\\20260803_092722_a1921ae1\\variants\\attempt_1\\smart_reconstruction\\document_model.json",
+          "theme_css": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\pie\\Corrugated_Plant_Automation\\20260803_092722_a1921ae1\\variants\\attempt_1\\smart_reconstruction\\dipc_theme.css"
+        }
+      },
+      "selected_variant": "slide_flow",
+      "scores": {
+        "slide_flow": {
+          "visual_similarity_score": 100.0,
+          "structure_score": 100.0,
+          "theme_score": 100.0,
+          "typography_score": 100.0,
+          "layout_score": 100.0,
+          "image_score": 100.0,
+          "corporate_identity_score": 100.0,
+          "executive_quality_score": 100.0
+        },
+        "smart_reconstruction": {
+          "visual_similarity_score": 100.0,
+          "structure_score": 100.0,
+          "theme_score": 100.0,
+          "typography_score": 100.0,
+          "layout_score": 100.0,
+          "image_score": 100.0,
+          "corporate_identity_score": 100.0,
+          "executive_quality_score": 100.0
+        }
+      },
+      "quality": {
+        "slide_flow": {
+          "passed": true,
+          "coverage": {
+            "text_coverage": 1.0,
+            "image_coverage": 1.0,
+            "diagram_coverage": 1.0,
+            "smartart_coverage": 1.0,
+            "table_coverage": 1.0,
+            "layout_quality": 1.0
+          },
+          "metrics": {
+            "text_coverage": 100.0,
+            "image_coverage": 100.0,
+            "diagram_coverage": 100.0,
+            "smartart_coverage": 100.0,
+            "theme_compliance": 100.0,
+            "accessibility": 100.0,
+            "responsive": 100.0,
+            "typography": 100.0,
+            "layout_quality": 100.0,
+            "visual_similarity": 100.0
+          },
+          "components_reconstructed": 29,
+          "source_counts": {
+            "text": 46,
+            "images": 0,
+            "tables": 0,
+            "smartart": 0,
+            "diagrams": 29
+          },
+          "reconstructed_counts": {
+            "text": 46,
+            "images": 0,
+            "tables": 0,
+            "smartart": 20,
+            "diagrams": 29
+          }
+        },
+        "smart_reconstruction": {
+          "passed": true,
+          "coverage": {
+            "text_coverage": 1.0,
+            "image_coverage": 1.0,
+            "diagram_coverage": 1.0,
+            "smartart_coverage": 1.0,
+            "table_coverage": 1.0,
+            "layout_quality": 1.0
+          },
+          "metrics": {
+            "text_coverage": 100.0,
+            "image_coverage": 100.0,
+            "diagram_coverage": 100.0,
+            "smartart_coverage": 100.0,
+            "theme_compliance": 100.0,
+            "accessibility": 100.0,
+            "responsive": 100.0,
+            "typography": 100.0,
+            "layout_quality": 100.0,
+            "visual_similarity": 100.0
+          },
+          "components_reconstructed": 29,
+          "source_counts": {
+            "text": 46,
+            "images": 0,
+            "tables": 0,
+            "smartart": 0,
+            "diagrams": 29
+          },
+          "reconstructed_counts": {
+            "text": 46,
+            "images": 0,
+            "tables": 0,
+            "smartart": 20,
+            "diagrams": 29
+          }
+        }
+      },
+      "html_path": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\pie\\Corrugated_Plant_Automation\\20260803_092722_a1921ae1\\variants\\attempt_1\\slide_flow\\index.html",
+      "quality_attempts": [
+        {
+          "attempt": 1,
+          "selected_variant": "slide_flow",
+          "passed": true,
+          "quality": {
+            "slide_flow": {
+              "passed": true,
+              "coverage": {
+                "text_coverage": 1.0,
+                "image_coverage": 1.0,
+                "diagram_coverage": 1.0,
+                "smartart_coverage": 1.0,
+                "table_coverage": 1.0,
+                "layout_quality": 1.0
+              },
+              "metrics": {
+                "text_coverage": 100.0,
+                "image_coverage": 100.0,
+                "diagram_coverage": 100.0,
+                "smartart_coverage": 100.0,
+                "theme_compliance": 100.0,
+                "accessibility": 100.0,
+                "responsive": 100.0,
+                "typography": 100.0,
+                "layout_quality": 100.0,
+                "visual_similarity": 100.0
+              },
+              "components_reconstructed": 29,
+              "source_counts": {
+                "text": 46,
+                "images": 0,
+                "tables": 0,
+                "smartart": 0,
+                "diagrams": 29
+              },
+              "reconstructed_counts": {
+                "text": 46,
+                "images": 0,
+                "tables": 0,
+                "smartart": 20,
+                "diagrams": 29
+              }
+            },
+            "smart_reconstruction": {
+              "passed": true,
+              "coverage": {
+                "text_coverage": 1.0,
+                "image_coverage": 1.0,
+                "diagram_coverage": 1.0,
+                "smartart_coverage": 1.0,
+                "table_coverage": 1.0,
+                "layout_quality": 1.0
+              },
+              "metrics": {
+                "text_coverage": 100.0,
+                "image_coverage": 100.0,
+                "diagram_coverage": 100.0,
+                "smartart_coverage": 100.0,
+                "theme_compliance": 100.0,
+                "accessibility": 100.0,
+                "responsive": 100.0,
+                "typography": 100.0,
+                "layout_quality": 100.0,
+                "visual_similarity": 100.0
+              },
+              "components_reconstructed": 29,
+              "source_counts": {
+                "text": 46,
+                "images": 0,
+                "tables": 0,
+                "smartart": 0,
+                "diagrams": 29
+              },
+              "reconstructed_counts": {
+                "text": 46,
+                "images": 0,
+                "tables": 0,
+                "smartart": 20,
+                "diagrams": 29
+              }
+            }
+          },
+          "scores": {
+            "slide_flow": {
+              "visual_similarity_score": 100.0,
+              "structure_score": 100.0,
+              "theme_score": 100.0,
+              "typography_score": 100.0,
+              "layout_score": 100.0,
+              "image_score": 100.0,
+              "corporate_identity_score": 100.0,
+              "executive_quality_score": 100.0
+            },
+            "smart_reconstruction": {
+              "visual_similarity_score": 100.0,
+              "structure_score": 100.0,
+              "theme_score": 100.0,
+              "typography_score": 100.0,
+              "layout_score": 100.0,
+              "image_score": 100.0,
+              "corporate_identity_score": 100.0,
+              "executive_quality_score": 100.0
+            }
+          }
+        }
+      ],
+      "hypotheses": [
+        {
+          "id": "H1",
+          "name": "Strict structure-first reconstruction",
+          "engineering": 9.3,
+          "business": 8.3,
+          "quality": 9.2,
+          "risk": 2.0,
+          "executive_score": 8.61
+        },
+        {
+          "id": "H2",
+          "name": "Balanced semantic-first reconstruction",
+          "engineering": 8.4,
+          "business": 8.9,
+          "quality": 8.7,
+          "risk": 2.4,
+          "executive_score": 8.16
+        },
+        {
+          "id": "H3",
+          "name": "Visual-priority reconstruction",
+          "engineering": 8.0,
+          "business": 8.2,
+          "quality": 8.4,
+          "risk": 2.9,
+          "executive_score": 7.63
+        }
+      ],
+      "selected_hypothesis": {
+        "id": "H1",
+        "name": "Strict structure-first reconstruction",
+        "engineering": 9.3,
+        "business": 8.3,
+        "quality": 9.2,
+        "risk": 2.0,
+        "executive_score": 8.61
+      }
+    },
+    "publish_result": {
+      "run_id": "20260803_092826_3dd72496",
+      "document_model_path": "C:\\Users\\Inaki Senar\\AppData\\Local\\Temp\\his_rc1_acceptance_p7i0qfpx\\metadata\\document_model.json",
+      "publication_state": "Published",
+      "published_at": "2026-08-03T09:28:26.030944+00:00"
+    },
+    "export_zip": "C:\\Users\\Inaki Senar\\AppData\\Local\\Temp\\his_rc1_acceptance_p7i0qfpx\\exports\\his_v3_release_bundle_20260803_092826.zip"
+  }
+}

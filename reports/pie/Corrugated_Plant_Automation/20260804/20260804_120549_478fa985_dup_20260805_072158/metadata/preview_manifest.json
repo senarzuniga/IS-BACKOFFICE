@@ -1,0 +1,43 @@
+{
+  "document_id": "3601c8b8d0c04f56a0f3805add731277",
+  "title": "Plant Automation Solutions",
+  "profiles": [
+    {
+      "device": "desktop",
+      "width_px": 1440,
+      "height_px": 1024,
+      "theme": "industrial",
+      "html_path": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\pie\\Corrugated_Plant_Automation\\20260804\\20260804_120549_478fa985\\variants\\attempt_1\\slide_flow\\index.html"
+    },
+    {
+      "device": "tablet",
+      "width_px": 1024,
+      "height_px": 1366,
+      "theme": "industrial",
+      "html_path": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\pie\\Corrugated_Plant_Automation\\20260804\\20260804_120549_478fa985\\variants\\attempt_1\\slide_flow\\index.html"
+    },
+    {
+      "device": "mobile",
+      "width_px": 390,
+      "height_px": 844,
+      "theme": "industrial",
+      "html_path": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\pie\\Corrugated_Plant_Automation\\20260804\\20260804_120549_478fa985\\variants\\attempt_1\\slide_flow\\index.html"
+    },
+    {
+      "device": "print",
+      "width_px": 1240,
+      "height_px": 1754,
+      "theme": "industrial",
+      "html_path": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\pie\\Corrugated_Plant_Automation\\20260804\\20260804_120549_478fa985\\variants\\attempt_1\\slide_flow\\index.html"
+    }
+  ],
+  "capabilities": [
+    "live_preview",
+    "responsive_preview",
+    "dark_mode",
+    "print_preview",
+    "scroll_spy",
+    "performance_review",
+    "accessibility_review"
+  ]
+}

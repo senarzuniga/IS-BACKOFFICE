@@ -1,0 +1,10 @@
+[
+  "SQLite Connection Manager with WAL, busy_timeout and retries",
+  "Automatic DB backup before schema operations",
+  "Integrity and health report root-cause diagnostics",
+  "Collision-free numbering OFF-AAAA-SXXX without fixed counter",
+  "Single HTML engine: HIS V3 adapter",
+  "Mission Manager orchestration for create/edit/duplicate/publish/export",
+  "Knowledge Hub + Enterprise Memory + Truth Graph logging",
+  "Document validator gate before publish"
+]

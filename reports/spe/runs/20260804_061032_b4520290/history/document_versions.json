@@ -1,0 +1,60 @@
+[
+  {
+    "version_id": "3ce69929ba8c4808ba428e7be3ba7039",
+    "version_number": 1,
+    "author": "Mission Manager",
+    "objective": "Generate corporate service proposal with validated publication structure",
+    "result": "published",
+    "mission_id": "20260804_061032_b4520290",
+    "created_at": "2026-08-04T06:10:34.113673Z",
+    "diff": {
+      "structural_diff": {},
+      "visual_diff": {},
+      "semantic_diff": {},
+      "html_diff": [],
+      "component_diff": {},
+      "change_log": []
+    },
+    "output_files": {
+      "html": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\spe\\runs\\20260804_061032_b4520290\\variants\\attempt_1\\slide_flow\\index.html",
+      "markdown": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\spe\\runs\\20260804_061032_b4520290\\variants\\attempt_1\\slide_flow\\document.md",
+      "docx": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\spe\\runs\\20260804_061032_b4520290\\variants\\attempt_1\\slide_flow\\document.docx",
+      "pdf": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\spe\\runs\\20260804_061032_b4520290\\variants\\attempt_1\\slide_flow\\document.pdf",
+      "odt": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\spe\\runs\\20260804_061032_b4520290\\variants\\attempt_1\\slide_flow\\document.odt",
+      "presentation_html": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\spe\\runs\\20260804_061032_b4520290\\variants\\attempt_1\\slide_flow\\presentation.html",
+      "portal_web": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\spe\\runs\\20260804_061032_b4520290\\variants\\attempt_1\\slide_flow\\portal_web\\index.html",
+      "microsite": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\spe\\runs\\20260804_061032_b4520290\\variants\\attempt_1\\slide_flow\\microsite\\index.html",
+      "document_json": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\spe\\runs\\20260804_061032_b4520290\\variants\\attempt_1\\slide_flow\\document_model.json",
+      "theme_css": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\spe\\runs\\20260804_061032_b4520290\\variants\\attempt_1\\slide_flow\\dipc_theme.css"
+    }
+  },
+  {
+    "version_id": "a9f31eff1ff946dcb50490266ca2efc3",
+    "version_number": 1,
+    "author": "Mission Manager",
+    "objective": "add image \"C:\\Users\\Inaki Senar\\Documents\\INGECART\\MARKETING\\LOGOS\\ingeeniering.png\" under heading \"Section 1\"",
+    "result": "updated",
+    "mission_id": "20260804_061037_67c5d5d3",
+    "created_at": "2026-08-04T06:10:37.186146Z",
+    "diff": {
+      "structural_diff": {},
+      "visual_diff": {},
+      "semantic_diff": {},
+      "html_diff": [],
+      "component_diff": {},
+      "change_log": []
+    },
+    "output_files": {
+      "html": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\spe\\runs\\20260804_061032_b4520290\\published\\20260804_061036_dom\\index.html",
+      "markdown": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\spe\\runs\\20260804_061032_b4520290\\published\\20260804_061036_dom\\document.md",
+      "docx": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\spe\\runs\\20260804_061032_b4520290\\published\\20260804_061036_dom\\document.docx",
+      "pdf": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\spe\\runs\\20260804_061032_b4520290\\published\\20260804_061036_dom\\document.pdf",
+      "odt": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\spe\\runs\\20260804_061032_b4520290\\published\\20260804_061036_dom\\document.odt",
+      "presentation_html": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\spe\\runs\\20260804_061032_b4520290\\published\\20260804_061036_dom\\presentation.html",
+      "portal_web": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\spe\\runs\\20260804_061032_b4520290\\published\\20260804_061036_dom\\portal_web\\index.html",
+      "microsite": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\spe\\runs\\20260804_061032_b4520290\\published\\20260804_061036_dom\\microsite\\index.html",
+      "document_json": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\spe\\runs\\20260804_061032_b4520290\\published\\20260804_061036_dom\\document_model.json",
+      "theme_css": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\spe\\runs\\20260804_061032_b4520290\\published\\20260804_061036_dom\\dipc_theme.css"
+    }
+  }
+]

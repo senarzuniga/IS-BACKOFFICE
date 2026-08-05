@@ -1,0 +1,703 @@
+####################################################################################################
+MISSION
+IS_BACKOFFICE
+INDUSTRIAL COST ENGINEERING STUDIO
+MASTER COST ESTIMATION & COMMERCIAL ENGINE
+####################################################################################################
+
+MANDATORY EXECUTION MODEL
+
+Execute the complete mission using
+
+AUTONOMOUS HYPOTHESIS DRIVEN EXECUTION (AHDE)
+
+Mission execution flow
+
+Mission Goal
+↓
+
+Requirement Analysis
+↓
+
+Hypothesis Generation
+↓
+
+Architecture Simulation
+↓
+
+Executive Scoring
+↓
+
+Best Candidate Selection
+↓
+
+Implementation
+↓
+
+Validation
+↓
+
+Knowledge Capture
+↓
+
+Knowledge Hub Update
+↓
+
+Enterprise Memory Update
+
+Never stop because of uncertainty.
+
+Whenever information is incomplete
+
+• generate hypotheses
+• simulate alternatives
+• evaluate technical impact
+• calculate confidence score
+• continue with the highest scoring solution
+
+Only interrupt execution when repository integrity could be compromised.
+
+####################################################################################################
+MISSION OBJECTIVE
+####################################################################################################
+
+Create a new native IS_BACKOFFICE application named
+
+Industrial Cost Engineering Studio
+
+This application will become the corporate engineering platform for
+
+• Cost Estimation
+• Industrial Cost Breakdown
+• Escandallo
+• Proposal Costing
+• Manufacturing Cost
+• Installation Cost
+• Freight Cost
+• Risk Analysis
+• Commercial Pricing
+• Margin Simulation
+• Executive Financial Analysis
+
+The supplied TypeScript calculation engine represents ONLY the business logic.
+
+The mission is to transform it into a complete enterprise application fully integrated into IS_BACKOFFICE.
+
+####################################################################################################
+USE THE COMPLETE IS_BACKOFFICE ECOSYSTEM
+####################################################################################################
+
+Mission Manager
+
+Assistant
+
+Knowledge Hub
+
+Enterprise Memory
+
+Shared Services
+
+Repository Layer
+
+Reports Engine
+
+Executive Dashboard
+
+Project Manager
+
+Proposal Engine
+
+HTML Intelligence Studio
+
+Validation Engine
+
+Persistence Layer
+
+Repository Manager
+
+Application Registry
+
+Design System
+
+Industrial Knowledge Base
+
+Marketing Knowledge Base
+
+Technical Writing Engine
+
+Simulation Engine
+
+Executive Analytics Engine
+
+No duplicated code.
+
+No isolated implementation.
+
+Everything must reuse existing corporate services.
+
+####################################################################################################
+ANALYSE THE SUPPLIED CALCULATION ENGINE
+####################################################################################################
+
+Use the supplied calculation engine as the official calculation core.
+
+Analyse
+
+Business Logic
+
+Data Structures
+
+Calculation Flow
+
+Dependencies
+
+Input Models
+
+Output Models
+
+Risk Models
+
+Freight Database
+
+Tariff Matrix
+
+Installation Model
+
+Commercial Model
+
+Do not rewrite business logic unless improvements are clearly justified.
+
+Instead
+
+encapsulate
+
+modularize
+
+reuse
+
+extend
+
+####################################################################################################
+APPLICATION NAME
+####################################################################################################
+
+Industrial Cost Engineering Studio
+
+####################################################################################################
+MAIN OBJECTIVE
+####################################################################################################
+
+Create a complete engineering application capable of estimating the total industrial cost of any project.
+
+The application shall support
+
+Mechanical Equipment
+
+Automation Projects
+
+AMR Systems
+
+Palletizers
+
+Conveyors
+
+Heavy Machinery
+
+Special Engineering
+
+Custom Projects
+
+Turnkey Projects
+
+####################################################################################################
+NEW USER INTERFACE
+####################################################################################################
+
+Design a completely new engineering panel following the official IS_BACKOFFICE Design System.
+
+The application shall contain multiple engineering workspaces.
+
+Examples
+
+Project Overview
+
+Material Cost
+
+Internal Labour
+
+Manufacturing Cost
+
+Purchased Components
+
+Engineering Hours
+
+Assembly
+
+Installation
+
+Travel
+
+Freight
+
+Insurance
+
+Custom Duties
+
+Risk Buffers
+
+Commercial Margin
+
+Price Simulation
+
+Executive Dashboard
+
+Scenario Comparison
+
+Proposal Summary
+
+Reports
+
+The UI shall be fully responsive.
+
+Corporate Design only.
+
+####################################################################################################
+SMART DATA ENTRY
+####################################################################################################
+
+Support
+
+Manual entry
+
+Saved templates
+
+Historical projects
+
+Proposal import
+
+Excel import
+
+CSV import
+
+ERP import
+
+Future API integration
+
+Autocomplete
+
+Smart defaults
+
+Validation rules
+
+Unit conversion
+
+Currency conversion
+
+####################################################################################################
+CALCULATION ENGINE
+####################################################################################################
+
+Use the supplied calculation engine as Calculation Core.
+
+Extend capabilities with
+
+Real-time recalculation
+
+Dependency tracking
+
+Scenario management
+
+Calculation history
+
+Sensitivity analysis
+
+Profitability simulation
+
+What-if analysis
+
+Executive scoring
+
+Cost optimisation
+
+Margin optimisation
+
+Regional comparison
+
+####################################################################################################
+INSTALLATION ENGINE
+####################################################################################################
+
+Create a dedicated installation workspace.
+
+Support
+
+Countries
+
+Regions
+
+Technicians
+
+Travel
+
+Hotels
+
+Cars
+
+Flights
+
+Kilometres
+
+Per diem
+
+Working calendar
+
+Weekend rates
+
+Holiday rates
+
+Multiple phases
+
+Automatic totals
+
+Regional tariff management
+
+####################################################################################################
+FREIGHT ENGINE
+####################################################################################################
+
+Transform the freight database into a searchable corporate logistics database.
+
+Support
+
+Countries
+
+Destinations
+
+Transport Type
+
+Container Type
+
+Special Freight
+
+Manual Override
+
+Insurance
+
+Custom Duties
+
+Automatic Calculation
+
+Future Updates
+
+####################################################################################################
+RISK ENGINE
+####################################################################################################
+
+Support
+
+Financial Risk
+
+Commercial Risk
+
+Warranty
+
+Contingency
+
+Exchange Rate Risk
+
+Inflation
+
+Supplier Risk
+
+Project Complexity
+
+Custom Risk Profiles
+
+####################################################################################################
+COMMERCIAL ENGINE
+####################################################################################################
+
+Support
+
+Target Margin
+
+Commercial Discount
+
+Negotiation Margin
+
+Dealer Margin
+
+Distributor Margin
+
+Commission
+
+Final Selling Price
+
+Contribution Margin
+
+Gross Margin
+
+Net Margin
+
+Profit Analysis
+
+####################################################################################################
+EXECUTIVE DASHBOARD
+####################################################################################################
+
+Generate automatically
+
+Cost Breakdown
+
+Margin Breakdown
+
+Waterfall Charts
+
+Sankey
+
+Pie Charts
+
+Treemap
+
+Risk Matrix
+
+Cost Distribution
+
+Sensitivity Analysis
+
+Profitability Indicators
+
+Executive KPIs
+
+####################################################################################################
+SIMULATION ENGINE
+####################################################################################################
+
+Create unlimited scenarios.
+
+Examples
+
+Best Case
+
+Expected
+
+Worst Case
+
+Aggressive Pricing
+
+Conservative Pricing
+
+USA
+
+Europe
+
+Spain
+
+Compare all scenarios simultaneously.
+
+####################################################################################################
+REPORT GENERATION
+####################################################################################################
+
+Automatically generate
+
+Industrial Cost Report
+
+Executive Financial Report
+
+Commercial Proposal Summary
+
+Installation Cost Report
+
+Freight Report
+
+Risk Report
+
+Margin Report
+
+Executive Dashboard Report
+
+Engineering Report
+
+PDF
+
+HTML
+
+Markdown
+
+####################################################################################################
+INTEGRATION
+####################################################################################################
+
+Integrate the application with
+
+Service Proposal Engine
+
+Mission Manager
+
+Executive Dashboard
+
+Project Management
+
+Knowledge Hub
+
+Enterprise Memory
+
+HTML Intelligence Studio
+
+Document Generator
+
+Report Engine
+
+Future ERP connectors
+
+Future CRM connectors
+
+####################################################################################################
+PERSISTENCE
+####################################################################################################
+
+Store
+
+Projects
+
+Templates
+
+Scenarios
+
+Tariffs
+
+Freight Database
+
+Historical Calculations
+
+Reports
+
+Executive Decisions
+
+Validation Results
+
+Knowledge Assets
+
+####################################################################################################
+VALIDATION
+####################################################################################################
+
+Automatically validate
+
+Calculation consistency
+
+Negative values
+
+Missing data
+
+Currency consistency
+
+Margin consistency
+
+Risk consistency
+
+Installation consistency
+
+Freight consistency
+
+Proposal consistency
+
+Repository integrity
+
+UI consistency
+
+Corporate Design compliance
+
+####################################################################################################
+KNOWLEDGE CAPTURE
+####################################################################################################
+
+Capture reusable engineering knowledge.
+
+Update automatically
+
+Knowledge Hub
+
+Enterprise Memory
+
+Industrial Cost Knowledge Base
+
+Commercial Knowledge Base
+
+Proposal Templates
+
+Calculation Templates
+
+Regional Tariffs
+
+Freight Intelligence
+
+Risk Profiles
+
+Engineering Best Practices
+
+####################################################################################################
+DELIVERABLES
+####################################################################################################
+
+The mission shall produce
+
+✓ Industrial Cost Engineering Studio
+
+✓ Complete UI
+
+✓ Reusable Calculation Engine
+
+✓ Scenario Engine
+
+✓ Executive Dashboard
+
+✓ Installation Engine
+
+✓ Freight Engine
+
+✓ Risk Engine
+
+✓ Commercial Pricing Engine
+
+✓ Reporting Engine
+
+✓ Repository Integration
+
+✓ Knowledge Hub Update
+
+✓ Enterprise Memory Update
+
+✓ Technical Documentation
+
+✓ API Documentation
+
+✓ System Health Validation
+
+####################################################################################################
+MISSION COMPLETION
+####################################################################################################
+
+The mission is COMPLETE only when
+
+✓ The new application is fully integrated into IS_BACKOFFICE.
+
+✓ All calculations are executed through reusable services.
+
+✓ The supplied calculation engine has been transformed into a modular enterprise calculation engine.
+
+✓ The application can be used directly by the Service Proposal Engine.
+
+✓ Historical projects can be reused.
+
+✓ Reports are automatically generated.
+
+✓ All validations return PASS.
+
+✓ Knowledge Hub and Enterprise Memory have been updated.
+
+✓ The application is ready to become the corporate cost estimation platform for every current and future industrial solution developed by INGECART.
+
+END OF MISSION
+####################################################################################################

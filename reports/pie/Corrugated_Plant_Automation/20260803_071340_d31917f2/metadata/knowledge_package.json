@@ -1,0 +1,25 @@
+{
+  "document_id": "efc7db4b072643c78ab9462f20d16fc8",
+  "title": "Corrugated Plant Automation Solutions",
+  "selected_variant": "slide_flow",
+  "scores": {
+    "visual_similarity_score": 100.0,
+    "structure_score": 100.0,
+    "theme_score": 100.0,
+    "typography_score": 100.0,
+    "layout_score": 100.0,
+    "image_score": 100.0,
+    "corporate_identity_score": 100.0,
+    "executive_quality_score": 100.0
+  },
+  "object_inventory": {
+    "slides": 29,
+    "total_objects": 103,
+    "by_kind": {
+      "shape": 57,
+      "heading": 21,
+      "text": 16,
+      "title": 9
+    }
+  }
+}

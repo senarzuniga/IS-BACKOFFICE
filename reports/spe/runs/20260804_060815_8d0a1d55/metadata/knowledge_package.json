@@ -1,0 +1,185 @@
+{
+  "document_id": "e074c0712473480b87381318756d3c0f",
+  "title": "Customer Support & Lifecycle Services — Production Recovery",
+  "components": [
+    {
+      "id": "32154d0db08741d886c4dafc16bd9a71",
+      "component_kind": "text",
+      "title": "OFF-2026-S132_20260804_060815",
+      "body": "OFF-2026-S132_20260804_060815",
+      "items": [
+        {
+          "title": "Title",
+          "body": "# Customer Support & Lifecycle Services — Production Recovery"
+        },
+        {
+          "title": "Text",
+          "body": "## Proposal Metadata\n- Number: OFF-2026-S132\n- Customer: CASCADES PISCATAWAY\n- Plant: Piscataway Plant\n- Country: USA\n- Language: en\n- Currency: EUR\n- Duration: 12 months\n- Validity Days: 45\n- Payment Terms: 50% upon order, 50% upon first visit"
+        },
+        {
+          "title": "Text",
+          "body": "## Executive Summary\nCorporate service proposal generated under AHDE governance."
+        },
+        {
+          "title": "Text",
+          "body": "## Services\n### Preventive Maintenance Programme\n4 preventive visits/year with full mechanical and electrical scope.\n- Service ID: preventive_maintenance\n- Frequency: 4 visits/year\n- Quantity: 1.0\n- Unit Price: 35000.00 EUR\n- Total: 35000.00 EUR\n- Optional: No\n- Coverage: Mechanical + Electrical + Automation\n- Deliverables: Visit report, corrective action list, annual roadmap"
+        },
+        {
+          "title": "Text",
+          "body": "### IngPRO Digital Monitoring\nContinuous monitoring with anomaly detection.\n- Service ID: ingpro\n- Frequency: Continuous\n- Quantity: 1.0\n- Unit Price: 15000.00 EUR\n- Total: 15000.00 EUR\n- Optional: Yes\n- Coverage: Critical assets"
+        },
+        {
+          "title": "Text",
+          "body": "## About INGECART"
+        },
+        {
+          "title": "Text",
+          "body": "## Understanding Installation"
+        },
+        {
+          "title": "Text",
+          "body": "## Objectives"
+        },
+        {
+          "title": "Text",
+          "body": "## Scope Of Services"
+        },
+        {
+          "title": "Text",
+          "body": "## Maintenance Programme"
+        },
+        {
+          "title": "Text",
+          "body": "## Visit Methodology"
+        },
+        {
+          "title": "Text",
+          "body": "## Deliverables"
+        },
+        {
+          "title": "Text",
+          "body": "## IngPRO Section"
+        },
+        {
+          "title": "Text",
+          "body": "## Optional Services"
+        },
+        {
+          "title": "Text",
+          "body": "## Customer Responsibilities"
+        },
+        {
+          "title": "Text",
+          "body": "## Commercial Conditions"
+        },
+        {
+          "title": "Text",
+          "body": "## Pricing Summary"
+        },
+        {
+          "title": "Text",
+          "body": "## Why INGECART"
+        },
+        {
+          "title": "Text",
+          "body": "## Acceptance"
+        },
+        {
+          "title": "Text",
+          "body": "## Annexes"
+        }
+      ],
+      "props": {
+        "layout": "single-column",
+        "labels": [
+          "###",
+          "1.0",
+          "15000.00",
+          "35000.00",
+          "50%",
+          "about",
+          "acceptance",
+          "action",
+          "ahde",
+          "and",
+          "annexes",
+          "annual"
+        ],
+        "confidence": 8.3
+      },
+      "asset_ids": [],
+      "style_tokens": [],
+      "evidence_ids": [],
+      "knowledge_keys": [],
+      "semantic_labels": [],
+      "confidence": 1.0
+    }
+  ],
+  "diagram_components": [],
+  "tables": [],
+  "kpis": [],
+  "images": [],
+  "products": [
+    "Service_Proposal_Engine"
+  ],
+  "clients": [
+    "CASCADES PISCATAWAY"
+  ],
+  "technologies": [],
+  "concepts": [
+    "Text",
+    "Title"
+  ],
+  "prompts": [],
+  "hypotheses": [
+    {
+      "id": "H1",
+      "name": "Strict structure-first reconstruction",
+      "engineering": 8.9,
+      "business": 8.3,
+      "quality": 9.2,
+      "risk": 2.0,
+      "executive_score": 8.47
+    },
+    {
+      "id": "H2",
+      "name": "Balanced semantic-first reconstruction",
+      "engineering": 8.4,
+      "business": 8.9,
+      "quality": 8.7,
+      "risk": 2.4,
+      "executive_score": 8.16
+    },
+    {
+      "id": "H3",
+      "name": "Visual-priority reconstruction",
+      "engineering": 8.0,
+      "business": 8.2,
+      "quality": 8.4,
+      "risk": 2.9,
+      "executive_score": 7.63
+    }
+  ],
+  "selected_hypothesis": {
+    "id": "H1",
+    "name": "Strict structure-first reconstruction",
+    "engineering": 8.9,
+    "business": 8.3,
+    "quality": 9.2,
+    "risk": 2.0,
+    "executive_score": 8.47
+  },
+  "decisions": {
+    "variant": "slide_flow",
+    "score": {
+      "visual_similarity_score": 100.0,
+      "structure_score": 100.0,
+      "theme_score": 100.0,
+      "typography_score": 100.0,
+      "layout_score": 100.0,
+      "image_score": 100.0,
+      "corporate_identity_score": 100.0,
+      "executive_quality_score": 100.0
+    }
+  }
+}

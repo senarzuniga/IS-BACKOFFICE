@@ -1,0 +1,92 @@
+[
+  {
+    "version_id": "14046fbd12864acf8876a7efbb605c8d",
+    "version_number": 1,
+    "author": "Mission Manager",
+    "objective": "Generate a Ingecart Product Catalog",
+    "result": "created",
+    "mission_id": "20260803_065115_b801161d",
+    "created_at": "2026-08-03T06:51:15.379081Z",
+    "diff": {
+      "structural_diff": {
+        "initial": true,
+        "sections": 1,
+        "components": 1
+      },
+      "visual_diff": {
+        "theme": "industrial",
+        "palette": [
+          "#0B1F3A",
+          "#005F8C",
+          "#F2A900",
+          "#F4F6F8"
+        ]
+      },
+      "semantic_diff": {},
+      "html_diff": [],
+      "component_diff": {
+        "current": {
+          "executive_summary": 1
+        }
+      },
+      "change_log": []
+    },
+    "output_files": {
+      "html": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\pie\\Corrugated_Plant_Automation\\20260803\\version_1\\html\\index.html",
+      "markdown": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\pie\\Corrugated_Plant_Automation\\20260803\\version_1\\html\\document.md",
+      "docx": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\pie\\Corrugated_Plant_Automation\\20260803\\version_1\\html\\document.docx",
+      "pdf": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\pie\\Corrugated_Plant_Automation\\20260803\\version_1\\html\\document.pdf",
+      "odt": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\pie\\Corrugated_Plant_Automation\\20260803\\version_1\\html\\document.odt",
+      "presentation_html": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\pie\\Corrugated_Plant_Automation\\20260803\\version_1\\html\\presentation.html",
+      "portal_web": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\pie\\Corrugated_Plant_Automation\\20260803\\version_1\\html\\portal_web\\index.html",
+      "microsite": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\pie\\Corrugated_Plant_Automation\\20260803\\version_1\\html\\microsite\\index.html",
+      "document_json": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\pie\\Corrugated_Plant_Automation\\20260803\\version_1\\html\\document_model.json",
+      "theme_css": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\pie\\Corrugated_Plant_Automation\\20260803\\version_1\\html\\dipc_theme.css"
+    }
+  },
+  {
+    "version_id": "15b2956dbe1c42118c4988c05636ff92",
+    "version_number": 1,
+    "author": "Mission Manager",
+    "objective": "Generate a Ingecart Product Catalog",
+    "result": "created",
+    "mission_id": "20260803_065902_77148ab1",
+    "created_at": "2026-08-03T06:59:02.023298Z",
+    "diff": {
+      "structural_diff": {
+        "initial": true,
+        "sections": 1,
+        "components": 1
+      },
+      "visual_diff": {
+        "theme": "industrial",
+        "palette": [
+          "#0B1F3A",
+          "#005F8C",
+          "#F2A900",
+          "#F4F6F8"
+        ]
+      },
+      "semantic_diff": {},
+      "html_diff": [],
+      "component_diff": {
+        "current": {
+          "executive_summary": 1
+        }
+      },
+      "change_log": []
+    },
+    "output_files": {
+      "html": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\pie\\Corrugated_Plant_Automation\\20260803\\version_1\\html\\index.html",
+      "markdown": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\pie\\Corrugated_Plant_Automation\\20260803\\version_1\\html\\document.md",
+      "docx": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\pie\\Corrugated_Plant_Automation\\20260803\\version_1\\html\\document.docx",
+      "pdf": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\pie\\Corrugated_Plant_Automation\\20260803\\version_1\\html\\document.pdf",
+      "odt": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\pie\\Corrugated_Plant_Automation\\20260803\\version_1\\html\\document.odt",
+      "presentation_html": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\pie\\Corrugated_Plant_Automation\\20260803\\version_1\\html\\presentation.html",
+      "portal_web": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\pie\\Corrugated_Plant_Automation\\20260803\\version_1\\html\\portal_web\\index.html",
+      "microsite": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\pie\\Corrugated_Plant_Automation\\20260803\\version_1\\html\\microsite\\index.html",
+      "document_json": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\pie\\Corrugated_Plant_Automation\\20260803\\version_1\\html\\document_model.json",
+      "theme_css": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\pie\\Corrugated_Plant_Automation\\20260803\\version_1\\html\\dipc_theme.css"
+    }
+  }
+]

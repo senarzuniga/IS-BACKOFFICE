@@ -1,0 +1,32 @@
+{
+  "colors": {
+    "primary": "#FF6A00",
+    "accent": "#FFFFFF",
+    "text": "#151515",
+    "surface": "#6F7378",
+    "border": "#F4F5F7",
+    "palette": [
+      "#FF6A00",
+      "#FFFFFF",
+      "#151515",
+      "#6F7378",
+      "#F4F5F7"
+    ]
+  },
+  "typography": {
+    "font_family": "Montserrat",
+    "base_size_pt": 28.0
+  },
+  "spacing": {
+    "xs": "0.25rem",
+    "sm": "0.5rem",
+    "md": "1rem",
+    "lg": "1.5rem",
+    "xl": "2.5rem"
+  },
+  "radius": {
+    "sm": "6px",
+    "md": "10px",
+    "lg": "16px"
+  }
+}

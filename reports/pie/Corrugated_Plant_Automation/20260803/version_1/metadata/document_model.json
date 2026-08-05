@@ -1,0 +1,249 @@
+{
+  "id": "7ae01f5f78a6403397c2357f7ad1da71",
+  "title": "HIS Corporate Document",
+  "subtitle": "Autonomous mission-driven reconstruction",
+  "source_path": "\"C:\\Users\\Inaki Senar\\Documents\\INGECART\\MARKETING\\CONTENT\\Corrugated Plant Automation Solutions v2.pptx\"",
+  "source_type": "HTML",
+  "document_type": "smart_html_v2",
+  "theme_variant": "industrial",
+  "metadata": {
+    "his_module": "HTML Intelligence Studio",
+    "project": "Corrugated_Plant_Automation",
+    "client": "INGECART",
+    "category": "pie",
+    "language": "Bilingual",
+    "source_format": "HTML",
+    "sources": [
+      "\"C:\\Users\\Inaki Senar\\Documents\\INGECART\\MARKETING\\CONTENT\\Corrugated Plant Automation Solutions v2.pptx\""
+    ],
+    "comments": "Nombre del HTML nuevo: \"Ingecart, what we do\"",
+    "objective": "Generate a Ingecart Product Catalog",
+    "target_audience": "Executive Board",
+    "instruction_text": "Genera un documento para presentar a Ingecart ante altos directivos. El documento de origen es un powerpoint que esta bien ordenado, portada, slides generales y luego presentacion de productos y sus explicaciones.  Las diapositivas que introducen los productos, son, 6,11,14,15,21,24,26. Salvo el producto de la slide 14, que solo tiene el contenido de la slide 14, el resto tienen contenido adicional a la slide de producto, que se extiende hasta la siguiente slide de producto.",
+    "corporate_model": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\ingesite.github.io\\Modelo_HTML.txt",
+    "palette": [
+      "#0B1F3A",
+      "#005F8C",
+      "#F2A900",
+      "#F4F6F8"
+    ],
+    "typography": {
+      "headline": "Montserrat, Segoe UI, Arial, sans-serif",
+      "body": "Inter, Segoe UI, Arial, sans-serif"
+    },
+    "strategy": {
+      "strategy": "hybrid_fusion",
+      "executive_score": 8.05,
+      "hypotheses": [
+        {
+          "id": "H1",
+          "name": "Structured source-first pipeline",
+          "assumption": "Use PPT/Word/PDF if available as primary source for high structural fidelity.",
+          "engineering": 8.8,
+          "business": 8.4,
+          "knowledge": 8.6,
+          "risk": 2.3,
+          "executive_score": 8.04
+        },
+        {
+          "id": "H2",
+          "name": "Prompt-driven generative reconstruction",
+          "assumption": "Build directly from instruction text when source quality is low or mixed.",
+          "engineering": 7.6,
+          "business": 8.9,
+          "knowledge": 7.4,
+          "risk": 3.5,
+          "executive_score": 7.13
+        },
+        {
+          "id": "H3",
+          "name": "Hybrid fusion pipeline",
+          "assumption": "Fuse multi-source artifacts and instructions with componentized assembly.",
+          "engineering": 8.5,
+          "business": 8.8,
+          "knowledge": 9.0,
+          "risk": 2.7,
+          "executive_score": 8.05
+        }
+      ],
+      "selected_hypothesis": "H3"
+    },
+    "translations": {
+      "en": {
+        "title": "HIS Corporate Document",
+        "subtitle": "Autonomous mission-driven reconstruction"
+      },
+      "es": {
+        "title": "HIS Corporate Document",
+        "subtitle": "Autonomous mission-driven reconstruction"
+      }
+    }
+  },
+  "sections": [
+    {
+      "id": "3300f662190644db9414a3a86d06dec1",
+      "title": "Executive Overview",
+      "summary": "Mission-generated executive overview section.",
+      "order": 1,
+      "blocks": [
+        {
+          "id": "f500a78b1811417ea2a2642a555d8819",
+          "block_type": "summary",
+          "title": null,
+          "components": [
+            {
+              "id": "58830dcf322d404581b2ff4344e21852",
+              "component_kind": "executive_summary",
+              "title": "Executive Summary",
+              "body": "Genera un documento para presentar a Ingecart ante altos directivos. El documento de origen es un powerpoint que esta bien ordenado, portada, slides generales y luego presentacion de productos y sus explicaciones.  Las diapositivas que introducen los productos, son, 6,11,14,15,21,24,26. Salvo el producto de la slide 14, que solo tiene el contenido de la slide 14, el resto tienen contenido adicional a la slide de producto, que se extiende hasta la siguiente slide de producto.",
+              "items": [],
+              "props": {},
+              "asset_ids": [],
+              "style_tokens": [],
+              "evidence_ids": [],
+              "knowledge_keys": [],
+              "semantic_labels": [],
+              "confidence": 1.0
+            }
+          ],
+          "metadata": {}
+        }
+      ],
+      "metadata": {}
+    }
+  ],
+  "assets": [],
+  "styles": [],
+  "knowledge_links": [],
+  "mission_links": [
+    {
+      "mission_id": "20260803_065902_77148ab1",
+      "objective": "Generate a Ingecart Product Catalog",
+      "command": null,
+      "status": "completed",
+      "agent": "Mission Manager",
+      "confidence": 1.0
+    }
+  ],
+  "evidence": [
+    {
+      "id": "f8645b00edd94e87ac90ab800255a7d4",
+      "kind": "instruction",
+      "description": "Genera un documento para presentar a Ingecart ante altos directivos. El documento de origen es un powerpoint que esta bien ordenado, portada, slides generales y luego presentacion de productos y sus explicaciones.  Las diapositivas que introducen los",
+      "source_ref": null,
+      "metadata": {}
+    }
+  ],
+  "version_history": [
+    {
+      "version_id": "15b2956dbe1c42118c4988c05636ff92",
+      "version_number": 1,
+      "author": "Mission Manager",
+      "objective": "Generate a Ingecart Product Catalog",
+      "result": "created",
+      "mission_id": "20260803_065902_77148ab1",
+      "created_at": "2026-08-03T06:59:02.023298Z",
+      "diff": {
+        "structural_diff": {
+          "initial": true,
+          "sections": 1,
+          "components": 1
+        },
+        "visual_diff": {
+          "theme": "industrial",
+          "palette": [
+            "#0B1F3A",
+            "#005F8C",
+            "#F2A900",
+            "#F4F6F8"
+          ]
+        },
+        "semantic_diff": {},
+        "html_diff": [],
+        "component_diff": {
+          "current": {
+            "executive_summary": 1
+          }
+        },
+        "change_log": []
+      },
+      "output_files": {
+        "html": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\pie\\Corrugated_Plant_Automation\\20260803\\version_1\\html\\index.html",
+        "markdown": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\pie\\Corrugated_Plant_Automation\\20260803\\version_1\\html\\document.md",
+        "docx": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\pie\\Corrugated_Plant_Automation\\20260803\\version_1\\html\\document.docx",
+        "pdf": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\pie\\Corrugated_Plant_Automation\\20260803\\version_1\\html\\document.pdf",
+        "odt": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\pie\\Corrugated_Plant_Automation\\20260803\\version_1\\html\\document.odt",
+        "presentation_html": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\pie\\Corrugated_Plant_Automation\\20260803\\version_1\\html\\presentation.html",
+        "portal_web": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\pie\\Corrugated_Plant_Automation\\20260803\\version_1\\html\\portal_web\\index.html",
+        "microsite": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\pie\\Corrugated_Plant_Automation\\20260803\\version_1\\html\\microsite\\index.html",
+        "document_json": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\pie\\Corrugated_Plant_Automation\\20260803\\version_1\\html\\document_model.json",
+        "theme_css": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\pie\\Corrugated_Plant_Automation\\20260803\\version_1\\html\\dipc_theme.css"
+      }
+    }
+  ],
+  "preview_profiles": [
+    {
+      "device": "desktop",
+      "width_px": 1440,
+      "height_px": 1024,
+      "theme": "industrial",
+      "html_path": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\pie\\Corrugated_Plant_Automation\\20260803\\version_1\\html\\index.html"
+    },
+    {
+      "device": "tablet",
+      "width_px": 1024,
+      "height_px": 1366,
+      "theme": "industrial",
+      "html_path": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\pie\\Corrugated_Plant_Automation\\20260803\\version_1\\html\\index.html"
+    },
+    {
+      "device": "mobile",
+      "width_px": 390,
+      "height_px": 844,
+      "theme": "industrial",
+      "html_path": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\pie\\Corrugated_Plant_Automation\\20260803\\version_1\\html\\index.html"
+    },
+    {
+      "device": "print",
+      "width_px": 1240,
+      "height_px": 1754,
+      "theme": "industrial",
+      "html_path": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\pie\\Corrugated_Plant_Automation\\20260803\\version_1\\html\\index.html"
+    }
+  ],
+  "analyzer_report": {
+    "accessibility_score": 0.0,
+    "performance_score": 0.0,
+    "seo_score": 0.0,
+    "responsive_score": 0.0,
+    "notes": []
+  },
+  "knowledge_graph_nodes": [],
+  "knowledge_graph_edges": [],
+  "quality_score": {
+    "visual_fidelity": 0.0,
+    "structural_fidelity": 0.0,
+    "semantic_fidelity": 0.0,
+    "accessibility": 0.0,
+    "responsive": 0.0,
+    "load_time": 0.0,
+    "complexity": 0.0,
+    "reusability": 0.0,
+    "maintainability": 0.0,
+    "graphical_consistency": 0.0,
+    "typography_quality": 0.0,
+    "alignment_quality": 0.0,
+    "component_usage": 0.0,
+    "executive_quality_score": 0.0
+  },
+  "live_state": {
+    "toc_generated": false,
+    "navigation_generated": false,
+    "preview_regenerated": false,
+    "styles_regenerated": false,
+    "cross_refs_updated": false,
+    "knowledge_graph_updated": false,
+    "metadata_updated": false,
+    "affected_component_ids": []
+  }
+}

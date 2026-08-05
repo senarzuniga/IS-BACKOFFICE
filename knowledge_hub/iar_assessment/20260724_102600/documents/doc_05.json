@@ -1,0 +1,769 @@
+{
+  "source_file": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\PRODUCTO\\ALMACEN INTELIGENTE\\IAR\\Precios_Eliko.pdf",
+  "supplier": "Eliko",
+  "document_type": "commercial_pricing",
+  "technologies": [
+    "UWB",
+    "BLE"
+  ],
+  "positioning_methods": [],
+  "metadata": {
+    "processed_at": "2026-07-24T08:26:31.377720+00:00",
+    "chars": 7318,
+    "pages": 10,
+    "tables": 6,
+    "images": 1,
+    "claims": 27
+  },
+  "summary": [
+    "Star ter Kit\nName Product Quantity Item Cost, € Total, €\nHardware\nStandard Anchor IP52 casing, PoE, Wifi 4 550,00 2200,00\nIP52, button, LED, buzzer, rechargeable battery up to\nPersonnel Tag 2 145,00 980,00\n6 months\nLocal Server Server Hardware for hosting the Eliko RTLS software 1 1,200,00 1200,00\nSoftware\nAnchor and Tag Recurring annual software license for the RTLS Core\n1 1800,00 € 1800,00\nSoftware License* and RTLS Manager software\n1.",
+    "Relocation of the anchors according test results.",
+    "Total 5975,00\n*The minimum software licence fee is €1800 per year.",
+    "From this amount it is possible to add Anchors and Tags one by\none according to the General Price List for one year.",
+    "General Price List: Hardware and software\nlicenses\nName Product Item Cost Volumes\nHardware\nStandard Anchor IP52 casing, optional with IP67 casings (+50€) 550,00 € 1-100*\nIP67, battery up to 5y, can be vehicle powered.",
+    "Custom\nAsset/ Vehicle Tag 375,00 € 1-250*\ncables, 6DoF IMU & magnetic attachment for extra cost.",
+    "IP52, button, LED, buzzer, rechargeable battery up to 6\nPersonnel Tag 145,00 € 1-250*\nmonths\nLocal Server Server Hardware for hosting the Eliko RTLS software 1,800,00 € TBD\nSoftware\nAnchor Software Recurring annual software license for the RTLS Core and\n120,00 € Per anchor**\nLicense RTLS Manager software\nRecurring annual software license for the RTLS Core and\nTag Software License RTLS Manager software 30,00 € Per tag**\n*Volume discounts over the defined quantity are available.",
+    "**The minimum quantity of software licenses are 10 anchors and 20 tags, i.e."
+  ],
+  "claims": [
+    {
+      "claim": "Star ter Kit\nName Product Quantity Item Cost, € Total, €\nHardware\nStandard Anchor IP52 casing, PoE, Wifi 4 550,00 2200,00\nIP52, button, LED, buzzer, rechargeable battery up to\nPersonnel Tag 2 145,00 980,00\n6 months\nLocal Server Server Hardware for hosting the Eliko RTLS software 1 1,200,00 1200,00\nSoftware\nAnchor and Tag Recurring annual software license for the RTLS Core\n1 1800,00 € 1800,00\nSoftware License* and RTLS Manager software\n1.",
+      "claim_type": "Commercial Information",
+      "source_file": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\PRODUCTO\\ALMACEN INTELIGENTE\\IAR\\Precios_Eliko.pdf",
+      "source_page": 2,
+      "supplier": "Eliko",
+      "external_validation": "NOT_APPLICABLE",
+      "external_references": [],
+      "confidence": 0.6
+    },
+    {
+      "claim": "Relocation of the anchors according test results.",
+      "claim_type": "Engineering Assumption",
+      "source_file": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\PRODUCTO\\ALMACEN INTELIGENTE\\IAR\\Precios_Eliko.pdf",
+      "source_page": 2,
+      "supplier": "Eliko",
+      "external_validation": "NOT_APPLICABLE",
+      "external_references": [],
+      "confidence": 0.45
+    },
+    {
+      "claim": "Total 5975,00\n*The minimum software licence fee is €1800 per year.",
+      "claim_type": "Commercial Information",
+      "source_file": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\PRODUCTO\\ALMACEN INTELIGENTE\\IAR\\Precios_Eliko.pdf",
+      "source_page": 2,
+      "supplier": "Eliko",
+      "external_validation": "NOT_APPLICABLE",
+      "external_references": [],
+      "confidence": 0.6
+    },
+    {
+      "claim": "From this amount it is possible to add Anchors and Tags one by\none according to the General Price List for one year.",
+      "claim_type": "Engineering Assumption",
+      "source_file": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\PRODUCTO\\ALMACEN INTELIGENTE\\IAR\\Precios_Eliko.pdf",
+      "source_page": 2,
+      "supplier": "Eliko",
+      "external_validation": "NOT_APPLICABLE",
+      "external_references": [],
+      "confidence": 0.45
+    },
+    {
+      "claim": "General Price List: Hardware and software\nlicenses\nName Product Item Cost Volumes\nHardware\nStandard Anchor IP52 casing, optional with IP67 casings (+50€) 550,00 € 1-100*\nIP67, battery up to 5y, can be vehicle powered.",
+      "claim_type": "Commercial Information",
+      "source_file": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\PRODUCTO\\ALMACEN INTELIGENTE\\IAR\\Precios_Eliko.pdf",
+      "source_page": 3,
+      "supplier": "Eliko",
+      "external_validation": "NOT_APPLICABLE",
+      "external_references": [],
+      "confidence": 0.6
+    },
+    {
+      "claim": "Custom\nAsset/ Vehicle Tag 375,00 € 1-250*\ncables, 6DoF IMU & magnetic attachment for extra cost.",
+      "claim_type": "Commercial Information",
+      "source_file": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\PRODUCTO\\ALMACEN INTELIGENTE\\IAR\\Precios_Eliko.pdf",
+      "source_page": 3,
+      "supplier": "Eliko",
+      "external_validation": "NOT_APPLICABLE",
+      "external_references": [],
+      "confidence": 0.6
+    },
+    {
+      "claim": "IP52, button, LED, buzzer, rechargeable battery up to 6\nPersonnel Tag 145,00 € 1-250*\nmonths\nLocal Server Server Hardware for hosting the Eliko RTLS software 1,800,00 € TBD\nSoftware\nAnchor Software Recurring annual software license for the RTLS Core and\n120,00 € Per anchor**\nLicense RTLS Manager software\nRecurring annual software license for the RTLS Core and\nTag Software License RTLS Manager software 30,00 € Per tag**\n*Volume discounts over the defined quantity are available.",
+      "claim_type": "Commercial Information",
+      "source_file": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\PRODUCTO\\ALMACEN INTELIGENTE\\IAR\\Precios_Eliko.pdf",
+      "source_page": 3,
+      "supplier": "Eliko",
+      "external_validation": "NOT_APPLICABLE",
+      "external_references": [],
+      "confidence": 0.6
+    },
+    {
+      "claim": "**The minimum quantity of software licenses are 10 anchors and 20 tags, i.e.",
+      "claim_type": "Performance Specification",
+      "source_file": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\PRODUCTO\\ALMACEN INTELIGENTE\\IAR\\Precios_Eliko.pdf",
+      "source_page": 3,
+      "supplier": "Eliko",
+      "external_validation": "VERIFIED",
+      "external_references": [
+        {
+          "name": "NIST UWB indoor positioning",
+          "url": "https://www.nist.gov/search?query=UWB+indoor+positioning",
+          "kind": "independent_engineering_reference",
+          "token_hits": 2
+        },
+        {
+          "name": "Pozyx documentation",
+          "url": "https://docs.pozyx.io/",
+          "kind": "official_manufacturer_documentation",
+          "token_hits": 5
+        },
+        {
+          "name": "Eliko RTLS pages",
+          "url": "https://eliko.tech/",
+          "kind": "official_manufacturer_documentation",
+          "token_hits": 3
+        }
+      ],
+      "confidence": 0.79
+    },
+    {
+      "claim": "From\nthis amount it is possible to add anchors and tags one by one.",
+      "claim_type": "Engineering Assumption",
+      "source_file": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\PRODUCTO\\ALMACEN INTELIGENTE\\IAR\\Precios_Eliko.pdf",
+      "source_page": 3,
+      "supplier": "Eliko",
+      "external_validation": "NOT_APPLICABLE",
+      "external_references": [],
+      "confidence": 0.45
+    },
+    {
+      "claim": "Network planning, technical suppor t,\ncustomization\nName Product Item Cost Volumes\nServices\nNetwork Design & UWB network planning 175,00 €/hour Starting from 1h\nInstallation Support\nNetwork Configuration UWB network configuration & system verification (after 175,00 €/hour Starting from 1h\nanchors installation)\nTechnical Support Remote technical support 175,00 €/hour Starting from 1h\nHard- & Software Customer specific design 175,00 €/hour TBD\ncustomization",
+      "claim_type": "Verified Technical Fact",
+      "source_file": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\PRODUCTO\\ALMACEN INTELIGENTE\\IAR\\Precios_Eliko.pdf",
+      "source_page": 4,
+      "supplier": "Eliko",
+      "external_validation": "VERIFIED",
+      "external_references": [
+        {
+          "name": "NIST UWB indoor positioning",
+          "url": "https://www.nist.gov/search?query=UWB+indoor+positioning",
+          "kind": "independent_engineering_reference",
+          "token_hits": 6
+        },
+        {
+          "name": "Pozyx documentation",
+          "url": "https://docs.pozyx.io/",
+          "kind": "official_manufacturer_documentation",
+          "token_hits": 4
+        },
+        {
+          "name": "Eliko RTLS pages",
+          "url": "https://eliko.tech/",
+          "kind": "official_manufacturer_documentation",
+          "token_hits": 4
+        }
+      ],
+      "confidence": 0.8700000000000001
+    },
+    {
+      "claim": "Shor t-term equipment rental, minimum\nquantity\nRent cost\nName Product Quantity Total, €\n€/month\nEquipment\nAnchor IP52 casing, optional with IP67 casings (+5€) 75,00 4 300,00\nAsset/ Vehicle IP67, battery up to 5y, can be vehicle\nTag powered.",
+      "claim_type": "Engineering Assumption",
+      "source_file": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\PRODUCTO\\ALMACEN INTELIGENTE\\IAR\\Precios_Eliko.pdf",
+      "source_page": 5,
+      "supplier": "Eliko",
+      "external_validation": "NOT_APPLICABLE",
+      "external_references": [],
+      "confidence": 0.45
+    },
+    {
+      "claim": "Personnel Tag IP52, rechargeable battery up to 6 months\n18,00 1 18,00\nLocal Server Server Hardware for hosting the Eliko RTLS\n180,00 1 180,00\nsoftware.",
+      "claim_type": "Performance Specification",
+      "source_file": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\PRODUCTO\\ALMACEN INTELIGENTE\\IAR\\Precios_Eliko.pdf",
+      "source_page": 5,
+      "supplier": "Eliko",
+      "external_validation": "VERIFIED",
+      "external_references": [
+        {
+          "name": "NIST UWB indoor positioning",
+          "url": "https://www.nist.gov/search?query=UWB+indoor+positioning",
+          "kind": "independent_engineering_reference",
+          "token_hits": 3
+        }
+      ],
+      "confidence": 0.63
+    },
+    {
+      "claim": "Further rentals are possible on a monthly basis\n- The rental contract is subject to a deposit of €1,000, which is refundable after the equipment has been returned and inspected.",
+      "claim_type": "Commercial Information",
+      "source_file": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\PRODUCTO\\ALMACEN INTELIGENTE\\IAR\\Precios_Eliko.pdf",
+      "source_page": 5,
+      "supplier": "Eliko",
+      "external_validation": "NOT_APPLICABLE",
+      "external_references": [],
+      "confidence": 0.6
+    },
+    {
+      "claim": "Remote network monitoring (optional)\nName Product Item Cost Volumes\nServices\nAnchor Recurring annual, real-time management 60,00 € Per anchor*\n& preventive maintenance\nTag Recurring annual, real-time management & 24,00 € Per tag*\npreventive maintenance\n* The minimum quantity of “Remote network monitoring” are 10 anchors and 20 tags, i.e.",
+      "claim_type": "Performance Specification",
+      "source_file": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\PRODUCTO\\ALMACEN INTELIGENTE\\IAR\\Precios_Eliko.pdf",
+      "source_page": 6,
+      "supplier": "Eliko",
+      "external_validation": "VERIFIED",
+      "external_references": [
+        {
+          "name": "NIST UWB indoor positioning",
+          "url": "https://www.nist.gov/search?query=UWB+indoor+positioning",
+          "kind": "independent_engineering_reference",
+          "token_hits": 4
+        },
+        {
+          "name": "Pozyx documentation",
+          "url": "https://docs.pozyx.io/",
+          "kind": "official_manufacturer_documentation",
+          "token_hits": 3
+        },
+        {
+          "name": "Eliko RTLS pages",
+          "url": "https://eliko.tech/",
+          "kind": "official_manufacturer_documentation",
+          "token_hits": 4
+        }
+      ],
+      "confidence": 0.8700000000000001
+    },
+    {
+      "claim": "From this\namount it is possible to add anchors and tags one by one.",
+      "claim_type": "Engineering Assumption",
+      "source_file": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\PRODUCTO\\ALMACEN INTELIGENTE\\IAR\\Precios_Eliko.pdf",
+      "source_page": 6,
+      "supplier": "Eliko",
+      "external_validation": "NOT_APPLICABLE",
+      "external_references": [],
+      "confidence": 0.45
+    },
+    {
+      "claim": "Network as a Ser vice\nName Product Item Cost Volumes\nServices\nAnchor Annual fee including all: hardware, software licences & 720,00 € Per anchor*\nremote monitoring\nTag Annual fee including all: hardware, software licences & 180,00 € Per tag*\nremote monitoring\n*The minimum quantity are 6 anchors and 2 tags, i.e.",
+      "claim_type": "Performance Specification",
+      "source_file": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\PRODUCTO\\ALMACEN INTELIGENTE\\IAR\\Precios_Eliko.pdf",
+      "source_page": 7,
+      "supplier": "Eliko",
+      "external_validation": "VERIFIED",
+      "external_references": [
+        {
+          "name": "NIST UWB indoor positioning",
+          "url": "https://www.nist.gov/search?query=UWB+indoor+positioning",
+          "kind": "independent_engineering_reference",
+          "token_hits": 6
+        },
+        {
+          "name": "Pozyx documentation",
+          "url": "https://docs.pozyx.io/",
+          "kind": "official_manufacturer_documentation",
+          "token_hits": 5
+        },
+        {
+          "name": "Eliko RTLS pages",
+          "url": "https://eliko.tech/",
+          "kind": "official_manufacturer_documentation",
+          "token_hits": 5
+        }
+      ],
+      "confidence": 0.8700000000000001
+    },
+    {
+      "claim": "From this amount it is possible to add anchors\nand tags one by one.",
+      "claim_type": "Engineering Assumption",
+      "source_file": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\PRODUCTO\\ALMACEN INTELIGENTE\\IAR\\Precios_Eliko.pdf",
+      "source_page": 7,
+      "supplier": "Eliko",
+      "external_validation": "NOT_APPLICABLE",
+      "external_references": [],
+      "confidence": 0.45
+    },
+    {
+      "claim": "Professional Ser vices\n• Network Design & Installation Support\nAnchor layout planning - Develop the preliminary and final anchor layout plans that includes anchor locations\nconsidering application requirements and environment restrictions.",
+      "claim_type": "Verified Technical Fact",
+      "source_file": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\PRODUCTO\\ALMACEN INTELIGENTE\\IAR\\Precios_Eliko.pdf",
+      "source_page": 8,
+      "supplier": "Eliko",
+      "external_validation": "VERIFIED",
+      "external_references": [
+        {
+          "name": "NIST UWB indoor positioning",
+          "url": "https://www.nist.gov/search?query=UWB+indoor+positioning",
+          "kind": "independent_engineering_reference",
+          "token_hits": 4
+        },
+        {
+          "name": "Pozyx documentation",
+          "url": "https://docs.pozyx.io/",
+          "kind": "official_manufacturer_documentation",
+          "token_hits": 5
+        },
+        {
+          "name": "Eliko RTLS pages",
+          "url": "https://eliko.tech/",
+          "kind": "official_manufacturer_documentation",
+          "token_hits": 6
+        }
+      ],
+      "confidence": 0.79
+    },
+    {
+      "claim": "Eliko will give guidelines how to attach anchors.",
+      "claim_type": "Engineering Assumption",
+      "source_file": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\PRODUCTO\\ALMACEN INTELIGENTE\\IAR\\Precios_Eliko.pdf",
+      "source_page": 8,
+      "supplier": "Eliko",
+      "external_validation": "NOT_APPLICABLE",
+      "external_references": [],
+      "confidence": 0.45
+    },
+    {
+      "claim": "The\nresult is a final and agreed anchor placement plan that will the basis for installing the anchors.",
+      "claim_type": "Engineering Assumption",
+      "source_file": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\PRODUCTO\\ALMACEN INTELIGENTE\\IAR\\Precios_Eliko.pdf",
+      "source_page": 8,
+      "supplier": "Eliko",
+      "external_validation": "NOT_APPLICABLE",
+      "external_references": [],
+      "confidence": 0.45
+    },
+    {
+      "claim": "Communication network design & anchor installation - Each anchor requires power and communication.",
+      "claim_type": "Engineering Assumption",
+      "source_file": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\PRODUCTO\\ALMACEN INTELIGENTE\\IAR\\Precios_Eliko.pdf",
+      "source_page": 8,
+      "supplier": "Eliko",
+      "external_validation": "NOT_APPLICABLE",
+      "external_references": [],
+      "confidence": 0.45
+    },
+    {
+      "claim": "Eliko\nwill will give guidelines how to power the anchors and supply communication.",
+      "claim_type": "Engineering Assumption",
+      "source_file": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\PRODUCTO\\ALMACEN INTELIGENTE\\IAR\\Precios_Eliko.pdf",
+      "source_page": 8,
+      "supplier": "Eliko",
+      "external_validation": "NOT_APPLICABLE",
+      "external_references": [],
+      "confidence": 0.45
+    },
+    {
+      "claim": "The anchors come with mounts with screw holes for permanent wall or ceiling\nattachment.",
+      "claim_type": "Engineering Assumption",
+      "source_file": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\PRODUCTO\\ALMACEN INTELIGENTE\\IAR\\Precios_Eliko.pdf",
+      "source_page": 8,
+      "supplier": "Eliko",
+      "external_validation": "NOT_APPLICABLE",
+      "external_references": [],
+      "confidence": 0.45
+    },
+    {
+      "claim": "• Network Configuration\nAnchor location measurement and configuration - After the anchors are in place, all anchor locations need to\nbe translated into XYZ coordinates relative to the room plan.",
+      "claim_type": "Engineering Assumption",
+      "source_file": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\PRODUCTO\\ALMACEN INTELIGENTE\\IAR\\Precios_Eliko.pdf",
+      "source_page": 8,
+      "supplier": "Eliko",
+      "external_validation": "NOT_APPLICABLE",
+      "external_references": [],
+      "confidence": 0.45
+    },
+    {
+      "claim": "Anchor location coordinates will be inserted into the\nRTLS Manager that can be either performed by Eliko engineers or the local installation team.",
+      "claim_type": "Engineering Assumption",
+      "source_file": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\PRODUCTO\\ALMACEN INTELIGENTE\\IAR\\Precios_Eliko.pdf",
+      "source_page": 8,
+      "supplier": "Eliko",
+      "external_validation": "NOT_APPLICABLE",
+      "external_references": [],
+      "confidence": 0.45
+    },
+    {
+      "claim": "Configuration includes selecting the right filters and settings for the use case, configuring the\nzones,events,event-based alarms to tags or to the application-level software,and any other parameter on the software\nside to achieve the desired result.Before handing over the project.Eliko engineers will verify the setup and location data\naccuracy, by gathering real-time data from the system and analysing it to make sure the network performance is as\nagreed.It also includes training for system engineers and managers on the system functionalities.",
+      "claim_type": "Engineering Assumption",
+      "source_file": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\PRODUCTO\\ALMACEN INTELIGENTE\\IAR\\Precios_Eliko.pdf",
+      "source_page": 8,
+      "supplier": "Eliko",
+      "external_validation": "NOT_APPLICABLE",
+      "external_references": [],
+      "confidence": 0.45
+    },
+    {
+      "claim": "Professional Ser vices\n• Technical support\nTroubleshoot and advise clients on technical matters beyond planning and setting up standard positioning\nnetworks.",
+      "claim_type": "Engineering Assumption",
+      "source_file": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\PRODUCTO\\ALMACEN INTELIGENTE\\IAR\\Precios_Eliko.pdf",
+      "source_page": 9,
+      "supplier": "Eliko",
+      "external_validation": "NOT_APPLICABLE",
+      "external_references": [],
+      "confidence": 0.45
+    }
+  ],
+  "specs": {
+    "Accuracy": "not_stated",
+    "Repeatability": "not_stated",
+    "Latency": "not_stated",
+    "Refresh rate": "not_stated",
+    "Maximum tags": "20 tags",
+    "Maximum anchors": "10 anchors",
+    "Coverage": "not_stated",
+    "Battery life": "6 months",
+    "Expected CAPEX": "€ 1800,00"
+  },
+  "tables": [
+    {
+      "page": 2,
+      "table_id": "p2_t1",
+      "rows": [
+        [
+          "Name",
+          "Product",
+          "Quantity",
+          "Item Cost, €",
+          "Total, €"
+        ],
+        [
+          "Hardware",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Standard Anchor",
+          "IP52 casing, PoE, Wifi",
+          "4",
+          "550,00",
+          "2200,00"
+        ],
+        [
+          "Personnel Tag",
+          "IP52, button, LED, buzzer, rechargeable battery up to\n6 months",
+          "2",
+          "145,00",
+          "980,00"
+        ],
+        [
+          "Local Server",
+          "Server Hardware for hosting the Eliko RTLS software",
+          "1",
+          "1,200,00",
+          "1200,00"
+        ],
+        [
+          "Software",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Anchor and Tag\nSoftware License*",
+          "Recurring annual software license for the RTLS Core\nand RTLS Manager software",
+          "1",
+          "1800,00 €",
+          "1800,00"
+        ],
+        [
+          "Technical support for\npilot**",
+          "1. Anchors placement plan.\n2. Network setup and configuration.\n3. Relocation of the anchors according test results.\n4. Analysis of the data and interpretation of the\nresults.",
+          "3 h",
+          "175,00",
+          "525,00"
+        ],
+        [
+          "Total\n*The minimum softwar",
+          "e licence fee is €1800 per year. From this amount it is possible",
+          "to add Anchors and",
+          "Tags one by",
+          "5975,00"
+        ]
+      ]
+    },
+    {
+      "page": 3,
+      "table_id": "p3_t1",
+      "rows": [
+        [
+          "Name",
+          "Product",
+          "Item Cost",
+          "Volumes"
+        ],
+        [
+          "Hardware",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Standard Anchor",
+          "IP52 casing, optional with IP67 casings (+50€)",
+          "550,00 €",
+          "1-100*"
+        ],
+        [
+          "Asset/ Vehicle Tag",
+          "IP67, battery up to 5y, can be vehicle powered. Custom\ncables, 6DoF IMU & magnetic attachment for extra cost.",
+          "375,00 €",
+          "1-250*"
+        ],
+        [
+          "Personnel Tag",
+          "IP52, button, LED, buzzer, rechargeable battery up to 6\nmonths",
+          "145,00 €",
+          "1-250*"
+        ],
+        [
+          "Local Server",
+          "Server Hardware for hosting the Eliko RTLS software",
+          "1,800,00 €",
+          "TBD"
+        ],
+        [
+          "Software",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Anchor Software\nLicense",
+          "Recurring annual software license for the RTLS Core and\nRTLS Manager software",
+          "120,00 €",
+          "Per anchor**"
+        ],
+        [
+          "Tag Software License\n*Volume discounts over the",
+          "Recurring annual software license for the RTLS Core and\nRTLS Manager software\ndefined quantity are available.",
+          "30,00 €",
+          "Per tag**"
+        ]
+      ]
+    },
+    {
+      "page": 4,
+      "table_id": "p4_t1",
+      "rows": [
+        [
+          "Name",
+          "Product",
+          "Item Cost",
+          "Volumes"
+        ],
+        [
+          "Services",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Network Design &\nInstallation Support",
+          "UWB network planning",
+          "175,00 €/hour",
+          "Starting from 1h"
+        ],
+        [
+          "Network Configuration",
+          "UWB network configuration & system verification (after\nanchors installation)",
+          "175,00 €/hour",
+          "Starting from 1h"
+        ],
+        [
+          "Technical Support",
+          "Remote technical support",
+          "175,00 €/hour",
+          "Starting from 1h"
+        ],
+        [
+          "Hard- & Software\ncustomization",
+          "Customer specific design",
+          "175,00 €/hour",
+          "TBD"
+        ]
+      ]
+    },
+    {
+      "page": 5,
+      "table_id": "p5_t1",
+      "rows": [
+        [
+          "Name",
+          "Product",
+          "Rent cost\n€/month",
+          "Quantity",
+          "Total, €"
+        ],
+        [
+          "Equipment",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Anchor",
+          "IP52 casing, optional with IP67 casings (+5€)",
+          "75,00",
+          "4",
+          "300,00"
+        ],
+        [
+          "Asset/ Vehicle\nTag",
+          "IP67, battery up to 5y, can be vehicle\npowered. Custom cables, 6DoF IMU &\nmagnetic attachment for extra cost.",
+          "36,00",
+          "1",
+          "36,00"
+        ],
+        [
+          "Personnel Tag",
+          "IP52, rechargeable battery up to 6 months",
+          "18,00",
+          "1",
+          "18,00"
+        ],
+        [
+          "Local Server",
+          "Server Hardware for hosting the Eliko RTLS\nsoftware. Including SW license fee.",
+          "180,00",
+          "1",
+          "180,00"
+        ]
+      ]
+    },
+    {
+      "page": 6,
+      "table_id": "p6_t1",
+      "rows": [
+        [
+          "Name",
+          "Product",
+          "Item Cost",
+          "Volumes"
+        ],
+        [
+          "Services",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Anchor",
+          "Recurring annual, real-time management\n& preventive maintenance",
+          "60,00 €",
+          "Per anchor*"
+        ],
+        [
+          "Tag",
+          "Recurring annual, real-time management &\npreventive maintenance",
+          "24,00 €",
+          "Per tag*"
+        ]
+      ]
+    },
+    {
+      "page": 7,
+      "table_id": "p7_t1",
+      "rows": [
+        [
+          "Name",
+          "Product",
+          "Item Cost",
+          "Volumes"
+        ],
+        [
+          "Services",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Anchor",
+          "Annual fee including all: hardware, software licences &\nremote monitoring",
+          "720,00 €",
+          "Per anchor*"
+        ],
+        [
+          "Tag",
+          "Annual fee including all: hardware, software licences &\nremote monitoring",
+          "180,00 €",
+          "Per tag*"
+        ]
+      ]
+    }
+  ],
+  "pages": [
+    {
+      "page": 1,
+      "text": "Eliko RTLS\nPrice List\nDate: 01th January 2026",
+      "tables_count": 0,
+      "images_count": 2,
+      "image_preview": "knowledge_hub/iar_assessment/20260724_102600/assets/images/Precios_Eliko_page_1.png"
+    },
+    {
+      "page": 2,
+      "text": "Star ter Kit\nName Product Quantity Item Cost, € Total, €\nHardware\nStandard Anchor IP52 casing, PoE, Wifi 4 550,00 2200,00\nIP52, button, LED, buzzer, rechargeable battery up to\nPersonnel Tag 2 145,00 980,00\n6 months\nLocal Server Server Hardware for hosting the Eliko RTLS software 1 1,200,00 1200,00\nSoftware\nAnchor and Tag Recurring annual software license for the RTLS Core\n1 1800,00 € 1800,00\nSoftware License* and RTLS Manager software\n1. Anchors placement plan.\n2. Network setup and configuration.\nTechnical support for\n3. Relocation of the anchors according test results. 3 h 175,00 525,00\npilot**\n4. Analysis of the data and interpretation of the\nresults.\nTotal 5975,00\n*The minimum software licence fee is €1800 per year. From this amount it is possible to add Anchors and Tags one by\none according to the General Price List for one year.\n**The first 3h of technical consultation are free of charge, thereafter they are charged according to the General Price List.\n-The Starter kit is freely extensible and fully functional and can be used for full-featured solutions.\n-The terms of payment: 100% of the cost of the hardware and the first year's licence fees on receipt of the order (plus\nthe first year's Remote Monitoring if applicable).\n-Transportation cost are not included",
+      "tables_count": 1,
+      "images_count": 0,
+      "image_preview": null
+    },
+    {
+      "page": 3,
+      "text": "General Price List: Hardware and software\nlicenses\nName Product Item Cost Volumes\nHardware\nStandard Anchor IP52 casing, optional with IP67 casings (+50€) 550,00 € 1-100*\nIP67, battery up to 5y, can be vehicle powered. Custom\nAsset/ Vehicle Tag 375,00 € 1-250*\ncables, 6DoF IMU & magnetic attachment for extra cost.\nIP52, button, LED, buzzer, rechargeable battery up to 6\nPersonnel Tag 145,00 € 1-250*\nmonths\nLocal Server Server Hardware for hosting the Eliko RTLS software 1,800,00 € TBD\nSoftware\nAnchor Software Recurring annual software license for the RTLS Core and\n120,00 € Per anchor**\nLicense RTLS Manager software\nRecurring annual software license for the RTLS Core and\nTag Software License RTLS Manager software 30,00 € Per tag**\n*Volume discounts over the defined quantity are available.\n**The minimum quantity of software licenses are 10 anchors and 20 tags, i.e. a minimum payment is €1800/year. From\nthis amount it is possible to add anchors and tags one by one. The fees are calculate by the number of units purchased.\n-The terms of payment: 100% of the cost of the hardware and the first year's licence fees on receipt of the order (plus\nthe first year's Remote Monitoring if applicable).\n-Transportation cost are not included",
+      "tables_count": 1,
+      "images_count": 0,
+      "image_preview": null
+    },
+    {
+      "page": 4,
+      "text": "Network planning, technical suppor t,\ncustomization\nName Product Item Cost Volumes\nServices\nNetwork Design & UWB network planning 175,00 €/hour Starting from 1h\nInstallation Support\nNetwork Configuration UWB network configuration & system verification (after 175,00 €/hour Starting from 1h\nanchors installation)\nTechnical Support Remote technical support 175,00 €/hour Starting from 1h\nHard- & Software Customer specific design 175,00 €/hour TBD\ncustomization",
+      "tables_count": 1,
+      "images_count": 0,
+      "image_preview": null
+    },
+    {
+      "page": 5,
+      "text": "Shor t-term equipment rental, minimum\nquantity\nRent cost\nName Product Quantity Total, €\n€/month\nEquipment\nAnchor IP52 casing, optional with IP67 casings (+5€) 75,00 4 300,00\nAsset/ Vehicle IP67, battery up to 5y, can be vehicle\nTag powered. Custom cables, 6DoF IMU & 36,00 1 36,00\nmagnetic attachment for extra cost.\nPersonnel Tag IP52, rechargeable battery up to 6 months\n18,00 1 18,00\nLocal Server Server Hardware for hosting the Eliko RTLS\n180,00 1 180,00\nsoftware. Including SW license fee.\n- The minimum rental period is one month. Further rentals are possible on a monthly basis\n- The rental contract is subject to a deposit of €1,000, which is refundable after the equipment has been returned and inspected.",
+      "tables_count": 1,
+      "images_count": 0,
+      "image_preview": null
+    },
+    {
+      "page": 6,
+      "text": "Remote network monitoring (optional)\nName Product Item Cost Volumes\nServices\nAnchor Recurring annual, real-time management 60,00 € Per anchor*\n& preventive maintenance\nTag Recurring annual, real-time management & 24,00 € Per tag*\npreventive maintenance\n* The minimum quantity of “Remote network monitoring” are 10 anchors and 20 tags, i.e. a minimum payment is €1080/year. From this\namount it is possible to add anchors and tags one by one. The fees are calculate by the number of units purchased.",
+      "tables_count": 1,
+      "images_count": 0,
+      "image_preview": null
+    },
+    {
+      "page": 7,
+      "text": "Network as a Ser vice\nName Product Item Cost Volumes\nServices\nAnchor Annual fee including all: hardware, software licences & 720,00 € Per anchor*\nremote monitoring\nTag Annual fee including all: hardware, software licences & 180,00 € Per tag*\nremote monitoring\n*The minimum quantity are 6 anchors and 2 tags, i.e. a minimum payment is €4680/year. From this amount it is possible to add anchors\nand tags one by one. The fees are calculate by the number of units purchased.\nThe contract is conditional on a full advance payment for the first year.",
+      "tables_count": 1,
+      "images_count": 0,
+      "image_preview": null
+    },
+    {
+      "page": 8,
+      "text": "Professional Ser vices\n• Network Design & Installation Support\nAnchor layout planning - Develop the preliminary and final anchor layout plans that includes anchor locations\nconsidering application requirements and environment restrictions. Eliko will give guidelines how to attach anchors. The\nresult is a final and agreed anchor placement plan that will the basis for installing the anchors.\nCommunication network design & anchor installation - Each anchor requires power and communication. Eliko\nwill will give guidelines how to power the anchors and supply communication. The communication network design &\ninstallation is done by a local partner. The anchors come with mounts with screw holes for permanent wall or ceiling\nattachment.\n• Network Configuration\nAnchor location measurement and configuration - After the anchors are in place, all anchor locations need to\nbe translated into XYZ coordinates relative to the room plan. Anchor location coordinates will be inserted into the\nRTLS Manager that can be either performed by Eliko engineers or the local installation team. Proximity or distance-\nbased applications require configuration of proximity radiuses.\nSystem configuration and verification - The system configuration entails all activities related to setting up the\nRTLS Core software. Configuration includes selecting the right filters and settings for the use case, configuring the\nzones,events,event-based alarms to tags or to the application-level software,and any other parameter on the software\nside to achieve the desired result.Before handing over the project.Eliko engineers will verify the setup and location data\naccuracy, by gathering real-time data from the system and analysing it to make sure the network performance is as\nagreed.It also includes training for system engineers and managers on the system functionalities.",
+      "tables_count": 0,
+      "images_count": 0,
+      "image_preview": null
+    },
+    {
+      "page": 9,
+      "text": "Professional Ser vices\n• Technical support\nTroubleshoot and advise clients on technical matters beyond planning and setting up standard positioning\nnetworks.\n• Hardware and software customization\nDevelopments and modifications based on Eliko's standard hardware and software according to the customer’s\nrequest and specifications.",
+      "tables_count": 0,
+      "images_count": 0,
+      "image_preview": null
+    },
+    {
+      "page": 10,
+      "text": "General Terms\n• Eliko reserves the right to change prices without notice.\n• Software licenses are subject to the terms set forth in the Eliko EULA.\n• All hardware is subject to Eliko's general warranty conditions.\n• Delivery conditions are agreed separately with the customer and may differ depending\non the destination country and the customer.",
+      "tables_count": 0,
+      "images_count": 0,
+      "image_preview": null
+    }
+  ],
+  "image_files": [
+    "knowledge_hub/iar_assessment/20260724_102600/assets/images/Precios_Eliko_page_1.png"
+  ]
+}

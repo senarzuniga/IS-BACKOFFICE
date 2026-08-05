@@ -1,0 +1,31 @@
+{
+  "published": 3,
+  "warnings": 0,
+  "errors": 0,
+  "results": [
+    {
+      "source": "c:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\estesa\\workspaces\\report_writer_agent\\ESTESA_EXECUTIVE_ENGINEERING_REPORT.html",
+      "target": "c:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\estesa\\final\\ESTESA_EXECUTIVE_ENGINEERING_REPORT.html",
+      "status": "published",
+      "warning": null,
+      "error": null,
+      "sha256": "038420cd3901e579a082540733bf14234c6b42d951ce97662dd78bd970792b77"
+    },
+    {
+      "source": "c:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\estesa\\workspaces\\report_writer_agent\\ESTESA_EXECUTIVE_ENGINEERING_REPORT.md",
+      "target": "c:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\estesa\\final\\ESTESA_EXECUTIVE_ENGINEERING_REPORT.md",
+      "status": "published",
+      "warning": null,
+      "error": null,
+      "sha256": "552ae774026b81e51d5c853dafce25959d4cac03fe85b71de34d3a422fa590f2"
+    },
+    {
+      "source": "c:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\estesa\\workspaces\\report_writer_agent\\ESTESA_EXECUTIVE_PRODUCT_ANNEX.md",
+      "target": "c:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\estesa\\final\\ESTESA_EXECUTIVE_PRODUCT_ANNEX.md",
+      "status": "published",
+      "warning": null,
+      "error": null,
+      "sha256": "2861bc82152b3db6e49f5ee69d659f416f8c1257e12e3283f0aa8a81886b30c3"
+    }
+  ]
+}

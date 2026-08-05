@@ -1,0 +1,70 @@
+{
+  "steps": [
+    {
+      "step": "create_offer",
+      "ok": true
+    },
+    {
+      "step": "edit",
+      "ok": true
+    },
+    {
+      "step": "duplicate",
+      "ok": true
+    },
+    {
+      "step": "add_image",
+      "ok": true
+    },
+    {
+      "step": "add_pdf",
+      "ok": true
+    },
+    {
+      "step": "add_annex",
+      "ok": true
+    },
+    {
+      "step": "translate_en",
+      "ok": true
+    },
+    {
+      "step": "translate_es",
+      "ok": true
+    },
+    {
+      "step": "currency_usd",
+      "ok": true
+    },
+    {
+      "step": "currency_eur",
+      "ok": true
+    },
+    {
+      "step": "save_and_version",
+      "ok": true
+    },
+    {
+      "step": "export_html",
+      "ok": true
+    },
+    {
+      "step": "publish",
+      "ok": false
+    },
+    {
+      "step": "export_pdf",
+      "ok": false
+    },
+    {
+      "step": "reopen",
+      "ok": true
+    },
+    {
+      "step": "compare_versions",
+      "ok": true
+    }
+  ],
+  "pass": false,
+  "export_bundle": ""
+}

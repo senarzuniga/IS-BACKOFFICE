@@ -1,0 +1,24 @@
+{
+  "mission": "INGECART CORPORATE PRESENTATION HTML",
+  "status": "RESUMED_FROM_RECOVERY",
+  "resume_checkpoint": "reports/html_intelligence_studio/his_mission_recovery_checkpoint_20260805_082742.json",
+  "reference_reuse": {
+    "reference_html": "C:/Users/Inaki Senar/Documents/GitHub/ingesite.github.io/solutions/ingetrans.html",
+    "sha256": "60C0CD30620233323761314801C0FDA5ADB02B72FB58DC3FEAD0589DA299E795",
+    "reprocess_required": false,
+    "confidence": 0.97
+  },
+  "resume_from": {
+    "milestone": "Product Landing Engine generation",
+    "latest_successful_run_id": "20260804_120549_478fa985",
+    "mode": "Smart Resume"
+  },
+  "remaining_work": [
+    "Generate single-scroll bilingual corporate HTML",
+    "Integrate Section 2 locations image",
+    "Integrate Section 3 plant automation overview image with target link",
+    "Integrate sequential product blocks with reusable layout",
+    "Run HTML/responsive/accessibility/SEO validation",
+    "Emit executive report and final mission package"
+  ]
+}

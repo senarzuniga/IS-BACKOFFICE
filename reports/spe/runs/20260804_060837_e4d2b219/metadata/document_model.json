@@ -1,0 +1,576 @@
+{
+  "id": "5baacede04b34c648f5b87bfba0c92ab",
+  "title": "Customer Support & Lifecycle Services — Production Recovery",
+  "subtitle": "Slide Flow from OFF-2026-S132_20260804_060837.md",
+  "source_path": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\spe\\runs\\20260804_060837_e4d2b219\\source\\OFF-2026-S132_20260804_060837.md",
+  "source_type": "md",
+  "document_type": "slide_flow",
+  "theme_variant": "industrial",
+  "metadata": {
+    "his_module": "HTML Intelligence Studio",
+    "project": "Service_Proposal_Engine",
+    "client": "CASCADES PISCATAWAY",
+    "category": "spe",
+    "language": "es",
+    "objective": "Generate corporate service proposal with validated publication structure",
+    "target_audience": "Commercial and Executive",
+    "slide_count": 1,
+    "palette": [
+      "#0D0F13",
+      "#161920",
+      "#1C1F28",
+      "#111318",
+      "#20232C",
+      "#191C23",
+      "#232732",
+      "#1E2128"
+    ],
+    "typography": {
+      "headline": "Segoe UI, Arial, sans-serif",
+      "body": "Inter, Segoe UI, Arial, sans-serif"
+    },
+    "corporate_model": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\ingesite.github.io\\Modelo_HTML.txt",
+    "languages": [
+      "en",
+      "es"
+    ],
+    "translations": {
+      "en": {
+        "title": "Customer Support & Lifecycle Services — Production Recovery",
+        "subtitle": "Slide Flow from OFF-2026-S132_20260804_060837.md"
+      },
+      "es": {
+        "title": "Customer Support & Lifecycle Services — Production Recovery",
+        "subtitle": "Slide Flow from OFF-2026-S132_20260804_060837.md"
+      }
+    },
+    "dom_schema": {
+      "Document": [
+        "Metadata",
+        "Chapters",
+        "Sections",
+        "Blocks",
+        "Components",
+        "Assets",
+        "Styles",
+        "Languages",
+        "Knowledge Links"
+      ]
+    },
+    "publication_state": "Published",
+    "publication_state_history": [
+      {
+        "state": "Draft",
+        "ts": "2026-08-04T06:08:38.745537+00:00"
+      },
+      {
+        "state": "Editing",
+        "ts": "2026-08-04T06:08:38.745537+00:00"
+      },
+      {
+        "state": "Review",
+        "ts": "2026-08-04T06:08:38.745537+00:00"
+      },
+      {
+        "state": "Validated",
+        "ts": "2026-08-04T06:08:38.745537+00:00"
+      },
+      {
+        "state": "Published",
+        "ts": "2026-08-04T06:08:38.745537+00:00"
+      }
+    ],
+    "executive_quality_score": 100.0,
+    "asset_manager": {
+      "root": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\spe\\runs\\20260804_060837_e4d2b219\\assets",
+      "tree": {
+        "images": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\spe\\runs\\20260804_060837_e4d2b219\\assets\\images",
+        "icons": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\spe\\runs\\20260804_060837_e4d2b219\\assets\\icons",
+        "svg": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\spe\\runs\\20260804_060837_e4d2b219\\assets\\svg",
+        "logos": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\spe\\runs\\20260804_060837_e4d2b219\\assets\\logos",
+        "attachments": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\spe\\runs\\20260804_060837_e4d2b219\\assets\\attachments",
+        "thumbnails": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\spe\\runs\\20260804_060837_e4d2b219\\assets\\thumbnails"
+      }
+    },
+    "source_format": "Markdown",
+    "sources": [
+      "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\spe\\sources\\OFF-2026-S132_20260804_060837.md"
+    ],
+    "comments": "Service Proposal Engine generation via HIS V3",
+    "instruction_text": "Use official corporate template and remove KPI summary block.",
+    "strategy": {
+      "strategy": "hybrid_fusion",
+      "executive_score": 8.05,
+      "hypotheses": [
+        {
+          "id": "H1",
+          "name": "Structured source-first pipeline",
+          "assumption": "Use PPT/Word/PDF if available as primary source for high structural fidelity.",
+          "engineering": 8.8,
+          "business": 8.4,
+          "knowledge": 8.6,
+          "risk": 2.3,
+          "executive_score": 8.04
+        },
+        {
+          "id": "H2",
+          "name": "Prompt-driven generative reconstruction",
+          "assumption": "Build directly from instruction text when source quality is low or mixed.",
+          "engineering": 7.6,
+          "business": 8.9,
+          "knowledge": 7.4,
+          "risk": 3.5,
+          "executive_score": 7.13
+        },
+        {
+          "id": "H3",
+          "name": "Hybrid fusion pipeline",
+          "assumption": "Fuse multi-source artifacts and instructions with componentized assembly.",
+          "engineering": 8.5,
+          "business": 8.8,
+          "knowledge": 9.0,
+          "risk": 2.7,
+          "executive_score": 8.05
+        }
+      ],
+      "selected_hypothesis": "H3"
+    }
+  },
+  "sections": [
+    {
+      "id": "f098b043d95c48789cdd77d3b50ad65d",
+      "title": "OFF-2026-S132_20260804_060837",
+      "summary": "slide_flow reconstruction for slide 1",
+      "order": 1,
+      "blocks": [
+        {
+          "id": "667d98029fbf40809e21b5a0a6955e5d",
+          "block_type": "slide_flow",
+          "title": "OFF-2026-S132_20260804_060837",
+          "components": [
+            {
+              "id": "7c4be722acd641128152b0c96cbfd444",
+              "component_kind": "text",
+              "title": "OFF-2026-S132_20260804_060837",
+              "body": "OFF-2026-S132_20260804_060837",
+              "items": [
+                {
+                  "title": "Title",
+                  "body": "# Customer Support & Lifecycle Services — Production Recovery"
+                },
+                {
+                  "title": "Text",
+                  "body": "## Proposal Metadata\n- Number: OFF-2026-S132\n- Customer: CASCADES PISCATAWAY\n- Plant: Piscataway Plant\n- Country: USA\n- Language: es\n- Currency: EUR\n- Duration: 12 months\n- Validity Days: 45\n- Payment Terms: 50% upon order, 50% upon first visit"
+                },
+                {
+                  "title": "Text",
+                  "body": "## Executive Summary\nExecutive summary updated by AHDE mission action."
+                },
+                {
+                  "title": "Text",
+                  "body": "## Services\n### Preventive Maintenance Programme\n4 preventive visits/year with full mechanical and electrical scope.\n- Service ID: preventive_maintenance\n- Frequency: 4 visits/year\n- Quantity: 1.0\n- Unit Price: 35000.00 EUR\n- Total: 35000.00 EUR\n- Optional: No\n- Coverage: Mechanical + Electrical + Automation\n- Deliverables: Visit report, corrective action list, annual roadmap"
+                },
+                {
+                  "title": "Text",
+                  "body": "### IngPRO Digital Monitoring\nContinuous monitoring with anomaly detection.\n- Service ID: ingpro\n- Frequency: Continuous\n- Quantity: 1.0\n- Unit Price: 15000.00 EUR\n- Total: 15000.00 EUR\n- Optional: Yes\n- Coverage: Critical assets"
+                },
+                {
+                  "title": "Text",
+                  "body": "## About INGECART"
+                },
+                {
+                  "title": "Text",
+                  "body": "## Understanding Installation"
+                },
+                {
+                  "title": "Text",
+                  "body": "## Objectives"
+                },
+                {
+                  "title": "Text",
+                  "body": "## Scope Of Services"
+                },
+                {
+                  "title": "Text",
+                  "body": "## Maintenance Programme"
+                },
+                {
+                  "title": "Text",
+                  "body": "## Visit Methodology"
+                },
+                {
+                  "title": "Text",
+                  "body": "## Deliverables"
+                },
+                {
+                  "title": "Text",
+                  "body": "## IngPRO Section"
+                },
+                {
+                  "title": "Text",
+                  "body": "## Optional Services"
+                },
+                {
+                  "title": "Text",
+                  "body": "## Customer Responsibilities"
+                },
+                {
+                  "title": "Text",
+                  "body": "## Commercial Conditions"
+                },
+                {
+                  "title": "Text",
+                  "body": "## Pricing Summary"
+                },
+                {
+                  "title": "Text",
+                  "body": "## Why INGECART"
+                },
+                {
+                  "title": "Text",
+                  "body": "## Acceptance"
+                },
+                {
+                  "title": "Text",
+                  "body": "## Annexes"
+                }
+              ],
+              "props": {
+                "layout": "single-column",
+                "labels": [
+                  "###",
+                  "1.0",
+                  "15000.00",
+                  "35000.00",
+                  "50%",
+                  "about",
+                  "acceptance",
+                  "action",
+                  "ahde",
+                  "and",
+                  "annexes",
+                  "annual"
+                ],
+                "confidence": 8.3
+              },
+              "asset_ids": [],
+              "style_tokens": [],
+              "evidence_ids": [],
+              "knowledge_keys": [],
+              "semantic_labels": [],
+              "confidence": 1.0
+            }
+          ],
+          "metadata": {}
+        }
+      ],
+      "metadata": {
+        "recognized_kind": "cycle",
+        "visual_hierarchy": [
+          "g-e1:title",
+          "g-e2:text",
+          "g-e3:text",
+          "g-e4:text",
+          "g-e5:text",
+          "g-e6:text",
+          "g-e7:text",
+          "g-e8:text",
+          "g-e9:text",
+          "g-e10:text",
+          "g-e11:text",
+          "g-e12:text",
+          "g-e13:text",
+          "g-e14:text",
+          "g-e15:text",
+          "g-e16:text",
+          "g-e17:text",
+          "g-e18:text",
+          "g-e19:text",
+          "g-e20:text"
+        ]
+      }
+    }
+  ],
+  "assets": [],
+  "styles": [],
+  "knowledge_links": [
+    {
+      "key": "slide:1",
+      "value": "OFF-2026-S132_20260804_060837",
+      "category": "layout",
+      "metadata": {
+        "mode": "slide_flow",
+        "layout": "single-column"
+      }
+    }
+  ],
+  "mission_links": [],
+  "evidence": [
+    {
+      "id": "5636ace6e1f5403fba38b4523859bfd4",
+      "kind": "slide_text",
+      "description": "# Customer Support & Lifecycle Services — Production Recovery",
+      "source_ref": null,
+      "metadata": {
+        "slide": 1,
+        "element": "g-e1"
+      }
+    },
+    {
+      "id": "72d4b6366bc24094983da813daca9a7e",
+      "kind": "slide_text",
+      "description": "## Proposal Metadata\n- Number: OFF-2026-S132\n- Customer: CASCADES PISCATAWAY\n- Plant: Piscataway Plant\n- Country: USA\n- Language: es\n- Currency: EUR\n- Duration: 12 months\n- Validity Days: 45\n- Payment Terms: 50% upon order, 50% upon first v",
+      "source_ref": null,
+      "metadata": {
+        "slide": 1,
+        "element": "g-e2"
+      }
+    },
+    {
+      "id": "df794c2e517e42c5ba8068eb568fe6e1",
+      "kind": "slide_text",
+      "description": "## Executive Summary\nExecutive summary updated by AHDE mission action.",
+      "source_ref": null,
+      "metadata": {
+        "slide": 1,
+        "element": "g-e3"
+      }
+    },
+    {
+      "id": "2bcc91fb782048aa81b97f6f71dedcb8",
+      "kind": "slide_text",
+      "description": "## Services\n### Preventive Maintenance Programme\n4 preventive visits/year with full mechanical and electrical scope.\n- Service ID: preventive_maintenance\n- Frequency: 4 visits/year\n- Quantity: 1.0\n- Unit Price: 35000.00 EUR\n- Total: 35000.0",
+      "source_ref": null,
+      "metadata": {
+        "slide": 1,
+        "element": "g-e4"
+      }
+    },
+    {
+      "id": "f2e990214c004da6b0368e9675fb46c5",
+      "kind": "slide_text",
+      "description": "### IngPRO Digital Monitoring\nContinuous monitoring with anomaly detection.\n- Service ID: ingpro\n- Frequency: Continuous\n- Quantity: 1.0\n- Unit Price: 15000.00 EUR\n- Total: 15000.00 EUR\n- Optional: Yes\n- Coverage: Critical assets",
+      "source_ref": null,
+      "metadata": {
+        "slide": 1,
+        "element": "g-e5"
+      }
+    },
+    {
+      "id": "d5d6af3782874d82996c16557b356f41",
+      "kind": "slide_text",
+      "description": "## About INGECART",
+      "source_ref": null,
+      "metadata": {
+        "slide": 1,
+        "element": "g-e6"
+      }
+    },
+    {
+      "id": "874c94c880cb4cc5ac74a2c0ebd39da5",
+      "kind": "slide_text",
+      "description": "## Understanding Installation",
+      "source_ref": null,
+      "metadata": {
+        "slide": 1,
+        "element": "g-e7"
+      }
+    },
+    {
+      "id": "a157e9a257a84f1db0b1aceb73f5a21f",
+      "kind": "slide_text",
+      "description": "## Objectives",
+      "source_ref": null,
+      "metadata": {
+        "slide": 1,
+        "element": "g-e8"
+      }
+    },
+    {
+      "id": "95471f75097c4f7c8a01d88e370384c2",
+      "kind": "slide_text",
+      "description": "## Scope Of Services",
+      "source_ref": null,
+      "metadata": {
+        "slide": 1,
+        "element": "g-e9"
+      }
+    },
+    {
+      "id": "39ae6b78dfa64bf7a7e14f6c0342f168",
+      "kind": "slide_text",
+      "description": "## Maintenance Programme",
+      "source_ref": null,
+      "metadata": {
+        "slide": 1,
+        "element": "g-e10"
+      }
+    },
+    {
+      "id": "4abc98930ca34ab1b690700dc9e75e84",
+      "kind": "slide_text",
+      "description": "## Visit Methodology",
+      "source_ref": null,
+      "metadata": {
+        "slide": 1,
+        "element": "g-e11"
+      }
+    },
+    {
+      "id": "f2bdb302bf484c78953bd8a4cd45dc53",
+      "kind": "slide_text",
+      "description": "## Deliverables",
+      "source_ref": null,
+      "metadata": {
+        "slide": 1,
+        "element": "g-e12"
+      }
+    },
+    {
+      "id": "005a39afdd734ed3ab5a322f66cce7fa",
+      "kind": "slide_text",
+      "description": "## IngPRO Section",
+      "source_ref": null,
+      "metadata": {
+        "slide": 1,
+        "element": "g-e13"
+      }
+    },
+    {
+      "id": "c83bc99c31534fd5b283fd235141b9eb",
+      "kind": "slide_text",
+      "description": "## Optional Services",
+      "source_ref": null,
+      "metadata": {
+        "slide": 1,
+        "element": "g-e14"
+      }
+    },
+    {
+      "id": "3fd3b5ede1de4821bc0d03a9bb79702a",
+      "kind": "slide_text",
+      "description": "## Customer Responsibilities",
+      "source_ref": null,
+      "metadata": {
+        "slide": 1,
+        "element": "g-e15"
+      }
+    },
+    {
+      "id": "39b9f9b103764153ab53be3002901e8a",
+      "kind": "slide_text",
+      "description": "## Commercial Conditions",
+      "source_ref": null,
+      "metadata": {
+        "slide": 1,
+        "element": "g-e16"
+      }
+    },
+    {
+      "id": "502c93af4b9c4f149c35ae6a5d6bcf8b",
+      "kind": "slide_text",
+      "description": "## Pricing Summary",
+      "source_ref": null,
+      "metadata": {
+        "slide": 1,
+        "element": "g-e17"
+      }
+    },
+    {
+      "id": "7edcf36c103e4fb28ba4c03ed7bf0911",
+      "kind": "slide_text",
+      "description": "## Why INGECART",
+      "source_ref": null,
+      "metadata": {
+        "slide": 1,
+        "element": "g-e18"
+      }
+    },
+    {
+      "id": "e4a7ea2fc30f4539b97a04133ae65b56",
+      "kind": "slide_text",
+      "description": "## Acceptance",
+      "source_ref": null,
+      "metadata": {
+        "slide": 1,
+        "element": "g-e19"
+      }
+    },
+    {
+      "id": "a8111ab2c8b443618080d540e27a7b1a",
+      "kind": "slide_text",
+      "description": "## Annexes",
+      "source_ref": null,
+      "metadata": {
+        "slide": 1,
+        "element": "g-e20"
+      }
+    }
+  ],
+  "version_history": [],
+  "preview_profiles": [
+    {
+      "device": "desktop",
+      "width_px": 1440,
+      "height_px": 1024,
+      "theme": "industrial",
+      "html_path": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\spe\\runs\\20260804_060837_e4d2b219\\variants\\attempt_1\\slide_flow\\index.html"
+    },
+    {
+      "device": "tablet",
+      "width_px": 1024,
+      "height_px": 1366,
+      "theme": "industrial",
+      "html_path": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\spe\\runs\\20260804_060837_e4d2b219\\variants\\attempt_1\\slide_flow\\index.html"
+    },
+    {
+      "device": "mobile",
+      "width_px": 390,
+      "height_px": 844,
+      "theme": "industrial",
+      "html_path": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\spe\\runs\\20260804_060837_e4d2b219\\variants\\attempt_1\\slide_flow\\index.html"
+    },
+    {
+      "device": "print",
+      "width_px": 1240,
+      "height_px": 1754,
+      "theme": "industrial",
+      "html_path": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\spe\\runs\\20260804_060837_e4d2b219\\variants\\attempt_1\\slide_flow\\index.html"
+    }
+  ],
+  "analyzer_report": {
+    "accessibility_score": 0.0,
+    "performance_score": 0.0,
+    "seo_score": 0.0,
+    "responsive_score": 0.0,
+    "notes": []
+  },
+  "knowledge_graph_nodes": [],
+  "knowledge_graph_edges": [],
+  "quality_score": {
+    "visual_fidelity": 0.0,
+    "structural_fidelity": 0.0,
+    "semantic_fidelity": 0.0,
+    "accessibility": 0.0,
+    "responsive": 0.0,
+    "load_time": 0.0,
+    "complexity": 0.0,
+    "reusability": 0.0,
+    "maintainability": 0.0,
+    "graphical_consistency": 0.0,
+    "typography_quality": 0.0,
+    "alignment_quality": 0.0,
+    "component_usage": 0.0,
+    "executive_quality_score": 0.0
+  },
+  "live_state": {
+    "toc_generated": false,
+    "navigation_generated": false,
+    "preview_regenerated": false,
+    "styles_regenerated": false,
+    "cross_refs_updated": false,
+    "knowledge_graph_updated": false,
+    "metadata_updated": false,
+    "affected_component_ids": []
+  }
+}

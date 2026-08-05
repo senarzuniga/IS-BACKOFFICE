@@ -1,0 +1,17 @@
+{
+  "audit_report": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\spe\\spe_production_recovery_20260804_081038_audit.json",
+  "architecture_report": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\spe\\spe_production_recovery_20260804_081038_architecture.json",
+  "database_report": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\spe\\spe_production_recovery_20260804_081038_database.json",
+  "html_validation_report": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\spe\\spe_production_recovery_20260804_081038_html_validation.json",
+  "quality_report": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\spe\\spe_production_recovery_20260804_081038_quality.json",
+  "acceptance_report": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\spe\\spe_production_recovery_20260804_081038_acceptance.json",
+  "removed_components": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\spe\\spe_production_recovery_20260804_081038_removed_components.json",
+  "improvements": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\spe\\spe_production_recovery_20260804_081038_improvements.json",
+  "pending_risks": [],
+  "executive_readiness_score": 99.25,
+  "architecture_score": 98.0,
+  "maintainability_score": 96.0,
+  "final_status": "PRODUCTION READY",
+  "backup_path": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\spe\\backups\\spe_proposals_20260804_081015.db",
+  "single_engine_official": true
+}

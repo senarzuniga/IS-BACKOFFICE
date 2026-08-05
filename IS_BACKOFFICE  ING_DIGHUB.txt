@@ -1,0 +1,56 @@
+IS_BACKOFFICE / ING_DIGHUB = Plataforma de Ingeniería Industrial
+
+Aquí vive el conocimiento del dominio industrial y las aplicaciones de negocio.
+
+Responsabilidades:
+
+Knowledge Hub (contenido industrial, documentos, manuales, proyectos, catálogos, modelos)
+Plant Simulator
+Reel Loading Simulator
+Layout Analyzer
+Mission Manager (interfaz y gestión de proyectos de ingeniería)
+SPOE (Standard Product Offer Engine)
+Offer Generator
+Cost Calculator
+ROI Calculator
+Industrial Knowledge Graph
+Corrugated Process Models
+Product Catalog
+Executive Workbench
+Engineering Workbench
+Sales Workbench
+Simulation Center
+Technical Documentation
+Digital Factory
+
+Es decir, la aplicación.
+
+ING_DIGHUB
+│
+├── AI Coordinator (AI-FACTORY)
+│
+├── Mission Manager
+│
+├── Engineering Workbench
+│
+├── Executive Workbench
+│
+├── Sales Workbench
+│
+├── Layout Analysis Workbench
+│
+├── Simulation Center
+│
+├── Industrial Knowledge Hub
+│
+├── Enterprise Digital Twin
+│
+├── Industrial Knowledge Graph
+│
+├── SPOE
+│
+├── Technical Documentation
+│
+├── Executive Intelligence
+│
+└── Digital Factory

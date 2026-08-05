@@ -1,0 +1,14 @@
+{
+  "IAR": "Intelligent Automatic Reel Warehouse",
+  "RTLS": "Real-Time Location System",
+  "UWB": "Ultra-Wideband positioning technology",
+  "Digital Twin": "Operational model of warehouse assets and flows synchronized with real-world events",
+  "INGEPRO": "INGECART core system integration target",
+  "MES": "Manufacturing Execution System",
+  "AMR": "Autonomous Mobile Robot",
+  "AI Coordinator": "Governance and approval orchestration layer in ING_DIGHUB",
+  "Verified": "Claim supported by independent technical evidence",
+  "Partially Verified": "Claim supported by limited/indirect independent evidence",
+  "Not Verified": "No independent evidence found",
+  "Contradicted": "Independent evidence conflicts with claim"
+}

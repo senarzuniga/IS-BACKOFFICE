@@ -1,0 +1,31 @@
+[
+  {
+    "version_id": "5ca20496c3964f359f528b5e70e373ba",
+    "version_number": 1,
+    "author": "Mission Manager",
+    "objective": "Generate an Executive Report",
+    "result": "published",
+    "mission_id": "20260804_120549_478fa985",
+    "created_at": "2026-08-04T12:06:01.514780Z",
+    "diff": {
+      "structural_diff": {},
+      "visual_diff": {},
+      "semantic_diff": {},
+      "html_diff": [],
+      "component_diff": {},
+      "change_log": []
+    },
+    "output_files": {
+      "html": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\pie\\Corrugated_Plant_Automation\\20260804\\20260804_120549_478fa985\\variants\\attempt_1\\slide_flow\\index.html",
+      "markdown": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\pie\\Corrugated_Plant_Automation\\20260804\\20260804_120549_478fa985\\variants\\attempt_1\\slide_flow\\document.md",
+      "docx": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\pie\\Corrugated_Plant_Automation\\20260804\\20260804_120549_478fa985\\variants\\attempt_1\\slide_flow\\document.docx",
+      "pdf": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\pie\\Corrugated_Plant_Automation\\20260804\\20260804_120549_478fa985\\variants\\attempt_1\\slide_flow\\document.pdf",
+      "odt": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\pie\\Corrugated_Plant_Automation\\20260804\\20260804_120549_478fa985\\variants\\attempt_1\\slide_flow\\document.odt",
+      "presentation_html": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\pie\\Corrugated_Plant_Automation\\20260804\\20260804_120549_478fa985\\variants\\attempt_1\\slide_flow\\presentation.html",
+      "portal_web": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\pie\\Corrugated_Plant_Automation\\20260804\\20260804_120549_478fa985\\variants\\attempt_1\\slide_flow\\portal_web\\index.html",
+      "microsite": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\pie\\Corrugated_Plant_Automation\\20260804\\20260804_120549_478fa985\\variants\\attempt_1\\slide_flow\\microsite\\index.html",
+      "document_json": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\pie\\Corrugated_Plant_Automation\\20260804\\20260804_120549_478fa985\\variants\\attempt_1\\slide_flow\\document_model.json",
+      "theme_css": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\pie\\Corrugated_Plant_Automation\\20260804\\20260804_120549_478fa985\\variants\\attempt_1\\slide_flow\\dipc_theme.css"
+    }
+  }
+]

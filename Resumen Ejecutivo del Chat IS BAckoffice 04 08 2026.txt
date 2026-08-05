@@ -1,0 +1,659 @@
+# Resumen Ejecutivo del Chat
+
+## Proyecto: IS_BACKOFFICE · ING_DIGHUB · Ingesite · Plataforma de Automatización Industrial
+
+**Fecha:** 4 de agosto de 2026
+
+---
+
+# 1. Objetivo global del trabajo
+
+Durante esta sesión se ha trabajado en consolidar **IS_BACKOFFICE** como la plataforma central de ingeniería, generación documental, inteligencia industrial y soporte comercial de INGECART.
+
+La filosofía de desarrollo ha quedado claramente definida:
+
+> **IS_BACKOFFICE no es una aplicación aislada, sino un ecosistema compuesto por múltiples motores especializados coordinados por Mission Manager y Assistant bajo el modelo AHDE (Autonomous Hypothesis Driven Execution).**
+
+El objetivo final es que cualquier misión (ingeniería, marketing, ofertas, simulación o documentación) pueda ejecutarse de forma autónoma utilizando todos los recursos del repositorio.
+
+---
+
+# 2. Modelo de ejecución definido
+
+Se ha consolidado el uso de:
+
+## AHDE
+
+Autonomous Hypothesis Driven Execution
+
+Principios establecidos:
+
+* nunca detener una misión por incertidumbre
+* generar hipótesis automáticamente
+* simular alternativas
+* calcular Executive Score
+* seleccionar la mejor hipótesis
+* continuar automáticamente
+* almacenar conocimiento
+* alimentar Enterprise Memory
+* alimentar Knowledge Hub
+
+Mission Manager pasa a ser un **Mission Optimization Engine** y no un simple orquestador.
+
+---
+
+# 3. Arquitectura objetivo de IS_BACKOFFICE
+
+Se definió cómo deben integrarse todas las aplicaciones nuevas.
+
+La arquitectura queda organizada en capas:
+
+```
+UI
+
+↓
+
+Mission Manager
+
+↓
+
+Assistant
+
+↓
+
+Application Engine
+
+↓
+
+Shared Services
+
+↓
+
+Knowledge Hub
+
+↓
+
+Enterprise Memory
+
+↓
+
+Repositories
+
+↓
+
+Persistence
+```
+
+Las aplicaciones no deben acceder directamente a:
+
+* SQLite
+* archivos
+* HTML
+* IA
+* informes
+
+Todo debe pasar por servicios comunes.
+
+---
+
+# 4. HTML Intelligence Studio
+
+Ha sido uno de los bloques principales.
+
+## Objetivo
+
+Convertir HTML Intelligence Studio en el motor corporativo para generación de documentación HTML.
+
+Funciones previstas:
+
+* importar PPT
+* importar DOCX
+* importar PDF
+* importar Markdown
+* reconstrucción inteligente
+* edición HTML
+* AI Command Layer
+* versionado
+* preview
+* publicación
+
+---
+
+## Flujo definido
+
+```
+Documento origen
+
+↓
+
+Mission Manager
+
+↓
+
+HTML Intelligence Studio
+
+↓
+
+Reconstrucción
+
+↓
+
+Preview
+
+↓
+
+AI Command Layer
+
+↓
+
+Edición
+
+↓
+
+Versionado
+
+↓
+
+Publicación
+```
+
+---
+
+## Se definió
+
+Los HTML:
+
+* sólo serán editables cuando se abran desde HTML Studio
+
+Los HTML publicados:
+
+* serán completamente estáticos
+
+No incluirán:
+
+* panel lateral
+* herramientas IA
+* edición
+
+---
+
+## Integración
+
+Debe integrarse con:
+
+Mission Manager
+
+Knowledge Hub
+
+Enterprise Memory
+
+Reports
+
+Versioning
+
+Repository
+
+---
+
+# 5. Conversión PPT → HTML
+
+Se definió una herramienta muy ambiciosa.
+
+Debe generar dos versiones:
+
+## V1
+
+Conversión directa
+
+PPT
+
+↓
+
+Diapositivas consecutivas
+
+↓
+
+HTML
+
+---
+
+## V2
+
+Reconstrucción inteligente
+
+Descomposición de:
+
+* textos
+* imágenes
+* iconos
+* SmartArt
+* gráficos
+* tablas
+
+Reconstrucción completa en HTML nativo.
+
+No usar imágenes de diapositivas.
+
+---
+
+## AI Command Layer
+
+Se definió una herramienta para:
+
+```
+Insert Image
+
+↓
+
+Move Block
+
+↓
+
+Rewrite
+
+↓
+
+Improve
+
+↓
+
+Delete
+
+↓
+
+Translate
+
+↓
+
+Generate
+```
+
+Todo mediante instrucciones en lenguaje natural.
+
+---
+
+# 6. Service Proposal Engine
+
+Se diseñó el nuevo generador corporativo de ofertas.
+
+Características:
+
+* UI específica
+* idioma
+* moneda
+* cliente
+* alcance
+* anexos
+* imágenes
+* comentarios IA
+* preview
+* edición
+* HTML final
+
+---
+
+## Numeración
+
+OFF-AAAA-SXXX
+
+Correlativa.
+
+---
+
+## Ejemplo
+
+Primera propuesta:
+
+CASCADES PISCATAWAY
+
+Incluyendo:
+
+* mantenimiento anual
+* IngPRO
+* informes
+* visitas
+* ampliaciones
+* repuestos
+
+---
+
+## Problemas encontrados
+
+### SQLite readonly
+
+```
+sqlite3.OperationalError
+
+attempt to write readonly database
+```
+
+---
+
+### UNIQUE constraint
+
+```
+proposals.number
+```
+
+---
+
+### Cambios no aplicados
+
+No se sustituyó el logo.
+
+No se eliminó el KPI Block.
+
+No se reordenó el índice.
+
+Se pidió una misión específica para corregirlo.
+
+---
+
+# 7. HTML Intelligence Studio
+
+Problema crítico.
+
+Error:
+
+```
+AttributeError
+
+HtmlIntelligenceStudio
+
+has no attribute
+
+list_documents
+```
+
+Aunque el asistente indicaba que sí existía.
+
+Se concluyó que el problema probablemente está en:
+
+* imports
+* múltiples versiones
+* V2/V3 coexistiendo
+* clase incorrecta cargada
+
+Se recomendó:
+
+API Audit
+
+Runtime Import Audit
+
+Compatibility Layer
+
+---
+
+# 8. Diseño corporativo
+
+Se detectó:
+
+mal contraste
+
+colores ilegibles
+
+Se decidió adoptar como referencia única:
+
+```
+Modelo_HTML.txt
+```
+
+Toda la documentación HTML deberá seguir ese estilo.
+
+---
+
+# 9. Marketing Web
+
+Se trabajó ampliamente sobre
+
+ingesite.github.io
+
+---
+
+## Objetivo
+
+Crear un sistema corporativo de Product Landing Pages.
+
+Referencia:
+
+```
+Ingetrans
+```
+
+---
+
+Se definió un motor reutilizable.
+
+No cinco HTML independientes.
+
+Sino:
+
+```
+Landing Engine
+
+↓
+
+Producto
+
+↓
+
+Contenido
+
+↓
+
+Landing
+```
+
+---
+
+## Productos definidos
+
+AMR Intralogistics
+
+SR1400
+
+Plug&Play Palletizer
+
+Heavy Duty Palletizer
+
+Automatic Truck Loading
+
+---
+
+Cada uno:
+
+analiza automáticamente
+
+TXT
+
+↓
+
+genera contenido
+
+↓
+
+optimiza SEO
+
+↓
+
+genera landing
+
+↓
+
+publica
+
+---
+
+# 10. Gestión WIP con AMR
+
+Se redefinió completamente.
+
+Las bobinas dejan de gestionarse mediante AMR.
+
+Pasan a:
+
+INGETRANS
+
+---
+
+Los AMR gestionarán:
+
+* WIP
+* sobrantes
+* interlayers
+* clichés
+* consumibles
+
+---
+
+Se introdujo una reflexión importante:
+
+Aunque se eliminan pasillos:
+
+los AMR no permiten doble altura.
+
+Por tanto:
+
+Debe analizarse automáticamente:
+
+```
+Ganancia
+
+↓
+
+Eliminación de pasillos
+
+VS
+
+Pérdida
+
+↓
+
+Apilado
+```
+
+No asumir mejoras.
+
+Calcularlas.
+
+---
+
+# 11. Fleet Management
+
+Se redefinió el alcance.
+
+Fleet Manager ya no incluye:
+
+Paper Reels
+
+Porque pasan a Ingetrans.
+
+Fleet Manager queda orientado a:
+
+* WIP
+* logística
+* residuos
+* interlayers
+* pallets
+* clichés
+* herramientas
+
+---
+
+# 12. INGPRO
+
+Se definió un panel SCADA 4.0.
+
+Funciones:
+
+captura de datos
+
+KPIs
+
+Edge Gateway
+
+Machine Connectivity
+
+Analytics
+
+Predictive Maintenance
+
+Dashboards
+
+Alarmas
+
+Tendencias
+
+Comparativas
+
+---
+
+# 13. Integración de nuevas aplicaciones
+
+Se redactó un modelo de integración.
+
+Principios:
+
+Todas las aplicaciones:
+
+* usan Mission Manager
+* usan Assistant
+* usan Shared Services
+* usan Repository Layer
+* alimentan Knowledge Hub
+* generan informes
+* registran decisiones
+* almacenan evidencias
+
+---
+
+# 14. Estado general detectado
+
+## Muy positivo
+
+Arquitectura muy potente.
+
+Gran cantidad de motores.
+
+Visión clara.
+
+---
+
+## Problema principal
+
+El crecimiento ha sido extremadamente rápido.
+
+Empiezan a aparecer:
+
+* duplicidades
+* APIs rotas
+* V2/V3 coexistiendo
+* imports inconsistentes
+* módulos duplicados
+* deuda técnica
+
+---
+
+# 15. Recomendación estratégica
+
+Antes de seguir desarrollando nuevas funcionalidades se recomendó realizar un **Sprint de Estabilización** del ecosistema con los siguientes objetivos:
+
+1. Consolidar una API pública estable para todos los módulos (HTML Intelligence Studio, Service Proposal Engine, Mission Manager, Knowledge Hub, Report Engine, etc.).
+2. Eliminar versiones duplicadas (V1/V2/V3) y centralizar la lógica común.
+3. Crear una capa de compatibilidad para mantener la estabilidad de las UIs durante futuras refactorizaciones.
+4. Implantar pruebas automáticas de regresión para detectar incompatibilidades antes de desplegar cambios.
+5. Incorporar un **System Health Check** al arranque que valide:
+
+   * estructura del repositorio,
+   * imports,
+   * APIs públicas,
+   * bases de datos,
+   * rutas de archivos,
+   * servicios compartidos.
+6. Reducir la deuda técnica antes de ampliar el ecosistema con nuevos módulos.
+
+---
+
+# Conclusión
+
+En esta sesión no solo se definieron nuevas funcionalidades, sino que se consolidó la visión de **IS_BACKOFFICE** como una plataforma industrial integrada donde el **Mission Manager**, el **Assistant** y el modelo **AHDE** coordinan todos los motores especializados (ingeniería, simulación, generación documental, marketing, ofertas y conocimiento). Al mismo tiempo, se identificó que el principal reto ya no es incorporar capacidades, sino estabilizar la arquitectura interna para garantizar que todos los módulos evolucionen sobre una base común, mantenible y con APIs consistentes.

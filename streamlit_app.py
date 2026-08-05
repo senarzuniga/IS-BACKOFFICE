@@ -45,8 +45,16 @@ def _create_enhanced_app():
         initial_sidebar_state="expanded",
     )
 
+    # ── Inject INGECART Design System ──────────────────────────────────────
+    try:
+        from backoffice.theme import inject_theme
+        inject_theme()
+    except Exception:
+        pass
+    # ──────────────────────────────────────────────────────────────────────
+
     if "current_page" not in st.session_state:
-        st.session_state.current_page = "command_center"
+        st.session_state.current_page = "ing_dighub"
 
     st.sidebar.markdown("# 🎯 IS-BACKOFFICE")
     st.sidebar.markdown("---")
@@ -55,7 +63,16 @@ def _create_enhanced_app():
     page = st.sidebar.radio(
         "Navegación",
         [
+            "🏭 ING_DIGHUB",
             "🏠 Command Center",
+            "📚 Knowledge Hub",
+            "🎯 Mission Manager",
+            "🧭 Enterprise Digital Twin",
+            "🏗️ Industrial Engineering Platform",
+            "📄 Service Proposal Engine",
+            "🧠 Presentation Intelligence Engine",
+            "📚 DIPC",
+            "🧠 HTML Intelligence Studio",
             "🧩 SPOE Workbench",
             "🧠 Inteligencia de Conocimiento",
             "🕵️ Inteligencia Web",
@@ -76,7 +93,16 @@ def _create_enhanced_app():
 
 
     page_map = {
+        "🏭 ING_DIGHUB": "ing_dighub",
         "🏠 Command Center": "command_center",
+        "📚 Knowledge Hub": "ing_dighub_knowledge_hub",
+        "🎯 Mission Manager": "ing_dighub_mission_manager",
+        "🧭 Enterprise Digital Twin": "ing_dighub_digital_twin",
+        "🏗️ Industrial Engineering Platform": "industrial_engineering_platform",
+        "📄 Service Proposal Engine": "service_proposal_engine",
+        "🧠 Presentation Intelligence Engine": "presentation_intelligence_engine",
+        "📚 DIPC": "document_intelligence_publishing_center",
+        "🧠 HTML Intelligence Studio": "html_intelligence_studio",
         "🧩 SPOE Workbench": "spoe_workbench",
         "🧠 Inteligencia de Conocimiento": "knowledge_intelligence",
         "🕵️ Inteligencia Web": "intelligence",
@@ -98,8 +124,35 @@ def _create_enhanced_app():
     st.sidebar.markdown("---")
     st.sidebar.markdown("**📊 Estado**")
 
-    if st.session_state.current_page == "command_center":
+    if st.session_state.current_page == "ing_dighub":
+        st.switch_page("pages/ing_dighub_home.py")
+
+    elif st.session_state.current_page == "command_center":
         _resolve_main()()
+
+    elif st.session_state.current_page == "ing_dighub_knowledge_hub":
+        st.switch_page("pages/ing_dighub_knowledge_hub.py")
+
+    elif st.session_state.current_page == "ing_dighub_mission_manager":
+        st.switch_page("pages/ing_dighub_mission_manager.py")
+
+    elif st.session_state.current_page == "ing_dighub_digital_twin":
+        st.switch_page("pages/ing_dighub_digital_twin.py")
+
+    elif st.session_state.current_page == "industrial_engineering_platform":
+        st.switch_page("pages/industrial_engineering_platform.py")
+
+    elif st.session_state.current_page == "service_proposal_engine":
+        st.switch_page("pages/service_proposal_engine.py")
+
+    elif st.session_state.current_page == "presentation_intelligence_engine":
+        st.switch_page("pages/presentation_intelligence_engine.py")
+
+    elif st.session_state.current_page == "document_intelligence_publishing_center":
+        st.switch_page("pages/document_intelligence_publishing_center.py")
+
+    elif st.session_state.current_page == "html_intelligence_studio":
+        st.switch_page("pages/html_intelligence_studio.py")
 
     elif st.session_state.current_page == "spoe_workbench":
         st.switch_page("pages/spoe_workbench.py")

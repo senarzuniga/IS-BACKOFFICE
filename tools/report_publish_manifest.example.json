@@ -1,0 +1,13 @@
+{
+  "items": [
+    {
+      "source": "reports/estesa/workspaces/engineering_agent/ESTESA_EXECUTIVE_ENGINEERING_REPORT.html",
+      "target": "reports/estesa/final/ESTESA_EXECUTIVE_ENGINEERING_REPORT.html",
+      "sha256": "OPTIONAL_SHA256_HEX"
+    },
+    {
+      "source": "reports/estesa/workspaces/engineering_agent/ESTESA_EXECUTIVE_ENGINEERING_REPORT.md",
+      "target": "reports/estesa/final/ESTESA_EXECUTIVE_ENGINEERING_REPORT.md"
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "db_path": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\spe\\spe_proposals_runtime.db",
+  "exists": true,
+  "path_ok": true,
+  "permissions": {
+    "read": true,
+    "write": true
+  },
+  "root_causes": [],
+  "sqlite": {
+    "quick_check": "ok",
+    "integrity_check": "ok",
+    "journal_mode": "wal",
+    "foreign_keys": true,
+    "busy_timeout": 6000
+  },
+  "status": "PASS"
+}

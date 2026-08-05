@@ -1,20 +1,20 @@
 # Platform Discovery Report
 
-Generated: 2026-07-19T18:54:00.382442Z
+Generated: 2026-07-27T13:41:45.015549Z
 
-- Total discovered objects: 1035
+- Total discovered objects: 1254
 - Categories:
-  - Documentation: 280
-  - Other: 272
-  - Module: 197
-  - UI Component: 151
-  - Simulation: 130
-  - Knowledge Source: 99
+  - Other: 364
+  - Documentation: 328
+  - Module: 218
+  - Simulation: 174
+  - UI Component: 168
+  - Knowledge Source: 156
+  - Workbench: 83
   - Agent: 62
-  - Workbench: 54
-  - Test: 45
+  - Test: 49
   - Engine: 37
-  - API Service: 15
+  - API Service: 16
 
 ## Sample Objects (first 50)
 
@@ -56,15 +56,15 @@ Generated: 2026-07-19T18:54:00.382442Z
 - **IS-Backoffice.cmd** — `IS-Backoffice.cmd` — UI Component
 - **IS-BACKOFFICE_ERP.cmd** — `IS-BACKOFFICE_ERP.cmd` — UI Component
 - **IS-BACKOFFICE_Menu_General.cmd** — `IS-BACKOFFICE_Menu_General.cmd` — UI Component
+- **IS_BACKOFFICE  ING_DIGHUB.txt** — `IS_BACKOFFICE  ING_DIGHUB.txt` — Knowledge Source, Simulation, Workbench
 - **launcher.log** — `launcher.log` — Other
 - **machine_trading_run.log** — `machine_trading_run.log` — Other
 - **main.py** — `main.py` — API Service, Simulation
 - **master_presentation_v2.ps1** — `master_presentation_v2.ps1` — Other
 - **nul** — `nul` — Other
+- **nul.terabox.uploading.cfg** — `nul.terabox.uploading.cfg` — Other
 - **openai_key_manager.py** — `openai_key_manager.py` — Module
 - **PERFORMANCE_BASELINE.md** — `PERFORMANCE_BASELINE.md` — Documentation
 - **plan_analisis_leads_fespa2026.md** — `plan_analisis_leads_fespa2026.md` — Documentation
 - **README.md** — `README.md` — Documentation, Knowledge Source, UI Component
 - **README_COMPETITIVE_INTELLIGENCE.md** — `README_COMPETITIVE_INTELLIGENCE.md` — Documentation, UI Component
-- **README_Reel_load_simulator.md** — `README_Reel_load_simulator.md` — Documentation, Simulation, UI Component
-- **README_SIMULATOR.md** — `README_SIMULATOR.md` — Documentation, Simulation, UI Component

@@ -1,0 +1,60 @@
+{
+  "source_file": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\PRODUCTO\\ALMACEN INTELIGENTE\\IAR\\Precios_Eliko.pdf",
+  "supplier": "Eliko",
+  "document_type": "commercial_pricing",
+  "technologies": [
+    "UWB",
+    "BLE"
+  ],
+  "positioning_methods": [],
+  "metadata": {
+    "processed_at": "2026-07-24T08:15:06.226652+00:00",
+    "chars": 7318,
+    "facts_count": 5,
+    "vendor_statements_count": 2,
+    "assumptions_count": 2
+  },
+  "summary": [
+    "Anchor and Tag Recurring annual software license for the RTLS Core",
+    "*The minimum software licence fee is €1800 per year. From this amount it is possible to add Anchors and Tags one by",
+    "**The minimum quantity of software licenses are 10 anchors and 20 tags, i.e. a minimum payment is €1800/year. From",
+    "this amount it is possible to add anchors and tags one by one. The fees are calculate by the number of units purchased.",
+    "Personnel Tag IP52, rechargeable battery up to 6 months",
+    "* The minimum quantity of “Remote network monitoring” are 10 anchors and 20 tags, i.e. a minimum payment is €1080/year. From this"
+  ],
+  "facts": [
+    "6 months",
+    "**The minimum quantity of software licenses are 10 anchors and 20 tags, i.e. a minimum payment is €1800/year. From",
+    "Personnel Tag IP52, rechargeable battery up to 6 months",
+    "* The minimum quantity of “Remote network monitoring” are 10 anchors and 20 tags, i.e. a minimum payment is €1080/year. From this",
+    "*The minimum quantity are 6 anchors and 2 tags, i.e. a minimum payment is €4680/year. From this amount it is possible to add anchors"
+  ],
+  "vendor_statements": [
+    "-The terms of payment: 100% of the cost of the hardware and the first year's licence fees on receipt of the order (plus",
+    "-The terms of payment: 100% of the cost of the hardware and the first year's licence fees on receipt of the order (plus"
+  ],
+  "engineering_assumptions": [
+    "Insufficient quantified claims per source; engineering assumptions needed for latency and scalability.",
+    "API availability is not consistently documented; integration risk remains."
+  ],
+  "technical_limitations": [
+    "battery",
+    "ceiling"
+  ],
+  "commercial_limitations": [
+    "license",
+    "support"
+  ],
+  "installation_constraints": [
+    "anchor",
+    "cable",
+    "ceiling",
+    "installation",
+    "power"
+  ],
+  "integration_possibilities": [
+    "erp",
+    "mes",
+    "rest"
+  ]
+}

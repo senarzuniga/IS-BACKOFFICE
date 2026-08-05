@@ -1,0 +1,66 @@
+{
+  "source_file": "C:\\Users\\Inaki Senar\\Documents\\INGECART\\PRODUCTO\\ALMACEN INTELIGENTE\\IAR\\RTLS-UWD Documento tecnico_v2.pdf",
+  "supplier": "Eliko",
+  "document_type": "technical_reference",
+  "technologies": [
+    "UWB",
+    "BLE",
+    "RFID",
+    "Vision"
+  ],
+  "positioning_methods": [
+    "TDoA"
+  ],
+  "metadata": {
+    "processed_at": "2026-07-24T08:15:11.032331+00:00",
+    "chars": 29077,
+    "facts_count": 8,
+    "vendor_statements_count": 5,
+    "assumptions_count": 1
+  },
+  "summary": [
+    "Segun los tags que se elijan, el IP52(duración de batería recargable de 6 meses, 145 € la",
+    "SISTEMAS RTLS, TECNOLOGÍA UWB Y PROVEEDORES CLAVE",
+    "imprescindible conocer la altura o apilamiento, si se quiere minimizar la intervención del operario o",
+    "- Modelo RTLS UWB: orientado a posicionamiento continuo y preciso en tiempo real, con",
+    "La conclusión principal es que UWB es la tecnología más adecuada si el objetivo final es",
+    "caso de uso con una prueba piloto controlada; después comparar proveedores UWB en condiciones"
+  ],
+  "facts": [
+    "Precisión típica 10 a 30 centímetros Wi-Fi (5-10 m) / BLE (1-5 m)",
+    "industrial con 6 anclaes y 6 tags, escalable sin límites). Todo el conjunto se despliega en",
+    "- 200 Tags × precio unitario 45 euros: 9.000 euros",
+    "preconfigurados, 4 tags, un router, conversores USB-PoE y la licencia de software",
+    "€ cada uno, 2.200 € en total), 2 tags de personal con carcasa IP52, botón, LED,",
+    "- 200 Tags × precio unitario:",
+    "- 200 Tags × 30 € = 6.000 €",
+    "Tracking, 5 tags suministrados por Noccela (proveedor externo), guías de configuración y 2"
+  ],
+  "vendor_statements": [
+    "TWR, el cual combina técnicas de escucha pasiva con ranging activo para llegar a capturar hasta",
+    "zumbador y batería recargable de hasta 6 meses de autonomía (145 € cada uno), y 1",
+    "Tag IP67 IP67, batería hasta 5 años, puede 36,00 1 36,00",
+    "Tag IP52 IP52, batería recargable de hasta 6 18,00 1 18,00",
+    "UWB (TWR y TDoA) y BLE, y dispone de módulos UWB de largo alcance de hasta 1.200 metros"
+  ],
+  "engineering_assumptions": [
+    "Insufficient quantified claims per source; engineering assumptions needed for latency and scalability."
+  ],
+  "technical_limitations": [
+    "metal"
+  ],
+  "commercial_limitations": [],
+  "installation_constraints": [
+    "anchor",
+    "cable"
+  ],
+  "integration_possibilities": [
+    "api",
+    "erp",
+    "mes",
+    "mqtt",
+    "opc",
+    "rest",
+    "sdk"
+  ]
+}

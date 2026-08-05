@@ -1,0 +1,18 @@
+{
+  "generated_at": "2026-07-24T08:46:52.890907+00:00",
+  "source_run": "knowledge_hub/iar_assessment/20260724_103702",
+  "final_reports": {
+    "markdown": "knowledge_hub/iar_assessment/20260724_103702/final_closure/IAR_FINAL_ENGINEERING_CLOSURE_REPORT.md",
+    "html": "knowledge_hub/iar_assessment/20260724_103702/final_closure/IAR_FINAL_ENGINEERING_CLOSURE_REPORT.html"
+  },
+  "supporting": {
+    "traceability_matrix": "knowledge_hub/iar_assessment/20260724_103702/final_closure/traceability_matrix.csv",
+    "terminology_glossary": "knowledge_hub/iar_assessment/20260724_103702/final_closure/terminology_glossary.json",
+    "consistency_audit": "knowledge_hub/iar_assessment/20260724_103702/final_closure/consistency_audit.json",
+    "supplier_profiles": "knowledge_hub/iar_assessment/20260724_103702/benchmark/supplier_profiles.csv",
+    "technology_matrix": "knowledge_hub/iar_assessment/20260724_103702/benchmark/technology_comparison_matrix.csv",
+    "architecture_decision": "knowledge_hub/iar_assessment/20260724_103702/architecture_decision.json",
+    "validation_summary": "knowledge_hub/iar_assessment/20260724_103702/validation_summary.json",
+    "run_summary": "knowledge_hub/iar_assessment/20260724_103702/run_summary.json"
+  }
+}

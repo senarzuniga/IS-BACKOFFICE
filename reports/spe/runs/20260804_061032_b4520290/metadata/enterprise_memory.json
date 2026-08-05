@@ -1,0 +1,59 @@
+{
+  "document_id": "553387a67fea4661ba087f523316a136",
+  "run_id": "20260804_061032_b4520290",
+  "source_path": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\spe\\runs\\20260804_061032_b4520290\\source\\OFF-2026-S134_20260804_061032.md",
+  "document_type": "slide_flow",
+  "missions": [
+    {
+      "mission_id": "20260804_061032_b4520290",
+      "objective": "Generate corporate service proposal with validated publication structure",
+      "command": null,
+      "status": "completed",
+      "agent": "Mission Manager",
+      "confidence": 1.0
+    }
+  ],
+  "versions": [
+    {
+      "version_id": "3ce69929ba8c4808ba428e7be3ba7039",
+      "version_number": 1,
+      "author": "Mission Manager",
+      "objective": "Generate corporate service proposal with validated publication structure",
+      "result": "published",
+      "mission_id": "20260804_061032_b4520290",
+      "created_at": "2026-08-04T06:10:34.113673Z",
+      "diff": {
+        "structural_diff": {},
+        "visual_diff": {},
+        "semantic_diff": {},
+        "html_diff": [],
+        "component_diff": {},
+        "change_log": []
+      },
+      "output_files": {
+        "html": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\spe\\runs\\20260804_061032_b4520290\\variants\\attempt_1\\slide_flow\\index.html",
+        "markdown": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\spe\\runs\\20260804_061032_b4520290\\variants\\attempt_1\\slide_flow\\document.md",
+        "docx": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\spe\\runs\\20260804_061032_b4520290\\variants\\attempt_1\\slide_flow\\document.docx",
+        "pdf": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\spe\\runs\\20260804_061032_b4520290\\variants\\attempt_1\\slide_flow\\document.pdf",
+        "odt": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\spe\\runs\\20260804_061032_b4520290\\variants\\attempt_1\\slide_flow\\document.odt",
+        "presentation_html": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\spe\\runs\\20260804_061032_b4520290\\variants\\attempt_1\\slide_flow\\presentation.html",
+        "portal_web": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\spe\\runs\\20260804_061032_b4520290\\variants\\attempt_1\\slide_flow\\portal_web\\index.html",
+        "microsite": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\spe\\runs\\20260804_061032_b4520290\\variants\\attempt_1\\slide_flow\\microsite\\index.html",
+        "document_json": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\spe\\runs\\20260804_061032_b4520290\\variants\\attempt_1\\slide_flow\\document_model.json",
+        "theme_css": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\spe\\runs\\20260804_061032_b4520290\\variants\\attempt_1\\slide_flow\\dipc_theme.css"
+      }
+    }
+  ],
+  "selected_variant": "slide_flow",
+  "selected_score": {
+    "visual_similarity_score": 100.0,
+    "structure_score": 100.0,
+    "theme_score": 100.0,
+    "typography_score": 100.0,
+    "layout_score": 100.0,
+    "image_score": 100.0,
+    "corporate_identity_score": 100.0,
+    "executive_quality_score": 100.0
+  },
+  "timestamp": "2026-08-04T06:10:34.148002+00:00"
+}

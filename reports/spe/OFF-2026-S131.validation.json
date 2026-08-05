@@ -1,0 +1,44 @@
+{
+  "document": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\spe\\OFF-2026-S131.html",
+  "proposal_number": "OFF-2026-S131",
+  "version": 3,
+  "validation": {
+    "official_logo": true,
+    "corporate_header": true,
+    "kpi_block_removed": true,
+    "toc_immediately_after_cover": true
+  },
+  "mode_validation": {
+    "Desktop": {
+      "styled": true,
+      "contains_logo": true,
+      "mode_pass": true
+    },
+    "Tablet": {
+      "styled": true,
+      "contains_logo": true,
+      "mode_pass": true
+    },
+    "Mobile": {
+      "styled": true,
+      "contains_logo": true,
+      "mode_pass": true
+    },
+    "Dark": {
+      "styled": true,
+      "contains_logo": true,
+      "mode_pass": true
+    },
+    "Print": {
+      "styled": true,
+      "contains_logo": true,
+      "mode_pass": true
+    },
+    "PDF": {
+      "styled": true,
+      "contains_logo": true,
+      "mode_pass": true
+    }
+  },
+  "versions_count": 2
+}
