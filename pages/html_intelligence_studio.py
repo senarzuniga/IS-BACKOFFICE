@@ -175,6 +175,12 @@ def main() -> None:
                 category = st.text_input("Categoría", value="pie")
             with c2:
                 language = st.selectbox("Idioma", ["English", "Español", "Bilingual"], index=2)
+                theme_profile = st.selectbox(
+                    "Theme",
+                    ["ingecart_industrial", "service_engine"],
+                    index=0,
+                    help="Default corporate style is ingecart_industrial.",
+                )
                 source_format = st.selectbox(
                     "Formato origen",
                     ["Auto", "PowerPoint", "Word", "PDF", "Markdown", "HTML", "Folder", "Images", "Text", "Mixed"],
@@ -224,6 +230,7 @@ def main() -> None:
                     objective=objective,
                     audience=audience,
                     instruction_text=instruction_text,
+                    theme_profile=theme_profile,
                 )
 
             st.session_state["his_last_result"] = result
@@ -391,6 +398,33 @@ def main() -> None:
     with tab_config:
         st.subheader("Configuración")
         st.write("Corporate theme source:", str(studio.corporate_model_path))
+        st.markdown("### Repository Catalog")
+        catalog = studio.get_repository_catalog()
+        st.json(catalog)
+        st.markdown("### Theme Profiles")
+        st.json(studio.theme_profiles())
+        with st.expander("Asset discovery sample", expanded=False):
+            candidates = studio.resolve_asset_candidates(limit=30)
+            st.write(f"Candidates discovered: {len(candidates)}")
+            st.dataframe([{"path": p} for p in candidates], use_container_width=True, hide_index=True)
+
+        st.markdown("### AHDE Operational Certification")
+        c1, c2 = st.columns(2)
+        max_iterations = c1.number_input("Max repair iterations", min_value=1, max_value=12, value=5, step=1)
+        max_minutes = c2.number_input("Max execution time (minutes)", min_value=5, max_value=120, value=30, step=5)
+        if st.button("Run Operational Certification", type="primary"):
+            with st.status("Executing AHDE certification and recovery loops...", expanded=True):
+                report = studio.run_operational_certification(
+                    max_iterations=int(max_iterations),
+                    max_minutes=int(max_minutes),
+                )
+            st.session_state["his_operational_certification"] = report
+            st.success(report.get("mission_status", "Completed"))
+            st.json(report)
+
+        if st.session_state.get("his_operational_certification"):
+            st.markdown("### Last Certification")
+            st.json(st.session_state["his_operational_certification"])
         st.caption("RC1 policy: direct HTML editing is disabled for mission operations; use DOM commands only.")
         st.caption("Official engine: HTML Intelligence Studio V3")
 

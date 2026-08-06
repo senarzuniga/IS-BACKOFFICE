@@ -27,7 +27,9 @@ from backoffice.dipc.models import (
 from backoffice.dipc.preview_engine import PreviewEngine
 from backoffice.dipc.publication_engine import PublicationEngine
 from backoffice.dipc.versioning import DocumentVersionStore
+from backoffice.his.ahde import OperationalCertificationEngine
 from backoffice.his.repository import DocumentRepository
+from backoffice.his.repository_catalog import RepositoryCatalog
 from backoffice.his.quality_pipeline_v3 import HtmlIntelligenceStudioV3Pipeline
 from backoffice.his.service import HtmlDocumentService
 from backoffice.his.stability import CheckpointManager, HealthChecker, MissionWatchdog, SmartAssetCache, scan_streamlit_widget_collisions
@@ -41,6 +43,12 @@ FIRST_MISSION_HTML = REPO_ROOT / "reports" / "pie" / "20260731_152246_6c632e87" 
 FIRST_MISSION_IMAGE = Path(
     r"C:\Users\Inaki Senar\Documents\INGECART\MARKETING\CONTENT\Corrugated Plant Automation Solutions v2 IMAGEN GENERAL.jpg"
 )
+REPOSITORY_CATALOG_PATH = REPO_ROOT / "config" / "repository_catalog.yaml"
+
+THEME_PROFILE_TO_VARIANT = {
+    "ingecart_industrial": "industrial",
+    "service_engine": "light",
+}
 
 
 @dataclass
@@ -67,6 +75,8 @@ class HtmlIntelligenceStudio:
         self.checkpoints = CheckpointManager()
         self.asset_cache = SmartAssetCache()
         self.health_checker = HealthChecker(REPO_ROOT)
+        self.repository_catalog = RepositoryCatalog(REPOSITORY_CATALOG_PATH)
+        self.certification_engine = OperationalCertificationEngine(REPO_ROOT)
 
     def create_document(
         self,
@@ -83,6 +93,7 @@ class HtmlIntelligenceStudio:
         objective: str,
         audience: str,
         instruction_text: str,
+        theme_profile: str = "ingecart_industrial",
     ) -> dict[str, Any]:
         task_id = self.watchdog.start_task(
             "create_document",
@@ -98,6 +109,7 @@ class HtmlIntelligenceStudio:
             {"document_name": document_name, "project": project, "category": category},
         )
         cleaned_sources = [s.strip() for s in sources if s and s.strip()]
+        selected_theme_variant = THEME_PROFILE_TO_VARIANT.get(theme_profile, "industrial")
         for src in cleaned_sources:
             self.asset_cache.register_asset(src, confidence=0.99, status="input_registered")
 
@@ -150,6 +162,7 @@ class HtmlIntelligenceStudio:
             language=language,
             objective=objective,
             audience=audience,
+            theme_variant=selected_theme_variant,
             author="Mission Manager",
             force_no_cache=True,
             max_regeneration_attempts=2,
@@ -171,6 +184,8 @@ class HtmlIntelligenceStudio:
             instruction_text=instruction_text,
             strategy=strategy,
             all_sources=cleaned_sources,
+            theme_profile=theme_profile,
+            repository_catalog=self.get_repository_catalog(),
         )
         model_path.write_text(model.model_dump_json(indent=2), encoding="utf-8")
         self._write_his_registry(Path(result["output_dir"]), model, strategy)
@@ -214,6 +229,8 @@ class HtmlIntelligenceStudio:
         self.watchdog.heartbeat(task_id, progress=1.0, note="completed")
         self.watchdog.complete_task(task_id)
         result["strategy"] = strategy.__dict__
+        result["theme_profile"] = theme_profile
+        result["theme_variant"] = selected_theme_variant
         result["mission_cache_key"] = mission_key
         result["smart_resume"] = False
         return result
@@ -385,6 +402,51 @@ class HtmlIntelligenceStudio:
         health_path.parent.mkdir(parents=True, exist_ok=True)
         health_path.write_text(json.dumps(report, indent=2, ensure_ascii=False), encoding="utf-8")
         return {**report, "report_path": str(health_path)}
+
+    def get_repository_catalog(self) -> dict[str, Any]:
+        return self.repository_catalog.data()
+
+    def resolve_asset_candidates(self, limit: int = 100) -> list[str]:
+        allowed_extensions = {
+            ".html",
+            ".htm",
+            ".md",
+            ".pdf",
+            ".ppt",
+            ".pptx",
+            ".doc",
+            ".docx",
+            ".png",
+            ".jpg",
+            ".jpeg",
+            ".svg",
+            ".css",
+        }
+        matches: list[str] = []
+        for root in self.repository_catalog.resolve_knowledge_roots():
+            for candidate in root.rglob("*"):
+                if not candidate.is_file():
+                    continue
+                if candidate.suffix.lower() not in allowed_extensions:
+                    continue
+                matches.append(str(candidate))
+                if len(matches) >= int(limit):
+                    return matches
+        return matches
+
+    def theme_profiles(self) -> dict[str, Any]:
+        return {
+            "default": "ingecart_industrial",
+            "available": ["ingecart_industrial", "service_engine"],
+            "mapping": dict(THEME_PROFILE_TO_VARIANT),
+        }
+
+    def run_operational_certification(self, max_iterations: int = 5, max_minutes: int = 30) -> dict[str, Any]:
+        return self.certification_engine.run(
+            studio=self,
+            max_iterations=max_iterations,
+            max_minutes=max_minutes,
+        )
 
     def watchdog_status(self) -> dict[str, Any]:
         stalled = self.watchdog.detect_stalled_tasks()
@@ -807,6 +869,8 @@ class HtmlIntelligenceStudio:
         instruction_text: str,
         strategy: StrategyDecision,
         all_sources: list[str],
+        theme_profile: str,
+        repository_catalog: dict[str, Any],
     ) -> None:
         palette, typography = self._load_corporate_theme_tokens()
         document.title = document_name or document.title
@@ -819,10 +883,13 @@ class HtmlIntelligenceStudio:
                 "language": language,
                 "source_format": source_format,
                 "sources": all_sources,
+                "repository_catalog": repository_catalog,
                 "comments": comments,
                 "objective": objective,
                 "target_audience": audience,
                 "instruction_text": instruction_text,
+                "theme_profile": theme_profile,
+                "theme_variant": THEME_PROFILE_TO_VARIANT.get(theme_profile, "industrial"),
                 "corporate_model": str(self.corporate_model_path),
                 "palette": palette,
                 "typography": typography,

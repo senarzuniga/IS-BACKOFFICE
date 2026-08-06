@@ -64,6 +64,37 @@ class KnowledgeItem:
 
 
 @dataclass
+class IndustrialKnowledgeObject:
+    """Canonical reusable industrial knowledge object shared across engines."""
+
+    object_id: str
+    object_type: str
+    name: str
+    canonical_name: Optional[str] = None
+    description: str = ""
+    technical_data: Dict[str, Any] = field(default_factory=dict)
+    operational_data: Dict[str, Any] = field(default_factory=dict)
+    commercial_data: Dict[str, Any] = field(default_factory=dict)
+    maintenance_data: Dict[str, Any] = field(default_factory=dict)
+    lifecycle_data: Dict[str, Any] = field(default_factory=dict)
+    kpis: Dict[str, Any] = field(default_factory=dict)
+    digital_twin_params: Dict[str, Any] = field(default_factory=dict)
+    simulation_params: Dict[str, Any] = field(default_factory=dict)
+    benchmark_data: Dict[str, Any] = field(default_factory=dict)
+    relationships: List[Dict[str, Any]] = field(default_factory=list)
+    evidence: List[Dict[str, Any]] = field(default_factory=list)
+    source_refs: List[Source] = field(default_factory=list)
+    tags: List[str] = field(default_factory=list)
+    confidence: float = 0.5
+    validated: bool = False
+    project: Optional[str] = None
+    origin_engine: str = "unknown"
+    created_at: datetime = field(default_factory=datetime.now)
+    updated_at: Optional[datetime] = None
+    version: int = 1
+
+
+@dataclass
 class ResearchPlan:
     """Plan de investigación generado por Research Manager"""
     objective: str

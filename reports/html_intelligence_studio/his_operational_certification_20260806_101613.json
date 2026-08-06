@@ -1,0 +1,110 @@
+{
+  "mission_status": "PARTIALLY COMPLETED",
+  "started_at": "2026-08-06T10:14:11.525820+00:00",
+  "ended_at": "2026-08-06T10:16:13.608060+00:00",
+  "duration_seconds": 122.08,
+  "cycles": [
+    {
+      "iteration": 1,
+      "timestamp": "2026-08-06T10:15:35.839160+00:00",
+      "checks": {
+        "build": {
+          "status": "FAIL",
+          "missing_dependencies": [
+            "python-docx"
+          ]
+        },
+        "launch": {
+          "status": "FAIL",
+          "url": "http://localhost:8510/html_intelligence_studio",
+          "error": "<urlopen error [WinError 10061] No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión>"
+        },
+        "health": {
+          "generated_at": "2026-08-06T10:14:51.027489+00:00",
+          "overall_status": "READY",
+          "services": {
+            "repository": {
+              "status": "READY",
+              "path": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE"
+            },
+            "knowledge_hub": {
+              "status": "READY",
+              "path": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\knowledge_hub"
+            },
+            "enterprise_memory": {
+              "status": "READY",
+              "path": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\data\\knowledge_memory"
+            },
+            "html_intelligence_studio": {
+              "status": "READY",
+              "path": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\backoffice\\his"
+            },
+            "mission_registry": {
+              "status": "READY",
+              "path": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\html_intelligence_studio\\mission_registry.jsonl"
+            },
+            "persistence_reports": {
+              "status": "READY",
+              "path": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\reports"
+            },
+            "assistant": {
+              "status": "READY",
+              "path": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\agents"
+            },
+            "mission_manager": {
+              "status": "READY",
+              "path": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\backoffice\\dipc\\mission_manager.py"
+            },
+            "database": {
+              "status": "READY",
+              "checked": 16,
+              "issues": 0
+            }
+          },
+          "report_path": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\html_intelligence_studio\\his_health_report_20260806_101451.json"
+        },
+        "stability": {
+          "scanned_files": 30,
+          "collisions": [],
+          "repaired": [],
+          "repaired_count": 0,
+          "generated_at": "2026-08-06T10:14:52.772528+00:00",
+          "report_path": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\html_intelligence_studio\\his_streamlit_stability_20260806_101452.json"
+        },
+        "functional": {
+          "status": "PASS",
+          "tests": {
+            "repository_catalog": true,
+            "theme_selector": true,
+            "source_support": true,
+            "asset_discovery": true
+          },
+          "parser_support": {
+            "txt": true,
+            "docx": true,
+            "pdf": true,
+            "pptx": true
+          }
+        }
+      },
+      "application_health_score": 60.0,
+      "certified": false,
+      "progress": {
+        "resolved_errors": 9,
+        "successful_tests": 4,
+        "recovered_services": 9
+      }
+    }
+  ],
+  "final_health_score": 60.0,
+  "root_cause_analysis": [
+    "Application URL probe failed or returned an invalid status.",
+    "Missing runtime dependencies: python-docx"
+  ],
+  "pending_issues": [],
+  "recommended_next_actions": [
+    "Resolve pending launch/build issues and re-run AHDE certification.",
+    "Execute full end-to-end generation on representative TXT, DOCX, PDF and PPTX samples.",
+    "Review final certification report under reports/html_intelligence_studio."
+  ]
+}

@@ -1,0 +1,18 @@
+repositories:
+  - name: ingesite
+    path: C:\Users\Inaki Senar\Documents\GitHub\ingesite.github.io
+    role: Corporate Design System
+    priority: highest
+
+  - name: is_backoffice
+    path: C:\Users\Inaki Senar\Documents\GitHub\IS-BACKOFFICE
+    role: Application Platform
+    priority: high
+
+knowledge_sources:
+  - html_templates
+  - landing_pages
+  - presentations
+  - reports
+  - assets
+  - css

@@ -26,6 +26,10 @@ class TestHISApiStabilization(unittest.TestCase):
             "search",
             "statistics",
             "quality_report",
+            "get_repository_catalog",
+            "resolve_asset_candidates",
+            "theme_profiles",
+            "run_operational_certification",
         ]
         for method in mandatory:
             self.assertTrue(hasattr(self.studio, method), f"Missing method: {method}")
@@ -38,6 +42,18 @@ class TestHISApiStabilization(unittest.TestCase):
         self.assertIsInstance(stats, dict)
         search = self.studio.search("automation", limit=5)
         self.assertIsInstance(search, list)
+
+    def test_repository_catalog_and_themes(self) -> None:
+        catalog = self.studio.get_repository_catalog()
+        self.assertIsInstance(catalog, dict)
+        self.assertIn("repositories", catalog)
+
+        themes = self.studio.theme_profiles()
+        self.assertEqual(themes.get("default"), "ingecart_industrial")
+        self.assertIn("service_engine", themes.get("available", []))
+
+        assets = self.studio.resolve_asset_candidates(limit=5)
+        self.assertIsInstance(assets, list)
 
 
 if __name__ == "__main__":

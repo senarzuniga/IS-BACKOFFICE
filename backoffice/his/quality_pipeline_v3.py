@@ -22,6 +22,7 @@ from backoffice.dipc.versioning import DocumentVersionStore
 from backoffice.dipc.visual_recognition import DiagramRecognitionEngine
 from backoffice.pie.powerpoint_parser import PowerPointParser
 from backoffice.theme.design_system import INDUSTRIAL
+from backoffice.dipc.theme_engine import build_css
 
 
 PUBLICATION_STATES = ["Draft", "Editing", "Review", "Validated", "Published", "Archived"]
@@ -79,6 +80,7 @@ class HtmlIntelligenceStudioV3Pipeline:
         language: str,
         objective: str,
         audience: str,
+        theme_variant: str = "industrial",
         author: str = "Mission Manager",
         force_no_cache: bool = True,
         max_regeneration_attempts: int = 2,
@@ -175,6 +177,7 @@ class HtmlIntelligenceStudioV3Pipeline:
                 language=language,
                 objective=objective,
                 audience=audience,
+                theme_variant=theme_variant,
                 mode="slide_flow",
             )
             smart_doc = self._build_document_model(
@@ -188,13 +191,14 @@ class HtmlIntelligenceStudioV3Pipeline:
                 language=language,
                 objective=objective,
                 audience=audience,
+                theme_variant=theme_variant,
                 mode="smart_reconstruction",
             )
             phases.append(PhaseTimer(f"phase_5_dom_reconstruction_{attempt_suffix}", t0, time.perf_counter()))
 
             # 6 Theme corporate
             t0 = time.perf_counter()
-            corporate_css = self._load_corporate_css_or_bootstrap()
+            corporate_css = self._load_corporate_css_or_bootstrap(theme_variant)
             phases.append(PhaseTimer(f"phase_6_theme_application_{attempt_suffix}", t0, time.perf_counter()))
 
             # 7 Validation and publication scoring
@@ -463,7 +467,7 @@ class HtmlIntelligenceStudioV3Pipeline:
         if not changes:
             changes.append("No structural changes detected from command.")
 
-        corporate_css = self._load_corporate_css_or_bootstrap()
+        corporate_css = self._load_corporate_css_or_bootstrap(str(document.theme_variant))
         output_dir = base_dir / "published" / (datetime.now(UTC).strftime("%Y%m%d_%H%M%S") + "_dom")
         outputs = self.publisher.export_all(document, output_dir, corporate_css=corporate_css)
 
@@ -769,6 +773,7 @@ class HtmlIntelligenceStudioV3Pipeline:
         language: str,
         objective: str,
         audience: str,
+        theme_variant: str,
         mode: str,
     ) -> DocumentModel:
         recognition_by_slide = {row["slide"]: row for row in visual_analysis.get("per_slide", [])}
@@ -816,6 +821,7 @@ class HtmlIntelligenceStudioV3Pipeline:
             source_path=str(primary),
             source_type=primary.suffix.lower().lstrip("."),
             document_type=mode,
+            theme_variant="light" if theme_variant == "light" else "industrial",
             metadata=self._base_metadata(analysis, project, client, category, language, objective, audience),
             sections=sections,
             assets=assets,
@@ -1232,7 +1238,9 @@ class HtmlIntelligenceStudioV3Pipeline:
             improvements.append("Maintain current thresholds and monitor drift through periodic regression runs.")
         return improvements
 
-    def _load_corporate_css_or_bootstrap(self) -> str:
+    def _load_corporate_css_or_bootstrap(self, theme_variant: str = "industrial") -> str:
+        if str(theme_variant).strip().lower() == "light":
+            return build_css("light")
         if not self.corporate_model_path.exists():
             self.corporate_model_path.parent.mkdir(parents=True, exist_ok=True)
             self.corporate_model_path.write_text(self._bootstrap_corporate_css(), encoding="utf-8")
