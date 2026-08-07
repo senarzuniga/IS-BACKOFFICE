@@ -1,4 +1,14 @@
 {
-  "assets": {},
+  "assets": {
+    "06090961bb4aa18fdc64b830be61e9170411a343bf0f610cb9e8c137abe99864": {
+      "path": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\spe\\sources\\OFF-2026-S132_20260807_062304.md",
+      "sha256": "06090961bb4aa18fdc64b830be61e9170411a343bf0f610cb9e8c137abe99864",
+      "version": "1",
+      "confidence": 0.99,
+      "dependencies": [],
+      "timestamp": "2026-08-07T06:23:04.542215+00:00",
+      "status": "input_registered"
+    }
+  },
   "missions": {}
 }

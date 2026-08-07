@@ -7,6 +7,8 @@ from typing import Any, Dict, List
 
 import streamlit as st
 
+from backoffice.ing_dighub import MissionSyncService, rank_missions
+from backoffice.ing_dighub.objective_engine import load_objective_weights
 from backoffice.spoe.governance import update_governance_artifacts
 from backoffice.spoe.mission_manager import run_ame_iteration
 
@@ -79,6 +81,19 @@ def _update_status(runtime: Dict[str, Any], mission_id: str, status: str) -> Dic
     return runtime
 
 
+def _apply_iteration_scores(runtime: Dict[str, Any], mission_id: str, result: Dict[str, Any]) -> None:
+    selected = next((m for m in runtime.get("missions", []) if m.get("id") == mission_id), None)
+    if not selected:
+        return
+
+    selected["status"] = "completed"
+    selected["mission_health"] = result.get("platform_score", {}).get("global_platform_score", selected.get("mission_health"))
+    selected["mission_score"] = result.get("hypotheses", {}).get("selected", {}).get("global_engineering_score", selected.get("mission_score"))
+    selected["hypothesis_score"] = selected["mission_score"]
+    selected["last_update"] = datetime.now(UTC).isoformat()
+    _save_runtime(runtime)
+
+
 def main() -> None:
     st.set_page_config(page_title="ING_DIGHUB Mission Manager", page_icon="🎯", layout="wide")
     try:
@@ -91,6 +106,11 @@ def main() -> None:
 
     runtime = _load_runtime()
     missions = runtime.get("missions", [])
+    mission_sync = MissionSyncService(REPO_ROOT)
+    domain_snapshot = mission_sync.collect_domain_snapshot()
+    supabase_compat = mission_sync.check_supabase_compatibility()
+    objective_weights = load_objective_weights()
+    ranked_missions = rank_missions(missions, domain_snapshot)
     counts = _counts(missions)
 
     c1, c2, c3 = st.columns(3)
@@ -98,7 +118,26 @@ def main() -> None:
     c2.metric("Queued Missions", counts["queued"])
     c3.metric("Completed Missions", counts["completed"])
 
-    st.dataframe(missions, use_container_width=True)
+    d1, d2, d3 = st.columns(3)
+    d1.metric("KAM Health", f"{domain_snapshot.get('kam', {}).get('avg_account_health', 0):.2f}")
+    d2.metric("Offers Acceptance", f"{domain_snapshot.get('offers', {}).get('accepted_ratio_pct', 0):.2f}%")
+    d3.metric("Actions Open", domain_snapshot.get("actions", {}).get("open_actions", 0))
+
+    if supabase_compat.get("compatible"):
+        st.success("Supabase schema compatibility: OK")
+    else:
+        st.warning("Supabase schema compatibility: degraded (fallback/local mode available)")
+    with st.expander("Supabase Compatibility Details", expanded=False):
+        st.json(supabase_compat)
+
+    with st.expander("Objective Score Weights", expanded=False):
+        st.json(objective_weights)
+
+    st.markdown("### Autonomous Mission Ranking")
+    if ranked_missions:
+        st.dataframe(ranked_missions, use_container_width=True)
+    else:
+        st.info("No missions available for ranking yet.")
 
     if not missions:
         st.warning("No missions available.")
@@ -124,18 +163,66 @@ def main() -> None:
         if st.button("Generate Report", type="primary", use_container_width=True):
             result = run_ame_iteration()
             artifacts = update_governance_artifacts(result)
-
             selected = next((m for m in runtime.get("missions", []) if m.get("id") == selected_id), None)
-            if selected:
-                selected["status"] = "completed"
-                selected["mission_health"] = result.get("platform_score", {}).get("global_platform_score", selected.get("mission_health"))
-                selected["mission_score"] = result.get("hypotheses", {}).get("selected", {}).get("global_engineering_score", selected.get("mission_score"))
-                selected["hypothesis_score"] = selected["mission_score"]
-                selected["last_update"] = datetime.now(UTC).isoformat()
-                _save_runtime(runtime)
+            selected_name = selected.get("name", "Mission") if selected else "Mission"
+            sync_result = mission_sync.run_post_mission_sync(
+                mission_id=selected_id,
+                mission_name=selected_name,
+                objective="Generate mission report and refresh KAM/Offers/Actions snapshots",
+            )
 
-            st.success("Mission report generated and governance artifacts updated")
-            st.json({"mission_result": result, "artifacts": artifacts})
+            _apply_iteration_scores(runtime, selected_id, result)
+
+            st.success("Mission report generated, governance updated, and post-mission sync completed")
+            st.json({"mission_result": result, "artifacts": artifacts, "post_mission_sync": sync_result})
+
+    if st.button("Run Next Recommended Mission", use_container_width=True):
+        if not ranked_missions:
+            st.warning("No ranked missions available.")
+            return
+
+        next_mission = ranked_missions[0]
+        next_mission_id = str(next_mission.get("id", ""))
+        next_mission_name = str(next_mission.get("name", "Mission"))
+        runtime = _update_status(runtime, next_mission_id, "running")
+
+        result = run_ame_iteration()
+        artifacts = update_governance_artifacts(result)
+        sync_result = mission_sync.run_post_mission_sync(
+            mission_id=next_mission_id,
+            mission_name=next_mission_name,
+            objective="Autonomous objective-driven execution of top-ranked mission",
+        )
+        _apply_iteration_scores(runtime, next_mission_id, result)
+
+        st.success(f"Autonomous execution completed for {next_mission_name}")
+        st.json(
+            {
+                "selected_mission": next_mission,
+                "mission_result": result,
+                "artifacts": artifacts,
+                "post_mission_sync": sync_result,
+            }
+        )
+
+    st.markdown("### Post-Mission Evidence and Snapshot History")
+    h1, h2 = st.columns(2)
+
+    with h1:
+        st.markdown("#### Evidence Log")
+        evidence_rows = mission_sync.list_evidence_history(limit=50)
+        if evidence_rows:
+            st.dataframe(evidence_rows, use_container_width=True)
+        else:
+            st.info("No evidence log rows available yet.")
+
+    with h2:
+        st.markdown("#### Snapshot Versions")
+        snapshot_rows = mission_sync.list_snapshot_history(limit=50)
+        if snapshot_rows:
+            st.dataframe(snapshot_rows, use_container_width=True)
+        else:
+            st.info("No snapshot versions available yet.")
 
 
 if __name__ == "__main__":
