@@ -1,13 +1,26 @@
 {
   "active": true,
   "timeout_seconds": 120,
-  "updated_at": "2026-08-07T06:23:04.780912+00:00",
+  "updated_at": "2026-08-07T08:05:38.390664+00:00",
   "tasks": {
     "20260807_062304_842ffd09": {
       "task_name": "create_document",
       "status": "RUNNING",
       "started_at": "2026-08-07T06:23:04.370371+00:00",
       "last_heartbeat": "2026-08-07T06:23:04.780848+00:00",
+      "progress": 0.35,
+      "metadata": {
+        "document_name": "Customer Support & Lifecycle Services — Production Recovery",
+        "project": "Service_Proposal_Engine",
+        "category": "spe"
+      },
+      "note": "pipeline_run_start"
+    },
+    "20260807_080537_7de2d704": {
+      "task_name": "create_document",
+      "status": "RUNNING",
+      "started_at": "2026-08-07T08:05:37.812698+00:00",
+      "last_heartbeat": "2026-08-07T08:05:38.390620+00:00",
       "progress": 0.35,
       "metadata": {
         "document_name": "Customer Support & Lifecycle Services — Production Recovery",
@@ -35,6 +48,26 @@
       "ts": "2026-08-07T06:23:04.780899+00:00",
       "event": "heartbeat",
       "task_id": "20260807_062304_842ffd09",
+      "progress": 0.35,
+      "note": "pipeline_run_start"
+    },
+    {
+      "ts": "2026-08-07T08:05:37.812755+00:00",
+      "event": "task_started",
+      "task_id": "20260807_080537_7de2d704",
+      "task_name": "create_document"
+    },
+    {
+      "ts": "2026-08-07T08:05:38.283891+00:00",
+      "event": "heartbeat",
+      "task_id": "20260807_080537_7de2d704",
+      "progress": 0.1,
+      "note": "strategy_selection"
+    },
+    {
+      "ts": "2026-08-07T08:05:38.390655+00:00",
+      "event": "heartbeat",
+      "task_id": "20260807_080537_7de2d704",
       "progress": 0.35,
       "note": "pipeline_run_start"
     }

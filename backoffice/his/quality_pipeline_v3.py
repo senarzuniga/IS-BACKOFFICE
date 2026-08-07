@@ -1245,14 +1245,34 @@ class HtmlIntelligenceStudioV3Pipeline:
             self.corporate_model_path.parent.mkdir(parents=True, exist_ok=True)
             self.corporate_model_path.write_text(self._bootstrap_corporate_css(), encoding="utf-8")
 
-        css = self.corporate_model_path.read_text(encoding="utf-8", errors="ignore")
-        if not css.strip():
+        raw_model = self.corporate_model_path.read_text(encoding="utf-8", errors="ignore")
+        css = self._extract_css_from_corporate_model(raw_model)
+        if not raw_model.strip():
             css = self._bootstrap_corporate_css()
             self.corporate_model_path.write_text(css, encoding="utf-8")
+        elif not css.strip():
+            css = self._bootstrap_corporate_css()
 
         if ":root" not in css:
-            raise QualityGateError(f"Corporate model at {self.corporate_model_path} does not contain CSS variables (:root block).")
+            # Keep legacy corporate CSS usable by injecting default design tokens.
+            css = INDUSTRIAL.as_css_vars() + "\n\n" + css
         return css
+
+    def _extract_css_from_corporate_model(self, raw_model: str) -> str:
+        text = (raw_model or "").strip()
+        if not text:
+            return ""
+
+        lowered = text.lower()
+        if "<style" in lowered:
+            soup = BeautifulSoup(text, "html.parser")
+            style_blocks = [node.get_text("\n", strip=True) for node in soup.find_all("style") if node.get_text(strip=True)]
+            return "\n\n".join(style_blocks)
+
+        # If the corporate model is HTML without style blocks, force bootstrap fallback.
+        if re.search(r"<\s*[a-zA-Z][^>]*>", text):
+            return ""
+        return text
 
     def _bootstrap_corporate_css(self) -> str:
         return (

@@ -1,4 +1,4 @@
-Generated at: 2026-08-04T08:13:08.687986+00:00
+Generated at: 2026-08-07T08:38:42.254831+00:00
 Commercial Offer: reports\spoe\generated\OFF-TEST-001\commercial_offer.docx
 Technical Proposal: reports\spoe\generated\OFF-TEST-001\technical_proposal.docx
 Executive Summary: reports\spoe\generated\OFF-TEST-001\executive_summary.docx
