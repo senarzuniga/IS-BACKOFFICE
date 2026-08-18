@@ -28,6 +28,7 @@ MODULE_SPECS: List[ModuleSpec] = [
     ModuleSpec("executive_dashboards", "Executive Dashboards", "executive-dashboards", "KPI and executive-level decision dashboards"),
     ModuleSpec("technical_documentation", "Technical Documentation", "technical-documentation", "Technical artifact generation and maintenance"),
     ModuleSpec("industrial_intelligence", "Industrial Intelligence", "industrial-intelligence", "Industrial signals, insights, and recommendations"),
+    ModuleSpec("rd_funding", "CTA Industrial R&D Funding Engine", "rd-funding", "Evidence-governed industrial R&D qualification, funding matching, and application missions"),
 ]
 
 

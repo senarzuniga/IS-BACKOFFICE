@@ -1,0 +1,1110 @@
+{
+  "generated_at": "2026-08-17T06:57:05.137451+00:00",
+  "client": {
+    "id": "client-ingecart",
+    "created_at": "2026-08-17T06:57:04.096497Z",
+    "updated_at": "2026-08-17T06:57:04.126646Z",
+    "source_trace_ids": [],
+    "confidence": 0.9,
+    "needs_review": false,
+    "entity_type": "CLIENT",
+    "version": 2,
+    "status": "ACTIVE",
+    "owner": "CTA",
+    "source_type": "LEVEL_1_ACTUAL",
+    "source_document": "CTA mission brief",
+    "source_location": "First client declaration",
+    "evidence_ids": [
+      "evidence-ingecart-project-brief-missing"
+    ],
+    "validation_status": "UNVERIFIED",
+    "verified_at": null,
+    "name": "INGECART",
+    "country": "Spain",
+    "region": "Navarra",
+    "industry": "Industrial engineering"
+  },
+  "projects": [
+    {
+      "id": "ingecart-p01",
+      "created_at": "2026-08-17T06:57:04.131684Z",
+      "updated_at": "2026-08-17T06:57:04.149877Z",
+      "source_trace_ids": [],
+      "confidence": 0.65,
+      "needs_review": false,
+      "entity_type": "CLIENT_PROJECT",
+      "version": 3,
+      "status": "DISCOVERY",
+      "owner": "CTA",
+      "source_type": "LEVEL_3_ENGINEERING_ASSUMPTION",
+      "source_document": "CTA mission brief",
+      "source_location": "INGECART portfolio specification",
+      "evidence_ids": [
+        "evidence-ingecart-project-brief-missing"
+      ],
+      "validation_status": "UNVERIFIED",
+      "verified_at": null,
+      "client_id": "client-ingecart",
+      "code": "P01",
+      "name": "INGETRANS SOFTWARE & CONTROL",
+      "product": "INGETRANS",
+      "technology_areas": [
+        "industrial software",
+        "automation",
+        "control"
+      ],
+      "problem": "Control and integration of reel logistics equipment and one or two corrugators.",
+      "current_state": "",
+      "target_state": "",
+      "innovation": "Integrated movement, identification, weighing and dual-reel transfer control.",
+      "technological_uncertainties": [
+        "Multi-equipment coordination under variable plant conditions"
+      ],
+      "hypotheses": [
+        "Context-aware control can improve robust reel-flow coordination"
+      ],
+      "expected_result": "",
+      "market": "Industrial",
+      "initial_trl": null,
+      "target_trl": null,
+      "duration_months": null,
+      "preliminary_budget_eur": null,
+      "team": [],
+      "technological_partners": [],
+      "available_documents": [
+        "PROYECTOS PARA GESTION AYUDAS Y RECURSOS INGENIERIA I+D (missing file)"
+      ],
+      "parent_project_id": null
+    },
+    {
+      "id": "ingecart-p02",
+      "created_at": "2026-08-17T06:57:04.183464Z",
+      "updated_at": "2026-08-17T06:57:04.200677Z",
+      "source_trace_ids": [],
+      "confidence": 0.65,
+      "needs_review": false,
+      "entity_type": "CLIENT_PROJECT",
+      "version": 3,
+      "status": "DISCOVERY",
+      "owner": "CTA",
+      "source_type": "LEVEL_3_ENGINEERING_ASSUMPTION",
+      "source_document": "CTA mission brief",
+      "source_location": "INGECART portfolio specification",
+      "evidence_ids": [
+        "evidence-ingecart-project-brief-missing"
+      ],
+      "validation_status": "UNVERIFIED",
+      "verified_at": null,
+      "client_id": "client-ingecart",
+      "code": "P02",
+      "name": "NEXT GENERATION AMR PLATFORM",
+      "product": "Industrial AMR platform",
+      "technology_areas": [
+        "robotics",
+        "amr",
+        "smart manufacturing"
+      ],
+      "problem": "Create a reusable AMR platform for industrial material flows.",
+      "current_state": "",
+      "target_state": "",
+      "innovation": "Navigation, safety, fleet management and factory integration platform.",
+      "technological_uncertainties": [
+        "Reliable localization in changing factories",
+        "Safe heterogeneous fleet coordination"
+      ],
+      "hypotheses": [
+        "A modular platform can support multiple industrial load domains"
+      ],
+      "expected_result": "",
+      "market": "Industrial",
+      "initial_trl": null,
+      "target_trl": null,
+      "duration_months": null,
+      "preliminary_budget_eur": null,
+      "team": [],
+      "technological_partners": [],
+      "available_documents": [],
+      "parent_project_id": null
+    },
+    {
+      "id": "ingecart-p02a",
+      "created_at": "2026-08-17T06:57:04.232073Z",
+      "updated_at": "2026-08-17T06:57:04.250770Z",
+      "source_trace_ids": [],
+      "confidence": 0.65,
+      "needs_review": false,
+      "entity_type": "CLIENT_PROJECT",
+      "version": 3,
+      "status": "DISCOVERY",
+      "owner": "CTA",
+      "source_type": "LEVEL_3_ENGINEERING_ASSUMPTION",
+      "source_document": "CTA mission brief",
+      "source_location": "INGECART portfolio specification",
+      "evidence_ids": [
+        "evidence-ingecart-project-brief-missing"
+      ],
+      "validation_status": "UNVERIFIED",
+      "verified_at": null,
+      "client_id": "client-ingecart",
+      "code": "P02A",
+      "name": "AMR MULTI-LOAD CORRUGATED BOARD",
+      "product": "AMR multi-load platform",
+      "technology_areas": [
+        "robotics",
+        "amr",
+        "intralogistics"
+      ],
+      "problem": "Adapt AMR mechanics and control to different corrugated-board load capacities.",
+      "current_state": "",
+      "target_state": "",
+      "innovation": "Configurable handling, safety and control across load envelopes.",
+      "technological_uncertainties": [
+        "Dynamic stability across load capacities"
+      ],
+      "hypotheses": [
+        "Adaptive control can preserve safety across configurable loads"
+      ],
+      "expected_result": "",
+      "market": "Industrial",
+      "initial_trl": null,
+      "target_trl": null,
+      "duration_months": null,
+      "preliminary_budget_eur": null,
+      "team": [],
+      "technological_partners": [],
+      "available_documents": [],
+      "parent_project_id": "ingecart-p02"
+    },
+    {
+      "id": "ingecart-p02b",
+      "created_at": "2026-08-17T06:57:04.303354Z",
+      "updated_at": "2026-08-17T06:57:04.321752Z",
+      "source_trace_ids": [],
+      "confidence": 0.65,
+      "needs_review": false,
+      "entity_type": "CLIENT_PROJECT",
+      "version": 3,
+      "status": "DISCOVERY",
+      "owner": "CTA",
+      "source_type": "LEVEL_3_ENGINEERING_ASSUMPTION",
+      "source_document": "CTA mission brief",
+      "source_location": "INGECART portfolio specification",
+      "evidence_ids": [
+        "evidence-ingecart-project-brief-missing"
+      ],
+      "validation_status": "UNVERIFIED",
+      "verified_at": null,
+      "client_id": "client-ingecart",
+      "code": "P02B",
+      "name": "AMR FOLDING CARTON",
+      "product": "Folding-carton AMR",
+      "technology_areas": [
+        "robotics",
+        "amr",
+        "industrial automation"
+      ],
+      "problem": "Adapt the AMR platform to folding-carton flows and handling constraints.",
+      "current_state": "",
+      "target_state": "",
+      "innovation": "Domain-specific handling, sensors, integration and pilot validation.",
+      "technological_uncertainties": [
+        "Reliable handling of folding-carton load formats"
+      ],
+      "hypotheses": [
+        "A dedicated end-effector can reduce handling variability"
+      ],
+      "expected_result": "",
+      "market": "Industrial",
+      "initial_trl": null,
+      "target_trl": null,
+      "duration_months": null,
+      "preliminary_budget_eur": null,
+      "team": [],
+      "technological_partners": [],
+      "available_documents": [],
+      "parent_project_id": "ingecart-p02"
+    },
+    {
+      "id": "ingecart-p03",
+      "created_at": "2026-08-17T06:57:04.378450Z",
+      "updated_at": "2026-08-17T06:57:04.402366Z",
+      "source_trace_ids": [],
+      "confidence": 0.65,
+      "needs_review": false,
+      "entity_type": "CLIENT_PROJECT",
+      "version": 3,
+      "status": "DISCOVERY",
+      "owner": "CTA",
+      "source_type": "LEVEL_3_ENGINEERING_ASSUMPTION",
+      "source_document": "CTA mission brief",
+      "source_location": "INGECART portfolio specification",
+      "evidence_ids": [
+        "evidence-ingecart-project-brief-missing"
+      ],
+      "validation_status": "UNVERIFIED",
+      "verified_at": null,
+      "client_id": "client-ingecart",
+      "code": "P03",
+      "name": "AI ENTERPRISE OPERATING SYSTEM",
+      "product": "Enterprise AI operating system",
+      "technology_areas": [
+        "ai",
+        "software",
+        "multi-agent systems"
+      ],
+      "problem": "Coordinate finance, funding, projects, procurement, administration, sales and legal workflows.",
+      "current_state": "",
+      "target_state": "",
+      "innovation": "Governed context, knowledge graph, memory and human-AI orchestration.",
+      "technological_uncertainties": [
+        "Reliable cross-agent context isolation",
+        "Evidence-grounded autonomous planning"
+      ],
+      "hypotheses": [
+        "A governed context layer can reduce unsupported agent decisions"
+      ],
+      "expected_result": "",
+      "market": "Industrial",
+      "initial_trl": null,
+      "target_trl": null,
+      "duration_months": null,
+      "preliminary_budget_eur": null,
+      "team": [],
+      "technological_partners": [],
+      "available_documents": [],
+      "parent_project_id": null
+    }
+  ],
+  "funding_calls": [
+    {
+      "id": "call-navarra-rd",
+      "created_at": "2026-08-17T06:57:04.445063Z",
+      "updated_at": "2026-08-17T06:57:04.466394Z",
+      "source_trace_ids": [],
+      "confidence": 0.35,
+      "needs_review": false,
+      "entity_type": "FUNDING_CALL",
+      "version": 3,
+      "status": "WATCH",
+      "owner": "CTA",
+      "source_type": "LEVEL_3_ENGINEERING_ASSUMPTION",
+      "source_document": "https://www.navarra.es/es/tramites/on/-/line/ayudas-para-proyectos-de-i-d",
+      "source_location": "Official portal entry point; current call not yet verified",
+      "evidence_ids": [
+        "evidence-ingecart-project-brief-missing"
+      ],
+      "validation_status": "UNVERIFIED",
+      "verified_at": null,
+      "funding_id": "NAVARRA-RD-WATCH",
+      "organisation": "Gobierno de Navarra",
+      "program": "Ayudas a proyectos de I+D",
+      "call_name": "Navarra I+D - verification pending",
+      "official_url": "https://www.navarra.es/es/tramites/on/-/line/ayudas-para-proyectos-de-i-d",
+      "call_status": "UNKNOWN",
+      "opening_date": null,
+      "closing_date": null,
+      "beneficiaries": [],
+      "territory": "Navarra",
+      "sectors": [],
+      "technologies": [
+        "robotics",
+        "amr",
+        "ai",
+        "automation"
+      ],
+      "trl_min": null,
+      "trl_max": null,
+      "budget_min_eur": null,
+      "budget_max_eur": null,
+      "funding_rate_pct": null,
+      "max_aid_eur": null,
+      "aid_types": [],
+      "eligible_costs": [],
+      "incentive_effect_required": null,
+      "minimis": null,
+      "evaluation_criteria": [],
+      "verification_date": null
+    },
+    {
+      "id": "call-cdti-pid",
+      "created_at": "2026-08-17T06:57:04.476219Z",
+      "updated_at": "2026-08-17T06:57:04.496342Z",
+      "source_trace_ids": [],
+      "confidence": 0.35,
+      "needs_review": false,
+      "entity_type": "FUNDING_CALL",
+      "version": 3,
+      "status": "WATCH",
+      "owner": "CTA",
+      "source_type": "LEVEL_3_ENGINEERING_ASSUMPTION",
+      "source_document": "https://www.cdti.es/ayudas/proyectos-de-investigacion-y-desarrollo-pid",
+      "source_location": "Official portal entry point; current call not yet verified",
+      "evidence_ids": [
+        "evidence-ingecart-project-brief-missing"
+      ],
+      "validation_status": "UNVERIFIED",
+      "verified_at": null,
+      "funding_id": "CDTI-PID-WATCH",
+      "organisation": "CDTI",
+      "program": "Proyectos de Investigación y Desarrollo",
+      "call_name": "CDTI PID - verification pending",
+      "official_url": "https://www.cdti.es/ayudas/proyectos-de-investigacion-y-desarrollo-pid",
+      "call_status": "UNKNOWN",
+      "opening_date": null,
+      "closing_date": null,
+      "beneficiaries": [],
+      "territory": "Spain",
+      "sectors": [],
+      "technologies": [
+        "robotics",
+        "industrial software",
+        "ai",
+        "automation"
+      ],
+      "trl_min": null,
+      "trl_max": null,
+      "budget_min_eur": null,
+      "budget_max_eur": null,
+      "funding_rate_pct": null,
+      "max_aid_eur": null,
+      "aid_types": [],
+      "eligible_costs": [],
+      "incentive_effect_required": null,
+      "minimis": null,
+      "evaluation_criteria": [],
+      "verification_date": null
+    },
+    {
+      "id": "call-eu-horizon",
+      "created_at": "2026-08-17T06:57:04.502511Z",
+      "updated_at": "2026-08-17T06:57:04.525342Z",
+      "source_trace_ids": [],
+      "confidence": 0.35,
+      "needs_review": false,
+      "entity_type": "FUNDING_CALL",
+      "version": 3,
+      "status": "WATCH",
+      "owner": "CTA",
+      "source_type": "LEVEL_3_ENGINEERING_ASSUMPTION",
+      "source_document": "https://funding-tenders.ec.europa.eu/portal/screen/opportunities/topic-search",
+      "source_location": "Official portal entry point; current call not yet verified",
+      "evidence_ids": [
+        "evidence-ingecart-project-brief-missing"
+      ],
+      "validation_status": "UNVERIFIED",
+      "verified_at": null,
+      "funding_id": "EU-HORIZON-WATCH",
+      "organisation": "European Commission",
+      "program": "Horizon Europe",
+      "call_name": "Horizon Europe topic search - topic verification pending",
+      "official_url": "https://funding-tenders.ec.europa.eu/portal/screen/opportunities/topic-search",
+      "call_status": "UNKNOWN",
+      "opening_date": null,
+      "closing_date": null,
+      "beneficiaries": [],
+      "territory": "European Union",
+      "sectors": [],
+      "technologies": [
+        "robotics",
+        "smart manufacturing",
+        "ai"
+      ],
+      "trl_min": null,
+      "trl_max": null,
+      "budget_min_eur": null,
+      "budget_max_eur": null,
+      "funding_rate_pct": null,
+      "max_aid_eur": null,
+      "aid_types": [],
+      "eligible_costs": [],
+      "incentive_effect_required": null,
+      "minimis": null,
+      "evaluation_criteria": [],
+      "verification_date": null
+    }
+  ],
+  "matrix": [
+    {
+      "project_id": "ingecart-p01",
+      "project_code": "P01",
+      "call_id": "call-navarra-rd",
+      "agent": "FUNDING SCORING AGENT",
+      "dimensions": {
+        "technology_fit": 60.0,
+        "rd_fit": 75.0,
+        "trl_fit": 45.0,
+        "company_eligibility": 55.0,
+        "geographical_eligibility": 90.0,
+        "budget_fit": 50.0,
+        "sector_fit": 70.0,
+        "timing_fit": 35.0,
+        "eligible_cost_fit": 35.0,
+        "strategic_fit": 75.0,
+        "partner_fit": 55.0,
+        "funding_intensity": 60.0,
+        "success_probability": 25.0
+      },
+      "score": 56.15,
+      "decision": "WATCH",
+      "rationale": [
+        "Technology overlap: 1",
+        "Call requires official-source verification",
+        "Human approval required before application"
+      ]
+    },
+    {
+      "project_id": "ingecart-p01",
+      "project_code": "P01",
+      "call_id": "call-cdti-pid",
+      "agent": "FUNDING SCORING AGENT",
+      "dimensions": {
+        "technology_fit": 85.0,
+        "rd_fit": 75.0,
+        "trl_fit": 45.0,
+        "company_eligibility": 55.0,
+        "geographical_eligibility": 90.0,
+        "budget_fit": 50.0,
+        "sector_fit": 70.0,
+        "timing_fit": 35.0,
+        "eligible_cost_fit": 35.0,
+        "strategic_fit": 75.0,
+        "partner_fit": 55.0,
+        "funding_intensity": 60.0,
+        "success_probability": 25.0
+      },
+      "score": 58.08,
+      "decision": "WATCH",
+      "rationale": [
+        "Technology overlap: 2",
+        "Call requires official-source verification",
+        "Human approval required before application"
+      ]
+    },
+    {
+      "project_id": "ingecart-p01",
+      "project_code": "P01",
+      "call_id": "call-eu-horizon",
+      "agent": "FUNDING SCORING AGENT",
+      "dimensions": {
+        "technology_fit": 35.0,
+        "rd_fit": 75.0,
+        "trl_fit": 45.0,
+        "company_eligibility": 55.0,
+        "geographical_eligibility": 90.0,
+        "budget_fit": 50.0,
+        "sector_fit": 70.0,
+        "timing_fit": 35.0,
+        "eligible_cost_fit": 35.0,
+        "strategic_fit": 75.0,
+        "partner_fit": 55.0,
+        "funding_intensity": 60.0,
+        "success_probability": 25.0
+      },
+      "score": 54.23,
+      "decision": "WATCH",
+      "rationale": [
+        "Technology overlap: 0",
+        "Call requires official-source verification",
+        "Human approval required before application"
+      ]
+    },
+    {
+      "project_id": "ingecart-p02",
+      "project_code": "P02",
+      "call_id": "call-navarra-rd",
+      "agent": "FUNDING SCORING AGENT",
+      "dimensions": {
+        "technology_fit": 85.0,
+        "rd_fit": 75.0,
+        "trl_fit": 45.0,
+        "company_eligibility": 55.0,
+        "geographical_eligibility": 90.0,
+        "budget_fit": 50.0,
+        "sector_fit": 70.0,
+        "timing_fit": 35.0,
+        "eligible_cost_fit": 35.0,
+        "strategic_fit": 75.0,
+        "partner_fit": 55.0,
+        "funding_intensity": 60.0,
+        "success_probability": 25.0
+      },
+      "score": 58.08,
+      "decision": "WATCH",
+      "rationale": [
+        "Technology overlap: 2",
+        "Call requires official-source verification",
+        "Human approval required before application"
+      ]
+    },
+    {
+      "project_id": "ingecart-p02",
+      "project_code": "P02",
+      "call_id": "call-cdti-pid",
+      "agent": "FUNDING SCORING AGENT",
+      "dimensions": {
+        "technology_fit": 60.0,
+        "rd_fit": 75.0,
+        "trl_fit": 45.0,
+        "company_eligibility": 55.0,
+        "geographical_eligibility": 90.0,
+        "budget_fit": 50.0,
+        "sector_fit": 70.0,
+        "timing_fit": 35.0,
+        "eligible_cost_fit": 35.0,
+        "strategic_fit": 75.0,
+        "partner_fit": 55.0,
+        "funding_intensity": 60.0,
+        "success_probability": 25.0
+      },
+      "score": 56.15,
+      "decision": "WATCH",
+      "rationale": [
+        "Technology overlap: 1",
+        "Call requires official-source verification",
+        "Human approval required before application"
+      ]
+    },
+    {
+      "project_id": "ingecart-p02",
+      "project_code": "P02",
+      "call_id": "call-eu-horizon",
+      "agent": "FUNDING SCORING AGENT",
+      "dimensions": {
+        "technology_fit": 85.0,
+        "rd_fit": 75.0,
+        "trl_fit": 45.0,
+        "company_eligibility": 55.0,
+        "geographical_eligibility": 90.0,
+        "budget_fit": 50.0,
+        "sector_fit": 70.0,
+        "timing_fit": 35.0,
+        "eligible_cost_fit": 35.0,
+        "strategic_fit": 75.0,
+        "partner_fit": 55.0,
+        "funding_intensity": 60.0,
+        "success_probability": 25.0
+      },
+      "score": 58.08,
+      "decision": "WATCH",
+      "rationale": [
+        "Technology overlap: 2",
+        "Call requires official-source verification",
+        "Human approval required before application"
+      ]
+    },
+    {
+      "project_id": "ingecart-p02a",
+      "project_code": "P02A",
+      "call_id": "call-navarra-rd",
+      "agent": "FUNDING SCORING AGENT",
+      "dimensions": {
+        "technology_fit": 85.0,
+        "rd_fit": 75.0,
+        "trl_fit": 45.0,
+        "company_eligibility": 55.0,
+        "geographical_eligibility": 90.0,
+        "budget_fit": 50.0,
+        "sector_fit": 70.0,
+        "timing_fit": 35.0,
+        "eligible_cost_fit": 35.0,
+        "strategic_fit": 75.0,
+        "partner_fit": 55.0,
+        "funding_intensity": 60.0,
+        "success_probability": 25.0
+      },
+      "score": 58.08,
+      "decision": "WATCH",
+      "rationale": [
+        "Technology overlap: 2",
+        "Call requires official-source verification",
+        "Human approval required before application"
+      ]
+    },
+    {
+      "project_id": "ingecart-p02a",
+      "project_code": "P02A",
+      "call_id": "call-cdti-pid",
+      "agent": "FUNDING SCORING AGENT",
+      "dimensions": {
+        "technology_fit": 60.0,
+        "rd_fit": 75.0,
+        "trl_fit": 45.0,
+        "company_eligibility": 55.0,
+        "geographical_eligibility": 90.0,
+        "budget_fit": 50.0,
+        "sector_fit": 70.0,
+        "timing_fit": 35.0,
+        "eligible_cost_fit": 35.0,
+        "strategic_fit": 75.0,
+        "partner_fit": 55.0,
+        "funding_intensity": 60.0,
+        "success_probability": 25.0
+      },
+      "score": 56.15,
+      "decision": "WATCH",
+      "rationale": [
+        "Technology overlap: 1",
+        "Call requires official-source verification",
+        "Human approval required before application"
+      ]
+    },
+    {
+      "project_id": "ingecart-p02a",
+      "project_code": "P02A",
+      "call_id": "call-eu-horizon",
+      "agent": "FUNDING SCORING AGENT",
+      "dimensions": {
+        "technology_fit": 60.0,
+        "rd_fit": 75.0,
+        "trl_fit": 45.0,
+        "company_eligibility": 55.0,
+        "geographical_eligibility": 90.0,
+        "budget_fit": 50.0,
+        "sector_fit": 70.0,
+        "timing_fit": 35.0,
+        "eligible_cost_fit": 35.0,
+        "strategic_fit": 75.0,
+        "partner_fit": 55.0,
+        "funding_intensity": 60.0,
+        "success_probability": 25.0
+      },
+      "score": 56.15,
+      "decision": "WATCH",
+      "rationale": [
+        "Technology overlap: 1",
+        "Call requires official-source verification",
+        "Human approval required before application"
+      ]
+    },
+    {
+      "project_id": "ingecart-p02b",
+      "project_code": "P02B",
+      "call_id": "call-navarra-rd",
+      "agent": "FUNDING SCORING AGENT",
+      "dimensions": {
+        "technology_fit": 85.0,
+        "rd_fit": 75.0,
+        "trl_fit": 45.0,
+        "company_eligibility": 55.0,
+        "geographical_eligibility": 90.0,
+        "budget_fit": 50.0,
+        "sector_fit": 70.0,
+        "timing_fit": 35.0,
+        "eligible_cost_fit": 35.0,
+        "strategic_fit": 75.0,
+        "partner_fit": 55.0,
+        "funding_intensity": 60.0,
+        "success_probability": 25.0
+      },
+      "score": 58.08,
+      "decision": "WATCH",
+      "rationale": [
+        "Technology overlap: 2",
+        "Call requires official-source verification",
+        "Human approval required before application"
+      ]
+    },
+    {
+      "project_id": "ingecart-p02b",
+      "project_code": "P02B",
+      "call_id": "call-cdti-pid",
+      "agent": "FUNDING SCORING AGENT",
+      "dimensions": {
+        "technology_fit": 60.0,
+        "rd_fit": 75.0,
+        "trl_fit": 45.0,
+        "company_eligibility": 55.0,
+        "geographical_eligibility": 90.0,
+        "budget_fit": 50.0,
+        "sector_fit": 70.0,
+        "timing_fit": 35.0,
+        "eligible_cost_fit": 35.0,
+        "strategic_fit": 75.0,
+        "partner_fit": 55.0,
+        "funding_intensity": 60.0,
+        "success_probability": 25.0
+      },
+      "score": 56.15,
+      "decision": "WATCH",
+      "rationale": [
+        "Technology overlap: 1",
+        "Call requires official-source verification",
+        "Human approval required before application"
+      ]
+    },
+    {
+      "project_id": "ingecart-p02b",
+      "project_code": "P02B",
+      "call_id": "call-eu-horizon",
+      "agent": "FUNDING SCORING AGENT",
+      "dimensions": {
+        "technology_fit": 60.0,
+        "rd_fit": 75.0,
+        "trl_fit": 45.0,
+        "company_eligibility": 55.0,
+        "geographical_eligibility": 90.0,
+        "budget_fit": 50.0,
+        "sector_fit": 70.0,
+        "timing_fit": 35.0,
+        "eligible_cost_fit": 35.0,
+        "strategic_fit": 75.0,
+        "partner_fit": 55.0,
+        "funding_intensity": 60.0,
+        "success_probability": 25.0
+      },
+      "score": 56.15,
+      "decision": "WATCH",
+      "rationale": [
+        "Technology overlap: 1",
+        "Call requires official-source verification",
+        "Human approval required before application"
+      ]
+    },
+    {
+      "project_id": "ingecart-p03",
+      "project_code": "P03",
+      "call_id": "call-navarra-rd",
+      "agent": "FUNDING SCORING AGENT",
+      "dimensions": {
+        "technology_fit": 60.0,
+        "rd_fit": 75.0,
+        "trl_fit": 45.0,
+        "company_eligibility": 55.0,
+        "geographical_eligibility": 90.0,
+        "budget_fit": 50.0,
+        "sector_fit": 70.0,
+        "timing_fit": 35.0,
+        "eligible_cost_fit": 35.0,
+        "strategic_fit": 75.0,
+        "partner_fit": 55.0,
+        "funding_intensity": 60.0,
+        "success_probability": 25.0
+      },
+      "score": 56.15,
+      "decision": "WATCH",
+      "rationale": [
+        "Technology overlap: 1",
+        "Call requires official-source verification",
+        "Human approval required before application"
+      ]
+    },
+    {
+      "project_id": "ingecart-p03",
+      "project_code": "P03",
+      "call_id": "call-cdti-pid",
+      "agent": "FUNDING SCORING AGENT",
+      "dimensions": {
+        "technology_fit": 60.0,
+        "rd_fit": 75.0,
+        "trl_fit": 45.0,
+        "company_eligibility": 55.0,
+        "geographical_eligibility": 90.0,
+        "budget_fit": 50.0,
+        "sector_fit": 70.0,
+        "timing_fit": 35.0,
+        "eligible_cost_fit": 35.0,
+        "strategic_fit": 75.0,
+        "partner_fit": 55.0,
+        "funding_intensity": 60.0,
+        "success_probability": 25.0
+      },
+      "score": 56.15,
+      "decision": "WATCH",
+      "rationale": [
+        "Technology overlap: 1",
+        "Call requires official-source verification",
+        "Human approval required before application"
+      ]
+    },
+    {
+      "project_id": "ingecart-p03",
+      "project_code": "P03",
+      "call_id": "call-eu-horizon",
+      "agent": "FUNDING SCORING AGENT",
+      "dimensions": {
+        "technology_fit": 60.0,
+        "rd_fit": 75.0,
+        "trl_fit": 45.0,
+        "company_eligibility": 55.0,
+        "geographical_eligibility": 90.0,
+        "budget_fit": 50.0,
+        "sector_fit": 70.0,
+        "timing_fit": 35.0,
+        "eligible_cost_fit": 35.0,
+        "strategic_fit": 75.0,
+        "partner_fit": 55.0,
+        "funding_intensity": 60.0,
+        "success_probability": 25.0
+      },
+      "score": 56.15,
+      "decision": "WATCH",
+      "rationale": [
+        "Technology overlap: 1",
+        "Call requires official-source verification",
+        "Human approval required before application"
+      ]
+    }
+  ],
+  "missions": [
+    {
+      "id": "mission-ingecart-source-document",
+      "created_at": "2026-08-17T06:57:05.028615Z",
+      "updated_at": "2026-08-17T06:57:05.052935Z",
+      "source_trace_ids": [],
+      "confidence": 1.0,
+      "needs_review": false,
+      "entity_type": "FUNDING_MISSION",
+      "version": 3,
+      "status": "BLOCKED_INFORMATION_GAP",
+      "owner": "CTA",
+      "source_type": "LEVEL_3_ENGINEERING_ASSUMPTION",
+      "source_document": null,
+      "source_location": null,
+      "evidence_ids": [
+        "evidence-ingecart-project-brief-missing"
+      ],
+      "validation_status": "MISSING_SOURCE",
+      "verified_at": null,
+      "objective": "Ingest and verify INGECART primary project evidence",
+      "project_id": null,
+      "funding_call_id": null,
+      "assigned_agent": "EVIDENCE VERIFICATION AGENT",
+      "stage": "VERIFY",
+      "next_action": "Obtain original file, checksum it, extract page/section evidence, and requalify projects.",
+      "deliverable": "Verified evidence package with page-level traceability",
+      "blocking_reason": "Source document is not present"
+    },
+    {
+      "id": "mission-verify-call-navarra-rd",
+      "created_at": "2026-08-17T06:57:05.061067Z",
+      "updated_at": "2026-08-17T06:57:05.079523Z",
+      "source_trace_ids": [],
+      "confidence": 1.0,
+      "needs_review": false,
+      "entity_type": "FUNDING_MISSION",
+      "version": 3,
+      "status": "OPEN",
+      "owner": "CTA",
+      "source_type": "LEVEL_3_ENGINEERING_ASSUMPTION",
+      "source_document": null,
+      "source_location": null,
+      "evidence_ids": [
+        "evidence-ingecart-project-brief-missing"
+      ],
+      "validation_status": "UNVERIFIED",
+      "verified_at": null,
+      "objective": "Verify current official requirements for Navarra I+D - verification pending",
+      "project_id": null,
+      "funding_call_id": "call-navarra-rd",
+      "assigned_agent": "FUNDING MONITORING AGENT",
+      "stage": "VERIFY",
+      "next_action": "Fetch official source, capture dates and requirements, then rerun matching.",
+      "deliverable": "Verified Funding Opportunity Card",
+      "blocking_reason": null
+    },
+    {
+      "id": "mission-verify-call-cdti-pid",
+      "created_at": "2026-08-17T06:57:05.083893Z",
+      "updated_at": "2026-08-17T06:57:05.102560Z",
+      "source_trace_ids": [],
+      "confidence": 1.0,
+      "needs_review": false,
+      "entity_type": "FUNDING_MISSION",
+      "version": 3,
+      "status": "OPEN",
+      "owner": "CTA",
+      "source_type": "LEVEL_3_ENGINEERING_ASSUMPTION",
+      "source_document": null,
+      "source_location": null,
+      "evidence_ids": [
+        "evidence-ingecart-project-brief-missing"
+      ],
+      "validation_status": "UNVERIFIED",
+      "verified_at": null,
+      "objective": "Verify current official requirements for CDTI PID - verification pending",
+      "project_id": null,
+      "funding_call_id": "call-cdti-pid",
+      "assigned_agent": "FUNDING MONITORING AGENT",
+      "stage": "VERIFY",
+      "next_action": "Fetch official source, capture dates and requirements, then rerun matching.",
+      "deliverable": "Verified Funding Opportunity Card",
+      "blocking_reason": null
+    },
+    {
+      "id": "mission-verify-call-eu-horizon",
+      "created_at": "2026-08-17T06:57:05.109386Z",
+      "updated_at": "2026-08-17T06:57:05.131244Z",
+      "source_trace_ids": [],
+      "confidence": 1.0,
+      "needs_review": false,
+      "entity_type": "FUNDING_MISSION",
+      "version": 3,
+      "status": "OPEN",
+      "owner": "CTA",
+      "source_type": "LEVEL_3_ENGINEERING_ASSUMPTION",
+      "source_document": null,
+      "source_location": null,
+      "evidence_ids": [
+        "evidence-ingecart-project-brief-missing"
+      ],
+      "validation_status": "UNVERIFIED",
+      "verified_at": null,
+      "objective": "Verify current official requirements for Horizon Europe topic search - topic verification pending",
+      "project_id": null,
+      "funding_call_id": "call-eu-horizon",
+      "assigned_agent": "FUNDING MONITORING AGENT",
+      "stage": "VERIFY",
+      "next_action": "Fetch official source, capture dates and requirements, then rerun matching.",
+      "deliverable": "Verified Funding Opportunity Card",
+      "blocking_reason": null
+    }
+  ],
+  "scenarios": {
+    "ingecart-p01": [
+      {
+        "name": "CONSERVATIVE",
+        "project_cost_eur": 0.0,
+        "potential_public_funding_eur": 0.0,
+        "client_contribution_eur": 0.0,
+        "effective_funding_pct": 0.0,
+        "estimated_payment_date": null,
+        "financial_risk": "HIGH"
+      },
+      {
+        "name": "BASE",
+        "project_cost_eur": 0.0,
+        "potential_public_funding_eur": 0.0,
+        "client_contribution_eur": 0.0,
+        "effective_funding_pct": 0.0,
+        "estimated_payment_date": null,
+        "financial_risk": "HIGH"
+      },
+      {
+        "name": "OPTIMISTIC",
+        "project_cost_eur": 0.0,
+        "potential_public_funding_eur": 0.0,
+        "client_contribution_eur": 0.0,
+        "effective_funding_pct": 0.0,
+        "estimated_payment_date": null,
+        "financial_risk": "HIGH"
+      }
+    ],
+    "ingecart-p02": [
+      {
+        "name": "CONSERVATIVE",
+        "project_cost_eur": 0.0,
+        "potential_public_funding_eur": 0.0,
+        "client_contribution_eur": 0.0,
+        "effective_funding_pct": 0.0,
+        "estimated_payment_date": null,
+        "financial_risk": "HIGH"
+      },
+      {
+        "name": "BASE",
+        "project_cost_eur": 0.0,
+        "potential_public_funding_eur": 0.0,
+        "client_contribution_eur": 0.0,
+        "effective_funding_pct": 0.0,
+        "estimated_payment_date": null,
+        "financial_risk": "HIGH"
+      },
+      {
+        "name": "OPTIMISTIC",
+        "project_cost_eur": 0.0,
+        "potential_public_funding_eur": 0.0,
+        "client_contribution_eur": 0.0,
+        "effective_funding_pct": 0.0,
+        "estimated_payment_date": null,
+        "financial_risk": "HIGH"
+      }
+    ],
+    "ingecart-p02a": [
+      {
+        "name": "CONSERVATIVE",
+        "project_cost_eur": 0.0,
+        "potential_public_funding_eur": 0.0,
+        "client_contribution_eur": 0.0,
+        "effective_funding_pct": 0.0,
+        "estimated_payment_date": null,
+        "financial_risk": "HIGH"
+      },
+      {
+        "name": "BASE",
+        "project_cost_eur": 0.0,
+        "potential_public_funding_eur": 0.0,
+        "client_contribution_eur": 0.0,
+        "effective_funding_pct": 0.0,
+        "estimated_payment_date": null,
+        "financial_risk": "HIGH"
+      },
+      {
+        "name": "OPTIMISTIC",
+        "project_cost_eur": 0.0,
+        "potential_public_funding_eur": 0.0,
+        "client_contribution_eur": 0.0,
+        "effective_funding_pct": 0.0,
+        "estimated_payment_date": null,
+        "financial_risk": "HIGH"
+      }
+    ],
+    "ingecart-p02b": [
+      {
+        "name": "CONSERVATIVE",
+        "project_cost_eur": 0.0,
+        "potential_public_funding_eur": 0.0,
+        "client_contribution_eur": 0.0,
+        "effective_funding_pct": 0.0,
+        "estimated_payment_date": null,
+        "financial_risk": "HIGH"
+      },
+      {
+        "name": "BASE",
+        "project_cost_eur": 0.0,
+        "potential_public_funding_eur": 0.0,
+        "client_contribution_eur": 0.0,
+        "effective_funding_pct": 0.0,
+        "estimated_payment_date": null,
+        "financial_risk": "HIGH"
+      },
+      {
+        "name": "OPTIMISTIC",
+        "project_cost_eur": 0.0,
+        "potential_public_funding_eur": 0.0,
+        "client_contribution_eur": 0.0,
+        "effective_funding_pct": 0.0,
+        "estimated_payment_date": null,
+        "financial_risk": "HIGH"
+      }
+    ],
+    "ingecart-p03": [
+      {
+        "name": "CONSERVATIVE",
+        "project_cost_eur": 0.0,
+        "potential_public_funding_eur": 0.0,
+        "client_contribution_eur": 0.0,
+        "effective_funding_pct": 0.0,
+        "estimated_payment_date": null,
+        "financial_risk": "HIGH"
+      },
+      {
+        "name": "BASE",
+        "project_cost_eur": 0.0,
+        "potential_public_funding_eur": 0.0,
+        "client_contribution_eur": 0.0,
+        "effective_funding_pct": 0.0,
+        "estimated_payment_date": null,
+        "financial_risk": "HIGH"
+      },
+      {
+        "name": "OPTIMISTIC",
+        "project_cost_eur": 0.0,
+        "potential_public_funding_eur": 0.0,
+        "client_contribution_eur": 0.0,
+        "effective_funding_pct": 0.0,
+        "estimated_payment_date": null,
+        "financial_risk": "HIGH"
+      }
+    ]
+  },
+  "human_approval_gate": "AI ANALYSIS -> CONSULTANT REVIEW -> APPROVAL -> APPLICATION"
+}

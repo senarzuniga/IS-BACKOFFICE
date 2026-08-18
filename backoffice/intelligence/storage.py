@@ -122,6 +122,33 @@ CREATE TABLE IF NOT EXISTS monitoring_alerts (
     FOREIGN KEY (target_id) REFERENCES monitoring_targets(id)
 );
 CREATE INDEX IF NOT EXISTS idx_alerts_target ON monitoring_alerts(target_id);
+
+-- CTA R&D Funding Engine reuses the intelligence database.
+CREATE TABLE IF NOT EXISTS funding_entities (
+    id            TEXT NOT NULL,
+    entity_type   TEXT NOT NULL,
+    version       INTEGER NOT NULL,
+    status        TEXT NOT NULL,
+    owner         TEXT NOT NULL,
+    payload       TEXT NOT NULL,
+    created_at    TEXT NOT NULL,
+    updated_at    TEXT NOT NULL,
+    verified_at   TEXT,
+    PRIMARY KEY (id, version)
+);
+CREATE INDEX IF NOT EXISTS idx_funding_entities_type ON funding_entities(entity_type);
+CREATE INDEX IF NOT EXISTS idx_funding_entities_status ON funding_entities(status);
+
+CREATE TABLE IF NOT EXISTS funding_relations (
+    id            TEXT PRIMARY KEY,
+    source_id     TEXT NOT NULL,
+    target_id     TEXT NOT NULL,
+    relation_type TEXT NOT NULL,
+    evidence_id   TEXT,
+    created_at    TEXT NOT NULL
+);
+CREATE INDEX IF NOT EXISTS idx_funding_relations_source ON funding_relations(source_id);
+CREATE INDEX IF NOT EXISTS idx_funding_relations_target ON funding_relations(target_id);
 """
 
 
@@ -379,12 +406,81 @@ class IntelligenceDB:
             ).fetchall()
         return [dict(r) for r in rows]
 
+    # ── CTA R&D Funding Engine ─────────────────────────────────────
+
+    def save_funding_entity(self, entity: Dict[str, Any]) -> None:
+        """Persist one immutable entity version in the shared intelligence DB."""
+        with self._conn() as conn:
+            conn.execute(
+                """INSERT OR REPLACE INTO funding_entities
+                   (id, entity_type, version, status, owner, payload, created_at, updated_at, verified_at)
+                   VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)""",
+                (
+                    entity["id"], entity["entity_type"], int(entity.get("version", 1)),
+                    entity.get("status", "DRAFT"), entity.get("owner", "CTA"),
+                    json.dumps(entity, ensure_ascii=False, default=str),
+                    str(entity.get("created_at", datetime.now().isoformat())),
+                    str(entity.get("updated_at", datetime.now().isoformat())),
+                    str(entity.get("verified_at")) if entity.get("verified_at") else None,
+                ),
+            )
+
+    def get_funding_entities(self, entity_type: Optional[str] = None, latest_only: bool = True) -> List[Dict[str, Any]]:
+        params: List[Any] = []
+        where = ""
+        if entity_type:
+            where = "WHERE e.entity_type=?"
+            params.append(entity_type)
+        if latest_only:
+            sql = f"""SELECT e.payload FROM funding_entities e
+                      JOIN (SELECT id, MAX(version) AS version FROM funding_entities GROUP BY id) latest
+                      ON e.id=latest.id AND e.version=latest.version {where}
+                      ORDER BY e.updated_at DESC"""
+        else:
+            sql = f"SELECT e.payload FROM funding_entities e {where} ORDER BY e.updated_at DESC"
+        with self._conn() as conn:
+            rows = conn.execute(sql, params).fetchall()
+        return [json.loads(row["payload"]) for row in rows]
+
+    def get_funding_entity(self, entity_id: str, version: Optional[int] = None) -> Optional[Dict[str, Any]]:
+        sql = "SELECT payload FROM funding_entities WHERE id=?"
+        params: List[Any] = [entity_id]
+        if version is not None:
+            sql += " AND version=?"
+            params.append(version)
+        sql += " ORDER BY version DESC LIMIT 1"
+        with self._conn() as conn:
+            row = conn.execute(sql, params).fetchone()
+        return json.loads(row["payload"]) if row else None
+
+    def save_funding_relation(self, relation: Dict[str, Any]) -> None:
+        with self._conn() as conn:
+            conn.execute(
+                "INSERT OR REPLACE INTO funding_relations VALUES (?, ?, ?, ?, ?, ?)",
+                (
+                    relation["id"], relation["source_id"], relation["target_id"],
+                    relation["relation_type"], relation.get("evidence_id"),
+                    relation.get("created_at", datetime.now().isoformat()),
+                ),
+            )
+
+    def get_funding_relations(self, entity_id: Optional[str] = None) -> List[Dict[str, Any]]:
+        sql = "SELECT * FROM funding_relations"
+        params: List[Any] = []
+        if entity_id:
+            sql += " WHERE source_id=? OR target_id=?"
+            params.extend([entity_id, entity_id])
+        with self._conn() as conn:
+            rows = conn.execute(sql, params).fetchall()
+        return [dict(row) for row in rows]
+
     # ── Stats & Export ─────────────────────────────────────────────
 
     def get_stats(self) -> Dict[str, int]:
         tables = [
             "crawl_sessions", "scraped_pages", "market_intelligence",
             "leads", "content_items", "monitoring_targets", "monitoring_alerts",
+            "funding_entities", "funding_relations",
         ]
         stats: Dict[str, int] = {}
         with self._conn() as conn:

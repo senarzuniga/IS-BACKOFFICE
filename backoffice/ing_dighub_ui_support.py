@@ -68,6 +68,19 @@ def knowledge_stats(repo_root: Path) -> Dict[str, Any]:
 def recent_missions(repo_root: Path, limit: int = 8) -> List[Dict[str, Any]]:
     out: List[Dict[str, Any]] = []
 
+    funding_backlog = _safe_read_json(repo_root / "reports" / "rd_funding" / "backlog.json")
+    if isinstance(funding_backlog, list):
+        for row in funding_backlog:
+            out.append(
+                {
+                    "mission": row.get("objective", "R&D Funding Mission"),
+                    "status": row.get("status", "OPEN"),
+                    "score": row.get("confidence", "n/a"),
+                    "hypothesis": row.get("next_action", "n/a"),
+                    "updated_at": row.get("updated_at", "n/a"),
+                }
+            )
+
     mission_file = repo_root / "reports" / "spoe" / "mission_portfolio_spoe.json"
     mission_payload = _safe_read_json(mission_file)
     if mission_payload:

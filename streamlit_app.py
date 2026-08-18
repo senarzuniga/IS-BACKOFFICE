@@ -69,6 +69,7 @@ def _create_enhanced_app():
             "🎯 Mission Manager",
             "🧭 Enterprise Digital Twin",
             "🏗️ Industrial Engineering Platform",
+            "💶 R&D FUNDING",
             "📄 Service Proposal Engine",
             "🧠 Presentation Intelligence Engine",
             "📚 DIPC",
@@ -99,6 +100,7 @@ def _create_enhanced_app():
         "🎯 Mission Manager": "ing_dighub_mission_manager",
         "🧭 Enterprise Digital Twin": "ing_dighub_digital_twin",
         "🏗️ Industrial Engineering Platform": "industrial_engineering_platform",
+        "💶 R&D FUNDING": "rd_funding",
         "📄 Service Proposal Engine": "service_proposal_engine",
         "🧠 Presentation Intelligence Engine": "presentation_intelligence_engine",
         "📚 DIPC": "document_intelligence_publishing_center",
@@ -141,6 +143,9 @@ def _create_enhanced_app():
 
     elif st.session_state.current_page == "industrial_engineering_platform":
         st.switch_page("pages/industrial_engineering_platform.py")
+
+    elif st.session_state.current_page == "rd_funding":
+        st.switch_page("pages/rd_funding.py")
 
     elif st.session_state.current_page == "service_proposal_engine":
         st.switch_page("pages/service_proposal_engine.py")

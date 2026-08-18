@@ -23,6 +23,7 @@ from api.routes.market_intelligence import router as intelligence_router
 from api.routes.simulation import router as simulation_router
 from api.routes.transcription import router as transcription_router
 from api.routes.ing_dighub import router as ing_dighub_router
+from api.routes.rd_funding import router as rd_funding_router
 
 app = FastAPI(
     title="IS-BACKOFFICE – AI Commercial Intelligence Platform",
@@ -50,6 +51,7 @@ app.include_router(intelligence_router, dependencies=[Depends(optional_oauth_tok
 app.include_router(simulation_router, dependencies=[Depends(optional_oauth_token)])
 app.include_router(transcription_router, dependencies=[Depends(optional_oauth_token)])
 app.include_router(ing_dighub_router, dependencies=[Depends(optional_oauth_token)])
+app.include_router(rd_funding_router, dependencies=[Depends(optional_oauth_token)])
 
 
 @app.get("/")
@@ -57,8 +59,7 @@ def root():
     return {
         "system": "IS-BACKOFFICE",
         "version": "1.0.0",
-        "modules": ["ingestion", "cleaning", "extraction", "graph", "analytics", "reporting", "orchestration", "backoffice", "intelligence_ingestion", "scraping"],
-        "modules": ["ingestion", "cleaning", "extraction", "graph", "analytics", "reporting", "orchestration", "backoffice", "intelligence_ingestion", "scraping", "intelligence"],
+        "modules": ["ingestion", "cleaning", "extraction", "graph", "analytics", "reporting", "orchestration", "backoffice", "intelligence_ingestion", "scraping", "intelligence", "rd_funding"],
         "docs": "/docs",
     }
 

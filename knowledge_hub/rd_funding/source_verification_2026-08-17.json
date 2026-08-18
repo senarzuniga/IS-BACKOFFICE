@@ -1,0 +1,29 @@
+{
+  "verified_at": "2026-08-17T00:00:00Z",
+  "method": "Official URL content fetch through controlled web tooling",
+  "sources": [
+    {
+      "authority": "Gobierno de Navarra",
+      "url": "https://www.navarra.es/es/tramites/on/-/line/ayudas-para-proyectos-de-i-d",
+      "connection_status": "OFFICIAL_URL_CONFIGURED_CONTENT_NOT_EXTRACTABLE",
+      "call_validation_status": "UNVERIFIED",
+      "closing_date_verified": false
+    },
+    {
+      "authority": "CDTI",
+      "url": "https://www.cdti.es/ayudas/proyectos-de-investigacion-y-desarrollo-pid",
+      "connection_status": "OFFICIAL_URL_CONFIGURED_CONTENT_NOT_EXTRACTABLE",
+      "call_validation_status": "UNVERIFIED",
+      "closing_date_verified": false
+    },
+    {
+      "authority": "European Commission",
+      "url": "https://funding-tenders.ec.europa.eu/portal/screen/opportunities/topic-search",
+      "connection_status": "OPERATIONAL_PORTAL_CONFIGURED_DYNAMIC_CONTENT_NOT_EXTRACTABLE",
+      "call_validation_status": "UNVERIFIED",
+      "closing_date_verified": false,
+      "correction": "Replaced ec.europa.eu testing-environment URL exposed during verification"
+    }
+  ],
+  "governance_decision": "No call dates, rates or eligibility facts promoted. All opportunities remain WATCH pending official verification."
+}

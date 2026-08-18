@@ -1,0 +1,16 @@
+{
+  "classification_policy": "Existing untraced values are not LEVEL 1",
+  "records": [
+    {"variable":"cycle_time","value":30,"unit":"s","classification":"F","governance_level":4,"source":"ingetrans-reel-simulator/03_CONFIG_DATABASE/config_ingetrans.yaml","basis":"generic configuration"},
+    {"variable":"cycle_time","value":45,"unit":"s","classification":"F","governance_level":4,"source":"ingetrans-reel-simulator/03_CONFIG_DATABASE/config_transfer.yaml","basis":"generic configuration"},
+    {"variable":"cycle_time","value":52,"unit":"s","classification":"E","governance_level":6,"source":"ingesite.github.io/solutions/ingetrans_DigitalTwin.html","basis":"published benchmark result without model run provenance"},
+    {"variable":"transfer_speed","value":59,"unit":"m/min","classification":"D","governance_level":5,"source":"core/Reel_load_simulator.py","basis":"hard-coded fallback"},
+    {"variable":"transfer_speed","value":80,"unit":"m/min","classification":"D","governance_level":5,"source":"core/ingetrans_simulation_engine.py","basis":"hard-coded fallback"},
+    {"variable":"transfer_speed","value":120,"unit":"m/min","classification":"F","governance_level":4,"source":"scripts/compare_reel_simulations.py","basis":"fast benchmark experiment"},
+    {"variable":"pickup_time","value":6,"unit":"s","classification":"E","governance_level":5,"source":"core/ingetrans_simulation_engine.py","basis":"hard-coded assumption"},
+    {"variable":"unloading_time","value":6,"unit":"s","classification":"E","governance_level":5,"source":"core/ingetrans_simulation_engine.py","basis":"hard-coded assumption"},
+    {"variable":"corrugator_speed","value":220,"unit":"m/min","classification":"F","governance_level":4,"source":"ingesite.github.io/solutions/ingetrans_DigitalTwin.html","basis":"typical European plant benchmark"},
+    {"variable":"reel_consumption","value":5.5,"unit":"reels/hour","classification":"F","governance_level":4,"source":"ingesite.github.io/solutions/ingetrans_DigitalTwin.html","basis":"typical European plant benchmark"},
+    {"variable":"reel_weight","value":2100,"unit":"kg","classification":"F","governance_level":4,"source":"ingesite.github.io/solutions/ingetrans_DigitalTwin.html","basis":"typical European plant benchmark"}
+  ]
+}

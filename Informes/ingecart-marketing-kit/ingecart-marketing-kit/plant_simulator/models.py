@@ -80,9 +80,13 @@ class TransportConfig:
     type: TransportType = TransportType.FORKLIFTS
     num_forklifts: int = 3
     forklift_speed_ms: float = 1.5       # m/s
+    round_trip_distance_m: float = 30.0
+    handling_time_s: float = 60.0
+    missions_per_pallet: float = 1.0
     num_tracks: int = 0
     conveyor_speed_ms: float = 0.5       # m/s
     automatic: bool = False
+    route_profile: List[Dict[str, Any]] = field(default_factory=list)
 
 
 @dataclass
@@ -134,6 +138,10 @@ class PlantConfig:
                 "type": self.transport.type.value,
                 "numForklifts": self.transport.num_forklifts,
                 "forkliftsSpeed": self.transport.forklift_speed_ms,
+                "roundTripDistanceM": self.transport.round_trip_distance_m,
+                "handlingTimeS": self.transport.handling_time_s,
+                "missionsPerPallet": self.transport.missions_per_pallet,
+                "routeProfile": self.transport.route_profile,
                 "numTracks": self.transport.num_tracks,
             },
         }

@@ -1,0 +1,7 @@
+{
+  "status": "BLOCKED_SOURCE_MISSING",
+  "before_models_preserved": true,
+  "after_models_generated": false,
+  "superseded_results": [],
+  "reason": "No validated Sterner parameter delta exists; recalculation would fabricate an AFTER case."
+}

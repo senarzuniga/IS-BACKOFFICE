@@ -100,6 +100,10 @@ def main() -> None:
         if st.button("Open Engineering Workbench", use_container_width=True):
             _jump("pages/industrial_engineering_platform.py")
 
+        st.markdown("<div class='ing-card'><div class='ing-title'>R&D Funding</div></div>", unsafe_allow_html=True)
+        if st.button("Open CTA R&D Funding Engine", use_container_width=True):
+            _jump("pages/rd_funding.py")
+
         st.markdown("<div class='ing-card'><div class='ing-title'>Simulation</div></div>", unsafe_allow_html=True)
         if st.button("Open Plant Simulator", use_container_width=True):
             _jump("pages/plant_simulator.py")

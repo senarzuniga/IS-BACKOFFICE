@@ -1,0 +1,19 @@
+{
+  "capability": "CTA INDUSTRIAL R&D FUNDING ENGINE",
+  "version": "1.0.0",
+  "nodes": [
+    "Client", "Client Project", "Evidence", "Technology", "Funding Call",
+    "Funding Match", "Funding Strategy", "Application Dossier", "Result", "Mission"
+  ],
+  "edges": [
+    {"from": "Client", "to": "Client Project", "relation": "HAS_PROJECT"},
+    {"from": "Client Project", "to": "Evidence", "relation": "SUPPORTED_BY"},
+    {"from": "Client Project", "to": "Technology", "relation": "USES"},
+    {"from": "Client Project", "to": "Funding Call", "relation": "MATCHED_TO"},
+    {"from": "Funding Call", "to": "Evidence", "relation": "VERIFIED_BY"},
+    {"from": "Funding Match", "to": "Funding Strategy", "relation": "INFORMS"},
+    {"from": "Funding Strategy", "to": "Application Dossier", "relation": "REQUIRES_HUMAN_APPROVAL"},
+    {"from": "Mission", "to": "Result", "relation": "MUST_DELIVER"}
+  ],
+  "integrations": ["ING_DIGHUB", "Knowledge Hub", "Evidence Layer", "Mission Manager", "AI Factory", "intelligence.db"]
+}

@@ -1,0 +1,14 @@
+{
+  "APP_ID": "rd_funding",
+  "APP_NAME": "CTA INDUSTRIAL R&D FUNDING ENGINE",
+  "SHORT_NAME": "R&D FUNDING",
+  "VERSION": "1.0.0",
+  "DESCRIPTION": "Evidence-governed factory for industrial R&D projects, funding matching and application missions.",
+  "OWNER": "CTA",
+  "STATUS": "operational_with_information_gaps",
+  "ROUTES": ["/rd-funding", "pages/rd_funding.py"],
+  "DEPENDENCIES": ["Knowledge Hub", "Mission Manager", "AI Factory", "Context Layer", "Evidence Layer", "intelligence.db"],
+  "AGENTS": ["R&D DISCOVERY AGENT", "R&D QUALIFICATION AGENT", "TECHNOLOGY ASSESSMENT AGENT", "TRL ASSESSMENT AGENT", "FUNDING DISCOVERY AGENT", "NAVARRA FUNDING AGENT", "CDTI FUNDING AGENT", "EU FUNDING AGENT", "FUNDING ELIGIBILITY AGENT", "FUNDING COMPATIBILITY AGENT", "BUDGET AGENT", "FUNDING SCORING AGENT", "APPLICATION DESIGN AGENT", "JUSTIFICATION AGENT", "FUNDING MONITORING AGENT", "EVIDENCE VERIFICATION AGENT"],
+  "DATA_SOURCES": ["Official Navarra portal", "CDTI", "European Commission Funding & Tenders", "Client evidence via Knowledge Hub"],
+  "PERMISSIONS": ["consultant:read", "consultant:edit", "consultant:approve", "agent:analyze", "agent:no-submit"]
+}
