@@ -1,0 +1,30 @@
+[
+  {
+    "check": "language_structure_parity",
+    "passed": true,
+    "severity": "error",
+    "message": "Section counts: {'en': 12, 'es': 12}",
+    "metadata": {}
+  },
+  {
+    "check": "artifacts_non_empty",
+    "passed": true,
+    "severity": "error",
+    "message": "Validated 2 artifacts",
+    "metadata": {}
+  },
+  {
+    "check": "delivery_formats",
+    "passed": true,
+    "severity": "error",
+    "message": "Generated artifacts comply with the delivery profile",
+    "metadata": {}
+  },
+  {
+    "check": "source_provenance",
+    "passed": true,
+    "severity": "error",
+    "message": "Source dependencies include SHA-256 provenance",
+    "metadata": {}
+  }
+]

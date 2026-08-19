@@ -30,6 +30,9 @@ class TestHISApiStabilization(unittest.TestCase):
             "resolve_asset_candidates",
             "theme_profiles",
             "run_operational_certification",
+            "list_corporate_documents",
+            "publish_corporate_html",
+            "package_corporate_document",
         ]
         for method in mandatory:
             self.assertTrue(hasattr(self.studio, method), f"Missing method: {method}")

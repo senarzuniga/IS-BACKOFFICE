@@ -83,6 +83,7 @@ class ClientProject(GovernedEntity):
     target_trl: Optional[int] = Field(default=None, ge=1, le=9)
     duration_months: Optional[int] = Field(default=None, ge=1)
     preliminary_budget_eur: Optional[float] = Field(default=None, ge=0)
+    execution_region: Optional[str] = None
     team: list[str] = Field(default_factory=list)
     technological_partners: list[str] = Field(default_factory=list)
     available_documents: list[str] = Field(default_factory=list)
@@ -110,7 +111,19 @@ class FundingCall(GovernedEntity):
     funding_rate_pct: Optional[float] = None
     max_aid_eur: Optional[float] = None
     aid_types: list[str] = Field(default_factory=list)
+    grant_rate_pct: Optional[float] = Field(default=None, ge=0, le=100)
+    loan_rate_pct: Optional[float] = Field(default=None, ge=0, le=100)
+    non_repayable_rate_pct: Optional[float] = Field(default=None, ge=0, le=100)
+    advance_rate_pct: Optional[float] = Field(default=None, ge=0, le=100)
+    advance_requires_guarantee: Optional[bool] = None
+    payment_timing: str = "UNKNOWN"
+    interest_description: Optional[str] = None
+    repayment_years: Optional[float] = Field(default=None, ge=0)
+    grace_years: Optional[float] = Field(default=None, ge=0)
+    collateral_description: Optional[str] = None
+    liquidity_notes: Optional[str] = None
     eligible_costs: list[str] = Field(default_factory=list)
+    required_documents: list[str] = Field(default_factory=list)
     incentive_effect_required: Optional[bool] = None
     minimis: Optional[bool] = None
     evaluation_criteria: list[str] = Field(default_factory=list)

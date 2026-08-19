@@ -76,8 +76,15 @@ def score_project_call(project: dict[str, Any], call: dict[str, Any]) -> dict[st
     call_tech = {value.lower() for value in call.get("technologies", [])}
     overlap = len(project_tech & call_tech)
     technology_fit = min(100.0, 35.0 + overlap * 25.0)
-    territory = str(call.get("territory", "")).lower()
-    geography = 90.0 if territory in {"navarra", "spain", "españa", "european union", "eu"} else 40.0
+    territory = str(call.get("territory", "")).strip().lower()
+    project_region = str(project.get("execution_region", "")).strip().lower()
+    national_territories = {"spain", "españa", "european union", "eu"}
+    if territory in national_territories:
+        geography = 90.0
+    elif not project_region:
+        geography = 45.0
+    else:
+        geography = 95.0 if territory == project_region else 0.0
     project_budget = project.get("preliminary_budget_eur")
     minimum = call.get("budget_min_eur")
     maximum = call.get("budget_max_eur")
@@ -104,8 +111,14 @@ def score_project_call(project: dict[str, Any], call: dict[str, Any]) -> dict[st
         "success_probability": 55.0 if verified else 25.0,
     }
     score = round(sum(dimensions.values()) / len(MATCH_DIMENSIONS), 2)
+    call_status = str(call.get("call_status", "UNKNOWN")).upper()
+    budget_blocked = budget_fit <= 30.0
+    geography_blocked = geography == 0.0
+    closed = call_status in {"CLOSED", "EXPIRED", "ARCHIVED"}
     if not verified:
         decision = "WATCH"
+    elif closed or budget_blocked or geography_blocked:
+        decision = "NO-GO"
     elif score >= 70:
         decision = "GO"
     elif score >= 50:
@@ -119,6 +132,9 @@ def score_project_call(project: dict[str, Any], call: dict[str, Any]) -> dict[st
         "rationale": [
             f"Technology overlap: {overlap}",
             "Official call data verified" if verified else "Call requires official-source verification",
+            f"Call status: {call_status}",
+            "Project budget outside instrument limits" if budget_blocked else "Project budget within known limits",
+            "Execution territory is incompatible" if geography_blocked else "Execution territory is compatible or pending detail",
             "Human approval required before application",
         ],
     }
@@ -152,6 +168,44 @@ def funding_scenarios(project_cost: float, funding_rate_pct: float | None) -> li
             }
         )
     return scenarios
+
+
+def liquidity_scenario(project_cost: float, call: dict[str, Any]) -> dict[str, Any]:
+    """Estimate funding mix and pre-financing need without inventing payment terms."""
+    minimum = call.get("budget_min_eur")
+    maximum = call.get("budget_max_eur")
+    budget_eligible = not ((minimum is not None and project_cost < minimum) or (maximum is not None and project_cost > maximum))
+    grant_rate = float(call.get("grant_rate_pct") or 0.0) / 100.0
+    loan_rate = float(call.get("loan_rate_pct") or 0.0) / 100.0
+    non_repayable_rate = float(call.get("non_repayable_rate_pct") or 0.0) / 100.0
+    advance_rate = float(call.get("advance_rate_pct") or 0.0) / 100.0
+    if budget_eligible and non_repayable_rate and loan_rate:
+        partially_repayable_aid = project_cost * loan_rate
+        grant = partially_repayable_aid * non_repayable_rate
+        loan = partially_repayable_aid - grant
+    else:
+        grant = min(project_cost * grant_rate, float(call.get("max_aid_eur") or project_cost)) if budget_eligible else 0.0
+        loan = min(project_cost * loan_rate, max(0.0, project_cost - grant)) if budget_eligible else 0.0
+    public_total = min(project_cost, grant + loan)
+    advance = min(public_total, public_total * advance_rate)
+    own_contribution = max(0.0, project_cost - public_total)
+    bridge_need = max(0.0, project_cost - own_contribution - advance)
+    return {
+        "budget_eligible": budget_eligible,
+        "project_cost_eur": round(project_cost, 2),
+        "grant_eur": round(grant, 2),
+        "loan_eur": round(loan, 2),
+        "public_funding_eur": round(public_total, 2),
+        "advance_eur": round(advance, 2),
+        "own_contribution_eur": round(own_contribution, 2),
+        "bridge_financing_need_eur": round(bridge_need, 2),
+        "payment_timing": call.get("payment_timing") or "UNKNOWN",
+        "advance_requires_guarantee": call.get("advance_requires_guarantee"),
+        "interest_description": call.get("interest_description"),
+        "repayment_years": call.get("repayment_years"),
+        "grace_years": call.get("grace_years"),
+        "warning": None if budget_eligible else "Project budget is outside the instrument limits",
+    }
 
 
 def deadline_alerts(closing_date: date | None, today: date | None = None) -> list[dict[str, Any]]:

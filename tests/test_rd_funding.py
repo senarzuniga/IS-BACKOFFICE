@@ -9,7 +9,7 @@ from backoffice.rd_funding.bootstrap import write_artifacts
 from backoffice.rd_funding.context_service import FundingContextService
 from backoffice.rd_funding.engines import (
     BUDGET_CATEGORIES, DOSSIER_SECTIONS, assess_compatibility, deadline_alerts,
-    design_project, funding_scenarios, qualify_project, score_project_call,
+    design_project, funding_scenarios, liquidity_scenario, qualify_project, score_project_call,
 )
 from backoffice.rd_funding.models import (
     ClientProject, FundingCall, FundingEvidence, InformationLevel, ValidationStatus,
@@ -126,6 +126,56 @@ def test_budget_and_financial_scenarios():
     scenarios = funding_scenarios(100000, 40)
     assert [item["name"] for item in scenarios] == ["CONSERVATIVE", "BASE", "OPTIMISTIC"]
     assert scenarios[1]["client_contribution_eur"] == 60000
+
+
+def test_liquidity_scenario_separates_grant_loan_and_bridge_need():
+    result = liquidity_scenario(
+        60000,
+        {
+            "budget_min_eur": 20000,
+            "grant_rate_pct": 40,
+            "loan_rate_pct": 30,
+            "advance_rate_pct": 50,
+            "payment_timing": "50% advance; balance after justification",
+        },
+    )
+    assert result["budget_eligible"] is True
+    assert result["grant_eur"] == 24000
+    assert result["loan_eur"] == 18000
+    assert result["advance_eur"] == 21000
+    assert result["bridge_financing_need_eur"] == 21000
+
+
+def test_regional_call_rejects_project_executed_in_another_region():
+    result = score_project_call(
+        {"technology_areas": ["ai"], "execution_region": "Cataluña"},
+        {"technologies": ["ai"], "territory": "Navarra", "validation_status": "VERIFIED"},
+    )
+    assert result["dimensions"]["geographical_eligibility"] == 0
+
+
+def test_partially_repayable_aid_separates_non_repayable_tranche():
+    result = liquidity_scenario(
+        200000,
+        {"budget_min_eur": 175000, "loan_rate_pct": 85, "non_repayable_rate_pct": 10},
+    )
+    assert result["public_funding_eur"] == 170000
+    assert result["grant_eur"] == 17000
+    assert result["loan_eur"] == 153000
+
+
+def test_closed_or_undersized_call_is_no_go():
+    project = {"technology_areas": ["ai"], "execution_region": "Cataluña", "preliminary_budget_eur": 60000}
+    closed = score_project_call(
+        project,
+        {"technologies": ["ai"], "territory": "Cataluña", "validation_status": "VERIFIED", "call_status": "CLOSED"},
+    )
+    undersized = score_project_call(
+        project,
+        {"technologies": ["ai"], "territory": "Cataluña", "validation_status": "VERIFIED", "call_status": "OPEN", "budget_min_eur": 100000},
+    )
+    assert closed["decision"] == "NO-GO"
+    assert undersized["decision"] == "NO-GO"
 
 
 def test_compatibility_detects_double_financing():

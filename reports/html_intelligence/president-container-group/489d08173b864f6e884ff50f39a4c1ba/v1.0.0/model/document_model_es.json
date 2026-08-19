@@ -1,0 +1,1199 @@
+{
+  "id": "c93b2ad609534d98831559d03e2fa0ba",
+  "title": "PCG Middletown Converting Audit",
+  "subtitle": "Plan de evidencia para descubrir capacidad oculta, eliminar perdidas inmediatas y convertir la futura salida de producto terminado en una inversion balanceada, integrable y medible.",
+  "source_path": "C:\\Users\\Inaki Senar\\Documents\\GitHub\\AI-FACTORY-v2\\PCG_MIDDLETOWN_CONVERTING_AUDIT_2026-08-17.html",
+  "source_type": "html",
+  "document_type": "corporate_report",
+  "theme_variant": "light",
+  "metadata": {
+    "language": "es",
+    "visual_profile": "pcg_corporate"
+  },
+  "sections": [
+    {
+      "id": "cacea4fc65054fd888571f73fd84ab8c",
+      "title": "La auditoria protege la decision de inversion.",
+      "summary": null,
+      "order": 1,
+      "blocks": [
+        {
+          "id": "1ff779be81344d0a8813e99360d4ebfb",
+          "block_type": "corporate_section",
+          "title": null,
+          "components": [
+            {
+              "id": "939c1960aeea4633a3a5efa74dce344c",
+              "component_kind": "text",
+              "title": null,
+              "body": "PCG dispone de una base productiva excepcional. Precisamente por esa escala, mejorar solo la evacuacion fisica sin medir las restricciones que la alimentan y la reciben puede trasladar el cuello de botella, no eliminarlo.",
+              "items": [],
+              "props": {},
+              "asset_ids": [],
+              "style_tokens": [],
+              "evidence_ids": [],
+              "knowledge_keys": [],
+              "semantic_labels": [],
+              "confidence": 1.0
+            },
+            {
+              "id": "e66c4f4d627a41ffbd86e7c7c378dece",
+              "component_kind": "executive_summary",
+              "title": null,
+              "body": "Tesis tecnica Antes de congelar el diseño de conveyors, insertadores, remontado, flejado y retractilado, INGECART propone medir el ciclo completo desde el ultimo punto productivo de cada convertidora hasta la liberacion del producto terminado. El resultado sera una especificacion neutral que PCG podra utilizar con todos sus proveedores.",
+              "items": [],
+              "props": {},
+              "asset_ids": [],
+              "style_tokens": [],
+              "evidence_ids": [],
+              "knowledge_keys": [],
+              "semantic_labels": [],
+              "confidence": 1.0
+            },
+            {
+              "id": "efbaabc478bd4738886a8359e73242b9",
+              "component_kind": "executive_summary",
+              "title": null,
+              "body": "Compromiso INGECART Entregar acciones inmediatas de minimo gasto y maximo output, junto con recomendaciones de diseño, control e integracion que permitan capturar el mayor rendimiento posible de la futura solucion.",
+              "items": [],
+              "props": {},
+              "asset_ids": [],
+              "style_tokens": [],
+              "evidence_ids": [],
+              "knowledge_keys": [],
+              "semantic_labels": [],
+              "confidence": 1.0
+            }
+          ],
+          "metadata": {}
+        }
+      ],
+      "metadata": {
+        "source_section_id": "executive"
+      }
+    },
+    {
+      "id": "b077426c34b84f4a9c96303c5ce12f7c",
+      "title": "Una superplanta exige capacidad sostenible, no nominal.",
+      "summary": null,
+      "order": 2,
+      "blocks": [
+        {
+          "id": "b6259dc843084538b5f1958e6691fda8",
+          "block_type": "corporate_section",
+          "title": null,
+          "components": [
+            {
+              "id": "ffdda30004e1430d802dc1ab6134016e",
+              "component_kind": "table",
+              "title": null,
+              "body": null,
+              "items": [],
+              "props": {
+                "rows": [
+                  [
+                    "Activo / familia",
+                    "Dato preliminar",
+                    "Implicacion para auditoria",
+                    "Estado"
+                  ],
+                  [
+                    "Mitsubishi EVOL",
+                    "3 lineas; hasta 24.000 cajas/h por linea",
+                    "Separar velocidad mecanica, velocidad buena sostenida y tiempo bloqueado por salida.",
+                    "PCG"
+                  ],
+                  [
+                    "Flota FFG",
+                    "14 flexo-encoladoras totales",
+                    "Construir matriz SKU, bundle, pallet y destino por maquina.",
+                    "PCG"
+                  ],
+                  [
+                    "Engico Jumbo FFG",
+                    "Hasta 6.000 cajas/h; encolado y cosido",
+                    "Evaluar cajas grandes/double wall por envolvente, peso y estabilidad.",
+                    "PCG"
+                  ],
+                  [
+                    "Gopfert RDC",
+                    "10.000-12.000 planchas/h indicativas",
+                    "Medir mix, golpes buenos, stack geometry y descarga real.",
+                    "Validar"
+                  ],
+                  [
+                    "Flota total",
+                    "Mas de 30 convertidoras",
+                    "La simultaneidad, no la suma nominal, dimensiona el common outfeed.",
+                    "PCG"
+                  ],
+                  [
+                    "Produccion anual",
+                    "2,2-2,3 billion ft2; objetivo 3,0 billion ft2",
+                    "Reconciliar superficie, cajas, bundles, pallets y horas calendario.",
+                    "Validar"
+                  ]
+                ]
+              },
+              "asset_ids": [],
+              "style_tokens": [],
+              "evidence_ids": [],
+              "knowledge_keys": [],
+              "semantic_labels": [],
+              "confidence": 1.0
+            },
+            {
+              "id": "8a36f741ac744e49aa82a51742bfa351",
+              "component_kind": "text",
+              "title": null,
+              "body": "PCG = informacion facilitada para este estudio. Validar = placa OEM, historico o medicion de planta pendiente. Ningun valor nominal constituye garantia de rendimiento.",
+              "items": [],
+              "props": {},
+              "asset_ids": [],
+              "style_tokens": [],
+              "evidence_ids": [],
+              "knowledge_keys": [],
+              "semantic_labels": [],
+              "confidence": 1.0
+            }
+          ],
+          "metadata": {}
+        }
+      ],
+      "metadata": {
+        "source_section_id": "baseline"
+      }
+    },
+    {
+      "id": "d67e56ea81254bebba23fb177cd6f2ea",
+      "title": "Un conveyor rapido no corrige una secuencia lenta.",
+      "summary": null,
+      "order": 3,
+      "blocks": [
+        {
+          "id": "c224a3a9d64b4547a5f8e87c04284e15",
+          "block_type": "corporate_section",
+          "title": null,
+          "components": [
+            {
+              "id": "b8a7aac901414f13bfd8b38c126679d9",
+              "component_kind": "text",
+              "title": "Cuello desplazado",
+              "body": "La nueva salida evacua mas rapido, pero flejado, retractilado, remontado, control de calidad o pickup saturan a continuacion.",
+              "items": [],
+              "props": {},
+              "asset_ids": [],
+              "style_tokens": [],
+              "evidence_ids": [],
+              "knowledge_keys": [],
+              "semantic_labels": [],
+              "confidence": 1.0
+            },
+            {
+              "id": "03bf28ace4f84f9bbfff53e14fb85ccf",
+              "component_kind": "text",
+              "title": "Capacidad desconectada",
+              "body": "Equipos dimensionados por velocidad media fallan en picos, bundles grandes, pallets incompletos, excepciones o cambio de receta.",
+              "items": [],
+              "props": {},
+              "asset_ids": [],
+              "style_tokens": [],
+              "evidence_ids": [],
+              "knowledge_keys": [],
+              "semantic_labels": [],
+              "confidence": 1.0
+            },
+            {
+              "id": "fbb3a270ad154541b813186067190bb9",
+              "component_kind": "text",
+              "title": "Islas de control",
+              "body": "PLC y drives capaces de automatizar permanecen aislados; las decisiones de prioridad, destino y recuperacion siguen siendo manuales.",
+              "items": [],
+              "props": {},
+              "asset_ids": [],
+              "style_tokens": [],
+              "evidence_ids": [],
+              "knowledge_keys": [],
+              "semantic_labels": [],
+              "confidence": 1.0
+            },
+            {
+              "id": "959245f597154d13ab9a48e2cbefc430",
+              "component_kind": "text",
+              "title": "Buffer mal entendido",
+              "body": "Mas acumulacion puede ocultar el problema, aumentar WIP y retrasar la deteccion de una salida detenida.",
+              "items": [],
+              "props": {},
+              "asset_ids": [],
+              "style_tokens": [],
+              "evidence_ids": [],
+              "knowledge_keys": [],
+              "semantic_labels": [],
+              "confidence": 1.0
+            },
+            {
+              "id": "d013ee5ae0964b919822da512c023ba8",
+              "component_kind": "text",
+              "title": "Disponibilidad comun",
+              "body": "Una arquitectura compartida sin bypass ni modo degradado puede convertir una averia local en parada de varias convertidoras.",
+              "items": [],
+              "props": {},
+              "asset_ids": [],
+              "style_tokens": [],
+              "evidence_ids": [],
+              "knowledge_keys": [],
+              "semantic_labels": [],
+              "confidence": 1.0
+            },
+            {
+              "id": "77cc30ed3b274b869cdc0c48dccaf535",
+              "component_kind": "text",
+              "title": "Dato no reconciliado",
+              "body": "Cajas/h, bundles/h, pallets/h y ft2/h no son intercambiables sin receta, conteo, patron y mix.",
+              "items": [],
+              "props": {},
+              "asset_ids": [],
+              "style_tokens": [],
+              "evidence_ids": [],
+              "knowledge_keys": [],
+              "semantic_labels": [],
+              "confidence": 1.0
+            },
+            {
+              "id": "8b3b607953f34222b48f7471babcc20c",
+              "component_kind": "executive_summary",
+              "title": null,
+              "body": "Pregunta de decision ¿Que combinacion de capacidad, buffer, redundancia y software mantiene cada convertidora por debajo del limite de bloqueo aceptable durante picos y fallos previsibles?",
+              "items": [],
+              "props": {},
+              "asset_ids": [],
+              "style_tokens": [],
+              "evidence_ids": [],
+              "knowledge_keys": [],
+              "semantic_labels": [],
+              "confidence": 1.0
+            }
+          ],
+          "metadata": {}
+        }
+      ],
+      "metadata": {
+        "source_section_id": "risk"
+      }
+    },
+    {
+      "id": "e8067520d80b46c5a32df766d53d708f",
+      "title": "Dimensionar por evento, simultaneidad y percentil.",
+      "summary": null,
+      "order": 4,
+      "blocks": [
+        {
+          "id": "abfa9ba92a324ba2a7f051e1cf27fc2d",
+          "block_type": "corporate_section",
+          "title": null,
+          "components": [
+            {
+              "id": "287fa4705ad241f69be9050607b41e97",
+              "component_kind": "technical_specification",
+              "title": null,
+              "body": "Output bueno restringido = min(convertidora, bundler, remontador, insertador, flejadora, retractiladora, conveyor, pickup) × disponibilidad del sistema",
+              "items": [],
+              "props": {},
+              "asset_ids": [],
+              "style_tokens": [],
+              "evidence_ids": [],
+              "knowledge_keys": [],
+              "semantic_labels": [],
+              "confidence": 1.0
+            },
+            {
+              "id": "f77d3b53126c48dc8a8658686eec97a5",
+              "component_kind": "technical_specification",
+              "title": null,
+              "body": "Cajas recuperadas = minutos de bloqueo evitados × cajas buenas/min sostenidas Valor anual = cajas recuperadas × margen de contribucion unitario - OPEX incremental",
+              "items": [],
+              "props": {},
+              "asset_ids": [],
+              "style_tokens": [],
+              "evidence_ids": [],
+              "knowledge_keys": [],
+              "semantic_labels": [],
+              "confidence": 1.0
+            },
+            {
+              "id": "a0fe9517a35f443eb39008a2675a612a",
+              "component_kind": "text",
+              "title": "Ejemplo transparente: una EVOL",
+              "body": "A 24.000 cajas/h teoricas, cada minuto bloqueado equivale como maximo a 400 cajas no producidas. Evitar solo 15 min de bloqueo por turno representa hasta 6.000 cajas por turno antes de aplicar mix, calidad y disponibilidad.",
+              "items": [],
+              "props": {},
+              "asset_ids": [],
+              "style_tokens": [],
+              "evidence_ids": [],
+              "knowledge_keys": [],
+              "semantic_labels": [],
+              "confidence": 1.0
+            },
+            {
+              "id": "8aacdabb677d4428847ff69aec634e95",
+              "component_kind": "text",
+              "title": "Escala de las tres EVOL",
+              "body": "A pico teorico combinado, un minuto comun de restriccion equivale como maximo a 1.200 cajas. La auditoria sustituira ese maximo por velocidad buena observada y minutos clasificados por causa.",
+              "items": [],
+              "props": {},
+              "asset_ids": [],
+              "style_tokens": [],
+              "evidence_ids": [],
+              "knowledge_keys": [],
+              "semantic_labels": [],
+              "confidence": 1.0
+            },
+            {
+              "id": "b1cb9dafc556405d8e90e6cec791a3ac",
+              "component_kind": "table",
+              "title": null,
+              "body": null,
+              "items": [],
+              "props": {
+                "rows": [
+                  [
+                    "Metrica",
+                    "Calculo",
+                    "Uso de diseño"
+                  ],
+                  [
+                    "Demanda de salida por maquina",
+                    "bundles buenos / minuto por SKU",
+                    "Capacidad instantanea de conveyors y equipos finales."
+                  ],
+                  [
+                    "Simultaneidad",
+                    "p50 / p95 / maximo de maquinas descargando",
+                    "Evitar sobredimensionar por suma nominal o fallar en picos."
+                  ],
+                  [
+                    "Blocked time",
+                    "minutos y eventos por causa / turno",
+                    "Priorizar quick wins y calcular output recuperable."
+                  ],
+                  [
+                    "Clearance time",
+                    "bundle ready → zona liberada, p50/p95",
+                    "Buffer minimo y SLA de evacuacion."
+                  ],
+                  [
+                    "Utilizacion",
+                    "tiempo ocupado / tiempo disponible",
+                    "Objetivo sostenible; evitar operar recursos comunes al limite."
+                  ],
+                  [
+                    "Capacidad degradada",
+                    "throughput con una celula o ruta fuera",
+                    "Bypass, redundancia y plan de recuperacion."
+                  ]
+                ]
+              },
+              "asset_ids": [],
+              "style_tokens": [],
+              "evidence_ids": [],
+              "knowledge_keys": [],
+              "semantic_labels": [],
+              "confidence": 1.0
+            }
+          ],
+          "metadata": {}
+        }
+      ],
+      "metadata": {
+        "source_section_id": "capacity"
+      }
+    },
+    {
+      "id": "b8dccaa06c0d4da2b7d1ef88414c73e5",
+      "title": "Tres lineas no son una validacion de capacidad.",
+      "summary": null,
+      "order": 5,
+      "blocks": [
+        {
+          "id": "d04f285a942d46019535b066cb1d3048",
+          "block_type": "corporate_section",
+          "title": null,
+          "components": [
+            {
+              "id": "51fcd1a8092044c18c6f595f85f147ec",
+              "component_kind": "text",
+              "title": null,
+              "body": "La suficiencia del flejado debe demostrarse contra la demanda p95 y el mix real, incluyendo colocacion de cantoneras, doble fleje, cambios, rechazos y disponibilidad. La hipotesis de trabajo es evaluar una cuarta linea o sustituir tecnologia actual por flejadoras automaticas con insercion automatica de cantoneras.",
+              "items": [],
+              "props": {},
+              "asset_ids": [],
+              "style_tokens": [],
+              "evidence_ids": [],
+              "knowledge_keys": [],
+              "semantic_labels": [],
+              "confidence": 1.0
+            },
+            {
+              "id": "347b457e7a214bcbaf365f309608b69d",
+              "component_kind": "technical_specification",
+              "title": null,
+              "body": "N flejadoras requeridas = techo[demanda p95 de cargas/min ÷ (capacidad sostenible por flejadora × disponibilidad)] + redundancia requerida",
+              "items": [],
+              "props": {},
+              "asset_ids": [],
+              "style_tokens": [],
+              "evidence_ids": [],
+              "knowledge_keys": [],
+              "semantic_labels": [],
+              "confidence": 1.0
+            },
+            {
+              "id": "1e2a9bbf68ea4ac98d3a1f4a1210e79c",
+              "component_kind": "text",
+              "title": "3 lineas cuestionadas",
+              "body": "La experiencia operativa indica insuficiencia. Debe documentarse por colas, blocked time, utilizacion y recuperacion tras fallo.",
+              "items": [],
+              "props": {},
+              "asset_ids": [],
+              "style_tokens": [],
+              "evidence_ids": [],
+              "knowledge_keys": [],
+              "semantic_labels": [],
+              "confidence": 1.0
+            },
+            {
+              "id": "e5c0df8a7d9d492bb30978fe55e0dbb0",
+              "component_kind": "text",
+              "title": "Cuarta flejadora",
+              "body": "Aumenta capacidad y redundancia si routing, espacio, operarios y pickup permiten distribuir la carga.",
+              "items": [],
+              "props": {},
+              "asset_ids": [],
+              "style_tokens": [],
+              "evidence_ids": [],
+              "knowledge_keys": [],
+              "semantic_labels": [],
+              "confidence": 1.0
+            },
+            {
+              "id": "3e656f007b9b46a586612014206a63cf",
+              "component_kind": "text",
+              "title": "Automatica + cantoneras",
+              "body": "Elimina tareas manuales del ciclo critico y puede elevar fuertemente el ritmo sostenible del puesto final.",
+              "items": [],
+              "props": {},
+              "asset_ids": [],
+              "style_tokens": [],
+              "evidence_ids": [],
+              "knowledge_keys": [],
+              "semantic_labels": [],
+              "confidence": 1.0
+            },
+            {
+              "id": "069bf66182b7427781db02268f77186b",
+              "component_kind": "executive_summary",
+              "title": null,
+              "body": "Interpretacion correcta del 400-600% Una mejora neta del 400-600% significa que el nuevo puesto produciria entre 5 y 7 veces el output base, si “mejora” se usa en sentido incremental. La auditoria fijara la convencion, cronometrara ciclo actual y automatico por SKU y evitara convertir una afirmacion comercial en garantia sin FAT/SAT.",
+              "items": [],
+              "props": {},
+              "asset_ids": [],
+              "style_tokens": [],
+              "evidence_ids": [],
+              "knowledge_keys": [],
+              "semantic_labels": [],
+              "confidence": 1.0
+            },
+            {
+              "id": "2bc2e02c195a4ca19d035e38a8f7fabf",
+              "component_kind": "table",
+              "title": null,
+              "body": null,
+              "items": [],
+              "props": {
+                "rows": [
+                  [
+                    "Equipo",
+                    "Capacidad informada",
+                    "Prueba requerida"
+                  ],
+                  [
+                    "Insertador doble de pallets",
+                    "hasta 180 pallets/h",
+                    "Pallet mix, doble alimentacion, atasco, reposicion, disponibilidad y handoff."
+                  ],
+                  [
+                    "Insertador simple de pallets",
+                    "hasta 85 pallets/h",
+                    "Mismo protocolo, incluyendo compatibilidad dimensional y modo degradado."
+                  ],
+                  [
+                    "Flejadoras",
+                    "3 lineas previstas / actuales a confirmar",
+                    "Cargas/min sostenidas con cantoneras, recetas reales y una linea fuera de servicio."
+                  ],
+                  [
+                    "Retractilado / wrapping",
+                    "Pendiente de captura",
+                    "Tiempo de ciclo, film, estabilidad, alarmas, bypass y pickup."
+                  ]
+                ]
+              },
+              "asset_ids": [],
+              "style_tokens": [],
+              "evidence_ids": [],
+              "knowledge_keys": [],
+              "semantic_labels": [],
+              "confidence": 1.0
+            }
+          ],
+          "metadata": {}
+        }
+      ],
+      "metadata": {
+        "source_section_id": "strapping"
+      }
+    },
+    {
+      "id": "7ea1871ad052408e9d650e1cf08118a5",
+      "title": "Tres dias, cuatro disciplinas, un solo modelo de flujo.",
+      "summary": null,
+      "order": 6,
+      "blocks": [
+        {
+          "id": "edf938ab19c346c1981017cfcb69cff7",
+          "block_type": "corporate_section",
+          "title": null,
+          "components": [
+            {
+              "id": "541c11d29fd04f10a0ddb8de09bb09aa",
+              "component_kind": "text",
+              "title": "Dia 1 · Gemba, baseline y taxonomia de perdidas",
+              "body": "Mapear rutas y estados; cronometrar ciclos; capturar formatos, bundles y pallets; identificar starvation, blocking, microparadas, rehandling, esperas de operador y acumulacion. Alinear tags y causas con produccion, mantenimiento y calidad.",
+              "items": [],
+              "props": {},
+              "asset_ids": [],
+              "style_tokens": [],
+              "evidence_ids": [],
+              "knowledge_keys": [],
+              "semantic_labels": [],
+              "confidence": 1.0
+            },
+            {
+              "id": "3bf90817df2a45e1a947623e02c33a14",
+              "component_kind": "text",
+              "title": "Dia 2 · Electricidad, PLC, drives y conectividad",
+              "body": "Inventariar PLC/HMI/VFD/servo, versiones, redes y protocolos; revisar I/O, handshakes, safety, alarmas, historicos y capacidad de datos; comprobar interfaces de paquetadoras, remontadoras, insertadores, flejadoras, wrappers y conveyors.",
+              "items": [],
+              "props": {},
+              "asset_ids": [],
+              "style_tokens": [],
+              "evidence_ids": [],
+              "knowledge_keys": [],
+              "semantic_labels": [],
+              "confidence": 1.0
+            },
+            {
+              "id": "d77d8d35fe38401ca2df69124c8c1159",
+              "component_kind": "text",
+              "title": "Dia 3 · Stress test, quick wins y arquitectura objetivo",
+              "body": "Observar picos y cambios; probar recuperacion y modos manuales acordados; validar colas y restricciones; priorizar acciones inmediatas; cerrar requisitos funcionales, datos faltantes y pruebas de aceptacion de la inversion.",
+              "items": [],
+              "props": {},
+              "asset_ids": [],
+              "style_tokens": [],
+              "evidence_ids": [],
+              "knowledge_keys": [],
+              "semantic_labels": [],
+              "confidence": 1.0
+            },
+            {
+              "id": "708e04215d18498aa3fac17962b38434",
+              "component_kind": "text",
+              "title": "Equipo INGECART",
+              "body": "Direccion tecnica, direccion de ingenieria, ingenieria electrica y software, y direccion de proyecto. Participacion coordinada con produccion, mantenimiento, IT/OT, calidad y seguridad de PCG.",
+              "items": [],
+              "props": {},
+              "asset_ids": [],
+              "style_tokens": [],
+              "evidence_ids": [],
+              "knowledge_keys": [],
+              "semantic_labels": [],
+              "confidence": 1.0
+            },
+            {
+              "id": "82b8f22a3e3b4775be2244d51f973bc4",
+              "component_kind": "text",
+              "title": "Metodo de captura",
+              "body": "Observacion directa, time study, export de historicos, conteo de eventos, entrevistas estructuradas, revision de planos y programas disponibles, fotografia tecnica autorizada y reconciliacion al final de cada jornada.",
+              "items": [],
+              "props": {},
+              "asset_ids": [],
+              "style_tokens": [],
+              "evidence_ids": [],
+              "knowledge_keys": [],
+              "semantic_labels": [],
+              "confidence": 1.0
+            }
+          ],
+          "metadata": {}
+        }
+      ],
+      "metadata": {
+        "source_section_id": "audit"
+      }
+    },
+    {
+      "id": "f06e2eb5456e411cbf0373c45cdcf398",
+      "title": "Los puntos ciegos se convierten en señales.",
+      "summary": null,
+      "order": 7,
+      "blocks": [
+        {
+          "id": "6f9905eecd564abc9db7a5418abd79a8",
+          "block_type": "corporate_section",
+          "title": null,
+          "components": [
+            {
+              "id": "6b366f06965241f6b9596cd17770701b",
+              "component_kind": "table",
+              "title": null,
+              "body": null,
+              "items": [],
+              "props": {
+                "rows": [
+                  [
+                    "Capa",
+                    "Dato minimo",
+                    "Resultado"
+                  ],
+                  [
+                    "Produccion",
+                    "orden, SKU, velocidad, good count, scrap, setup, run/blocked/starved/fault",
+                    "OEE y output bueno por maquina, turno y familia."
+                  ],
+                  [
+                    "Bundle / pallet",
+                    "cajas/bundle, bundles/pallet, dimensiones, peso, bottom layer, remontado",
+                    "Conversion fiable de cajas/h a cargas/h."
+                  ],
+                  [
+                    "Logistica",
+                    "ready, request, pickup, destination, arrival, release y cola",
+                    "Clearance p50/p95 y causa de espera."
+                  ],
+                  [
+                    "Equipos finales",
+                    "ciclo, receta, disponibilidad, rechazo, jam, reposicion y cambio",
+                    "Capacidad sostenible por operacion."
+                  ],
+                  [
+                    "OT / control",
+                    "PLC, firmware, I/O, protocolos, red, drives, historico y backup",
+                    "Matriz de integrabilidad y retrofit."
+                  ],
+                  [
+                    "Seguridad",
+                    "zonas, E-stop, scanners, accesos, LOTO y recovery",
+                    "Requisitos de risk assessment y modo degradado."
+                  ]
+                ]
+              },
+              "asset_ids": [],
+              "style_tokens": [],
+              "evidence_ids": [],
+              "knowledge_keys": [],
+              "semantic_labels": [],
+              "confidence": 1.0
+            },
+            {
+              "id": "21c3a23628b84111b0619be5e4e73d3f",
+              "component_kind": "executive_summary",
+              "title": null,
+              "body": "Regla de evidencia Cada hallazgo incluira timestamp o muestra, activo, estado, causa, duracion, impacto, confianza y responsable de validacion. Las entrevistas orientan; los eventos y mediciones confirman.",
+              "items": [],
+              "props": {},
+              "asset_ids": [],
+              "style_tokens": [],
+              "evidence_ids": [],
+              "knowledge_keys": [],
+              "semantic_labels": [],
+              "confidence": 1.0
+            }
+          ],
+          "metadata": {}
+        }
+      ],
+      "metadata": {
+        "source_section_id": "data"
+      }
+    },
+    {
+      "id": "a3f1cd2e089746afae68a9bb88283171",
+      "title": "Primero recuperar capacidad ya instalada.",
+      "summary": null,
+      "order": 8,
+      "blocks": [
+        {
+          "id": "9a825955639b4effbe53e582add291db",
+          "block_type": "corporate_section",
+          "title": null,
+          "components": [
+            {
+              "id": "9420591fe9544716a75157e4b873ac71",
+              "component_kind": "table",
+              "title": null,
+              "body": null,
+              "items": [],
+              "props": {
+                "rows": [
+                  [
+                    "Familia de accion",
+                    "Ejemplo a validar",
+                    "Coste relativo",
+                    "KPI de exito"
+                  ],
+                  [
+                    "Logica de control",
+                    "Ajustar permissives, handshakes, timers y secuencia de liberacion para eliminar esperas artificiales.",
+                    "Bajo",
+                    "blocked min/turno; clearance p95"
+                  ],
+                  [
+                    "Priorizacion",
+                    "Regla comun de destino y cola; reserva antes de liberar la carga.",
+                    "Bajo",
+                    "rehandling; espera sin destino"
+                  ],
+                  [
+                    "Recetas",
+                    "Estandarizar parametros por SKU para flejado, wrapping, conteo y pallet.",
+                    "Bajo",
+                    "setup; first-pass yield"
+                  ],
+                  [
+                    "Sensores",
+                    "Reposicionar, limpiar o añadir presencia/centrado donde falsos estados bloqueen el ciclo.",
+                    "Bajo",
+                    "microparadas; falsas alarmas"
+                  ],
+                  [
+                    "Drives",
+                    "Optimizar rampas y velocidades de transferencia dentro de limites mecanicos y de seguridad.",
+                    "Bajo-medio",
+                    "segundos/carga; jams"
+                  ],
+                  [
+                    "Buffer visual/digital",
+                    "Limites, Andon y alarma temprana antes del bloqueo de convertidora.",
+                    "Bajo",
+                    "eventos evitados; tiempo de respuesta"
+                  ],
+                  [
+                    "Trabajo estandar",
+                    "Reposicion anticipada de pallets, fleje, film y cantoneras segun consumo.",
+                    "Bajo",
+                    "starved min; reposicion/ciclo"
+                  ],
+                  [
+                    "Mantenimiento",
+                    "Pareto de fallos repetitivos y kit critico por activo.",
+                    "Bajo-medio",
+                    "MTBF; MTTR; disponibilidad"
+                  ]
+                ]
+              },
+              "asset_ids": [],
+              "style_tokens": [],
+              "evidence_ids": [],
+              "knowledge_keys": [],
+              "semantic_labels": [],
+              "confidence": 1.0
+            },
+            {
+              "id": "5db3493f4cbb4248994bc286dff01df4",
+              "component_kind": "text",
+              "title": null,
+              "body": "Las acciones definitivas y su impacto se estableceran con evidencia de planta. No se presupone que todas sean aplicables.",
+              "items": [],
+              "props": {},
+              "asset_ids": [],
+              "style_tokens": [],
+              "evidence_ids": [],
+              "knowledge_keys": [],
+              "semantic_labels": [],
+              "confidence": 1.0
+            }
+          ],
+          "metadata": {}
+        }
+      ],
+      "metadata": {
+        "source_section_id": "quickwins"
+      }
+    },
+    {
+      "id": "9d93d091600b46e99c0935ca1c7b07e8",
+      "title": "Los PLC ejecutan; el orquestador coordina.",
+      "summary": null,
+      "order": 9,
+      "blocks": [
+        {
+          "id": "f5e5275721e04ba3b755f1096ebf26a9",
+          "block_type": "corporate_section",
+          "title": null,
+          "components": [
+            {
+              "id": "30c0445c17154c08a1ca0a9cb3893962",
+              "component_kind": "text",
+              "title": "Contrato de carga",
+              "body": "load_id, order, SKU, cantidad, dimensiones, peso, pallet/no pallet, bottom layer, flejado, wrapping y destino.",
+              "items": [],
+              "props": {},
+              "asset_ids": [],
+              "style_tokens": [],
+              "evidence_ids": [],
+              "knowledge_keys": [],
+              "semantic_labels": [],
+              "confidence": 1.0
+            },
+            {
+              "id": "35a67affe4a5419a8cdd168f5b479e2d",
+              "component_kind": "text",
+              "title": "Contrato de estado",
+              "body": "ready, running, starved, blocked, fault, manual, occupied, destination reserved y pickup requested.",
+              "items": [],
+              "props": {},
+              "asset_ids": [],
+              "style_tokens": [],
+              "evidence_ids": [],
+              "knowledge_keys": [],
+              "semantic_labels": [],
+              "confidence": 1.0
+            },
+            {
+              "id": "289866cd57194c21aefcd73c8ee473a3",
+              "component_kind": "text",
+              "title": "Contrato de excepcion",
+              "body": "destino lleno, carga descentrada, pallet ausente, jam, equipo fuera, perdida de red, E-stop y recovery.",
+              "items": [],
+              "props": {},
+              "asset_ids": [],
+              "style_tokens": [],
+              "evidence_ids": [],
+              "knowledge_keys": [],
+              "semantic_labels": [],
+              "confidence": 1.0
+            },
+            {
+              "id": "19571d88401241c2a51b64e3013bf557",
+              "component_kind": "executive_summary",
+              "title": null,
+              "body": "Principio de diseño Ninguna carga sale sin identidad y destino reservado; ningun destino recibe sin capacidad confirmada; toda excepcion conserva trazabilidad y dispone de ruta, buffer o procedimiento degradado seguro.",
+              "items": [],
+              "props": {},
+              "asset_ids": [],
+              "style_tokens": [],
+              "evidence_ids": [],
+              "knowledge_keys": [],
+              "semantic_labels": [],
+              "confidence": 1.0
+            }
+          ],
+          "metadata": {}
+        }
+      ],
+      "metadata": {
+        "source_section_id": "architecture"
+      }
+    },
+    {
+      "id": "e21d22e918b141219560b644b7f199b3",
+      "title": "De la observacion a una especificacion utilizable.",
+      "summary": null,
+      "order": 10,
+      "blocks": [
+        {
+          "id": "a035549a65d84117ac0380e7b0a88773",
+          "block_type": "corporate_section",
+          "title": null,
+          "components": [
+            {
+              "id": "e500f4df1dec412b96e32f5245ac9f2f",
+              "component_kind": "text",
+              "title": "A · Accion inmediata",
+              "body": null,
+              "items": [],
+              "props": {},
+              "asset_ids": [],
+              "style_tokens": [],
+              "evidence_ids": [],
+              "knowledge_keys": [],
+              "semantic_labels": [],
+              "confidence": 1.0
+            },
+            {
+              "id": "10393fd1d9f84e70a5d0475129ca9d6c",
+              "component_kind": "text",
+              "title": "B · Diseño de nueva salida",
+              "body": null,
+              "items": [],
+              "props": {},
+              "asset_ids": [],
+              "style_tokens": [],
+              "evidence_ids": [],
+              "knowledge_keys": [],
+              "semantic_labels": [],
+              "confidence": 1.0
+            },
+            {
+              "id": "c5cbe2b786004c4b94ad70125ca3bbb9",
+              "component_kind": "text",
+              "title": "C · OT y software",
+              "body": null,
+              "items": [],
+              "props": {},
+              "asset_ids": [],
+              "style_tokens": [],
+              "evidence_ids": [],
+              "knowledge_keys": [],
+              "semantic_labels": [],
+              "confidence": 1.0
+            },
+            {
+              "id": "3cf1796530a6442689dbed22c3c35c00",
+              "component_kind": "text",
+              "title": "D · Validacion",
+              "body": null,
+              "items": [],
+              "props": {},
+              "asset_ids": [],
+              "style_tokens": [],
+              "evidence_ids": [],
+              "knowledge_keys": [],
+              "semantic_labels": [],
+              "confidence": 1.0
+            }
+          ],
+          "metadata": {}
+        }
+      ],
+      "metadata": {
+        "source_section_id": "deliverables"
+      }
+    },
+    {
+      "id": "8f3d872ce02d41b38cbb15b896c0f2ee",
+      "title": "La inversion avanza cuando el sistema cierra.",
+      "summary": null,
+      "order": 11,
+      "blocks": [
+        {
+          "id": "dc0feab2516248f4bcebdaa185094c46",
+          "block_type": "corporate_section",
+          "title": null,
+          "components": [
+            {
+              "id": "44df3b51b97943debce8de53a82c7282",
+              "component_kind": "executive_summary",
+              "title": null,
+              "body": "Recomendacion Autorizar la auditoria como gate de preingenieria. Congelar la arquitectura final solo despues de reconciliar capacidad, simultaneidad, integracion y contingencias con datos de Middletown.",
+              "items": [],
+              "props": {},
+              "asset_ids": [],
+              "style_tokens": [],
+              "evidence_ids": [],
+              "knowledge_keys": [],
+              "semantic_labels": [],
+              "confidence": 1.0
+            }
+          ],
+          "metadata": {}
+        }
+      ],
+      "metadata": {
+        "source_section_id": "gates"
+      }
+    },
+    {
+      "id": "5e569b21c8104ec8b0c4b306002f0fce",
+      "title": "Un informe auditable distingue dato, hipotesis y medicion.",
+      "summary": null,
+      "order": 12,
+      "blocks": [
+        {
+          "id": "6b3bf1c340c0484c9c4ab525a3cf33a9",
+          "block_type": "corporate_section",
+          "title": null,
+          "components": [
+            {
+              "id": "a6a31cc7e341449fbf262490d9e416a4",
+              "component_kind": "text",
+              "title": "Informacion facilitada",
+              "body": "Inventario, capacidades, configuracion preliminar de salidas, insertadores y observaciones sobre flejado.",
+              "items": [],
+              "props": {},
+              "asset_ids": [],
+              "style_tokens": [],
+              "evidence_ids": [],
+              "knowledge_keys": [],
+              "semantic_labels": [],
+              "confidence": 1.0
+            },
+            {
+              "id": "f5869c3b2a9a4c6aa70ef82117f2777b",
+              "component_kind": "text",
+              "title": "Preingenieria",
+              "body": "Velocidades nominales, produccion anual, simultaneidad y mejora 400-600% requieren fuente OEM o medicion.",
+              "items": [],
+              "props": {},
+              "asset_ids": [],
+              "style_tokens": [],
+              "evidence_ids": [],
+              "knowledge_keys": [],
+              "semantic_labels": [],
+              "confidence": 1.0
+            },
+            {
+              "id": "e05b75acf9c44c8caf34e68f0dbbafe7",
+              "component_kind": "text",
+              "title": "Resultado contractual",
+              "body": "Baseline, hallazgos, calculos, URS, KPIs y criterios FAT/SAT trazados a evidencia de planta.",
+              "items": [],
+              "props": {},
+              "asset_ids": [],
+              "style_tokens": [],
+              "evidence_ids": [],
+              "knowledge_keys": [],
+              "semantic_labels": [],
+              "confidence": 1.0
+            },
+            {
+              "id": "9b7396d273554a5096c72420688f0caf",
+              "component_kind": "text",
+              "title": "Preparacion solicitada a PCG",
+              "body": "Layout y P&ID/diagramas disponibles; lista de activos y placas; programas y backups autorizados; historicos de produccion/parada de 8-12 semanas; matriz SKU; turnos; registros de mantenimiento; topologia OT; manuales; proyecto preliminar; interlocutores de produccion, mantenimiento, IT/OT, calidad y seguridad.",
+              "items": [],
+              "props": {},
+              "asset_ids": [],
+              "style_tokens": [],
+              "evidence_ids": [],
+              "knowledge_keys": [],
+              "semantic_labels": [],
+              "confidence": 1.0
+            }
+          ],
+          "metadata": {}
+        }
+      ],
+      "metadata": {
+        "source_section_id": "sources"
+      }
+    }
+  ],
+  "assets": [],
+  "styles": [],
+  "knowledge_links": [],
+  "mission_links": [],
+  "evidence": [
+    {
+      "id": "8e4f6f5c6b1c4eb98a6e5afad0e6dd5d",
+      "kind": "client",
+      "description": "PCG",
+      "source_ref": null,
+      "metadata": {}
+    },
+    {
+      "id": "d1676a9db5f84459965e2ee54b52d88b",
+      "kind": "client",
+      "description": "PCG",
+      "source_ref": null,
+      "metadata": {}
+    },
+    {
+      "id": "27fac952980b42689796f16f8840d948",
+      "kind": "client",
+      "description": "PCG",
+      "source_ref": null,
+      "metadata": {}
+    },
+    {
+      "id": "7baa012da65742779cfb3237bed76d06",
+      "kind": "verify",
+      "description": "Validar",
+      "source_ref": null,
+      "metadata": {}
+    },
+    {
+      "id": "57adceb9807d4beb9a8ebcc53e58e039",
+      "kind": "client",
+      "description": "PCG",
+      "source_ref": null,
+      "metadata": {}
+    },
+    {
+      "id": "ad49d07a9d4d417d900f44a5a9bde811",
+      "kind": "verify",
+      "description": "Validar",
+      "source_ref": null,
+      "metadata": {}
+    },
+    {
+      "id": "1bd25c868bf84f6486cd7bd7eb020a20",
+      "kind": "client",
+      "description": "PCG",
+      "source_ref": null,
+      "metadata": {}
+    },
+    {
+      "id": "9b7a6975e64c430d9ccef6d92c03072d",
+      "kind": "verify",
+      "description": "Validar",
+      "source_ref": null,
+      "metadata": {}
+    },
+    {
+      "id": "6967a35cb8d74c7fa0997b7d5cf25c87",
+      "kind": "audit",
+      "description": "Auditoria",
+      "source_ref": null,
+      "metadata": {}
+    }
+  ],
+  "version_history": [],
+  "preview_profiles": [],
+  "analyzer_report": {
+    "accessibility_score": 0.0,
+    "performance_score": 0.0,
+    "seo_score": 0.0,
+    "responsive_score": 0.0,
+    "notes": []
+  },
+  "knowledge_graph_nodes": [],
+  "knowledge_graph_edges": [],
+  "quality_score": {
+    "visual_fidelity": 0.0,
+    "structural_fidelity": 0.0,
+    "semantic_fidelity": 0.0,
+    "accessibility": 0.0,
+    "responsive": 0.0,
+    "load_time": 0.0,
+    "complexity": 0.0,
+    "reusability": 0.0,
+    "maintainability": 0.0,
+    "graphical_consistency": 0.0,
+    "typography_quality": 0.0,
+    "alignment_quality": 0.0,
+    "component_usage": 0.0,
+    "executive_quality_score": 0.0
+  },
+  "live_state": {
+    "toc_generated": false,
+    "navigation_generated": false,
+    "preview_regenerated": false,
+    "styles_regenerated": false,
+    "cross_refs_updated": false,
+    "knowledge_graph_updated": false,
+    "metadata_updated": false,
+    "affected_component_ids": []
+  }
+}

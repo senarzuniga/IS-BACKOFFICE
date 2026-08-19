@@ -97,11 +97,12 @@ def main() -> None:
     st.title("🧠 HTML Intelligence Studio (HIS)")
     st.caption("Industrial HTML Generation & AI Editing Platform")
 
-    tab_dashboard, tab_explorer, tab_generate, tab_preview, tab_editor, tab_ai, tab_assets, tab_versions, tab_missions, tab_quality, tab_knowledge, tab_publication, tab_config = st.tabs(
+    tab_dashboard, tab_explorer, tab_generate, tab_corporate, tab_preview, tab_editor, tab_ai, tab_assets, tab_versions, tab_missions, tab_quality, tab_knowledge, tab_publication, tab_config = st.tabs(
         [
             "Dashboard",
             "Document Explorer",
             "Generation Panel",
+            "Corporate Publishing",
             "Preview",
             "Editor",
             "AI Command Layer",
@@ -241,6 +242,83 @@ def main() -> None:
             if result.get("html_path"):
                 st.markdown("### Internal Preview")
                 _render_inline_preview(studio, result["html_path"], key="his_preview_generated")
+
+    with tab_corporate:
+        st.subheader("Corporate Publishing")
+        st.caption("Generate governed EN/ES derivatives from authorized repositories.")
+        with st.form("his_corporate_publish_form"):
+            c1, c2 = st.columns(2)
+            with c1:
+                corporate_repository = st.selectbox(
+                    "Source repository",
+                    ["ai_factory", "adaptive_sales_engine", "ingesite"],
+                )
+                corporate_relative_path = st.text_input(
+                    "Relative source path",
+                    value="PCG_MIDDLETOWN_CONVERTING_AUDIT_2026-08-17.html",
+                )
+                corporate_title = st.text_input("Document title", value="Corporate Intelligence Report")
+            with c2:
+                corporate_client = st.text_input("Delivery client", value="INGECART")
+                corporate_project = st.text_input("Project", value="Corporate Publishing")
+                corporate_profile = st.selectbox("Delivery profile", ["standard", "cascades_pdf_only"])
+                corporate_languages = st.multiselect("Languages", ["en", "es"], default=["en", "es"])
+                default_formats = ["pdf"] if corporate_profile == "cascades_pdf_only" else ["html", "pdf", "docx"]
+                corporate_formats = st.multiselect(
+                    "Formats",
+                    ["html", "pdf", "docx", "xlsx", "pptx"],
+                    default=default_formats,
+                    disabled=corporate_profile == "cascades_pdf_only",
+                )
+            corporate_submitted = st.form_submit_button("Generate corporate document", type="primary")
+        if corporate_submitted:
+            try:
+                formats = ["pdf"] if corporate_profile == "cascades_pdf_only" else corporate_formats
+                corporate_result = studio.publish_corporate_html(
+                    repository_id=corporate_repository,
+                    relative_path=corporate_relative_path,
+                    title=corporate_title,
+                    client=corporate_client,
+                    project=corporate_project,
+                    formats=formats,
+                    languages=corporate_languages,
+                    profile_id=corporate_profile,
+                )
+                st.session_state["his_last_corporate_document"] = corporate_result
+                st.success(f"Corporate document {corporate_result['document_id']} is {corporate_result['status']}.")
+                st.json(corporate_result)
+            except Exception as exc:
+                st.error(str(exc))
+
+        corporate_documents = studio.list_corporate_documents()
+        if corporate_documents:
+            st.markdown("### Corporate Registry")
+            st.dataframe(
+                [
+                    {
+                        "ID": item.get("document_id"),
+                        "Title": item.get("title"),
+                        "Client": item.get("client"),
+                        "Version": item.get("version"),
+                        "Languages": ", ".join(item.get("languages", [])),
+                        "Status": item.get("status"),
+                        "Profile": item.get("delivery_policy", {}).get("profile_id"),
+                    }
+                    for item in corporate_documents
+                ],
+                use_container_width=True,
+                hide_index=True,
+            )
+            selected_corporate_id = st.selectbox(
+                "Document to package",
+                [item.get("document_id", "") for item in corporate_documents],
+            )
+            if st.button("Create governed delivery package"):
+                try:
+                    package_path = studio.package_corporate_document(selected_corporate_id)
+                    st.success(f"Package created: {package_path}")
+                except Exception as exc:
+                    st.error(str(exc))
 
     with tab_preview:
         st.subheader("Preview")

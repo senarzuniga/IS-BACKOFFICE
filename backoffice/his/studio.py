@@ -28,6 +28,8 @@ from backoffice.dipc.preview_engine import PreviewEngine
 from backoffice.dipc.publication_engine import PublicationEngine
 from backoffice.dipc.versioning import DocumentVersionStore
 from backoffice.his.ahde import OperationalCertificationEngine
+from backoffice.his.corporate_models import DeliveryPolicy
+from backoffice.his.corporate_publishing import CorporatePublishingService
 from backoffice.his.repository import DocumentRepository
 from backoffice.his.repository_catalog import RepositoryCatalog
 from backoffice.his.quality_pipeline_v3 import HtmlIntelligenceStudioV3Pipeline
@@ -77,6 +79,7 @@ class HtmlIntelligenceStudio:
         self.health_checker = HealthChecker(REPO_ROOT)
         self.repository_catalog = RepositoryCatalog(REPOSITORY_CATALOG_PATH)
         self.certification_engine = OperationalCertificationEngine(REPO_ROOT)
+        self.corporate_publishing = CorporatePublishingService()
 
     def create_document(
         self,
@@ -405,6 +408,39 @@ class HtmlIntelligenceStudio:
 
     def get_repository_catalog(self) -> dict[str, Any]:
         return self.repository_catalog.data()
+
+    def list_corporate_documents(self) -> list[dict[str, Any]]:
+        return [item.model_dump(mode="json") for item in self.corporate_publishing.registry.list()]
+
+    def publish_corporate_html(
+        self,
+        *,
+        repository_id: str,
+        relative_path: str,
+        title: str,
+        client: str,
+        project: str,
+        formats: list[str] | None = None,
+        languages: list[str] | None = None,
+        profile_id: str = "standard",
+    ) -> dict[str, Any]:
+        policy = DeliveryPolicy(
+            profile_id=profile_id,
+            allowed_formats=formats or ["html", "pdf", "docx"],
+            required_languages=languages or ["en", "es"],
+        )
+        result = self.corporate_publishing.publish_bilingual_html(
+            repository_id=repository_id,
+            relative_path=relative_path,
+            title=title,
+            client=client,
+            project=project,
+            delivery_policy=policy,
+        )
+        return result.model_dump(mode="json")
+
+    def package_corporate_document(self, document_id: str) -> str:
+        return self.corporate_publishing.create_delivery_package(document_id)
 
     def resolve_asset_candidates(self, limit: int = 100) -> list[str]:
         allowed_extensions = {
