@@ -23,6 +23,34 @@ def _render_inline_preview(studio: HtmlIntelligenceStudio, html_path: str, key: 
     components.html(content, height=900, scrolling=True)
 
 
+def _render_html_portability_guard(studio: HtmlIntelligenceStudio) -> None:
+    current_html = st.session_state.get("his_current_html", "")
+    if not current_html:
+        st.info("No HTML generated yet. The portability guard will validate the generated file once available.")
+        return
+
+    guard_enabled = st.session_state.get("his_portability_guard_enabled", True)
+    if not guard_enabled:
+        st.warning("Portability guard disabled. HTMLs may still depend on local assets.")
+        return
+
+    try:
+        result = studio.validate_html_stability(current_html)
+        if result["portable"]:
+            st.success("HTML portable y estable: sin rutas de assets locales visibles en el fichero final.")
+        else:
+            st.warning("HTML no estable fuera del PC: se detectan referencias locales. Se recomienda aplicar la garantía de autocontenido.")
+            fixed = studio.guarantee_standalone_html(current_html)
+            if fixed["portable"]:
+                st.success("Garantía aplicada: el HTML ha sido convertido a formato autocontenido y estable.")
+                st.session_state["his_current_html"] = current_html
+            else:
+                st.error(f"La garantía no pudo corregir todas las referencias: {fixed['local_asset_references']}")
+        st.json(result)
+    except Exception as exc:
+        st.error(str(exc))
+
+
 def _sidebar_editor(studio: HtmlIntelligenceStudio) -> None:
     st.sidebar.markdown("## HIS Visual Editor")
     html_path = st.session_state.get("his_current_html")
@@ -168,19 +196,25 @@ def main() -> None:
 
     with tab_generate:
         with st.form("his_generate_form"):
+            format_catalog = studio.get_format_catalog()
+            format_options = [item["label"] for item in format_catalog["formats"]]
+
+            st.markdown("### Inputs del informe")
             c1, c2, c3 = st.columns(3)
             with c1:
-                document_name = st.text_input("Nombre del documento", value="HIS Corporate Document")
-                project = st.text_input("Proyecto", value="Corrugated_Plant_Automation")
-                client = st.text_input("Cliente", value="INGECART")
-                category = st.text_input("Categoría", value="pie")
+                selected_format_label = st.selectbox("Formato que se desea", format_options, index=0)
+                selected_format = next((item for item in format_catalog["formats"] if item["label"] == selected_format_label), format_catalog["formats"][0])
+                document_name = st.text_input("Nombre del documento", value=f"{selected_format['label']} Report")
+                project = st.text_input("Proyecto", value="Industrial_Intelligence")
+                client = st.text_input("Cliente al que va dirigido", value="INGECART")
+                category = st.text_input("Categoría", value="executive")
             with c2:
                 language = st.selectbox("Idioma", ["English", "Español", "Bilingual"], index=2)
                 theme_profile = st.selectbox(
                     "Theme",
                     ["ingecart_industrial", "service_engine"],
                     index=0,
-                    help="Default corporate style is ingecart_industrial.",
+                    help="El formato Ingecart usa la identidad industrial corporativa.",
                 )
                 source_format = st.selectbox(
                     "Formato origen",
@@ -190,21 +224,65 @@ def main() -> None:
                 source_path = st.text_input("Documento origen (ruta)", value="")
                 output_root = st.text_input("Ruta de salida", value="")
             with c3:
-                comments = st.text_area("Comentarios", value="", height=90)
-                objective = st.text_area("Objetivo del documento", value="Generate an Executive Report", height=90)
                 audience = st.text_input("Público objetivo", value="Executive Board")
+                objective = st.text_area("Objetivo del documento", value="Generar un informe ejecutivo con estructura técnica y narrativa industrial clara.", height=90)
+                comments = st.text_area("Comentarios de edición", value="", height=90)
 
-            st.markdown("#### Fuentes de entrada")
-            multi_paths_text = st.text_area("Varias rutas (una por línea)", value="", height=110)
+            st.markdown("#### Contexto del caso")
+            case_context = st.text_area(
+                "Contexto del cliente y escenario industrial",
+                value=(
+                    "Elegir la referencia técnica correcta, mantener flujo estable, reducir WIP, automatizar logística y preparar la planta para crecimiento futuro. "
+                    "En este caso centrado en PAIGE / Ingecart, la diferencia real la marca la continuidad del flujo y la trazabilidad del material."
+                ),
+                height=140,
+            )
+
+            st.markdown("#### Borrador / instrucciones / ubicaciones de imágenes y URLs")
+            draft_text = st.text_area(
+                "Borrador editable del informe",
+                value=(
+                    "Se recomienda abrir con una tesis clara: el valor real no está en la máquina aislada sino en la capacidad del sistema para sostener flujo, trazabilidad y producción útil. "
+                    "La salida de línea, el WIP, la logística automatizada y la gestión del residuo forman un circuito que debe evaluarse como un sistema integrado."
+                ),
+                height=120,
+            )
+            image_url_notes = st.text_area(
+                "Indicaciones para imágenes o URLs",
+                value="Insertar imagen de layout o proceso en el bloque de contexto. Añadir URL de benchmark o referencia industrial en la sección de evidencias. Ubicar imagen de flujo y de AMR/RFID en el capítulo diferencial.",
+                height=90,
+            )
+
+            st.markdown("#### Fuentes de entrada: contenido, contexto y análisis")
+            multi_paths_text = st.text_area("Rutas relevantes (una por línea)", value="\n".join(selected_format.get("source_bundle", [])), height=110)
             uploaded_files = st.file_uploader(
-                "Drag & Drop / Upload",
+                "Carga de archivos para contenido, contexto y análisis",
                 type=["pptx", "ppt", "docx", "pdf", "md", "txt", "html", "htm", "jpg", "jpeg", "png"],
                 accept_multiple_files=True,
             )
+
+            st.markdown("### Catálogo de formatos disponibles")
+            st.caption(f"Formato activo: {selected_format['label']} · plantilla de referencia: {selected_format.get('template_reference') or 'No disponible aún'}")
+            st.json({
+                "formato": selected_format["label"],
+                "descripcion": selected_format["description"],
+                "capabilities": format_catalog["intelligence_capabilities"],
+                "mission_policy": format_catalog["mission_policy"],
+                "workbench_paths": format_catalog["workbench_paths"],
+            })
+
             instruction_text = st.text_area(
-                "Caja de texto (instrucciones)",
-                value="Genera un Executive Report",
-                height=120,
+                "Instrucciones finales para la generación",
+                value=(
+                    f"Formato requerido: {selected_format['label']}. "
+                    f"Cliente: {client}. "
+                    f"Contexto: {case_context}. "
+                    f"Objetivo: {objective}. "
+                    f"Requisitos: usar la arquitectura documental del formato Ingecart como base, mantener narrativa ejecutiva, añadir trazabilidad, flujo, WIP, logística, desperdicio, escalabilidad, y señalar dónde deben ir las imágenes o URLs. "
+                    f"Borrador: {draft_text}. "
+                    f"Notas de imagen/URL: {image_url_notes}."
+                ),
+                height=140,
             )
 
             submitted = st.form_submit_button("Generate HTML", type="primary")
@@ -237,6 +315,13 @@ def main() -> None:
             st.session_state["his_last_result"] = result
             st.session_state["his_current_html"] = result.get("html_path", "")
             st.session_state["his_current_model"] = result.get("document_model_path", "")
+            st.session_state["his_last_context"] = {
+                "formato": selected_format_label,
+                "cliente": client,
+                "contexto": case_context,
+                "borrador": draft_text,
+                "imagenes_urls": image_url_notes,
+            }
             st.success("HTML generated successfully")
             st.json(result)
             if result.get("html_path"):
@@ -476,6 +561,17 @@ def main() -> None:
     with tab_config:
         st.subheader("Configuración")
         st.write("Corporate theme source:", str(studio.corporate_model_path))
+
+        st.markdown("### HTML portability guardrail")
+        st.caption("Bloque de garantía para que cada HTML generado sea estable fuera del PC del autor: sin enlaces locales a CSS, JS ni imágenes si no van embebidos.")
+        st.session_state["his_portability_guard_enabled"] = st.checkbox(
+            "Activar garantía de HTML portátil/autocontenido",
+            value=st.session_state.get("his_portability_guard_enabled", True),
+            help="Cuando está activo, el motor valida y, si es necesario, convierte referencias locales en contenido embebido (base64/data URI).",
+        )
+        if st.button("Validar HTML actual", type="secondary"):
+            _render_html_portability_guard(studio)
+
         st.markdown("### Repository Catalog")
         catalog = studio.get_repository_catalog()
         st.json(catalog)

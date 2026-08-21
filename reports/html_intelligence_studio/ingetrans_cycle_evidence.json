@@ -1,0 +1,155 @@
+{
+  "document_id": "INGETRANS_CYCLE_EVIDENCE_2026-08-19",
+  "title": "INGETRANS cycle-time evidence registry",
+  "status": "canonical_evidence",
+  "version": "1.0",
+  "source_document": "C:/Users/Inaki Senar/Documents/GitHub/AI-FACTORY-v2/PROYECTOS PARA GESTION AYUDAS Y REC.txt",
+  "source_sections": [
+    "Datos y ciclos ingetrans",
+    "Parámetros cinemáticos base",
+    "Scenario A — 5 delivery + 5 return",
+    "Scenario B — 6 delivery + 8 return",
+    "Scenario C — 5 delivery + 5 return",
+    "Scenario D — 4 delivery + 3 return",
+    "INGETRANS CYCLE ENGINE"
+  ],
+  "evidence_summary": {
+    "scope": "INGETRANS reel transport cycle model and benchmark values",
+    "purpose": "Provide a traceable cycle-time source for PAIGE, Ingecart report generation and future mission logic.",
+    "notes": [
+      "The document explicitly states that a single cycle-time value is insufficient and that a cycle-knowledge model is needed.",
+      "It distinguishes kinematic parameters, handling times, route distance, mission pattern and cycle outcome.",
+      "The benchmark values are valid as scenario-based evidence, not as a single universal constant."
+    ]
+  },
+  "kinematic_parameters": [
+    { "parameter": "track_speed", "value_m_per_min": 18.0, "source_value_ft_per_min": 59.0551, "source_document": "PROYECTOS PARA GESTION AYUDAS Y REC.txt" },
+    { "parameter": "track_speed_alternative", "value_m_per_min": 25.0, "source_value_ft_per_min": 82.0210, "source_document": "PROYECTOS PARA GESTION AYUDAS Y REC.txt" },
+    { "parameter": "transfer_speed_1", "value_m_per_min": 40.0, "source_value_ft_per_min": 131.2336, "source_document": "PROYECTOS PARA GESTION AYUDAS Y REC.txt" },
+    { "parameter": "transfer_speed_2", "value_m_per_min": 70.0, "source_value_ft_per_min": 229.6588, "source_document": "PROYECTOS PARA GESTION AYUDAS Y REC.txt" },
+    { "parameter": "transfer_speed_3", "value_m_per_min": 80.0, "source_value_ft_per_min": 262.4672, "source_document": "PROYECTOS PARA GESTION AYUDAS Y REC.txt" },
+    { "parameter": "transfer_speed_4", "value_m_per_min": 20.0, "source_value_ft_per_min": 65.6168, "source_document": "PROYECTOS PARA GESTION AYUDAS Y REC.txt" },
+    { "parameter": "transfer_speed_5", "value_m_per_min": 60.0, "source_value_ft_per_min": 196.8504, "source_document": "PROYECTOS PARA GESTION AYUDAS Y REC.txt" },
+    { "parameter": "acceleration_ramp", "value_s": 4.5, "source_document": "PROYECTOS PARA GESTION AYUDAS Y REC.txt" },
+    { "parameter": "roll_advance", "value_s": 8.33, "source_document": "PROYECTOS PARA GESTION AYUDAS Y REC.txt" },
+    { "parameter": "elevation_closing", "value_s": 6.0, "source_document": "PROYECTOS PARA GESTION AYUDAS Y REC.txt" },
+    { "parameter": "load_elevation", "value_s_range": [16.5, 18.83], "source_document": "PROYECTOS PARA GESTION AYUDAS Y REC.txt" }
+  ],
+  "scenarios": [
+    {
+      "scenario_id": "A",
+      "name": "Scenario A — 5 delivery + 5 return",
+      "delivery_rolls": 5,
+      "return_rolls": 5,
+      "total_rolls": 10,
+      "destinations": [
+        { "destination": "Track 1", "cycle_time_s": 91.66 },
+        { "destination": "Track 3", "cycle_time_s": 95.44 },
+        { "destination": "Track 5", "cycle_time_s": 118.44 },
+        { "destination": "Track 7", "cycle_time_s": 127.90 },
+        { "destination": "Track 9", "cycle_time_s": 149.27 }
+      ],
+      "derived_metrics": {
+        "total_cycle_s": 582.7,
+        "total_cycle_min": 9.71,
+        "average_time_per_roll_s": 58.27,
+        "rolls_per_hour": 61.78,
+        "loaded_rolls_per_hour": 30.89,
+        "unloaded_rolls_per_hour": 30.89
+      },
+      "interpretation": "This scenario supports a distance-to-cycle-time curve rather than a single fixed cycle time."
+    },
+    {
+      "scenario_id": "B",
+      "name": "Scenario B — 6 delivery + 8 return",
+      "delivery_rolls": 6,
+      "return_rolls": 8,
+      "total_rolls": 14,
+      "configurations": [
+        { "configuration": "Liner", "cycle_time_s": 82.13 },
+        { "configuration": "Single Facer 1-1", "cycle_time_s": 177.74 },
+        { "configuration": "Single Facer 1-2", "cycle_time_s": 208.23 },
+        { "configuration": "Single Facer 2-1", "cycle_time_s": 218.10 }
+      ],
+      "derived_metrics": {
+        "total_cycle_s": 686.2,
+        "average_time_per_roll_s": 49.01,
+        "rolls_per_hour": 73.45,
+        "loaded_rolls_per_hour": 36.72,
+        "unloaded_rolls_per_hour": 36.72
+      },
+      "interpretation": "The calculated output confirms that a simple 3600 / cycle_time model is insufficient because mission composition changes effective productivity."
+    },
+    {
+      "scenario_id": "C",
+      "name": "Scenario C — 5 delivery + 5 return",
+      "delivery_rolls": 5,
+      "return_rolls": 5,
+      "total_rolls": 10,
+      "destinations": [
+        { "destination": "Track 1", "cycle_time_s": 91.66 },
+        { "destination": "Track 3", "cycle_time_s": 95.44 },
+        { "destination": "Track 5", "cycle_time_s": 118.44 },
+        { "destination": "Track 6 / special configuration", "cycle_time_s": 245.21 }
+      ],
+      "derived_metrics": {
+        "total_cycle_s": 550.74,
+        "total_cycle_min": 9.18,
+        "average_time_per_roll_s": 55.07,
+        "rolls_per_hour": 65.37,
+        "loaded_rolls_per_hour": 32.68,
+        "unloaded_rolls_per_hour": 32.68
+      },
+      "interpretation": "The 245.21 s case is a long-distance or combined motion case that must be treated as an edge condition in the cycle model."
+    },
+    {
+      "scenario_id": "D",
+      "name": "Scenario D — 4 delivery + 3 return",
+      "delivery_rolls": 4,
+      "return_rolls": 3,
+      "total_rolls": 7,
+      "configurations": [
+        { "configuration": "Liner", "cycle_time_s": 91.66 },
+        { "configuration": "Single Facer 1-1", "cycle_time_s": 95.44 },
+        { "configuration": "Single Facer 1-2", "cycle_time_s": 150.45 }
+      ],
+      "derived_metrics": {
+        "total_cycle_s": 337.55,
+        "average_time_per_roll_s": 48.22,
+        "rolls_per_hour": 74.66,
+        "loaded_rolls_per_hour": 42.66,
+        "unloaded_rolls_per_hour": 32.0
+      },
+      "interpretation": "This scenario reinforces that route pattern and mission mix matter as much as the nominal transport speed."
+    }
+  ],
+  "recommended_model_structure": {
+    "entities": [
+      "Plant",
+      "Corrugator",
+      "Roll Stand",
+      "Track",
+      "Home / Exchange Point",
+      "Transport Route",
+      "Kinematic Parameters",
+      "Handling Times",
+      "Cycle Pattern",
+      "Mission",
+      "Cycle Result",
+      "Benchmark"
+    ],
+    "recommended_database_tables": [
+      "corrugators",
+      "cycle_kinematics",
+      "handling_times",
+      "routes",
+      "cycle_patterns",
+      "cycle_steps"
+    ],
+    "modeling_note": "This evidence should be treated as a cycle knowledge model, not as a single scalar cycle-time table."
+  },
+  "confidence": "high",
+  "canonical_usage": "Use this registry as the evidence source for any industrial report or app workflow that needs INGETRANS timing assumptions, route variability, or scenario-based productivity calculations.",
+  "last_verified": "2026-08-19",
+  "source_type": "engineering_document"
+}

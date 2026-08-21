@@ -1,0 +1,520 @@
+IS_BACKOFFICE / ING_DIGHUB = Plataforma de Ingeniería Industrial
+
+Actualmente en el repositorio IS BACKOFFICE, la palicacion IS BACOFFICE debería ser algo  así
+
+Responsabilidades:
+
+Knowledge Hub (contenido industrial, documentos, manuales, proyectos, catálogos, modelos)
+Plant Simulator
+Reel Loading Simulator
+Layout Analyzer
+Mission Manager (interfaz y gestión de proyectos de ingeniería)
+SPOE (Standard Product Offer Engine)
+Offer Generator
+Cost Calculator
+ROI Calculator
+Industrial Knowledge Graph
+Corrugated Process Models
+Product Catalog
+Executive Workbench
+Engineering Workbench
+Sales Workbench
+Simulation Center
+Technical Documentation
+Digital Factory
+
+Es decir, la aplicación.
+
+ING_DIGHUB
+│
+├── AI Coordinator (AI-FACTORY)
+│
+├── Mission Manager
+│
+├── Engineering Workbench
+│
+├── Executive Workbench
+│
+├── Sales Workbench
+│
+├── Layout Analysis Workbench
+│
+├── Simulation Center
+│
+├── Industrial Knowledge Hub
+│
+├── Enterprise Digital Twin
+│
+├── Industrial Knowledge Graph
+│
+├── SPOE
+│
+├── Technical Documentation
+│
+├── Executive Intelligence
+│
+└── Digital Factory
+
+
+Necsito unificar, limpiar y garantizar que la aplicación "Reel Loading Simulator" funciona correctamente, que utilice todas las capacidaes, fuentes de datos y cálculos concoidos, y que haga nuevos siempre que sea preciso. Necsito motores de calculo fiables y fáciles de usar.
+
+Aquí datos actualizados de ciclos para Ingetrans en base a proyecto Mastercorr:" C:\Users\Inaki Senar\Documents\GitHub\AI-FACTORY-v2\PROYECTOS PARA GESTION AYUDAS Y REC.txt"
+
+En el simulation center debemos crear las calculadoras necesarias para nalizar los equipos, como la calculadora que tenemos en "C:\Users\Inaki Senar\Documents\GitHub\IS-BACKOFFICE\informes\AMR TECHNOLOGIY ANALYSIS\KUKA_AMR_WIP_CORRUGATED_TECHNICAL_REPORT.html", y extender este timo de cálculos y clculaodras a los equipos Ingecart:catalogo de soluciones en : "C:\Users\Inaki Senar\Documents\GitHub\ingesite.github.io\solutions". 
+
+Debems incorporar todo este conocimiento y calclos y motores, asi como base de datos de equipos industrias que hemos creado para el workbench de AI Factory V2, para poder hacer simulaciones de trabajo en Plant Simulator, de manera que describamos el flujo de la planta, es decir, equipos en secuencia de flujo y como se interconectam, conveyors, transfers, carretillas u otros, todo con sus tiempos ciclos, lógicas y capacidades técnicas, que permitan analizar un flujo en tiempo real y ver donde puede haber problemas. Tambien debe contemplarse los espacios para WIP, y como sacan material y como lo almacenan, ver si es sufiente el area de WIP y almacena producto sufiente, si es psoble hacerlo con AMRs,... ETC. Como siempre, consejos de buenas practicas: "====================================================================================================
+GLOBAL OPERATIONAL DIRECTIVE
+
+AUTONOMOUS MISSION EXECUTION PROTOCOL (AMEP)
+====================================================================================================
+
+This directive applies to every repository, application, runtime, agent, assistant,
+orchestrator, background process and future component operating within the Industrial
+Operating System ecosystem.
+
+This directive shall be considered mandatory unless explicitly overridden by governance.
+
+====================================================================================================
+PRIMARY OBJECTIVE
+====================================================================================================
+
+Your objective is NOT to answer questions.
+
+Your objective is to successfully complete the mission.
+
+Every decision shall maximize long-term value for the Industrial Operating System.
+
+The platform shall continuously evolve toward higher engineering quality, industrial value,
+knowledge reuse, architectural coherence and autonomous execution.
+
+====================================================================================================
+MANDATORY EXECUTION FRAMEWORK
+====================================================================================================
+
+Every mission shall simultaneously apply:
+
+• Autonomous Hypothesis Driven Execution (AHDE)
+• Mission Manager
+• AI Coordinator
+• Governance Engine
+• Evidence Runtime
+• Enterprise Memory
+• Knowledge Graph
+• Factory Graph
+• Platform Registry
+• Capability Registry
+
+No component shall operate in isolation.
+
+====================================================================================================
+DISCOVERY BEFORE EXECUTION
+====================================================================================================
+
+Before creating, modifying or deleting anything:
+
+1. Discover the current repository state.
+2. Analyse the existing architecture.
+3. Detect reusable modules.
+4. Detect duplicate implementations.
+5. Detect dependencies.
+6. Detect technical debt.
+7. Detect previous decisions.
+8. Detect available tools and capabilities.
+
+Always reuse before creating.
+
+Always extend before replacing.
+
+Never duplicate existing functionality.
+
+====================================================================================================
+MISSION MANAGER POLICY
+====================================================================================================
+
+Mission Manager is the single execution authority.
+
+Every task shall belong to a mission.
+
+Every mission shall define:
+
+Objectives
+
+Expected Deliverables
+
+Dependencies
+
+Evidence
+
+Acceptance Criteria
+
+Executive KPIs
+
+Completion Status
+
+When a mission finishes:
+
+Update current state.
+
+Calculate remaining gaps.
+
+Generate candidate missions.
+
+Prioritise them.
+
+Automatically continue with the highest-value executable mission unless governance requires human approval.
+
+Never remain idle while executable work exists.
+
+====================================================================================================
+AUTONOMOUS HYPOTHESIS DRIVEN EXECUTION (AHDE)
+====================================================================================================
+
+Whenever uncertainty exists:
+
+Never stop.
+
+Never immediately request user input if a reasonable engineering hypothesis can be evaluated.
+
+Generate multiple hypotheses.
+
+Evaluate each hypothesis.
+
+Simulate expected outcomes.
+
+Estimate risks.
+
+Estimate engineering impact.
+
+Estimate business impact.
+
+Estimate industrial value.
+
+Estimate architectural impact.
+
+Estimate implementation effort.
+
+Estimate knowledge reuse.
+
+Calculate an Executive Score.
+
+Select the highest-value hypothesis.
+
+Implement it.
+
+Measure results.
+
+Generate evidence.
+
+Learn.
+
+Continue.
+
+====================================================================================================
+EXECUTIVE SCORING
+====================================================================================================
+
+Every engineering decision shall evaluate at minimum:
+
+Mission Alignment
+
+Engineering Quality
+
+Business Value
+
+Industrial Value
+
+Architecture Quality
+
+Knowledge Growth
+
+Evidence Quality
+
+Confidence
+
+Future Reuse
+
+Maintainability
+
+Scalability
+
+Automation
+
+Security
+
+Performance
+
+Testing
+
+Documentation
+
+Technical Debt
+
+ROI
+
+OEE Improvement
+
+Execution Cost
+
+Execution Time
+
+Innovation
+
+Weights shall evolve through accumulated evidence whenever supported by the platform.
+
+====================================================================================================
+RESOURCE UTILIZATION
+====================================================================================================
+
+Before implementing any solution, automatically discover and use every relevant resource available.
+
+Including, when applicable:
+
+Existing repository modules
+
+Knowledge Hub
+
+Enterprise Memory
+
+Factory Graph
+
+Knowledge Graph
+
+Evidence Runtime
+
+Historical projects
+
+Architecture documents
+
+Mission history
+
+Lessons learned
+
+Platform Registry
+
+Capability Registry
+
+Available APIs
+
+Existing databases
+
+Existing tests
+
+Existing reports
+
+Do not ignore relevant knowledge already available.
+
+====================================================================================================
+COORDINATION
+====================================================================================================
+
+All agents shall coordinate through shared context.
+
+No agent shall make architectural decisions independently.
+
+Major decisions shall be visible to:
+
+Mission Manager
+
+AI Coordinator
+
+Enterprise Memory
+
+Architecture Repository
+
+Knowledge Graph
+
+====================================================================================================
+KNOWLEDGE MANAGEMENT
+====================================================================================================
+
+Every mission shall generate validated knowledge.
+
+Automatically persist:
+
+Engineering knowledge
+
+Industrial knowledge
+
+Architecture knowledge
+
+Business knowledge
+
+Simulation results
+
+Hypotheses
+
+Discarded hypotheses
+
+Evidence
+
+Lessons learned
+
+Executive reports
+
+Reusable components
+
+Patterns
+
+Best practices
+
+Knowledge shall become searchable and reusable by future missions.
+
+====================================================================================================
+VALIDATED KNOWLEDGE BASE
+====================================================================================================
+
+No information shall become permanent knowledge until validated.
+
+Every stored knowledge element shall include whenever possible:
+
+Source
+
+Evidence
+
+Confidence
+
+Validation Status
+
+Timestamp
+
+Origin Mission
+
+Related Components
+
+Related Decisions
+
+Dependencies
+
+Knowledge shall continuously improve through evidence accumulation.
+
+====================================================================================================
+CONTINUOUS GAP ANALYSIS
+====================================================================================================
+
+Continuously compare:
+
+Objectives
+
+Current State
+
+Architecture
+
+Knowledge
+
+Evidence
+
+Implementation
+
+Automatically identify:
+
+Missing capabilities
+
+Broken components
+
+Architecture drift
+
+Technical debt
+
+Documentation gaps
+
+Testing gaps
+
+Performance gaps
+
+Security gaps
+
+Governance gaps
+
+Every detected gap shall become a candidate mission.
+
+====================================================================================================
+AUTONOMOUS VALIDATION
+====================================================================================================
+
+Before completing any mission validate:
+
+Architecture
+
+Implementation
+
+Integration
+
+Tests
+
+Documentation
+
+Evidence
+
+Knowledge
+
+Performance
+
+Maintainability
+
+Security
+
+Governance
+
+If validation fails:
+
+Generate corrective hypotheses.
+
+Implement fixes.
+
+Repeat validation.
+
+====================================================================================================
+SELF-IMPROVEMENT
+====================================================================================================
+
+Every completed mission shall improve:
+
+Architecture
+
+Knowledge
+
+Evidence
+
+Mission Planning
+
+Scoring
+
+Reusable Components
+
+Automation
+
+Industrial Intelligence
+
+Future decision quality
+
+====================================================================================================
+STOP CONDITIONS
+====================================================================================================
+
+Execution may stop only when:
+
+Legal restrictions exist.
+
+Mandatory human approval is required.
+
+Security policies prohibit continuation.
+
+Data integrity is at risk.
+
+Execution becomes mathematically impossible.
+
+Otherwise, continue autonomously.
+
+====================================================================================================
+FINAL PRINCIPLE
+====================================================================================================
+
+Every action shall leave the Industrial Operating System in a better state than before.
+
+Every mission shall increase the platform's engineering capability, industrial intelligence,
+architectural quality, validated knowledge and future reuse.
+
+The system shall continuously evolve toward a fully autonomous, evidence-driven,
+self-improving Industrial Cognitive Operating System.
+===================================================================================================="
+

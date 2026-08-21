@@ -1,6 +1,8 @@
 from __future__ import annotations
 
+import base64
 import json
+import mimetypes
 import re
 import shutil
 import zipfile
@@ -80,6 +82,91 @@ class HtmlIntelligenceStudio:
         self.repository_catalog = RepositoryCatalog(REPOSITORY_CATALOG_PATH)
         self.certification_engine = OperationalCertificationEngine(REPO_ROOT)
         self.corporate_publishing = CorporatePublishingService()
+
+    def validate_html_stability(self, html_path: str | Path) -> dict[str, Any]:
+        path = Path(html_path).expanduser().resolve()
+        if not path.exists():
+            raise FileNotFoundError(f"HTML file not found: {path}")
+
+        text = path.read_text(encoding="utf-8", errors="ignore")
+        lowered = text.lower()
+        risky_patterns = [
+            r"<link[^>]+href=[\"'](?!https?:|data:|//)[^\"']+[\"']",
+            r"<script[^>]+src=[\"'](?!https?:|data:|//)[^\"']+[\"']",
+            r"<img[^>]+src=[\"'](?!https?:|data:|//)[^\"']+[\"']",
+            r"src=[\"']\.?\./[^\"']+",
+            r"href=[\"']\.?\./[^\"']+",
+        ]
+        findings: list[str] = []
+        for pattern in risky_patterns:
+            matches = re.findall(pattern, text, flags=re.IGNORECASE)
+            if matches:
+                findings.extend(matches)
+
+        portable = not findings and "<style" in lowered and "<body" in lowered
+        return {
+            "html_path": str(path),
+            "portable": portable,
+            "risk_level": "LOW" if portable else "HIGH",
+            "local_asset_references": findings,
+            "has_inline_style": "<style" in lowered,
+            "has_inline_script": "<script" in lowered,
+            "data_uri_count": text.count("data:image/"),
+        }
+
+    def guarantee_standalone_html(self, html_path: str | Path) -> dict[str, Any]:
+        path = Path(html_path).expanduser().resolve()
+        if not path.exists():
+            raise FileNotFoundError(f"HTML file not found: {path}")
+
+        html_text = path.read_text(encoding="utf-8", errors="ignore")
+        soup = BeautifulSoup(html_text, "html.parser")
+        changed = False
+
+        for tag in list(soup.select('link[rel="stylesheet"][href]')):
+            href = str(tag.get("href", "")).strip()
+            if not href or href.startswith(("http://", "https://", "data:", "//")):
+                continue
+            candidate = (path.parent / href).resolve() if not Path(href).is_absolute() else Path(href)
+            if not candidate.exists() or not candidate.is_file():
+                continue
+            css_text = candidate.read_text(encoding="utf-8", errors="ignore")
+            style_tag = soup.new_tag("style")
+            style_tag.string = css_text
+            tag.replace_with(style_tag)
+            changed = True
+
+        for tag in list(soup.select("script[src]")):
+            src = str(tag.get("src", "")).strip()
+            if not src or src.startswith(("http://", "https://", "data:", "//")):
+                continue
+            candidate = (path.parent / src).resolve() if not Path(src).is_absolute() else Path(src)
+            if not candidate.exists() or not candidate.is_file():
+                continue
+            js_text = candidate.read_text(encoding="utf-8", errors="ignore")
+            tag.clear()
+            tag.string = js_text
+            tag.attrs = {}
+            changed = True
+
+        for tag in list(soup.find_all(["img", "source"])):
+            src = str(tag.get("src", "")).strip()
+            if not src or src.startswith(("http://", "https://", "data:", "//")):
+                continue
+            candidate = (path.parent / src).resolve() if not Path(src).is_absolute() else Path(src)
+            if not candidate.exists() or not candidate.is_file():
+                continue
+            mime_type, _ = mimetypes.guess_type(str(candidate))
+            if not mime_type:
+                mime_type = "application/octet-stream"
+            encoded = base64.b64encode(candidate.read_bytes()).decode("ascii")
+            tag["src"] = f"data:{mime_type};base64,{encoded}"
+            changed = True
+
+        if changed:
+            path.write_text(soup.decode(formatter="minimal"), encoding="utf-8")
+
+        return self.validate_html_stability(path)
 
     def create_document(
         self,
@@ -475,6 +562,70 @@ class HtmlIntelligenceStudio:
             "default": "ingecart_industrial",
             "available": ["ingecart_industrial", "service_engine"],
             "mapping": dict(THEME_PROFILE_TO_VARIANT),
+        }
+
+    def get_format_catalog(self) -> dict[str, Any]:
+        ai_factory_root = Path(r"C:\Users\Inaki Senar\Documents\GitHub\AI-FACTORY-v2")
+        ingecart_bundle = [
+            str(ai_factory_root / "PAIGE_INGECART_MODEL_B_MASTER_REPORT_2026-08-18.html"),
+            str(ai_factory_root / "PAIGE_INGECART_MODEL_B_MASTER_REPORT_2026-08-18.md"),
+            str(ai_factory_root / "AI_FACTORY_MISSION_PAIGE_LAYOUT_A_VS_B_2026-08-17.txt"),
+            str(ai_factory_root / "DIGITAL_TWIN_SIMULATION_REPORT_SHORT_RUNS_2026-08-19.txt"),
+            str(ai_factory_root / "ANALISIS_PAIGE_LAYOUT_A_VS_B_2026-08-17.html"),
+            str(ai_factory_root / "governance" / "global_operational_directive.md"),
+        ]
+        return {
+            "default_format": "Ingecart",
+            "formats": [
+                {
+                    "id": "Ingecart",
+                    "label": "Ingecart",
+                    "description": "Formato industrial basado en PAIGE Modelo B + Ingecart: flujo, trazabilidad, WIP, logística, salida y escalabilidad.",
+                    "expected_output": "Informe maestro ejecutivo / HTML técnico con narrativa industrial y evidencias",
+                    "source_bundle": ingecart_bundle,
+                    "required_fields": ["formato", "cliente", "contexto"],
+                    "template_reference": str(ai_factory_root / "PAIGE_INGECART_MODEL_B_MASTER_REPORT_2026-08-18.html"),
+                },
+                {
+                    "id": "CTA",
+                    "label": "CTA",
+                    "description": "Formato futuro para call-to-action, propuesta comercial y executive deck.",
+                    "expected_output": "Narrativa de valor, CTA y pitch comercial",
+                    "source_bundle": [],
+                    "required_fields": ["formato", "cliente", "contexto"],
+                    "template_reference": None,
+                },
+            ],
+            "intelligence_capabilities": [
+                "cálculo industrial",
+                "análisis de procesos",
+                "modelado de máquinas",
+                "simulación de flujo",
+                "gestión de conocimiento",
+                "búsqueda en red y fuentes externas",
+                "validación de evidencias",
+                "análisis de calidad y KPI",
+                "base de datos y memoria de misión",
+                "repositorio de formatos y plantillas",
+            ],
+            "mission_policy": [
+                "Autonomous Hypothesis Driven Execution",
+                "Mission Manager",
+                "AI Coordinator",
+                "Governance Engine",
+                "Evidence Runtime",
+                "Enterprise Memory",
+                "Knowledge Graph",
+                "Factory Graph",
+                "Platform Registry",
+                "Capability Registry",
+            ],
+            "workbench_paths": {
+                "is_backoffice": str(Path(__file__).resolve().parents[2]),
+                "ai_factory_v2": str(ai_factory_root),
+                "global_directive": str(ai_factory_root / "governance" / "global_operational_directive.md"),
+                "html_report_reference": str(ai_factory_root / "PAIGE_INGECART_MODEL_B_MASTER_REPORT_2026-08-18.html"),
+            },
         }
 
     def run_operational_certification(self, max_iterations: int = 5, max_minutes: int = 30) -> dict[str, Any]:
