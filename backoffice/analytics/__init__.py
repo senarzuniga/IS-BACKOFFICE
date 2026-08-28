@@ -4,8 +4,21 @@ from .account_health import AccountHealthScorer
 from .offer_validation import OfferValidator
 from .portfolio import PortfolioAnalyzer
 from .engine import AIAnalyticsEngine
+from .ingecart_monitoring import (
+    load_monitoring_blueprint,
+    generate_monitoring_snapshot,
+    generate_instant_offer,
+    get_scope_label,
+    get_scope_options,
+    ROLE_PANELS,
+    FORMULA_LIBRARY,
+)
 
 __all__ = [
     "PipelineScorer", "Forecaster", "AccountHealthScorer",
     "OfferValidator", "PortfolioAnalyzer", "AIAnalyticsEngine",
+    # Ingecart monitoring
+    "load_monitoring_blueprint", "generate_monitoring_snapshot",
+    "generate_instant_offer", "get_scope_label", "get_scope_options",
+    "ROLE_PANELS", "FORMULA_LIBRARY",
 ]

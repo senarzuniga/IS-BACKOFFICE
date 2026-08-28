@@ -185,6 +185,18 @@ done
 
 The UI is a multipage Streamlit application with three pages.
 
+### Smart Plant Dashboard
+
+The Smart Plant Dashboard now includes a deterministic multi-site Ingecart monitoring copilot for:
+
+- Cartonajes Font
+- Cascades Sonoco-Calgary
+- Cascades Sonoco-Waterloo
+- IP Piscataway
+- Sterner Global-Mastercorr
+
+It simulates role-based real-time signals (3 shifts, 1 holiday/week), OEE, maintenance, interventions, service recommendations, and instant budgetary offers for materials, spares, upgrades, and maintenance contracts.
+
 ### Main App (`streamlit_app.py` → `backoffice/ui/app.py`)
 
 **Sidebar — System Status panel:**
