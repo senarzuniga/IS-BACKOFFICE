@@ -30,7 +30,7 @@ class LLMClient:
             candidates = [
                 str(Path.home() / 'Documents' / 'GitHub' / 'AI-FACTORY-v2' / '.env'),
                 str(Path.cwd().parent / 'AI-FACTORY-v2' / '.env'),
-                r'C:\Users\Inaki Senar\Documents\GitHub\AI-FACTORY-v2\.env'
+                str(Path.home() / 'Documents' / 'GitHub' / 'AI-FACTORY-v2' / '.env')
             ]
             for p in candidates:
                 try:
