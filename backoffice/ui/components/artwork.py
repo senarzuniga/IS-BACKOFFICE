@@ -10,7 +10,7 @@ from PIL import Image, ImageDraw, ImageFont
 import streamlit as st
 
 
-ARTWORK_OUTPUT_DIR = Path(r"C:\Users\Inaki Senar\Documents\INGECART\MARKETING\ARTWORK")
+ARTWORK_OUTPUT_DIR = Path.home() / "Documents" / "INGECART" / "MARKETING" / "ARTWORK"
 IMAGE_EXTENSIONS = {".png", ".jpg", ".jpeg", ".webp", ".bmp"}
 
 
@@ -271,7 +271,7 @@ def render_ingecart_artwork_block() -> None:
 
     source_path_raw = st.text_input(
         "Ruta dinamica de imagen (archivo o carpeta)",
-        placeholder=r"C:\Users\Inaki Senar\Pictures\industrial\photo.jpg o carpeta",
+        placeholder=r"C:\Users\<usuario>\Pictures\industrial\photo.jpg o carpeta",
         key="artwork_source_path",
     )
     output_name = st.text_input(

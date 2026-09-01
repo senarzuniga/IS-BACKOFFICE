@@ -13,7 +13,7 @@ from typing import Dict
 DEFAULT_CANDIDATES = [
     Path.home() / 'Documents' / 'GitHub' / 'AI-FACTORY-v2' / '.env',
     Path.cwd().parent / 'AI-FACTORY-v2' / '.env',
-    Path('C:/Users/Inaki Senar/Documents/GitHub/AI-FACTORY-v2/.env')
+    Path.home() / 'Documents' / 'GitHub' / 'AI-FACTORY-v2' / '.env'
 ]
 
 

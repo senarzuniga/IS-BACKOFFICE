@@ -8,7 +8,7 @@ Panel para editar videos añadiendo:
   - Imagen de cierre (con fade-in de 90% -> 0% en 2s)
 
 Los videos editados se guardan en:
-  C:\\Users\\Inaki Senar\\Documents\\INGECART\\MARKETING\\ARTWORK\\VIDEOS
+  ~\Documents\INGECART\MARKETING\ARTWORK\VIDEOS
 """
 
 import os
@@ -31,7 +31,7 @@ from moviepy import (
 # ============================================================
 # CONFIGURACIÓN DE RUTAS
 # ============================================================
-BASE_DIR = Path(r"C:\Users\Inaki Senar\Documents\INGECART\MARKETING")
+BASE_DIR = Path.home() / "Documents" / "INGECART" / "MARKETING"
 OPENING_IMAGE_PATH = BASE_DIR / "ARTWORK" / "Imagen Slogan principal Ingecart 1.png"
 CLOSING_IMAGE_PATH = BASE_DIR / "LOGOS" / "ICON ORANGE.png"
 OUTPUT_DIR = BASE_DIR / "ARTWORK" / "VIDEOS"
