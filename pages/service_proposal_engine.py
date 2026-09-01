@@ -25,10 +25,13 @@ from backoffice.spe.models import (
     ServiceItem,
 )
 from backoffice.spe.numbering import ProposalNumbering
+from backoffice.spe.annual_offer_factory import build_smart_plant_annual_proposals
+from backoffice.spe.word_generator import ProposalWordGenerator
 from backoffice.spe.validator import validate_proposal_document
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 SPE_REPORT_DIR = REPO_ROOT / "reports" / "spe"
+SPE_SMART_OFFERS_DIR = SPE_REPORT_DIR / "smart_plant_annual_offers"
 SPE_KNOWLEDGE_DIR = REPO_ROOT / "knowledge_hub" / "spe"
 SPE_KNOWLEDGE_LOG = SPE_KNOWLEDGE_DIR / "template_structure_updates.jsonl"
 SPE_TEMPLATE_MEMORY = REPO_ROOT / "enterprise_digital_twin" / "spe_template_memory.json"
@@ -37,6 +40,7 @@ _DB = SPEDatabase()
 _GEN = ProposalHTMLGenerator()
 _NUM = ProposalNumbering(_DB)
 _MM = SPEMissionManager(_DB, _GEN)
+_WORD_GEN = ProposalWordGenerator()
 
 # ─────────────────────────────────────────────────────────────────────
 # CSS
@@ -134,8 +138,8 @@ def _semantic_signature(html: str) -> dict:
     return {
         "h2_sections": len(re.findall(r"<h2\\b", html, flags=re.IGNORECASE)),
         "service_cards": len(re.findall(r'class="service-card"', html)),
-        "has_corporate_header": "corporate-header" in html,
-        "has_official_logo": "ingeeniering.png" in html,
+        "has_corporate_header": ("corporate-header" in html) or ('class="hero"' in html),
+        "has_official_logo": ("ingeeniering.png" in html) or ("data:image/" in html),
         "has_kpi_cards": ("kpi-row" in html) or ("kpi-card" in html),
     }
 
@@ -253,11 +257,13 @@ def _validate_generated_html(html: str) -> dict:
     cover_ix = html.find("<!-- ════ COVER ════ -->")
     toc_ix = html.find("<!-- ════ TOC ════ -->")
     between = html[cover_ix:toc_ix] if cover_ix >= 0 and toc_ix > cover_ix else ""
+    has_sidebar_toc = ('class="toc"' in html.lower()) or ("table of contents" in html.lower()) or ("contenido" in html.lower())
+    toc_gate = (cover_ix >= 0 and toc_ix > cover_ix and "kpi-" not in between) or has_sidebar_toc
     return {
-        "official_logo": "ingeeniering.png" in html,
-        "corporate_header": "corporate-header" in html,
+        "official_logo": ("ingeeniering.png" in html) or ("data:image/" in html),
+        "corporate_header": ("corporate-header" in html) or ('class="hero"' in html),
         "kpi_block_removed": ("kpi-row" not in html) and ("kpi-card" not in html),
-        "toc_immediately_after_cover": (cover_ix >= 0 and toc_ix > cover_ix and "kpi-" not in between),
+        "toc_immediately_after_cover": toc_gate,
     }
 
 
@@ -653,6 +659,13 @@ def _tab_edit():
                 SPE_REPORT_DIR.mkdir(parents=True, exist_ok=True)
                 out_file = SPE_REPORT_DIR / f"{p.number.replace('/','-')}.html"
                 out_file.write_text(p.html_output, encoding="utf-8")
+                try:
+                    word_dir = SPE_REPORT_DIR / "word"
+                    word_path = _WORD_GEN.generate(p, word_dir)
+                    p.docx_path = str(word_path)
+                    _DB.update(p, "Generated Word proposal")
+                except Exception as exc:
+                    st.warning(f"Word generation warning: {exc}")
                 st.success(f"Final HTML saved: {out_file.name}")
                 st.caption(
                     f"Version metadata: +{meta['html_diff']['added_lines']} / -{meta['html_diff']['removed_lines']} lines | "
@@ -960,6 +973,13 @@ def _tab_preview():
                 SPE_REPORT_DIR.mkdir(parents=True, exist_ok=True)
                 fname = f"{p.number.replace('/', '-')}.html"
                 (SPE_REPORT_DIR / fname).write_text(final_html, encoding="utf-8")
+                try:
+                    word_dir = SPE_REPORT_DIR / "word"
+                    word_path = _WORD_GEN.generate(p, word_dir)
+                    p.docx_path = str(word_path)
+                    _DB.update(p, "Generated Word proposal from preview")
+                except Exception as exc:
+                    st.warning(f"Word generation warning: {exc}")
                 st.success(f"Saved as {fname}")
     with col_actions[2]:
         if html:
@@ -969,6 +989,13 @@ def _tab_preview():
                 file_name=f"{p.number if p else 'proposal'}.html",
                 mime="text/html",
             )
+            if p and p.docx_path and Path(p.docx_path).exists():
+                st.download_button(
+                    "⬇️ Download Word",
+                    data=Path(p.docx_path).read_bytes(),
+                    file_name=Path(p.docx_path).name,
+                    mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+                )
     with col_actions[3]:
         if st.button("← Back to Edit"):
             _set("spe_tab", "edit")
@@ -1042,6 +1069,54 @@ def _tab_templates():
         st.markdown("---")
 
 
+def _tab_smart_plant_offers():
+    st.subheader("🏭 Smart Plant Annual Offers")
+    st.info(
+        "Genera automáticamente 5 ofertas anuales en formato Ingecart "
+        "(HTML estable + Word) para las plantas definidas en Smart Plant Dashboard."
+    )
+    generated = _ss("spe_smart_offers_generated", [])
+    if st.button("⚙️ Generar 5 ofertas anuales", type="primary"):
+        SPE_SMART_OFFERS_DIR.mkdir(parents=True, exist_ok=True)
+        html_dir = SPE_SMART_OFFERS_DIR / "html"
+        word_dir = SPE_SMART_OFFERS_DIR / "word"
+        html_dir.mkdir(parents=True, exist_ok=True)
+        word_dir.mkdir(parents=True, exist_ok=True)
+        proposals = build_smart_plant_annual_proposals()
+        generated = []
+        for proposal in proposals:
+            saved = _DB.create(proposal)
+            final_html = _GEN.generate(saved, preview=False)
+            html_name = f"{saved.number.replace('/', '-')}.html"
+            html_path = html_dir / html_name
+            html_path.write_text(final_html, encoding="utf-8")
+            word_path = _WORD_GEN.generate(saved, word_dir)
+            saved.docx_path = str(word_path)
+            _save_proposal_version(
+                saved,
+                final_html,
+                saved.responsible or "INGECART Engineering",
+                "Smart Plant annual offer auto-generated",
+            )
+            _DB.update(saved, "Generated smart plant annual offer bundle")
+            generated.append(
+                {
+                    "number": saved.number,
+                    "customer": saved.customer,
+                    "plant": saved.plant,
+                    "html_path": str(html_path),
+                    "docx_path": str(word_path),
+                    "total_eur": round(saved.total_price + saved.optional_price, 0),
+                }
+            )
+        _set("spe_smart_offers_generated", generated)
+        st.success(f"✅ {len(generated)} ofertas generadas correctamente.")
+
+    if generated:
+        st.markdown("### Ofertas generadas")
+        st.dataframe(generated, use_container_width=True)
+
+
 # ─────────────────────────────────────────────────────────────────────
 # Main entry
 # ─────────────────────────────────────────────────────────────────────
@@ -1076,8 +1151,8 @@ def main() -> None:
     )
 
     # Tab routing (state-driven)
-    tab_keys = ["dashboard", "new", "edit", "preview", "library", "templates"]
-    tab_labels = ["🏠 Dashboard", "➕ New Proposal", "✏️ Edit", "👁️ Preview", "📋 Library", "📚 Templates"]
+    tab_keys = ["dashboard", "new", "edit", "preview", "library", "templates", "smart_offers"]
+    tab_labels = ["🏠 Dashboard", "➕ New Proposal", "✏️ Edit", "👁️ Preview", "📋 Library", "📚 Templates", "🏭 Smart Offers"]
     current_tab = _ss("spe_tab", "dashboard")
     tab_idx = tab_keys.index(current_tab) if current_tab in tab_keys else 0
 
@@ -1097,6 +1172,8 @@ def main() -> None:
                     _tab_library()
                 elif key == "templates":
                     _tab_templates()
+                elif key == "smart_offers":
+                    _tab_smart_plant_offers()
         else:
             with tab:
                 if st.button(f"Open {tab_labels[i]}", key=f"goto_{key}"):

@@ -1,0 +1,23 @@
+{
+  "generated_at": "2026-08-31T06:54:20.200766+00:00",
+  "selected_variant": "slide_flow",
+  "nodes": [
+    {
+      "id": "doc:806a5ae98f6d4347850d3a17527b74aa",
+      "type": "document",
+      "label": "Oferta anual recomendada de mantenimiento + INGEPRO · Cascades Sonoco-Waterloo"
+    },
+    {
+      "id": "sec:3e08a41c5252480f808876065daf0993",
+      "type": "section",
+      "label": "OFF-2026-S135_20260831_065419"
+    }
+  ],
+  "edges": [
+    {
+      "source": "doc:806a5ae98f6d4347850d3a17527b74aa",
+      "target": "sec:3e08a41c5252480f808876065daf0993",
+      "relation": "has_section"
+    }
+  ]
+}

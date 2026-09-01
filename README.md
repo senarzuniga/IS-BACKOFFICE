@@ -185,6 +185,17 @@ done
 
 The UI is a multipage Streamlit application with three pages.
 
+### Partes y Proyectos
+
+The Streamlit menu now includes an integrated **Partes y Proyectos** workspace that embeds the standalone [portal_partes.html](portal_partes.html) portal and documents its current architecture:
+
+- worker login with PIN
+- hour logging by worker / OF / project / category
+- OF-level operational analytics and exports
+- local + OneDrive JSON persistence based on browser APIs
+
+Current limitation: it remains a browser-side application and does not yet share authentication or storage with the FastAPI backend.
+
 ### Smart Plant Dashboard
 
 The Smart Plant Dashboard now includes a deterministic multi-site Ingecart monitoring copilot for:

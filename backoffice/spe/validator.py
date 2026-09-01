@@ -25,7 +25,7 @@ def validate_proposal_document(*, html_text: str, model_path: str, proposal_lang
     has_header_signal = (soup.find("header") is not None) or (soup.find("h1") is not None)
     if not has_header_signal:
         errors.append("Corporate header signal missing")
-    has_logo_signal = "ingeeniering.png" in html_text or bool(soup.find("img"))
+    has_logo_signal = ("ingeeniering.png" in html_text) or ("data:image/" in html_text) or bool(soup.find("img"))
     if not has_logo_signal:
         warnings.append("Official logo signal not detected in HTML")
     if "kpi-row" in html_text or "kpi-card" in html_text:
@@ -38,6 +38,9 @@ def validate_proposal_document(*, html_text: str, model_path: str, proposal_lang
         if src.startswith("http://") or src.startswith("https://") or src.startswith("data:"):
             continue
         path = Path(src)
+        if not path.is_absolute():
+            warnings.append(f"Non-embedded relative image detected: {src}")
+            continue
         if path.is_absolute() and not path.exists():
             errors.append(f"Broken local image: {src}")
 

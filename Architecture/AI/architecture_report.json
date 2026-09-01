@@ -1,89 +1,272 @@
 {
   "metadata": {
-    "generated_by": "GitHub Copilot (GPT-5 mini)",
-    "date": "2026-06-29T12:00:00Z",
-    "repo_root": "."
+    "generated_by": "Copilot CLI architecture assistant",
+    "date": "2026-08-31T07:17:18.653206+00:00",
+    "repo_root": "C:\\Users\\isena\\Documents\\GitHub\\IS-BACKOFFICE"
   },
+  "scanned_files": 558,
+  "summary": "Architecture scan completed successfully. Scanned 558 Python files across 30 top-level areas. Largest areas: backoffice (189), scripts (49), tests (42), agents (38), pages (32).",
   "top_level_folders": [
+    "# ESPECIFICACIÓN TÉCNICA PARA DESAR.txt",
     ".env.example",
-    ".forge",
-    ".git",
     ".github",
-    ".vscode",
+    "ARCHITECTURE_DECISIONS.md",
+    "ARCHITECTURE_VALIDATION_REPORT.md",
+    "Architecture",
+    "Arquitectura de Integración.txt",
+    "BACKOFFICE_HEALTH_REPORT.md",
+    "BACKOFFICE_PRODUCTION_STATUS.md",
+    "BACKOFFICE_STABILITY_AUDIT.md",
+    "BUSINESS_CONTEXT_CLARIFICATION.md",
+    "Book1.xlsx",
+    "BrandGuidelines",
+    "COMANDO PARA GENERA LANDING PAGES.txt",
+    "CORPORATE PRODUCT LANDING.txt",
+    "CTA_INDUSTRIAL_RND_FUNDING_ENGINE_GAPS.txt",
+    "ENTREGABLE GRÁFICOS COMPARATIV.txt",
+    "Estado IS para ASE.txt",
+    "FESPA_2026_RESEARCH_EXECUTIVE_SUMMARY.md",
+    "HTML INTELLIGENCE STATUS.txt",
+    "HTML_INTELLIGENCE_REPOSITORY_MAP.md",
+    "HTML_INTELLIGENCE_TEMPLATE_SPEC.md",
+    "INDUSTRIAL COST ENGINEERING STUDIO.txt",
+    "ING_DIGHUB_UI_STATUS.html",
+    "IS Backoffice Menu.txt",
+    "IS-BACKOFFICE ERP.lnk",
+    "IS-BACKOFFICE Menu General.lnk",
+    "IS-BACKOFFICE_ERP.cmd",
+    "IS-BACKOFFICE_Menu_General.cmd",
+    "IS-Backoffice.cmd",
+    "IS_BACKOFFICE  ING_DIGHUB Plataforma de Ingeniería Industrial.txt",
+    "IS_BACKOFFICE  ING_DIGHUB _ Simuladores.txt",
+    "IS_BACKOFFICE  ING_DIGHUB.txt",
+    "Ing_TRADE COMM Actions",
+    "Integración de Nuevas Aplicacione.txt",
+    "LAUNCH_ADAPTIVE_SALES_ENGINE.bat",
+    "PERFORMANCE_BASELINE.md",
+    "README.md",
+    "README_COMPETITIVE_INTELLIGENCE.md",
+    "README_Reel_load_simulator.md",
+    "README_SIMULATOR.md",
+    "REvisa el estado del trabajo.txt",
+    "Resumen Ejecutivo del Chat IS BAckoffice 04 08 2026.txt",
+    "SCRAPING_GUIDE.md",
+    "SIMULATOR_DESCRIPTION.txt",
+    "SOC_V1_1_READINESS.md",
+    "Service engine.txt",
+    "ZZabrir_app.py",
+    "__pycache__",
     "agents",
     "api",
     "assets",
     "backend",
     "backoffice",
+    "backups",
+    "caamp_diagnostic.json",
+    "calculos intslacion IA.txt",
+    "clean_secrets.sh",
+    "components",
+    "config",
     "core",
     "data",
+    "db",
+    "docker-compose.yml",
     "docs",
+    "document_analysis",
+    "enterprise_digital_twin",
+    "erp_facturacion",
+    "extract_palletizer_pdfs.py",
+    "fespa_generation.log",
     "frontend",
+    "gantt_payments.png",
+    "gantt_payments.py",
+    "gantt_payments_ingecart.png",
+    "generar_docs_psc.sh",
+    "generar_psc_completo.sh",
+    "generar_psc_profesional.sh",
+    "generate_ingpro_presentation.py",
+    "generate_openai_env.py",
+    "generate_psc_visalia_master_deck.py",
+    "generate_psc_visalia_ultimate_professional.py",
+    "implementar_smart_plant_v2.py",
+    "informe_configuradores_planta_reel_load.txt",
+    "informes",
     "ingetrans-reel-simulator",
+    "ingetrans_simulator",
+    "install_doc_analysis.sh",
+    "instrucciones para infomes Ingecart HTML.txt",
+    "instruction_panel",
+    "intelligence.db",
+    "knowledge_hub",
+    "launcher.log",
+    "logs",
+    "machine_trading_run.log",
+    "main.py",
+    "master_presentation_v2.ps1",
+    "models",
+    "openai_key_manager.py",
+    "pages",
+    "plan_analisis_leads_fespa2026.md",
     "plant_simulator",
+    "platform_registry",
+    "releases",
+    "reports",
+    "requirements-dev.txt",
     "requirements.txt",
-    "tests"
+    "requirements_competitive_intelligence.txt",
+    "run.bat",
+    "run.sh",
+    "run_reel_rc1.bat",
+    "scrapes",
+    "scripts",
+    "send_campaign.py",
+    "services",
+    "shared",
+    "simulador reel loading V4.txt",
+    "simuladores para borrar INGTRANS.txt",
+    "smoke_reel_run.py",
+    "soc",
+    "soc_app.py",
+    "start_app.sh",
+    "start_backoffice.py",
+    "streamlit_app.py",
+    "streamlit_import_debug.txt",
+    "templates",
+    "test_api_key.py",
+    "test_outputTEMP_MPY_wvf_snd.mp3",
+    "tests",
+    "tmp_intelligence_panel.py",
+    "tools",
+    "uploaded_campaign_files",
+    "used_equipment_business",
+    "utils",
+    "~$GECART_TradeShows_Executive_Report.docx"
   ],
   "module_summary": {
-    "agents": {"file_count": 49, "path": "agents/"},
-    "backoffice": {"file_count": 114, "path": "backoffice/"},
-    "core": {"file_count": 18, "path": "core/"},
-    "ingetrans_reel_simulator": {"file_count": 87, "path": "ingetrans-reel-simulator/"},
-    "plant_simulator": {"file_count": 11, "path": "plant_simulator/"},
-    "api_routes": {"file_count": 13, "path": "api/routes/"}
+    ".": {
+      "file_count": 17,
+      "path": "."
+    },
+    "agents": {
+      "file_count": 38,
+      "path": "agents/"
+    },
+    "api": {
+      "file_count": 19,
+      "path": "api/"
+    },
+    "backend": {
+      "file_count": 1,
+      "path": "backend/"
+    },
+    "backoffice": {
+      "file_count": 189,
+      "path": "backoffice/"
+    },
+    "backups": {
+      "file_count": 1,
+      "path": "backups/"
+    },
+    "components": {
+      "file_count": 1,
+      "path": "components/"
+    },
+    "core": {
+      "file_count": 19,
+      "path": "core/"
+    },
+    "db": {
+      "file_count": 5,
+      "path": "db/"
+    },
+    "document_analysis": {
+      "file_count": 10,
+      "path": "document_analysis/"
+    },
+    "enterprise_digital_twin": {
+      "file_count": 8,
+      "path": "enterprise_digital_twin/"
+    },
+    "erp_facturacion": {
+      "file_count": 2,
+      "path": "erp_facturacion/"
+    },
+    "frontend": {
+      "file_count": 1,
+      "path": "frontend/"
+    },
+    "informes": {
+      "file_count": 24,
+      "path": "informes/"
+    },
+    "ingetrans_reel_simulator": {
+      "file_count": 3,
+      "path": "ingetrans-reel-simulator/"
+    },
+    "instruction_panel": {
+      "file_count": 3,
+      "path": "instruction_panel/"
+    },
+    "knowledge_hub": {
+      "file_count": 24,
+      "path": "knowledge_hub/"
+    },
+    "models": {
+      "file_count": 2,
+      "path": "models/"
+    },
+    "pages": {
+      "file_count": 32,
+      "path": "pages/"
+    },
+    "plant_simulator": {
+      "file_count": 4,
+      "path": "plant_simulator/"
+    },
+    "platform_registry": {
+      "file_count": 5,
+      "path": "platform_registry/"
+    },
+    "reports": {
+      "file_count": 7,
+      "path": "reports/"
+    },
+    "scrapes": {
+      "file_count": 3,
+      "path": "scrapes/"
+    },
+    "scripts": {
+      "file_count": 49,
+      "path": "scripts/"
+    },
+    "services": {
+      "file_count": 4,
+      "path": "services/"
+    },
+    "shared": {
+      "file_count": 1,
+      "path": "shared/"
+    },
+    "soc": {
+      "file_count": 15,
+      "path": "soc/"
+    },
+    "tests": {
+      "file_count": 42,
+      "path": "tests/"
+    },
+    "tools": {
+      "file_count": 16,
+      "path": "tools/"
+    },
+    "utils": {
+      "file_count": 13,
+      "path": "utils/"
+    }
   },
-  "agents_inventory": [
-    {"name": "ScraperAgent", "path": "backoffice/ingestion/intelligence/agents/scraper_agent.py"},
-    {"name": "SalesAgent", "path": "backoffice/ingestion/intelligence/agents/sales_agent.py"},
-    {"name": "PlannerAgent", "path": "backoffice/ingestion/intelligence/agents/planner_agent.py"},
-    {"name": "NormalizerAgent", "path": "backoffice/ingestion/intelligence/agents/normalizer_agent.py"},
-    {"name": "IntelligenceAgent", "path": "backoffice/ingestion/intelligence/agents/intelligence_agent.py"},
-    {"name": "ExtractorAgent", "path": "backoffice/ingestion/intelligence/agents/extractor_agent.py"},
-    {"name": "BackofficeAgent", "path": "backoffice/agents/backoffice_agent.py"},
-    {"name": "TranscriptionAgent", "path": "backoffice/agents/transcription_agent.py"},
-    {"name": "MultiAgentOrchestrator", "path": "backoffice/agents/orchestrator.py"},
-    {"name": "ConfigAgent", "path": "agents/Reel_load_simulator/config_agent.py"},
-    {"name": "WorkOrderAgent", "path": "agents/Reel_load_simulator/work_order_agent.py"},
-    {"name": "ROIAgent", "path": "agents/Reel_load_simulator/roi_agent.py"},
-    {"name": "PathPlanner", "path": "agents/Reel_load_simulator/movement_agent.py"},
-    {"name": "KnowledgeOrchestrator", "path": "agents/knowledge_intelligence/orchestrator.py"},
-    {"name": "ResearchManager", "path": "agents/knowledge_intelligence/agents/research_manager.py"},
-    {"name": "RepositoryKnowledgeAgent", "path": "agents/knowledge_intelligence/agents/repository_agent.py"},
-    {"name": "ReportArchitect", "path": "agents/knowledge_intelligence/agents/report_architect.py"},
-    {"name": "KnowledgeBuilder", "path": "agents/knowledge_intelligence/agents/knowledge_builder.py"},
-    {"name": "GapAnalysisAgent", "path": "agents/knowledge_intelligence/agents/gap_analysis_agent.py"},
-    {"name": "ExecutiveSummaryAgent", "path": "agents/knowledge_intelligence/agents/executive_summary_agent.py"},
-    {"name": "AnalystAgent", "path": "agents/knowledge_intelligence/agents/analyst_agent.py"},
-    {"name": "WebResearchAgent", "path": "agents/knowledge_intelligence/agents/web_research_agent.py"},
-    {"name": "ValidationAgent", "path": "agents/knowledge_intelligence/agents/validation_agent.py"},
-    {"name": "TechnicalWriter", "path": "agents/knowledge_intelligence/agents/technical_writer.py"},
-    {"name": "MarketIntelligenceAgent", "path": "agents/competitive_intelligence/market_intelligence_agent.py"},
-    {"name": "BenchmarkAgent", "path": "agents/competitive_intelligence/benchmark_agent.py"},
-    {"name": "ExecutiveStrategyAgent", "path": "agents/competitive_intelligence/executive_strategy_agent.py"}
-  ],
-  "findings": [
-    {"id": "missing_architecture_dir", "description": "CI workflow expects tools/architecture_assistant/check_architecture.py and Architecture/AI/architecture_report.json; the scanner script and Architecture/ directory are not present."},
-    {"id": "requirements_conflict", "description": "requirements.txt contains conflicting entries for 'supabase' (>=2.10.0 and >=1.2.0,<2.0.0)."},
-    {"id": "duplicate_simulation_implementations", "description": "Multiple simulator implementations (core/Reel_load_simulator.py, core/ingetrans_simulation_engine.py, plant_simulator/simulation_engine.py and the ingetrans-reel-simulator project) increasing maintenance burden."},
-    {"id": "no_agent_registry", "description": "Multiple agents and orchestrators exist without a central Agent Registry (no formal interface contracts or catalog)."},
-    {"id": "dev_requirements_missing", "description": "CI references requirements-dev.txt but it is not present in the repository root."},
-    {"id": "untracked_files", "description": "Unusual file 'nul' found at repo root (likely accidental)."}
-  ],
-  "risk_assessment": [
-    {"risk": "dependency_conflict", "impact": "High", "mitigation": "Consolidate and pin runtime vs dev deps; create requirements-dev.txt and CI lockfile step."},
-    {"risk": "architecture_drift", "impact": "Medium", "mitigation": "Establish ADRs, Architecture Hub and CI checks; create Agent Registry to document contracts."},
-    {"risk": "duplicate_code", "impact": "Medium", "mitigation": "Define canonical simulation core or extract shared libraries to avoid duplication."}
-  ],
+  "findings": [],
   "recommendations": [
-    "Sign-off this As-Is report before any implementation changes.",
-    "Produce a To-Be architecture and migration roadmap.",
-    "Create Architecture/ hub: ADRs, Agent Registry, Architecture dashboard (documentation only).",
-    "Add CI checks to validate presence and freshness of Architecture/ artifacts.",
-    "Consolidate requirements and add requirements-dev.txt; run dependency audit.",
-    "Select a single canonical simulation implementation or refactor to shared core modules."
-  ],
-  "next_steps": {
-    "immediate": ["Review and approve As-Is report"],
-    "after_approval": ["Produce To-Be architecture (detailed artifacts)", "Create Agent Registry and ADR templates in Architecture/", "Add CI governance to .github/workflows/"]
-  }
+    "Review large top-level modules regularly to control architecture drift.",
+    "Keep this report refreshed in CI to detect repository structure changes early."
+  ]
 }

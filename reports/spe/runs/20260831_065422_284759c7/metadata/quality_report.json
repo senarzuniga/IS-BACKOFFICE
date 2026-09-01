@@ -1,0 +1,169 @@
+{
+  "thresholds": {
+    "text_coverage": 95.0,
+    "image_coverage": 95.0,
+    "diagram_coverage": 80.0,
+    "smartart_coverage": 80.0,
+    "theme_compliance": 100.0,
+    "accessibility": 90.0,
+    "responsive": 100.0,
+    "typography": 85.0,
+    "layout_quality": 90.0,
+    "visual_similarity": 85.0
+  },
+  "attempts": [
+    {
+      "attempt": 1,
+      "selected_variant": "slide_flow",
+      "passed": true,
+      "quality": {
+        "slide_flow": {
+          "passed": true,
+          "coverage": {
+            "text_coverage": 1.0,
+            "image_coverage": 1.0,
+            "diagram_coverage": 1.0,
+            "smartart_coverage": 1.0,
+            "table_coverage": 1.0,
+            "layout_quality": 1.0
+          },
+          "metrics": {
+            "text_coverage": 100.0,
+            "image_coverage": 100.0,
+            "diagram_coverage": 100.0,
+            "smartart_coverage": 100.0,
+            "theme_compliance": 100.0,
+            "accessibility": 100.0,
+            "responsive": 100.0,
+            "typography": 100.0,
+            "layout_quality": 100.0,
+            "visual_similarity": 100.0
+          },
+          "components_reconstructed": 1,
+          "source_counts": {
+            "text": 7,
+            "images": 0,
+            "tables": 0,
+            "smartart": 0,
+            "diagrams": 1
+          },
+          "reconstructed_counts": {
+            "text": 7,
+            "images": 0,
+            "tables": 0,
+            "smartart": 1,
+            "diagrams": 1
+          }
+        },
+        "smart_reconstruction": {
+          "passed": true,
+          "coverage": {
+            "text_coverage": 1.0,
+            "image_coverage": 1.0,
+            "diagram_coverage": 1.0,
+            "smartart_coverage": 1.0,
+            "table_coverage": 1.0,
+            "layout_quality": 1.0
+          },
+          "metrics": {
+            "text_coverage": 100.0,
+            "image_coverage": 100.0,
+            "diagram_coverage": 100.0,
+            "smartart_coverage": 100.0,
+            "theme_compliance": 100.0,
+            "accessibility": 100.0,
+            "responsive": 100.0,
+            "typography": 100.0,
+            "layout_quality": 100.0,
+            "visual_similarity": 100.0
+          },
+          "components_reconstructed": 1,
+          "source_counts": {
+            "text": 7,
+            "images": 0,
+            "tables": 0,
+            "smartart": 0,
+            "diagrams": 1
+          },
+          "reconstructed_counts": {
+            "text": 7,
+            "images": 0,
+            "tables": 0,
+            "smartart": 1,
+            "diagrams": 1
+          }
+        }
+      },
+      "scores": {
+        "slide_flow": {
+          "visual_similarity_score": 100.0,
+          "structure_score": 100.0,
+          "theme_score": 100.0,
+          "typography_score": 100.0,
+          "layout_score": 100.0,
+          "image_score": 100.0,
+          "corporate_identity_score": 100.0,
+          "executive_quality_score": 100.0
+        },
+        "smart_reconstruction": {
+          "visual_similarity_score": 100.0,
+          "structure_score": 100.0,
+          "theme_score": 100.0,
+          "typography_score": 100.0,
+          "layout_score": 100.0,
+          "image_score": 100.0,
+          "corporate_identity_score": 100.0,
+          "executive_quality_score": 100.0
+        }
+      }
+    }
+  ],
+  "selected_quality": {
+    "passed": true,
+    "coverage": {
+      "text_coverage": 1.0,
+      "image_coverage": 1.0,
+      "diagram_coverage": 1.0,
+      "smartart_coverage": 1.0,
+      "table_coverage": 1.0,
+      "layout_quality": 1.0
+    },
+    "metrics": {
+      "text_coverage": 100.0,
+      "image_coverage": 100.0,
+      "diagram_coverage": 100.0,
+      "smartart_coverage": 100.0,
+      "theme_compliance": 100.0,
+      "accessibility": 100.0,
+      "responsive": 100.0,
+      "typography": 100.0,
+      "layout_quality": 100.0,
+      "visual_similarity": 100.0
+    },
+    "components_reconstructed": 1,
+    "source_counts": {
+      "text": 7,
+      "images": 0,
+      "tables": 0,
+      "smartart": 0,
+      "diagrams": 1
+    },
+    "reconstructed_counts": {
+      "text": 7,
+      "images": 0,
+      "tables": 0,
+      "smartart": 1,
+      "diagrams": 1
+    }
+  },
+  "selected_scores": {
+    "visual_similarity_score": 100.0,
+    "structure_score": 100.0,
+    "theme_score": 100.0,
+    "typography_score": 100.0,
+    "layout_score": 100.0,
+    "image_score": 100.0,
+    "corporate_identity_score": 100.0,
+    "executive_quality_score": 100.0
+  }
+}

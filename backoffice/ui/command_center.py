@@ -478,9 +478,8 @@ class CommandCenter:
 
             st.markdown("---")
             # Quick navigation to legacy pages
-            if st.button("🧾 Abrir Facturación ERP", key="open_erp", help="Abrir formulario de facturación"):
-                st.session_state.current_page = "erp_facturacion"
-                st.experimental_rerun()
+            if st.button("🧾 Abrir ERP Profesional", key="open_erp", help="Abrir modulo ERP Profesional"):
+                st.switch_page("pages/erp_profesional.py")
 
             st.caption("© 2026 IS-BACKOFFICE · v2.0")
 

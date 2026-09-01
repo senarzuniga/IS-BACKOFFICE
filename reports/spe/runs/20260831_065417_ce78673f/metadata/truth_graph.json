@@ -1,0 +1,23 @@
+{
+  "generated_at": "2026-08-31T06:54:17.816921+00:00",
+  "selected_variant": "slide_flow",
+  "nodes": [
+    {
+      "id": "doc:275d437e55d143999e328b48e8352ec0",
+      "type": "document",
+      "label": "Oferta anual recomendada de mantenimiento + INGEPRO · Cartonajes Font"
+    },
+    {
+      "id": "sec:93a62540f21a41789b1a1943186f5d43",
+      "type": "section",
+      "label": "OFF-2026-S133_20260831_065417"
+    }
+  ],
+  "edges": [
+    {
+      "source": "doc:275d437e55d143999e328b48e8352ec0",
+      "target": "sec:93a62540f21a41789b1a1943186f5d43",
+      "relation": "has_section"
+    }
+  ]
+}

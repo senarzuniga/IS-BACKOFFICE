@@ -3842,6 +3842,213 @@
           "relation": "has_section"
         }
       ]
+    },
+    {
+      "generated_at": "2026-08-31T06:54:17.816921+00:00",
+      "selected_variant": "slide_flow",
+      "nodes": [
+        {
+          "id": "doc:275d437e55d143999e328b48e8352ec0",
+          "type": "document",
+          "label": "Oferta anual recomendada de mantenimiento + INGEPRO · Cartonajes Font"
+        },
+        {
+          "id": "sec:93a62540f21a41789b1a1943186f5d43",
+          "type": "section",
+          "label": "OFF-2026-S133_20260831_065417"
+        }
+      ],
+      "edges": [
+        {
+          "source": "doc:275d437e55d143999e328b48e8352ec0",
+          "target": "sec:93a62540f21a41789b1a1943186f5d43",
+          "relation": "has_section"
+        }
+      ]
+    },
+    {
+      "generated_at": "2026-08-31T06:54:19.012660+00:00",
+      "selected_variant": "slide_flow",
+      "nodes": [
+        {
+          "id": "doc:c7bb3c6777a144d98550f9825819312c",
+          "type": "document",
+          "label": "Oferta anual recomendada de mantenimiento + INGEPRO · Cascades Sonoco-Calgary"
+        },
+        {
+          "id": "sec:bd346f26a4ca4f40a0317653dc6f6e11",
+          "type": "section",
+          "label": "OFF-2026-S134_20260831_065418"
+        }
+      ],
+      "edges": [
+        {
+          "source": "doc:c7bb3c6777a144d98550f9825819312c",
+          "target": "sec:bd346f26a4ca4f40a0317653dc6f6e11",
+          "relation": "has_section"
+        }
+      ]
+    },
+    {
+      "generated_at": "2026-08-31T06:54:20.200766+00:00",
+      "selected_variant": "slide_flow",
+      "nodes": [
+        {
+          "id": "doc:806a5ae98f6d4347850d3a17527b74aa",
+          "type": "document",
+          "label": "Oferta anual recomendada de mantenimiento + INGEPRO · Cascades Sonoco-Waterloo"
+        },
+        {
+          "id": "sec:3e08a41c5252480f808876065daf0993",
+          "type": "section",
+          "label": "OFF-2026-S135_20260831_065419"
+        }
+      ],
+      "edges": [
+        {
+          "source": "doc:806a5ae98f6d4347850d3a17527b74aa",
+          "target": "sec:3e08a41c5252480f808876065daf0993",
+          "relation": "has_section"
+        }
+      ]
+    },
+    {
+      "generated_at": "2026-08-31T06:54:21.773411+00:00",
+      "selected_variant": "slide_flow",
+      "nodes": [
+        {
+          "id": "doc:236c21a2f73140bbb9885db97932357f",
+          "type": "document",
+          "label": "Oferta anual recomendada de mantenimiento + INGEPRO · IP Piscataway"
+        },
+        {
+          "id": "sec:67b45ed6bdc241dbb600583f53a7c054",
+          "type": "section",
+          "label": "OFF-2026-S136_20260831_065421"
+        }
+      ],
+      "edges": [
+        {
+          "source": "doc:236c21a2f73140bbb9885db97932357f",
+          "target": "sec:67b45ed6bdc241dbb600583f53a7c054",
+          "relation": "has_section"
+        }
+      ]
+    },
+    {
+      "generated_at": "2026-08-31T06:54:22.771751+00:00",
+      "selected_variant": "slide_flow",
+      "nodes": [
+        {
+          "id": "doc:d05b9161c5ba403896eaa112c8302ce3",
+          "type": "document",
+          "label": "Oferta anual recomendada de mantenimiento + INGEPRO · Sterner Global-Mastercorr"
+        },
+        {
+          "id": "sec:30ce69b4c7e64488a09c14daf85b4c37",
+          "type": "section",
+          "label": "OFF-2026-S137_20260831_065422"
+        }
+      ],
+      "edges": [
+        {
+          "source": "doc:d05b9161c5ba403896eaa112c8302ce3",
+          "target": "sec:30ce69b4c7e64488a09c14daf85b4c37",
+          "relation": "has_section"
+        }
+      ]
+    },
+    {
+      "generated_at": "2026-08-31T06:54:57.751619+00:00",
+      "selected_variant": "slide_flow",
+      "nodes": [
+        {
+          "id": "doc:16001da16ffa441aaae1d2d27c12c44b",
+          "type": "document",
+          "label": "Oferta test"
+        },
+        {
+          "id": "sec:262ba153a8354becb96c87e055600ba4",
+          "type": "section",
+          "label": "OFF-TEST-VERIFY_20260831_065457"
+        }
+      ],
+      "edges": [
+        {
+          "source": "doc:16001da16ffa441aaae1d2d27c12c44b",
+          "target": "sec:262ba153a8354becb96c87e055600ba4",
+          "relation": "has_section"
+        }
+      ]
+    },
+    {
+      "generated_at": "2026-08-31T06:55:07.851115+00:00",
+      "selected_variant": "slide_flow",
+      "nodes": [
+        {
+          "id": "doc:148661b902f44bb1ad3e52b797b0ce12",
+          "type": "document",
+          "label": "Oferta test"
+        },
+        {
+          "id": "sec:8f7f17f1c50e4b42b7a03827eb1440ef",
+          "type": "section",
+          "label": "OFF-TEST-VERIFY2_20260831_065507"
+        }
+      ],
+      "edges": [
+        {
+          "source": "doc:148661b902f44bb1ad3e52b797b0ce12",
+          "target": "sec:8f7f17f1c50e4b42b7a03827eb1440ef",
+          "relation": "has_section"
+        }
+      ]
+    },
+    {
+      "generated_at": "2026-08-31T06:55:36.408458+00:00",
+      "selected_variant": "slide_flow",
+      "nodes": [
+        {
+          "id": "doc:1addf75c0a154844970d9844ff34e6d4",
+          "type": "document",
+          "label": "Oferta test"
+        },
+        {
+          "id": "sec:3206cd08e8d446c2bef2a57f80e03909",
+          "type": "section",
+          "label": "OFF-TEST-BRAND_20260831_065536"
+        }
+      ],
+      "edges": [
+        {
+          "source": "doc:1addf75c0a154844970d9844ff34e6d4",
+          "target": "sec:3206cd08e8d446c2bef2a57f80e03909",
+          "relation": "has_section"
+        }
+      ]
+    },
+    {
+      "generated_at": "2026-08-31T06:55:50.751215+00:00",
+      "selected_variant": "slide_flow",
+      "nodes": [
+        {
+          "id": "doc:91fc0ff145e94ed7b4791e06bfb8e24c",
+          "type": "document",
+          "label": "Oferta test"
+        },
+        {
+          "id": "sec:a7b4d597f4e44db9b3713ba8f628adee",
+          "type": "section",
+          "label": "OFF-TEST-BRAND2_20260831_065550"
+        }
+      ],
+      "edges": [
+        {
+          "source": "doc:91fc0ff145e94ed7b4791e06bfb8e24c",
+          "target": "sec:a7b4d597f4e44db9b3713ba8f628adee",
+          "relation": "has_section"
+        }
+      ]
     }
   ]
 }

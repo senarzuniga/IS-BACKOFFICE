@@ -1,0 +1,23 @@
+{
+  "generated_at": "2026-08-31T06:54:57.751619+00:00",
+  "selected_variant": "slide_flow",
+  "nodes": [
+    {
+      "id": "doc:16001da16ffa441aaae1d2d27c12c44b",
+      "type": "document",
+      "label": "Oferta test"
+    },
+    {
+      "id": "sec:262ba153a8354becb96c87e055600ba4",
+      "type": "section",
+      "label": "OFF-TEST-VERIFY_20260831_065457"
+    }
+  ],
+  "edges": [
+    {
+      "source": "doc:16001da16ffa441aaae1d2d27c12c44b",
+      "target": "sec:262ba153a8354becb96c87e055600ba4",
+      "relation": "has_section"
+    }
+  ]
+}

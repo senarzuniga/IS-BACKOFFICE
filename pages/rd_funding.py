@@ -11,9 +11,18 @@ from backoffice.rd_funding.context_service import FundingContextService
 from backoffice.rd_funding.engines import liquidity_scenario
 from backoffice.rd_funding.models import ClientProject
 from backoffice.rd_funding.orchestrator import RDFundingOrchestrator
+from backoffice.ui.components.consulting_brand import (
+    CONSULTING_HTML_REPORT,
+    CONSULTING_QUICKSTART,
+    render_cta_brand_hero,
+)
 
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
+
+
+def _jump(page: str) -> None:
+    st.switch_page(page)
 
 
 def _split(value: str) -> list[str]:
@@ -31,6 +40,25 @@ def main() -> None:
         inject_theme()
     except Exception:
         pass
+
+    render_cta_brand_hero(
+        "CTA R&D Funding Engine",
+        "Calificacion de proyectos, radar de convocatorias y seguimiento de evidencias desde el nuevo eje ERP Profesional.",
+        context_label="ERP Profesional > Reporting",
+    )
+    top_nav = st.columns(4)
+    with top_nav[0]:
+        if st.button("Hub ERP Profesional", use_container_width=True):
+            _jump("pages/erp_profesional.py")
+    with top_nav[1]:
+        if st.button("Facturacion ERP", use_container_width=True):
+            _jump("pages/facturacion.py")
+    with top_nav[2]:
+        if st.button("Consultoria Funding", use_container_width=True):
+            _jump("pages/funding_consulting_center.py")
+    with top_nav[3]:
+        if CONSULTING_HTML_REPORT.exists() and CONSULTING_QUICKSTART.exists():
+            st.caption("HTML y guia disponibles en el hub ERP.")
 
     context = FundingContextService()
     orchestrator = RDFundingOrchestrator(context)

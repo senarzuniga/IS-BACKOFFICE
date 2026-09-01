@@ -1,0 +1,23 @@
+{
+  "generated_at": "2026-08-31T06:55:50.751215+00:00",
+  "selected_variant": "slide_flow",
+  "nodes": [
+    {
+      "id": "doc:91fc0ff145e94ed7b4791e06bfb8e24c",
+      "type": "document",
+      "label": "Oferta test"
+    },
+    {
+      "id": "sec:a7b4d597f4e44db9b3713ba8f628adee",
+      "type": "section",
+      "label": "OFF-TEST-BRAND2_20260831_065550"
+    }
+  ],
+  "edges": [
+    {
+      "source": "doc:91fc0ff145e94ed7b4791e06bfb8e24c",
+      "target": "sec:a7b4d597f4e44db9b3713ba8f628adee",
+      "relation": "has_section"
+    }
+  ]
+}

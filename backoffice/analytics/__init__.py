@@ -8,10 +8,13 @@ from .ingecart_monitoring import (
     load_monitoring_blueprint,
     generate_monitoring_snapshot,
     generate_instant_offer,
+    suggest_spare_parts,
+    build_request_alert,
     get_scope_label,
     get_scope_options,
     ROLE_PANELS,
     FORMULA_LIBRARY,
+    SPARE_PART_CATALOG,
 )
 
 __all__ = [
@@ -19,6 +22,7 @@ __all__ = [
     "OfferValidator", "PortfolioAnalyzer", "AIAnalyticsEngine",
     # Ingecart monitoring
     "load_monitoring_blueprint", "generate_monitoring_snapshot",
-    "generate_instant_offer", "get_scope_label", "get_scope_options",
-    "ROLE_PANELS", "FORMULA_LIBRARY",
+    "generate_instant_offer", "suggest_spare_parts", "build_request_alert",
+    "get_scope_label", "get_scope_options",
+    "ROLE_PANELS", "FORMULA_LIBRARY", "SPARE_PART_CATALOG",
 ]

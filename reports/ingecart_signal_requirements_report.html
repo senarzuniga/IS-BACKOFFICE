@@ -1,0 +1,401 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>INGECART — Requerimientos mínimos de señales para monitorización</title>
+  <style>
+    :root {
+      --bg-base: #05070B;
+      --bg-card: #1A1D24;
+      --bg-soft: #10151C;
+      --text: #F4F5F7;
+      --muted: #7E848E;
+      --accent: #FF6A00;
+      --accent-soft: rgba(255,106,0,0.15);
+      --border: rgba(126,132,142,0.35);
+      --good: #58d68d;
+      --warn: #f7b267;
+      --danger: #ff6b6b;
+      --shadow: rgba(0,0,0,0.45);
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg-base);
+      color: var(--text);
+      line-height: 1.55;
+      padding: 30px 18px;
+    }
+    .wrapper {
+      max-width: 1250px;
+      margin: 0 auto;
+      background: var(--bg-base);
+      box-shadow: 0 25px 45px var(--shadow);
+      border: 1px solid var(--border);
+    }
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 28px 12px 28px;
+      border-bottom: 1px solid var(--accent);
+      background: linear-gradient(180deg, rgba(255,106,0,0.04), rgba(0,0,0,0));
+    }
+    .brand {
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      font-size: 14px;
+    }
+    .meta {
+      color: var(--muted);
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .content {
+      padding: 30px 28px 40px 28px;
+    }
+    h1 {
+      font-size: 36px;
+      line-height: 1.1;
+      margin: 0 0 16px 0;
+      letter-spacing: -0.04em;
+      color: var(--text);
+    }
+    h2 {
+      font-size: 22px;
+      color: var(--text);
+      border-left: 4px solid var(--accent);
+      padding-left: 12px;
+      margin: 26px 0 12px 0;
+    }
+    h3 {
+      font-size: 17px;
+      margin: 18px 0 10px 0;
+      color: var(--accent);
+    }
+    p, li {
+      color: var(--text);
+      font-size: 15px;
+    }
+    .lead {
+      font-size: 17px;
+      color: #eaeaea;
+      background: var(--bg-soft);
+      border: 1px solid var(--border);
+      padding: 18px 18px;
+      margin: 20px 0 22px 0;
+    }
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      margin: 16px 0 10px 0;
+    }
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      padding: 18px 18px 14px 18px;
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.02);
+    }
+    .card h3 {
+      margin-top: 0;
+    }
+    ul {
+      margin: 0 0 0 18px;
+      padding: 0;
+    }
+    li { margin-bottom: 8px; }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 12px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+    }
+    th, td {
+      text-align: left;
+      vertical-align: top;
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border);
+      font-size: 14px;
+    }
+    th {
+      background: var(--accent-soft);
+      color: var(--text);
+      font-size: 13px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .badge {
+      display: inline-block;
+      padding: 4px 9px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.03);
+      color: var(--text);
+      font-size: 11px;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+    .highlight { color: var(--accent); font-weight: 700; }
+    .footer {
+      border-top: 1px solid var(--border);
+      padding: 14px 28px 20px 28px;
+      color: var(--muted);
+      font-size: 12px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    @media (max-width: 800px) {
+      .two-col { grid-template-columns: 1fr; }
+      .header, .footer { flex-direction: column; align-items: flex-start; }
+      h1 { font-size: 28px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <div class="header">
+      <div class="brand">INGECART</div>
+      <div class="meta">Smart Plant Dashboard • Requerimientos de señales</div>
+    </div>
+
+    <div class="content">
+      <h1>Requerimientos mínimos de señales para monitorización industrial</h1>
+      <div class="lead">
+        Este informe define el conjunto mínimo de señales necesarias para que la monitorización de máquinas de Ingecart y de terceros sea viable en el modelo de paneles de Smart Plant Dashboard, con foco en soporte, mantenimiento, producción, OEE y servicio técnico.
+      </div>
+
+      <h2>1. Objetivo</h2>
+      <p>
+        No hace falta pedir todas las señales disponibles del equipo. El objetivo es obtener el <span class="highlight">mínimo conjunto útil</span> que permita:
+      </p>
+      <ul>
+        <li>Conocer si la máquina está en marcha o parada.</li>
+        <li>Medir rendimiento, OEE y flujo de producción.</li>
+        <li>Detectar averías, bloqueos y riesgos.</li>
+        <li>Soportar mantenimiento preventivo y correctivo.</li>
+        <li>Permitir diagnóstico por parte de ingeniería y servicio.</li>
+      </ul>
+
+      <h2>2. Principio de diseño: mínimo viable profesional</h2>
+      <div class="two-col">
+        <div class="card">
+          <h3>Señales mínimas por equipo</h3>
+          <ul>
+            <li>Estado de máquina</li>
+            <li>Producción real / throughput</li>
+            <li>Alarmas y fallos activos</li>
+            <li>Temperatura / corriente / potencia</li>
+            <li>Tiempo de parada</li>
+            <li>Runtime desde mantenimiento</li>
+            <li>Heartbeat PLC / comunicación</li>
+            <li>Estado seguridad / E-stop</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Señales “muy recomendables”</h3>
+          <ul>
+            <li>Vibración</li>
+            <li>Eventos históricos</li>
+            <li>Contadores de piezas, pallets o reels</li>
+            <li>Signal quality / scrap</li>
+            <li>Buffer / cola / nivel / material presente</li>
+            <li>Recipe, orden actual y operador</li>
+            <li>Posición o destino de AMR / transfer</li>
+            <li>Batería / carga / estado de movilidad</li>
+          </ul>
+        </div>
+      </div>
+
+      <h2>3. Requerimiento para Ingeniería Eléctrica</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Área</th>
+            <th>Señales</th>
+            <th>Objetivo</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Alimentación y seguridad</td>
+            <td>Alimentación principal OK / NO OK, breaker, contactor, E-stop, guardas, interlocks</td>
+            <td>Detectar disponibilidad y seguridad</td>
+          </tr>
+          <tr>
+            <td>Potencia y consumo</td>
+            <td>Tensión, corriente, potencia activa, consumo eléctrico, overload</td>
+            <td>Diagnóstico eléctrico y benchmarking energético</td>
+          </tr>
+          <tr>
+            <td>Condición mecánica / térmica</td>
+            <td>Temperatura motor, caja, tablero, zona crítica; vibración</td>
+            <td>Riesgo de avería y mantenimiento predictivo</td>
+          </tr>
+          <tr>
+            <td>Sistemas móviles</td>
+            <td>Batería, UPS, tensión, estado de carga, alarmas de energía</td>
+            <td>Disponibilidad de AMR y equipos móviles</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>Lo mínimo útil que debe pedir Ingeniería Eléctrica</h3>
+      <ul>
+        <li>machine_power_ok</li>
+        <li>motor_running</li>
+        <li>current_or_power</li>
+        <li>temperature_c</li>
+        <li>vibration_mm_s</li>
+        <li>overload_alarm</li>
+        <li>estop_or_safety_fault</li>
+        <li>battery_pct (si aplica)</li>
+      </ul>
+
+      <h2>4. Requerimiento para Ingeniería de Software / Automatización</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Área</th>
+            <th>Señales</th>
+            <th>Objetivo</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Estado de máquina</td>
+            <td>running, stopped, idle, fault, maintenance, blocked, starved</td>
+            <td>Control operativo y dashboard</td>
+          </tr>
+          <tr>
+            <td>Producción</td>
+            <td>throughput_per_hour, good_units, scrap_units, rejects</td>
+            <td>OEE y rendimiento</td>
+          </tr>
+          <tr>
+            <td>Paradas</td>
+            <td>downtime_minutes, reason_code, fault_code, last_alarm</td>
+            <td>Diagnóstico y soporte</td>
+          </tr>
+          <tr>
+            <td>Mantenimiento</td>
+            <td>runtime_since_pm, pm_due, mantenimiento pendiente</td>
+            <td>Preventivo y servicio</td>
+          </tr>
+          <tr>
+            <td>Integración</td>
+            <td>heartbeat PLC, order_id, recipe_id, operator_id, event_timestamp</td>
+            <td>Traza de eventos y análisis</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>Lo mínimo útil que debe pedir Ingeniería de Software</h3>
+      <ul>
+        <li>machine_state</li>
+        <li>running</li>
+        <li>throughput_per_hour</li>
+        <li>good_units</li>
+        <li>scrap_units</li>
+        <li>downtime_minutes</li>
+        <li>alarm_code</li>
+        <li>fault_present</li>
+        <li>runtime_since_pm</li>
+        <li>heartbeat</li>
+        <li>last_event_time</li>
+      </ul>
+
+      <h2>5. Señales mínimas por familia de equipo</h2>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Tipo</th>
+            <th>Señales clave</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Palletizer</td>
+            <td>estado, ciclos/hora, piezas/pallet, seguridad, temperatura, vibración, parada por jam, alarmas</td>
+          </tr>
+          <tr>
+            <td>Conveyors / transfercar</td>
+            <td>estado cinta, velocidad, material presente, jam, cola/buffer, temperaturas, alarmas</td>
+          </tr>
+          <tr>
+            <td>AMR / AGV</td>
+            <td>estado, posición, destino, batería, tensión, carga, gripper, alarma de navegación, heartbeat</td>
+          </tr>
+          <tr>
+            <td>Weighing</td>
+            <td>peso medido, status, out-of-range, alarmas, calibración</td>
+          </tr>
+          <tr>
+            <td>RFID / tracking</td>
+            <td>lectura OK/KO, ID pallet/reel, lecturas/hora, zona de paso, errores</td>
+          </tr>
+          <tr>
+            <td>Ingetrans / reels</td>
+            <td>ID reel, estado entrega/recogida, carril/posición, RFID, alarmas, throughput</td>
+          </tr>
+          <tr>
+            <td>BHS / sheet handoff</td>
+            <td>estado entrega, WIP disponible, pallet full/empty, handoff OK/NOK, alarma robot</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2>6. Recomendación mínima viable para Smart Plant Dashboard</h2>
+      <p>
+        El conjunto ideal para cubrir la mayoría de casos es esta lista base, aplicable a prácticamente cualquier activo:
+      </p>
+      <ul>
+        <li>machine_state</li>
+        <li>running</li>
+        <li>throughput_per_hour</li>
+        <li>good_units</li>
+        <li>scrap_units</li>
+        <li>downtime_minutes</li>
+        <li>alarm_code</li>
+        <li>fault_present</li>
+        <li>temperature_c</li>
+        <li>current_or_power</li>
+        <li>vibration_mm_s</li>
+        <li>runtime_since_pm</li>
+      </ul>
+
+      <p>
+        Con esta base se puede sostener <span class="highlight">OEE, alertas, troubleshooting, mantenimiento, soporte técnico y servicio</span> sin sobrecargar la integración ni el proyecto de ingeniería.
+      </p>
+
+      <h2>7. Recomendación final</h2>
+      <div class="card">
+        <p><span class="badge">Prioridad 1</span> Estado operativo + producción + alarmas + tiempo de parada.</p>
+        <p><span class="badge">Prioridad 2</span> Temperatura, vibración, corriente y runtime desde PM.</p>
+        <p><span class="badge">Prioridad 3</span> RFID, ubicación, batería, eventos históricos y order/recipe context.</p>
+      </div>
+
+      <h2>8. Resumen ejecutivo</h2>
+      <p>
+        La monitorización funcional para Smart Plant Dashboard no exige “todas las señales”. Se necesita un conjunto <span class="highlight">mínimo, consistente y accionable</span> que permita ver estado, rendimiento, disponibilidad y salud. Ese conjunto debe entregarse en dos capas: <strong>Ingeniería Eléctrica</strong> (energía, protección, temperatura, vibración, seguridad) y <strong>Ingeniería de Software</strong> (estado, producción, alarmas, eventos, maintenance, heartbeat, orden y flujo). Esta combinación es la base para un soporte adecuado, una monitorización serena y un servicio más profesional para Ingecart y para clientes terceros.
+      </p>
+    </div>
+
+    <div class="footer">
+      <div>INGECART</div>
+      <div>Smart Plant Dashboard • Industrial Monitoring Requirements</div>
+    </div>
+  </div>
+</body>
+</html>

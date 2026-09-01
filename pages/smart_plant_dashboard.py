@@ -9,10 +9,12 @@ import streamlit as st
 from backoffice.analytics.ingecart_monitoring import (
     FORMULA_LIBRARY,
     ROLE_PANELS,
+    build_request_alert,
     generate_instant_offer,
     generate_monitoring_snapshot,
     get_scope_label,
     load_monitoring_blueprint,
+    suggest_spare_parts,
 )
 
 
@@ -104,6 +106,11 @@ def _render_site_cards(site_summaries: list[dict]) -> None:
             st.caption(site["summary"])
 
 
+def _ensure_request_alert_state() -> None:
+    st.session_state.setdefault("ingecart_request_alerts", [])
+    st.session_state.setdefault("ingecart_spare_matches", [])
+
+
 def main() -> None:
     try:
         from backoffice.theme import inject_theme
@@ -116,6 +123,7 @@ def main() -> None:
     import plotly.express as px
 
     _inject_local_styles()
+    _ensure_request_alert_state()
     config = load_config()
     blueprint = load_monitoring_blueprint()
 
@@ -187,6 +195,13 @@ def main() -> None:
                 ],
                 use_container_width=True,
             )
+        if role == "Ingecart":
+            st.markdown("#### Alerta-Nueva solicitud (clientes)")
+            customer_alerts = st.session_state.get("ingecart_request_alerts", [])
+            if customer_alerts:
+                st.dataframe(pd.DataFrame(customer_alerts), use_container_width=True)
+            else:
+                st.caption("No hay solicitudes nuevas de clientes registradas en esta sesión.")
 
     with tab_signals:
         equipment_values = ["all"] + latest_df["equipment_id"].tolist()
@@ -322,6 +337,49 @@ def main() -> None:
         with offer_col_3:
             coverage = st.selectbox("Cobertura", ["business_hours", "extended", "24x7"], index=2)
         urgency = st.radio("Urgencia", ["standard", "priority", "emergency"], horizontal=True, index=1)
+        requester_col_1, requester_col_2, requester_col_3 = st.columns(3)
+        with requester_col_1:
+            requester_name = st.text_input("Solicitante", placeholder="Nombre del solicitante")
+        with requester_col_2:
+            requester_role = st.selectbox("Perfil del solicitante", ["Operario", "Mantenimiento", "Jefe de planta", "Compras", "Gerencia"], index=3)
+        with requester_col_3:
+            request_site_id = st.selectbox(
+                "Planta solicitante",
+                [site["id"] for site in blueprint["sites"]],
+                format_func=lambda value: next((f'{site["id"]} · {site["name"]}' for site in blueprint["sites"] if site["id"] == value), value),
+            )
+
+        spare_description = ""
+        if request_kind == "materials_and_spares":
+            st.markdown("#### Buscador técnico de recambios")
+            spare_description = st.text_area(
+                "Descripción técnica disponible del recambio",
+                placeholder="Ejemplo: variador 7.5 kW 400V con STO para cinta transportadora",
+                height=100,
+            )
+            if st.button("Buscar recambios compatibles", use_container_width=True):
+                st.session_state["ingecart_spare_matches"] = suggest_spare_parts(spare_description, top_k=8)
+
+            spare_matches = st.session_state.get("ingecart_spare_matches", [])
+            if spare_matches:
+                rows = []
+                for match in spare_matches:
+                    alternatives = "; ".join(
+                        f'{alt["vendor"]} {alt["code"]}: {alt["technical_description"]}'
+                        for alt in match["compatible_alternatives"]
+                    )
+                    rows.append(
+                        {
+                            "Familia": match["family_group"],
+                            "Código original (OEM)": match["oem_code"],
+                            "Descripción técnica": match["technical_description"],
+                            "Alternativas compatibles mercado": alternatives,
+                        }
+                    )
+                st.dataframe(pd.DataFrame(rows), use_container_width=True)
+            else:
+                st.caption("Introduce una descripción técnica para proponer códigos originales y alternativas compatibles.")
+
         offer = generate_instant_offer(snapshot, request_kind, target_equipment, coverage, urgency)
         offer_df = pd.DataFrame(offer["lines"])
         offer_metric_cols = st.columns(4)
@@ -337,10 +395,33 @@ def main() -> None:
             file_name=f'{offer["reference"]}.json',
             mime="application/json",
         )
+        if st.button("Registrar solicitud y generar Alerta-Nueva solicitud", use_container_width=True):
+            site_name = next((site["name"] for site in blueprint["sites"] if site["id"] == request_site_id), "Planta no identificada")
+            description = spare_description if request_kind == "materials_and_spares" else f"Solicitud de tipo {request_kind} para {target_equipment}."
+            suggestions = st.session_state.get("ingecart_spare_matches", []) if request_kind == "materials_and_spares" else []
+            if request_kind == "materials_and_spares" and not spare_description.strip():
+                st.warning("Para recambios, añade una descripción técnica antes de registrar la solicitud.")
+            else:
+                alert = build_request_alert(
+                    request_kind=request_kind,
+                    requester_name=requester_name,
+                    requester_role=requester_role,
+                    plant_id=request_site_id,
+                    plant_name=site_name,
+                    urgency=urgency,
+                    description=description,
+                    suggested_parts=suggestions,
+                )
+                st.session_state["ingecart_request_alerts"] = [alert] + st.session_state.get("ingecart_request_alerts", [])
+                st.success("Solicitud registrada. Visible para Ingecart en 'Alerta-Nueva solicitud'.")
 
     if not alerts_df.empty:
         with st.expander("Alertas activas"):
             st.dataframe(alerts_df, use_container_width=True)
+    customer_alerts = st.session_state.get("ingecart_request_alerts", [])
+    if customer_alerts:
+        with st.expander("Alerta-Nueva solicitud (clientes)"):
+            st.dataframe(pd.DataFrame(customer_alerts), use_container_width=True)
 
 
 if __name__ == "__main__":

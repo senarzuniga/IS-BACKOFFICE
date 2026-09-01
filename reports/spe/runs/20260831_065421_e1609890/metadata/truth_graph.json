@@ -1,0 +1,23 @@
+{
+  "generated_at": "2026-08-31T06:54:21.773411+00:00",
+  "selected_variant": "slide_flow",
+  "nodes": [
+    {
+      "id": "doc:236c21a2f73140bbb9885db97932357f",
+      "type": "document",
+      "label": "Oferta anual recomendada de mantenimiento + INGEPRO · IP Piscataway"
+    },
+    {
+      "id": "sec:67b45ed6bdc241dbb600583f53a7c054",
+      "type": "section",
+      "label": "OFF-2026-S136_20260831_065421"
+    }
+  ],
+  "edges": [
+    {
+      "source": "doc:236c21a2f73140bbb9885db97932357f",
+      "target": "sec:67b45ed6bdc241dbb600583f53a7c054",
+      "relation": "has_section"
+    }
+  ]
+}

@@ -1,8 +1,10 @@
 """Deterministic qualification, matching, budget, compatibility and calendar engines."""
 from __future__ import annotations
 
-from datetime import date
+from datetime import date, datetime
 from typing import Any
+
+from .models import ValidationStatus
 
 
 MATCH_DIMENSIONS = (
@@ -214,3 +216,200 @@ def deadline_alerts(closing_date: date | None, today: date | None = None) -> lis
     remaining = (closing_date - (today or date.today())).days
     thresholds = [180, 120, 90, 60, 30, 15, 7, 0]
     return [{"days": days, "due": remaining <= days, "remaining_days": remaining} for days in thresholds]
+
+
+def company_classification(company: dict[str, Any]) -> list[str]:
+    """Categorise a company using the CTA funding taxonomy."""
+    if not company:
+        return []
+    haystack = " ".join(
+        str(value)
+        for value in (
+            company.get("name"),
+            company.get("industry"),
+            company.get("sector"),
+            company.get("legal_form"),
+            company.get("company_size"),
+            company.get("activity_main"),
+            company.get("activities_secondary"),
+            company.get("technology_focus"),
+            company.get("technology_areas"),
+            company.get("tags"),
+        )
+    ).lower()
+    categories: list[str] = []
+    if any(term in haystack for term in ("industrial", "manufacturing", "fabricación", "ingeniería industrial", "industry")):
+        categories.append("INDUSTRIAL COMPANY")
+    if any(term in haystack for term in ("ai", "software", "technology", "digital", "automation", "robotics", "innovación", "intelligence")):
+        categories.append("TECHNOLOGY COMPANY")
+    if any(term in haystack for term in ("rd", "i+d", "research", "innovation")):
+        categories.append("R&D COMPANY")
+    if any(term in haystack for term in ("digital", "digitisation", "digitalización", "ai", "automation")):
+        categories.append("DIGITAL TRANSFORMATION")
+    if any(term in haystack for term in ("new company", "startup", "start-up", "newco", "emprendimiento", "nueva empresa")) or company.get("is_new_company") is True:
+        categories.append("NEW COMPANY")
+    if any(term in haystack for term in ("autonom", "autónomo", "self employed", "autónoma")):
+        categories.append("AUTONOMOUS")
+    if any(term in haystack for term in ("mujer", "woman", "women", "female", "femenino")) or company.get("women_entrepreneur") is True:
+        categories.append("WOMAN ENTREPRENEUR")
+    size = str(company.get("company_size", "")).lower()
+    if any(term in size for term in ("micro", "microempresa", "microenterprise", "micro-sme")):
+        categories.append("MICRO-SME")
+    if any(term in size for term in ("small", "pequeña", "pymes", "sme")):
+        categories.append("SME")
+    if "medium" in size or "mediana" in size:
+        categories.append("SME")
+    if not categories:
+        categories.append("OTHER")
+    # Deduplicate while preserving first-seen order.
+    seen: set[str] = set()
+    ordered: list[str] = []
+    for category in categories:
+        if category not in seen:
+            seen.add(category)
+            ordered.append(category)
+    return ordered
+
+
+def company_profile_completeness(profile: dict[str, Any]) -> int:
+    """Return a score from 0 to 100 for company-profile completeness."""
+    if not profile:
+        return 0
+    required = {
+        "company_id": "company_id",
+        "name": "name",
+        "legal_form": "legal_form",
+        "region": "region",
+        "municipality": "municipality",
+        "sector": "sector",
+        "company_size": "company_size",
+        "activity_main": "activity_main",
+        "employees": "employees",
+        "technology_focus": "technology_focus",
+        "financial_capacity": "financial_capacity",
+        "projects": "projects",
+    }
+    filled = 0
+    for key, source in required.items():
+        value = profile.get(source)
+        if value is None or value == "" or value == [] or value == {}:
+            continue
+        filled += 1
+    return round((filled / len(required)) * 100, 0)
+
+
+def funding_alert_severity(deadline_days: int | None, match_score: float, strategic_fit: float | None = None) -> str:
+    """Map deadline and fit into CTA severity levels."""
+    if deadline_days is not None and deadline_days <= 15 and match_score >= 70:
+        return "CRITICAL"
+    if deadline_days is not None and deadline_days <= 30 or strategic_fit is not None and strategic_fit >= 80:
+        return "HIGH"
+    if match_score >= 55 and (deadline_days is None or deadline_days > 30):
+        return "MEDIUM"
+    return "LOW"
+
+
+def generate_funding_alerts(
+    company: dict[str, Any] | None = None,
+    project: dict[str, Any] | None = None,
+    calls: list[dict[str, Any]] | None = None,
+) -> list[dict[str, Any]]:
+    """Generate CTA alert cards from a company/project context and official funding calls."""
+    if not calls:
+        return []
+    alerts: list[dict[str, Any]] = []
+    for call in calls:
+        if call.get("call_status") in {"CLOSED", "EXPIRED", "ARCHIVED"}:
+            continue
+        validation_status = str(call.get("validation_status", "")).upper()
+        if validation_status != ValidationStatus.VERIFIED.value:
+            filtered_state = "ELIGIBILITY TO VERIFY"
+        else:
+            filtered_state = "VERIFIED MATCH"
+        if project:
+            scoring = score_project_call(project, call)
+            match_score = float(scoring.get("score", 0.0))
+            reasons = scoring.get("rationale", [])
+            strategic_fit = float(scoring.get("dimensions", {}).get("strategic_fit", 0.0))
+        else:
+            scoring = {"score": 60.0 if validation_status == ValidationStatus.VERIFIED.value else 35.0, "rationale": ["Generic discovery scan", "Candidate opportunity requires profile verification"], "dimensions": {"strategic_fit": 60.0}}
+            match_score = float(scoring["score"])
+            reasons = scoring["rationale"]
+            strategic_fit = float(scoring["dimensions"].get("strategic_fit", 0.0))
+        closing_date = call.get("closing_date")
+        if isinstance(closing_date, str):
+            try:
+                closing_date = datetime.fromisoformat(closing_date).date()
+            except ValueError:
+                closing_date = None
+        if closing_date is not None:
+            remaining = (closing_date - date.today()).days
+        else:
+            remaining = None
+        alert = {
+            "id": call.get("id"),
+            "name": call.get("call_name") or call.get("name") or "Funding opportunity",
+            "organism": call.get("organisation") or "Official source",
+            "status": str(call.get("call_status", "UNKNOWN")).upper(),
+            "alert_state": filtered_state,
+            "severity": funding_alert_severity(remaining, match_score, strategic_fit),
+            "match_score": round(match_score, 1),
+            "deadline": closing_date.isoformat() if closing_date else None,
+            "remaining_days": remaining,
+            "eligibility": filtered_state,
+            "reasons": reasons[:5],
+            "requirements": call.get("required_documents") or ["Check official source and development evidence"],
+            "recommended_action": "CREATE ASSESSMENT" if filtered_state == "VERIFIED MATCH" else "VERIFY ELIGIBILITY",
+            "company_match": bool(company),
+        }
+        alerts.append(alert)
+    alerts.sort(key=lambda item: (priority_rank(item["severity"]), -float(item["match_score"]), item["remaining_days"] or 9999))
+    return alerts
+
+
+def priority_rank(severity: str) -> int:
+    return {"CRITICAL": 0, "HIGH": 1, "MEDIUM": 2, "LOW": 3}.get(str(severity).upper(), 99)
+
+
+def build_document_checklist(company: dict[str, Any] | None = None, project: dict[str, Any] | None = None, call: dict[str, Any] | None = None) -> dict[str, Any]:
+    """Create a lightweight document dossier checklist with readiness scoring."""
+    sections = [
+        "Company documentation",
+        "Project documentation",
+        "Technical documentation",
+        "Financial documentation",
+        "Legal documentation",
+        "Administrative documentation",
+    ]
+    statuses = {}
+    for section in sections:
+        status = "AVAILABLE" if section in {"Company documentation", "Project documentation"} else "MISSING"
+        if call and section in {"Financial documentation", "Legal documentation"}:
+            status = "REQUIRES REVIEW" if call.get("required_documents") else "MISSING"
+        statuses[section] = status
+    ready = sum(1 for value in statuses.values() if value == "AVAILABLE")
+    readiness = round((ready / len(sections)) * 100, 0)
+    return {
+        "sections": statuses,
+        "application_readiness_pct": readiness,
+        "document_status": "READY" if readiness >= 80 else "INCOMPLETE",
+        "missing_sections": [name for name, value in statuses.items() if value == "MISSING"],
+        "requires_review": [name for name, value in statuses.items() if value == "REQUIRES REVIEW"],
+    }
+
+
+def create_alert_mission(alert: dict[str, Any], project_id: str | None = None, call_id: str | None = None) -> dict[str, Any]:
+    """Create a mission from an alert, preserving approval and evidence tracking."""
+    objective = f"Verify eligibility of {alert.get('name')} for the current client project."
+    if project_id:
+        objective = f"Verify eligibility of project {project_id} for {alert.get('name')}."
+    return {
+        "objective": objective,
+        "project_id": project_id,
+        "funding_call_id": call_id or alert.get("id"),
+        "assigned_agent": "FUNDING ELIGIBILITY AGENT",
+        "stage": "ELIGIBILITY",
+        "next_action": alert.get("recommended_action", "CREATE ASSESSMENT"),
+        "deliverable": "Decision + deliverable + next action",
+        "blocking_reason": None if alert.get("eligibility") == "VERIFIED MATCH" else "Eligibility requires official-source verification",
+    }

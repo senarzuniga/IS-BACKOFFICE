@@ -1,0 +1,121 @@
+{
+  "document_id": "1addf75c0a154844970d9844ff34e6d4",
+  "title": "Oferta test",
+  "components": [
+    {
+      "id": "c1d663d4ff434e75b698a3b288558fc3",
+      "component_kind": "text",
+      "title": "OFF-TEST-BRAND_20260831_065536",
+      "body": "OFF-TEST-BRAND_20260831_065536",
+      "items": [
+        {
+          "title": "Title",
+          "body": "# Oferta test"
+        },
+        {
+          "title": "Text",
+          "body": "## Proposal Metadata\n- Number: OFF-TEST-BRAND\n- Customer: Cliente\n- Plant: Planta\n- Country: -\n- Language: es\n- Currency: EUR\n- Duration: -\n- Validity Days: 30\n- Payment Terms: -"
+        },
+        {
+          "title": "Text",
+          "body": "## Executive Summary\nCorporate service proposal generated under AHDE governance."
+        },
+        {
+          "title": "Text",
+          "body": "## Services"
+        }
+      ],
+      "props": {
+        "layout": "single-column",
+        "labels": [
+          "ahde",
+          "cliente",
+          "corporate",
+          "country",
+          "currency",
+          "customer",
+          "days",
+          "duration",
+          "eur",
+          "executive",
+          "generated",
+          "governance"
+        ],
+        "confidence": 6.2
+      },
+      "asset_ids": [],
+      "style_tokens": [],
+      "evidence_ids": [],
+      "knowledge_keys": [],
+      "semantic_labels": [],
+      "confidence": 1.0
+    }
+  ],
+  "diagram_components": [],
+  "tables": [],
+  "kpis": [],
+  "images": [],
+  "products": [
+    "Service_Proposal_Engine"
+  ],
+  "clients": [
+    "Cliente"
+  ],
+  "technologies": [],
+  "concepts": [
+    "Text",
+    "Title"
+  ],
+  "prompts": [],
+  "hypotheses": [
+    {
+      "id": "H1",
+      "name": "Strict structure-first reconstruction",
+      "engineering": 8.9,
+      "business": 8.3,
+      "quality": 9.2,
+      "risk": 2.0,
+      "executive_score": 8.47
+    },
+    {
+      "id": "H2",
+      "name": "Balanced semantic-first reconstruction",
+      "engineering": 8.4,
+      "business": 8.9,
+      "quality": 8.7,
+      "risk": 2.4,
+      "executive_score": 8.16
+    },
+    {
+      "id": "H3",
+      "name": "Visual-priority reconstruction",
+      "engineering": 8.0,
+      "business": 8.2,
+      "quality": 8.4,
+      "risk": 2.9,
+      "executive_score": 7.63
+    }
+  ],
+  "selected_hypothesis": {
+    "id": "H1",
+    "name": "Strict structure-first reconstruction",
+    "engineering": 8.9,
+    "business": 8.3,
+    "quality": 9.2,
+    "risk": 2.0,
+    "executive_score": 8.47
+  },
+  "decisions": {
+    "variant": "slide_flow",
+    "score": {
+      "visual_similarity_score": 100.0,
+      "structure_score": 100.0,
+      "theme_score": 100.0,
+      "typography_score": 100.0,
+      "layout_score": 100.0,
+      "image_score": 100.0,
+      "corporate_identity_score": 100.0,
+      "executive_quality_score": 100.0
+    }
+  }
+}

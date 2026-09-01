@@ -1,7 +1,7 @@
 {
   "active": true,
   "timeout_seconds": 120,
-  "updated_at": "2026-08-07T08:05:38.390664+00:00",
+  "updated_at": "2026-08-31T06:55:51.226715+00:00",
   "tasks": {
     "20260807_062304_842ffd09": {
       "task_name": "create_document",
@@ -28,6 +28,154 @@
         "category": "spe"
       },
       "note": "pipeline_run_start"
+    },
+    "20260831_065155_2c8fdbe5": {
+      "task_name": "create_document",
+      "status": "RUNNING",
+      "started_at": "2026-08-31T06:51:55.416229+00:00",
+      "last_heartbeat": "2026-08-31T06:51:55.470216+00:00",
+      "progress": 0.35,
+      "metadata": {
+        "document_name": "Test Proposal",
+        "project": "Service_Proposal_Engine",
+        "category": "spe"
+      },
+      "note": "pipeline_run_start"
+    },
+    "20260831_065417_3ff24c86": {
+      "task_name": "create_document",
+      "status": "COMPLETED",
+      "started_at": "2026-08-31T06:54:17.365632+00:00",
+      "last_heartbeat": "2026-08-31T06:54:18.329399+00:00",
+      "progress": 1.0,
+      "metadata": {
+        "document_name": "Oferta anual recomendada de mantenimiento + INGEPRO · Cartonajes Font",
+        "project": "Smart Plant Annual Maintenance Programme",
+        "category": "spe"
+      },
+      "note": "completed",
+      "completed_at": "2026-08-31T06:54:18.342684+00:00",
+      "result": "OK"
+    },
+    "20260831_065418_4b21870e": {
+      "task_name": "create_document",
+      "status": "COMPLETED",
+      "started_at": "2026-08-31T06:54:18.578899+00:00",
+      "last_heartbeat": "2026-08-31T06:54:19.510466+00:00",
+      "progress": 1.0,
+      "metadata": {
+        "document_name": "Oferta anual recomendada de mantenimiento + INGEPRO · Cascades Sonoco-Calgary",
+        "project": "Smart Plant Annual Maintenance Programme",
+        "category": "spe"
+      },
+      "note": "completed",
+      "completed_at": "2026-08-31T06:54:19.522458+00:00",
+      "result": "OK"
+    },
+    "20260831_065419_df0e2f67": {
+      "task_name": "create_document",
+      "status": "COMPLETED",
+      "started_at": "2026-08-31T06:54:19.737521+00:00",
+      "last_heartbeat": "2026-08-31T06:54:21.191388+00:00",
+      "progress": 1.0,
+      "metadata": {
+        "document_name": "Oferta anual recomendada de mantenimiento + INGEPRO · Cascades Sonoco-Waterloo",
+        "project": "Smart Plant Annual Maintenance Programme",
+        "category": "spe"
+      },
+      "note": "completed",
+      "completed_at": "2026-08-31T06:54:21.205050+00:00",
+      "result": "OK"
+    },
+    "20260831_065421_2ae5eddc": {
+      "task_name": "create_document",
+      "status": "COMPLETED",
+      "started_at": "2026-08-31T06:54:21.404808+00:00",
+      "last_heartbeat": "2026-08-31T06:54:22.233321+00:00",
+      "progress": 1.0,
+      "metadata": {
+        "document_name": "Oferta anual recomendada de mantenimiento + INGEPRO · IP Piscataway",
+        "project": "Smart Plant Annual Maintenance Programme",
+        "category": "spe"
+      },
+      "note": "completed",
+      "completed_at": "2026-08-31T06:54:22.245272+00:00",
+      "result": "OK"
+    },
+    "20260831_065422_c48dfac8": {
+      "task_name": "create_document",
+      "status": "COMPLETED",
+      "started_at": "2026-08-31T06:54:22.431034+00:00",
+      "last_heartbeat": "2026-08-31T06:54:23.233812+00:00",
+      "progress": 1.0,
+      "metadata": {
+        "document_name": "Oferta anual recomendada de mantenimiento + INGEPRO · Sterner Global-Mastercorr",
+        "project": "Smart Plant Annual Maintenance Programme",
+        "category": "spe"
+      },
+      "note": "completed",
+      "completed_at": "2026-08-31T06:54:23.248156+00:00",
+      "result": "OK"
+    },
+    "20260831_065457_dbf1369b": {
+      "task_name": "create_document",
+      "status": "COMPLETED",
+      "started_at": "2026-08-31T06:54:57.385352+00:00",
+      "last_heartbeat": "2026-08-31T06:54:58.219526+00:00",
+      "progress": 1.0,
+      "metadata": {
+        "document_name": "Oferta test",
+        "project": "Service_Proposal_Engine",
+        "category": "spe"
+      },
+      "note": "completed",
+      "completed_at": "2026-08-31T06:54:58.232648+00:00",
+      "result": "OK"
+    },
+    "20260831_065507_49cb943a": {
+      "task_name": "create_document",
+      "status": "COMPLETED",
+      "started_at": "2026-08-31T06:55:07.491114+00:00",
+      "last_heartbeat": "2026-08-31T06:55:08.278802+00:00",
+      "progress": 1.0,
+      "metadata": {
+        "document_name": "Oferta test",
+        "project": "Service_Proposal_Engine",
+        "category": "spe"
+      },
+      "note": "completed",
+      "completed_at": "2026-08-31T06:55:08.291619+00:00",
+      "result": "OK"
+    },
+    "20260831_065536_5511ae02": {
+      "task_name": "create_document",
+      "status": "COMPLETED",
+      "started_at": "2026-08-31T06:55:36.039681+00:00",
+      "last_heartbeat": "2026-08-31T06:55:36.886543+00:00",
+      "progress": 1.0,
+      "metadata": {
+        "document_name": "Oferta test",
+        "project": "Service_Proposal_Engine",
+        "category": "spe"
+      },
+      "note": "completed",
+      "completed_at": "2026-08-31T06:55:36.899487+00:00",
+      "result": "OK"
+    },
+    "20260831_065550_867a3f6c": {
+      "task_name": "create_document",
+      "status": "COMPLETED",
+      "started_at": "2026-08-31T06:55:50.377604+00:00",
+      "last_heartbeat": "2026-08-31T06:55:51.213199+00:00",
+      "progress": 1.0,
+      "metadata": {
+        "document_name": "Oferta test",
+        "project": "Service_Proposal_Engine",
+        "category": "spe"
+      },
+      "note": "completed",
+      "completed_at": "2026-08-31T06:55:51.226715+00:00",
+      "result": "OK"
     }
   },
   "events": [
@@ -70,6 +218,386 @@
       "task_id": "20260807_080537_7de2d704",
       "progress": 0.35,
       "note": "pipeline_run_start"
+    },
+    {
+      "ts": "2026-08-31T06:51:55.416229+00:00",
+      "event": "task_started",
+      "task_id": "20260831_065155_2c8fdbe5",
+      "task_name": "create_document"
+    },
+    {
+      "ts": "2026-08-31T06:51:55.448118+00:00",
+      "event": "heartbeat",
+      "task_id": "20260831_065155_2c8fdbe5",
+      "progress": 0.1,
+      "note": "strategy_selection"
+    },
+    {
+      "ts": "2026-08-31T06:51:55.470216+00:00",
+      "event": "heartbeat",
+      "task_id": "20260831_065155_2c8fdbe5",
+      "progress": 0.35,
+      "note": "pipeline_run_start"
+    },
+    {
+      "ts": "2026-08-31T06:54:17.365632+00:00",
+      "event": "task_started",
+      "task_id": "20260831_065417_3ff24c86",
+      "task_name": "create_document"
+    },
+    {
+      "ts": "2026-08-31T06:54:17.406542+00:00",
+      "event": "heartbeat",
+      "task_id": "20260831_065417_3ff24c86",
+      "progress": 0.1,
+      "note": "strategy_selection"
+    },
+    {
+      "ts": "2026-08-31T06:54:17.409005+00:00",
+      "event": "heartbeat",
+      "task_id": "20260831_065417_3ff24c86",
+      "progress": 0.35,
+      "note": "pipeline_run_start"
+    },
+    {
+      "ts": "2026-08-31T06:54:18.304175+00:00",
+      "event": "heartbeat",
+      "task_id": "20260831_065417_3ff24c86",
+      "progress": 0.75,
+      "note": "pipeline_run_done"
+    },
+    {
+      "ts": "2026-08-31T06:54:18.329399+00:00",
+      "event": "heartbeat",
+      "task_id": "20260831_065417_3ff24c86",
+      "progress": 1.0,
+      "note": "completed"
+    },
+    {
+      "ts": "2026-08-31T06:54:18.342684+00:00",
+      "event": "task_completed",
+      "task_id": "20260831_065417_3ff24c86",
+      "result": "OK"
+    },
+    {
+      "ts": "2026-08-31T06:54:18.578899+00:00",
+      "event": "task_started",
+      "task_id": "20260831_065418_4b21870e",
+      "task_name": "create_document"
+    },
+    {
+      "ts": "2026-08-31T06:54:18.625075+00:00",
+      "event": "heartbeat",
+      "task_id": "20260831_065418_4b21870e",
+      "progress": 0.1,
+      "note": "strategy_selection"
+    },
+    {
+      "ts": "2026-08-31T06:54:18.647131+00:00",
+      "event": "heartbeat",
+      "task_id": "20260831_065418_4b21870e",
+      "progress": 0.35,
+      "note": "pipeline_run_start"
+    },
+    {
+      "ts": "2026-08-31T06:54:19.487617+00:00",
+      "event": "heartbeat",
+      "task_id": "20260831_065418_4b21870e",
+      "progress": 0.75,
+      "note": "pipeline_run_done"
+    },
+    {
+      "ts": "2026-08-31T06:54:19.510466+00:00",
+      "event": "heartbeat",
+      "task_id": "20260831_065418_4b21870e",
+      "progress": 1.0,
+      "note": "completed"
+    },
+    {
+      "ts": "2026-08-31T06:54:19.522458+00:00",
+      "event": "task_completed",
+      "task_id": "20260831_065418_4b21870e",
+      "result": "OK"
+    },
+    {
+      "ts": "2026-08-31T06:54:19.737521+00:00",
+      "event": "task_started",
+      "task_id": "20260831_065419_df0e2f67",
+      "task_name": "create_document"
+    },
+    {
+      "ts": "2026-08-31T06:54:19.786136+00:00",
+      "event": "heartbeat",
+      "task_id": "20260831_065419_df0e2f67",
+      "progress": 0.1,
+      "note": "strategy_selection"
+    },
+    {
+      "ts": "2026-08-31T06:54:19.802831+00:00",
+      "event": "heartbeat",
+      "task_id": "20260831_065419_df0e2f67",
+      "progress": 0.35,
+      "note": "pipeline_run_start"
+    },
+    {
+      "ts": "2026-08-31T06:54:21.155542+00:00",
+      "event": "heartbeat",
+      "task_id": "20260831_065419_df0e2f67",
+      "progress": 0.75,
+      "note": "pipeline_run_done"
+    },
+    {
+      "ts": "2026-08-31T06:54:21.191388+00:00",
+      "event": "heartbeat",
+      "task_id": "20260831_065419_df0e2f67",
+      "progress": 1.0,
+      "note": "completed"
+    },
+    {
+      "ts": "2026-08-31T06:54:21.205050+00:00",
+      "event": "task_completed",
+      "task_id": "20260831_065419_df0e2f67",
+      "result": "OK"
+    },
+    {
+      "ts": "2026-08-31T06:54:21.404808+00:00",
+      "event": "task_started",
+      "task_id": "20260831_065421_2ae5eddc",
+      "task_name": "create_document"
+    },
+    {
+      "ts": "2026-08-31T06:54:21.461765+00:00",
+      "event": "heartbeat",
+      "task_id": "20260831_065421_2ae5eddc",
+      "progress": 0.1,
+      "note": "strategy_selection"
+    },
+    {
+      "ts": "2026-08-31T06:54:21.476150+00:00",
+      "event": "heartbeat",
+      "task_id": "20260831_065421_2ae5eddc",
+      "progress": 0.35,
+      "note": "pipeline_run_start"
+    },
+    {
+      "ts": "2026-08-31T06:54:22.212538+00:00",
+      "event": "heartbeat",
+      "task_id": "20260831_065421_2ae5eddc",
+      "progress": 0.75,
+      "note": "pipeline_run_done"
+    },
+    {
+      "ts": "2026-08-31T06:54:22.233321+00:00",
+      "event": "heartbeat",
+      "task_id": "20260831_065421_2ae5eddc",
+      "progress": 1.0,
+      "note": "completed"
+    },
+    {
+      "ts": "2026-08-31T06:54:22.245272+00:00",
+      "event": "task_completed",
+      "task_id": "20260831_065421_2ae5eddc",
+      "result": "OK"
+    },
+    {
+      "ts": "2026-08-31T06:54:22.431034+00:00",
+      "event": "task_started",
+      "task_id": "20260831_065422_c48dfac8",
+      "task_name": "create_document"
+    },
+    {
+      "ts": "2026-08-31T06:54:22.478872+00:00",
+      "event": "heartbeat",
+      "task_id": "20260831_065422_c48dfac8",
+      "progress": 0.1,
+      "note": "strategy_selection"
+    },
+    {
+      "ts": "2026-08-31T06:54:22.502489+00:00",
+      "event": "heartbeat",
+      "task_id": "20260831_065422_c48dfac8",
+      "progress": 0.35,
+      "note": "pipeline_run_start"
+    },
+    {
+      "ts": "2026-08-31T06:54:23.212228+00:00",
+      "event": "heartbeat",
+      "task_id": "20260831_065422_c48dfac8",
+      "progress": 0.75,
+      "note": "pipeline_run_done"
+    },
+    {
+      "ts": "2026-08-31T06:54:23.233812+00:00",
+      "event": "heartbeat",
+      "task_id": "20260831_065422_c48dfac8",
+      "progress": 1.0,
+      "note": "completed"
+    },
+    {
+      "ts": "2026-08-31T06:54:23.248156+00:00",
+      "event": "task_completed",
+      "task_id": "20260831_065422_c48dfac8",
+      "result": "OK"
+    },
+    {
+      "ts": "2026-08-31T06:54:57.385352+00:00",
+      "event": "task_started",
+      "task_id": "20260831_065457_dbf1369b",
+      "task_name": "create_document"
+    },
+    {
+      "ts": "2026-08-31T06:54:57.435594+00:00",
+      "event": "heartbeat",
+      "task_id": "20260831_065457_dbf1369b",
+      "progress": 0.1,
+      "note": "strategy_selection"
+    },
+    {
+      "ts": "2026-08-31T06:54:57.447664+00:00",
+      "event": "heartbeat",
+      "task_id": "20260831_065457_dbf1369b",
+      "progress": 0.35,
+      "note": "pipeline_run_start"
+    },
+    {
+      "ts": "2026-08-31T06:54:58.196660+00:00",
+      "event": "heartbeat",
+      "task_id": "20260831_065457_dbf1369b",
+      "progress": 0.75,
+      "note": "pipeline_run_done"
+    },
+    {
+      "ts": "2026-08-31T06:54:58.219526+00:00",
+      "event": "heartbeat",
+      "task_id": "20260831_065457_dbf1369b",
+      "progress": 1.0,
+      "note": "completed"
+    },
+    {
+      "ts": "2026-08-31T06:54:58.232648+00:00",
+      "event": "task_completed",
+      "task_id": "20260831_065457_dbf1369b",
+      "result": "OK"
+    },
+    {
+      "ts": "2026-08-31T06:55:07.491114+00:00",
+      "event": "task_started",
+      "task_id": "20260831_065507_49cb943a",
+      "task_name": "create_document"
+    },
+    {
+      "ts": "2026-08-31T06:55:07.546379+00:00",
+      "event": "heartbeat",
+      "task_id": "20260831_065507_49cb943a",
+      "progress": 0.1,
+      "note": "strategy_selection"
+    },
+    {
+      "ts": "2026-08-31T06:55:07.560545+00:00",
+      "event": "heartbeat",
+      "task_id": "20260831_065507_49cb943a",
+      "progress": 0.35,
+      "note": "pipeline_run_start"
+    },
+    {
+      "ts": "2026-08-31T06:55:08.259842+00:00",
+      "event": "heartbeat",
+      "task_id": "20260831_065507_49cb943a",
+      "progress": 0.75,
+      "note": "pipeline_run_done"
+    },
+    {
+      "ts": "2026-08-31T06:55:08.278802+00:00",
+      "event": "heartbeat",
+      "task_id": "20260831_065507_49cb943a",
+      "progress": 1.0,
+      "note": "completed"
+    },
+    {
+      "ts": "2026-08-31T06:55:08.291619+00:00",
+      "event": "task_completed",
+      "task_id": "20260831_065507_49cb943a",
+      "result": "OK"
+    },
+    {
+      "ts": "2026-08-31T06:55:36.039681+00:00",
+      "event": "task_started",
+      "task_id": "20260831_065536_5511ae02",
+      "task_name": "create_document"
+    },
+    {
+      "ts": "2026-08-31T06:55:36.098590+00:00",
+      "event": "heartbeat",
+      "task_id": "20260831_065536_5511ae02",
+      "progress": 0.1,
+      "note": "strategy_selection"
+    },
+    {
+      "ts": "2026-08-31T06:55:36.110822+00:00",
+      "event": "heartbeat",
+      "task_id": "20260831_065536_5511ae02",
+      "progress": 0.35,
+      "note": "pipeline_run_start"
+    },
+    {
+      "ts": "2026-08-31T06:55:36.866883+00:00",
+      "event": "heartbeat",
+      "task_id": "20260831_065536_5511ae02",
+      "progress": 0.75,
+      "note": "pipeline_run_done"
+    },
+    {
+      "ts": "2026-08-31T06:55:36.886543+00:00",
+      "event": "heartbeat",
+      "task_id": "20260831_065536_5511ae02",
+      "progress": 1.0,
+      "note": "completed"
+    },
+    {
+      "ts": "2026-08-31T06:55:36.899487+00:00",
+      "event": "task_completed",
+      "task_id": "20260831_065536_5511ae02",
+      "result": "OK"
+    },
+    {
+      "ts": "2026-08-31T06:55:50.377604+00:00",
+      "event": "task_started",
+      "task_id": "20260831_065550_867a3f6c",
+      "task_name": "create_document"
+    },
+    {
+      "ts": "2026-08-31T06:55:50.434300+00:00",
+      "event": "heartbeat",
+      "task_id": "20260831_065550_867a3f6c",
+      "progress": 0.1,
+      "note": "strategy_selection"
+    },
+    {
+      "ts": "2026-08-31T06:55:50.450540+00:00",
+      "event": "heartbeat",
+      "task_id": "20260831_065550_867a3f6c",
+      "progress": 0.35,
+      "note": "pipeline_run_start"
+    },
+    {
+      "ts": "2026-08-31T06:55:51.185308+00:00",
+      "event": "heartbeat",
+      "task_id": "20260831_065550_867a3f6c",
+      "progress": 0.75,
+      "note": "pipeline_run_done"
+    },
+    {
+      "ts": "2026-08-31T06:55:51.213199+00:00",
+      "event": "heartbeat",
+      "task_id": "20260831_065550_867a3f6c",
+      "progress": 1.0,
+      "note": "completed"
+    },
+    {
+      "ts": "2026-08-31T06:55:51.226715+00:00",
+      "event": "task_completed",
+      "task_id": "20260831_065550_867a3f6c",
+      "result": "OK"
     }
   ]
 }

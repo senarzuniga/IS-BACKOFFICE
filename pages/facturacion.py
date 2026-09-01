@@ -6,6 +6,12 @@ from datetime import date
 import pandas as pd
 import streamlit as st
 
+from backoffice.ui.components.consulting_brand import (
+    CONSULTING_HTML_REPORT,
+    CONSULTING_QUICKSTART,
+    render_cta_brand_hero,
+)
+
 ERP_PATH = os.path.abspath(os.path.join(os.path.dirname(__file__), "../erp_facturacion/erp.py"))
 spec = importlib.util.spec_from_file_location("erp_module", ERP_PATH)
 erp = importlib.util.module_from_spec(spec)
@@ -14,11 +20,36 @@ spec.loader.exec_module(erp)
 
 erp.init_db()
 
+try:
+    from backoffice.theme import inject_theme
+
+    inject_theme()
+except Exception:
+    pass
+
+
+def _jump(page: str) -> None:
+    st.switch_page(page)
+
 st.title("Facturación ERP Profesional")
 st.caption("Dashboard, CRM clientes, facturación multi-linea, impuestos y PDF profesional.")
+render_cta_brand_hero(
+    "ERP Profesional",
+    "Centro operativo para facturacion, consultoria comercial y funding bajo un unico modulo con accesos cruzados desde reporting.",
+    context_label="ERP Profesional",
+)
+
+st.sidebar.markdown("### ERP Profesional")
+if st.sidebar.button("Abrir hub ERP Profesional", use_container_width=True):
+    _jump("pages/erp_profesional.py")
+if st.sidebar.button("Funding Consulting Center", use_container_width=True):
+    _jump("pages/funding_consulting_center.py")
+if st.sidebar.button("CTA R&D Funding Engine", use_container_width=True):
+    _jump("pages/rd_funding.py")
+st.sidebar.markdown("---")
 
 menu = st.sidebar.radio(
-    "Modulo",
+    "Submodulo",
     [
         "Dashboard",
         "Configuracion Empresa",
@@ -401,3 +432,35 @@ elif menu == "Reporting":
     c2.metric("IVA repercutido", fmt_eur(r["iva_repercutido"]))
     c3.metric("IRPF retenido", fmt_eur(r["irpf_retenido"]))
     c4.metric("Pendiente cobro", fmt_eur(r["pendiente_cobro"]))
+
+    st.markdown("### Accesos de consultoria y funding")
+    nav1, nav2, nav3 = st.columns(3)
+    with nav1:
+        if st.button("Abrir hub ERP Profesional", use_container_width=True):
+            _jump("pages/erp_profesional.py")
+    with nav2:
+        if st.button("Ir a Funding Consulting Center", use_container_width=True):
+            _jump("pages/funding_consulting_center.py")
+    with nav3:
+        if st.button("Ir a CTA R&D Funding Engine", use_container_width=True):
+            _jump("pages/rd_funding.py")
+
+    report_col, guide_col = st.columns(2)
+    if CONSULTING_HTML_REPORT.exists():
+        with report_col:
+            st.download_button(
+                "Descargar informe HTML CTA",
+                data=CONSULTING_HTML_REPORT.read_bytes(),
+                file_name=CONSULTING_HTML_REPORT.name,
+                mime="text/html",
+                use_container_width=True,
+            )
+    if CONSULTING_QUICKSTART.exists():
+        with guide_col:
+            st.download_button(
+                "Descargar guia de uso",
+                data=CONSULTING_QUICKSTART.read_bytes(),
+                file_name=CONSULTING_QUICKSTART.name,
+                mime="text/html",
+                use_container_width=True,
+            )

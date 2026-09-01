@@ -7,6 +7,7 @@ from pydantic import BaseModel, Field
 
 from backoffice.rd_funding.bootstrap import bootstrap_ingecart
 from backoffice.rd_funding.context_service import FundingContextService
+from backoffice.rd_funding.engines import build_document_checklist, generate_funding_alerts
 from backoffice.rd_funding.models import ClientProject
 from backoffice.rd_funding.orchestrator import AGENTS, RDFundingOrchestrator
 
@@ -77,3 +78,20 @@ def match(project_id: str, funding_call_id: str) -> dict[str, Any]:
         return _orchestrator.match(project_id, funding_call_id)
     except (LookupError, ValueError) as exc:
         raise HTTPException(status_code=422, detail=str(exc)) from exc
+
+
+@router.get("/alerts")
+def alerts(project_id: str | None = None) -> list[dict[str, Any]]:
+    project = None
+    if project_id:
+        project = _context.get(project_id)
+    calls = _context.list("FUNDING_CALL")
+    return generate_funding_alerts(project=project, calls=calls)
+
+
+@router.get("/projects/{project_id}/dossier")
+def dossier(project_id: str) -> dict[str, Any]:
+    project = _context.get(project_id)
+    if not project:
+        raise HTTPException(status_code=404, detail="Project not found")
+    return build_document_checklist(project=project)

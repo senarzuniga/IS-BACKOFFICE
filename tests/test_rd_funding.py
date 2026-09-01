@@ -8,8 +8,10 @@ from backoffice.intelligence.storage import IntelligenceDB
 from backoffice.rd_funding.bootstrap import write_artifacts
 from backoffice.rd_funding.context_service import FundingContextService
 from backoffice.rd_funding.engines import (
-    BUDGET_CATEGORIES, DOSSIER_SECTIONS, assess_compatibility, deadline_alerts,
-    design_project, funding_scenarios, liquidity_scenario, qualify_project, score_project_call,
+    BUDGET_CATEGORIES, DOSSIER_SECTIONS, assess_compatibility, build_document_checklist,
+    company_classification, company_profile_completeness, create_alert_mission,
+    deadline_alerts, design_project, funding_alert_severity, funding_scenarios,
+    generate_funding_alerts, liquidity_scenario, qualify_project, score_project_call,
 )
 from backoffice.rd_funding.models import (
     ClientProject, FundingCall, FundingEvidence, InformationLevel, ValidationStatus,
@@ -226,3 +228,25 @@ def test_ingecart_p01_end_to_end(context, tmp_path, monkeypatch):
     assert qualification["classification"] == "I+D LIKELY"
     assert match["score"] > 50
     assert strategy[1]["potential_public_funding_eur"] == 200000
+
+
+def test_company_taxonomy_and_alert_center_helpers():
+    company = {
+        "name": "INGECART",
+        "industry": "Industrial engineering",
+        "company_size": "SME",
+        "legal_form": "Sociedad limitada",
+        "technology_areas": ["robotics", "ai", "automation"],
+        "women_entrepreneur": False,
+        "is_new_company": False,
+    }
+    assert "INDUSTRIAL COMPANY" in company_classification(company)
+    assert "TECHNOLOGY COMPANY" in company_classification(company)
+    assert company_profile_completeness({"company_id": "c-1", "name": "INGECART", "legal_form": "SL", "region": "Navarra", "sector": "industry"}) >= 40
+    assert funding_alert_severity(15, 85, 90) == "CRITICAL"
+    alerts = generate_funding_alerts(company, {"technology_areas": ["robotics", "ai"], "execution_region": "Navarra", "preliminary_budget_eur": 60000}, [{"id": "call-1", "call_name": "Test call", "organisation": "CDTI", "call_status": "OPEN", "validation_status": "VERIFIED", "closing_date": "2026-09-01", "required_documents": ["Budget"]}])
+    assert alerts[0]["severity"] in {"CRITICAL", "HIGH", "MEDIUM", "LOW"}
+    dossier = build_document_checklist()
+    assert dossier["application_readiness_pct"] >= 0
+    mission = create_alert_mission(alerts[0], project_id="p01", call_id="call-1")
+    assert "Verify eligibility" in mission["objective"] or "verify eligibility" in mission["objective"].lower()

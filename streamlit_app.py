@@ -69,7 +69,8 @@ def _create_enhanced_app():
             "🎯 Mission Manager",
             "🧭 Enterprise Digital Twin",
             "🏗️ Industrial Engineering Platform",
-            "💶 R&D FUNDING",
+            "🧾 ERP Profesional",
+            "⏱️ Partes y Proyectos",
             "📄 Service Proposal Engine",
             "🧠 Presentation Intelligence Engine",
             "📚 DIPC",
@@ -85,7 +86,6 @@ def _create_enhanced_app():
             "🏭 Smart Plant Dashboard",
             "⚙️ Configurar Smart Plant",
             "📋 Tareas",
-            "🧾 Facturación ERP",
             "📁 Project Closeout",
             "📊 Analytics",
         ],
@@ -100,7 +100,8 @@ def _create_enhanced_app():
         "🎯 Mission Manager": "ing_dighub_mission_manager",
         "🧭 Enterprise Digital Twin": "ing_dighub_digital_twin",
         "🏗️ Industrial Engineering Platform": "industrial_engineering_platform",
-        "💶 R&D FUNDING": "rd_funding",
+        "🧾 ERP Profesional": "erp_profesional",
+        "⏱️ Partes y Proyectos": "partes_trabajo",
         "📄 Service Proposal Engine": "service_proposal_engine",
         "🧠 Presentation Intelligence Engine": "presentation_intelligence_engine",
         "📚 DIPC": "document_intelligence_publishing_center",
@@ -116,7 +117,6 @@ def _create_enhanced_app():
         "🏭 Smart Plant Dashboard": "smart_plant_dashboard",
         "⚙️ Configurar Smart Plant": "smart_plant_config",
         "📋 Tareas": "tasks",
-        "🧾 Facturación ERP": "erp_facturacion",
         "📁 Project Closeout": "project_closeout",
         "📊 Analytics": "analytics",
     }
@@ -143,7 +143,13 @@ def _create_enhanced_app():
 
     elif st.session_state.current_page == "industrial_engineering_platform":
         st.switch_page("pages/industrial_engineering_platform.py")
+ 
+    elif st.session_state.current_page == "erp_profesional":
+        st.switch_page("pages/erp_profesional.py")
 
+    elif st.session_state.current_page == "partes_trabajo":
+        st.switch_page("pages/partes_trabajo.py")
+ 
     elif st.session_state.current_page == "rd_funding":
         st.switch_page("pages/rd_funding.py")
 

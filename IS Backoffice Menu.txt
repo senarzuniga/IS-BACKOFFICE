@@ -15,6 +15,7 @@ reel_load_simulator_v4.py
 2 reel_load_simulator_workbench.py
 reloading_commercial_demo_v2.py
 reloading_commercial_demo_v3.py
+funding_consulting_center.py
 smart_plant_config.py
 smart_plant_dashboard.py
 soc_workbench.py

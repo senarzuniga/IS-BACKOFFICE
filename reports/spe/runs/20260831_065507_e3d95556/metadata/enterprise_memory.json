@@ -1,0 +1,59 @@
+{
+  "document_id": "148661b902f44bb1ad3e52b797b0ce12",
+  "run_id": "20260831_065507_e3d95556",
+  "source_path": "C:\\Users\\isena\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\spe\\runs\\20260831_065507_e3d95556\\source\\OFF-TEST-VERIFY2_20260831_065507.md",
+  "document_type": "slide_flow",
+  "missions": [
+    {
+      "mission_id": "20260831_065507_e3d95556",
+      "objective": "Generate corporate service proposal in Ingecart format",
+      "command": null,
+      "status": "completed",
+      "agent": "Mission Manager",
+      "confidence": 1.0
+    }
+  ],
+  "versions": [
+    {
+      "version_id": "15179259440645e2937b867be4b77675",
+      "version_number": 1,
+      "author": "Mission Manager",
+      "objective": "Generate corporate service proposal in Ingecart format",
+      "result": "published",
+      "mission_id": "20260831_065507_e3d95556",
+      "created_at": "2026-08-31T06:55:07.842687Z",
+      "diff": {
+        "structural_diff": {},
+        "visual_diff": {},
+        "semantic_diff": {},
+        "html_diff": [],
+        "component_diff": {},
+        "change_log": []
+      },
+      "output_files": {
+        "html": "C:\\Users\\isena\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\spe\\runs\\20260831_065507_e3d95556\\variants\\attempt_1\\slide_flow\\index.html",
+        "markdown": "C:\\Users\\isena\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\spe\\runs\\20260831_065507_e3d95556\\variants\\attempt_1\\slide_flow\\document.md",
+        "docx": "C:\\Users\\isena\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\spe\\runs\\20260831_065507_e3d95556\\variants\\attempt_1\\slide_flow\\document.docx",
+        "pdf": "C:\\Users\\isena\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\spe\\runs\\20260831_065507_e3d95556\\variants\\attempt_1\\slide_flow\\document.pdf",
+        "odt": "C:\\Users\\isena\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\spe\\runs\\20260831_065507_e3d95556\\variants\\attempt_1\\slide_flow\\document.odt",
+        "presentation_html": "C:\\Users\\isena\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\spe\\runs\\20260831_065507_e3d95556\\variants\\attempt_1\\slide_flow\\presentation.html",
+        "portal_web": "C:\\Users\\isena\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\spe\\runs\\20260831_065507_e3d95556\\variants\\attempt_1\\slide_flow\\portal_web\\index.html",
+        "microsite": "C:\\Users\\isena\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\spe\\runs\\20260831_065507_e3d95556\\variants\\attempt_1\\slide_flow\\microsite\\index.html",
+        "document_json": "C:\\Users\\isena\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\spe\\runs\\20260831_065507_e3d95556\\variants\\attempt_1\\slide_flow\\document_model.json",
+        "theme_css": "C:\\Users\\isena\\Documents\\GitHub\\IS-BACKOFFICE\\reports\\spe\\runs\\20260831_065507_e3d95556\\variants\\attempt_1\\slide_flow\\dipc_theme.css"
+      }
+    }
+  ],
+  "selected_variant": "slide_flow",
+  "selected_score": {
+    "visual_similarity_score": 100.0,
+    "structure_score": 100.0,
+    "theme_score": 100.0,
+    "typography_score": 100.0,
+    "layout_score": 100.0,
+    "image_score": 100.0,
+    "corporate_identity_score": 100.0,
+    "executive_quality_score": 100.0
+  },
+  "timestamp": "2026-08-31T06:55:07.851115+00:00"
+}

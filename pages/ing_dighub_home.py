@@ -6,6 +6,7 @@ from typing import Dict
 import streamlit as st
 
 from backoffice.ing_dighub_audit import run_self_audit, write_html_report
+from backoffice.ui.components.consulting_brand import CONSULTING_HTML_REPORT, CONSULTING_QUICKSTART
 from backoffice.ing_dighub_ui_support import (
     build_capability_map,
     coordinator_snapshot,
@@ -100,9 +101,17 @@ def main() -> None:
         if st.button("Open Engineering Workbench", use_container_width=True):
             _jump("pages/industrial_engineering_platform.py")
 
-        st.markdown("<div class='ing-card'><div class='ing-title'>R&D Funding</div></div>", unsafe_allow_html=True)
+        st.markdown("<div class='ing-card'><div class='ing-title'>ERP Profesional</div></div>", unsafe_allow_html=True)
+        if st.button("Open ERP Profesional Module", use_container_width=True):
+            _jump("pages/erp_profesional.py")
+        if st.button("Open Partes y Proyectos", use_container_width=True):
+            _jump("pages/partes_trabajo.py")
+        if st.button("Open Facturacion ERP", use_container_width=True):
+            _jump("pages/facturacion.py")
         if st.button("Open CTA R&D Funding Engine", use_container_width=True):
             _jump("pages/rd_funding.py")
+        if st.button("Open Funding Consulting Center", use_container_width=True):
+            _jump("pages/funding_consulting_center.py")
 
         st.markdown("<div class='ing-card'><div class='ing-title'>Simulation</div></div>", unsafe_allow_html=True)
         if st.button("Open Plant Simulator", use_container_width=True):
@@ -183,6 +192,14 @@ def main() -> None:
             _jump("pages/plant_simulator.py")
         if st.button("Generate Report", use_container_width=True):
             _jump("pages/project_closeout.py")
+        if st.button("Funding Consulting Center", use_container_width=True):
+            _jump("pages/funding_consulting_center.py")
+        if CONSULTING_HTML_REPORT.exists():
+            if st.button("Open CTA Next Steps Report", use_container_width=True):
+                _jump("pages/erp_profesional.py")
+        if CONSULTING_QUICKSTART.exists():
+            if st.button("Open Consultoria Quick Start", use_container_width=True):
+                _jump("pages/erp_profesional.py")
         if st.button("Create Offer", use_container_width=True):
             _jump("pages/service_proposal_engine.py")
         if st.button("Open Knowledge Hub", use_container_width=True, key="quick_open_knowledge_hub"):

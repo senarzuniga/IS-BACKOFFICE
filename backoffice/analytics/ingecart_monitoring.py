@@ -70,6 +70,89 @@ FORMULA_LIBRARY: List[Dict[str, str]] = [
     },
 ]
 
+SPARE_PART_CATALOG: List[Dict[str, Any]] = [
+    {
+        "family_group": "palletizer",
+        "oem_code": "SKF-22318-E-C3",
+        "technical_description": "Spherical roller bearing 90x190x64 mm, C3 clearance for high radial loads.",
+        "compatible_alternatives": [
+            {"vendor": "FAG", "code": "22318-E1-XL-K-C3", "technical_description": "Spherical roller bearing 90x190x64 mm C3."},
+            {"vendor": "NTN", "code": "22318EAD1C3", "technical_description": "Heavy-duty spherical bearing equivalent dimensions."},
+        ],
+        "tags": ["bearing", "palletizer", "gearbox", "vibration", "roller"],
+    },
+    {
+        "family_group": "conveyor",
+        "oem_code": "SEW-R37-DRN90L4",
+        "technical_description": "Helical gearmotor 1.5 kW, ratio i=25, three-phase, 400V.",
+        "compatible_alternatives": [
+            {"vendor": "Nord", "code": "SK-1SI40-90L-4", "technical_description": "Helical gearmotor 1.5 kW equivalent duty class."},
+            {"vendor": "Bonfiglioli", "code": "C112-90LA-4", "technical_description": "Inline helical gearmotor for conveyor drive."},
+        ],
+        "tags": ["gearmotor", "motor", "conveyor", "drive", "belt"],
+    },
+    {
+        "family_group": "conveyor",
+        "oem_code": "SIEMENS-6SL3210-1PE21-8UL0",
+        "technical_description": "VFD inverter 7.5 kW, 3AC 380-480V with integrated safety STO.",
+        "compatible_alternatives": [
+            {"vendor": "Schneider", "code": "ATV630D11N4", "technical_description": "Variable speed drive 11 kW, industrial conveyor applications."},
+            {"vendor": "ABB", "code": "ACS580-01-017A-4", "technical_description": "General purpose VFD 7.5 kW, 400V class."},
+        ],
+        "tags": ["vfd", "inverter", "variador", "conveyor", "motor control"],
+    },
+    {
+        "family_group": "sheet_handoff",
+        "oem_code": "SICK-WTB4-3P2261",
+        "technical_description": "Photoelectric sensor, diffuse mode, 10-800 mm, PNP NO/NC.",
+        "compatible_alternatives": [
+            {"vendor": "Omron", "code": "E3Z-D62", "technical_description": "Diffuse photoelectric sensor, PNP output, compact body."},
+            {"vendor": "Keyence", "code": "PZ-G51N", "technical_description": "General-purpose photoelectric sensor for sheet detection."},
+        ],
+        "tags": ["sensor", "photoelectric", "bhs", "handoff", "sheet"],
+    },
+    {
+        "family_group": "amr",
+        "oem_code": "SCHUNK-PGN-PLUS-125-1",
+        "technical_description": "Two-finger parallel gripper, pneumatic, high-force for handling pallets and cages.",
+        "compatible_alternatives": [
+            {"vendor": "SMC", "code": "MHF2-32D", "technical_description": "Parallel gripper for industrial handling, compact profile."},
+            {"vendor": "Festo", "code": "DHPS-25-A", "technical_description": "Adaptive gripper for handling variable packages."},
+        ],
+        "tags": ["gripper", "amr", "robot", "handling", "interlayer"],
+    },
+    {
+        "family_group": "amr",
+        "oem_code": "BAT-LFP-48V-200AH",
+        "technical_description": "Lithium iron phosphate battery pack 48V 200Ah with BMS and CAN bus.",
+        "compatible_alternatives": [
+            {"vendor": "Hoppecke", "code": "trak | uplift air 48V", "technical_description": "Li-ion battery solution for mobile robotics."},
+            {"vendor": "Exide", "code": "Sonnenschein Lithium 48V", "technical_description": "Industrial lithium pack for AGV/AMR applications."},
+        ],
+        "tags": ["battery", "amr", "charging", "bms", "48v"],
+    },
+    {
+        "family_group": "ingetrans",
+        "oem_code": "TURCK-Q80L400-RFID-UHF",
+        "technical_description": "UHF RFID read/write head for pallet/reel tracking over conveyor exchange points.",
+        "compatible_alternatives": [
+            {"vendor": "Balluff", "code": "BIS VU-320", "technical_description": "UHF RFID processor head for industrial logistics tracking."},
+            {"vendor": "Pepperl+Fuchs", "code": "IQH1-F198-V1", "technical_description": "RFID read/write head for automated intralogistics."},
+        ],
+        "tags": ["rfid", "ingetrans", "reel", "tracking", "uhf"],
+    },
+    {
+        "family_group": "truck_loader",
+        "oem_code": "FESTO-CPX-AP-I-EC-M12",
+        "technical_description": "Remote I/O module with EtherCAT, M12 connectivity, IP65 for moving systems.",
+        "compatible_alternatives": [
+            {"vendor": "Beckhoff", "code": "EP2338-0002", "technical_description": "EtherCAT digital I/O module IP67, machine-mounted."},
+            {"vendor": "Wago", "code": "750-354", "technical_description": "EtherCAT fieldbus coupler for modular I/O islands."},
+        ],
+        "tags": ["io", "plc", "autoload", "ethercat", "fieldbus"],
+    },
+]
+
 DEFAULT_BLUEPRINT: Dict[str, Any] = {
     "company_code": "ingecart-monitoring",
     "company_name": "Ingecart Industrial Monitoring",
@@ -166,7 +249,7 @@ DEFAULT_BLUEPRINT: Dict[str, Any] = {
             "id": "2",
             "name": "Cascades Sonoco-Calgary",
             "country": "Canada",
-            "summary": "Transfercar para salidas RDC, conveyors de FG/cosedora y lógica BHS/Ingecart para bottom/tie sheets.",
+            "summary": "Transfercar para salidas RDC y 2 belt conveyors para entradas de FG y cosedora.",
             "equipment": [
                 {
                     "id": "site2_transfer_01",
@@ -203,24 +286,6 @@ DEFAULT_BLUEPRINT: Dict[str, Any] = {
                     "recommended_spares_eur": 5400,
                     "monthly_contract_eur": 760,
                     "service_levers": ["FG buffering", "stitcher feed stability", "anti-jam tuning"],
-                },
-                {
-                    "id": "site2_bhs_01",
-                    "name": "Bottom/Tie Sheets BHS-Ingecart Handoff",
-                    "family_group": "sheet_handoff",
-                    "nominal_throughput_per_hour": 46,
-                    "nominal_cycle_seconds": 77,
-                    "energy_kw": 19,
-                    "temperature_base_c": 31,
-                    "vibration_base_mm_s": 1.4,
-                    "mtbf_hours": 184,
-                    "mttr_hours": 1.0,
-                    "pm_cycle_hours": 168,
-                    "cost_of_downtime_eur_h": 980,
-                    "replacement_value_eur": 90000,
-                    "recommended_spares_eur": 4200,
-                    "monthly_contract_eur": 640,
-                    "service_levers": ["Kuka pallet availability", "touchpad call logic", "WIP reservation"],
                 },
             ],
         },
@@ -808,8 +873,8 @@ def _build_recommendations(site_summaries: List[Dict[str, Any]], latest_assets: 
                 {
                     "site_id": site_id,
                     "site_name": summary["site_name"],
-                    "title": "Sincronizar BHS, transfercar y bottom/tie sheets",
-                    "action": "Añadir reserva de destino, disponibilidad de Kuka pallet y prioridad dinámica en el handoff BHS-Ingecart.",
+                    "title": "Sincronizar transfercar con entradas de FG y cosedora",
+                    "action": "Añadir reserva de destino, estado de receive-ready y prioridad dinámica entre las 3 salidas RDC y las 2 entradas a FG/cosedora.",
                     "estimated_oee_gain_pct": 3.8,
                     "business_value_eur_year": 132000,
                 }
@@ -1084,4 +1149,64 @@ def generate_instant_offer(
             "Oferta inmediata orientativa generada desde criticidad, riesgo y parque instalado.",
             "Debe validarse contra layout final, lista de señales real y stock de repuestos.",
         ],
+    }
+
+
+def suggest_spare_parts(description: str, top_k: int = 5) -> List[Dict[str, Any]]:
+    """Suggest spare parts by technical description and industrial tags."""
+    raw = (description or "").strip().lower()
+    if not raw:
+        return []
+    query_tokens = [token for token in raw.replace("/", " ").replace("-", " ").split() if len(token) >= 3]
+    if not query_tokens:
+        return []
+    scored: List[Dict[str, Any]] = []
+    for item in SPARE_PART_CATALOG:
+        haystack = " ".join([
+            item["oem_code"],
+            item["technical_description"],
+            " ".join(item.get("tags", [])),
+            " ".join(alt["code"] for alt in item.get("compatible_alternatives", [])),
+            " ".join(alt["technical_description"] for alt in item.get("compatible_alternatives", [])),
+        ]).lower()
+        score = sum(1 for token in query_tokens if token in haystack)
+        if score > 0:
+            scored.append(
+                {
+                    "score": score,
+                    "family_group": item["family_group"],
+                    "oem_code": item["oem_code"],
+                    "technical_description": item["technical_description"],
+                    "compatible_alternatives": item["compatible_alternatives"],
+                }
+            )
+    scored.sort(key=lambda part: (-part["score"], part["family_group"], part["oem_code"]))
+    return scored[: max(1, top_k)]
+
+
+def build_request_alert(
+    request_kind: str,
+    requester_name: str,
+    requester_role: str,
+    plant_id: str,
+    plant_name: str,
+    urgency: str,
+    description: str,
+    suggested_parts: List[Dict[str, Any]],
+) -> Dict[str, Any]:
+    """Build a normalized alert payload for Ingecart operation panel."""
+    top_codes = [part["oem_code"] for part in suggested_parts[:3]]
+    return {
+        "alert_type": "Alerta-Nueva solicitud",
+        "status": "pending",
+        "request_kind": request_kind,
+        "requester_name": requester_name or "No indicado",
+        "requester_role": requester_role or "No indicado",
+        "plant_id": plant_id,
+        "plant_name": plant_name,
+        "urgency": urgency,
+        "description": description,
+        "suggested_oem_codes": top_codes,
+        "suggested_matches": len(suggested_parts),
+        "created_at": datetime.now().isoformat(),
     }
