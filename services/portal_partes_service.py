@@ -60,7 +60,9 @@ def analyze_portal_partes(path: Path | None = None) -> PortalPartesAnalysis:
         persistence_modes.append("Persistencia local en navegador")
     if "indexedDB.open" in html:
         persistence_modes.append("Recuperacion de manejador mediante IndexedDB")
-    if "showSaveFilePicker" in html and "showOpenFilePicker" in html:
+    if "api.github.com/repos/" in html and "ghConfig(" in html and "guardarEnGithub(" in html:
+        persistence_modes.append("Sincronizacion de JSON en GitHub Contents API")
+    if "showSaveFilePicker" in html and "showOpenFilePicker" in html and "OneDrive" in html:
         persistence_modes.append("Sincronizacion de fichero JSON con OneDrive mediante File System Access API")
 
     admin_entities = ["Trabajadores", "OF / Proyectos", "Categorias de trabajo"]
@@ -69,6 +71,8 @@ def analyze_portal_partes(path: Path | None = None) -> PortalPartesAnalysis:
     limitations: list[str] = []
     if "el último que guarda manda" in html:
         limitations.append("Concurrencia basica: el ultimo guardado sobrescribe el estado compartido")
+    if "token se guarda solo en este navegador" in html:
+        limitations.append("El token de escritura GitHub es local al navegador y debe configurarse por equipo")
     if "SharePoint / Microsoft Graph" in html:
         limitations.append("No existe backend multiusuario real; el propio HTML recomienda evolucionar a SharePoint/Microsoft Graph")
     if "if(!FSA)" in html:
