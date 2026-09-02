@@ -1,6 +1,0 @@
-Conclusion,Evidence Artifacts,Status
-Recommended positioning technology is UWB-first with modular hybrid extension,benchmark/technology_comparison_matrix.csv; benchmark/technology_decision_matrix.csv; claims_catalog.json,Traceable
-Selected architecture: E - Phased twin-centric architecture,architecture_decision.json; benchmark/technology_decision_matrix.csv,Traceable
-Residual risk exists due to cross-supplier contradiction in performance claims,benchmark/contradicted_claims.json; validation_summary.json,Traceable
-Field validation is required before procurement lock-in,technical_due_diligence_report.md; claims_catalog.json,Traceable
-AI Coordinator approval was simulated under local policy,run_summary.json,Traceable

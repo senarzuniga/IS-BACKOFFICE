@@ -1,8 +1,0 @@
-Source,Supplier,Technology,Positioning methods,Key technical limitations,Integration possibilities,Commercial limitations
-Eliko_Evaluacion_RTLS.pdf,Eliko,"UWB, BLE",TDoA,metal,api; erp; mes; mqtt; opc; rest,support
-Eliko_Kit_Alquiler.pdf,Eliko,BLE,not_stated,not_stated,mes; opc,not_stated
-GrowSpace_Evaluacion_RTLS.pdf,GrowSpace,"UWB, BLE, Vision","TDoA, Trilateration",metal; multipath,api; erp; mes; mqtt; opc; rest; sdk,not_stated
-Pozyx_Evaluacion_RTLS.pdf,Pozyx,"UWB, BLE, Vision",TDoA,metal,api; mes; mqtt; opc; rest,license
-Precios_Eliko.pdf,Eliko,"UWB, BLE",not_stated,battery; ceiling,erp; mes; rest,license; support
-RTLS-UWD Documento tecnico_v2.pdf,Eliko,"UWB, BLE, RFID, Vision",TDoA,metal,api; erp; mes; mqtt; opc; rest; sdk,not_stated
-Sewio_Evaluacion_RTLS.pdf,Sewio,"UWB, BLE, Vision",TDoA,not_stated,api; digital twin; erp; mqtt; opc; rest,support

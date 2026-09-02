@@ -1,0 +1,6 @@
+timestamp,entity_type,entity_id,event_type,payload
+0.0,SimulationClock,,tick,"{""tick_s"": 1.0}"
+1.0,SimulationClock,,tick,"{""tick_s"": 1.0}"
+2.0,SimulationClock,,tick,"{""tick_s"": 1.0}"
+3.0,SimulationClock,,tick,"{""tick_s"": 1.0}"
+4.0,SimulationClock,,tick,"{""tick_s"": 1.0}"

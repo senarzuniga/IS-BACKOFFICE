@@ -1,1 +1,0 @@
-"""Architecture Assistant tools package."""

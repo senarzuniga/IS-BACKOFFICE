@@ -89,27 +89,15 @@ class _TransportState:
     speed_ms: float = 1.5          # m/s
     trip_distance_m: float = 30.0  # avg trip distance
     load_time_s: float = 60.0      # load + unload time
-    missions_per_pallet: float = 1.0
-    route_profile: List[Dict[str, Any]] = field(default_factory=list)
-    total_trips: float = 0.0
+    active_trips: int = 0
+    total_trips: int = 0
     idle_seconds: float = 0.0
     active_seconds: float = 0.0
 
     @property
     def cycle_time_s(self) -> float:
-        """Round-trip travel and handling time in seconds."""
-        distance = self.trip_distance_m
-        if self.route_profile:
-            distance = sum(
-                route["round_trip_distance_m"] * route["mission_share"]
-                for route in self.route_profile
-            )
-        return distance / max(self.speed_ms, 0.1) + self.load_time_s
-
-    def pallet_capacity(self, dt: float) -> float:
-        return self.num_vehicles * dt / (
-            self.cycle_time_s * self.missions_per_pallet
-        )
+        """One-way trip time in seconds."""
+        return self.trip_distance_m / max(self.speed_ms, 0.1) + self.load_time_s
 
     @property
     def utilization(self) -> float:
@@ -261,10 +249,6 @@ class SimulationEngine:
         self._transport = _TransportState(
             num_vehicles=cfg.transport.num_forklifts,
             speed_ms=cfg.transport.forklift_speed_ms,
-            trip_distance_m=cfg.transport.round_trip_distance_m,
-            load_time_s=cfg.transport.handling_time_s,
-            missions_per_pallet=cfg.transport.missions_per_pallet,
-            route_profile=cfg.transport.route_profile,
         )
         if cfg.transport.type == TransportType.TRACKS:
             self._transport.speed_ms = 0.8
@@ -327,28 +311,17 @@ class SimulationEngine:
             buf.add(removed)
 
         # 5. Flow from buffer → converters → output
-        transported_pallets = 0.0
         if "buffer" in self._storages:
             buf = self._storages["buffer"]
             output = self._storages.get("output")
             converters = [m for m in self._machines if m.id.startswith("C")]
-            transport_capacity = (
-                self._transport.pallet_capacity(dt)
-                if self._transport
-                else math.inf
-            )
             for cv in converters:
                 if cv.state == "running":
                     pallets_needed = cv.actual_rate_per_hour * dt / 3600 / 50  # ~50 units per pallet
-                    transport_allocation = min(pallets_needed, transport_capacity)
-                    removed = buf.remove(transport_allocation)
-                    transport_capacity -= removed
-                    transported_pallets += removed
+                    removed = buf.remove(pallets_needed)
                     cv.produced += removed * 50  # back to units
                     if output:
                         output.add(removed * 0.98)  # 2% scrap
-                    if transport_allocation < pallets_needed:
-                        self._count_bottleneck("transport_capacity")
                     if removed < pallets_needed * 0.5:
                         self._count_bottleneck(f"starvation_{cv.id}")
                 elif cv.state == "blocked":
@@ -357,7 +330,7 @@ class SimulationEngine:
 
         # 6. Transport dynamics
         if self._transport:
-            self._update_transport(dt, transported_pallets)
+            self._update_transport(dt, sim_time)
 
         # 7. Output expedicion (truck pickup every ~30 min)
         if "output" in self._storages:
@@ -401,19 +374,19 @@ class SimulationEngine:
                     m.setup_timer = self.SETUP_DURATION
                     return
 
-    def _update_transport(self, dt: float, transported_pallets: float) -> None:
+    def _update_transport(self, dt: float, sim_time: float) -> None:
         tr = self._transport
         if tr is None:
             return
-        completed_missions = transported_pallets * tr.missions_per_pallet
-        available_vehicle_seconds = dt * tr.num_vehicles
-        active_vehicle_seconds = min(
-            completed_missions * tr.cycle_time_s,
-            available_vehicle_seconds,
-        )
-        tr.total_trips += completed_missions
-        tr.active_seconds += active_vehicle_seconds
-        tr.idle_seconds += available_vehicle_seconds - active_vehicle_seconds
+        cycle = tr.cycle_time_s
+        trips_per_second = tr.num_vehicles / cycle
+        tr.total_trips += trips_per_second * dt
+        # Utilization: depends on queue demand
+        buf_occ = self._storages.get("buffer", _StorageState("x", 1, 0)).occupancy
+        demand = min(buf_occ * 1.5, 1.0)
+        active_frac = min(demand * 1.2, 1.0)
+        tr.active_seconds += dt * active_frac * tr.num_vehicles
+        tr.idle_seconds += dt * (1 - active_frac) * tr.num_vehicles
 
     # ------------------------------------------------------------------ #
     # Helpers                                                               #

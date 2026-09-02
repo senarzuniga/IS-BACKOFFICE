@@ -1,0 +1,10 @@
+{
+  "run_id": "run_20260828T083511Z",
+  "scenario": "scenario_07_peak_production_run.yaml",
+  "start_ts": "2026-08-28T08:35:11.350807Z",
+  "end_ts": "2026-08-28T08:35:11.351806Z",
+  "run_duration_s": 600.0,
+  "tick_s": 1.0,
+  "completed_orders": 0,
+  "throughput_rolls_per_hour": 0.0
+}

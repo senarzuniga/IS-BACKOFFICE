@@ -1,0 +1,10 @@
+{
+  "run_id": "run_20260629T194412Z",
+  "scenario": "scenario_01_baseline_forklift.yaml",
+  "start_ts": "2026-06-29T19:44:12.981356Z",
+  "end_ts": "2026-06-29T19:44:12.981459Z",
+  "run_duration_s": 2.0,
+  "tick_s": 1.0,
+  "completed_orders": 0,
+  "throughput_rolls_per_hour": 0.0
+}

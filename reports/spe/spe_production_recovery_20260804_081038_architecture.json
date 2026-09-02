@@ -1,9 +1,0 @@
-{
-  "official_html_engine": "HTML Intelligence Studio V3",
-  "mission_manager": "backoffice/spe/mission_manager.py::SPEMissionManager",
-  "database_manager": "backoffice/spe/database.py::SQLiteConnectionManager",
-  "knowledge_hub": "knowledge_hub/spe/mission_knowledge.jsonl",
-  "enterprise_memory": "enterprise_digital_twin/spe_memory.json",
-  "truth_graph": "enterprise_digital_twin/truth_graph_spe.json",
-  "executive_dashboard_source": "reports/spe/*.json"
-}
