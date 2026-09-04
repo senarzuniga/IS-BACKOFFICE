@@ -10,6 +10,7 @@ import streamlit.components.v1 as components
 
 
 PORTAL_PATH = Path(__file__).resolve().parent.parent / "portal_partes.html"
+AUTO_REFRESH_MS = 120000
 
 
 def _load_portal_html() -> str:
@@ -30,10 +31,22 @@ def main() -> None:
         st.subheader("Actualización")
         if st.button("Recargar portal", use_container_width=True):
             st.rerun()
+        st.caption("La vista se refresca automáticamente cada 2 minutos.")
 
     html = _load_portal_html()
     modified_at = datetime.fromtimestamp(PORTAL_PATH.stat().st_mtime).strftime("%Y-%m-%d %H:%M:%S")
     st.caption(f"Archivo cargado desde: {PORTAL_PATH.name} · última modificación detectada: {modified_at}")
+
+    components.html(
+        f"""
+        <script>
+        setTimeout(function () {{
+          window.parent.location.reload();
+        }}, {AUTO_REFRESH_MS});
+        </script>
+        """,
+        height=0,
+    )
 
     components.html(html, height=1800, scrolling=True)
 
