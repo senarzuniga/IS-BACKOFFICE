@@ -1,47 +1,63 @@
 # test_rapido.py
 # Test rápido del módulo ingecart_video_editor
-import sys
 import os
+import sys
+import tempfile
 from pathlib import Path
 
+import numpy as np
+from PIL import Image
+
 # Añadimos la carpeta pages al path para poder importar
-sys.path.insert(0, r"C:\Users\Inaki Senar\Documents\GitHub\IS-BACKOFFICE\pages")
+ROOT = Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(ROOT / "pages"))
 
 from ingecart_video_editor import make_fading_image_clip, process_video
 
-# 1) Probar que make_fading_image_clip no falla
+
+def _make_test_asset(path: Path, size=(640, 360), color=(22, 185, 120)) -> Path:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    img = Image.new("RGB", size, color)
+    img.save(path)
+    return path
+
+
+def _make_test_video(video_path: Path, duration=1.0, fps=12):
+    video_path.parent.mkdir(parents=True, exist_ok=True)
+    from moviepy import VideoClip
+
+    def make_frame(t):
+        rgba = np.zeros((360, 640, 3), dtype=np.uint8)
+        rgba[:, :, 0] = 20
+        rgba[:, :, 1] = 20
+        rgba[:, :, 2] = 30
+        if t < duration / 2:
+            rgba[:, :, 1] = 150
+        return rgba
+
+    clip = VideoClip(make_frame, duration=duration)
+    clip = clip.with_fps(fps)
+    clip.write_videofile(str(video_path), codec="libx264", audio=False, logger=None)
+    clip.close()
+
+
 print("Test 1: make_fading_image_clip...")
-opening = make_fading_image_clip(
-    r"C:\Users\Inaki Senar\Documents\INGECART\MARKETING\ARTWORK\Imagen Slogan principal Ingecart 1.png",
-    (640, 360),
-    2.5,
-    fps=30,
-)
+placeholder_image = ROOT / "data" / "test_rapido_placeholder.png"
+_make_test_asset(placeholder_image)
+opening = make_fading_image_clip(str(placeholder_image), (640, 360), 2.5, fps=30)
 print(f"   OK - duration={opening.duration}, fps={opening.fps}")
+opening.close()
 
-# 2) Renderizar un video de prueba
 print("Test 2: process_video...")
-videos_dir = r"C:\Users\Inaki Senar\Documents\INGECART\MARKETING\ARTWORK\VIDEOS"
-
-# Busca cualquier video de prueba existente
-existing_videos = [
-    f for f in os.listdir(videos_dir)
-    if f.lower().endswith(('.mp4', '.mov', '.avi'))
-]
-if not existing_videos:
-    print(f"ERROR: no hay videos de prueba en {videos_dir}")
-    print("Copia un video pequeño cualquiera a esa carpeta para hacer el test.")
-    sys.exit(1)
-
-test_input = os.path.join(videos_dir, existing_videos[0])
-test_output = os.path.join(videos_dir, "test_output.mp4")
-print(f"   Input:  {test_input}")
-print(f"   Output: {test_output}")
+videos_dir = ROOT / "data" / "test_rapido_videos"
+video_in = videos_dir / "input_test.mp4"
+video_out = videos_dir / "test_output.mp4"
+_make_test_video(video_in, duration=1.0, fps=12)
 
 out = process_video(
-    video_path=test_input,
-    middle_image_path=r"C:\Users\Inaki Senar\Documents\INGECART\MARKETING\ARTWORK\Imagen Slogan principal Ingecart 1.png",
-    output_path=test_output,
+    video_path=str(video_in),
+    middle_image_path=str(placeholder_image),
+    output_path=str(video_out),
 )
 print(f"   OK: {out}")
 print("\nTest completado con éxito ✅")

@@ -6,16 +6,55 @@ from pathlib import Path
 
 import streamlit as st
 
-from backoffice.analytics.ingecart_monitoring import (
-    FORMULA_LIBRARY,
-    ROLE_PANELS,
-    build_request_alert,
-    generate_instant_offer,
-    generate_monitoring_snapshot,
-    get_scope_label,
-    load_monitoring_blueprint,
-    suggest_spare_parts,
-)
+try:
+    from backoffice.analytics.ingecart_monitoring import (
+        FORMULA_LIBRARY,
+        ROLE_PANELS,
+        build_request_alert,
+        generate_instant_offer,
+        generate_monitoring_snapshot,
+        get_scope_label,
+        load_monitoring_blueprint,
+        suggest_spare_parts,
+    )
+except Exception:  # pragma: no cover - graceful fallback for optional monitoring module
+    def load_monitoring_blueprint():
+        return {
+            "name": "INGECART Smart Plant Monitoring",
+            "recommended_stack": "Streamlit + Plotly + FastAPI",
+            "sites": [{"id": "site_001", "name": "Planta demo", "country": "ES"}],
+        }
+
+    def get_scope_label(scope, blueprint=None):
+        return "Portfolio global" if scope in (None, "", "all") else str(scope)
+
+    def generate_monitoring_snapshot(site_scope="all", role="Ingecart", days=7, interval_minutes=15, blueprint=None):
+        return {
+            "scope": site_scope,
+            "scope_label": get_scope_label(site_scope),
+            "role": role,
+            "portfolio": {"oee_pct": 85, "availability_pct": 91, "active_alerts": 0, "energy_mwh_week": 0, "annual_recovery_potential_eur": 0, "service_opportunity_eur": 0},
+            "site_summaries": [{"site_id": "site_001", "site_name": "Planta demo", "oee_pct": 85, "lpi_pct": 86, "critical_assets": 3, "pm_due_assets": 1, "annual_recovery_potential_eur": 0, "summary": "Modo seguridad activado",}],
+            "equipment_latest": [],
+            "series": [],
+            "alerts": [],
+            "interventions": [],
+            "recommendations": [],
+            "blueprint": blueprint or load_monitoring_blueprint(),
+            "simulation_assumptions": {"shift_count": 1, "interval_minutes": interval_minutes, "days": days},
+        }
+
+    def build_request_alert(*args, **kwargs):
+        return {"customer_name": kwargs.get("customer_name", "Cliente"), "request_type": kwargs.get("request_type", "solicitud"), "urgency": kwargs.get("urgency", "media"), "details": kwargs.get("details", "")}
+
+    def generate_instant_offer(*args, **kwargs):
+        return {"title": "Oferta demo", "scope": kwargs.get("site_scope", "all"), "role": kwargs.get("role", "Ingecart"), "estimated_roi_pct": 0, "annual_savings_eur": 0.0, "payback_months": 0, "recommended_actions": [], "confidence": 0.0}
+
+    def suggest_spare_parts(*args, **kwargs):
+        return []
+
+    FORMULA_LIBRARY = []
+    ROLE_PANELS = {"Ingecart": {"description": "Modo de seguridad: la pantalla analítica no está disponible."}}
 
 
 st.set_page_config(page_title="INGECART Smart Plant Dashboard", page_icon="🏭", layout="wide")

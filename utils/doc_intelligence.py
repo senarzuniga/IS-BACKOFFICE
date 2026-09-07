@@ -49,9 +49,9 @@ class MultiLLMConsensusEngine:
                                               "conclusion": f"Error: {e}"}}
 
     def _consensus(self, results: Dict) -> str:
-        valid = [r for r in results.values() if "error" not in r]
+        valid = {name: r for name, r in results.items() if "error" not in r}
         if not valid: return "No se pudo generar consenso."
-        return "\n\n".join(f"**{n}**: {r.get('conclusion', '')}" for n, r in valid.items())
+        return "\n\n".join(f"**{name}**: {r.get('conclusion', '')}" for name, r in valid.items())
 
     def _confidence(self, results: Dict) -> float:
         valid = [r for r in results.values() if "error" not in r]

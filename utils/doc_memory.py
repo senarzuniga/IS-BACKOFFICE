@@ -1,6 +1,6 @@
 """Capas 2-4: Modelos de datos, memoria corporativa, grafo de conocimiento."""
 from __future__ import annotations
-import json, hashlib, re
+import json, hashlib, re, unicodedata
 from dataclasses import dataclass, field, asdict
 from datetime import datetime
 from pathlib import Path
@@ -60,8 +60,19 @@ class CorporateMemory:
         with open(self.path / f"{name}.json", "w", encoding="utf-8") as f:
             json.dump(data, f, indent=2, ensure_ascii=False)
 
+    def _normalize_text(self, text: str) -> str:
+        text = unicodedata.normalize("NFKD", (text or "")).encode("ascii", "ignore").decode("ascii")
+        return re.sub(r"[^a-z0-9]+", " ", text.lower()).strip()
+
     def _tokenize(self, text: str) -> set:
-        return {w.lower() for w in re.findall(r"\w{4,}", text)}
+        words = self._normalize_text(text).split()
+        tokens = set()
+        for word in words:
+            if len(word) >= 3:
+                tokens.add(word)
+                if len(word) > 4:
+                    tokens.add(word[:4])
+        return tokens
 
     def _rebuild_inverted_index(self) -> None:
         self._inv_index = {}
@@ -88,10 +99,20 @@ class CorporateMemory:
     def find_related(self, query: str, min_confidence: float = 0.5, limit: int = 50) -> List[Dict]:
         tokens = self._tokenize(query)
         if not tokens: return []
-        candidate_ids = set.intersection(*[self._inv_index.get(t, set()) for t in tokens]) \
-                        if len(tokens) > 1 else self._inv_index.get(tokens.pop(), set())
+        candidate_ids = set()
+        for token in tokens:
+            candidate_ids |= self._inv_index.get(token, set())
+
+        if not candidate_ids:
+            normalized_query = self._normalize_text(query)
+            candidate_ids = {
+                fid
+                for fid, meta in self.facts.items()
+                if any(token in self._normalize_text(meta.get("statement", "")) for token in normalized_query.split())
+            }
+
         results = []
-        for fid in candidate_ids:
+        for fid in sorted(candidate_ids):
             meta = self.facts.get(fid)
             if not meta or meta["confidence"] < min_confidence: continue
             fp = self.path / "facts" / f"{fid}.json"
