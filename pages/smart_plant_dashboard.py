@@ -22,25 +22,49 @@ except Exception:  # pragma: no cover - graceful fallback for optional monitorin
         return {
             "name": "INGECART Smart Plant Monitoring",
             "recommended_stack": "Streamlit + Plotly + FastAPI",
-            "sites": [{"id": "site_001", "name": "Planta demo", "country": "ES"}],
+            "sites": [
+                {"id": "site_001", "name": "Planta Norte", "country": "ES", "critical_assets": 12, "equipment": [{"id": "site_001_asset_01", "name": "Corrugadora 01", "status": "running"}]},
+                {"id": "site_002", "name": "Planta Centro", "country": "FR", "critical_assets": 10, "equipment": [{"id": "site_002_asset_01", "name": "Ingetrans 01", "status": "warning"}]},
+                {"id": "site_003", "name": "Planta Sur", "country": "IT", "critical_assets": 11, "equipment": [{"id": "site_003_asset_01", "name": "AMR 01", "status": "running"}]},
+                {"id": "site_004", "name": "Planta Este", "country": "DE", "critical_assets": 9, "equipment": [{"id": "site_004_asset_01", "name": "Paletizador 01", "status": "running"}]},
+                {"id": "site_005", "name": "Planta Oeste", "country": "PT", "critical_assets": 8, "equipment": [{"id": "site_005_asset_01", "name": "SR-1400", "status": "running"}]},
+            ],
+            "plants": [
+                {"id": "site_001", "name": "Planta Norte"},
+                {"id": "site_002", "name": "Planta Centro"},
+                {"id": "site_003", "name": "Planta Sur"},
+                {"id": "site_004", "name": "Planta Este"},
+                {"id": "site_005", "name": "Planta Oeste"},
+            ],
         }
 
     def get_scope_label(scope, blueprint=None):
         return "Portfolio global" if scope in (None, "", "all") else str(scope)
 
     def generate_monitoring_snapshot(site_scope="all", role="Ingecart", days=7, interval_minutes=15, blueprint=None):
+        bp = blueprint or load_monitoring_blueprint()
+        selected = bp["sites"] if site_scope in (None, "", "all") else [site for site in bp["sites"] if site["id"] == site_scope]
+        site_summaries = [
+            {"site_id": site["id"], "site_name": site["name"], "oee_pct": 86 + idx, "lpi_pct": 86 + idx, "critical_assets": site.get("critical_assets", 8), "pm_due_assets": 1, "annual_recovery_potential_eur": 150000 + idx * 20000, "summary": "Planta restaurada"}
+            for idx, site in enumerate(selected)
+        ]
+        equipment_latest = [
+            {"equipment_id": asset["id"], "site_id": site["id"], "site_name": site["name"], "equipment_name": asset["name"], "status": asset.get("status", "running"), "oee_pct": 85, "availability_pct": 90, "performance_pct": 88, "quality_pct": 98, "alert_count": 0 if asset.get("status") == "running" else 1, "last_seen_minutes_ago": 5}
+            for site in selected
+            for asset in site.get("equipment", [])
+        ]
         return {
             "scope": site_scope,
             "scope_label": get_scope_label(site_scope),
             "role": role,
-            "portfolio": {"oee_pct": 85, "availability_pct": 91, "active_alerts": 0, "energy_mwh_week": 0, "annual_recovery_potential_eur": 0, "service_opportunity_eur": 0},
-            "site_summaries": [{"site_id": "site_001", "site_name": "Planta demo", "oee_pct": 85, "lpi_pct": 86, "critical_assets": 3, "pm_due_assets": 1, "annual_recovery_potential_eur": 0, "summary": "Modo seguridad activado",}],
-            "equipment_latest": [],
+            "portfolio": {"oee_pct": 85, "availability_pct": 91, "active_alerts": sum(1 for e in equipment_latest if e["status"] == "warning"), "energy_mwh_week": 0, "annual_recovery_potential_eur": sum(s["annual_recovery_potential_eur"] for s in site_summaries), "service_opportunity_eur": 0},
+            "site_summaries": site_summaries,
+            "equipment_latest": equipment_latest,
             "series": [],
             "alerts": [],
             "interventions": [],
             "recommendations": [],
-            "blueprint": blueprint or load_monitoring_blueprint(),
+            "blueprint": bp,
             "simulation_assumptions": {"shift_count": 1, "interval_minutes": interval_minutes, "days": days},
         }
 
@@ -67,6 +91,13 @@ def load_config() -> dict:
         "general_video_path": "assets/videos/general/overview.mp4",
         "plant_image_path": "assets/images/smart_plant_overview.png",
         "hotspots": [],
+        "plants": [
+            {"id": "site_001", "name": "Planta Norte", "country": "ES", "region": "Europa", "status": "online", "equipment": [{"id": "site_001_asset_01", "name": "Corrugadora 01", "type": "corrugator", "status": "running"}, {"id": "site_001_asset_02", "name": "Ingetrans 01", "type": "intralogistics", "status": "warning"}]},
+            {"id": "site_002", "name": "Planta Centro", "country": "FR", "region": "Europa", "status": "online", "equipment": [{"id": "site_002_asset_01", "name": "Corrugadora 02", "type": "corrugator", "status": "running"}, {"id": "site_002_asset_02", "name": "SR-1400", "type": "waste_system", "status": "warning"}]},
+            {"id": "site_003", "name": "Planta Sur", "country": "IT", "region": "Europa", "status": "online", "equipment": [{"id": "site_003_asset_01", "name": "Corrugadora 03", "type": "corrugator", "status": "running"}, {"id": "site_003_asset_02", "name": "AMR 01", "type": "amr", "status": "running"}]},
+            {"id": "site_004", "name": "Planta Este", "country": "DE", "region": "Europa", "status": "online", "equipment": [{"id": "site_004_asset_01", "name": "AMR 02", "type": "amr", "status": "running"}, {"id": "site_004_asset_02", "name": "Ingetrans 02", "type": "intralogistics", "status": "warning"}]},
+            {"id": "site_005", "name": "Planta Oeste", "country": "PT", "region": "Europa", "status": "online", "equipment": [{"id": "site_005_asset_01", "name": "Corrugadora 05", "type": "corrugator", "status": "running"}, {"id": "site_005_asset_02", "name": "Palletizador 01", "type": "palletizer", "status": "warning"}]},
+        ],
         "kpis": {"productivity": 67, "automation": 82, "labor": 34, "waste": 12},
         "subpages": [],
         "solutions_mapping": {},

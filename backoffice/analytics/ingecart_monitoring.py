@@ -61,20 +61,81 @@ SPARE_PART_CATALOG: List[Dict[str, Any]] = [
 
 
 def load_monitoring_blueprint() -> Dict[str, Any]:
-    """Return a small but realistic blueprint for Smart Plant monitoring."""
+    """Return the restored default Smart Plant portfolio with five plants and equipment."""
+    plants = [
+        {
+            "id": "site_001",
+            "name": "Planta Norte",
+            "country": "ES",
+            "region": "Europa",
+            "critical_assets": 12,
+            "equipment": [
+                {"id": "site_001_asset_01", "name": "Corrugadora 01", "type": "corrugator", "status": "running"},
+                {"id": "site_001_asset_02", "name": "Ingetrans 01", "type": "intralogistics", "status": "warning"},
+                {"id": "site_001_asset_03", "name": "AMR 01", "type": "amr", "status": "running"},
+                {"id": "site_001_asset_04", "name": "Paletizador 01", "type": "palletizer", "status": "running"},
+            ],
+        },
+        {
+            "id": "site_002",
+            "name": "Planta Centro",
+            "country": "FR",
+            "region": "Europa",
+            "critical_assets": 10,
+            "equipment": [
+                {"id": "site_002_asset_01", "name": "Corrugadora 02", "type": "corrugator", "status": "running"},
+                {"id": "site_002_asset_02", "name": "SR-1400", "type": "waste_system", "status": "warning"},
+                {"id": "site_002_asset_03", "name": "EasyPack", "type": "packaging", "status": "running"},
+                {"id": "site_002_asset_04", "name": "AMR 02", "type": "amr", "status": "running"},
+            ],
+        },
+        {
+            "id": "site_003",
+            "name": "Planta Sur",
+            "country": "IT",
+            "region": "Europa",
+            "critical_assets": 11,
+            "equipment": [
+                {"id": "site_003_asset_01", "name": "Corrugadora 03", "type": "corrugator", "status": "running"},
+                {"id": "site_003_asset_02", "name": "Ingetrans 02", "type": "intralogistics", "status": "running"},
+                {"id": "site_003_asset_03", "name": "Truck Loading", "type": "shipping", "status": "warning"},
+                {"id": "site_003_asset_04", "name": "Palletizador 02", "type": "palletizer", "status": "running"},
+            ],
+        },
+        {
+            "id": "site_004",
+            "name": "Planta Este",
+            "country": "DE",
+            "region": "Europa",
+            "critical_assets": 9,
+            "equipment": [
+                {"id": "site_004_asset_01", "name": "Corrugadora 04", "type": "corrugator", "status": "running"},
+                {"id": "site_004_asset_02", "name": "AMR 03", "type": "amr", "status": "warning"},
+                {"id": "site_004_asset_03", "name": "Ingetrans 03", "type": "intralogistics", "status": "running"},
+            ],
+        },
+        {
+            "id": "site_005",
+            "name": "Planta Oeste",
+            "country": "PT",
+            "region": "Europa",
+            "critical_assets": 8,
+            "equipment": [
+                {"id": "site_005_asset_01", "name": "Corrugadora 05", "type": "corrugator", "status": "running"},
+                {"id": "site_005_asset_02", "name": "SR-1400 02", "type": "waste_system", "status": "running"},
+                {"id": "site_005_asset_03", "name": "Electric Palletizer", "type": "palletizer", "status": "warning"},
+                {"id": "site_005_asset_04", "name": "RFID Handoff", "type": "rfid", "status": "running"},
+            ],
+        },
+    ]
     return {
         "name": "INGECART Smart Plant Monitoring",
         "recommended_stack": "Streamlit + Plotly + FastAPI + SQLite",
-        "sites": [
-            {"id": "site_001", "name": "Planta Norte", "country": "ES", "region": "Europa", "critical_assets": 12},
-            {"id": "site_002", "name": "Planta Centro", "country": "FR", "region": "Europa", "critical_assets": 10},
-            {"id": "site_003", "name": "Planta Sur", "country": "IT", "region": "Europa", "critical_assets": 11},
-        ],
+        "sites": plants,
+        "plants": plants,
         "scopes": [
             {"id": "all", "label": "Portfolio global"},
-            {"id": "site_001", "label": "Planta Norte"},
-            {"id": "site_002", "label": "Planta Centro"},
-            {"id": "site_003", "label": "Planta Sur"},
+            *[{"id": site["id"], "label": site["name"]} for site in plants],
         ],
     }
 
@@ -158,22 +219,39 @@ def generate_monitoring_snapshot(
                 "lpi_pct": 86 + index,
             }
         )
-        for asset_index in range(1, min(4, critical_assets // 4) + 1):
+        for asset_index, asset in enumerate(site.get("equipment", [])[:4], start=1):
             equipment_latest.append(
                 {
-                    "equipment_id": f"{site['id']}-asset-{asset_index}",
+                    "equipment_id": asset["id"],
                     "site_id": site["id"],
                     "site_name": site["name"],
-                    "equipment_name": f"Equipo {asset_index}",
-                    "status": "running" if asset_index % 3 else "warning",
+                    "equipment_name": asset["name"],
+                    "status": asset.get("status", "running"),
                     "oee_pct": base_oee - 2 + asset_index,
                     "availability_pct": base_avail - 1 + asset_index,
                     "performance_pct": base_perf - 2 + asset_index,
                     "quality_pct": 98,
-                    "alert_count": 1 if asset_index % 2 else 0,
+                    "alert_count": 1 if asset.get("status") == "warning" else 0,
                     "last_seen_minutes_ago": 7 + asset_index,
                 }
             )
+        if not site.get("equipment"):
+            for asset_index in range(1, min(4, critical_assets // 4) + 1):
+                equipment_latest.append(
+                    {
+                        "equipment_id": f"{site['id']}-asset-{asset_index}",
+                        "site_id": site["id"],
+                        "site_name": site["name"],
+                        "equipment_name": f"Equipo {asset_index}",
+                        "status": "running" if asset_index % 3 else "warning",
+                        "oee_pct": base_oee - 2 + asset_index,
+                        "availability_pct": base_avail - 1 + asset_index,
+                        "performance_pct": base_perf - 2 + asset_index,
+                        "quality_pct": 98,
+                        "alert_count": 1 if asset_index % 2 else 0,
+                        "last_seen_minutes_ago": 7 + asset_index,
+                    }
+                )
 
     portfolio = {
         "oee_pct": round(sum(item["oee_pct"] for item in site_summaries) / max(len(site_summaries), 1), 1),

@@ -64,6 +64,72 @@
       "savings": "110.000€/año"
     }
   ],
+  "plants": [
+    {
+      "id": "site_001",
+      "name": "Planta Norte",
+      "country": "ES",
+      "region": "Europa",
+      "status": "online",
+      "equipment": [
+        {"id": "site_001_asset_01", "name": "Corrugadora 01", "type": "corrugator", "status": "running"},
+        {"id": "site_001_asset_02", "name": "Ingetrans 01", "type": "intralogistics", "status": "warning"},
+        {"id": "site_001_asset_03", "name": "AMR 01", "type": "amr", "status": "running"},
+        {"id": "site_001_asset_04", "name": "Paletizador 01", "type": "palletizer", "status": "running"}
+      ]
+    },
+    {
+      "id": "site_002",
+      "name": "Planta Centro",
+      "country": "FR",
+      "region": "Europa",
+      "status": "online",
+      "equipment": [
+        {"id": "site_002_asset_01", "name": "Corrugadora 02", "type": "corrugator", "status": "running"},
+        {"id": "site_002_asset_02", "name": "SR-1400", "type": "waste_system", "status": "warning"},
+        {"id": "site_002_asset_03", "name": "EasyPack", "type": "packaging", "status": "running"},
+        {"id": "site_002_asset_04", "name": "AMR 02", "type": "amr", "status": "running"}
+      ]
+    },
+    {
+      "id": "site_003",
+      "name": "Planta Sur",
+      "country": "IT",
+      "region": "Europa",
+      "status": "online",
+      "equipment": [
+        {"id": "site_003_asset_01", "name": "Corrugadora 03", "type": "corrugator", "status": "running"},
+        {"id": "site_003_asset_02", "name": "Ingetrans 02", "type": "intralogistics", "status": "running"},
+        {"id": "site_003_asset_03", "name": "Truck Loading", "type": "shipping", "status": "warning"},
+        {"id": "site_003_asset_04", "name": "Palletizador 02", "type": "palletizer", "status": "running"}
+      ]
+    },
+    {
+      "id": "site_004",
+      "name": "Planta Este",
+      "country": "DE",
+      "region": "Europa",
+      "status": "online",
+      "equipment": [
+        {"id": "site_004_asset_01", "name": "Corrugadora 04", "type": "corrugator", "status": "running"},
+        {"id": "site_004_asset_02", "name": "AMR 03", "type": "amr", "status": "warning"},
+        {"id": "site_004_asset_03", "name": "Ingetrans 03", "type": "intralogistics", "status": "running"}
+      ]
+    },
+    {
+      "id": "site_005",
+      "name": "Planta Oeste",
+      "country": "PT",
+      "region": "Europa",
+      "status": "online",
+      "equipment": [
+        {"id": "site_005_asset_01", "name": "Corrugadora 05", "type": "corrugator", "status": "running"},
+        {"id": "site_005_asset_02", "name": "SR-1400 02", "type": "waste_system", "status": "running"},
+        {"id": "site_005_asset_03", "name": "Electric Palletizer", "type": "palletizer", "status": "warning"},
+        {"id": "site_005_asset_04", "name": "RFID Handoff", "type": "rfid", "status": "running"}
+      ]
+    }
+  ],
   "kpis": {
     "productivity": 92,
     "automation": 87,
