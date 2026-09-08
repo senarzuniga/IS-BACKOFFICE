@@ -41,7 +41,7 @@ render_cta_brand_hero(
 
 st.sidebar.markdown("### ERP Profesional")
 if st.sidebar.button("Abrir hub ERP Profesional", use_container_width=True):
-    _jump("pages/erp_profesional.py")
+    _jump("pages/facturacion.py")
 if st.sidebar.button("Funding Consulting Center", use_container_width=True):
     _jump("pages/funding_consulting_center.py")
 if st.sidebar.button("CTA R&D Funding Engine", use_container_width=True):
@@ -437,7 +437,7 @@ elif menu == "Reporting":
     nav1, nav2, nav3 = st.columns(3)
     with nav1:
         if st.button("Abrir hub ERP Profesional", use_container_width=True):
-            _jump("pages/erp_profesional.py")
+            _jump("pages/facturacion.py")
     with nav2:
         if st.button("Ir a Funding Consulting Center", use_container_width=True):
             _jump("pages/funding_consulting_center.py")

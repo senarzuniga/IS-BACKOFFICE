@@ -145,7 +145,7 @@ def _create_enhanced_app():
         st.switch_page("pages/industrial_engineering_platform.py")
  
     elif st.session_state.current_page == "erp_profesional":
-        st.switch_page("pages/erp_profesional.py")
+        st.switch_page("pages/facturacion.py")
 
     elif st.session_state.current_page == "partes_trabajo":
         st.switch_page("pages/partes_trabajo.py")
