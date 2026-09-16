@@ -1,46 +1,51 @@
 @echo off
-REM IS-BACKOFFICE Menu Launcher - single entrypoint
-REM Usage: double-click this file or run from cmd
-
-setlocal
+setlocal EnableExtensions
 cd /d "%~dp0"
 
-REM Prefer virtual environment python if present
-set "PY=.venv\Scripts\python.exe"
-if not exist "%PY%" (
-	set "PY=python"
+set "APP_ROOT=%~dp0"
+set "PY_CMD=python"
+where python >nul 2>nul
+if errorlevel 1 (
+    where py >nul 2>nul
+    if errorlevel 1 (
+        echo Python no encontrado. Instala Python 3.11+ y vuelve a ejecutar este acceso directo.
+        pause
+        exit /b 1
+    )
+    set "PY_CMD=py -3"
 )
 
-REM Ensure streamlit is installed in selected python
-"%PY%" -m pip show streamlit >nul 2>&1
-if %ERRORLEVEL% neq 0 (
-	echo Streamlit not found in %PY%. Installing requirements (may take a while)...
-	"%PY%" -m pip install -r requirements.txt
+call %PY_CMD% -m pip show streamlit >nul 2>&1
+if errorlevel 1 (
+    echo Streamlit no encontrado. Instalando dependencias del proyecto...
+    call %PY_CMD% -m pip install -r "%APP_ROOT%requirements.txt"
+    if errorlevel 1 (
+        echo Error durante la instalacion de dependencias.
+        pause
+        exit /b 1
+    )
 )
 
-REM Find a free port between 8501 and 8530
 set "PORT="
 for /l %%P in (8501,1,8530) do (
-		netstat -ano | findstr /r /c:":%%P .*LISTENING" >nul 2>&1
-		if errorlevel 1 (
-				set "PORT=%%P"
-				goto :port_found
-		)
+    powershell -NoProfile -ExecutionPolicy Bypass -Command "$listener = [System.Net.Sockets.TcpListener]::new([System.Net.IPAddress]::Loopback, %%P); try { $listener.Start(); $listener.Stop(); exit 0 } catch { exit 1 }" >nul 2>&1
+    if not errorlevel 1 (
+        set "PORT=%%P"
+        goto :port_found
+    )
 )
 
 echo No se encontro un puerto libre entre 8501 y 8530.
-echo Pruebe cerrar otras instancias de la aplicación o cambiar el rango de puertos.
+echo Cierra otras instancias o cambia el rango de puertos.
 pause
 exit /b 1
 
 :port_found
 echo Usando puerto %PORT%
-
-REM Open browser
 start "" "http://localhost:%PORT%"
 
-REM Launch Streamlit (logs will appear in this window)
-echo Iniciando Streamlit con %PY%
-"%PY%" -m streamlit run streamlit_app.py --server.port %PORT% --server.fileWatcherType none
+echo Iniciando IS-BACKOFFICE con Streamlit en el puerto %PORT%...
+start "IS-BACKOFFICE" cmd /c "call %PY_CMD% -m streamlit run streamlit_app.py --server.port %PORT% --server.address localhost --server.fileWatcherType none --browser.gatherUsageStats false"
 
-endlocal
+exit /b 0
+
